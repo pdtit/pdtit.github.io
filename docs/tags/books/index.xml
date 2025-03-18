@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Books on Azure Readiness starts here...</title>
+    <link>https://www.007ffflearning.com/tags/books/</link>
+    <description>Recent content in Books on Azure Readiness starts here...</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 29 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/books/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Art of Realizing SRE on Azure - Book Review</title>
+      <link>https://www.007ffflearning.com/post/the-art-of-realizing-sre-on-azure/</link>
+      <pubDate>Sat, 29 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/the-art-of-realizing-sre-on-azure/</guid>
+      <description>As most of you know already, I enjoy writing technical (Azure related) books. So if you are wondering why it&amp;rsquo;s been quiet lately, there is a good reason for it.
+Actually, I was writing on my 9th book, making it 9 books in 9 years straight, but something got in-between the writing process and publishing. It&amp;rsquo;s called US Visa regulations :). Beginning this year, January 5th actually, I relocated from Belgium to Redmond, WA for Microsoft Corp.</description>
+    </item>
+    
+    <item>
+      <title>New book published: Azure Strategy and Implementation Guide, 3rd edition</title>
+      <link>https://www.007ffflearning.com/post/new-book-published/</link>
+      <pubDate>Mon, 03 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/new-book-published/</guid>
+      <description>You might get amazed, finding out I managed to publish yet another book, where the previous one Efficiently Migrating your workloads to Azure only got published around Christmas.
+However, this new one was a &amp;ldquo;longer work in progress&amp;rdquo;, and not something I could spew out in just a few weeks.
+Several months ago, I got approached by Packt Publishing, asking me to &amp;ldquo;write a quick note on how I look at Azure strategic implementation and migration&amp;rdquo;.</description>
+    </item>
+    
+    <item>
+      <title>Happy to announce my newest Azure book got (self) published</title>
+      <link>https://www.007ffflearning.com/post/new-azure-book-selfpublish/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/new-azure-book-selfpublish/</guid>
+      <description>I&amp;rsquo;m excited about this next project that finally got live, thanks to a bit of quiet time during the Holidays. While it is not up to the full 100% of what I had in mind, I didn&amp;rsquo;t want to hold back the content any longer, since Azure is moving already that fast&amp;hellip;
+The original idea of this material was based on a workshop I created for Microsoft Internal (Azure Developer Series) in Sept 2018 as a contractor, which was a combination of slides, videos and lab guides.</description>
+    </item>
+    
+  </channel>
+</rss>

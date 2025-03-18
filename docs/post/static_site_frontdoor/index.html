@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+    <script type="text/javascript">
+        !function(T,l,y){var S=T.location,u="script",k="instrumentationKey",D="ingestionendpoint",C="disableExceptionTracking",E="ai.device.",I="toLowerCase",b="crossOrigin",w="POST",e="appInsightsSDK",t=y.name||"appInsights";(y.name||T[e])&&(T[e]=t);var n=T[t]||function(d){var g=!1,f=!1,m={initialize:!0,queue:[],sv:"4",version:2,config:d};function v(e,t){var n={},a="Browser";return n[E+"id"]=a[I](),n[E+"type"]=a,n["ai.operation.name"]=S&&S.pathname||"_unknown_",n["ai.internal.sdkVersion"]="javascript:snippet_"+(m.sv||m.version),{time:function(){var e=new Date;function t(e){var t=""+e;return 1===t.length&&(t="0"+t),t}return e.getUTCFullYear()+"-"+t(1+e.getUTCMonth())+"-"+t(e.getUTCDate())+"T"+t(e.getUTCHours())+":"+t(e.getUTCMinutes())+":"+t(e.getUTCSeconds())+"."+((e.getUTCMilliseconds()/1e3).toFixed(3)+"").slice(2,5)+"Z"}(),iKey:e,name:"Microsoft.ApplicationInsights."+e.replace(/-/g,"")+"."+t,sampleRate:100,tags:n,data:{baseData:{ver:2}}}}var h=d.url||y.src;if(h){function a(e){var t,n,a,i,r,o,s,c,p,l,u;g=!0,m.queue=[],f||(f=!0,t=h,s=function(){var e={},t=d.connectionString;if(t)for(var n=t.split(";"),a=0;a<n.length;a++){var i=n[a].split("=");2===i.length&&(e[i[0][I]()]=i[1])}if(!e[D]){var r=e.endpointsuffix,o=r?e.location:null;e[D]="https://"+(o?o+".":"")+"dc."+(r||"services.visualstudio.com")}return e}(),c=s[k]||d[k]||"",p=s[D],l=p?p+"/v2/track":config.endpointUrl,(u=[]).push((n="SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details)",a=t,i=l,(o=(r=v(c,"Exception")).data).baseType="ExceptionData",o.baseData.exceptions=[{typeName:"SDKLoadFailed",message:n.replace(/\./g,"-"),hasFullStack:!1,stack:n+"\nSnippet failed to load ["+a+"] -- Telemetry is disabled\nHelp Link: https://go.microsoft.com/fwlink/?linkid=2128109\nHost: "+(S&&S.pathname||"_unknown_")+"\nEndpoint: "+i,parsedStack:[]}],r)),u.push(function(e,t,n,a){var i=v(c,"Message"),r=i.data;r.baseType="MessageData";var o=r.baseData;return o.message='AI (Internal): 99 message:"'+("SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details) ("+n+")").replace(/\"/g,"")+'"',o.properties={endpoint:a},i}(0,0,t,l)),function(e,t){if(JSON){var n=T.fetch;if(n&&!y.useXhr)n(t,{method:w,body:JSON.stringify(e),mode:"cors"});else if(XMLHttpRequest){var a=new XMLHttpRequest;a.open(w,t),a.setRequestHeader("Content-type","application/json"),a.send(JSON.stringify(e))}}}(u,l))}function i(e,t){f||setTimeout(function(){!t&&m.core||a()},500)}var e=function(){var n=l.createElement(u);n.src=h;var e=y[b];return!e&&""!==e||"undefined"==n[b]||(n[b]=e),n.onload=i,n.onerror=a,n.onreadystatechange=function(e,t){"loaded"!==n.readyState&&"complete"!==n.readyState||i(0,t)},n}();y.ld<0?l.getElementsByTagName("head")[0].appendChild(e):setTimeout(function(){l.getElementsByTagName(u)[0].parentNode.appendChild(e)},y.ld||0)}try{m.cookie=l.cookie}catch(p){}function t(e){for(;e.length;)!function(t){m[t]=function(){var e=arguments;g||m.queue.push(function(){m[t].apply(m,e)})}}(e.pop())}var n="track",r="TrackPage",o="TrackEvent";t([n+"Event",n+"PageView",n+"Exception",n+"Trace",n+"DependencyData",n+"Metric",n+"PageViewPerformance","start"+r,"stop"+r,"start"+o,"stop"+o,"addTelemetryInitializer","setAuthenticatedUserContext","clearAuthenticatedUserContext","flush"]),m.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4};var s=(d.extensionConfig||{}).ApplicationInsightsAnalytics||{};if(!0!==d[C]&&!0!==s[C]){method="onerror",t(["_"+method]);var c=T[method];T[method]=function(e,t,n,a,i){var r=c&&c(e,t,n,a,i);return!0!==r&&m["_"+method]({message:e,url:t,lineNumber:n,columnNumber:a,error:i}),r},d.autoExceptionInstrumented=!0}return m}(y.cfg);(T[t]=n).queue&&0===n.queue.length&&n.trackPageView({})}(window,document,{
+        src: "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js", 
+        
+        
+        
+        
+        cfg: { 
+            instrumentationKey: "4ecca3df-ab58-4882-903e-3ab2c030f009"
+             
+        }});
+        </script>
+    
+<head>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Azure Readiness starts here...">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="https://www.007ffflearning.com/img/home-bg-azure.jpg">
+    <meta property="twitter:image" content="https://www.007ffflearning.com/img/home-bg-azure.jpg" />
+    
+
+    
+    <meta name="title" content="Running an Azure Storage Static Site, protected by Azure Front Door" />
+    <meta property="og:title" content="Running an Azure Storage Static Site, protected by Azure Front Door" />
+    <meta property="twitter:title" content="Running an Azure Storage Static Site, protected by Azure Front Door" />
+    
+
+    
+    <meta name="description" content="">
+    <meta property="og:description" content="" />
+    <meta property="twitter:description" content="" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="Azure, Learning, Certification, Technology">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>Running an Azure Storage Static Site, protected by Azure Front Door-Azure Readiness Starts Here</title>
+
+    
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+	
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+    
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    
+    <script src="/js/jquery.min.js"></script>
+    
+    
+    <script src="/js/bootstrap.min.js"></script>
+    
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    
+
+    <script type="text/javascript">
+            var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){function n(e){t[e]=function(){var n=arguments;t.queue.push(function(){t[e].apply(t,n)})}}var t={config:e};t.initialize=!0;var i=document,a=window;setTimeout(function(){var n=i.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",i.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{t.cookie=i.cookie}catch(e){}t.queue=[],t.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var s="Track"+r[0];if(n("start"+s),n("stop"+s),n("setAuthenticatedUserContext"),n("clearAuthenticatedUserContext"),n("flush"),!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var o=a[r];a[r]=function(e,n,i,a,s){var c=o&&o(e,n,i,a,s);return!0!==c&&t["_"+r]({message:e,url:n,lineNumber:i,columnNumber:a,error:s}),c},e.autoExceptionInstrumented=!0}return t}(
+            {
+               instrumentationKey:"4f4ba091-4cff-4bd9-95e3-c5d564a1adde"
+            }
+            );window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
+    </script>
+
+</head>
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Azure Readiness starts here...</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                        
+                    
+                    
+		    
+                        <li><a href="/books/">BOOKS</a></li>
+                    
+                        <li><a href="/about/">ABOUT ME</a></li>
+                    
+
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/home-bg-azure.jpg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/azure" title="Azure">
+                            Azure
+                        </a>
+                        
+                        <a class="tag" href="/tags/hugo" title="Hugo">
+                            Hugo
+                        </a>
+                        
+                        <a class="tag" href="/tags/static-site" title="Static Site">
+                            Static Site
+                        </a>
+                        
+                        <a class="tag" href="/tags/azure-front-door" title="Azure Front Door">
+                            Azure Front Door
+                        </a>
+                        
+                    </div>
+                    <h1>Running an Azure Storage Static Site, protected by Azure Front Door</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                                Azure Readiness starts here...
+                         
+                        on 
+                        Saturday, April 25, 2020
+                        
+                        
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    
+                </header>
+                
+                
+                <p>Earlier this week, I had the honor to present a session for the Belgian 
+<strong><a href="http://www.mc2mc.be">MC2MC</a></strong> Microsoft community, as part of a broader online event
+week with other Belgian community User Groups
+(<a href="https://www.mc2mc.be/events/be-community-week-mc2mc-evening)">https://www.mc2mc.be/events/be-community-week-mc2mc-evening)</a>.</p>
+<p>My session topic was based on a little real-life project I worked on myself only
+a few weeks ago, deploying a “Hugo” based static website on Azure Storage
+Account Static Site (Yes, this site you are reading right now&hellip;).</p>
+<p>As there were quite some steps to go through, I decided to write a full blog
+post about it. And that’s exactly what brings you here&hellip;</p>
+<p>If you are new to Hugo, have a look at the official website for more
+information: <a href="http://gohugo.io">http://gohugo.io</a></p>
+<p><img src="../images/hugo-logo-wide.svg" alt=""></p>
+<p>Although Hugo supports both HTML and MarkDown, I decided to go for MarkDown; if
+this is unknown to you, think of it is a web page markup language, with a
+specific syntax. While it might feel difficult in the beginning, it is actually
+rather straight forward to use once you get the hang of it. I could also
+recommend MarkDown Monster as an editor, if you are not into using Visual Studio
+Code.</p>
+<p>-&mdash;&mdash;&mdash;&mdash;&mdash;-</p>
+<h2 id="1-getting-started"><strong>1. Getting started</strong></h2>
+<ul>
+<li>
+<p>Install Hugo on your local machine, from <a href="http://gohugo.io">http://gohugo.io</a> (I&rsquo;m running this on Windows 10, but it also supports Linux and MacOS)</p>
+</li>
+<li>
+<p>Next, grab a copy of VS Code (<a href="http://code.visualstudio.com">http://code.visualstudio.com</a>); this is my favorite for both terminal and MarkDown editing</p>
+</li>
+<li>
+<p>From within VS Code, Choose &ldquo;Open Folder&rdquo;</p>
+</li>
+<li>
+<p>Run Terminal</p>
+</li>
+<li>
+<p>Run <strong>&ldquo;Hugo version&rdquo;</strong></p>
+<p><img src="../images/bcc174bb593b0f381d8151603b7aa80c.png" alt=""></p>
+</li>
+</ul>
+<h2 id="2-create-new-site"><strong>2. Create new site</strong></h2>
+<ul>
+<li>
+<p>Run <strong>&ldquo;Hugo new site &lt;sitename&gt;&quot;</strong></p>
+<p><img src="../images/a54714b64e47fe120a93e7c9816820ef.png" alt=""></p>
+</li>
+<li>
+<p>Hugo default folder structure is created automatically</p>
+<p><img src="../images/af6560448b8aedfd88cc90a09c578e0b.png" alt=""></p>
+</li>
+<li>
+<p><strong>Download (or Clone GitHub)</strong> a theme from <a href="http://themes.gohugo.io">http://themes.gohugo.io</a>, and extract
+the folders in the \themes folder + <strong>copy the config.toml</strong> from the
+\themes folder into the root of the site directory that got created in the
+previous step.</p>
+</li>
+<li>
+<p><strong>(Minimal is what I’m using for this blog site</strong></p>
+</li>
+<li>
+<p><strong>Open browser http://localhost:1313</strong></p>
+</li>
+<li>
+<p>This opens the sample Theme-based website.</p>
+<p><img src="../images/d3aba47e0c41fc62ce610dcc1432c662.png" alt=""></p>
+</li>
+<li>
+<p>Base site is working fine;</p>
+</li>
+<li>
+<p><strong>Stop</strong> the running “Hugo Server” Process by pressing Ctrl-C in the terminal window.</p>
+</li>
+<li>
+<p>to update or add new content, open the <strong>Content\post</strong> subfolder</p>
+<p><img src="../images/05bb2f48f1c1bee0ae764d49091af439.png" alt=""></p>
+</li>
+<li>
+<p>Create a new MarkDown document, or copy an existing one as a starting point;
+I personally use <a href="http://www.markdownmonster.west-wind.com">MarkdownMonster</a> or <a href="%5Bhttp://code.visualstudio.com">Visual Studio Code</a> as my MarkDown Editor, but any advanced text editor should work out fine.</p>
+</li>
+<li>
+<p>For a cheat sheet of MarkDown code syntax, have a look here:
+<a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet</a></p>
+</li>
+<li>
+<p>edit some content in the page</p>
+</li>
+<li>
+<p>Once your new post has been created, open your terminal again, and run “Hugo Server”. This will start a new web session. Validate from the browser on http://localhost:1313 if the new page is visible</p>
+<p><img src="../images/cbdf079922dc9d6d3da53edf49fff4e6.png" alt=""></p>
+</li>
+<li>
+<p><strong>Works!!</strong></p>
+</li>
+</ul>
+<p>However, this is “only local” on our dev station; to prepare the site to get published to Azure, <strong>compile</strong> it by running “<strong>hugo</strong>” from the command prompt (instead of hugo server)</p>
+<pre><code>![](../images/743118c78771c96ab4a3f4a789657b0a.png)
+</code></pre>
+<ul>
+<li>This compile process creates the actual “web content” in a /public/
+subfolder in the same directory as the hugo site itself.</li>
+</ul>
+<h2 id="3-publish-to-azure-storage-account"><strong>3. Publish to Azure Storage Account</strong></h2>
+<ul>
+<li>
+<p>Deploy an Azure Storage Account v2 as a starter</p>
+</li>
+<li>
+<p>From <strong>Settings</strong>, select <strong>Static website</strong></p>
+</li>
+<li>
+<p><strong>Enter information for the default page and error page</strong></p>
+<p><img src="../images/71edd780841d608544d3b134324169f1.png" alt=""></p>
+</li>
+<li>
+<p><strong>Save</strong> the settings; Your static website URL gets generated and presented</p>
+<p><img src="../images/15c5386d0f516f7d962190ab03ef0f33.png" alt=""></p>
+</li>
+</ul>
+<blockquote>
+<p>As we now have the storage account static site service up-and-running, we
+can deploy our content. I am using (and recommending!) Visual Studio Code to
+do this, but you could also copy the content in a manual way by using FTP or
+<a href="https://azure.microsoft.com/en-us/features/storage-explorer">Azure Storage Explorer</a> to do this.</p>
+</blockquote>
+<ul>
+<li>
+<p>From VSCode, <strong>add Storage Account Extension</strong></p>
+<p><img src="../images/15348e19823d218073622c2ad1d33a85.png" alt=""></p>
+</li>
+<li>
+<p>From Command Palette : <strong>Azure Storage / Deploy to Static Website</strong></p>
+<p><img src="../images/f01559119805d70472c83f81a614e686.png" alt=""></p>
+</li>
+<li>
+<p>Complete the prompts with answers from your Azure subscription and setup,
+and select your Hugo folder as a source. This will copy all files from the
+/public/ subfolder into the Storage Account $web folder</p>
+<p><img src="../images/1d16b85ebc152aa6151b80d32f20f8fc.png" alt=""></p>
+</li>
+<li>
+<p><strong>Wait</strong> for the process to complete successfully</p>
+</li>
+<li>
+<p><strong>Browse</strong> to the URL of the storage account</p>
+<p><img src="../images/d532da99e266f79d5ee2d9138b7a7a90.png" alt=""></p>
+</li>
+<li>
+<p><strong>DONT PANIC!! THIS IS EXPECTED</strong></p>
+</li>
+<li>
+<p>The reason this <strong>FAILS</strong> is because Hugo is using the /public/ subfolder to
+publish all content; If you are just using flat HTML files in the Static
+Site, it will work right away.</p>
+</li>
+<li>
+<p>try connecting to the URL path where our blog posts are stored, e.g.
+<strong>../public/post/</strong></p>
+<p><img src="../images/fc7a9f15ac268781c1506e8a597d201a.png" alt=""></p>
+</li>
+<li>
+<p><strong>The site page itself loads</strong>, but it’s not 100% OK ; we need to find a
+solution for that /public/ URL update. Good news is, Azure has such a
+solution built-in, which is called <strong>Azure Content Delivery Network – CDN.</strong></p>
+</li>
+</ul>
+<p><strong>Let’s deploy one.</strong></p>
+<h2 id="4-deploy--publish-with-azure-cdn"><strong>4. Deploy &amp; Publish with Azure CDN</strong></h2>
+<ul>
+<li>
+<p>New Resource / CDN /</p>
+<ul>
+<li>
+<p>Provide a Name + Resource Group and Subscription details</p>
+</li>
+<li>
+<p>Pricing = Standard Microsoft</p>
+</li>
+<li>
+<p><strong>Select Create a CDN endpoint now</strong></p>
+<ul>
+<li>
+<p>Provide a unique name for the URL</p>
+</li>
+<li>
+<p>Origin type = <strong>Custom</strong></p>
+</li>
+<li>
+<p>Origin hostname = paste in the URL address of the Static Website
+<strong>without the https:// and without the trailing /</strong></p>
+<p><img src="../images/1596f2f6245b11f77e1f015ccee25132.png" alt=""></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Once created, open the CDN Profile resource</p>
+</li>
+</ul>
+<p><img src="../images/cab37ce38896f5a9b23e70937b3f22bb.png" alt=""></p>
+<ul>
+<li>
+<p>Select the <strong>Endpoint</strong> you defined under the Endpoints section</p>
+</li>
+<li>
+<p>Under <strong>Settings</strong> / select <strong>Rules engine</strong></p>
+<p><img src="../images/29b3bf76e5985c924a4d34b8bce99534.png" alt=""></p>
+</li>
+<li>
+<p>In the <strong>Rules engine</strong> / select <strong>Add Action</strong> / Choose <strong>URL Rewrite</strong></p>
+<p><img src="../images/bbbe6b0b6c9b1705b42a8828fdd6c92a.png" alt=""></p>
+</li>
+<li>
+<p>Create the following rule settings:</p>
+<ul>
+<li>
+<p>Source Pattern: <strong>/</strong></p>
+</li>
+<li>
+<p>Destionation: <strong>/public/</strong></p>
+</li>
+<li>
+<p>Preserve unmatched path: <strong>Yes</strong></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Save the changes, and wait for the prompt the configuration has been updated
+successfully. <strong>NOTE: it could take up to 10min before the changes are
+actually applied and working. So be patient</strong></p>
+</li>
+<li>
+<p>Once received, test the <strong>Azure CDN URL</strong> from the browser, and click
+through to a site subsection like Posts or Publications (if you have content
+in there&hellip;)</p>
+<p><img src="../images/69dd6f63be627b49c4025e65391e576f.png" alt=""></p>
+</li>
+<li>
+<p><strong>THIS WORKS!!</strong></p>
+</li>
+<li>
+<p>From here, you could add a custom domain option, together with integrating
+HTTPS using CDN Profile settings itself. I’m sure you will find out now by
+yourself how to do that.</p>
+</li>
+<li>
+<p>However, allow me to continue on the scenario, and extending our setup with
+<strong>Azure Front Door</strong>, a Global Azure load balancing service, which also
+performs SSL offloading, Session Affinity, URL rewrite/redirection and
+probably the most important feature <strong>Web Application Firewall</strong>.</p>
+</li>
+<li>
+<p><strong>NOTE: from here, we won’t be able to stay within the &lt;$5 /month
+consumption fee, as the required Azure Front Door rules will add an
+additional cost of +/- $20 /month, or +/-$50 /month if you enable the WAF
+option.</strong></p>
+</li>
+</ul>
+<h2 id="5-deploying-azure-front-door"><strong>5. Deploying Azure Front Door</strong></h2>
+<p>Technically, for this web site scenario, Azure Front Door offers all
+capabilities we used before from Azure CDN. Meaning, if you decide to go for
+Azure Front Door, you do not need Azure CDN.</p>
+<ul>
+<li>
+<p>New Resource / Front Door / Create</p>
+<p><img src="../images/0d0288e06468bf95eef55d84319b4779.png" alt=""></p>
+</li>
+<li>
+<p>Complete the basic settings around Subscription, Resource Group and location</p>
+<p><img src="../images/adba042bcb3a432b0565977892192ef0.png" alt=""></p>
+</li>
+<li>
+<p>Move on to the Configuration step next</p>
+<p><img src="../images/9f5298aa673cca90e805a0d6f867bb04.png" alt=""></p>
+</li>
+<li>
+<p><strong>Click</strong> the + sign to add the Front Door Frontends/domains settings, and
+provide a unique name for the Front Door URL you want to use</p>
+<p><img src="../images/a88a69c694df0070def2e01955798c82.png" alt=""></p>
+</li>
+<li>
+<p><strong>Continue</strong> with Step 2 where you define the backend pool settings. This is
+basically pointing Front Door to the Static Site Storage Account URL</p>
+</li>
+<li>
+<p><strong>Click</strong> “**Add BackEnd Pool”, and complete the requested parameters:</p>
+<ul>
+<li>
+<p>BackEnd Host Type: <strong>custom</strong></p>
+</li>
+<li>
+<p>Backend Host Name: <strong>the Static Web Site URL, without the https:// and
+trailing /</strong></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Accept / leave all other values as default</p>
+<p><img src="../images/d75ecb379ea92cafccb4c27849acd3c7.png" alt=""></p>
+</li>
+<li>
+<p>Confirm the <strong>Backend Pool settings</strong> ,which brings you back to the
+BackendPool settings tab. Here, <strong>leave the default values</strong> for Health
+Probes and Load Balancing for now</p>
+<p><img src="../images/565bab36676bd1051cbc8704739d411c.png" alt=""></p>
+</li>
+<li>
+<p><strong>Confirm</strong> the BackendPool settings, and move on with <strong>Step 3</strong>, where you
+will define the necessary <strong>routing rule</strong>.</p>
+<p><img src="../images/3adb6b6fe63c5d3b400002ec82fc57c0.png" alt=""></p>
+</li>
+<li>
+<p>In the <strong>Add Rule</strong> parameter section, provide a name for the rule you are
+about to create. Accept the default values for <strong>Accepted Protocol,
+FrontEnd/domains and Patterns to Match</strong>.</p>
+<p><img src="../images/27d6a761b4d8f4eac5c3354396a012d9.png" alt=""></p>
+</li>
+<li>
+<p>In the <strong>Route details</strong> section, scroll down and <strong>change the setting for
+Custom forwarding path</strong>, adding the <strong>“/public/</strong> path that is used by Hugo
+(<strong>Note: this path could be different, depending on the Hugo Theme; this
+path technically refers to the directory that Hugo uses to store the
+compiled site pages</strong>.</p>
+<p><img src="../images/42664ef200baaba643f1b2a2832f54d3.png" alt=""></p>
+</li>
+<li>
+<p><strong>Wait</strong> for the Azure Front Door resource to get created; once this is
+complete, open your browser to the URL address of Front Door. This should
+open your web site in a nice looking way</p>
+</li>
+</ul>
+<p><img src="../images/b7ce47a54f1e3c7dece7af37254e2801.png" alt=""></p>
+<h2 id="6-configure-public-custom-domain-name-to-azure-front-door"><strong>6. Configure Public Custom Domain Name to Azure Front Door</strong></h2>
+<pre><code>In this last section, we will update our Azure Front Door configuration for
+a public custom domain name. This is built-in, and integrates a Let’s
+Encrypt (FREE) SSL/TLS certificate to your web service. How cool is that!
+
+**Note: you need to have a public DNS domain name already available, in
+which you need to create a C-name alias record for the Azure Front Door
+frontend/domain name you configured. E.g. my 007FFFLearning domain has a
+“www” C-Name alias pointing to “hugofd.azurefd.net”**
+</code></pre>
+<ul>
+<li>
+<p>From the Azure Front Door blade, select <strong>Front Door Designer</strong>; next,
+select <strong>Frontends/domains</strong>, and add a new custom domain</p>
+<p><img src="../images/6aa9ef304612ae212993e78b6b13c3be.png" alt=""></p>
+</li>
+<li>
+<p>If you also want to add the <strong>Domain HTTPS</strong> option to the configuration,
+select this setting a bit more down in the blade. If you don’t have a PFX
+certificate file already for the public domain name space, have one
+generated by Front Door, by choosing <strong>Front Door managed</strong>.</p>
+<p><img src="../images/c81aaa41313e8c591ea97ed212d9f84e.png" alt=""></p>
+</li>
+<li>
+<p>Confirm the settings by clicking <strong>Add</strong></p>
+</li>
+<li>
+<p><strong>Wait</strong> about 10 minutes to complete the <strong>SSL request status</strong>, resulting
+in the below view:</p>
+<p><img src="../images/b974c9bcf68e1038dd47d28f18f7e3b3.png" alt=""></p>
+</li>
+<li>
+<p><strong>Once the custom domain is configured</strong>, we need to make one last change in
+our <strong>routing rules</strong>, adding the custom domain to the configuration.
+Therefore, select the routing rule you created earlier, and update its
+settings:</p>
+<p><img src="../images/83de2dac4629565e87046375967a4083.png" alt=""></p>
+</li>
+<li>
+<p><strong>Save the changes</strong>, and wait for the update to get applied.</p>
+</li>
+<li>
+<p>After only a few minutes, everything should be running smooth, allowing you
+to connect to your website custom domain url:</p>
+<p><img src="../images/14f88a3b7039829707d8554123c90446.png" alt=""></p>
+</li>
+<li>
+<p>Selecting any of the subsections from the header menu, e.g. <strong>Posts</strong> will
+be nicely redirected to all posts, and allowing your readers to easily go
+from one blog article to the other.</p>
+<p><img src="../images/9caad132a444ecffe99993db19408b6f.png" alt=""></p>
+<p>Congrats!! You made it all the way to the end!</p>
+</li>
+</ul>
+<p>I hope you enjoyed this exercise, and are ready for fully working on your
+blog website now. Get back into your Visual Studio Code, and start hammering
+some MarkDown posts!</p>
+<p>As always, I’m here for you if you are stuck somewhere, or want to let me
+know once your site is up-and-running.</p>
+<p>Happy Hugo-ing!</p>
+<p>Take care, Peter</p>
+
+
+                
+
+                <hr>
+                
+
+                
+<div id="disqus-comment"></div>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/ai" title="ai">
+                            ai
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/aks" title="aks">
+                            aks
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/application-insights" title="application-insights">
+                            application-insights
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/azure" title="azure">
+                            azure
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/azure-devops" title="azure-devops">
+                            azure-devops
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/bing" title="bing">
+                            bing
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/blazor" title="blazor">
+                            blazor
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/books" title="books">
+                            books
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/certification" title="certification">
+                            certification
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/containers" title="containers">
+                            containers
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/devops" title="devops">
+                            devops
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/devsecops" title="devsecops">
+                            devsecops
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/docker" title="docker">
+                            docker
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/dotnet" title="dotnet">
+                            dotnet
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/ebooks" title="ebooks">
+                            ebooks
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/hugo" title="hugo">
+                            hugo
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/kubernetes" title="kubernetes">
+                            kubernetes
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/learning" title="learning">
+                            learning
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/packt" title="packt">
+                            packt
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/security" title="security">
+                            security
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/sre" title="sre">
+                            sre
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/terraform" title="terraform">
+                            terraform
+                        </a>
+                        
+                        
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                   
+                   <li>
+                       <a href='' rel="alternate" type="application/rss+xml" title="Azure Readiness starts here..." >
+                           <span class="fa-stack fa-lg">
+                               <i class="fa fa-circle fa-stack-2x"></i>
+                               <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+                   
+                    
+                    <li>
+                        <a href="mailto:info@007ffflearning.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    <li>
+                        <a href="http://www.twitter.com/pdtit">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+
+                    
+
+		    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/petender">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/pdtit/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+                </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Azure Readiness starts here... 2024
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+</body>
+</html>

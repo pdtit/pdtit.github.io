@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Visual Studio on Azure Readiness starts here...</title>
+    <link>https://www.007ffflearning.com/tags/visual-studio/</link>
+    <description>Recent content in Visual Studio on Azure Readiness starts here...</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 10 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/visual-studio/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>publish your first dotnet5 app to Azure App Services</title>
+      <link>https://www.007ffflearning.com/post/publish-your-first-dotnet5-app-to-azure-app-services/</link>
+      <pubDate>Tue, 10 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/publish-your-first-dotnet5-app-to-azure-app-services/</guid>
+      <description>Today, Nov 10th, was the official date of the long-announced &amp;ldquo;dotnet5 Framework&amp;rdquo;, and it is described as a major release. Still being new in the developer world myself, I know the basics of ASP.NET 3.7 and 4.5, so I can imagine jumping to a 5.0 release is indeed a big thing.
+.NET 5.0 improvements The biggest improvements announced by the Product Team are:
+ Migration-friendly for older .NET versions Production-ready from day 1 of release (thorough-tested for http://www.</description>
+    </item>
+    
+  </channel>
+</rss>

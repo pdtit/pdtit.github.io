@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hugo on Azure Readiness starts here...</title>
+    <link>https://www.007ffflearning.com/tags/hugo/</link>
+    <description>Recent content in Hugo on Azure Readiness starts here...</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 30 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How I migrated my Hugo site from Azure Storage Site to Azure Static Web Apps</title>
+      <link>https://www.007ffflearning.com/post/deploying-or-migrating-a-hugo-blog-on-azure-static-web-apps/</link>
+      <pubDate>Sun, 30 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/deploying-or-migrating-a-hugo-blog-on-azure-static-web-apps/</guid>
+      <description>For about 3 years now, I&amp;rsquo;ve been running this personal blog site using Hugo, running on Azure Static Storage Sites and Azure Front Door as load balancer/TLS protection service.
+About 18 months back, Microsoft released Azure Static Web Apps, a platform built for exactly that, hosting Static Web sites, such as Vue, React, Angular, Svelte, .NET Blazor, and also&amp;hellip; Hugo :).
+As I had to migrate my resources to a new Azure subscription and tenant, I thought this was a perfect moment to migrate to SWA.</description>
+    </item>
+    
+    <item>
+      <title>Integrating Azure App Insights for Hugo on Static Web Apps</title>
+      <link>https://www.007ffflearning.com/post/integrating-azure-app-insights-for-hugo-on-static-web-apps/</link>
+      <pubDate>Sun, 30 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/integrating-azure-app-insights-for-hugo-on-static-web-apps/</guid>
+      <description>Hey folks,
+Earlier this week, I wrote about how I migrated my Hugo blog site from Azure Storage Account-based site to the newer Azure Static Web Apps with Hugo.
+While this was a smooth process, both migrating the actual site content, as well as transferring the public domain name, the piece missing was the statistics. I always used Azure Application Insights for this, but specifically for Azure Static Web Apps, App Insights is only supported when using Functions (as per this article on the Microsoft docs).</description>
+    </item>
+    
+    <item>
+      <title>Running your Hugo site on Azure Static WebApps (Preview)</title>
+      <link>https://www.007ffflearning.com/post/running-your-hugo-site-on-azure-static-webapps/</link>
+      <pubDate>Thu, 21 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/running-your-hugo-site-on-azure-static-webapps/</guid>
+      <description>Only about a month ago, I decided to move my former website (running on Wix) to the Open Source Hugo platform, running it as a static website with MarkDown, using Azure Storage Static Website. For more details on how to do this, have a look at my blog post here
+I have to say, it runs fine, is cheap, fast, reliable,&amp;hellip;
+But then I discovered the new Azure Static Web App capability, as announced during //Build conference earlier this week, so I wanted to give it a try.</description>
+    </item>
+    
+    <item>
+      <title>Collecting Hugo static site statistics using Azure Application Insights</title>
+      <link>https://www.007ffflearning.com/post/hugo_site_statistics_app_insights/</link>
+      <pubDate>Sun, 26 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/hugo_site_statistics_app_insights/</guid>
+      <description>Welcome back!
+About a month ago, I decided to move my former 007FFFLearning website from Wix.com to something &amp;ldquo;easier&amp;rdquo; to use for blog writing. While Wix is an excellent platform, offering an easy way to build a graphical website, besides a ton of plug-ins, it also comes with a cost. And since I didn&amp;rsquo;t have a need for a lot of the built-in features I was using out of my own business before I joined Microsoft, I wanted to try something new.</description>
+    </item>
+    
+    <item>
+      <title>Running an Azure Storage Static Site, protected by Azure Front Door</title>
+      <link>https://www.007ffflearning.com/post/static_site_frontdoor/</link>
+      <pubDate>Sat, 25 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/static_site_frontdoor/</guid>
+      <description>Earlier this week, I had the honor to present a session for the Belgian MC2MC Microsoft community, as part of a broader online event week with other Belgian community User Groups (https://www.mc2mc.be/events/be-community-week-mc2mc-evening).
+My session topic was based on a little real-life project I worked on myself only a few weeks ago, deploying a “Hugo” based static website on Azure Storage Account Static Site (Yes, this site you are reading right now&amp;hellip;).</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Packt on Azure Readiness starts here...</title>
+    <link>https://www.007ffflearning.com/tags/packt/</link>
+    <description>Recent content in Packt on Azure Readiness starts here...</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 10 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/packt/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Packt Book Review - Azure Architecture Explained</title>
+      <link>https://www.007ffflearning.com/post/packt-book-review-azure-architecture-explained/</link>
+      <pubDate>Sun, 10 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/packt-book-review-azure-architecture-explained/</guid>
+      <description>In this post, I want to share my review of another Azure book I read recently, Azure Architecture Explained this time from Brett Hargreaves and David Rendon published by Packt Publishing and available on Amazon as well as other e-book subscription platforms.
+Apart from the great content, it was nice to see one of my own Microsoft Technical Trainer Team colleagues, Sarah Kong, providing the foreword.
+About the book (from the cover) This book provides you with a clear path to designing optimal cloud-based solutions in Azure, by delving into the platform&amp;rsquo;s intricacies.</description>
+    </item>
+    
+    <item>
+      <title>Packt Book Review - Azure for Business Decision Makers</title>
+      <link>https://www.007ffflearning.com/post/packt-book-review-azure-for-business-decision-makers/</link>
+      <pubDate>Sun, 22 Oct 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/packt-book-review-azure-for-business-decision-makers/</guid>
+      <description>In this post, I want to share my review of another Azure book I read recently, Azure for Decision Makers this time from Jack Lee, Jason Milgram and David Rendon published by Packt Publishing and available on Amazon as well as other e-book subscription platforms.
+About the book Azure for Decision Makers provides a comprehensive overview of the latest updates in cloud security, hybrid cloud and multi-cloud solutions, and cloud migration in Azure.</description>
+    </item>
+    
+    <item>
+      <title>Book review - Building Blazor WebAssembly Applications with gRPC</title>
+      <link>https://www.007ffflearning.com/post/packt-book-review-blazor-wasm-with-grpc/</link>
+      <pubDate>Sat, 17 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/packt-book-review-blazor-wasm-with-grpc/</guid>
+      <description>In this post, I want to share my review of another Blazor book I read recently, Building Blazor WebAssembly Applications with gRPC this time from Vaclav Perakek, published by Packt Publishing and available on Amazon as well as other e-book subscription platforms.
+If you have been following me for a while, you know I&amp;rsquo;m gradually learning more about coding and developing applications, especially using the Blazor .NET framework.
+What intrigued me even more with this book, is the gRPC integration.</description>
+    </item>
+    
+    <item>
+      <title>Using Packt Publishing Credits for free books</title>
+      <link>https://www.007ffflearning.com/post/using-packt-credits-for-free-books/</link>
+      <pubDate>Sat, 12 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/using-packt-credits-for-free-books/</guid>
+      <description>Hey readers,
+This is actually a less technical post, although it can lead to a lot of technical resources. I honestly wrote this blog for myself this time, as I struggled in finding a way to get free books in my Packt Publishing subscription. I had credits, but I always forget how to claim them :). So I guess I&amp;rsquo;m not the only one having that problem.
+What are Packt Credits, and how to get them Packt allows for one-time paying for a book, getting a monthly paid subscription, a 12-month or 18-month one.</description>
+    </item>
+    
+    <item>
+      <title>Another Tech Reviewing done: Azure Strategy and Implementation Guide - 4th edition</title>
+      <link>https://www.007ffflearning.com/post/azure-strategy-reviewing-done/</link>
+      <pubDate>Fri, 18 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/azure-strategy-reviewing-done/</guid>
+      <description>As most of you know, I enjoy writing technical (Azure related) books, but over the last year, I didn&amp;rsquo;t focus that much on writing myself, but supporting other authors in their writing-journey as well as performing technical reviewing of the book they are writing.
+The one I want to highlight in this post, has an interesting back-story. Mid 2019, I got approached by Packt, to write an update to their best-seller title &amp;ldquo;Azure Strategy and Implementation Guide&amp;rdquo;, in sponsorship with Microsoft.</description>
+    </item>
+    
+    <item>
+      <title>Another Tech Reviewing done: Azure For Architects - 3rd edition</title>
+      <link>https://www.007ffflearning.com/post/azure-for-architects-reviewing-done/</link>
+      <pubDate>Sun, 02 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/azure-for-architects-reviewing-done/</guid>
+      <description>As most of you know, I enjoy writing technical (Azure related) books, but every now and then I am not writing myself, but rather do technical reviewing. A few weeks ago, I was approached by Packt, asking me to review their Azure for Architects - third edition
+Don&amp;rsquo;t let the reference to &amp;ldquo;third edition&amp;rdquo; fool you, there has been a massive rewrite of several chapters, with fresh new content, more technical information and new chapters were added as well.</description>
+    </item>
+    
+  </channel>
+</rss>

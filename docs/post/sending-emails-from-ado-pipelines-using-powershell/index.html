@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+    <script type="text/javascript">
+        !function(T,l,y){var S=T.location,u="script",k="instrumentationKey",D="ingestionendpoint",C="disableExceptionTracking",E="ai.device.",I="toLowerCase",b="crossOrigin",w="POST",e="appInsightsSDK",t=y.name||"appInsights";(y.name||T[e])&&(T[e]=t);var n=T[t]||function(d){var g=!1,f=!1,m={initialize:!0,queue:[],sv:"4",version:2,config:d};function v(e,t){var n={},a="Browser";return n[E+"id"]=a[I](),n[E+"type"]=a,n["ai.operation.name"]=S&&S.pathname||"_unknown_",n["ai.internal.sdkVersion"]="javascript:snippet_"+(m.sv||m.version),{time:function(){var e=new Date;function t(e){var t=""+e;return 1===t.length&&(t="0"+t),t}return e.getUTCFullYear()+"-"+t(1+e.getUTCMonth())+"-"+t(e.getUTCDate())+"T"+t(e.getUTCHours())+":"+t(e.getUTCMinutes())+":"+t(e.getUTCSeconds())+"."+((e.getUTCMilliseconds()/1e3).toFixed(3)+"").slice(2,5)+"Z"}(),iKey:e,name:"Microsoft.ApplicationInsights."+e.replace(/-/g,"")+"."+t,sampleRate:100,tags:n,data:{baseData:{ver:2}}}}var h=d.url||y.src;if(h){function a(e){var t,n,a,i,r,o,s,c,p,l,u;g=!0,m.queue=[],f||(f=!0,t=h,s=function(){var e={},t=d.connectionString;if(t)for(var n=t.split(";"),a=0;a<n.length;a++){var i=n[a].split("=");2===i.length&&(e[i[0][I]()]=i[1])}if(!e[D]){var r=e.endpointsuffix,o=r?e.location:null;e[D]="https://"+(o?o+".":"")+"dc."+(r||"services.visualstudio.com")}return e}(),c=s[k]||d[k]||"",p=s[D],l=p?p+"/v2/track":config.endpointUrl,(u=[]).push((n="SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details)",a=t,i=l,(o=(r=v(c,"Exception")).data).baseType="ExceptionData",o.baseData.exceptions=[{typeName:"SDKLoadFailed",message:n.replace(/\./g,"-"),hasFullStack:!1,stack:n+"\nSnippet failed to load ["+a+"] -- Telemetry is disabled\nHelp Link: https://go.microsoft.com/fwlink/?linkid=2128109\nHost: "+(S&&S.pathname||"_unknown_")+"\nEndpoint: "+i,parsedStack:[]}],r)),u.push(function(e,t,n,a){var i=v(c,"Message"),r=i.data;r.baseType="MessageData";var o=r.baseData;return o.message='AI (Internal): 99 message:"'+("SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details) ("+n+")").replace(/\"/g,"")+'"',o.properties={endpoint:a},i}(0,0,t,l)),function(e,t){if(JSON){var n=T.fetch;if(n&&!y.useXhr)n(t,{method:w,body:JSON.stringify(e),mode:"cors"});else if(XMLHttpRequest){var a=new XMLHttpRequest;a.open(w,t),a.setRequestHeader("Content-type","application/json"),a.send(JSON.stringify(e))}}}(u,l))}function i(e,t){f||setTimeout(function(){!t&&m.core||a()},500)}var e=function(){var n=l.createElement(u);n.src=h;var e=y[b];return!e&&""!==e||"undefined"==n[b]||(n[b]=e),n.onload=i,n.onerror=a,n.onreadystatechange=function(e,t){"loaded"!==n.readyState&&"complete"!==n.readyState||i(0,t)},n}();y.ld<0?l.getElementsByTagName("head")[0].appendChild(e):setTimeout(function(){l.getElementsByTagName(u)[0].parentNode.appendChild(e)},y.ld||0)}try{m.cookie=l.cookie}catch(p){}function t(e){for(;e.length;)!function(t){m[t]=function(){var e=arguments;g||m.queue.push(function(){m[t].apply(m,e)})}}(e.pop())}var n="track",r="TrackPage",o="TrackEvent";t([n+"Event",n+"PageView",n+"Exception",n+"Trace",n+"DependencyData",n+"Metric",n+"PageViewPerformance","start"+r,"stop"+r,"start"+o,"stop"+o,"addTelemetryInitializer","setAuthenticatedUserContext","clearAuthenticatedUserContext","flush"]),m.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4};var s=(d.extensionConfig||{}).ApplicationInsightsAnalytics||{};if(!0!==d[C]&&!0!==s[C]){method="onerror",t(["_"+method]);var c=T[method];T[method]=function(e,t,n,a,i){var r=c&&c(e,t,n,a,i);return!0!==r&&m["_"+method]({message:e,url:t,lineNumber:n,columnNumber:a,error:i}),r},d.autoExceptionInstrumented=!0}return m}(y.cfg);(T[t]=n).queue&&0===n.queue.length&&n.trackPageView({})}(window,document,{
+        src: "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js", 
+        
+        
+        
+        
+        cfg: { 
+            instrumentationKey: "4ecca3df-ab58-4882-903e-3ab2c030f009"
+             
+        }});
+        </script>
+    
+<head>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Azure Readiness starts here...">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="https://www.007ffflearning.com/img/home-bg-azure.jpg">
+    <meta property="twitter:image" content="https://www.007ffflearning.com/img/home-bg-azure.jpg" />
+    
+
+    
+    <meta name="title" content="Sending Emails from Azure DevOps using PowerShell and Azure LogicApps" />
+    <meta property="og:title" content="Sending Emails from Azure DevOps using PowerShell and Azure LogicApps" />
+    <meta property="twitter:title" content="Sending Emails from Azure DevOps using PowerShell and Azure LogicApps" />
+    
+
+    
+    <meta name="description" content="">
+    <meta property="og:description" content="" />
+    <meta property="twitter:description" content="" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="Azure, Learning, Certification, Technology">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>Sending Emails from Azure DevOps using PowerShell and Azure LogicApps-Azure Readiness Starts Here</title>
+
+    
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+	
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+    
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    
+    <script src="/js/jquery.min.js"></script>
+    
+    
+    <script src="/js/bootstrap.min.js"></script>
+    
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    
+
+    <script type="text/javascript">
+            var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){function n(e){t[e]=function(){var n=arguments;t.queue.push(function(){t[e].apply(t,n)})}}var t={config:e};t.initialize=!0;var i=document,a=window;setTimeout(function(){var n=i.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",i.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{t.cookie=i.cookie}catch(e){}t.queue=[],t.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var s="Track"+r[0];if(n("start"+s),n("stop"+s),n("setAuthenticatedUserContext"),n("clearAuthenticatedUserContext"),n("flush"),!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var o=a[r];a[r]=function(e,n,i,a,s){var c=o&&o(e,n,i,a,s);return!0!==c&&t["_"+r]({message:e,url:n,lineNumber:i,columnNumber:a,error:s}),c},e.autoExceptionInstrumented=!0}return t}(
+            {
+               instrumentationKey:"4f4ba091-4cff-4bd9-95e3-c5d564a1adde"
+            }
+            );window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
+    </script>
+
+</head>
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Azure Readiness starts here...</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                        
+                    
+                    
+		    
+                        <li><a href="/books/">BOOKS</a></li>
+                    
+                        <li><a href="/about/">ABOUT ME</a></li>
+                    
+
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/home-bg-azure.jpg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/azure-devops" title="Azure DevOps">
+                            Azure DevOps
+                        </a>
+                        
+                        <a class="tag" href="/tags/logic-apps" title="Logic Apps">
+                            Logic Apps
+                        </a>
+                        
+                    </div>
+                    <h1>Sending Emails from Azure DevOps using PowerShell and Azure LogicApps</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                                Azure Readiness starts here...
+                         
+                        on 
+                        Sunday, March 3, 2024
+                        
+                        
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    
+                </header>
+                
+                
+                <p>Hi Readers,</p>
+<p>This post is merely for myself, documenting all the steps I needed to go through to be able to send emails from a PowerShell script, as part of an Azure DevOps YAML pipeline flow. And since I was documenting it for our internal application, I thought it would hopefully help someone out there looking for a similar solution.</p>
+<h2 id="why-not-using-the-built-in-email-notification-system">Why not using the built-in Email Notification system</h2>
+<p>Azure DevOps provides <a href="https://learn.microsoft.com/en-us/azure/devops/organizations/notifications/about-notifications?view=azure-devops">email notification features</a>, but this comes with a few assumptions. The biggest one being the receiver(s) should be Project Members. Which was not the case in my scenario, since I want to send out deployment status emails, at the start of a pipeline and when completed successfully, to external recipients.</p>
+<h2 id="whats-wrong-with-marketplace-extensions">What&rsquo;s wrong with Marketplace Extensions?</h2>
+<p>In my Classic Release Pipelines, I relied on <strong><a href="https://marketplace.visualstudio.com/items?itemName=kasunkodagoda.sendgrid-email">Sendgrid</a></strong>, and it actually worked OK, and with the limited amount of emails (up to 100/daily), it was a free service on top.</p>
+<p><img src="../images/2024-03-03_11-24-15.png" alt="SendGrid Classic Settings"></p>
+<p>Since I was migrating the full project away from Classic Release Pipelines to YAML, and wanted to customize the email flow a bit more, I started looking into other options. Keeping all functionality within my Azure subscription, was also a benefit.</p>
+<h2 id="the-new-setup-architecture">The new setup architecture</h2>
+<p>In short, the new setup architecture is based on the following:</p>
+<ol>
+<li>
+<p>Azure LogicApp with HTTP Trigger, sending an Outlook 365 email based on parameters to an external recipient</p>
+</li>
+<li>
+<p>ADO Release Pipeline using YAML tasks</p>
+</li>
+<li>
+<p>One of the tasks is using Azure Powershell, to compose and send the email</p>
+</li>
+</ol>
+<p>Let&rsquo;s detail each step a bit more.</p>
+<h3 id="deploying-and-composing-the-azure-logic-app">Deploying and composing the Azure Logic App</h3>
+<p>The starting point is deploying the Azure Logic App, and composing the workflow steps.</p>
+<ol>
+<li>
+<p>Deploy an Azure Logic App resource using the Consumption plan (pay per trigger)</p>
+</li>
+<li>
+<p>Once deployed, open the <strong>Logic App Designer</strong>, and choose **When an HTTP request is received&quot; as trigger.</p>
+</li>
+<li>
+<p>When it asks for a JSON Schema in the Request Body, you can use the &lsquo;use sample payload to generate schema&rsquo;, by entering the different parameters you need for the email details itself, in the JSON format. In my setup, I have the following fields:</p>
+</li>
+</ol>
+<ul>
+<li>Message, which is the actual body of the email, and gets send along as a PowerShell script object;</li>
+<li>Subject, which contains the actual subject of the email, and also coming from the PowerShell script object;</li>
+<li>To, which contains the recipient&rsquo;s email address, and passed on from the PowerShell script object;</li>
+</ul>
+<pre><code>{
+    &quot;properties&quot;: {
+        &quot;Message&quot;: {
+            &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;Subject&quot;: {
+            &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;To&quot;: {
+            &quot;type&quot;: &quot;string&quot;
+        }
+    },
+    &quot;type&quot;: &quot;object&quot;
+}
+</code></pre><p><img src="../images/2024-03-03_11-42-02.png" alt="HTTP Trigger JSON Schema"></p>
+<ol start="4">
+<li>
+<p>When you save the Logic App with this step, it will provide you with the unique LogicApp HTTP Trigger URL to connect to. Save this URL on the side, since you need it later in the PowerShell script.</p>
+</li>
+<li>
+<p>Add a new step to the workflow, choosing <strong>Send an Email</strong>. Authenticate with your Office 365 credentials (although other security options such as Service Principal might be required in your production setup).</p>
+</li>
+<li>
+<p>The required fields for this step are Body, Subject and To. Mapping with the 3 property fields from the HTTP Trigger. Note, I created the property &ldquo;Message&rdquo;, instead of calling it &ldquo;Body&rdquo;, since the full HTTP Trigger JSON response we get in through the PowerShell script, is known as &ldquo;Body&rdquo;. So I made some mistakes there initially in not getting the correct information mapped as expected.</p>
+</li>
+<li>
+<p>The nice thing with Logic Apps, is that any next step in the workflow, can reuse input values from any previous step.</p>
+</li>
+<li>
+<p>For the Body-parameter of the Send an email step, we want to use the &ldquo;Message&rdquo; content from the HTTP Trigger response. Therefore, click in the <strong>Body-field</strong>, which will open the <strong>Dynamic content</strong> window. From here, it will show all known properties from the &ldquo;When an HTTP request is received&rdquo; step in the workflow.</p>
+</li>
+</ol>
+<p><img src="../images/2024-03-03_11-47-25.png" alt="Dynamic COntent"></p>
+<ol start="9">
+<li><strong>Select</strong> the necessary fields from the Dynamic content, and map them with the required fields of the Send an Email task:</li>
+</ol>
+<pre><code>Body -&gt; Message
+Subject -&gt; Subject
+To -&gt; To
+</code></pre><p>This is all for now to get the Logic App configured.</p>
+<h3 id="the-powershell-script-for-sending-emails">The PowerShell script for sending emails</h3>
+<p>The idea is that the PowerShell script gets triggered from the YAML pipeline task. I initially tried using the Inline option, but that didn&rsquo;t recognize the here-strings (gets explained later if you don&rsquo;t know what this means&hellip;) as well as some other limitations. I also didn&rsquo;t like having the actual Message/Body details - for which I&rsquo;m using HTML and tables - in my YAML pipeline. So using the ScriptPath option was much cleaner. And also allowing a more flexible scenario, where I could call different &lsquo;sendemail&rsquo;.ps1 scripts, depending on the specifics of the pipeline tasks.</p>
+<p>Let me first explain the high-level setup of the script:</p>
+<ol>
+<li>define param settings, capturing/transferring the parameters from the YAML task ScriptArguments</li>
+<li>create a variable for the LogicApp HTTP Trigger Url</li>
+<li>create a variable for the LogicApp HTTP Trigger Body data, holding the &ldquo;To&rdquo;, &ldquo;Subject&rdquo; and &ldquo;Message&rdquo; content</li>
+<li>create a variable for the LogicApp HTTP Trigger Headers information</li>
+<li>create a variable for the actual Invoke-RestMethod, sending all previous info along</li>
+</ol>
+<p>Here are some of the snippets for each component of the script:</p>
+<p><strong>1. define param settings, capturing/transferring the parameters from the YAML task ScriptArguments</strong></p>
+<pre><code>param (
+    [string]$BuildDefinitionName,
+    [string]$To
+
+    )
+</code></pre><p><strong>2. create a variable for the LogicApp HTTP Trigger Url</strong></p>
+<pre><code>$logicappUrl = &quot;https://yourlogicappurl .centralus.logic.azure.com:443/workflows/1676b43cc2904b/triggers/manual/paths/invoke?api-version=2016-10-01&amp;sp=%2Ftriggers%2Fmanual%2Frun&amp;sv=1.0&amp;sig=OK-Z_dgspUufMWMlBL531&quot;
+</code></pre><p><strong>3. create a variable for the LogicApp HTTP Trigger Body data, holding the &ldquo;To&rdquo;, &ldquo;Subject&rdquo; and &ldquo;Message&rdquo; content</strong></p>
+<pre><code>$body = @{
+         To = $To
+         Subject = @&quot;
+MTTDemoDeploy - $BuildDefinitionName - Deployment Kicked Off Successfully
+&quot;@
+        Message = @&quot;
+
+        &lt;actual email body content here - where I used a combination of text, HTML and CSS for the email layout&gt;
+
+&quot;@                
+}
+</code></pre><p>Note the usage of the @&quot; &ldquo;@, which is known as <strong>here-strings</strong>. Here-strings allow you to define multiline strings without needing to escape special characters or use concatenation.</p>
+<p>In this code snippet, I&rsquo;m using a here-string to define the value of the Subject property in the $body hash table. The @&rdquo; at the beginning indicates the start of the here-string. The text within the here-string (between the @&quot; and the closing &ldquo;@) is preserved exactly as written, including line breaks and any special characters.
+The variable $BuildDefinitionName is interpolated within the here-string, and corresponds to a param object as defined at the start of the script. This will hold the actual ScriptArguments object from the YAML pipeline steps later.</p>
+<p>Also note the positioning of the &ldquo;@ all the way at the start of the line, as the here-strings cannot recognize and spaces or tabs before it - this will throw an error when running the script. (Told you I really wanted to document all by observations and issues before I got this working smoothly&hellip;)</p>
+<p><strong>4. create a variable for the LogicApp HTTP Trigger Headers information</strong>
+When you configured the HTTP Trigger step in the LogicApp, it shows a little popup message, saying the trigger expect the Header to have the content type of application/json. this is how you specify this.</p>
+<pre><code>$headers = @{
+    'Content-Type' = 'application/json'
+}
+</code></pre><p><strong>5. create a variable for the actual Invoke-RestMethod, sending all previous info along</strong></p>
+<p>$sendemail = @{
+Uri = $logicappUrl
+Method = &lsquo;POST&rsquo;
+Headers = $headers
+Body = $body | ConvertTo-Json
+}</p>
+<p>Invoke-RestMethod @sendemail</p>
+<p>Eventually, save this file as <strong>start_email.ps1</strong> or other filename that works for you, and make sure it is part of the ADO Repo where you have the YAML pipeline. To keep it a bit structured, I created a new subfolder <strong>Email</strong> with another subfolder <strong>.ado</strong> in which I stored the file.</p>
+<p>REPO-ROOT
+/Email
+/.ado
+/start_email.ps1</p>
+<p>I call this script at the start of the YAML pipeline, but also created a finish_email.ps1, which I&rsquo;m calling at the end of the YAML pipeline successful completion.</p>
+<h3 id="the-yaml-pipeline-task">The YAML pipeline task</h3>
+<p>With both LogicApp and PowerShell script created, the last step in the process is defining the YAML PowerShell task which sends the trigger and necessary parameters to the PowerShell script.</p>
+<p>Like any YAML Pipeline, this is just another task, relying on some variables and task settings.</p>
+<p>I created 2 new variables, one for the EmailDomain and one for the full EmailAddress:</p>
+<p>variables:</p>
+<ul>
+<li>name: pipelineName
+value: $(Build.DefinitionName)</li>
+<li>name: EmailDomain
+value: &lsquo;@company.com&rsquo;</li>
+<li>name: recipientEmail
+value: &ldquo;${{parameters.User}}`$(EmailDomain)&rdquo;</li>
+</ul>
+<p><strong>Critical here</strong> is the usage of the <strong>`</strong> in the 2nd part of the value setting. Since the <strong>@</strong> in the emaildomain is breaking the string, known as &ldquo;splatting&rdquo;, I needed to add that character to avoid this issue.</p>
+<p>Next, within the stage / jobs / steps level of the YAML pipeline, I inserted the following task:</p>
+<pre><code>steps:
+
+- task: AzurePowerShell@5
+        displayName: 'Email - Deployment Kicked Off'
+        inputs:
+          azureSubscription:  '&lt;yourADOServiceConnection&gt;' 
+          resourceGroupName: 'RG where you deployed the LogicApp' 
+          azurePowerShellVersion: 'LatestVersion' #required to use the latest version of Azure PowerShell
+          ScriptType: 'filePath'
+          ScriptPath: $(System.DefaultWorkingDirectory)/Email/.ado/start_email.ps1  
+          ScriptArguments: '-BuildDefinitionName:$(pipelineName) -To:$(recipientEmail)'
+</code></pre><p>The <strong>ScriptArguments</strong> is the crucial step if you ask me, as it contains the different parameters you want to pass on to the PowerShell script; also, the parameters needed to map with the JSON properties in the HTTP Trigger step of the Logic App. (again, I needed multiple attempts to get all this working, hence my documentation on how I got this all glued together&hellip;)</p>
+<p>It picks up a parameter called <strong>BuildDefinitionName</strong>, corresponding to the same param-name at the start of the PowerShell script, which contains the value of the variable pipelineName I defined earlier in the YAML pipeline. 
+The 2nd parameter I&rsquo;m passing on is the <strong>To</strong>-field, which corresponds with the composed recipientEmail variable in the YAML pipeline.</p>
+<p>That&rsquo;s pretty much it!!</p>
+<p>FYI, it it also possible to send more YAML pipeline parameters or variables along with the ScriptArguments, such as deployment output or passwords or any other. For example, I have a pipeline where I&rsquo;m creating an Azure Container Registry with a random name, as well as a unique created password for the admin.</p>
+<pre><code>echo &quot;##vso[task.setvariable variable=acrname]$acrname&quot;
+</code></pre><p>which I then send on to the PowerShell script from the ScriptArguments like this:</p>
+<pre><code>ScriptArguments: '-BuildDefinitionName:$(pipelineName) -To:$(recipientEmail) -acrname:$(acrname) -location:${{ parameters.Location }} -adminPassword:&quot;$(genPassword)&quot;'  #needs quotes because split characters
+</code></pre><h1 id="summary">Summary</h1>
+<p>Apart from the built-in ADO notification emails for the most &lsquo;common&rsquo; scenarios when using pipelines, your DevOps project might need other emails to be sent, as part of your pipeline flow. Where you could use existing Marketplace tools such as SendGrid or other, I decided to come up with my own PowerShell-based script, interacting with Azure LogicApps.</p>
+<p>While the setup involves jumping to several hoops, it is not all that difficult (easy to say once it all works, after spending half a day of troubleshooting at different levels - of which the main one was my rusty PowerShell skills&hellip;) once all pieces fall in place.</p>
+<p>Let me know if you want to give this a try and share me your results!</p>
+<p><a href="https://www.buymeacoffee.com/pdtit"><img src="../images/buy_me_a_coffee.png" alt="BuyMeACoffee"></a></p>
+<p>Cheers!!</p>
+<p>/Peter</p>
+
+
+                
+
+                <hr>
+                
+
+                
+<div id="disqus-comment"></div>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/ai" title="ai">
+                            ai
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/aks" title="aks">
+                            aks
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/application-insights" title="application-insights">
+                            application-insights
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/azure" title="azure">
+                            azure
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/azure-devops" title="azure-devops">
+                            azure-devops
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/bing" title="bing">
+                            bing
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/blazor" title="blazor">
+                            blazor
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/books" title="books">
+                            books
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/certification" title="certification">
+                            certification
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/containers" title="containers">
+                            containers
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/devops" title="devops">
+                            devops
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/devsecops" title="devsecops">
+                            devsecops
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/docker" title="docker">
+                            docker
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/dotnet" title="dotnet">
+                            dotnet
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/ebooks" title="ebooks">
+                            ebooks
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/hugo" title="hugo">
+                            hugo
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/kubernetes" title="kubernetes">
+                            kubernetes
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/learning" title="learning">
+                            learning
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/packt" title="packt">
+                            packt
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/security" title="security">
+                            security
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/sre" title="sre">
+                            sre
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/terraform" title="terraform">
+                            terraform
+                        </a>
+                        
+                        
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                   
+                   <li>
+                       <a href='' rel="alternate" type="application/rss+xml" title="Azure Readiness starts here..." >
+                           <span class="fa-stack fa-lg">
+                               <i class="fa fa-circle fa-stack-2x"></i>
+                               <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+                   
+                    
+                    <li>
+                        <a href="mailto:info@007ffflearning.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    <li>
+                        <a href="http://www.twitter.com/pdtit">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+
+                    
+
+		    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/petender">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/pdtit/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+                </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Azure Readiness starts here... 2024
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+</body>
+</html>

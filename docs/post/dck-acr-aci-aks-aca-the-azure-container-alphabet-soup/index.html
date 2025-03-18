@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+    <script type="text/javascript">
+        !function(T,l,y){var S=T.location,u="script",k="instrumentationKey",D="ingestionendpoint",C="disableExceptionTracking",E="ai.device.",I="toLowerCase",b="crossOrigin",w="POST",e="appInsightsSDK",t=y.name||"appInsights";(y.name||T[e])&&(T[e]=t);var n=T[t]||function(d){var g=!1,f=!1,m={initialize:!0,queue:[],sv:"4",version:2,config:d};function v(e,t){var n={},a="Browser";return n[E+"id"]=a[I](),n[E+"type"]=a,n["ai.operation.name"]=S&&S.pathname||"_unknown_",n["ai.internal.sdkVersion"]="javascript:snippet_"+(m.sv||m.version),{time:function(){var e=new Date;function t(e){var t=""+e;return 1===t.length&&(t="0"+t),t}return e.getUTCFullYear()+"-"+t(1+e.getUTCMonth())+"-"+t(e.getUTCDate())+"T"+t(e.getUTCHours())+":"+t(e.getUTCMinutes())+":"+t(e.getUTCSeconds())+"."+((e.getUTCMilliseconds()/1e3).toFixed(3)+"").slice(2,5)+"Z"}(),iKey:e,name:"Microsoft.ApplicationInsights."+e.replace(/-/g,"")+"."+t,sampleRate:100,tags:n,data:{baseData:{ver:2}}}}var h=d.url||y.src;if(h){function a(e){var t,n,a,i,r,o,s,c,p,l,u;g=!0,m.queue=[],f||(f=!0,t=h,s=function(){var e={},t=d.connectionString;if(t)for(var n=t.split(";"),a=0;a<n.length;a++){var i=n[a].split("=");2===i.length&&(e[i[0][I]()]=i[1])}if(!e[D]){var r=e.endpointsuffix,o=r?e.location:null;e[D]="https://"+(o?o+".":"")+"dc."+(r||"services.visualstudio.com")}return e}(),c=s[k]||d[k]||"",p=s[D],l=p?p+"/v2/track":config.endpointUrl,(u=[]).push((n="SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details)",a=t,i=l,(o=(r=v(c,"Exception")).data).baseType="ExceptionData",o.baseData.exceptions=[{typeName:"SDKLoadFailed",message:n.replace(/\./g,"-"),hasFullStack:!1,stack:n+"\nSnippet failed to load ["+a+"] -- Telemetry is disabled\nHelp Link: https://go.microsoft.com/fwlink/?linkid=2128109\nHost: "+(S&&S.pathname||"_unknown_")+"\nEndpoint: "+i,parsedStack:[]}],r)),u.push(function(e,t,n,a){var i=v(c,"Message"),r=i.data;r.baseType="MessageData";var o=r.baseData;return o.message='AI (Internal): 99 message:"'+("SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details) ("+n+")").replace(/\"/g,"")+'"',o.properties={endpoint:a},i}(0,0,t,l)),function(e,t){if(JSON){var n=T.fetch;if(n&&!y.useXhr)n(t,{method:w,body:JSON.stringify(e),mode:"cors"});else if(XMLHttpRequest){var a=new XMLHttpRequest;a.open(w,t),a.setRequestHeader("Content-type","application/json"),a.send(JSON.stringify(e))}}}(u,l))}function i(e,t){f||setTimeout(function(){!t&&m.core||a()},500)}var e=function(){var n=l.createElement(u);n.src=h;var e=y[b];return!e&&""!==e||"undefined"==n[b]||(n[b]=e),n.onload=i,n.onerror=a,n.onreadystatechange=function(e,t){"loaded"!==n.readyState&&"complete"!==n.readyState||i(0,t)},n}();y.ld<0?l.getElementsByTagName("head")[0].appendChild(e):setTimeout(function(){l.getElementsByTagName(u)[0].parentNode.appendChild(e)},y.ld||0)}try{m.cookie=l.cookie}catch(p){}function t(e){for(;e.length;)!function(t){m[t]=function(){var e=arguments;g||m.queue.push(function(){m[t].apply(m,e)})}}(e.pop())}var n="track",r="TrackPage",o="TrackEvent";t([n+"Event",n+"PageView",n+"Exception",n+"Trace",n+"DependencyData",n+"Metric",n+"PageViewPerformance","start"+r,"stop"+r,"start"+o,"stop"+o,"addTelemetryInitializer","setAuthenticatedUserContext","clearAuthenticatedUserContext","flush"]),m.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4};var s=(d.extensionConfig||{}).ApplicationInsightsAnalytics||{};if(!0!==d[C]&&!0!==s[C]){method="onerror",t(["_"+method]);var c=T[method];T[method]=function(e,t,n,a,i){var r=c&&c(e,t,n,a,i);return!0!==r&&m["_"+method]({message:e,url:t,lineNumber:n,columnNumber:a,error:i}),r},d.autoExceptionInstrumented=!0}return m}(y.cfg);(T[t]=n).queue&&0===n.queue.length&&n.trackPageView({})}(window,document,{
+        src: "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js", 
+        
+        
+        
+        
+        cfg: { 
+            instrumentationKey: "4ecca3df-ab58-4882-903e-3ab2c030f009"
+             
+        }});
+        </script>
+    
+<head>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Azure Readiness starts here...">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="https://www.007ffflearning.com/img/home-bg-azure.jpg">
+    <meta property="twitter:image" content="https://www.007ffflearning.com/img/home-bg-azure.jpg" />
+    
+
+    
+    <meta name="title" content="Azure Spring Clean - DCK, ACR, ACI, AKS, ACA, the Azure Container Alphabet Soup" />
+    <meta property="og:title" content="Azure Spring Clean - DCK, ACR, ACI, AKS, ACA, the Azure Container Alphabet Soup" />
+    <meta property="twitter:title" content="Azure Spring Clean - DCK, ACR, ACI, AKS, ACA, the Azure Container Alphabet Soup" />
+    
+
+    
+    <meta name="description" content="">
+    <meta property="og:description" content="" />
+    <meta property="twitter:description" content="" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="Azure, Learning, Certification, Technology">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>Azure Spring Clean - DCK, ACR, ACI, AKS, ACA, the Azure Container Alphabet Soup-Azure Readiness Starts Here</title>
+
+    
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+	
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+    
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    
+    <script src="/js/jquery.min.js"></script>
+    
+    
+    <script src="/js/bootstrap.min.js"></script>
+    
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    
+
+    <script type="text/javascript">
+            var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){function n(e){t[e]=function(){var n=arguments;t.queue.push(function(){t[e].apply(t,n)})}}var t={config:e};t.initialize=!0;var i=document,a=window;setTimeout(function(){var n=i.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",i.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{t.cookie=i.cookie}catch(e){}t.queue=[],t.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var s="Track"+r[0];if(n("start"+s),n("stop"+s),n("setAuthenticatedUserContext"),n("clearAuthenticatedUserContext"),n("flush"),!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var o=a[r];a[r]=function(e,n,i,a,s){var c=o&&o(e,n,i,a,s);return!0!==c&&t["_"+r]({message:e,url:n,lineNumber:i,columnNumber:a,error:s}),c},e.autoExceptionInstrumented=!0}return t}(
+            {
+               instrumentationKey:"4f4ba091-4cff-4bd9-95e3-c5d564a1adde"
+            }
+            );window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
+    </script>
+
+</head>
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Azure Readiness starts here...</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                        
+                    
+                    
+		    
+                        <li><a href="/books/">BOOKS</a></li>
+                    
+                        <li><a href="/about/">ABOUT ME</a></li>
+                    
+
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/home-bg-azure.jpg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/azure" title="Azure">
+                            Azure
+                        </a>
+                        
+                        <a class="tag" href="/tags/aks" title="AKS">
+                            AKS
+                        </a>
+                        
+                        <a class="tag" href="/tags/docker" title="Docker">
+                            Docker
+                        </a>
+                        
+                        <a class="tag" href="/tags/aca" title="ACA">
+                            ACA
+                        </a>
+                        
+                        <a class="tag" href="/tags/containers" title="Containers">
+                            Containers
+                        </a>
+                        
+                    </div>
+                    <h1>Azure Spring Clean - DCK, ACR, ACI, AKS, ACA, the Azure Container Alphabet Soup</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                                Azure Readiness starts here...
+                         
+                        on 
+                        Wednesday, March 15, 2023
+                        
+                        
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    
+                </header>
+                
+                
+                <p><img src="../images/AzureSpringClean2023-logo.png" alt="Azure Spring Clean"></p>
+<p>Hey friends,</p>
+<p>Welcome to #AzureSpringClean, an initiative from <strong><a href="https://twitter.com/wedoazure">Joe Carlyle</a> and <a href="https://twitter.com/tamstar1234">Thomas Thornton</a></strong> 
+where I&rsquo;m honored to be able to participate in again for the 4th year already. Thanks guys for trusting me once more for sharing some Azure knowledge&hellip;</p>
+<p>This time, I wanted to try and guide you through the buzzword of the last couple of years, <strong>containers</strong>&hellip; and more specifically, what different options you have in Azure to run your containerized workloads.</p>
+<p>Containerization has become a popular way to deploy applications in the cloud, offering benefits such as scalability, portability, and reliability. Azure, Microsoft&rsquo;s cloud platform, offers several services that allow running containerized workloads, each with its own strengths and limitations. In this article, we will explore the different Azure services for container orchestration and management, including Azure Container Instance, Azure Kubernetes Services, Azure App Services, and Azure Container Apps.</p>
+<p>The starting point of a containerized workload, is having, or building a <strong><a href="https://www.docker.com">Docker</a></strong> container image.</p>
+<h2 id="docker--docker-desktop">Docker &amp; Docker Desktop</h2>
+<p>Docker is a popular platform for building, shipping, and running containerized applications. It provides a consistent environment for developers and operators to develop and deploy applications across different platforms and infrastructures. Docker makes it easy to package applications and their dependencies into portable container images, which can be run on any machine that supports Docker.</p>
+<p>Docker containers are lightweight, standalone, and executable packages of software that include everything needed to run an application. They contain the application code, runtime, system tools, libraries, and settings, making them highly portable and efficient. Docker containers run in isolation from the host operating system, providing consistent behavior and preventing conflicts with other applications.</p>
+<p><img src="../images/2023-03-15_20-27-44.png" alt="Containers vs Virtual Machines"></p>
+<p>Docker Desktop is a desktop application for Windows and macOS that provides a complete development environment for building and testing Docker applications. It includes the Docker Engine, Docker CLI, and a GUI-based interface for managing containers, images, and networks. With Docker Desktop, developers can easily build, test, and run Docker applications on their local machines, without having to set up a separate environment.</p>
+<p>Docker Desktop provides a simple and intuitive user interface for managing Docker images and containers. It allows developers to create, edit, and run Docker containers with just a few clicks. Developers can also use Docker Desktop to deploy applications to remote Docker hosts, such as cloud-based container orchestration platforms like Kubernetes.</p>
+<p>One of the major benefits of Docker Desktop is its ability to provide a consistent development environment across different platforms and operating systems. It eliminates the need for developers to set up and maintain complex development environments on their own machines, which can be time-consuming and error-prone. Docker Desktop also supports popular programming languages and frameworks, such as Java, Node.js, Python, and Ruby, making it a versatile tool for building modern applications.</p>
+<p><img src="../images/2023-03-15_20-29-53.png" alt="Docker Desktop"></p>
+<p>Overall, Docker and Docker Desktop provide a powerful platform for building, shipping, and running containerized applications. They simplify the development and deployment of applications, provide a consistent environment across different platforms, and offer a flexible and scalable way to build modern applications. With the continued growth of containerization, Docker and Docker Desktop are essential tools for any developer or operator looking to stay ahead in the rapidly evolving world of software development.</p>
+<p>For more information on Docker and Docker Desktop, head over to the <a href="https://www.docker.com/products/docker-desktop/">Docker Downloads</a>.</p>
+<p>If you want a sample container to test your Docker / Docker Desktop, feel free to use <a href="https://hub.docker.com/r/pdetender/eshopwebmvc">my sample e-commerce workload container</a>, which runs a sample .NET6 web app</p>
+<p>Now you have your Docker environment ready to use, let&rsquo;s take the next step, moving the container image into Azure.</p>
+<h2 id="azure-container-registry-acr-httpslearnmicrosoftcomen-usazurecontainer-registry">Azure Container Registry (ACR) (<a href="https://learn.microsoft.com/en-us/azure/container-registry/">https://learn.microsoft.com/en-us/azure/container-registry/</a>)</h2>
+<p>ACR is a managed private registry for storing and managing container images in the cloud. With ACR, you can store and manage Docker images for all of your containerized applications, making it easy to deploy and manage them in the cloud.</p>
+<p>The purpose of ACR is to provide a secure and reliable way to store, manage, and deploy container images. By using ACR, you can ensure that your container images are stored securely in the cloud, and that only authorized users have access to them. ACR also provides built-in integration with all other Azure Container Services (see below), making it easy to deploy your container images across the different services.</p>
+<p><img src="../images/2023-03-15_20-34-12.png" alt="Azure Container Registry"></p>
+<p>ACR supports Docker Hub as well as DevOps environments as sources for container images, and it provides a seamless experience for pushing and pulling images from the registry. ACR also supports advanced features, such as geo-replication and image security vulnerability scanning, which allows you to replicate your images to multiple regions for high availability and scan your images for security vulnerabilities (Backed by Defender for Containers and Defender for Cloud).</p>
+<p>In summary, ACR serves as a central repository for storing and managing your container images, making it easy to deploy and manage your containerized applications in the cloud. It provides a secure and reliable way to store your images, with built-in integration with other Azure container services for easy deployment.</p>
+<p>Some sample Azure CLI code to get you started:</p>
+<pre><code>az acr create --resource-group myresourcegroup --name myacr --sku Basic
+</code></pre><p>Once you run this command, Azure will create a new ACR with the specified name and SKU in the specified resource group. You can then use the ACR to store and manage your container images.</p>
+<p>With the ACR being ready, it&rsquo;s time to upload (<strong>push</strong>) the Docker image into the registry. Here are a few steps to get you started:</p>
+<pre><code>az login
+az acr login --name myacr
+</code></pre><p>Before you can push a Docker image to the Azure Container Registry, it needs to be updated with the name of the registry. You can use <strong>Docker tag</strong> command to help with this:</p>
+<pre><code>docker tag pdetender/eshopwebmvc myacr.azurecr.io/eshopwebmvc
+</code></pre><p>followed by:</p>
+<pre><code>docker push myacr.azurecr.io/eshopwebmvc
+</code></pre><p>wait for the upload to complete.</p>
+<h2 id="azure-container-instance-aci-httpslearnmicrosoftcomen-usazurecontainer-instances">Azure Container Instance (ACI) (<a href="https://learn.microsoft.com/en-us/azure/container-instances/">https://learn.microsoft.com/en-us/azure/container-instances/</a>)</h2>
+<p>Azure Container Instance (ACI) is a serverless solution for running containers in the cloud. With ACI, you can deploy and manage containers without worrying about the underlying infrastructure. ACI is an excellent choice for running short-lived containerized tasks that don&rsquo;t require orchestration, such as batch processing, job scheduling, or testing.</p>
+<p>ACI is easy to use, as it doesn&rsquo;t require any knowledge of container orchestration tools such as Kubernetes or Docker Swarm. Instead, you can use the Azure portal, Azure CLI, or Azure PowerShell to deploy and manage your containers.</p>
+<p>One of the strengths of ACI is its cost-effectiveness. With ACI, you only pay for the exact amount of compute and memory resources that your containerized tasks require, measured in seconds. This makes ACI an ideal solution for running sporadic, bursty workloads.</p>
+<p>However, ACI has some limitations. First, ACI only supports running single containers or multi-container groups, not entire applications. Second, ACI doesn&rsquo;t provide advanced features such as automatic scaling, self-healing, or load balancing. Finally, ACI has limited networking capabilities, as it doesn&rsquo;t support virtual networks or custom IP addresses.</p>
+<p>with the EshopOnWeb Docker image uploaded to the Azure Container Registry, use the following Az CLI command to deploy an Azure Container Instance:</p>
+<pre><code>az container create --resource-group myResourceGroup --name aci-springclean-app --image myacr.azurecr.io/eshopwebmvc --cpu 1 --memory 1 --registry-login-server myacr.azurecr.io --ip-address Public --dns-name-label aci-springclean-app --ports 80
+</code></pre><p><img src="../images/2023-03-15_20-45-44.png" alt="Azure Container Instance"></p>
+<h2 id="azure-kubernetes-services-aks-httpslearnmicrosoftcomen-usazureaksintro-kubernetes">Azure Kubernetes Services (AKS) (<a href="https://learn.microsoft.com/en-us/azure/aks/intro-kubernetes">https://learn.microsoft.com/en-us/azure/aks/intro-kubernetes</a>)</h2>
+<p>Azure Kubernetes Services (AKS) is a managed Kubernetes service that allows you to deploy and manage containerized applications in the cloud. Kubernetes is a powerful open-source container orchestration tool that automates the deployment, scaling, and management of containerized workloads.</p>
+<p>AKS is an excellent choice for running complex, production-grade applications that require orchestration, such as microservices architectures or stateful applications. With AKS, you can take advantage of Kubernetes' advanced features, such as automatic scaling, self-healing, and rolling updates.</p>
+<p>AKS is easy to use, as it abstracts away the complexity of Kubernetes and provides an easy-to-use management interface. With AKS, you can deploy your Kubernetes clusters in minutes, using the Azure portal, Azure CLI, or Azure PowerShell.</p>
+<p><img src="../images/2023-03-15_20-47-20.png" alt="Azure Kubernetes Services - AKS"></p>
+<p>One of the strengths of AKS is its scalability. With AKS, you can scale your clusters up or down based on demand, without worrying about the underlying infrastructure. AKS also provides advanced networking capabilities, such as virtual networks, load balancers, and custom IP addresses.</p>
+<p>However, AKS has some limitations. First, AKS is more expensive than ACI, as it requires more resources and management overhead. Second, AKS requires some knowledge of Kubernetes, which can be challenging for beginners. Finally, AKS may have some limitations in terms of customization, as it is a managed service that abstracts away some of the lower-level details of Kubernetes.</p>
+<p>Here are a few steps to get you started in deploying an AKS cluster:</p>
+<pre><code>az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --node-count 2 \
+    --generate-ssh-keys \
+    --attach-acr &lt;acrName&gt;
+</code></pre><p>Deployment should take about 10-15 minutes, depending on the Azure region.</p>
+<p>Once the AKS service is up-and-running, you can manage it using <strong>kubectl</strong>, the Kubernetes Command Line interface.</p>
+<pre><code>az aks install-cli
+</code></pre><p>Next, connect to the cluster from Kubectl</p>
+<pre><code>az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
+</code></pre><p>From here, you can validate the Kubernetes cluster nodes:</p>
+<pre><code>kubectl get nodes
+</code></pre><pre><code>$ kubectl get nodes
+
+NAME                                STATUS   ROLES   AGE     VERSION
+aks-nodepool1-37463671-vmss000000   Ready    agent   2m37s   v1.18.10
+aks-nodepool1-37463671-vmss000001   Ready    agent   2m28s   v1.18.10
+</code></pre><p>In order to get a containerized application runnig as a pod (=Kubernetes' terminology for a running container&hellip;), you need to create a <strong>Kubernetes Manifest file</strong>, which uses a YAML syntax format.</p>
+<p>There are a lot of options and configuration parameters possible, but below example should get you started:
+<strong>replace the image name pdtacr&hellip; with the name of your ACR image</strong></p>
+<pre><code>apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: secsample
+spec:
+  replicas: 3
+  selector: 
+    matchLabels:
+      app: secsample
+  template:
+    metadata:
+      labels:
+        app: secsample
+    spec:
+      containers:
+      - name: secsample
+        image: pdtacr.azurecr.io/simplcdotnet31:latest
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+        - name: acr-auth
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: secsample
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: secsample
+</code></pre><p>This deploys 3 pods (replicas parameter) of the same container, across the 2 nodes in the cluster. The service will get published behind the default Azure Load Balancer, running on port 80. You can verify this later on using the public IP address of the service.</p>
+<p>Save the above file to your local machine, for example <strong>springcleanaks.yaml</strong></p>
+<p>use kubectl to import/inject the YAML configuration into the AKS cluster:</p>
+<pre><code>kubectl apply -f springcleanaks.yaml
+</code></pre><p>After a few minutes, validate the running service by running the following kubectl command:</p>
+<pre><code>kubectl get service secsample --watch
+</code></pre><p>If the IP-address mentions &ldquo;pending&rdquo;, give it a bit more time to load. Run the above command once more.</p>
+<p>The outcome should know show both the internal pod IP, as well as the public IP. Open the browser to connect to the web application.</p>
+<pre><code>secsample   LoadBalancer   10.0.33.125   24.17.23.13   80:30676/TCP   67s
+</code></pre><p>If you want to play with the AKS Autoscaling features, I can recommend the following <strong><a href="https://learn.microsoft.com/en-us/azure/aks/tutorial-kubernetes-scale?tabs=azure-cli">Microsoft Learn tutorial</a></strong></p>
+<p>Awesome, you are making good progress&hellip;</p>
+<p>One could think you won&rsquo;t need anything more than AKS, as it provides better high-availability, scalability as well as several other features, compared to the more standard Azure Container Instance. But you are wrong. While AKS is probably one of the more popular (if not the most popular&hellip;) ways to run containerized workloads in Azure, it is sometimes complex, overwhelming, and just &ldquo;too much&rdquo; for what you need.</p>
+<p>Let&rsquo;s have a look at 2 more services&hellip;</p>
+<h2 id="azure-app-services-httpslearnmicrosoftcomen-ustrainingmodulesdeploy-run-container-app-service">Azure App Services (<a href="https://learn.microsoft.com/en-us/training/modules/deploy-run-container-app-service/">https://learn.microsoft.com/en-us/training/modules/deploy-run-container-app-service/</a>)</h2>
+<p>Azure App Service is a platform-as-a-service (PaaS) offering that allows developers to build, deploy, and scale web applications and APIs quickly and easily. With App Service, developers can deploy web apps and APIs written in various programming languages, including .NET, Java, Node.js, Python, and PHP, among others. App Service provides built-in DevOps capabilities and integration with other Azure services, such as Azure SQL Database, Azure Redis Cache, and Azure Storage.</p>
+<p>One of the features of Azure App Service is the ability to run Docker containers. Developers can package their application and its dependencies into a Docker image and deploy it to Azure App Service. Azure App Service can then run the Docker image as a container, providing all the benefits of containerization, such as portability, scalability, and isolation.</p>
+<p>Some of the benefits of running Docker containers in Azure App Service include:</p>
+<ol>
+<li>
+<p>Easy deployment: With App Service, developers can deploy their Docker containers quickly and easily using various deployment options, such as Git, GitHub, Azure DevOps, or the Azure Portal.</p>
+</li>
+<li>
+<p>High availability: App Service provides built-in high availability, scaling, and load balancing capabilities, ensuring that containers are always available and responsive to incoming traffic.</p>
+</li>
+<li>
+<p>Platform integration: App Service integrates with other Azure services, such as Azure SQL Database, Azure Redis Cache, and Azure Storage, making it easy to build end-to-end solutions with minimal effort.</p>
+</li>
+<li>
+<p>Security: App Service provides a secure and isolated environment for running Docker containers, with features such as network isolation, private networking, and Azure Active Directory authentication.</p>
+</li>
+</ol>
+<p>However, Azure App Service is not the same as the previously discussed Azure Kubernetes Service (AKS), which is a container orchestration platform. AKS is designed for running and managing containerized applications at scale, with features such as automatic scaling, rolling updates, and self-healing. AKS is typically used for more complex applications that require multiple containers and need to be deployed across multiple nodes.</p>
+<p>In summary, Azure App Service provides an easy and convenient way to run Docker containers in a PaaS environment, with built-in high availability, scalability, and integration with other Azure services. AKS, on the other hand, is a container orchestration platform designed for running and managing containerized applications at scale, with features such as automatic scaling, rolling updates, and self-healing.</p>
+<p>The following Azure CLI code is what you need to get started with running a Docker image as an App Service:</p>
+<pre><code># Create a resource group
+az group create --name myResourceGroup --location eastus
+
+# Create an App Service plan
+az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku B1 --is-linux
+
+# Create an App Service
+az webapp create --name myAppService --plan myAppServicePlan --resource-group myResourceGroup --deployment-container-image-name &lt;acr-name&gt;.azurecr.io/&lt;container-image-name&gt;:&lt;tag&gt; --docker-registry-server-url https://&lt;acr-name&gt;.azurecr.io --docker-registry-server-user &lt;acr-name&gt; --docker-registry-server-password &lt;acr-access-token&gt;
+
+# Configure the App Service
+az webapp config appsettings set --name myAppService --resource-group myResourceGroup --settings DOCKER_CUSTOM_IMAGE_NAME=&lt;acr-name&gt;.azurecr.io/&lt;container-image-name&gt;:&lt;tag&gt; WEBSITES_PORT=80
+
+# Set up continuous deployment
+az webapp deployment container config --name myAppService --resource-group myResourceGroup --enable-cd true --docker-registry-server-url https://&lt;acr-name&gt;.azurecr.io --docker-registry-server-user &lt;acr-name&gt; --docker-registry-server-password &lt;acr-access-token&gt;
+
+</code></pre><p><img src="../images/2023-03-16_21-02-24.png" alt="Azure App Service - Docker Settings"></p>
+<h2 id="azure-container-apps-httpslearnmicrosoftcomen-usazurecontainer-appsoverview">Azure Container Apps (<a href="https://learn.microsoft.com/en-us/azure/container-apps/overview">https://learn.microsoft.com/en-us/azure/container-apps/overview</a>)</h2>
+<p>Azure Container Apps is a serverless platform for deploying and managing containerized applications. It is designed to simplify the deployment and management of microservices-based applications by providing a seamless experience for developers and operators.</p>
+<p>With Azure Container Apps, you can deploy and manage multiple containers as part of a single application, without worrying about the underlying infrastructure. This makes it an excellent choice for running complex, multi-container applications that require orchestration.</p>
+<p>One of the strengths of Azure Container Apps is its flexibility. With Azure Container Apps, you can use any container image from any registry, including Docker Hub, Azure Container Registry, or your own private registry. You can also define your application&rsquo;s infrastructure as code using YAML or JSON files, which allows you to version control and automate the deployment process.</p>
+<p><img src="../images/2023-03-16_21-06-01.png" alt="Azure Container Apps - Docker Settings"></p>
+<p>Azure Container Apps also provides advanced features, such as automatic scaling, self-healing, and application-level load balancing. With Azure Container Apps, you can scale your application automatically based on demand, and Azure will handle the underlying infrastructure for you.</p>
+<p>However, Azure Container Apps has some limitations. First, Azure Container Apps is still in preview, so it may not be suitable for production-grade applications. Second, Azure Container Apps has some limitations in terms of customization, as it abstracts away some of the lower-level details of container orchestration. Finally, Azure Container Apps has a pricing model that may be more expensive than other Azure container services, as it charges based on the number of requests processed by your application.</p>
+<p><img src="../images/2023-03-16_21-14-20.png" alt="Azure Container Apps - Scale Settings"></p>
+<p>Use the following code example to get started with deploying an Azure Container Apps scenario:</p>
+<pre><code>az containerapp create -n MyContainerapp -g MyResourceGroup --image myregistry.azurecr.io/myimage:latest --environment MyContainerappEnv --cpu 0.5 --memory 1.0Gi --min-replicas 4 --max-replicas 8
+</code></pre><h2 id="summary">Summary</h2>
+<p>As you can see, Azure offers several services that allow running containerized workloads, each with its own strengths and limitations. In this article, I walked you through different Azure services for container orchestration and management, including Azure Container Instance, Azure Kubernetes Services, Azure App Services, and Azure Container Apps. I tried to give you a few Azure CLI commands to get started and deploy baseline examples. This should allow you to validate your own opinions around which container service scenario to use for your specific business-critical or testing workloads.</p>
+<p>I hope you learned something from reading the article, enjoy the rest of the <a href="https://www.azurespringclean.com">Azure Spring Clean</a> topics!!</p>
+<p><a href="https://www.buymeacoffee.com/pdtit"><img src="../images/buy_me_a_coffee.png" alt="BuyMeACoffee"></a></p>
+<p>Cheers!!</p>
+<p>/Peter</p>
+
+
+                
+
+                <hr>
+                
+
+                
+<div id="disqus-comment"></div>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/ai" title="ai">
+                            ai
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/aks" title="aks">
+                            aks
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/application-insights" title="application-insights">
+                            application-insights
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/azure" title="azure">
+                            azure
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/azure-devops" title="azure-devops">
+                            azure-devops
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/bing" title="bing">
+                            bing
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/blazor" title="blazor">
+                            blazor
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/books" title="books">
+                            books
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/certification" title="certification">
+                            certification
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/containers" title="containers">
+                            containers
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/devops" title="devops">
+                            devops
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/devsecops" title="devsecops">
+                            devsecops
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/docker" title="docker">
+                            docker
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/dotnet" title="dotnet">
+                            dotnet
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/ebooks" title="ebooks">
+                            ebooks
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/hugo" title="hugo">
+                            hugo
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/kubernetes" title="kubernetes">
+                            kubernetes
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/learning" title="learning">
+                            learning
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/packt" title="packt">
+                            packt
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/security" title="security">
+                            security
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/sre" title="sre">
+                            sre
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/terraform" title="terraform">
+                            terraform
+                        </a>
+                        
+                        
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                   
+                   <li>
+                       <a href='' rel="alternate" type="application/rss+xml" title="Azure Readiness starts here..." >
+                           <span class="fa-stack fa-lg">
+                               <i class="fa fa-circle fa-stack-2x"></i>
+                               <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+                   
+                    
+                    <li>
+                        <a href="mailto:info@007ffflearning.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    <li>
+                        <a href="http://www.twitter.com/pdtit">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+
+                    
+
+		    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/petender">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/pdtit/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+                </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Azure Readiness starts here... 2024
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+</body>
+</html>

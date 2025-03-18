@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Office365 on Azure Readiness starts here...</title>
+    <link>https://www.007ffflearning.com/tags/office365/</link>
+    <description>Recent content in Office365 on Azure Readiness starts here...</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 10 May 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/office365/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>is HTML parameter gone from Logic Apps Send Email Connector</title>
+      <link>https://www.007ffflearning.com/post/email-is-html-gone-logicapps/</link>
+      <pubDate>Sun, 10 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/email-is-html-gone-logicapps/</guid>
+      <description>Hi,
+For almost 2 years, I have been using the &amp;ldquo;Office 365 Outlook Connector&amp;rdquo; as part of my Logic Apps flows, to send emails internally and externally. Mainly for external receivers, I used the &amp;ldquo;is HTML&amp;rdquo; parameter for the body of the email.
+This weekend, I was building a new Logic Apps flow, and to my surprise, finding out that the &amp;ldquo;V2&amp;rdquo; of this same connector / action, doesn&amp;rsquo;t have that parameter anymore.</description>
+    </item>
+    
+  </channel>
+</rss>

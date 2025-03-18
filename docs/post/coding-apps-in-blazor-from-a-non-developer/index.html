@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+    <script type="text/javascript">
+        !function(T,l,y){var S=T.location,u="script",k="instrumentationKey",D="ingestionendpoint",C="disableExceptionTracking",E="ai.device.",I="toLowerCase",b="crossOrigin",w="POST",e="appInsightsSDK",t=y.name||"appInsights";(y.name||T[e])&&(T[e]=t);var n=T[t]||function(d){var g=!1,f=!1,m={initialize:!0,queue:[],sv:"4",version:2,config:d};function v(e,t){var n={},a="Browser";return n[E+"id"]=a[I](),n[E+"type"]=a,n["ai.operation.name"]=S&&S.pathname||"_unknown_",n["ai.internal.sdkVersion"]="javascript:snippet_"+(m.sv||m.version),{time:function(){var e=new Date;function t(e){var t=""+e;return 1===t.length&&(t="0"+t),t}return e.getUTCFullYear()+"-"+t(1+e.getUTCMonth())+"-"+t(e.getUTCDate())+"T"+t(e.getUTCHours())+":"+t(e.getUTCMinutes())+":"+t(e.getUTCSeconds())+"."+((e.getUTCMilliseconds()/1e3).toFixed(3)+"").slice(2,5)+"Z"}(),iKey:e,name:"Microsoft.ApplicationInsights."+e.replace(/-/g,"")+"."+t,sampleRate:100,tags:n,data:{baseData:{ver:2}}}}var h=d.url||y.src;if(h){function a(e){var t,n,a,i,r,o,s,c,p,l,u;g=!0,m.queue=[],f||(f=!0,t=h,s=function(){var e={},t=d.connectionString;if(t)for(var n=t.split(";"),a=0;a<n.length;a++){var i=n[a].split("=");2===i.length&&(e[i[0][I]()]=i[1])}if(!e[D]){var r=e.endpointsuffix,o=r?e.location:null;e[D]="https://"+(o?o+".":"")+"dc."+(r||"services.visualstudio.com")}return e}(),c=s[k]||d[k]||"",p=s[D],l=p?p+"/v2/track":config.endpointUrl,(u=[]).push((n="SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details)",a=t,i=l,(o=(r=v(c,"Exception")).data).baseType="ExceptionData",o.baseData.exceptions=[{typeName:"SDKLoadFailed",message:n.replace(/\./g,"-"),hasFullStack:!1,stack:n+"\nSnippet failed to load ["+a+"] -- Telemetry is disabled\nHelp Link: https://go.microsoft.com/fwlink/?linkid=2128109\nHost: "+(S&&S.pathname||"_unknown_")+"\nEndpoint: "+i,parsedStack:[]}],r)),u.push(function(e,t,n,a){var i=v(c,"Message"),r=i.data;r.baseType="MessageData";var o=r.baseData;return o.message='AI (Internal): 99 message:"'+("SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details) ("+n+")").replace(/\"/g,"")+'"',o.properties={endpoint:a},i}(0,0,t,l)),function(e,t){if(JSON){var n=T.fetch;if(n&&!y.useXhr)n(t,{method:w,body:JSON.stringify(e),mode:"cors"});else if(XMLHttpRequest){var a=new XMLHttpRequest;a.open(w,t),a.setRequestHeader("Content-type","application/json"),a.send(JSON.stringify(e))}}}(u,l))}function i(e,t){f||setTimeout(function(){!t&&m.core||a()},500)}var e=function(){var n=l.createElement(u);n.src=h;var e=y[b];return!e&&""!==e||"undefined"==n[b]||(n[b]=e),n.onload=i,n.onerror=a,n.onreadystatechange=function(e,t){"loaded"!==n.readyState&&"complete"!==n.readyState||i(0,t)},n}();y.ld<0?l.getElementsByTagName("head")[0].appendChild(e):setTimeout(function(){l.getElementsByTagName(u)[0].parentNode.appendChild(e)},y.ld||0)}try{m.cookie=l.cookie}catch(p){}function t(e){for(;e.length;)!function(t){m[t]=function(){var e=arguments;g||m.queue.push(function(){m[t].apply(m,e)})}}(e.pop())}var n="track",r="TrackPage",o="TrackEvent";t([n+"Event",n+"PageView",n+"Exception",n+"Trace",n+"DependencyData",n+"Metric",n+"PageViewPerformance","start"+r,"stop"+r,"start"+o,"stop"+o,"addTelemetryInitializer","setAuthenticatedUserContext","clearAuthenticatedUserContext","flush"]),m.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4};var s=(d.extensionConfig||{}).ApplicationInsightsAnalytics||{};if(!0!==d[C]&&!0!==s[C]){method="onerror",t(["_"+method]);var c=T[method];T[method]=function(e,t,n,a,i){var r=c&&c(e,t,n,a,i);return!0!==r&&m["_"+method]({message:e,url:t,lineNumber:n,columnNumber:a,error:i}),r},d.autoExceptionInstrumented=!0}return m}(y.cfg);(T[t]=n).queue&&0===n.queue.length&&n.trackPageView({})}(window,document,{
+        src: "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js", 
+        
+        
+        
+        
+        cfg: { 
+            instrumentationKey: "4ecca3df-ab58-4882-903e-3ab2c030f009"
+             
+        }});
+        </script>
+    
+<head>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Azure Readiness starts here...">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="https://www.007ffflearning.com/img/home-bg-azure.jpg">
+    <meta property="twitter:image" content="https://www.007ffflearning.com/img/home-bg-azure.jpg" />
+    
+
+    
+    <meta name="title" content="Coding Apps in Blazor from a non-developer standpoint" />
+    <meta property="og:title" content="Coding Apps in Blazor from a non-developer standpoint" />
+    <meta property="twitter:title" content="Coding Apps in Blazor from a non-developer standpoint" />
+    
+
+    
+    <meta name="description" content="">
+    <meta property="og:description" content="" />
+    <meta property="twitter:description" content="" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="Azure, Learning, Certification, Technology">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>Coding Apps in Blazor from a non-developer standpoint-Azure Readiness Starts Here</title>
+
+    
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+	
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+    
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    
+    <script src="/js/jquery.min.js"></script>
+    
+    
+    <script src="/js/bootstrap.min.js"></script>
+    
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    
+
+    <script type="text/javascript">
+            var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){function n(e){t[e]=function(){var n=arguments;t.queue.push(function(){t[e].apply(t,n)})}}var t={config:e};t.initialize=!0;var i=document,a=window;setTimeout(function(){var n=i.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",i.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{t.cookie=i.cookie}catch(e){}t.queue=[],t.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var s="Track"+r[0];if(n("start"+s),n("stop"+s),n("setAuthenticatedUserContext"),n("clearAuthenticatedUserContext"),n("flush"),!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var o=a[r];a[r]=function(e,n,i,a,s){var c=o&&o(e,n,i,a,s);return!0!==c&&t["_"+r]({message:e,url:n,lineNumber:i,columnNumber:a,error:s}),c},e.autoExceptionInstrumented=!0}return t}(
+            {
+               instrumentationKey:"4f4ba091-4cff-4bd9-95e3-c5d564a1adde"
+            }
+            );window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
+    </script>
+
+</head>
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Azure Readiness starts here...</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                        
+                    
+                    
+		    
+                        <li><a href="/books/">BOOKS</a></li>
+                    
+                        <li><a href="/about/">ABOUT ME</a></li>
+                    
+
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/home-bg-azure.jpg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/blazor" title="Blazor">
+                            Blazor
+                        </a>
+                        
+                        <a class="tag" href="/tags/dotnet" title="DotNet">
+                            DotNet
+                        </a>
+                        
+                    </div>
+                    <h1>Coding Apps in Blazor from a non-developer standpoint</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                                Azure Readiness starts here...
+                         
+                        on 
+                        Monday, September 6, 2021
+                        
+                        
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    
+                </header>
+                
+                
+                <p>Hello readers,</p>
+<p>The ones who know me already, know I have used traditional on-premises datacenter infrastructure for the first 15 years of my career, before I jumped onto Azure public cloud. Yes, I was an infra guy. And sometimes I still think I am, although I&rsquo;m more and more shifting to containers and devops over the last 3 years.</p>
+<p>With the 25 years of IT experience, there was always 1 skillset missing&hellip; coding, or learning a development language in better words.</p>
+<p>After talking to several DevOps folks within Microsoft and elsewhere, it became clear I had to learn some language, if I wanted to take this DevOps thing serious (trust me, it is not required, but definitely recommended, now I look back how I talk about DevOps with some development skills acquired)</p>
+<h1 id="so-many-languages-to-choose-from">So many languages to choose from</h1>
+<p>Once I set my mind to it, the next question was, what language am I going to learn myself?</p>
+<ul>
+<li>Python seemed the easiest, is quite popular, but didn&rsquo;t appeal to me for still an unknown reason.</li>
+<li>Java seemed the most professional, but also the most complex.</li>
+<li>Go looked promising, but I never really seen it in action.</li>
+<li>C# and DotNet was like the natural go to, as we are using a lot of DotNet examples during different Azure workshops I&rsquo;m delivering every week</li>
+</ul>
+<h1 id="dotnet-as-my-logical-example">DotNet as my logical example</h1>
+<p>Within the DotNet (<a href="https://dotnet.microsoft.com/learn/dotnet/what-is-dotnet">https://dotnet.microsoft.com/learn/dotnet/what-is-dotnet</a>) family, you still have a few different options:</p>
+<ul>
+<li><strong>DotNet Core</strong>, which gives you cross-platform .NET implementation for browsers, apps on any platform OS</li>
+<li><strong>DotNet Framework</strong>, supporting full Windows applications, and websites</li>
+<li><strong>Xamarin/Mono</strong>, which is a DotNet implementation for mobile apps</li>
+</ul>
+<p><img src="../images/2021-09-06_01.png" alt="DotNet"></p>
+<h1 id="how-i-ended-up-with-blazor">How I ended up with Blazor</h1>
+<p>If I was going to develop &ldquo;something&rdquo;, it would probably be a console app (easy to demo) or a web application (perfect for my Azure training deliveries and I can run it in Azure and Containers -&gt; bonus)
+From there, my mind was set to start developing Web Applications, and more specifically by using <strong>Blazor</strong> (<a href="https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor)">https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor)</a>.</p>
+<p><img src="../images/2021-09-06_02.png" alt="Blazor"></p>
+<p>Over Christmas holidays, I started building my library of learning material, which consisted of Microsoft Docs, Youtube videos and other community sessions. (I&rsquo;ll cover some of these in another article later)</p>
+<p>I also started working on building an app from scratch, which would make my life as an Azure trainer easier, as well as for my colleagues.</p>
+<p>I managed to build a &ldquo;useable&rdquo; web application over the course of a few months, spending about 10 hours a week; As I approached 3000 followers on Twitter recently, I decided to come up with a series of posts on Blazor, explaining what I learned, where I struggled (and still am), to help others who are like myself, starting with no dev experience whatsoever.</p>
+<p><img src="../images/2021-09-06_03.png" alt="3000 Twitter Followers"></p>
+<h1 id="what-is-blazor">What is Blazor</h1>
+<p>Blazor comes in 2 different flavors:</p>
+<ul>
+<li><strong>Blazor Server</strong></li>
+<li><strong>Blazor Web Assembly</strong></li>
+</ul>
+<p><strong>Blazor Server</strong> is closest to a traditional ASP.Net application, running on a web server, which can be Windows or Linux, as well as a containerized platform. Updates in the web app layout, the actual events (clicking buttons, routing pages,&hellip;) and JavaScript handling (yes, I&rsquo;ll detail that in another article) are all transferred between client (your browser) and the server (the backend) using SignalR. Think of this as a messaging handler between client and server.</p>
+<p><strong>Blazor WebAssembly</strong> is a 2nd flavor, which doesn&rsquo;t require a server back-end, but rather runs all DotNet code directly in the browser. This is not a DotNet something, but rather a capability of WebAssembly (WASM in short), an open standard which aims to allow running powerful applications natively in a browser. If any Server-side events are needed, you can integrate it with Blazor Server or other API-based back-ends.</p>
+<p>Blazor as terminology is coming from a combination of &ldquo;Browser&rdquo; and &ldquo;Razor&rdquo; (<a href="https://docs.microsoft.com/en-us/aspnet/core/razor-pages/?view=aspnetcore-5.0&amp;tabs=visual-studio),">https://docs.microsoft.com/en-us/aspnet/core/razor-pages/?view=aspnetcore-5.0&amp;tabs=visual-studio),</a> if you were wondering.</p>
+<p>The way I see it (as non-developer :) ), is that those Razor Pages are like a simplified programming language in itself, combining HTML layout controls and actual C# coding together. By routing Razor Pages across different Razor-files (cshtml as extension), you build up your application. They are also recognized by the &ldquo;@page&rdquo; directive at the beginning of each file.</p>
+<p>Below is a sample Razor Page, coming from the default Blazor Server or Blazor Web Assembly template in Visual Studio - which I will describe in a later blog post how to deploy it and what it does).</p>
+<pre><code>@page &quot;/counter&quot;
+
+&lt;h1&gt;Counter&lt;/h1&gt;
+
+&lt;p&gt;Current count: @currentCount&lt;/p&gt;
+
+&lt;button class=&quot;btn btn-primary&quot; @onclick=&quot;IncrementCount&quot;&gt;Click me&lt;/button&gt;
+
+@code {
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+}
+</code></pre><p>As you can see, the @page directive points to the &ldquo;name&rdquo; of this web page, being the &ldquo;counter page&rdquo;. Thinks of this as browsing to https://yourwebsiteURL/counter</p>
+<p>next, there is a bit of HTML code for the actual layout of the page, and last, it contains some C# code with the actual intelligence of the counter button.</p>
+<p>The way this page looks in the browser is like this:</p>
+<p><img src="../images/2021-09-06_04.png" alt="Blazor sample"></p>
+<h1 id="what-am-i-going-to-do-from-here">What am I going to do from here?</h1>
+<p>As promised, my idea is to share as much of what I learned from Blazor in the last few months, and taking you through a process to start learning to build your own Blazor applications. The following will be covered over a series of articles in the next coming weeks:</p>
+<ol>
+<li>Deploying your first Blazor Server App</li>
+<li>Customizing the basic layout</li>
+<li>Updating Navigation Menu items</li>
+<li>Creating API Controllers to read data</li>
+<li>Integrating Entity Framework to read data from SQL DB</li>
+<li>Building forms for CRUD (create, read, update, delete) operations</li>
+<li>Integrating with external API Services to read data</li>
+<li>Publishing Blazor Server to Azure App Services</li>
+</ol>
+<p>I hope you will learn from this, and enjoy the journey as much as I did, and still do. While I am far from calling myself a developer, it feels rather rewarding to see how code can be turned into a useful application!</p>
+<p>Btw, if you are interested in developing with Blazor, you can <a href="https://www.toptal.com/blazor">hire a Blazor developer from Toptal</a>, a leading platform for connecting top-tier developers with clients.</p>
+<p>Talk to you soon,</p>
+<p><a href="https://www.buymeacoffee.com/pdtit"><img src="../images/buy_me_a_coffee.png" alt="BuyMeACoffee"></a></p>
+<p>Cheers, Peter</p>
+
+
+                
+
+                <hr>
+                
+
+                
+<div id="disqus-comment"></div>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/ai" title="ai">
+                            ai
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/aks" title="aks">
+                            aks
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/application-insights" title="application-insights">
+                            application-insights
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/azure" title="azure">
+                            azure
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/azure-devops" title="azure-devops">
+                            azure-devops
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/bing" title="bing">
+                            bing
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/blazor" title="blazor">
+                            blazor
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/books" title="books">
+                            books
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/certification" title="certification">
+                            certification
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/containers" title="containers">
+                            containers
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/devops" title="devops">
+                            devops
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/devsecops" title="devsecops">
+                            devsecops
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/docker" title="docker">
+                            docker
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/dotnet" title="dotnet">
+                            dotnet
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/ebooks" title="ebooks">
+                            ebooks
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/hugo" title="hugo">
+                            hugo
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/kubernetes" title="kubernetes">
+                            kubernetes
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/learning" title="learning">
+                            learning
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/packt" title="packt">
+                            packt
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/security" title="security">
+                            security
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/sre" title="sre">
+                            sre
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/terraform" title="terraform">
+                            terraform
+                        </a>
+                        
+                        
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                   
+                   <li>
+                       <a href='' rel="alternate" type="application/rss+xml" title="Azure Readiness starts here..." >
+                           <span class="fa-stack fa-lg">
+                               <i class="fa fa-circle fa-stack-2x"></i>
+                               <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+                   
+                    
+                    <li>
+                        <a href="mailto:info@007ffflearning.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    <li>
+                        <a href="http://www.twitter.com/pdtit">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+
+                    
+
+		    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/petender">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/pdtit/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+                </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Azure Readiness starts here... 2024
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+</body>
+</html>

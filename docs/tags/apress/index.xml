@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Apress on Azure Readiness starts here...</title>
+    <link>https://www.007ffflearning.com/tags/apress/</link>
+    <description>Recent content in Apress on Azure Readiness starts here...</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 29 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/apress/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Art of Realizing SRE on Azure - Book Review</title>
+      <link>https://www.007ffflearning.com/post/the-art-of-realizing-sre-on-azure/</link>
+      <pubDate>Sat, 29 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/the-art-of-realizing-sre-on-azure/</guid>
+      <description>As most of you know already, I enjoy writing technical (Azure related) books. So if you are wondering why it&amp;rsquo;s been quiet lately, there is a good reason for it.
+Actually, I was writing on my 9th book, making it 9 books in 9 years straight, but something got in-between the writing process and publishing. It&amp;rsquo;s called US Visa regulations :). Beginning this year, January 5th actually, I relocated from Belgium to Redmond, WA for Microsoft Corp.</description>
+    </item>
+    
+  </channel>
+</rss>

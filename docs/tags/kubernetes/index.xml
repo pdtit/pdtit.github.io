@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kubernetes on Azure Readiness starts here...</title>
+    <link>https://www.007ffflearning.com/tags/kubernetes/</link>
+    <description>Recent content in Kubernetes on Azure Readiness starts here...</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 18 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Upgrading an AKS cluster in 20 min</title>
+      <link>https://www.007ffflearning.com/post/upgrading_aks_in_20min/</link>
+      <pubDate>Fri, 18 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/upgrading_aks_in_20min/</guid>
+      <description>Ever since I joined Microsoft (Sept 2019) and started working in the Azure Technical Trainer team, I deployed a demo Azure Kubernetes Service (AKS) with a few sample containers. Helping me in walking training attendees through the architecture, the management concepts and what it takes to run containerized workloads using the advanced capabilities coming with Kubernetes on Azure.
+Knowing this AKS cluster got deployed about 20 months back, it also meant my setup was getting a little bit out-of-date.</description>
+    </item>
+    
+    <item>
+      <title>AKS ErrImagePull and ImagePullBackOff on AKS after a year</title>
+      <link>https://www.007ffflearning.com/post/renewing-expired-aks-service-principal/</link>
+      <pubDate>Tue, 23 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/renewing-expired-aks-service-principal/</guid>
+      <description>Hi all,
+I&amp;rsquo;ve deployed me an AKS - Azure Kubernetes Service environment that I use in my Azure training class deliveries almost every week (yes, every AZ-course touches on AKS and Containers&amp;hellip;)
+The Problem My AKS environment was running fine all this time (a bit over a year), allowing me to rely on existing deployed Kubernetes services, as well as building new services as a live demo. Until this morning, where all of a sudden, my own services didn&amp;rsquo;t start at all, but the kube-system services did.</description>
+    </item>
+    
+    <item>
+      <title>How to delete a POD from Azure Kubernetes Services (AKS)</title>
+      <link>https://www.007ffflearning.com/post/how-to-delete-an-aks-pod/</link>
+      <pubDate>Sat, 06 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/how-to-delete-an-aks-pod/</guid>
+      <description>Hi again,
+In about every Azure training delivered the last few months, I am talking about Docker and Azure Kubernetes Services - AKS
+Along these months, the amount of &amp;ldquo;sample PODS&amp;rdquo; I am running within the Kubernetes cluster was continuously growing, resulting in a less efficient demo scenario to show.
+So cleaning up these running PODS was my 5 seconds action this Saturday morning. While not super hard, it actually took me a bit longer than 5 seconds (more like 10min :)), since I forgot a few &amp;ldquo;basics&amp;rdquo; on how Kubernetes is running PODS.</description>
+    </item>
+    
+  </channel>
+</rss>

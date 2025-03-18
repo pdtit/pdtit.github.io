@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Static Site on Azure Readiness starts here...</title>
+    <link>https://www.007ffflearning.com/tags/static-site/</link>
+    <description>Recent content in Static Site on Azure Readiness starts here...</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 25 Apr 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/static-site/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Running an Azure Storage Static Site, protected by Azure Front Door</title>
+      <link>https://www.007ffflearning.com/post/static_site_frontdoor/</link>
+      <pubDate>Sat, 25 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/static_site_frontdoor/</guid>
+      <description>Earlier this week, I had the honor to present a session for the Belgian MC2MC Microsoft community, as part of a broader online event week with other Belgian community User Groups (https://www.mc2mc.be/events/be-community-week-mc2mc-evening).
+My session topic was based on a little real-life project I worked on myself only a few weeks ago, deploying a “Hugo” based static website on Azure Storage Account Static Site (Yes, this site you are reading right now&amp;hellip;).</description>
+    </item>
+    
+  </channel>
+</rss>

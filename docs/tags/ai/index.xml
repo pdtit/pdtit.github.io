@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AI on Azure Readiness starts here...</title>
+    <link>https://www.007ffflearning.com/tags/ai/</link>
+    <description>Recent content in AI on Azure Readiness starts here...</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 23 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Festive Tech Calendar - Azure AI - OCR on Steroids</title>
+      <link>https://www.007ffflearning.com/post/festive-2023-ocr-on-steroids/</link>
+      <pubDate>Sat, 23 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/festive-2023-ocr-on-steroids/</guid>
+      <description>Hugo
+Azure Static Storage Sites
+Welcome to this year&amp;rsquo;s Festive Tech Calendar!! Hi everyone, welcome to my contribution to this year&amp;rsquo;s Festive Tech Calendar once more. This will be the fourth year, and I still love the concept of bringing some (Azure) joy to you/your family this season. If you ask me what the biggest news in tech was this year, especially within the Microsoft ecosystem, it&amp;rsquo;s Azure AI. Shouldn&amp;rsquo;t be surprising to most of you who know me and my role within Microsoft as Technical Trainer - providing Azure workshops every week to our top customers and partners across the globe - we also integrated (A lot :)) of AI focus early in the year.</description>
+    </item>
+    
+    <item>
+      <title>Build an Azure AI chatbot using your own data from blob storage </title>
+      <link>https://www.007ffflearning.com/post/build-an-azure-ai-chatbot-using-your-own-data-in-blob-storage/</link>
+      <pubDate>Mon, 17 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/build-an-azure-ai-chatbot-using-your-own-data-in-blob-storage/</guid>
+      <description>You must have lived under a rock if you didn&amp;rsquo;t hear about how important Azure AI is for Microsoft and its partner and customer ecosystem. Thanks to Artificial Intelligence (AI), companies will be more innovative, employees will be more productive. While I honestly was a bit hesitant at first myself - knowing a big part of my job is providing training, and seeing what AI can do here in terms of content creation, video creation and alike, yes the trainer role will definitely (has to) change over the next coming months - once I started digging into its capabilities more, I started to see the AI engine potential.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Architecting on Azure Readiness starts here...</title>
+    <link>https://www.007ffflearning.com/tags/architecting/</link>
+    <description>Recent content in Architecting on Azure Readiness starts here...</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 03 Feb 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/architecting/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>New book published: Azure Strategy and Implementation Guide, 3rd edition</title>
+      <link>https://www.007ffflearning.com/post/new-book-published/</link>
+      <pubDate>Mon, 03 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/new-book-published/</guid>
+      <description>You might get amazed, finding out I managed to publish yet another book, where the previous one Efficiently Migrating your workloads to Azure only got published around Christmas.
+However, this new one was a &amp;ldquo;longer work in progress&amp;rdquo;, and not something I could spew out in just a few weeks.
+Several months ago, I got approached by Packt Publishing, asking me to &amp;ldquo;write a quick note on how I look at Azure strategic implementation and migration&amp;rdquo;.</description>
+    </item>
+    
+  </channel>
+</rss>

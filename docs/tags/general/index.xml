@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>General on Azure Readiness starts here...</title>
+    <link>https://www.007ffflearning.com/tags/general/</link>
+    <description>Recent content in General on Azure Readiness starts here...</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 21 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/general/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>My 2 years as an Azure Technical Trainer at Microsoft</title>
+      <link>https://www.007ffflearning.com/post/my-first-2-years-as-att/</link>
+      <pubDate>Tue, 21 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/my-first-2-years-as-att/</guid>
+      <description>Hey,
+April last year, I wrote a post in which I looked back at my 1st 6 months as an Azure Technical Trainer. Where I think it makes sense to update this post in the week I&amp;rsquo;m officially starting my 3rd year in the role :).
+April 2020 was literally in the middle of the (first) pandemic lock-down, where we all thought it would clear out by May; little did we know it would last for another 18 months from there, facing another 2 or 3 lockdowns and still not seeing the end of it, although there is some tiny spark of light at the end of the tunnel.</description>
+    </item>
+    
+  </channel>
+</rss>

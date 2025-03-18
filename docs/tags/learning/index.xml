@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Learning on Azure Readiness starts here...</title>
+    <link>https://www.007ffflearning.com/tags/learning/</link>
+    <description>Recent content in Learning on Azure Readiness starts here...</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 25 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Updated Azure Exams Announced</title>
+      <link>https://www.007ffflearning.com/post/updated-azure-exams/</link>
+      <pubDate>Sat, 25 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/updated-azure-exams/</guid>
+      <description>Things are going fast in the Azure world, and apparently exams are more and more following that pace. Before you start screaming and worrying, as you might be preparing for a current exam, let me share a bit about several steps happening before an exam becomes available.
+Exam Objectives (OD) For a long time, Microsoft Learning has based exams on &amp;ldquo;exam objectives&amp;rdquo;, which is typically a list of &amp;ldquo;services, features, activities&amp;rdquo; anyone taking the exam, should master.</description>
+    </item>
+    
+    <item>
+      <title>Azure Learning Resources</title>
+      <link>https://www.007ffflearning.com/post/azure-learning-resources/</link>
+      <pubDate>Sun, 22 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/azure-learning-resources/</guid>
+      <description>As I got asked so many times what Azure learning resources are available, I thought this could make up an excellent blog post :) - This is actually based on a summary slide I have added to my in-person and online Azure training workshops closing deck, but updated where needed. Below order is a random listing of resources, not forcing any priority or preference:
+  Microsoft Learn
+  Microsoft Hands-on Labs</description>
+    </item>
+    
+  </channel>
+</rss>

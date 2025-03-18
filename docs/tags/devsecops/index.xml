@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DevSecOps on Azure Readiness starts here...</title>
+    <link>https://www.007ffflearning.com/tags/devsecops/</link>
+    <description>Recent content in DevSecOps on Azure Readiness starts here...</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 03 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/devsecops/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DevOps Workflow Generator</title>
+      <link>https://www.007ffflearning.com/post/devops-workflow-generator/</link>
+      <pubDate>Sun, 03 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/devops-workflow-generator/</guid>
+      <description>Hey awesome people,
+For the ones who know me, it shouldn&amp;rsquo;t be a surprise I&amp;rsquo;m interested in DevOps, mainly using Azure DevOps and GitHub as core technologies, as well as several side-solutions that integrate with them. So when I heard about the DevOps Workflow Generator, a new free tool from the Microsoft Research Lab division, I wanted to give it a spin.
+The Concepts of DevOps DevOps according to Microsoft’s Definition: The Union of People, Processes and Products, to enable continuous delivery of value to the business</description>
+    </item>
+    
+    <item>
+      <title>Azure Spring Clean - DevSecOps and Shifting Left</title>
+      <link>https://www.007ffflearning.com/post/azure-spring-clean-devsecops-and-shifting-left-to-publish-secure-software/</link>
+      <pubDate>Thu, 17 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/azure-spring-clean-devsecops-and-shifting-left-to-publish-secure-software/</guid>
+      <description>Hey folks,
+Welcome to #AzureSpringClean, an initiative from Joe Carlyle and Thomas Thornton which celebrates its 3rd edition this year. I&amp;rsquo;m thrilled to be part of this again for the 2nd time this year. My first article had security in mind, explaining the difference between Azure Service Principals and Managed Identity.
+For this second article, I&amp;rsquo;m staying in the security focus, helping you understand DevSecOps, and how you can optimize security in your application deployment lifecycle, by &amp;ldquo;shifting left&amp;rdquo;.</description>
+    </item>
+    
+  </channel>
+</rss>

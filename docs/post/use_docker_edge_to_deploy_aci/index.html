@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+    <script type="text/javascript">
+        !function(T,l,y){var S=T.location,u="script",k="instrumentationKey",D="ingestionendpoint",C="disableExceptionTracking",E="ai.device.",I="toLowerCase",b="crossOrigin",w="POST",e="appInsightsSDK",t=y.name||"appInsights";(y.name||T[e])&&(T[e]=t);var n=T[t]||function(d){var g=!1,f=!1,m={initialize:!0,queue:[],sv:"4",version:2,config:d};function v(e,t){var n={},a="Browser";return n[E+"id"]=a[I](),n[E+"type"]=a,n["ai.operation.name"]=S&&S.pathname||"_unknown_",n["ai.internal.sdkVersion"]="javascript:snippet_"+(m.sv||m.version),{time:function(){var e=new Date;function t(e){var t=""+e;return 1===t.length&&(t="0"+t),t}return e.getUTCFullYear()+"-"+t(1+e.getUTCMonth())+"-"+t(e.getUTCDate())+"T"+t(e.getUTCHours())+":"+t(e.getUTCMinutes())+":"+t(e.getUTCSeconds())+"."+((e.getUTCMilliseconds()/1e3).toFixed(3)+"").slice(2,5)+"Z"}(),iKey:e,name:"Microsoft.ApplicationInsights."+e.replace(/-/g,"")+"."+t,sampleRate:100,tags:n,data:{baseData:{ver:2}}}}var h=d.url||y.src;if(h){function a(e){var t,n,a,i,r,o,s,c,p,l,u;g=!0,m.queue=[],f||(f=!0,t=h,s=function(){var e={},t=d.connectionString;if(t)for(var n=t.split(";"),a=0;a<n.length;a++){var i=n[a].split("=");2===i.length&&(e[i[0][I]()]=i[1])}if(!e[D]){var r=e.endpointsuffix,o=r?e.location:null;e[D]="https://"+(o?o+".":"")+"dc."+(r||"services.visualstudio.com")}return e}(),c=s[k]||d[k]||"",p=s[D],l=p?p+"/v2/track":config.endpointUrl,(u=[]).push((n="SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details)",a=t,i=l,(o=(r=v(c,"Exception")).data).baseType="ExceptionData",o.baseData.exceptions=[{typeName:"SDKLoadFailed",message:n.replace(/\./g,"-"),hasFullStack:!1,stack:n+"\nSnippet failed to load ["+a+"] -- Telemetry is disabled\nHelp Link: https://go.microsoft.com/fwlink/?linkid=2128109\nHost: "+(S&&S.pathname||"_unknown_")+"\nEndpoint: "+i,parsedStack:[]}],r)),u.push(function(e,t,n,a){var i=v(c,"Message"),r=i.data;r.baseType="MessageData";var o=r.baseData;return o.message='AI (Internal): 99 message:"'+("SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details) ("+n+")").replace(/\"/g,"")+'"',o.properties={endpoint:a},i}(0,0,t,l)),function(e,t){if(JSON){var n=T.fetch;if(n&&!y.useXhr)n(t,{method:w,body:JSON.stringify(e),mode:"cors"});else if(XMLHttpRequest){var a=new XMLHttpRequest;a.open(w,t),a.setRequestHeader("Content-type","application/json"),a.send(JSON.stringify(e))}}}(u,l))}function i(e,t){f||setTimeout(function(){!t&&m.core||a()},500)}var e=function(){var n=l.createElement(u);n.src=h;var e=y[b];return!e&&""!==e||"undefined"==n[b]||(n[b]=e),n.onload=i,n.onerror=a,n.onreadystatechange=function(e,t){"loaded"!==n.readyState&&"complete"!==n.readyState||i(0,t)},n}();y.ld<0?l.getElementsByTagName("head")[0].appendChild(e):setTimeout(function(){l.getElementsByTagName(u)[0].parentNode.appendChild(e)},y.ld||0)}try{m.cookie=l.cookie}catch(p){}function t(e){for(;e.length;)!function(t){m[t]=function(){var e=arguments;g||m.queue.push(function(){m[t].apply(m,e)})}}(e.pop())}var n="track",r="TrackPage",o="TrackEvent";t([n+"Event",n+"PageView",n+"Exception",n+"Trace",n+"DependencyData",n+"Metric",n+"PageViewPerformance","start"+r,"stop"+r,"start"+o,"stop"+o,"addTelemetryInitializer","setAuthenticatedUserContext","clearAuthenticatedUserContext","flush"]),m.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4};var s=(d.extensionConfig||{}).ApplicationInsightsAnalytics||{};if(!0!==d[C]&&!0!==s[C]){method="onerror",t(["_"+method]);var c=T[method];T[method]=function(e,t,n,a,i){var r=c&&c(e,t,n,a,i);return!0!==r&&m["_"+method]({message:e,url:t,lineNumber:n,columnNumber:a,error:i}),r},d.autoExceptionInstrumented=!0}return m}(y.cfg);(T[t]=n).queue&&0===n.queue.length&&n.trackPageView({})}(window,document,{
+        src: "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js", 
+        
+        
+        
+        
+        cfg: { 
+            instrumentationKey: "4ecca3df-ab58-4882-903e-3ab2c030f009"
+             
+        }});
+        </script>
+    
+<head>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Azure Readiness starts here...">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="https://www.007ffflearning.com/img/home-bg-azure.jpg">
+    <meta property="twitter:image" content="https://www.007ffflearning.com/img/home-bg-azure.jpg" />
+    
+
+    
+    <meta name="title" content="Use Docker Edge to Deploy Azure Container Instance - ACI" />
+    <meta property="og:title" content="Use Docker Edge to Deploy Azure Container Instance - ACI" />
+    <meta property="twitter:title" content="Use Docker Edge to Deploy Azure Container Instance - ACI" />
+    
+
+    
+    <meta name="description" content="">
+    <meta property="og:description" content="" />
+    <meta property="twitter:description" content="" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="Azure, Learning, Certification, Technology">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>Use Docker Edge to Deploy Azure Container Instance - ACI-Azure Readiness Starts Here</title>
+
+    
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+	
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+    
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    
+    <script src="/js/jquery.min.js"></script>
+    
+    
+    <script src="/js/bootstrap.min.js"></script>
+    
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    
+
+    <script type="text/javascript">
+            var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){function n(e){t[e]=function(){var n=arguments;t.queue.push(function(){t[e].apply(t,n)})}}var t={config:e};t.initialize=!0;var i=document,a=window;setTimeout(function(){var n=i.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",i.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{t.cookie=i.cookie}catch(e){}t.queue=[],t.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var s="Track"+r[0];if(n("start"+s),n("stop"+s),n("setAuthenticatedUserContext"),n("clearAuthenticatedUserContext"),n("flush"),!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var o=a[r];a[r]=function(e,n,i,a,s){var c=o&&o(e,n,i,a,s);return!0!==c&&t["_"+r]({message:e,url:n,lineNumber:i,columnNumber:a,error:s}),c},e.autoExceptionInstrumented=!0}return t}(
+            {
+               instrumentationKey:"4f4ba091-4cff-4bd9-95e3-c5d564a1adde"
+            }
+            );window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
+    </script>
+
+</head>
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Azure Readiness starts here...</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                        
+                    
+                    
+		    
+                        <li><a href="/books/">BOOKS</a></li>
+                    
+                        <li><a href="/about/">ABOUT ME</a></li>
+                    
+
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/home-bg-azure.jpg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/azure" title="Azure">
+                            Azure
+                        </a>
+                        
+                        <a class="tag" href="/tags/docker" title="Docker">
+                            Docker
+                        </a>
+                        
+                        <a class="tag" href="/tags/containers" title="Containers">
+                            Containers
+                        </a>
+                        
+                        <a class="tag" href="/tags/aci" title="ACI">
+                            ACI
+                        </a>
+                        
+                    </div>
+                    <h1>Use Docker Edge to Deploy Azure Container Instance - ACI</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                                Azure Readiness starts here...
+                         
+                        on 
+                        Sunday, July 5, 2020
+                        
+                        
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    
+                </header>
+                
+                
+                <p>Hey there,</p>
+<p>At the recent DockerCon (virtual) Conference, Docker announced a more tightened partnership with Microsoft, boosting the adoption and integration of Docker containers for  Windows Server as well as Azure-running workloads. A first announcement involved a cool integration with Azure Container Instance (ACI), a low-level container runtime on Azure, allowing you to run a container without the typical complexity. While ACI has been around for 2 or more years already, it <strong>now becomes possible to manage and run your ACI-based containers directly from the Docker commandline</strong>.</p>
+<p>And that&rsquo;s exactly what I will guide you through in this post.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>This capability is in preview for now, and requiring <strong>Docker Desktop Edge 2.3.2</strong> (I&rsquo;ll show you how to upgrade if you already Run Docker)</li>
+<li>An Azure subscription, allowing you to deploy and run Azure Container Instance</li>
+<li>A sample Docker container (you can grab <a href="https://hub.docker.com/r/pdetender/simplcommerce/">my example</a> if you want, or use any other you like)</li>
+</ul>
+<h2 id="upgrading-to-edge-desktop">Upgrading to Edge Desktop</h2>
+<p>I was already running Docker Desktop on my Windows 10 machine, using Windows Subsystem for Linux (WSL) integration; I actually wrote <a href="https://www.007ffflearning.com/post/migrate-docker-desktop-to-wsl2/">another post</a> on this a few weeks ago, on how to get this up and running.</p>
+<ol>
+<li>From the Docker icon in the taskbar, select &ldquo;About Docker Desktop&rdquo;; this will show you the current version</li>
+</ol>
+<p><img src="../images/2020-07-05-01.jpg" alt="Current Docker Desktop"></p>
+<p>As you can see, I&rsquo;m using the <strong>stable</strong> version 2.3.0.3</p>
+<ol start="2">
+<li>Since I keep my demo containers in Docker Hub, I wasn&rsquo;t too worried about losing them. However, if you want to keep a backup of your current Docker images, know you can store these in a Linux-tar file, using</li>
+</ol>
+<pre><code>docker save -o &lt;nameforbackup.tar&gt; &lt;docker_image_name&gt;
+</code></pre><p><img src="../images/2020-07-05-02.jpg" alt="Save Docker Image"></p>
+<ol start="3">
+<li>Uninstall Docker Desktop, by searching for &ldquo;Docker Desktop&rdquo; in the Start Menu, right-click it and select &ldquo;Uninstall&rdquo;</li>
+</ol>
+<p><img src="../images/2020-07-05-03.jpg" alt="Uninstall Docker"></p>
+<p>Follow the instructions to have the software removed from your machine.</p>
+<p><img src="../images/2020-07-05-04.jpg" alt="Docker Removed"></p>
+<ol start="4">
+<li>From the <a href="http://www.docker.com">Docker</a> website, download the <strong>Docker Desktop Edge</strong> edition</li>
+</ol>
+<p><img src="../images/2020-07-05-05.jpg" alt="Select Docker Desktop Edge"></p>
+<p>Accept the options to create a desktop shortcut and allow the integration with WSL (if that is what you were using before&hellip;)</p>
+<p><img src="../images/2020-07-05-06.jpg" alt="Install Settings"></p>
+<p>Wait for the component install to complete</p>
+<p><img src="../images/2020-07-05-07.jpg" alt="Install Complete"></p>
+<p>After only a few minutes, Docker Desktop should run again fine. You can validate this from the Docker icon in the taskbar&rsquo;s notification area; if it shouldn&rsquo;t start automatically, you can start it from here as well, by right-clicking on it. (FYI, I actually had to restart my machine before it actually ran fine, but I am on Windows 10 Insider Preview 19640, if that should matter at all :))</p>
+<p><img src="../images/2020-07-05-08.jpg" alt="Docker Desktop Running"></p>
+<ol start="5">
+<li>Confirm Docker Desktop Edge is running fine from a <em>Docker Perspective</em> , by opening your Command Prompt, and running</li>
+</ol>
+<pre><code>Docker info
+</code></pre><p><img src="../images/2020-07-05-09.jpg" alt="Docker Info"></p>
+<p>Nice, that upgrade went smooth already!</p>
+<p>Before we move on to the next step, let&rsquo;s restore our previously used Docker Image (if you created the backup), by running the following command:</p>
+<pre><code>Docker load -i &lt;name_of_the_backupimage&gt;.tar
+
+</code></pre><p><img src="../images/2020-07-05-10.jpg" alt="Restore Docker Image"></p>
+<p>and validate by running</p>
+<pre><code>docker images
+</code></pre><p><img src="../images/2020-07-05-11.jpg" alt="Restore Docker Image"></p>
+<p>On to the next step&hellip; Now we are running the latest Docker Desktop Edge, it is time to play around with the newest Azure Container Instance (ACI) integration - which is the whole point of this blog post.</p>
+<p>In short, you go through the following steps:</p>
+<ul>
+<li>Authenticate to Azure, directly from Docker</li>
+<li>connect Docker to Azure Container Instance by creating a &ldquo;Docker Context&rdquo; (think of this as an environment with its own settings, much like dev/test, staging, production. Or in our case, the &ldquo;default context&rdquo; being your local machine running Docker, and the other one being &ldquo;Azure&rdquo;)</li>
+<li>Allocate a Docker Hub image to run as an Azure Container Instance, and run it</li>
+</ul>
+<h2 id="authenticate-to-azure-directly-from-docker">Authenticate to Azure, directly from Docker</h2>
+<p>The first feature that is part of the Docker Desktop Edge, is allowing us to authenticate to Azure, directly from the Docker engine. Initiate the following command:</p>
+<pre><code>Docker Login Azure
+</code></pre><p><img src="../images/2020-07-05-11b.jpg" alt="Authenticate to Azure"></p>
+<p>This will prompt you for your Azure subscription credentials in a browser, just like a regular Azure authentication prompt (this also recognizes MFA, to make this a rather secure option)</p>
+<h2 id="creating-a-docker-context">Creating a Docker Context</h2>
+<p>From your Command Prompt, create a new <strong>Docker Context</strong>, by running the following command:</p>
+<pre><code>docker context create aci &lt;name_for_the_context&gt;
+</code></pre><p>Based on the authenticated logon from the previous step, it will list up the different Azure subscriptions linked to your account; using the &ldquo;arrow&rdquo; keys, you can select the subscription you want to use. Next, it will list up the different Resource Group within your subscription.</p>
+<p><img src="../images/2020-07-05-12.jpg" alt="Create ACI Context"></p>
+<p>If you don&rsquo;t want to use an existing Resource Group, you can create a new one:</p>
+<p><img src="../images/2020-07-05-13.jpg" alt="Create ACI Context new RG"></p>
+<p>While this works, the naming convention for the newly created Resource Group is probably not going to work in any organization (naming convention policies etc&hellip;); so let&rsquo;s run this command again, and create a new context, based on an already existing Resource Group we want to use, by running the following command:</p>
+<pre><code>docker context create aci &lt;name_for_the_context&gt; --location &lt;azure_region_name&gt; --resource-group &lt;name_of_the_Azure_RG&gt; --subscription &lt;name_of_the_Azure_subscription&gt;
+</code></pre><p><img src="../images/2020-07-05-15.jpg" alt="Create ACI Context existing RG"></p>
+<p>The Docker Context, pointing to Azure ACI is available now. Let&rsquo;s continue with running an actual container in the next step.</p>
+<h2 id="running-your-aci-using-a-docker-hub-image">Running your ACI using a Docker Hub image</h2>
+<p>Running a Docker container within the ACI instance, is based on the exact same Docker command you would use if it was running on your local machine:</p>
+<pre><code>docker run -d -p &lt;portmapping&gt; &lt;name_of_the_container_image&gt;
+</code></pre><p>which looks like this for my example:</p>
+<p><img src="../images/2020-07-05-18.jpg" alt="Docker run container"></p>
+<p>where</p>
+<ul>
+<li><strong>80:80</strong> tells the container to run the workload on port 80, and expose it to the outside world on port 80 as well</li>
+<li><strong>pdetender/simplcommerce</strong> points to an e-commerce application container I have available in my Docker Hub repository</li>
+</ul>
+<p>At first, a new unique name for the Docker container runtime will get created (the &ldquo;trusting-cartright&rdquo;) in my example, followed by the deployment of a new Azure Container Instance</p>
+<p>In less than a minute, the job is completed successfully. Time to validate the running container. This - again - is identical to validating your running Docker container instances on your local machine:</p>
+<pre><code>docker ps
+</code></pre><p><img src="../images/2020-07-05-19.jpg" alt="ACI is running"></p>
+<p>which shows you the running container instance, as well as the necessary details about the public-IP address of the instance. From your browser, connect to this public IP address, and see our sample workload in action:</p>
+<p><img src="../images/2020-07-05-20.jpg" alt="ACI validate in browser"></p>
+<p>You can also validate this from the Azure Portal, by connecting to the Azure Container Instance (this could also be done from Azure CLI or Azure PowerShell to be complete&hellip;)</p>
+<p><img src="../images/2020-07-05-21.jpg" alt="ACI validate in portal"></p>
+<p>Wonderful! This new Docker Edge integration with ACI is a nice improvement, and saving several steps from the &ldquo;old way&rdquo;.</p>
+<p>This completes the core of what I wanted to discuss in this post, showing you the nice capabilities from Docker Desktop Edge, to natively deploy and run an Azure Container Instance.</p>
+<h2 id="running-your-aci-using-an-azure-container-registry-acr-image">Running your ACI using an Azure Container Registry (ACR) image</h2>
+<p>&lt;these steps are not required anymore as part of the process, but just wanted to do some additional testing :)&gt;</p>
+<p>The previous example was using a public Docker Hub container image. So I was wondering if this would also work for a (private) Docker image I already have in my Azure Container Registry. Let&rsquo;s give it a try:</p>
+<ol>
+<li>create a new Docker Context for ACI</li>
+</ol>
+<p><img src="../images/2020-07-05-23.jpg" alt="ACI context creation"></p>
+<ol start="2">
+<li>Run the Docker Container, pointing to the Azure Container Registry image</li>
+</ol>
+<p><img src="../images/2020-07-05-24.jpg" alt="run ACR image"></p>
+<p>Hmm, that&rsquo;s an interesting error message&hellip; something &ldquo;gcloud&rdquo; related (=Google Cloud Platform :)). After some searching on the interwebs, it seems like my Docker instance is having some default authentication providers in its config.json file&hellip; interesting</p>
+<p><img src="../images/2020-07-05-25.jpg" alt="config.json"></p>
+<p>Apparently it is safe to remove the section &ldquo;CredHelpers&rdquo;, saving the file and running the &ldquo;Docker Run&rdquo; again:</p>
+<p><img src="../images/2020-07-05-26.jpg" alt="run ACR image"></p>
+<p>While that weird gcloud error is gone, we are not quite there yet. But this error makes more sense to me. What it says here, is that the Docker Context cannot connect to the Azure Container Registry. Of course not, I need to authenticate to ACR first (<strong>az acr login</strong>), just like when I am running this locally on my machine:</p>
+<p>where -g refers to the name of the Resource Group having the Azure Container Registry, and -n refers to the name of the Azure Container Registry itself</p>
+<p>which works much better now; similar to the first example, a new Azure Container Instance is getting deployed:</p>
+<p><img src="../images/2020-07-05-27.jpg" alt="az acr login"></p>
+<p>Let&rsquo;s validate once more by initiating &ldquo;docker ps&rdquo;, which shows the following:</p>
+<p><img src="../images/2020-07-05-28.jpg" alt="docker ps"></p>
+<p>and checking from the browser, if the workload is actually showing what it needs to show (note it is the same workload, just a different product category):</p>
+<p><img src="../images/2020-07-05-29.jpg" alt="workload runs"></p>
+<p>and lastly, checking back on what it looks like from the Azure Portal</p>
+<p><img src="../images/2020-07-05-31.jpg" alt="ACI running in portal"></p>
+<p>I love this!!</p>
+<h2 id="summary">Summary</h2>
+<p>In this post, I introduced you to a brand new capability from Docker Desktop Edge, providing a direct (native almost) integration with Azure Container Instance. This allows you to deploy and run a container instance on Azure, without much hassle. I showed you how this works with public Docker Hub images, as well as with more private images from an Azure Container Registry.</p>
+<p><a href="https://www.buymeacoffee.com/pdtit"><img src="../images/buy_me_a_coffee.png" alt="BuyMeACoffee"></a></p>
+
+
+                
+
+                <hr>
+                
+
+                
+<div id="disqus-comment"></div>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/ai" title="ai">
+                            ai
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/aks" title="aks">
+                            aks
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/application-insights" title="application-insights">
+                            application-insights
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/azure" title="azure">
+                            azure
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/azure-devops" title="azure-devops">
+                            azure-devops
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/bing" title="bing">
+                            bing
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/blazor" title="blazor">
+                            blazor
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/books" title="books">
+                            books
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/certification" title="certification">
+                            certification
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/containers" title="containers">
+                            containers
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/devops" title="devops">
+                            devops
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/devsecops" title="devsecops">
+                            devsecops
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/docker" title="docker">
+                            docker
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/dotnet" title="dotnet">
+                            dotnet
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/ebooks" title="ebooks">
+                            ebooks
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/hugo" title="hugo">
+                            hugo
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/kubernetes" title="kubernetes">
+                            kubernetes
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/learning" title="learning">
+                            learning
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/packt" title="packt">
+                            packt
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/security" title="security">
+                            security
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/sre" title="sre">
+                            sre
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/terraform" title="terraform">
+                            terraform
+                        </a>
+                        
+                        
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                   
+                   <li>
+                       <a href='' rel="alternate" type="application/rss+xml" title="Azure Readiness starts here..." >
+                           <span class="fa-stack fa-lg">
+                               <i class="fa fa-circle fa-stack-2x"></i>
+                               <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+                   
+                    
+                    <li>
+                        <a href="mailto:info@007ffflearning.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    <li>
+                        <a href="http://www.twitter.com/pdtit">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+
+                    
+
+		    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/petender">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/pdtit/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+                </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Azure Readiness starts here... 2024
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+</body>
+</html>

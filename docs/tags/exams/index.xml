@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Exams on Azure Readiness starts here...</title>
+    <link>https://www.007ffflearning.com/tags/exams/</link>
+    <description>Recent content in Exams on Azure Readiness starts here...</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 25 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/exams/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Updated Azure Exams Announced</title>
+      <link>https://www.007ffflearning.com/post/updated-azure-exams/</link>
+      <pubDate>Sat, 25 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/updated-azure-exams/</guid>
+      <description>Things are going fast in the Azure world, and apparently exams are more and more following that pace. Before you start screaming and worrying, as you might be preparing for a current exam, let me share a bit about several steps happening before an exam becomes available.
+Exam Objectives (OD) For a long time, Microsoft Learning has based exams on &amp;ldquo;exam objectives&amp;rdquo;, which is typically a list of &amp;ldquo;services, features, activities&amp;rdquo; anyone taking the exam, should master.</description>
+    </item>
+    
+  </channel>
+</rss>

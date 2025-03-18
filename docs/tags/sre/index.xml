@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SRE on Azure Readiness starts here...</title>
+    <link>https://www.007ffflearning.com/tags/sre/</link>
+    <description>Recent content in SRE on Azure Readiness starts here...</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 09 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/sre/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Azure Back to School - Achieving SRE on Azure</title>
+      <link>https://www.007ffflearning.com/post/achieving-sre-on-azure/</link>
+      <pubDate>Sat, 09 Sep 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/achieving-sre-on-azure/</guid>
+      <description>Disclaimer: this was supposed to be a recorded session for Azure Back To School 2023, but due to a too-busy-work-and-family-schedule over the last 2 weeks, I didn&amp;rsquo;t find the time anymore. While I don&amp;rsquo;t like to let down this amazing community, I hope the textual descriptions of what I was going to talk about is still appreciated.
+Achieving Site Reliability Engineering with Azure In today&amp;rsquo;s digitally driven landscape, ensuring the reliability of cloud-based applications and services is paramount.</description>
+    </item>
+    
+    <item>
+      <title>Intro to Chaos Engineering and Azure Chaos Studio (Preview)</title>
+      <link>https://www.007ffflearning.com/post/intro-to-chaos-engineering-and-azure-chaos-studio-preview/</link>
+      <pubDate>Sun, 27 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/intro-to-chaos-engineering-and-azure-chaos-studio-preview/</guid>
+      <description>Hey folks,
+For the ones who have been following me here for a while, know I&amp;rsquo;m passionate about Azure and DevOps (and yes, also Azure DevOps, lol). But to be honest, I&amp;rsquo;ve been eyeing to another Azure Service for a while, Azure Chaos Studio, available in public preview.
+This article shares an introduction to Chaos Engineering, as well as walks you through the first steps it takes to set up Azure Chaos Studio, create experiments and validate the outcome.</description>
+    </item>
+    
+  </channel>
+</rss>

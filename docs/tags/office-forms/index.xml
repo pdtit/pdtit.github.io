@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Office Forms on Azure Readiness starts here...</title>
+    <link>https://www.007ffflearning.com/tags/office-forms/</link>
+    <description>Recent content in Office Forms on Azure Readiness starts here...</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 26 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/office-forms/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Collecting Feedback in ADO work items from Office Forms</title>
+      <link>https://www.007ffflearning.com/post/collecting-feedback-in-ado-work-items-from-office-forms/</link>
+      <pubDate>Sun, 26 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/collecting-feedback-in-ado-work-items-from-office-forms/</guid>
+      <description>Hey folks,
+I&amp;rsquo;m a fond user of Azure DevOps for testing application builds, running CI/CD pipelines to publish Azure demo scenarios and train our Microsoft global customers on it every few weeks out of AZ-400 training deliveries.
+One of the lesser-known, yet AWESOMELY POWERFUL features besides &amp;lsquo;running pipelines&amp;rsquo; is Azure Boards, providing an end-to-end project methodology platform using Scrum, Agile, CMMI or custom approach.
+In this post, I mainly wanted to zoom in on the custom capabilities, capturing feedback from employees - which got entered through an Office Forms form, picked up by Azure Logic Apps, and stored in a customized Azure Boards Work Item.</description>
+    </item>
+    
+  </channel>
+</rss>

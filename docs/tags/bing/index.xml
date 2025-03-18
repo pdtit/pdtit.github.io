@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bing on Azure Readiness starts here...</title>
+    <link>https://www.007ffflearning.com/tags/bing/</link>
+    <description>Recent content in Bing on Azure Readiness starts here...</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 10 May 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/bing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Use Bing Desktop Wallpapers as background images in Teams calls</title>
+      <link>https://www.007ffflearning.com/post/use-bing-wallpaper-as-background-in-teams/</link>
+      <pubDate>Sun, 10 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/use-bing-wallpaper-as-background-in-teams/</guid>
+      <description>A few days ago, I blogged about Bing Desktop Wallpapers, a nice little tool you can install on your Windows Machine to enjoy some of the amazing views of the world.
+Knowing these got stored on your local machine as JPEGs (C:\Users&amp;lt;user&amp;gt;\AppData\Local\Microsoft\BingWallpaperApp\WPImages), got me the idea to reuse these as &amp;ldquo;Teams Backgrounds&amp;rdquo; during video calls.
+As the Bing Wallpaper gets updated every day, it would be nice to have a different image in Teams&amp;hellip; every day.</description>
+    </item>
+    
+    <item>
+      <title>Bing Desktop Wallpapers take you on a trip around the world</title>
+      <link>https://www.007ffflearning.com/post/bing-wallpaper/</link>
+      <pubDate>Sun, 19 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/bing-wallpaper/</guid>
+      <description>Due to COVID19, my traveling rhythm went down from an avg 90% the last six years, to 0%. I have never been that much at home without travel than in these last 5 weeks (and a few more to come).
+While the primary reason for my travel is business related, every now and then, I have the opportunity to enjoy the area, if even only for a short moment, or in-between delivering sessions.</description>
+    </item>
+    
+  </channel>
+</rss>

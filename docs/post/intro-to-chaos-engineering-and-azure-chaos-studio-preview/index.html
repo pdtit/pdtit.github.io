@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+    <script type="text/javascript">
+        !function(T,l,y){var S=T.location,u="script",k="instrumentationKey",D="ingestionendpoint",C="disableExceptionTracking",E="ai.device.",I="toLowerCase",b="crossOrigin",w="POST",e="appInsightsSDK",t=y.name||"appInsights";(y.name||T[e])&&(T[e]=t);var n=T[t]||function(d){var g=!1,f=!1,m={initialize:!0,queue:[],sv:"4",version:2,config:d};function v(e,t){var n={},a="Browser";return n[E+"id"]=a[I](),n[E+"type"]=a,n["ai.operation.name"]=S&&S.pathname||"_unknown_",n["ai.internal.sdkVersion"]="javascript:snippet_"+(m.sv||m.version),{time:function(){var e=new Date;function t(e){var t=""+e;return 1===t.length&&(t="0"+t),t}return e.getUTCFullYear()+"-"+t(1+e.getUTCMonth())+"-"+t(e.getUTCDate())+"T"+t(e.getUTCHours())+":"+t(e.getUTCMinutes())+":"+t(e.getUTCSeconds())+"."+((e.getUTCMilliseconds()/1e3).toFixed(3)+"").slice(2,5)+"Z"}(),iKey:e,name:"Microsoft.ApplicationInsights."+e.replace(/-/g,"")+"."+t,sampleRate:100,tags:n,data:{baseData:{ver:2}}}}var h=d.url||y.src;if(h){function a(e){var t,n,a,i,r,o,s,c,p,l,u;g=!0,m.queue=[],f||(f=!0,t=h,s=function(){var e={},t=d.connectionString;if(t)for(var n=t.split(";"),a=0;a<n.length;a++){var i=n[a].split("=");2===i.length&&(e[i[0][I]()]=i[1])}if(!e[D]){var r=e.endpointsuffix,o=r?e.location:null;e[D]="https://"+(o?o+".":"")+"dc."+(r||"services.visualstudio.com")}return e}(),c=s[k]||d[k]||"",p=s[D],l=p?p+"/v2/track":config.endpointUrl,(u=[]).push((n="SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details)",a=t,i=l,(o=(r=v(c,"Exception")).data).baseType="ExceptionData",o.baseData.exceptions=[{typeName:"SDKLoadFailed",message:n.replace(/\./g,"-"),hasFullStack:!1,stack:n+"\nSnippet failed to load ["+a+"] -- Telemetry is disabled\nHelp Link: https://go.microsoft.com/fwlink/?linkid=2128109\nHost: "+(S&&S.pathname||"_unknown_")+"\nEndpoint: "+i,parsedStack:[]}],r)),u.push(function(e,t,n,a){var i=v(c,"Message"),r=i.data;r.baseType="MessageData";var o=r.baseData;return o.message='AI (Internal): 99 message:"'+("SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details) ("+n+")").replace(/\"/g,"")+'"',o.properties={endpoint:a},i}(0,0,t,l)),function(e,t){if(JSON){var n=T.fetch;if(n&&!y.useXhr)n(t,{method:w,body:JSON.stringify(e),mode:"cors"});else if(XMLHttpRequest){var a=new XMLHttpRequest;a.open(w,t),a.setRequestHeader("Content-type","application/json"),a.send(JSON.stringify(e))}}}(u,l))}function i(e,t){f||setTimeout(function(){!t&&m.core||a()},500)}var e=function(){var n=l.createElement(u);n.src=h;var e=y[b];return!e&&""!==e||"undefined"==n[b]||(n[b]=e),n.onload=i,n.onerror=a,n.onreadystatechange=function(e,t){"loaded"!==n.readyState&&"complete"!==n.readyState||i(0,t)},n}();y.ld<0?l.getElementsByTagName("head")[0].appendChild(e):setTimeout(function(){l.getElementsByTagName(u)[0].parentNode.appendChild(e)},y.ld||0)}try{m.cookie=l.cookie}catch(p){}function t(e){for(;e.length;)!function(t){m[t]=function(){var e=arguments;g||m.queue.push(function(){m[t].apply(m,e)})}}(e.pop())}var n="track",r="TrackPage",o="TrackEvent";t([n+"Event",n+"PageView",n+"Exception",n+"Trace",n+"DependencyData",n+"Metric",n+"PageViewPerformance","start"+r,"stop"+r,"start"+o,"stop"+o,"addTelemetryInitializer","setAuthenticatedUserContext","clearAuthenticatedUserContext","flush"]),m.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4};var s=(d.extensionConfig||{}).ApplicationInsightsAnalytics||{};if(!0!==d[C]&&!0!==s[C]){method="onerror",t(["_"+method]);var c=T[method];T[method]=function(e,t,n,a,i){var r=c&&c(e,t,n,a,i);return!0!==r&&m["_"+method]({message:e,url:t,lineNumber:n,columnNumber:a,error:i}),r},d.autoExceptionInstrumented=!0}return m}(y.cfg);(T[t]=n).queue&&0===n.queue.length&&n.trackPageView({})}(window,document,{
+        src: "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js", 
+        
+        
+        
+        
+        cfg: { 
+            instrumentationKey: "4ecca3df-ab58-4882-903e-3ab2c030f009"
+             
+        }});
+        </script>
+    
+<head>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Azure Readiness starts here...">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="https://www.007ffflearning.com/img/home-bg-azure.jpg">
+    <meta property="twitter:image" content="https://www.007ffflearning.com/img/home-bg-azure.jpg" />
+    
+
+    
+    <meta name="title" content="Intro to Chaos Engineering and Azure Chaos Studio (Preview)" />
+    <meta property="og:title" content="Intro to Chaos Engineering and Azure Chaos Studio (Preview)" />
+    <meta property="twitter:title" content="Intro to Chaos Engineering and Azure Chaos Studio (Preview)" />
+    
+
+    
+    <meta name="description" content="">
+    <meta property="og:description" content="" />
+    <meta property="twitter:description" content="" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="Azure, Learning, Certification, Technology">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>Intro to Chaos Engineering and Azure Chaos Studio (Preview)-Azure Readiness Starts Here</title>
+
+    
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+	
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+    
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    
+    <script src="/js/jquery.min.js"></script>
+    
+    
+    <script src="/js/bootstrap.min.js"></script>
+    
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    
+
+    <script type="text/javascript">
+            var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){function n(e){t[e]=function(){var n=arguments;t.queue.push(function(){t[e].apply(t,n)})}}var t={config:e};t.initialize=!0;var i=document,a=window;setTimeout(function(){var n=i.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",i.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{t.cookie=i.cookie}catch(e){}t.queue=[],t.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var s="Track"+r[0];if(n("start"+s),n("stop"+s),n("setAuthenticatedUserContext"),n("clearAuthenticatedUserContext"),n("flush"),!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var o=a[r];a[r]=function(e,n,i,a,s){var c=o&&o(e,n,i,a,s);return!0!==c&&t["_"+r]({message:e,url:n,lineNumber:i,columnNumber:a,error:s}),c},e.autoExceptionInstrumented=!0}return t}(
+            {
+               instrumentationKey:"4f4ba091-4cff-4bd9-95e3-c5d564a1adde"
+            }
+            );window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
+    </script>
+
+</head>
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Azure Readiness starts here...</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                        
+                    
+                    
+		    
+                        <li><a href="/books/">BOOKS</a></li>
+                    
+                        <li><a href="/about/">ABOUT ME</a></li>
+                    
+
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/home-bg-azure.jpg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/azure" title="Azure">
+                            Azure
+                        </a>
+                        
+                        <a class="tag" href="/tags/sre" title="SRE">
+                            SRE
+                        </a>
+                        
+                        <a class="tag" href="/tags/chaos-studio" title="Chaos Studio">
+                            Chaos Studio
+                        </a>
+                        
+                    </div>
+                    <h1>Intro to Chaos Engineering and Azure Chaos Studio (Preview)</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                                Azure Readiness starts here...
+                         
+                        on 
+                        Sunday, August 27, 2023
+                        
+                        
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    
+                </header>
+                
+                
+                <p>Hey folks,</p>
+<p>For the ones who have been following me here for a while, know I&rsquo;m passionate about Azure and DevOps (and yes, also Azure DevOps, lol). But to be honest, I&rsquo;ve been eyeing to another Azure Service for a while, <strong>Azure Chaos Studio</strong>, available in public preview.</p>
+<p>This article shares an introduction to Chaos Engineering, as well as walks you through the first steps it takes to set up <strong>Azure Chaos Studio</strong>, create experiments and validate the outcome.</p>
+<p>Let&rsquo;s have a look.</p>
+<h1 id="introduction-to-chaos-engineering">Introduction to Chaos Engineering</h1>
+<p>Chaos Engineering is:</p>
+<h2 id="the-discipline-of-experimenting-on-a-system-in-order-to-build-confidence-in-the-systems-capability-to-withstand-turbulent-conditions-in-production"><em>the discipline of experimenting on a system in order to build confidence in the system’s capability to withstand turbulent conditions in production</em>.##</h2>
+<p>Source: <a href="https://principlesofchaos.org/">https://principlesofchaos.org/</a></p>
+<p>Chaos Engineering is all about experimenting <em>– typically against production-running systems–</em> to identify and find loopholes, pitfalls if you want, in the way the system is running, which makes the system less reliable.
+The more loopholes we can identify upfront, the more confidence we can have in the system’s reliability. By introducing a series of event simulations, whether based on real incidents happened earlier or based on simulated outages that could happen, we target our workloads and learn from its impact.</p>
+<h2 id="the-curious-case-of-cpu-pressure---part-i">The curious case of CPU Pressure - Part I</h2>
+<p>Let&rsquo;s take CPU pressure as an easy use case.</p>
+<p>Imagine a workload is running fine for months, with an average CPU load that’s keeping the system running healthy. Suddenly, a CPU spike occurs and crashes the application. Apart from troubleshooting the root cause of the CPU spike, probably a task for engineering or development teams, it might be equally relevant to find out why the system reacted with a crash of the application. Even more so, if we could have simulated a CPU spike happening, our engineering and development teams could have focused on mitigating the problem by releasing a fix, updating the architecture to an even more fault-tolerant setup.</p>
+<p>Don’t get me wrong though, as <strong>Chaos Engineering</strong> is a lot more than injecting outage triggers (faults) to bring production environments to their knees. There’s a lot more complexity involved, especially since an outage is typically not caused by one single failure, but more of a series of incidents.</p>
+<h2 id="the-curious-case-of-cpu-pressure---part-ii">The curious case of CPU Pressure - Part II</h2>
+<p>Reusing the CPU pressure example, one could consider a scenario where CPU is spiking, because of a latency in database operations, putting a calculation or database update on hold. Or maybe there is a network connectivity issue, by which an operation cannot be written to the database back end, causing so many retry operations, which spikes CPU. So instead of just “simulating” the CPU spike, it is also important to capture all possible side effects that could cause a CPU pressure.</p>
+<p>Which – to me – also explains why it’s called an engineering discipline, as there is quite some engineering involved in all the interactions across different systems, components, and workloads.</p>
+<p>Now, you might think that Chaos Engineering is the next big thing (maybe even coming after SRE and DevOps?), but yet too revolutionary for your cloud environments. But nothing is more wrong.</p>
+<h2 id="netflixs-chaos-monkey">Netflix&rsquo;s Chaos Monkey</h2>
+<p>In fact, Chaos Engineering has been around for <strong>more than ten years</strong> already, initiated by software engineers from Netflix around 2008, when they started migrating from on-premises data centers to public cloud data centers. While there are a lot of similarities between managing your own data center and using public cloud, there are also big differences. It was mainly those differences that forced Netflix’s engineers to create services architectures with higher resiliency.</p>
+<p>Going through the testing related to this cloud migration resulted in the creation of an <strong>internally developed Chaos Orchestration tool around 2010, branded Chaos Monkey</strong>, which was publicized as an open source product in 2012. More information on the tool and how to use it is available <a href="https://github.com/netflix/chaosmonkey">on GitHub</a>.</p>
+<p><img src="../images/chaos_monkey_logo.png" alt="Chaos Monkey Logo"></p>
+<p>Netflix designed Chaos Monkey to allow them to validate the stability of their production-running workloads (the Streaming Service we all use), which was running on Amazon Web Services (EC2 VM Instances). The main purpose of Chaos Monkey was detecting how their systems would respond to critical components being taken down. By intentionally shutting down workloads, it would become clear what weaknesses are present in the total topology and allow the engineering teams to work toward mitigation.</p>
+<h1 id="introduction-to-azure-chaos-studio">Introduction to Azure Chaos Studio</h1>
+<p>Azure Chaos Studio is provided <em>as a service</em>, which means you don’t have to deploy your own infrastructure first to get it up and running. <strong>Azure Chaos Studio Preview</strong> is a fully managed chaos engineering experimentation platform for accelerating discovery of hard-to-find problems, from late-stage development through production. Disrupt your apps and its corresponding Azure resources (Virtual Machines, Network Security Groups, App Services, Cosmos DB, Azure Kubernetes Service, Azure KeyVault and more&hellip;) intentionally to identify gaps and plan mitigations before your users or customers are impacted by a problem.</p>
+<p>Experiment by subjecting your Azure apps to real or simulated faults in a controlled manner to better understand application resiliency. Observe how your apps will respond to real-world disruptions such as network latency, an unexpected storage outage, expiring secrets, or even a full datacenter outage.</p>
+<p>Thanks to Azure Chaos Studio, one can validate product quality where and when it makes sense for your organization. Use the continuously expanding library of faults, which includes CPU pressure, network latency, blocked resource access, and even infrastructure outages. Drive application resilience by performing ad-hoc drills, integrate with your CI/CD pipeline, or do both to monitor production quality through continuous validation.</p>
+<p>Avoid the need to manage tools and scripts while spending more time learning about your application&rsquo;s resilience. Get started quickly with experiment templates and an expanding library of faults—including agent-based faults that disrupt within resources and service-based faults that disrupt resources at the control plane.</p>
+<h2 id="deploying-azure-chaos-studio">Deploying Azure Chaos Studio</h2>
+<ol>
+<li>
+<p>The first thing you need to check is to make sure the <strong>“Microsoft.Chaos” Azure Resource Provider</strong> is enabled (registered) in your subscription. To do that, open your Azure portal, and search for Subscriptions.</p>
+</li>
+<li>
+<p>Select the subscription in which you want to enable Azure Chaos Studio. From within the detailed blade, select “Resource Providers” under the Settings pane, and search for “Chaos”. Select “Microsoft.Chaos” and click “Register” in the top menu; give it a few minutes, until the Status column shows “Registered”.</p>
+</li>
+</ol>
+<p><img src="../images/2023-08-27_17-30-26.png" alt="Microsoft Chaos Resource Provider"></p>
+<ol start="3">
+<li>
+<p>Following the Zero Trust concept of least privileges, Chaos Studio requires a <strong>User-Managed Identity</strong> as Identity security object, to interact with the Azure Resource Targets. To create this, click <strong>Create New Resource</strong>, and search for <strong>User Managed Identity</strong>.</p>
+</li>
+<li>
+<p>Complete the necessary parameters in the setup blade:</p>
+</li>
+</ol>
+<ul>
+<li>Azure Subscription</li>
+<li>Azure Resource Group</li>
+<li>Region</li>
+<li>Name for the Chaos MI object</li>
+</ul>
+<p><img src="../images/2023-08-25_7-46-53.png" alt="Chaos Studio MI"></p>
+<ol start="5">
+<li>Chaos Studio relies on <strong>Application Insights</strong> and underlying Log Analytics WorkSpace to store metadata of the service (my assumption is, that in a later stage, this will be used to store the actual logging of the executed experiments and Target resources' behavior). From the Azure Portal, select <strong>Create New Resource</strong> and search for <strong>Application Insights</strong>.</li>
+</ol>
+<p>Specify the necessary parameters for the deployment:</p>
+<ul>
+<li>Azure Subscription</li>
+<li>Azure Resource Group</li>
+<li>Name for the Application Insights resource, e.g. <strong>ChaosAppInsights</strong></li>
+<li>Resource Mode: <strong>Workspace-based</strong></li>
+</ul>
+<p><img src="../images/2023-08-25_8-00-29.png" alt="Chaos App Insights"></p>
+<ol start="6">
+<li>From the Azure Portal, search for <strong>Azure Chaos Studio</strong>.</li>
+</ol>
+<p><img src="../images/2023-08-27_17-33-17.png" alt="Welcome to Chaos Studio"></p>
+<ol start="7">
+<li>Select <strong>Onboard Resources</strong>. This brings you to the <strong>Targets</strong> section of the blade.</li>
+</ol>
+<p><img src="../images/2023-08-25_7-59-03.png" alt="Chaos Studio Targets"></p>
+<ol start="8">
+<li>Here, you can filter for specific subscriptions or specific Resource Groups (or both), where next, you need to select the <strong>Azure Resource(s)</strong> you want to use as a target. A target can be a Virtual Machine, both Windows and Linux OS are supported, as well as Virtual Machine Scale Sets (VMSS). This approach requires the installation of the <strong>Chaos Studio Agent</strong> on the VMs as part of the Target setup.</li>
+</ol>
+<p>Non-Azure VM services such as App Services, Azure Key Vault, Network Security Groups, Cosmos DB and Azure Kubernetes Service (AKS) rely on the <strong>Service-Direct</strong> scenario, without the agent dependency.</p>
+<h2 id="onboarding-an-azure-vm-to-chaos-studio">Onboarding an Azure VM to Chaos Studio</h2>
+<ol>
+<li>In this example, I’m going to target a Windows Server Virtual machine, selecting it, which unlocks the “Enable Targets” menu option. From here, select <strong>Enable agent-based targets (VM, VMSS)</strong> from the menu.</li>
+</ol>
+<p><img src="../images/2023-08-25_7-59-24.png" alt="Chaos Studio VM Target"></p>
+<ol start="2">
+<li>This will open the <strong>Enable agent targets</strong> blade. Provide the necessary parameters for the deployment:</li>
+</ol>
+<ul>
+<li>Subscription</li>
+<li>Azure Managed Identity you created in the previous steps</li>
+<li>Application Insights account you created for Chaos Studio</li>
+</ul>
+<p><img src="../images/2023-08-25_8-03-07.png" alt="Chaos Studio VM Agent Target"></p>
+<ol start="3">
+<li>Wait for the deployment to complete.</li>
+</ol>
+<h2 id="onboarding-a-non-azure-vm-to-chaos-studio">Onboarding a non-Azure VM to Chaos Studio</h2>
+<ol>
+<li>In this next example, I&rsquo;m going to target several other Azure Resources as Chaos Target. Starting with a <strong>Network Security Group</strong>.</li>
+</ol>
+<p><img src="../images/2023-08-25_8-04-34.png" alt="Chaos Studio non-VM Agent Target"></p>
+<p>This opens the Enable service direct targets blade. Click <strong>Review and Enable</strong> to complete the step.</p>
+<p><img src="../images/2023-08-25_8-04-49.png" alt="Chaos Studio non-VM Agent Target"></p>
+<p>If you want, you can add additional non-Azure VM Resources in this scenario. For example, I included my Azure Kubernetes Service (AKS) resource, as well as Azure Key Vault.</p>
+<h2 id="creating-the-vm-target-experiment">Creating the VM Target Experiment</h2>
+<p>In this next section, you will learn how to create an Azure VM Experiment and simulating <strong>CPU Pressure</strong>.</p>
+<ol>
+<li>With the VM Chaos Agent installed, it can now be used as a proper target for a Chaos Experiment. From the <strong>Chaos Studio Blade</strong>, select <strong>Experiments</strong>, select <strong>New Experiment</strong>.</li>
+</ol>
+<p><img src="../images/2023-08-25_8-05-53.png" alt="Chaos Studio Experiment"></p>
+<ol start="2">
+<li>Under the <strong>Basics</strong> tab, complete the necessary base information:</li>
+</ol>
+<ul>
+<li>Subscription</li>
+<li>Resource Group</li>
+<li>Name: Unique descriptive name for the experiment, e.g. <strong>CPUSpike</strong></li>
+<li>Region of choice</li>
+</ul>
+<p><img src="../images/2023-08-25_8-06-17.png" alt="Chaos Studio Experiment Basics"></p>
+<ol start="3">
+<li>Click <strong>Next</strong> to define the <strong>Permissions</strong>. Here, you allocate a new <strong>Managed Identity</strong> Identity security object to the experiment itself. Later on, you need to provide the necessary IAM/RBAC (Role Based Access Control) permissions for this Experiment to the Azure Target Resource.</li>
+</ol>
+<p><img src="../images/2023-08-25_8-06-34.png" alt="Chaos Studio Experiment Basics"></p>
+<ol start="4">
+<li>Click <strong>Next</strong> to open the <strong>Experiment Designer</strong></li>
+</ol>
+<p><img src="../images/2023-08-25_8-06-50.png" alt="Chaos Studio Experiment Basics"></p>
+<p>The logical structure is based on <strong>Steps</strong>, containing <strong>Branches</strong>. Within a Branch, you specify the actual <strong>Fault Action</strong> or <strong>Delay</strong>.</p>
+<p>Steps are running in <strong>parallel</strong>, where Actions are executed <strong>Sequential</strong>.</p>
+<p>Click <strong>+ Action</strong>, and select <strong>Add Fault</strong>. This opens a list of possible fault injections for all resources.</p>
+<p><img src="../images/2023-08-25_8-07-07.png" alt="Chaos Studio Faults"></p>
+<ol start="5">
+<li>From the list of faults, select <strong>CPU Pressure</strong>. Next, specify the <strong>Duration</strong> parameter (10 minutes seems a fair test) and set <strong>pressureLevel</strong> to 95, meaning a CPU Pressure of 95% during 10 minutes.</li>
+</ol>
+<p><img src="../images/2023-08-25_8-07-19.png" alt="Chaos Studio Experiment Basics"></p>
+<ol start="6">
+<li>Next, allocate the Azure Target Resource. In our example, select the VM you deployed earlier as sample target.</li>
+</ol>
+<p><img src="../images/2023-08-25_8-07-30.png" alt="Chaos Studio Experiment Basics"></p>
+<ol start="7">
+<li>A new Experiment Resource got created.</li>
+</ol>
+<p><img src="../images/2023-08-25_8-08-56.png" alt="Chaos Studio Experiment Basics"></p>
+<ol start="8">
+<li>Before the experiment can run successful, its corresponding Managed Identity needs to have the correct <strong>RBAC/IAM permissions</strong> on the target resource. <strong>Navigate to the Azure VM</strong> from the Azure Portal, and select Access Control/IAM.</li>
+</ol>
+<p><img src="../images/2023-08-25_8-09-28.png" alt="Chaos Studio Experiment Basics"></p>
+<ol start="9">
+<li>Different Azure Target Resources require different Chaos Experiment RBAC permissions. For an Azure VM, <strong>Reader</strong> permissions is sufficient.</li>
+</ol>
+<p><strong>Note: for an overview of what RBAC permission is required for each Azure Resource, check <a href="https://learn.microsoft.com/en-us/azure/chaos-studio/chaos-studio-fault-providers">this link</a> in the Azure Docs.</strong></p>
+<p>From <strong>Add Role Assignment</strong>, select <strong>Reader</strong> as <strong>Selected Role</strong>. In the <strong>Assign Access to</strong> step, select <strong>Managed Identity</strong> and open the Chaos Experiment section under the Managed Identity section. Select the <strong>CPUSpike</strong> Experiment Resource.</p>
+<p><img src="../images/2023-08-25_8-09-56.png" alt="Chaos Studio Experiment Basics"></p>
+<ol start="10">
+<li>With the permissions allocated, navigate back to the <strong>CPUSpike</strong> Experiment in the Chaos Studio blade, and click <strong>Run</strong>.</li>
+</ol>
+<p>The Experiment Task will start, and run for 10 minutes.</p>
+<p><img src="../images/2023-08-25_8-10-35.png" alt="Chaos Studio Experiment Basics"></p>
+<ol start="11">
+<li>Wait for the Experiment to change to <strong>Running</strong> state.</li>
+</ol>
+<p><img src="../images/2023-08-25_8-12-55.png" alt="Chaos Studio Experiment Basics"></p>
+<ol start="12">
+<li>With the experiment running, navigate to the <strong>Azure VM</strong> your testing against, and open its <strong>Metrics</strong>. From the Metrics blade, select <strong>Percent CPU</strong> under Metric in the graph, and watch the real-time CPU load.</li>
+</ol>
+<p><img src="../images/2023-08-25_8-13-51.png" alt="Chaos Studio Experiment Basics"></p>
+<ol start="13">
+<li>Repeat this process every couple of minutes, and see how the CPU load is gradually spiking, eventually reaching 95% for a certain amount of time.</li>
+</ol>
+<p><img src="../images/2023-08-25_8-14-23.png" alt="Chaos Studio Experiment Basics"></p>
+<ol start="14">
+<li>Wait for the <strong>CPUSpike</strong> Experiment to complete successfully.</li>
+</ol>
+<h1 id="summary">Summary</h1>
+<p>In this article, you learned about Chaos Engineering, how Netflix created Chaos Monkey as the foundation of Chaos Engineering, and how Azure Chaos Studio allows for Chaos-testing of your Azure Resources.</p>
+<p>For now, you learned how to deploy Chaos Studio, and how to enable an Azure VM as a Chaos Target, followed by how to create and run a Virtual Machine CPUSpike experiment.</p>
+<p>In a later follow-up article, I will show you how to use Chaos Studio Experiments against an <strong>Azure Kubernetes Cluster</strong>, as well as a <strong>Network Security Group</strong>.</p>
+<p>I hope this article spiced your interest for Azure Chaos Studio. Go out and <em>experiment</em> with it, and let me know how it goes!</p>
+<p><a href="https://www.buymeacoffee.com/pdtit"><img src="../images/buy_me_a_coffee.png" alt="BuyMeACoffee"></a></p>
+<p>Cheers!!</p>
+<p>/Peter</p>
+
+
+                
+
+                <hr>
+                
+
+                
+<div id="disqus-comment"></div>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/ai" title="ai">
+                            ai
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/aks" title="aks">
+                            aks
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/application-insights" title="application-insights">
+                            application-insights
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/azure" title="azure">
+                            azure
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/azure-devops" title="azure-devops">
+                            azure-devops
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/bing" title="bing">
+                            bing
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/blazor" title="blazor">
+                            blazor
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/books" title="books">
+                            books
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/certification" title="certification">
+                            certification
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/containers" title="containers">
+                            containers
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/devops" title="devops">
+                            devops
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/devsecops" title="devsecops">
+                            devsecops
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/docker" title="docker">
+                            docker
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/dotnet" title="dotnet">
+                            dotnet
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/ebooks" title="ebooks">
+                            ebooks
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/hugo" title="hugo">
+                            hugo
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/kubernetes" title="kubernetes">
+                            kubernetes
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/learning" title="learning">
+                            learning
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/packt" title="packt">
+                            packt
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/security" title="security">
+                            security
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/sre" title="sre">
+                            sre
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/terraform" title="terraform">
+                            terraform
+                        </a>
+                        
+                        
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                   
+                   <li>
+                       <a href='' rel="alternate" type="application/rss+xml" title="Azure Readiness starts here..." >
+                           <span class="fa-stack fa-lg">
+                               <i class="fa fa-circle fa-stack-2x"></i>
+                               <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+                   
+                    
+                    <li>
+                        <a href="mailto:info@007ffflearning.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    <li>
+                        <a href="http://www.twitter.com/pdtit">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+
+                    
+
+		    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/petender">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/pdtit/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+                </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Azure Readiness starts here... 2024
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+</body>
+</html>

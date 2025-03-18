@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Security on Azure Readiness starts here...</title>
+    <link>https://www.007ffflearning.com/tags/security/</link>
+    <description>Recent content in Security on Azure Readiness starts here...</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 17 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/security/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Azure Spring Clean - DevSecOps and Shifting Left</title>
+      <link>https://www.007ffflearning.com/post/azure-spring-clean-devsecops-and-shifting-left-to-publish-secure-software/</link>
+      <pubDate>Thu, 17 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/azure-spring-clean-devsecops-and-shifting-left-to-publish-secure-software/</guid>
+      <description>Hey folks,
+Welcome to #AzureSpringClean, an initiative from Joe Carlyle and Thomas Thornton which celebrates its 3rd edition this year. I&amp;rsquo;m thrilled to be part of this again for the 2nd time this year. My first article had security in mind, explaining the difference between Azure Service Principals and Managed Identity.
+For this second article, I&amp;rsquo;m staying in the security focus, helping you understand DevSecOps, and how you can optimize security in your application deployment lifecycle, by &amp;ldquo;shifting left&amp;rdquo;.</description>
+    </item>
+    
+    <item>
+      <title>Azure Spring Clean - Service Principals - Managed Identities</title>
+      <link>https://www.007ffflearning.com/post/azure-spring-clean-demystifying-service-principal-and-managed-identities/</link>
+      <pubDate>Mon, 14 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/azure-spring-clean-demystifying-service-principal-and-managed-identities/</guid>
+      <description>Hey friends,
+Welcome to #AzureSpringClean, an initiative from Joe Carlyle and Thomas Thornton which celebrates its 3rd edition this year. I&amp;rsquo;m thrilled to be part of this again as well, helping you understanding the confusion and difference between Azure Service Principals and Azure Managed Identities. As I recently relocated from Belgium to Redmond, and didn&amp;rsquo;t have all my video/audio equipment up for a recording, I decided to share this information in a blog post.</description>
+    </item>
+    
+  </channel>
+</rss>

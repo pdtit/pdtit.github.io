@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+    <script type="text/javascript">
+        !function(T,l,y){var S=T.location,u="script",k="instrumentationKey",D="ingestionendpoint",C="disableExceptionTracking",E="ai.device.",I="toLowerCase",b="crossOrigin",w="POST",e="appInsightsSDK",t=y.name||"appInsights";(y.name||T[e])&&(T[e]=t);var n=T[t]||function(d){var g=!1,f=!1,m={initialize:!0,queue:[],sv:"4",version:2,config:d};function v(e,t){var n={},a="Browser";return n[E+"id"]=a[I](),n[E+"type"]=a,n["ai.operation.name"]=S&&S.pathname||"_unknown_",n["ai.internal.sdkVersion"]="javascript:snippet_"+(m.sv||m.version),{time:function(){var e=new Date;function t(e){var t=""+e;return 1===t.length&&(t="0"+t),t}return e.getUTCFullYear()+"-"+t(1+e.getUTCMonth())+"-"+t(e.getUTCDate())+"T"+t(e.getUTCHours())+":"+t(e.getUTCMinutes())+":"+t(e.getUTCSeconds())+"."+((e.getUTCMilliseconds()/1e3).toFixed(3)+"").slice(2,5)+"Z"}(),iKey:e,name:"Microsoft.ApplicationInsights."+e.replace(/-/g,"")+"."+t,sampleRate:100,tags:n,data:{baseData:{ver:2}}}}var h=d.url||y.src;if(h){function a(e){var t,n,a,i,r,o,s,c,p,l,u;g=!0,m.queue=[],f||(f=!0,t=h,s=function(){var e={},t=d.connectionString;if(t)for(var n=t.split(";"),a=0;a<n.length;a++){var i=n[a].split("=");2===i.length&&(e[i[0][I]()]=i[1])}if(!e[D]){var r=e.endpointsuffix,o=r?e.location:null;e[D]="https://"+(o?o+".":"")+"dc."+(r||"services.visualstudio.com")}return e}(),c=s[k]||d[k]||"",p=s[D],l=p?p+"/v2/track":config.endpointUrl,(u=[]).push((n="SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details)",a=t,i=l,(o=(r=v(c,"Exception")).data).baseType="ExceptionData",o.baseData.exceptions=[{typeName:"SDKLoadFailed",message:n.replace(/\./g,"-"),hasFullStack:!1,stack:n+"\nSnippet failed to load ["+a+"] -- Telemetry is disabled\nHelp Link: https://go.microsoft.com/fwlink/?linkid=2128109\nHost: "+(S&&S.pathname||"_unknown_")+"\nEndpoint: "+i,parsedStack:[]}],r)),u.push(function(e,t,n,a){var i=v(c,"Message"),r=i.data;r.baseType="MessageData";var o=r.baseData;return o.message='AI (Internal): 99 message:"'+("SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details) ("+n+")").replace(/\"/g,"")+'"',o.properties={endpoint:a},i}(0,0,t,l)),function(e,t){if(JSON){var n=T.fetch;if(n&&!y.useXhr)n(t,{method:w,body:JSON.stringify(e),mode:"cors"});else if(XMLHttpRequest){var a=new XMLHttpRequest;a.open(w,t),a.setRequestHeader("Content-type","application/json"),a.send(JSON.stringify(e))}}}(u,l))}function i(e,t){f||setTimeout(function(){!t&&m.core||a()},500)}var e=function(){var n=l.createElement(u);n.src=h;var e=y[b];return!e&&""!==e||"undefined"==n[b]||(n[b]=e),n.onload=i,n.onerror=a,n.onreadystatechange=function(e,t){"loaded"!==n.readyState&&"complete"!==n.readyState||i(0,t)},n}();y.ld<0?l.getElementsByTagName("head")[0].appendChild(e):setTimeout(function(){l.getElementsByTagName(u)[0].parentNode.appendChild(e)},y.ld||0)}try{m.cookie=l.cookie}catch(p){}function t(e){for(;e.length;)!function(t){m[t]=function(){var e=arguments;g||m.queue.push(function(){m[t].apply(m,e)})}}(e.pop())}var n="track",r="TrackPage",o="TrackEvent";t([n+"Event",n+"PageView",n+"Exception",n+"Trace",n+"DependencyData",n+"Metric",n+"PageViewPerformance","start"+r,"stop"+r,"start"+o,"stop"+o,"addTelemetryInitializer","setAuthenticatedUserContext","clearAuthenticatedUserContext","flush"]),m.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4};var s=(d.extensionConfig||{}).ApplicationInsightsAnalytics||{};if(!0!==d[C]&&!0!==s[C]){method="onerror",t(["_"+method]);var c=T[method];T[method]=function(e,t,n,a,i){var r=c&&c(e,t,n,a,i);return!0!==r&&m["_"+method]({message:e,url:t,lineNumber:n,columnNumber:a,error:i}),r},d.autoExceptionInstrumented=!0}return m}(y.cfg);(T[t]=n).queue&&0===n.queue.length&&n.trackPageView({})}(window,document,{
+        src: "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js", 
+        
+        
+        
+        
+        cfg: { 
+            instrumentationKey: "4ecca3df-ab58-4882-903e-3ab2c030f009"
+             
+        }});
+        </script>
+    
+<head>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Azure Readiness starts here...">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="https://www.007ffflearning.com/img/home-bg-azure.jpg">
+    <meta property="twitter:image" content="https://www.007ffflearning.com/img/home-bg-azure.jpg" />
+    
+
+    
+    <meta name="title" content="Collecting Feedback in ADO work items from Office Forms" />
+    <meta property="og:title" content="Collecting Feedback in ADO work items from Office Forms" />
+    <meta property="twitter:title" content="Collecting Feedback in ADO work items from Office Forms" />
+    
+
+    
+    <meta name="description" content="">
+    <meta property="og:description" content="" />
+    <meta property="twitter:description" content="" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="Azure, Learning, Certification, Technology">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>Collecting Feedback in ADO work items from Office Forms-Azure Readiness Starts Here</title>
+
+    
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+	
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+    
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    
+    <script src="/js/jquery.min.js"></script>
+    
+    
+    <script src="/js/bootstrap.min.js"></script>
+    
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    
+
+    <script type="text/javascript">
+            var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){function n(e){t[e]=function(){var n=arguments;t.queue.push(function(){t[e].apply(t,n)})}}var t={config:e};t.initialize=!0;var i=document,a=window;setTimeout(function(){var n=i.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",i.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{t.cookie=i.cookie}catch(e){}t.queue=[],t.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var s="Track"+r[0];if(n("start"+s),n("stop"+s),n("setAuthenticatedUserContext"),n("clearAuthenticatedUserContext"),n("flush"),!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var o=a[r];a[r]=function(e,n,i,a,s){var c=o&&o(e,n,i,a,s);return!0!==c&&t["_"+r]({message:e,url:n,lineNumber:i,columnNumber:a,error:s}),c},e.autoExceptionInstrumented=!0}return t}(
+            {
+               instrumentationKey:"4f4ba091-4cff-4bd9-95e3-c5d564a1adde"
+            }
+            );window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
+    </script>
+
+</head>
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Azure Readiness starts here...</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                        
+                    
+                    
+		    
+                        <li><a href="/books/">BOOKS</a></li>
+                    
+                        <li><a href="/about/">ABOUT ME</a></li>
+                    
+
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/home-bg-azure.jpg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/azure-devops" title="Azure DevOps">
+                            Azure DevOps
+                        </a>
+                        
+                        <a class="tag" href="/tags/office-forms" title="Office Forms">
+                            Office Forms
+                        </a>
+                        
+                    </div>
+                    <h1>Collecting Feedback in ADO work items from Office Forms</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                                Azure Readiness starts here...
+                         
+                        on 
+                        Sunday, March 26, 2023
+                        
+                        
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    
+                </header>
+                
+                
+                <p>Hey folks,</p>
+<p>I&rsquo;m a fond user of Azure DevOps for testing application builds, running CI/CD pipelines to publish Azure demo scenarios and train our Microsoft global customers on it every few weeks out of AZ-400 training deliveries.</p>
+<p>One of the lesser-known, yet AWESOMELY POWERFUL features besides &lsquo;running pipelines&rsquo; is <a href="https://azure.microsoft.com/en-us/products/devops/boards/">Azure Boards</a>, providing an <strong>end-to-end project methodology platform</strong> using Scrum, Agile, CMMI or custom approach.</p>
+<p>In this post, I mainly wanted to zoom in on the <strong>custom</strong> capabilities, capturing feedback from employees - which got entered through an <strong>Office Forms</strong> form, picked up by <strong>Azure Logic Apps</strong>, and stored in a customized <strong>Azure Boards Work Item</strong>.</p>
+<p>In short, the following steps are needed:</p>
+<ol>
+<li>Create custom Office Forms with questions and fields to complete</li>
+<li>Create custom Azure DevOps Process Methodology containing the custom Work Item fields and form layout</li>
+<li>Create new Azure DevOps Project, linked to the custom Project Methodology</li>
+<li>Create Azure Logic Apps flow, mapping each custom field from Office Forms to the custom Work Item fields</li>
+<li>See it in action :)</li>
+</ol>
+<p>Here we go&hellip;</p>
+<h2 id="create-custom-office-forms-with-questions-and-fields-to-complete">Create custom Office Forms with questions and fields to complete</h2>
+<p>The first step involves creating a custom <a href="https://support.microsoft.com/en-us/office/what-is-microsoft-forms-6b391205-523c-45d2-b53a-fc10b22017c8">Office Form</a>, which is probably one of the easiest parts in the process. This is a free service within Microsoft Office Online, typically used for collecting user input, such as surveys, quizzes and polls, and all you need is a Microsoft Account such as Outlook.com, Hotmail.com or an organizational Office 365 account.</p>
+<ol>
+<li>Browse to <a href="https://forms.office.com">https://forms.office.com</a>, and select <strong>New Form</strong></li>
+<li>Next, specify the different questions, together with the answer type (e.g. multiple choice, text field,&hellip;)
+I won&rsquo;t cover the details on how to do this, as I think it&rsquo;s self-explanatory.</li>
+<li>A sample form I&rsquo;ll be using in this post looks like this:</li>
+</ol>
+<p><img src="../images/2023-03-26_18-51-25.png" alt="Office Form"></p>
+<p>With the Office Form ready, we can move on to the next step, creating a new custom ADO Process Methodology.</p>
+<h2 id="create-custom-azure-devops-process-methodology">Create custom Azure DevOps Process Methodology</h2>
+<p>Azure DevOps provides several <em>Process Methodologies</em>, such as Scrum, Agile, Basic, but also allows you to create customized versions of those. (More info on each process and how to choose is documented <a href="https://learn.microsoft.com/en-us/azure/devops/boards/work-items/guidance/choose-process?view=azure-devops&amp;tabs=agile-process">on Microsoft Learn</a>).</p>
+<ol>
+<li>Log on to Azure DevOps with an Organizational admin account</li>
+<li>Select Azure DevOps (the logo in the upper left corner), and select <strong>Organization Settings</strong></li>
+<li>Within the Settings menu, select <strong>Process</strong> under the Boards section 
+<img src="../images/2023-03-26_19-00-24.png" alt="Boards and Process"></li>
+<li>This shows a list of default Azure Boards processes (Basic, Agile, Scrum, CMMI)
+<img src="../images/2023-03-26_19-02-11.png" alt="Boards Process"></li>
+<li>In this example, we will build a new <em>custom deviation</em> from the <strong>Scrum</strong> process, but you can choose any you want. Hover the mouse over the Scrum process, and select the ellipsis (the 3 dots). From the context menu, select <strong>Create inherited process</strong>
+<img src="../images/2023-03-26_19-04-30.png" alt="Create inherited process"></li>
+<li>Provide a name and (optional) description for the process. I called mine <strong>Forms Test Process</strong></li>
+<li>Once created, select the new process. This opens a list of <strong>Work Item types</strong> such as Bug, Epic, Task and other. As the new Work Item we create is so custom, it doesn&rsquo;t really matter which one to choose. If you have about 50% or more that&rsquo;s identical to an existing Work Item, you can use that as a baseline.
+<img src="../images/2023-03-26_19-09-30.png" alt="Work Item Types"></li>
+<li>Click <strong>New Work Item Type</strong></li>
+<li>Provide a Name, Description, Icon, Icon Color of choice. Confirm by pressing the <strong>Create</strong> button.</li>
+<li>Once created, select the new work item type. This opens the <strong>Layout</strong> editor, where we will add custom fields, reflecting the different questions/items from the Office Form earlier.</li>
+<li>A Work Item is based on Tabs. In my example, I only use a single tab, called <strong>Details</strong>. Know you can as many Tabs as needed. Within each Tab, the Work Item layout is built-up of 3 panes, a left, holding a Description field, the middle pane, holding Custom fields, and the right pane, which has Deployment, Development and Related Work as default items - at least in my setup.</li>
+<li>Add the custom fields you want to have on the Work Item, specifying the field type (e.g. I added an <strong>open question</strong>, set as <strong>Text Multiple Lines</strong>, as well as adding the <strong>Geography</strong> and <strong>Category</strong> as <strong>Text Single Line</strong> items). These fields <em>somewhat</em> correspond with the different items on the Office Form.
+<img src="../images/2023-03-26_19-13-39.png" alt="Work Item Type Customization"></li>
+</ol>
+<p>Although there are a lot more customizations possible, I hope these basic steps are helping you building the baseline for what I want to guide you through in this post.</p>
+<p>We now have the Azure DevOps Process created, as well as the customized version of the Work Item we want to use. Let&rsquo;s hook this up to a new Azure DevOps Project.</p>
+<h2 id="create-new-azure-devops-project-linked-to-the-custom-process">Create new Azure DevOps Project, linked to the custom Process</h2>
+<ol>
+<li>Click the <strong>Azure DevOps</strong> logo (upper left corner), and press the <strong>+ New Project</strong> button.</li>
+<li>Provide a Project Name, (optional) Description, Visibility. Next, click <strong>Advanced</strong> to specify the Work Item Process. Click the <strong>Work Item Process</strong> field and select the <strong>custom process</strong> created earlier.
+<img src="../images/2023-03-26_19-22-57.png" alt="Create New Project"></li>
+<li>Once the project got created, navigate to <strong>Boards</strong>. Here, click <strong>New Work Item</strong>, notice the new Work Item type is available.
+<img src="../images/2023-03-26_19-42-26.png" alt="Custom Work Item Type"></li>
+<li>Select the new Work Item, which shows the detailed view. Notice the custom fields we added earlier are nicely showing up here.
+<img src="../images/2023-03-26_19-43-34.png" alt="Custom Work Item Type"></li>
+</ol>
+<p>The flexibility we now have, is that the Work Item can be created from both the Office Form, as well as still being available from within Azure DevOps. (Note: while we added custom fields, I didn&rsquo;t add any field content to choose from, such as EMEA,APAC,USA in the Geography field - which would a viable option). In my use case, the only way to create a new Work Item is through the Office Form, as no typical users got access to Azure DevOps to do that (Permissions :)).</p>
+<p>Awesome, we are now about <strong>3/4</strong> through the process, with the remaining part being the <strong>creation of the flow, using Azure Logic Apps</strong>.</p>
+<h2 id="create-an-azure-logic-app-flow-to-capture-office-forms-data-to-ado-work-item">Create an Azure Logic App flow to capture Office Forms data to ADO Work Item</h2>
+<ol>
+<li>Log on to Azure with administrative permissions to create an Azure Logic App resource.</li>
+<li>When creating the Logic App, specify a unique name, Resource Group, Location and Plan (consumption would be OK).
+<img src="../images/2023-03-26_19-50-47.png" alt="Create Azure Logic Apps Resource"></li>
+<li>Once the resource got created, it automatically opens <strong>Logic App Designer</strong>, which allows for the setup of the actual flow. From the list of sample scenarios, select <strong>Blank Logic App</strong>.
+<img src="../images/2023-03-26_20-28-02.png" alt="Blank Logic App"></li>
+<li>In the <strong>Search connectors and triggers</strong> field, search for <strong>Microsoft Forms</strong>.</li>
+<li>Next, select <strong>When a new response is submitted</strong> as trigger.</li>
+<li>In the Form Id field, select the Office Form name you used earlier.
+<img src="../images/2023-03-26_20-30-02.png" alt="Office Forms Trigger"></li>
+<li>Click <strong>+ New Step</strong> to add the next step in the Logic App flow.</li>
+<li>In the <strong>Search connectors and triggers</strong> field, search for <strong>Azure DevOps</strong>.</li>
+<li>From the list of <strong>Actions</strong>, select <strong>Create a new work item</strong>.
+<img src="../images/2023-03-26_20-32-57.png" alt="ADO New work item action"></li>
+<li>Complete the fields, selecting your <strong>DevOps Organization</strong>, the <strong>DevOps Project</strong> and the <strong>Work Item Type</strong> as created earlier.
+<img src="../images/2023-03-26_20-34-42.png" alt="ADO New work item action"></li>
+<li>Now, we map the custom fields, by selecting <strong>Add new parameter</strong>, and selecting <strong>Other Fields</strong>.
+<img src="../images/2023-03-26_20-41-17.png" alt="Parameters / Other Fields"></li>
+<li>Within the little table of Other Fields (the key/value), select the <strong>Key</strong> object; this opens the Logic Apps <strong>Dynamic Content</strong>. Here, click the <strong>See more</strong> option
+<img src="../images/23-03-26_20-42-29.png" alt="Dynamic Content"></li>
+<li>This is where Logic Apps is awesome. It allows you to select (all) previous fields from all previous steps in the flow process. 
+<img src="../images/2023-03-26_20-44-52.png" alt="Dynamic Content Results"></li>
+<li>Notice how the Forms information is returned as <strong>Body</strong>, which is not what we need. We want to reach out each answer to each Form&rsquo;s question, instead of the full body. To make this possible, we have to add another step in-between the Forms step and the Azure DevOps step.</li>
+<li>Click on the <strong>+</strong> sign in-between both steps, and select <strong>Add New Action</strong>. Search for <strong>Microsoft Forms</strong> again. This time, it will show an action called <strong>Get Response Details</strong>.
+<img src="../images/2023-03-26_20-49-10.png" alt="Get Response Details"></li>
+<li>In the <strong>Forms Id</strong> field, select the <strong>name of the Office Forms</strong>; In the <strong>Response Id</strong> field, click <strong>See More</strong> and select <strong>List of Response notifcations Response id</strong> from the Dynamic Content list of options.
+<img src="../images/2023-03-26_20-51-48.png" alt="Get Response Id"></li>
+<li>With that step added, return to the <strong>Create a work item</strong> step in the Logic App Flow, and navigate to the <strong>Other Fields</strong> section in the parameters. Select the <strong>Enter Key</strong> field, which opens the <strong>Dynamic Content</strong> blade again. This time, notice how the different response details (the Form&rsquo;s questions) are visible.
+<img src="../images/2023-03-26_20-57-17.png" alt="Select Response details"></li>
+<li>From here, the idea is that you &lsquo;map&rsquo; each custom field object from the ADO Work Item, with a corresponding value from the Office Forms. For example, the <strong>work item &ldquo;geography&rdquo;</strong> created earlier, maps with <strong>what is your geography</strong> question I have on the form.
+<img src="../images/2023-03-26_20-58-49.png" alt="Map Response details"></li>
+<li>Once done with all field mappings, <strong>Save</strong> the Logic App.</li>
+</ol>
+<p>This completes the configuration of the Azure Logic Apps (Note: there is more work needed if you have more fields&hellip;)</p>
+<p>Which brings us to the last step&hellip; <strong>seeing it in action</strong>&hellip;</p>
+<h2 id="testing-the-azure-devops-work-item-creation">Testing the Azure DevOps Work Item creation</h2>
+<ol>
+<li>Return to the Office Form, and click <strong>Collect Responses</strong>.
+<img src="../images/2023-03-26_21-03-52.png" alt="Collect Form Responses"></li>
+<li>Complete the different questions and fields on the Form.</li>
+<li>Wait for about a minute, and return to the Azure Logic Apps flow created earlier. From the <strong>Overview</strong> blade, navigate to <strong>Runs History</strong>.
+<img src="../images/2023-03-26_21-06-40.png" alt="Logic Apps Run History"></li>
+<li>The Forms completion resulted in a <strong>successful workflow trigger</strong>. Select the line, which opens a more detailed view.
+<img src="../images/2023-03-26_21-08-20.png" alt="Logic Apps detailed Run History">.</li>
+<li>Last, return to the Azure DevOps Project, navigate to Boards and open Work Items. Notice the <strong>newly created Work Item</strong>.
+<img src="../images/2023-03-26_21-12-16.png" alt="Logic Apps created Work Item"></li>
+<li>Open the item, to see how the custom fields got completed.
+<img src="../images/2023-03-26_21-13-52.png" alt="Logic Apps created Work Item details"></li>
+</ol>
+<p>That&rsquo;s pretty much it!! Nice isn&rsquo;t it&hellip;</p>
+<h2 id="summary">Summary</h2>
+<p>In this post, I wanted to share more details on how you can allow end-users (or customers) to create Azure DevOps Work Items (of pretty much any type with any custom fields), using an integration of Microsoft Forms and Azure Logic Apps.</p>
+<p>Don&rsquo;t hesitate reaching out if you have any additional questions on this, or if you want to share how you used this in your own scenarios.</p>
+<p><a href="https://www.buymeacoffee.com/pdtit"><img src="../images/buy_me_a_coffee.png" alt="BuyMeACoffee"></a></p>
+<p>Cheers!!</p>
+<p>/Peter</p>
+
+
+                
+
+                <hr>
+                
+
+                
+<div id="disqus-comment"></div>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/ai" title="ai">
+                            ai
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/aks" title="aks">
+                            aks
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/application-insights" title="application-insights">
+                            application-insights
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/azure" title="azure">
+                            azure
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/azure-devops" title="azure-devops">
+                            azure-devops
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/bing" title="bing">
+                            bing
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/blazor" title="blazor">
+                            blazor
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/books" title="books">
+                            books
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/certification" title="certification">
+                            certification
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/containers" title="containers">
+                            containers
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/devops" title="devops">
+                            devops
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/devsecops" title="devsecops">
+                            devsecops
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/docker" title="docker">
+                            docker
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/dotnet" title="dotnet">
+                            dotnet
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/ebooks" title="ebooks">
+                            ebooks
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/hugo" title="hugo">
+                            hugo
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/kubernetes" title="kubernetes">
+                            kubernetes
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/learning" title="learning">
+                            learning
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/packt" title="packt">
+                            packt
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/security" title="security">
+                            security
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/sre" title="sre">
+                            sre
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/terraform" title="terraform">
+                            terraform
+                        </a>
+                        
+                        
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                   
+                   <li>
+                       <a href='' rel="alternate" type="application/rss+xml" title="Azure Readiness starts here..." >
+                           <span class="fa-stack fa-lg">
+                               <i class="fa fa-circle fa-stack-2x"></i>
+                               <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+                   
+                    
+                    <li>
+                        <a href="mailto:info@007ffflearning.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    <li>
+                        <a href="http://www.twitter.com/pdtit">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+
+                    
+
+		    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/petender">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/pdtit/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+                </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Azure Readiness starts here... 2024
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+</body>
+</html>

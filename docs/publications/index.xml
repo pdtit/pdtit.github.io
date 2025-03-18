@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Publications on Azure Readiness starts here...</title>
+    <link>https://www.007ffflearning.com/publications/</link>
+    <description>Recent content in Publications on Azure Readiness starts here...</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="https://www.007ffflearning.com/publications/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>My Published Azure Books</title>
+      <link>https://www.007ffflearning.com/publications/books/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/publications/books/</guid>
+      <description>                    Pro Azure Governance Azure Strategy &amp;amp; Implementation Guide Hands On Kubernetes on Azure   * * *        Buy Your Copy Here Get Your FREE copy Here Get Your FREE copy Here   * * *                  Efficiently Migrating to Azure Implementing Azure OMS Azure Infrastructure as Code   * * *        Buy Your Copy Here Buy Your Copy Here [Release date July 2020]         </description>
+    </item>
+    
+    <item>
+      <title>My Published Azure Videos</title>
+      <link>https://www.007ffflearning.com/publications/videos/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/publications/videos/</guid>
+      <description>                    Architecting an Azure Compute Infrastructure Learning Microsoft Azure Azure Security (Packt)   * * *        Buy Your Copy Here Get Your FREE copy Here [Release date May 2020]             Several Azure Online Courses     * * *        Check Out The List      </description>
+    </item>
+    
+  </channel>
+</rss>

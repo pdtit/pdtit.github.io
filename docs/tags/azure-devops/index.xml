@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Azure DevOps on Azure Readiness starts here...</title>
+    <link>https://www.007ffflearning.com/tags/azure-devops/</link>
+    <description>Recent content in Azure DevOps on Azure Readiness starts here...</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 03 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/azure-devops/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Sending Emails from Azure DevOps using PowerShell and Azure LogicApps</title>
+      <link>https://www.007ffflearning.com/post/sending-emails-from-ado-pipelines-using-powershell/</link>
+      <pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/sending-emails-from-ado-pipelines-using-powershell/</guid>
+      <description>Hi Readers,
+This post is merely for myself, documenting all the steps I needed to go through to be able to send emails from a PowerShell script, as part of an Azure DevOps YAML pipeline flow. And since I was documenting it for our internal application, I thought it would hopefully help someone out there looking for a similar solution.
+Why not using the built-in Email Notification system Azure DevOps provides email notification features, but this comes with a few assumptions.</description>
+    </item>
+    
+    <item>
+      <title>Trigger a YAML Pipeline from a Classic Release Pipeline in Azure DevOps</title>
+      <link>https://www.007ffflearning.com/post/trigger-yaml-pipeline-from-classic-release-in-ado/</link>
+      <pubDate>Sat, 30 Sep 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/trigger-yaml-pipeline-from-classic-release-in-ado/</guid>
+      <description>Hi y&amp;rsquo;all!
+Over the last 18 months, I&amp;rsquo;ve been developing a tool for our internal Microsoft Trainer team, allowing them to deploy trainer demo scenarios in Azure using a Blazor Front-End web app, connecting to Azure DevOps pipelines using REST API calls.
+At the start of the project, Classic Release pipelines were still common, since YAML was too new, and rather unknown. However, over the last few months, more and more I was thinking of shifting from Classic to YAML Pipelines.</description>
+    </item>
+    
+    <item>
+      <title>You do not have permissions to view this directory or page after publishing to Azure App Service</title>
+      <link>https://www.007ffflearning.com/post/you-do-not-have-permissions-error-after-publishing-to-azure-app-services/</link>
+      <pubDate>Sun, 30 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/you-do-not-have-permissions-error-after-publishing-to-azure-app-services/</guid>
+      <description>Earlier this week, I got an interesting phenomenon when publishing a code update to an existing Azure App Service. As this was a small project, I&amp;rsquo;ve always been deploying updates in a manual way from right-click / publish in Visual Studio. But than I said to myself, Peter, as a passionate DevOps engineer and trainer, just go out and create a pipeline for this.
+And that&amp;rsquo;s what happened.
+Running the release pipeline came back successful, but the site threw an error:</description>
+    </item>
+    
+    <item>
+      <title>Collecting Feedback in ADO work items from Office Forms</title>
+      <link>https://www.007ffflearning.com/post/collecting-feedback-in-ado-work-items-from-office-forms/</link>
+      <pubDate>Sun, 26 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/collecting-feedback-in-ado-work-items-from-office-forms/</guid>
+      <description>Hey folks,
+I&amp;rsquo;m a fond user of Azure DevOps for testing application builds, running CI/CD pipelines to publish Azure demo scenarios and train our Microsoft global customers on it every few weeks out of AZ-400 training deliveries.
+One of the lesser-known, yet AWESOMELY POWERFUL features besides &amp;lsquo;running pipelines&amp;rsquo; is Azure Boards, providing an end-to-end project methodology platform using Scrum, Agile, CMMI or custom approach.
+In this post, I mainly wanted to zoom in on the custom capabilities, capturing feedback from employees - which got entered through an Office Forms form, picked up by Azure Logic Apps, and stored in a customized Azure Boards Work Item.</description>
+    </item>
+    
+    <item>
+      <title>AzCopy failing in Azure Devops with error ServiceCode=AuthorizationPermissionMismatch</title>
+      <link>https://www.007ffflearning.com/post/azcopy-failing-in-azure-devops/</link>
+      <pubDate>Mon, 14 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/azcopy-failing-in-azure-devops/</guid>
+      <description>Hi all,
+This is one of the nail biting challenges of our industry, failing in running a straight-forward task. Especially when it is failing&amp;hellip;
+What happened? I was creating a pipeline in Azure DevOps to deploy an ARM template for VM setups with VM Extensions. To prep this deployment, the artifacts (DSC scripts) should be copied to Azure Blob Storage, in order for the Azure DevOps build agent to &amp;ldquo;find&amp;rdquo; it.</description>
+    </item>
+    
+    <item>
+      <title>Azure Back To School (with Azure DevOps)</title>
+      <link>https://www.007ffflearning.com/post/azure-back-to-school/</link>
+      <pubDate>Sun, 13 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/azure-back-to-school/</guid>
+      <description>Hey everyone,
+Wow, it&amp;rsquo;s September already! Where has summer been? And honestly, where has the (nice) year been? Most of you, just like myself, are probably still working from home, and I guess the same are your kids.
+Where September used to feel like a fresh start (remember that smell of your new school outfit, the new school equipment, fresh-sharpened pencils, the excitement of learning new things, meeting new class mates,&amp;hellip; almost seems like I want to go back to school myself.</description>
+    </item>
+    
+    <item>
+      <title>Azure DevOps Pipelines - YAML or Classic Designer</title>
+      <link>https://www.007ffflearning.com/post/azure_devops-pipelines-yaml_or_classic_designer/</link>
+      <pubDate>Sun, 21 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.007ffflearning.com/post/azure_devops-pipelines-yaml_or_classic_designer/</guid>
+      <description>During several of my AZ-400 Designing and Implementing Microsoft DevOps Solutions training deliveries, one recurring point of conversation is Should we use YAML or the Classic Designer for our Release pipelines?
+So I thought sharing my view in another blog post could be helpful.
+Before answering the question more accurately, let&amp;rsquo;s go over each scenario a bit more in detail:
+Classic Designer Classic Designer has been the long-standing approach on how Azure DevOps Pipelines have been created.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+    <script type="text/javascript">
+        !function(T,l,y){var S=T.location,u="script",k="instrumentationKey",D="ingestionendpoint",C="disableExceptionTracking",E="ai.device.",I="toLowerCase",b="crossOrigin",w="POST",e="appInsightsSDK",t=y.name||"appInsights";(y.name||T[e])&&(T[e]=t);var n=T[t]||function(d){var g=!1,f=!1,m={initialize:!0,queue:[],sv:"4",version:2,config:d};function v(e,t){var n={},a="Browser";return n[E+"id"]=a[I](),n[E+"type"]=a,n["ai.operation.name"]=S&&S.pathname||"_unknown_",n["ai.internal.sdkVersion"]="javascript:snippet_"+(m.sv||m.version),{time:function(){var e=new Date;function t(e){var t=""+e;return 1===t.length&&(t="0"+t),t}return e.getUTCFullYear()+"-"+t(1+e.getUTCMonth())+"-"+t(e.getUTCDate())+"T"+t(e.getUTCHours())+":"+t(e.getUTCMinutes())+":"+t(e.getUTCSeconds())+"."+((e.getUTCMilliseconds()/1e3).toFixed(3)+"").slice(2,5)+"Z"}(),iKey:e,name:"Microsoft.ApplicationInsights."+e.replace(/-/g,"")+"."+t,sampleRate:100,tags:n,data:{baseData:{ver:2}}}}var h=d.url||y.src;if(h){function a(e){var t,n,a,i,r,o,s,c,p,l,u;g=!0,m.queue=[],f||(f=!0,t=h,s=function(){var e={},t=d.connectionString;if(t)for(var n=t.split(";"),a=0;a<n.length;a++){var i=n[a].split("=");2===i.length&&(e[i[0][I]()]=i[1])}if(!e[D]){var r=e.endpointsuffix,o=r?e.location:null;e[D]="https://"+(o?o+".":"")+"dc."+(r||"services.visualstudio.com")}return e}(),c=s[k]||d[k]||"",p=s[D],l=p?p+"/v2/track":config.endpointUrl,(u=[]).push((n="SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details)",a=t,i=l,(o=(r=v(c,"Exception")).data).baseType="ExceptionData",o.baseData.exceptions=[{typeName:"SDKLoadFailed",message:n.replace(/\./g,"-"),hasFullStack:!1,stack:n+"\nSnippet failed to load ["+a+"] -- Telemetry is disabled\nHelp Link: https://go.microsoft.com/fwlink/?linkid=2128109\nHost: "+(S&&S.pathname||"_unknown_")+"\nEndpoint: "+i,parsedStack:[]}],r)),u.push(function(e,t,n,a){var i=v(c,"Message"),r=i.data;r.baseType="MessageData";var o=r.baseData;return o.message='AI (Internal): 99 message:"'+("SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details) ("+n+")").replace(/\"/g,"")+'"',o.properties={endpoint:a},i}(0,0,t,l)),function(e,t){if(JSON){var n=T.fetch;if(n&&!y.useXhr)n(t,{method:w,body:JSON.stringify(e),mode:"cors"});else if(XMLHttpRequest){var a=new XMLHttpRequest;a.open(w,t),a.setRequestHeader("Content-type","application/json"),a.send(JSON.stringify(e))}}}(u,l))}function i(e,t){f||setTimeout(function(){!t&&m.core||a()},500)}var e=function(){var n=l.createElement(u);n.src=h;var e=y[b];return!e&&""!==e||"undefined"==n[b]||(n[b]=e),n.onload=i,n.onerror=a,n.onreadystatechange=function(e,t){"loaded"!==n.readyState&&"complete"!==n.readyState||i(0,t)},n}();y.ld<0?l.getElementsByTagName("head")[0].appendChild(e):setTimeout(function(){l.getElementsByTagName(u)[0].parentNode.appendChild(e)},y.ld||0)}try{m.cookie=l.cookie}catch(p){}function t(e){for(;e.length;)!function(t){m[t]=function(){var e=arguments;g||m.queue.push(function(){m[t].apply(m,e)})}}(e.pop())}var n="track",r="TrackPage",o="TrackEvent";t([n+"Event",n+"PageView",n+"Exception",n+"Trace",n+"DependencyData",n+"Metric",n+"PageViewPerformance","start"+r,"stop"+r,"start"+o,"stop"+o,"addTelemetryInitializer","setAuthenticatedUserContext","clearAuthenticatedUserContext","flush"]),m.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4};var s=(d.extensionConfig||{}).ApplicationInsightsAnalytics||{};if(!0!==d[C]&&!0!==s[C]){method="onerror",t(["_"+method]);var c=T[method];T[method]=function(e,t,n,a,i){var r=c&&c(e,t,n,a,i);return!0!==r&&m["_"+method]({message:e,url:t,lineNumber:n,columnNumber:a,error:i}),r},d.autoExceptionInstrumented=!0}return m}(y.cfg);(T[t]=n).queue&&0===n.queue.length&&n.trackPageView({})}(window,document,{
+        src: "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js", 
+        
+        
+        
+        
+        cfg: { 
+            instrumentationKey: "4ecca3df-ab58-4882-903e-3ab2c030f009"
+             
+        }});
+        </script>
+    
+<head>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Azure Readiness starts here...">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="https://www.007ffflearning.com/img/home-bg-azure.jpg">
+    <meta property="twitter:image" content="https://www.007ffflearning.com/img/home-bg-azure.jpg" />
+    
+
+    
+    <meta name="title" content="Azure is 100% High Available!! or is it...?" />
+    <meta property="og:title" content="Azure is 100% High Available!! or is it...?" />
+    <meta property="twitter:title" content="Azure is 100% High Available!! or is it...?" />
+    
+
+    
+    <meta name="description" content="">
+    <meta property="og:description" content="" />
+    <meta property="twitter:description" content="" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="Azure, Learning, Certification, Technology">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>Azure is 100% High Available!! or is it...?-Azure Readiness Starts Here</title>
+
+    
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+	
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+    
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    
+    <script src="/js/jquery.min.js"></script>
+    
+    
+    <script src="/js/bootstrap.min.js"></script>
+    
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    
+
+    <script type="text/javascript">
+            var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){function n(e){t[e]=function(){var n=arguments;t.queue.push(function(){t[e].apply(t,n)})}}var t={config:e};t.initialize=!0;var i=document,a=window;setTimeout(function(){var n=i.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",i.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{t.cookie=i.cookie}catch(e){}t.queue=[],t.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var s="Track"+r[0];if(n("start"+s),n("stop"+s),n("setAuthenticatedUserContext"),n("clearAuthenticatedUserContext"),n("flush"),!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var o=a[r];a[r]=function(e,n,i,a,s){var c=o&&o(e,n,i,a,s);return!0!==c&&t["_"+r]({message:e,url:n,lineNumber:i,columnNumber:a,error:s}),c},e.autoExceptionInstrumented=!0}return t}(
+            {
+               instrumentationKey:"4f4ba091-4cff-4bd9-95e3-c5d564a1adde"
+            }
+            );window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
+    </script>
+
+</head>
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Azure Readiness starts here...</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                        
+                    
+                    
+		    
+                        <li><a href="/books/">BOOKS</a></li>
+                    
+                        <li><a href="/about/">ABOUT ME</a></li>
+                    
+
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/home-bg-azure.jpg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/azure" title="Azure">
+                            Azure
+                        </a>
+                        
+                    </div>
+                    <h1>Azure is 100% High Available!! or is it...?</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                                Azure Readiness starts here...
+                         
+                        on 
+                        Sunday, June 14, 2020
+                        
+                        
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    
+                </header>
+                
+                
+                <p>Last Friday, I delivered an online session at the &ldquo;<a href="http://www.azureday.it">Azure Day Rome 2020</a>&rdquo;, titled &ldquo;Azure is 100% high available, or is it?&rdquo;</p>
+<p><img src="../images/2020-06-14-1.jpg" alt="Azure Day Rome session"></p>
+<p>Since the conference sessions were only 45min, I didn&rsquo;t have much time to drill down on all the details, but apparently I managed to provide a clear and easy  overview of several misconceptions around public cloud high-availability, and even more important, how Azure provides several services and architectures, to optimize the overall high availability of your workloads. Whether you deploy IAAS, PAAS or Serverless.</p>
+<p>Already during the session, as well as afterwards, I started getting emails or social media messages from attendees, asking if I could &ldquo;confirm&rdquo; their current architectures, or recommend any changes to their existing deployments.</p>
+<p>What better inspiration to have for another blog post, right?</p>
+<h1 id="measuring-slas">Measuring SLA&rsquo;s</h1>
+<p>High availability is expressed in a Service Level Agreement (SLA), determining how much seconds, minutes or hours (potential) downtime is to be faced. The common ones are</p>
+<ul>
+<li>99.9% (&ldquo;the 3 nines&rdquo;),</li>
+<li>99.99% (&ldquo;the 4 nines&rdquo;) and</li>
+<li>99.999% (&ldquo;the fives nines&rdquo;)</li>
+</ul>
+<p>but these are not the only ones.</p>
+<p>Here is a summarized view of the common ones there are across different Azure services:</p>
+<p><img src="../images/2020-06-14-2.jpg" alt="Measuring SLA table"></p>
+<p><strong>Note: Azure Services SLA&rsquo;s are always referring to the monthly numbers</strong></p>
+<p>As you can already learn from this table, Azure (just like any other public cloud, as well as on-premises datacenters for that matter&hellip;) is not providing 100% SLA.</p>
+<p>But this is not what the session was about obviously. What&rsquo;s more important, is how to achieve the ultimate SLA in Azure, for different architectures available today.</p>
+<h2 id="azure-regions">Azure Regions</h2>
+<p>A first level of redundancy one can make use of, are the different Azure Regions, available across the globe. Technically, one can decide on any regions you want to use for your cloud-running workloads (exceptions are US Government, China and &ldquo;local clouds&rdquo;), and boosting the high availability from a regional perspective. Easy said, instead of deploying your workload (Azure Virtual Machine, Azure Web App, Azure Functions,&hellip;) in a single region, deploy it in at least 2 or more regions.</p>
+<p><img src="../images/2020-06-14-3.jpg" alt="Measuring SLA table"></p>
+<p>Luckily not too frequent, but every now and then, an Azure region becomes totally unavailable. Historical situations were mostly related to weather conditions (heavy storms in San Antonio Tx, 2018) or human mistakes (releasing faulty patch to Azure storage fabric in multiple regions at once, 2019).</p>
+<p>To get a clear view on what the status is of any given Azure region, as well as all services running within that region, have a look at <strong><a href="http://status.azure.com">Azure Status</a></strong></p>
+<p><img src="../images/2020-06-14-4.jpg" alt="Azure Status Health"></p>
+<h2 id="azure-networking">Azure Networking</h2>
+<p>Azure Virtual Networking is the cornerstone of a lot of Azure services in IAAS, PAAS and Serverless. This means those services won&rsquo;t be able to run, if the underlying network stack is having issues. But outside of that, there are also a few services within the Azure Networking Provider, helping you to optimize the SLA of your non-networking related services. I&rsquo;m talking about Load Balancers.</p>
+<p>Azure provides 4 different load balancing services:</p>
+<ul>
+<li>Azure Load Balancer</li>
+<li>Azure Application Gateway</li>
+<li>Traffic Manager</li>
+<li>Azure Front Door</li>
+</ul>
+<p>While I will definitely dedicate additional blog posts for these, let me summarize the core characteristics of each:</p>
+<h4 id="azure-load-balancer-and-azure-app-gateway">Azure Load Balancer and Azure App Gateway</h4>
+<p><strong>Azure Load Balancer</strong> is a layer4 (transport) load balancer, capable of load balancing any IP traffic to defined endpoints (Virtual Machines, App Services, DB Services,&hellip;), and can be set up as an internal-only (no public IP) or external-only (only public IP) configuration. 
+(more info can be found at <a href="https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-overview">Azure Load Balancer</a>)</p>
+<p>Azure Load Balancer guarantees a <strong>99.95%</strong> SLA</p>
+<p><strong>Azure App Gateway</strong> is a layer 7 (application) load balancer, capable of load balancing HTTP and HTTPS traffic only, to defined endpoints (Virtual Machine Web Server, App Services), and can be configured as internal or external. Major difference to the former Azure Load Balancer, is that it only recognizes web traffic, but on top of that, it also comes web-traffic specific features like SSL offloading, session affinity, URL redirection and WAF - Web Application Firewall
+(more info can be found at <a href="https://docs.microsoft.com/en-us/azure/application-gateway/overview">Azure App Gateway</a>)</p>
+<p>Azure App Gateway guarantees a <strong>99.99%</strong> SLA</p>
+<p><img src="../images/2020-06-14-5.jpg" alt="Azure Load Balancers"></p>
+<p><strong>Note: both load balancing solutions are active in a single-region topology, which means it can only act as a load balancer for workloads running in the same region as the load balancers</strong></p>
+<h3 id="traffic-manager-and-azure-front-door">Traffic Manager and Azure Front Door</h3>
+<p><strong>Traffic Manager</strong> is a DNS-based load balancer, allowing for load balancing traffic across multiple &ldquo;sites&rdquo;, which could be multiple Azure regions, but also across Azure and a non-Azure region (on-premises, other public cloud,&hellip;). It provides several different load balancing mechanisms like round robin, priority, geographical or high-availability. 
+(more info can be found at <a href="https://docs.microsoft.com/en-us/azure/traffic-manager/traffic-manager-overview">Traffic Manager</a>)</p>
+<p>Azure Traffic Manager guarantees a <strong>99.99%</strong> SLA</p>
+<p><strong>Azure Front Door</strong>
+Azure Front Door is much similar to Azure App Gateway, as it comes with a lot of identical features, but runs as a global Azure service. This means it is not limited to a specific region, but rather is deployed for load-balancing web traffic across multiple regions. Where a region can be an Azure region, or any other public endpoint (other public clouds, on-premises public-internet facing web applications,&hellip;)
+(more info can be found at <a href="https://docs.microsoft.com/en-us/azure/frontdoor/front-door-overview">Azure Front Door</a>)</p>
+<p>Azure Front Door guarantees a <strong>99.99%</strong> SLA</p>
+<p><img src="../images/2020-06-14-6.jpg" alt="TM and Azure Front Door"></p>
+<h2 id="azure-virtual-machines">Azure Virtual Machines</h2>
+<p>Probably one of the most looked for SLA&rsquo;s is running Virtual Machine-based workloads on Azure. Since these are closest to the traditional on-premises datacenter architecture, it is most familiar. Azure Virtual Machines can be deployed in 3 different architectures, each providing a different SLA:</p>
+<h4 id="single-virtual-machine">Single Virtual Machine</h4>
+<p>When you deploy a single Virtual Machine instance in an Azure Region, using (the default) premium managed disks, it provides an SLA of <strong>99.9%</strong>. This is OK, but not always recommended for a production-running scenario. The underlying infrastructure is a physical server, running in a physical rack in an Azure region&rsquo;s datacenter.</p>
+<h4 id="azure-availability-sets">Azure Availability Sets</h4>
+<p>To optimize the SLA of Virtual Machines, the next option is an <strong>Availability Set</strong>, moving up the SLA to <strong>99.95%</strong>; An Availability Set concept is a bit of  Azure intelligence, by which you deploy at least 2 or more instances of an identical VM setup. Each VM is guaranteed running on a different physical server, in a different physical rack in the same Azure Region. In case of downtime (planned or unplanned) of a physical rack (defined as a Fault Domain) or any of its components, this will obviously bring down the running Virtual Machine. But the other instance(s) are not impacted by it, optimizing the high-availability.</p>
+<p>Potential downside of an Availability Set, is it is still bound to the same building. So the multiple Virtual Machine instances you have running across different physical racks won&rsquo;t help much in case of a full building impact.</p>
+<p>That&rsquo;s where you can choose for another setup, using <strong>Availability Zones</strong>.</p>
+<h4 id="azure-availability-zones">Azure Availability Zones</h4>
+<p>Availability Zones are the ultimate architecture when you look for the best high-availability for your business-critical Virtual Machine workloads. Besides running high available across multiple physical racks (similar to AVSets before), the physical racks are also spread across multiple buildings. In case of a complete building outage, your instance(s) will still be available in any of the other buildings. But still within the same region.
+Look <a href="https://docs.microsoft.com/en-us/azure/availability-zones/az-overview">here</a> for additional info on Availability Zones</p>
+<p><img src="../images/2020-06-14-7.jpg" alt="Virtual Machine SLA"></p>
+<p><strong>Note: to reach a <em>&ldquo;close to 100%&quot;</em> Virtual Machine high availability, one should consider deploying your VM-workloads in Availability Zones across multiple Azure Regions; keep in mind though this might drive the cost up dramatically, as each VM instance incorporates full consumption)</strong></p>
+<h2 id="azure-app-services">Azure App Services</h2>
+<p>Azure App Services is the &ldquo;umbrella terminology&rdquo; for different Platform as a Service (PAAS) services like Web Apps, API Apps, Mobile Apps, Logic Apps and Azure Functions. In terms of high availability, it is different for each service within this classification:</p>
+<ul>
+<li>Logic Apps comes with a <strong>99.9%</strong> SLA</li>
+<li>Web Apps, API Apps and Mobile Apps are covering a <strong>99.95%</strong> SLA, as well as for Azure Functions</li>
+<li>EventGrid guarantees a <strong>99.99%</strong> SLA, which is interesting, as it mainly relies on any of the other App Services for its functioning</li>
+</ul>
+<p><img src="../images/2020-06-14-8.jpg" alt="App Services SLA"></p>
+<h2 id="azure-container-services">Azure Container Services</h2>
+<p>Last, let me touch on the SLA for different Azure Container Services.</p>
+<p>The core services related to Azure Containers are:</p>
+<ul>
+<li>Azure Container Registry (<strong>99.9%</strong>)</li>
+<li>Azure Container Instance (<strong>99.9%</strong>)</li>
+<li>Azure Kubernetes Service (<strong>99.95%</strong>)</li>
+</ul>
+<p>Given the popularity and business-criticality of containers these days, I am personally a bit surprised to see these rather low numbers. On the other hand, knowing containers are typically running for a short period of time, the impact could be quite low. Azure Container Registry is mainly following the SLA&rsquo;s from it&rsquo;s underlying Azure storage service, where Azure Kubernetes Service is relying on Azure Availability Sets.</p>
+<p><img src="../images/2020-06-14-9.jpg" alt="Containers SLA"></p>
+<h2 id="summary">Summary</h2>
+<p>This blog post only gives a short overview of different Azure services architectures, and what different SLA&rsquo;s they offer within each service. Ultimately, your high-availability architecture for any given workload should probably combine different of these services. For example, if you deploy multiple VM instances as part of Availability Zones, you would still need to add some load balancing solution next to it, to guarantee the high-availability of the workload itself.</p>
+<p>Given the complexity for specific scenarios, I guess I can come up with a few concrete examples from customers, and what architectural designs I used to give you some ideas about what and how to architect.</p>
+<p>However, keep the following in mind:</p>
+<p><img src="../images/2020-06-14-10.jpg" alt="Architecting is an ART"></p>
+<p>Stay safe and healthy you all!</p>
+<p>/Peter</p>
+
+
+                
+
+                <hr>
+                
+
+                
+<div id="disqus-comment"></div>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/ai" title="ai">
+                            ai
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/aks" title="aks">
+                            aks
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/application-insights" title="application-insights">
+                            application-insights
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/azure" title="azure">
+                            azure
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/azure-devops" title="azure-devops">
+                            azure-devops
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/bing" title="bing">
+                            bing
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/blazor" title="blazor">
+                            blazor
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/books" title="books">
+                            books
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/certification" title="certification">
+                            certification
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/containers" title="containers">
+                            containers
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/devops" title="devops">
+                            devops
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/devsecops" title="devsecops">
+                            devsecops
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/docker" title="docker">
+                            docker
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/dotnet" title="dotnet">
+                            dotnet
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/ebooks" title="ebooks">
+                            ebooks
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/hugo" title="hugo">
+                            hugo
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/kubernetes" title="kubernetes">
+                            kubernetes
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/learning" title="learning">
+                            learning
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/packt" title="packt">
+                            packt
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/security" title="security">
+                            security
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/sre" title="sre">
+                            sre
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/terraform" title="terraform">
+                            terraform
+                        </a>
+                        
+                        
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                   
+                   <li>
+                       <a href='' rel="alternate" type="application/rss+xml" title="Azure Readiness starts here..." >
+                           <span class="fa-stack fa-lg">
+                               <i class="fa fa-circle fa-stack-2x"></i>
+                               <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+                   
+                    
+                    <li>
+                        <a href="mailto:info@007ffflearning.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    <li>
+                        <a href="http://www.twitter.com/pdtit">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+
+                    
+
+		    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/petender">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/pdtit/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+                </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Azure Readiness starts here... 2024
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+</body>
+</html>
