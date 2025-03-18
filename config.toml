@@ -7,7 +7,7 @@ languageCode = "en-us"
 disqusShortname = ""
 googleAnalytics = ""
 preserveTaxonomyNames = true
-paginate = 7 #frontpage pagination
+paginate = 10 #frontpage pagination
 hasCJKLanguage = true
 
 [outputs]
@@ -20,7 +20,7 @@ home = ["HTML", "RSS", "Algolia"]
   slogan = "The best way to know the future, is to learn it"
   keyword = "Azure, Learning, Certification, Technology"
   accent = "#007FFF"
-  azureAppInsightsKey = "4ecca3df-ab58-4882-903e-3ab2c030f009"
+  azureAppInsightsKey = "100a91c6-40e4-4e8e-a4ee-57873dc4eee3"
   
 
   image_404 = "img/404-bg.jpg"
