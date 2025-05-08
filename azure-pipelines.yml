@@ -26,7 +26,7 @@ stages:
     - task: AzureCLI@2
       displayName: run experiment to stop app service
       inputs:
-        azureSubscription: 'PDTDemoPlanet Azure'
+        azureSubscription: 'PDTDemoPlanet Principal'
         scriptType: 'pscore'
         scriptLocation: 'inlineScript'
         inlineScript: 'az rest --method post --uri https://management.azure.com/subscriptions/$(SUB_NAME)/resourceGroups/$(RG_NAME)/providers/Microsoft.Chaos/experiments/$(EXP_NAME)/start?api-version=2023-11-01'
