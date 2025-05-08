@@ -8,11 +8,11 @@ trigger:
 
 variables:
 - name: EXP_NAME
-  value: 'app is down'
+  value: cpu_spike
 - name: SUB_NAME
   value: 498ab842-278f-45f8-ac5c-dc89061565cd
 - name: RG_NAME
-  value: rg-tollboothapp
+  value: rg-mmsiaas
 
 pool:
   vmImage: ubuntu-latest
