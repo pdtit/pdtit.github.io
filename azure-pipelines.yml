@@ -1,0 +1,32 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- none
+
+variables:
+- name: EXP_NAME
+  value: cpu_spike
+- name: SUB_NAME
+  value: 498ab842-278f-45f8-ac5c-dc89061565cd
+- name: RG_NAME
+  value: rg-mmsiaas
+
+pool:
+  vmImage: ubuntu-latest
+stages:
+- stage: chaos_stage
+  displayName: Chaos Experiment stage
+  jobs:
+  - job: run_experiment
+    displayName: Run chaos experiment job
+    steps:
+    - task: AzureCLI@2
+      displayName: run experiment to stop app service
+      inputs:
+        azureSubscription: 'PDTDemoPlanet Principal'
+        scriptType: 'pscore'
+        scriptLocation: 'inlineScript'
+        inlineScript: 'az rest --method post --uri https://management.azure.com/subscriptions/$(SUB_NAME)/resourceGroups/$(RG_NAME)/providers/Microsoft.Chaos/experiments/$(EXP_NAME)/start?api-version=2023-11-01'

@@ -1,0 +1,29 @@
+trigger:
+- none
+
+pool:
+  vmImage: ubuntu-latest
+variables:
+  serviceConnection: ALT_SC_bc52da4a-abab-4332-92d3-cef30f45e03e
+  loadTestResource: blogperftest
+  loadTestResourceGroup: 007ffflearningblogrg
+  
+stages:
+- stage: LoadTest
+  displayName: Load Test
+  jobs:
+  - job: LoadTest
+    displayName: Load Test
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+    - task: AzureLoadTest@1
+      inputs:
+        azureSubscription: ALT_SC_bc52da4a-abab-4332-92d3-cef30f45e03e
+        loadTestConfigFile: alt-config-bc52da4a-abab-4332-92d3-cef30f45e016.yaml 
+        resourceGroup: 007ffflearningblogrg
+        loadTestResource: blogperftest
+  
+    - publish: $(System.DefaultWorkingDirectory)/loadTest
+      artifact: results
+      
