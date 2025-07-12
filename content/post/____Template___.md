@@ -1,25 +1,17 @@
 ---
-title: "Template title"
-date: 2000-01-01
-publishdate: 2022-01-01
-tags: ["Azure", "Hugo"]
+title: "Using GitHub Copilot Agent Mode to transform ARM templates to BICEP"
+date: 2000-00-01
+publishdate: 2000-00-01
+tags: ["ARM", "Bicep", "GitHub", "GitHub Copilot", "AI"]
 draft: true
 ---
 
-!!!!! change the draft to false first!!!!
+
+// change draft: true to false
+Over the last few months...
 
 
-
- **[Hugo](https://www.gohugo.io)**
- 
-  [Azure Static Storage Sites](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-static-website-how-to?tabs=azure-portal) 
-
-![Create Static Web Apps](../images/2022-10-29_16-00-12.png)
-
-
-
-
-///////////// This should always be the last part of the post
+// should always be the last section of the blog
 
 [![BuyMeACoffee](../images/buy_me_a_coffee.png)](https://www.buymeacoffee.com/pdtit)
 
