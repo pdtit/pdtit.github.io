@@ -42,7 +42,6 @@ The prompt I used was this:
 
 5. Followed by going more in-depth into each and every template JSON file
 
-![Agent Mode Continuing](../images/2025-07-04-start.png)
 
 6. Followed by *starting the conversion process to Bicep files*. Before doing that, it also highlighted it would check the Azure deployment best practices (although I didn't explicitly asked to do that, nice one! ) 
 
