@@ -31,23 +31,23 @@ These are the steps to set all this up:
 
 1. From Entra ID, navigate to **App Registration**, and select **New Registration**
 
-![App Registration](../images/08-10-2025-01)
+![App Registration](../images/08-10-2025-01.png)
 
 2. Provide a name for the App Registration **e.g. Copilot Studio Agent Demo**, and leave all other default settings as-is. Click **Register**
 
-![App Registration](../images/08-10-2025-02)
+![App Registration](../images/08-10-2025-02.png)
 
 3. This generates the Service Principal, with some specific IDs you need to copy aside. The Client ID, reflecting the unique GUID of the Service Principal as well as the Tenant ID which corresponds to your Entra ID Tenant GUID.
 
-![Client Credentials](../images/08-10-2025-03)
+![Client Credentials](../images/08-10-2025-03.png)
 
 4. Next, the Service Principal also needs the necessary credential to authenticate, which can be set up from the **Subscription or Resource Group Access Control IAM (RBAC)** permissions. For my example, I specify "Read" permissions on Subscription level, as I only want to run that as a validation of my workflow actually running successfully. You could alter to any permissions your scenario requires. 
 
-![RBAC Permissions](../images/08-10-2025-04)
+![RBAC Permissions](../images/08-10-2025-04.png)
 
 5. And to request an authentication JWT Token, we also need to pass the Client ID password, which can be generated from the Entra ID App Registration page for the newly created App Registration. Copy this secret aside, as you will need it in a later step.
 
-![App Registration Client Secret](../images/08-10-2025-05)
+![App Registration Client Secret](../images/08-10-2025-05.png)
 
 6. With all this out of the way, we have all ID information, credentials and RBAC permissions to bring into Copilot Studio. But there are a few other pieces of information we are gathering first, the **Authentication API Endpoint**, which is the Microsoft Login URL for our Tenant. this should look like this:
 
@@ -70,17 +70,17 @@ where you insert the actual value of the clientid and clientsecret you copied ea
 
 2. Navigate to **Topics** and **Add a new topic**. Select "From Blank"
 
-![New Copilot Studio Agent](../images/08-10-2025-06)
+![New Copilot Studio Agent](../images/08-10-2025-06.png)
 
 3. Click the **+ Sign** below the Trigger step, and select **Advanced / HTTP Request** from the option menu.
 
-![HTTP Request](../images/08-10-2025-07)
+![HTTP Request](../images/08-10-2025-07.png)
 
 4. Complete the following fields of the HTTP Request per below overview:
 
 - **URL**: the login-URL specified earlier: https://login.microsoftonline.com/<tenantID>/oauth2/v.2.0/token, where the <tenantid> placeholder gets replaced with the actual GUID of your tenant, something like this (redacted)
 
-![HTTP Request URL](../images/08-10-2025-08)
+![HTTP Request URL](../images/08-10-2025-08.png)
 
 https://login.microsoftonline.com/1c5e3b03-f225-4622-b785-abcdefghi/oauth2/token
 
@@ -89,21 +89,10 @@ https://login.microsoftonline.com/1c5e3b03-f225-4622-b785-abcdefghi/oauth2/token
 - **Headers and Body**: 
     - *Headers / Key*: Content-Type
     - *Headers / Value*: application/x-www-form-urlencoded
-
-![HTTP Request Headers](../images/08-10-2025-09)
-
-
-
     - *Body*: Raw Content
     - *Content Type*: application/x-www-form-urlencoded
     - *Content*: client-id=c92c3f9f-7ba3-4e5b-1234-abcdefghi&client_secret=nzE8Q~q-tDIrvlLkBGe2IwWH.abcdefghij_&grant_type=client_credentials&scope=https://graph.microsoft.com/.default
-
-![HTTP Request Body Content](../images/08-10-2025-10)
-
     - *Response headers*: Create new **Global** variable to store the value in, e.g. HTTPResponseVar
-
-![HTTP Request URL](../images/08-10-2025-11)
-
     - *Response data type*: Record + select Edit Schema, and add the following schema structure:
         ```
         kind: Record
@@ -112,22 +101,31 @@ https://login.microsoftonline.com/1c5e3b03-f225-4622-b785-abcdefghi/oauth2/token
             expires_in: Number
             token_type: String
         ```
-
-![HTTP Request URL](../images/08-10-2025-12)
-
     - *Save Response as*: select the Global.HTTPResponseVar again
 
     5. **Save** the changes. 
+
+![HTTP Request Headers](../images/08-10-2025-09.png)
+Request Header details
+
+![HTTP Request Body Content](../images/08-10-2025-10.png)
+Request Body details
+
+![Global Variable details](../images/08-10-2025-11.png)
+Global Variable details
+
+![Record Schema details](../images/08-10-2025-12.png)
+Record Schema details
 
     6. While this flow should work fine now, you won't get any output from it. We need to update the flow with a follow-up message, in which we read/present the output from the HTTPResponseVar variable. **Click** the **+** sign below the HTTP Request step in the workflow, and select **Send a Message** from the context menu.
 
     7. Enter an informative text, e.g. "Here is the Azure Token String", and add the HTTPResponseVar variable into the text box, by selecting the *insert variable {X}* option and selecting the variable from the list. 
 
-![Response Message](../images/08-10-2025-13)
+![Response Message](../images/08-10-2025-13.png)
 
     8. **Save** the changes. Next, from the **Test your Agent** pane, trigger the Agent flow by sending a short chat message, like "get my token". This should result in the chat response, showing your message "Here is the Azure Token String", and the actual JWT token with all necessary information in it. 
 
-![Response JWT Token](../images/08-10-2025-14)
+![Response JWT Token](../images/08-10-2025-14.png)
 
     9. Cool, this works as expected! While we're close, we're not 100% done yet, as the value of this variable is not immediately reusable as an authentication token, as not all information in the response is part of the actually authentication token (e.g. String{"access_token"}, "expires_in", "token_type"). We can fix this by running a **concatenate** formula, and splitting the received information in a new variable which only stores the actual Token information we need to authenticate. After the last message step in the flow, **click the + sign** again, and once more, select *Send a Message*. Provide a new informative message, something like "And this is the cleaned up version of the Bearer token, just what you need...", and add a new **PowerFx Expression** by clicking the **{fX}** button. Enter the following formula:
 
@@ -135,7 +133,7 @@ https://login.microsoftonline.com/1c5e3b03-f225-4622-b785-abcdefghi/oauth2/token
     Concatenate(Topic.HTTPResponseVar.token_type," ",Topic.HTTPResponseVar.access_token)
     ```
 
-![Concat Response JWT Token](../images/08-10-2025-15)
+![Concat Response JWT Token](../images/08-10-2025-15.png)
 
     Which would transform the response into a valid Bearer token text string "Bearer ey..." which you can use for any Azure HTTP REST API in a different Topic. To do that, it's best to save the concat result in a new Global Variable.  
 
@@ -143,7 +141,7 @@ https://login.microsoftonline.com/1c5e3b03-f225-4622-b785-abcdefghi/oauth2/token
 
 While I want to keep this article on the actual JWT Token authentication process, I wanted to add a little teaser for a follow-up article, in which I create a Copilot Studio Agent to interact with Azure, relying on the Bearer Token from this Topic we just created. In any Copilot Studio flow you have, you can now refer to the Auth2Azure Authentication request Topic like this:
 
-![Reuse Bearer Token Topic](../images/08-10-2025-16)
+![Reuse Bearer Token Topic](../images/08-10-2025-16.png)
 
 ## Summary
 
