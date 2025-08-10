@@ -103,7 +103,7 @@ https://login.microsoftonline.com/1c5e3b03-f225-4622-b785-abcdefghi/oauth2/token
         ```
     - *Save Response as*: select the Global.HTTPResponseVar again
 
-    5. **Save** the changes. 
+5. **Save** the changes. 
 
 ![HTTP Request Headers](../images/08-10-2025-09.png)
 Request Header details
@@ -117,17 +117,17 @@ Global Variable details
 ![Record Schema details](../images/08-10-2025-12.png)
 Record Schema details
 
-    6. While this flow should work fine now, you won't get any output from it. We need to update the flow with a follow-up message, in which we read/present the output from the HTTPResponseVar variable. **Click** the **+** sign below the HTTP Request step in the workflow, and select **Send a Message** from the context menu.
+6. While this flow should work fine now, you won't get any output from it. We need to update the flow with a follow-up message, in which we read/present the output from the HTTPResponseVar variable. **Click** the **+** sign below the HTTP Request step in the workflow, and select **Send a Message** from the context menu.
 
-    7. Enter an informative text, e.g. "Here is the Azure Token String", and add the HTTPResponseVar variable into the text box, by selecting the *insert variable {X}* option and selecting the variable from the list. 
+7. Enter an informative text, e.g. "Here is the Azure Token String", and add the HTTPResponseVar variable into the text box, by selecting the *insert variable {X}* option and selecting the variable from the list. 
 
 ![Response Message](../images/08-10-2025-13.png)
 
-    8. **Save** the changes. Next, from the **Test your Agent** pane, trigger the Agent flow by sending a short chat message, like "get my token". This should result in the chat response, showing your message "Here is the Azure Token String", and the actual JWT token with all necessary information in it. 
+8. **Save** the changes. Next, from the **Test your Agent** pane, trigger the Agent flow by sending a short chat message, like "get my token". This should result in the chat response, showing your message "Here is the Azure Token String", and the actual JWT token with all necessary information in it. 
 
 ![Response JWT Token](../images/08-10-2025-14.png)
 
-    9. Cool, this works as expected! While we're close, we're not 100% done yet, as the value of this variable is not immediately reusable as an authentication token, as not all information in the response is part of the actually authentication token (e.g. String{"access_token"}, "expires_in", "token_type"). We can fix this by running a **concatenate** formula, and splitting the received information in a new variable which only stores the actual Token information we need to authenticate. After the last message step in the flow, **click the + sign** again, and once more, select *Send a Message*. Provide a new informative message, something like "And this is the cleaned up version of the Bearer token, just what you need...", and add a new **PowerFx Expression** by clicking the **{fX}** button. Enter the following formula:
+9. Cool, this works as expected! While we're close, we're not 100% done yet, as the value of this variable is not immediately reusable as an authentication token, as not all information in the response is part of the actually authentication token (e.g. String{"access_token"}, "expires_in", "token_type"). We can fix this by running a **concatenate** formula, and splitting the received information in a new variable which only stores the actual Token information we need to authenticate. After the last message step in the flow, **click the + sign** again, and once more, select *Send a Message*. Provide a new informative message, something like "And this is the cleaned up version of the Bearer token, just what you need...", and add a new **PowerFx Expression** by clicking the **{fX}** button. Enter the following formula:
 
     ```
     Concatenate(Topic.HTTPResponseVar.token_type," ",Topic.HTTPResponseVar.access_token)
@@ -135,7 +135,7 @@ Record Schema details
 
 ![Concat Response JWT Token](../images/08-10-2025-15.png)
 
-    Which would transform the response into a valid Bearer token text string "Bearer ey..." which you can use for any Azure HTTP REST API in a different Topic. To do that, it's best to save the concat result in a new Global Variable.  
+10. Which would transform the response into a valid Bearer token text string "Bearer ey..." which you can use for any Azure HTTP REST API in a different Topic. To do that, it's best to save the concat result in a new Global Variable.  
 
 ## Reuse the JWT Authenticator Topic in Copilot Studio Agent
 
