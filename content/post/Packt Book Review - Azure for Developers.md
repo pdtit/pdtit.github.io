@@ -10,7 +10,7 @@ In this post, I want to share my review of **Azure for Developers** (Third Editi
 
 This definitive guide focuses on creating secure, scalable Azure apps with GenAI, serverless, and DevOps pipelines, making it an essential resource for developers looking to build modern cloud-native applications on Azure with the latest technologies.
 
-![Book Cover](../images/azure_for_developers.jpg)
+![Book Cover](../images/azure_for_developers.png)
 
 ## About the book (from the cover)
 
