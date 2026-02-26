@@ -40,6 +40,15 @@
                 "Width" $resource.Width
             }}
         {{- end -}}
+    {{ else }}
+        {{/* No resource found - return URL-only dict for remote/external images */}}
+        {{ $result = dict
+            "Local" false
+            "Resource" nil
+            "Permalink" .Image
+            "Height" nil
+            "Width" nil
+        }}
     {{ end }}
 {{ end }}
 
