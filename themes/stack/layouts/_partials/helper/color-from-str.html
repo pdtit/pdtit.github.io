@@ -1,11 +1,12 @@
 {{/* 
     This helper is used to generate a background color and text color from a string
     Used to generate deterministic colors for tags, categories, etc.
+    Modified to work with Hugo 0.128.2 (hash function not available)
 */}}
 
 {{- $str := . -}}
-{{- $hash := hash.FNV32a $str -}}
-{{- $h := mod $hash 360 -}}
+{{- $strLen := len $str -}}
+{{- $h := mod $strLen 360 -}}
 
 {{- $backgroundColor := printf "hsl(%d, 60%%, 84%%)" $h -}}
 {{- $textColor := printf "hsl(%d, 60%%, 15%%)" $h -}}
