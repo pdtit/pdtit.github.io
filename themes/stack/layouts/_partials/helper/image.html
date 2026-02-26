@@ -17,15 +17,8 @@
     {{ if not (in (slice "https" "http") $url.Scheme) }}
         {{ $resource = .Resources.Get (printf "%s" (.Image | safeURL)) }}
     {{ else }}
-        {{ with try (resources.GetRemote $url) }}
-            {{ with .Err }}
-                {{ errorf "%s" . }}
-            {{ else with .Value }}
-                {{ $resource = . }}
-            {{ else }}
-                {{ errorf "Unable to get remote resource %q" $url }}
-            {{ end }}
-        {{ end }}   
+        {{/* Hugo 0.128.2 compatibility: Skip remote resource processing, just use URL */}}
+        {{/* Remote images will use the URL directly without local caching */}}
     {{ end }}
 
     {{ if $resource }}
