@@ -28,5 +28,7 @@ jobs:
       app_location: "/" # App source code path
       api_location: "" # Api source code path - optional
       output_location: "docs" # Built app content directory - optional
+    env:
+      HUGO_VERSION: '0.128.2'  # Pin Hugo version to avoid GLIBC compatibility issues
 ###### End of Repository/Build Configurations ######
 
