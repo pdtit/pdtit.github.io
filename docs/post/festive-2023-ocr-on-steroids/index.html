@@ -1,269 +1,349 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto" data-theme="auto">
+<html lang="en-us" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Hugo\nAzure Static Storage Sites\nWelcome to this year&rsquo;s Festive Tech Calendar!!\rHi everyone, welcome to my contribution to this year&rsquo;s Festive Tech Calendar once more. This will be the fourth year, and I still love the concept of bringing some (Azure) joy to you/your family this season. If you ask me what the biggest news in tech was this year, especially within the Microsoft ecosystem, it&rsquo;s Azure AI. Shouldn&rsquo;t be surprising to most of you who know me and my role within Microsoft as Technical Trainer - providing Azure workshops every week to our top customers and partners across the globe - we also integrated (A lot :)) of AI focus early in the year. And it is only becoming more imported.\n">
+<title>Festive Tech Calendar - Azure AI - OCR on Steroids</title>
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
-<title>Festive Tech Calendar - Azure AI - OCR on Steroids | Azure Readiness starts here...</title>
-<meta name="keywords" content="Azure, AI">
-<meta name="description" content="Hugo
-Azure Static Storage Sites
 
-Welcome to this year&rsquo;s Festive Tech Calendar!!
-Hi everyone, welcome to my contribution to this year&rsquo;s Festive Tech Calendar once more. This will be the fourth year, and I still love the concept of bringing some (Azure) joy to you/your family this season. If you ask me what the biggest news in tech was this year, especially within the Microsoft ecosystem, it&rsquo;s Azure AI. Shouldn&rsquo;t be surprising to most of you who know me and my role within Microsoft as Technical Trainer - providing Azure workshops every week to our top customers and partners across the globe - we also integrated (A lot :)) of AI focus early in the year. And it is only becoming more imported.">
-<meta name="author" content="Peter De Tender">
 <link rel="canonical" href="http://localhost:1313/post/festive-2023-ocr-on-steroids/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.8369b950114d6445e67a717fe985c3f6c6da2f22526bfb9d5b4e2dea350d3ef5.css" integrity="sha256-g2m5UBFNZEXmenF/6YXD9sbaLyJSa/udW04t6jUNPvU=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
-<meta name="theme-color" content="#007FFF">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/post/festive-2023-ocr-on-steroids/">
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
 
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --code-block-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-                color-scheme: dark;
-            }
 
-            .list {
-                background: var(--theme);
-            }
-
-            .toc {
-                background: var(--entry);
-            }
-        }
-
-        @media (prefers-color-scheme: light) {
-            .list::-webkit-scrollbar-thumb {
-                border-color: var(--code-bg);
-            }
-        }
-
-    </style>
-</noscript>
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.querySelector("html").dataset.theme = 'dark';
-    } else if (localStorage.getItem("pref-theme") === "light") {
-       document.querySelector("html").dataset.theme = 'light';
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.querySelector("html").dataset.theme = 'dark';
-    } else {
-        document.querySelector("html").dataset.theme = 'light';
-    }
-
-</script>
-<script type="text/javascript">
-var appInsights=window.appInsights||function(a){
-    function b(a){c[a]=function(){var b=arguments;c.queue.push(function(){c[a].apply(c,b)})}}var c={config:a},d=document,e=window;setTimeout(function(){var b=d.createElement("script");b.src=a.url||"https://az416426.vo.msecnd.net/scripts/a/ai.0.js",d.getElementsByTagName("script")[0].parentNode.appendChild(b)});try{c.cookie=d.cookie}catch(a){}c.queue=[];for(var f=["Event","Exception","Metric","PageView","Trace","Dependency"];f.length;)b("track"+f.pop());if(b("setAuthenticatedUserContext"),b("clearAuthenticatedUserContext"),b("startTrackEvent"),b("stopTrackEvent"),b("startTrackPage"),b("stopTrackPage"),b("flush"),!a.disableExceptionTracking){f="onerror",b("_"+f);var g=e[f];e[f]=function(a,b,d,e,h){var i=g&&g(a,b,d,e,h);return!0!==i&&c["_"+f](a,b,d,e,h),i}}return c
-}({
-    instrumentationKey:"100a91c6-40e4-4e8e-a4ee-57873dc4eee3"
-}));
-
-window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&appInsights.trackPageView();
-</script>
-<script type="text/javascript">
-var appInsights=window.appInsights||function(a){
-    function b(a){c[a]=function(){var b=arguments;c.queue.push(function(){c[a].apply(c,b)})}}var c={config:a},d=document,e=window;setTimeout(function(){var b=d.createElement("script");b.src=a.url||"https://az416426.vo.msecnd.net/scripts/a/ai.0.js",d.getElementsByTagName("script")[0].parentNode.appendChild(b)});try{c.cookie=d.cookie}catch(a){}c.queue=[];for(var f=["Event","Exception","Metric","PageView","Trace","Dependency"];f.length;)b("track"+f.pop());if(b("setAuthenticatedUserContext"),b("clearAuthenticatedUserContext"),b("startTrackEvent"),b("stopTrackEvent"),b("startTrackPage"),b("stopTrackPage"),b("flush"),!a.disableExceptionTracking){f="onerror",b("_"+f);var g=e[f];e[f]=function(a,b,d,e,h){var i=g&&g(a,b,d,e,h);return!0!==i&&c["_"+f](a,b,d,e,h),i}}return c
-}({
-    instrumentationKey:"100a91c6-40e4-4e8e-a4ee-57873dc4eee3"
-});
-
-window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&appInsights.trackPageView();
-</script><meta property="og:url" content="http://localhost:1313/post/festive-2023-ocr-on-steroids/">
-  <meta property="og:site_name" content="Azure Readiness starts here...">
-  <meta property="og:title" content="Festive Tech Calendar - Azure AI - OCR on Steroids">
-  <meta property="og:description" content="Hugo
-Azure Static Storage Sites
-Welcome to this year’s Festive Tech Calendar!! Hi everyone, welcome to my contribution to this year’s Festive Tech Calendar once more. This will be the fourth year, and I still love the concept of bringing some (Azure) joy to you/your family this season. If you ask me what the biggest news in tech was this year, especially within the Microsoft ecosystem, it’s Azure AI. Shouldn’t be surprising to most of you who know me and my role within Microsoft as Technical Trainer - providing Azure workshops every week to our top customers and partners across the globe - we also integrated (A lot :)) of AI focus early in the year. And it is only becoming more imported.">
-  <meta property="og:locale" content="en-us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="post">
-    <meta property="article:published_time" content="2023-12-23T00:00:00+00:00">
-    <meta property="article:modified_time" content="2023-12-23T00:00:00+00:00">
-    <meta property="article:tag" content="Azure">
-    <meta property="article:tag" content="AI">
-<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/scss/style.min.3fe054e425b56de773b19f095f1e2017ce9a57c1bdf515298b0b20fbe7002c92.css"><meta property='og:title' content="Festive Tech Calendar - Azure AI - OCR on Steroids">
+<meta property='og:description' content="Hugo\nAzure Static Storage Sites\nWelcome to this year&rsquo;s Festive Tech Calendar!!\rHi everyone, welcome to my contribution to this year&rsquo;s Festive Tech Calendar once more. This will be the fourth year, and I still love the concept of bringing some (Azure) joy to you/your family this season. If you ask me what the biggest news in tech was this year, especially within the Microsoft ecosystem, it&rsquo;s Azure AI. Shouldn&rsquo;t be surprising to most of you who know me and my role within Microsoft as Technical Trainer - providing Azure workshops every week to our top customers and partners across the globe - we also integrated (A lot :)) of AI focus early in the year. And it is only becoming more imported.\n">
+<meta property='og:url' content='http://localhost:1313/post/festive-2023-ocr-on-steroids/'>
+<meta property='og:site_name' content='Azure Readiness starts here...'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Azure' /><meta property='article:tag' content='AI' /><meta property='article:published_time' content='2023-12-23T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-12-23T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Festive Tech Calendar - Azure AI - OCR on Steroids">
-<meta name="twitter:description" content="Hugo
-Azure Static Storage Sites
-
-Welcome to this year&rsquo;s Festive Tech Calendar!!
-Hi everyone, welcome to my contribution to this year&rsquo;s Festive Tech Calendar once more. This will be the fourth year, and I still love the concept of bringing some (Azure) joy to you/your family this season. If you ask me what the biggest news in tech was this year, especially within the Microsoft ecosystem, it&rsquo;s Azure AI. Shouldn&rsquo;t be surprising to most of you who know me and my role within Microsoft as Technical Trainer - providing Azure workshops every week to our top customers and partners across the globe - we also integrated (A lot :)) of AI focus early in the year. And it is only becoming more imported.">
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Posts",
-      "item": "http://localhost:1313/post/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "Festive Tech Calendar - Azure AI - OCR on Steroids",
-      "item": "http://localhost:1313/post/festive-2023-ocr-on-steroids/"
+<meta name="twitter:description" content="Hugo\nAzure Static Storage Sites\nWelcome to this year&rsquo;s Festive Tech Calendar!!\rHi everyone, welcome to my contribution to this year&rsquo;s Festive Tech Calendar once more. This will be the fourth year, and I still love the concept of bringing some (Azure) joy to you/your family this season. If you ask me what the biggest news in tech was this year, especially within the Microsoft ecosystem, it&rsquo;s Azure AI. Shouldn&rsquo;t be surprising to most of you who know me and my role within Microsoft as Technical Trainer - providing Azure workshops every week to our top customers and partners across the globe - we also integrated (A lot :)) of AI focus early in the year. And it is only becoming more imported.\n">
+    <link rel="shortcut icon" href="/img/007ffflearning-ape.png" />
+<script type="text/javascript">
+    !function(T,l,y){var S=T.location,k="script",D="instrumentationKey",C="ingestionendpoint",I="disableExceptionTracking",E="ai.device.",b="toLowerCase",w="crossOrigin",N="POST",e="appInsightsSDK",t=y.name||"appInsights";(y.name||T[e])&&(T[e]=t);var n=T[t]||function(d){var g=!1,f=!1,m={initialize:!0,queue:[],sv:"5",version:2,config:d};function v(e,t){var n={},a="Browser";return n[E+"id"]=a[b](),n[E+"type"]=a,n["ai.operation.name"]=S&&S.pathname||"_unknown_",n["ai.internal.sdkVersion"]="javascript:snippet_"+(m.sv||m.version),{time:function(){var e=new Date;function t(e){var t=""+e;return 1===t.length&&(t="0"+t),t}return e.getUTCFullYear()+"-"+t(1+e.getUTCMonth())+"-"+t(e.getUTCDate())+"T"+t(e.getUTCHours())+":"+t(e.getUTCMinutes())+":"+t(e.getUTCSeconds())+"."+((e.getUTCMilliseconds()/1e3).toFixed(3)+"").slice(2,5)+"Z"}(),iKey:e,name:"Microsoft.ApplicationInsights."+e.replace(/-/g,"")+"."+t,sampleRate:100,tags:n,data:{baseData:{ver:2}}}}var h=d.url||y.src;if(h){function a(e){var t,n,a,i,r,o,s,c,u,p,l;g=!0,m.queue=[],f||(f=!0,t=h,s=function(){var e={},t=d.connectionString;if(t)for(var n=t.split(";"),a=0;a<n.length;a++){var i=n[a].split("=");2===i.length&&(e[i[0][b]()]=i[1])}if(!e[C]){var r=e.endpointsuffix,o=r?e.location:null;e[C]="https://"+(o?o+".":"")+"dc."+(r||"services.visualstudio.com")}return e}(),c=s[D]||d[D]||"",u=s[C],p=u?u+"/v2/track":d.endpointUrl,(l=[]).push((n="SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details)",a=t,i=p,(o=(r=v(c,"Exception")).data).baseType="ExceptionData",o.baseData.exceptions=[{typeName:"SDKLoadFailed",message:n.replace(/\./g,"-"),hasFullStack:!1,stack:n+"\nSnippet failed to load ["+a+"] -- Telemetry is disabled\nHelp Link: https://go.microsoft.com/fwlink/?linkid=2128109\nHost: "+(S&&S.pathname||"_unknown_")+"\nEndpoint: "+i,parsedStack:[]}],r)),l.push(function(e,t,n,a){var i=v(c,"Message"),r=i.data;r.baseType="MessageData";var o=r.baseData;return o.message='AI (Internal): 99 message:"'+("SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details) ("+n+")").replace(/\"/g,"")+'"',o.properties={endpoint:a},i}(0,0,t,p)),function(e,t){if(JSON){var n=T.fetch;if(n&&!y.useXhr)n(t,{method:N,body:JSON.stringify(e),mode:"cors"});else if(XMLHttpRequest){var a=new XMLHttpRequest;a.open(N,t),a.setRequestHeader("Content-type","application/json"),a.send(JSON.stringify(e))}}}(l,p))}function i(e,t){f||setTimeout(function(){!t&&m.core||a()},500)}var e=function(){var n=l.createElement(k);n.src=h;var e=y[w];return!e&&""!==e||"undefined"==n[w]||(n[w]=e),n.onload=i,n.onerror=a,n.onreadystatechange=function(e,t){"loaded"!==n.readyState&&"complete"!==n.readyState||i(0,t)},n}();y.ld<0?l.getElementsByTagName("head")[0].appendChild(e):setTimeout(function(){l.getElementsByTagName(k)[0].parentNode.appendChild(e)},y.ld||0)}try{m.cookie=l.cookie}catch(p){}function t(e){for(;e.length;)!function(t){m[t]=function(){var e=arguments;g||m.queue.push(function(){m[t].apply(m,e)})}}(e.pop())}var n="track",r="TrackPage",o="TrackEvent";t([n+"Event",n+"PageView",n+"Exception",n+"Trace",n+"DependencyData",n+"Metric",n+"PageViewPerformance","start"+r,"stop"+r,"start"+o,"stop"+o,"addTelemetryInitializer","setAuthenticatedUserContext","clearAuthenticatedUserContext","flush"]),m.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4};var s=(d.extensionConfig||{}).ApplicationInsightsAnalytics||{};if(!0!==d[I]&&!0!==s[I]){var c="onerror";t(["_"+c]);var u=T[c];T[c]=function(e,t,n,a,i){var r=u&&u(e,t,n,a,i);return!0!==r&&m["_"+c]({message:e,url:t,lineNumber:n,columnNumber:a,error:i}),r},d.autoExceptionInstrumented=!0}return m}(y.cfg);function a(){y.onInit&&y.onInit(n)}(T[t]=n).queue&&0===n.queue.length?(n.queue.push(a),n.trackPageView({})):a()}(window,document,{
+    src: "https://js.monitor.azure.com/scripts/b/ai.2.min.js",
+    cfg: {
+        instrumentationKey: "100a91c6-40e4-4e8e-a4ee-57873dc4eee3"
     }
-  ]
-}
+    });
 </script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Festive Tech Calendar - Azure AI - OCR on Steroids",
-  "name": "Festive Tech Calendar - Azure AI - OCR on Steroids",
-  "description": "Hugo\nAzure Static Storage Sites\nWelcome to this year\u0026rsquo;s Festive Tech Calendar!! Hi everyone, welcome to my contribution to this year\u0026rsquo;s Festive Tech Calendar once more. This will be the fourth year, and I still love the concept of bringing some (Azure) joy to you/your family this season. If you ask me what the biggest news in tech was this year, especially within the Microsoft ecosystem, it\u0026rsquo;s Azure AI. Shouldn\u0026rsquo;t be surprising to most of you who know me and my role within Microsoft as Technical Trainer - providing Azure workshops every week to our top customers and partners across the globe - we also integrated (A lot :)) of AI focus early in the year. And it is only becoming more imported.\n",
-  "keywords": [
-    "Azure", "AI"
-  ],
-  "articleBody": "Hugo\nAzure Static Storage Sites\nWelcome to this year’s Festive Tech Calendar!! Hi everyone, welcome to my contribution to this year’s Festive Tech Calendar once more. This will be the fourth year, and I still love the concept of bringing some (Azure) joy to you/your family this season. If you ask me what the biggest news in tech was this year, especially within the Microsoft ecosystem, it’s Azure AI. Shouldn’t be surprising to most of you who know me and my role within Microsoft as Technical Trainer - providing Azure workshops every week to our top customers and partners across the globe - we also integrated (A lot :)) of AI focus early in the year. And it is only becoming more imported.\nTherefore, I decided to bring you an Azure AI-inspired topic for this year’s Festive Tech Calendar session, using Computer Vision - Document Intelligence, or what I describe as OCR on steroids.\nIn the late 1920s and into the 1930s, Emanuel Goldberg developed what he called a “Statistical Machine” for searching microfilm archives using an optical code recognition system, which evolved into an IBM OCR solution.\nabout 100 years after, OCR is transitioning into powerful document and text analysis capabilities, thanks to Azure AI Document Intelligence APIs.\nBy reading through this post, and following the demo-steps, you can build your own “Statistical Machine” in no-time. And from there, learn about Azure AI Document Intelligence APIs, to take it even further… let’s go!\nTo embrace our Azure AI and Microsoft Copilot even more myself, I actually used it to create (parts) of this blog post. What a wonderful world we live in today!\nAbout 2 weeks ago, I presented a session on the same topic for the GlobalAI Community Conference, led by Sjoukje Zaal, Amy Kate Boyd and Henk Boelman, for which the video is available On Youtube\nSo instead of creating a similar video, I worked with Azure AI, Microsoft Copilot and my own notes, to produce this article. Let me know if you liked it…\nIn this article, I will use the following flow:\nI’ll start with setting the scene on Azure AI, using Computer Vision for OCR\nFollowed by the more advanced scenario, using Intelligent Document Processing or IDP\nLast, I’ll show you how you can train the IDP using your own custom models\nAnd I hope to do all this using several demos… which you can go through in your own Azure subscriptions\nsetting the scene on Azure AI, using Computer Vision for OCR Computer Vision allows for different use cases, of which the most important ones are:\nImage Analysis – typically used to detect objects or items Spatial Analysis – is what you would use to detect people, like video cameras in a store OCR or Optical Character Recognition – allows you to recognize text, both printed and handwritten Facial Recognition – recognize human identity, without exposing privacy details Deploying Azure AI - Computer Vision If you don’t already have one in your subscription, you’ll need to provision an Azure AI Services resource. If you don’t have an Azure subscription yet, you can sign up for a [Free subscription](https://azure.microsoft.com/en-us/free).\nOpen the Azure portal at https://portal.azure.com, and sign in using the Microsoft account associated with your Azure subscription. In the top search bar, search for Azure AI services, select Azure AI Services, and create an Azure AI services multi-service account resource with the following settings: Subscription: Your Azure subscription Resource group: Choose or create a resource group (if you are using a restricted subscription, you may not have permission to create a new resource group - use the one provided) Region: Choose from East US, France Central, Korea Central, North Europe, Southeast Asia, West Europe, West US, or East Asia* Name: Enter a unique name Pricing tier: Standard S0 *Azure AI Vision 4.0 features are currently only available in these regions. Select the required checkboxes and create the resource. Wait for deployment to complete, and then view the deployment details. When the resource has been deployed, go to it and view its Keys and Endpoint page. This is what you would need from a development perspective in your application source code. I will show you an example on how to use a ComputerVision Docker Container later on which also needs those parameters to run successfully… From the ComputerVision tab within Azure AI Services, create a new Computer Vision Resource, keeping most default settings as-is. Wait for deployment to complete. From the Overview section of Computer Vision, notice the Vision Studio button. Click the Open Vision Studio button to navigate to Azure AI Compute Vision Studio. From here, select Optical Character Recognition , and select Extract text from images Here, you can test the functionality of how text is getting recognized, using the sample images provided, or you can upload your own images as well. I would recommend you to try with handwritten notes as well, especially when your handwriting skills are as great as mine… How does OCR recognition actually work? When we talk about Azure AI, it means using APIs, which allow you to bring in a source into the AI engine, from there processes a given scenario – like read text in the case of OCR, and from there we call the result\nLooking at this example, and I’ll show you in a quick demo, each item of text gets moved into a box/a boundary, which gets translated into understandable characters -\u003e forming words\nStep 1 involves creating a requestID Step 2 means reading out the results, for the specific requestID\nGoing back to the Vision Studio in the Azure Portal, where you uploaded or selected an image, and saw the outcome of how text gets recognized, select JSON. For each character or set of characters recognized as text, different JSON properties and values are getting created. These identify the boundaries of the text on the image. This is the core work of the Read API. So let’s have a more detailed look into that one for a second. The easiest I found to show this, is spinning up a Azure Cognitive Service Vision Docker Container.\nAssuming you know a bit about Docker containers, and you have Docker Engine running on your local machine, execute the following command:\ndocker run --rm -it -p 5050:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-model-2022-04-30 Eula=accept Billing=https://yourcomputevisionresource.cognitiveservices.azure.com/ ApiKey=yourcomputevisionapikey Replacing the Billing and ApiKey with the correct values from the Computer Vision Keys picked up earlier.\nWith the Docker container running, open the browser to http://localhost:5050/status, which confirms the ReadAPI service is ready, and your API Key is valid Next, connecto to http://localhost:5050/swagger to interact with the different API endpoints of the Language Service running within the container From the swagger API interface, select POST in the Analyze section, and click Try it out. Scroll down a bit, and in the Request body section, provide a URL to an actual image. For example, you can use the sample image below, which is the same one available in the Vision Studio portal, showing the nutrition facts about some food item. {\r\"url\": \"https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/printed_text.jpg\"\r} Click the Execute button. This sends an API request and returns an analyze request ID from this URL: http://localhost:5000/vision/v3.2/read/analyze Copy the request id, and open it in the browser, e.g. http://localhost:5050/vision/v3.2/read/analyzeResults/339da9a7-aa6b-4c81-a5d0-5840448fdfaf\nThis brings up the full JSON structure of the analyzed text, including text snippets, bounding boxes,…\nWhile quite impressive if you ask me, we had OCR technology doing almost the same, for the last 50-60 years already. Anyone remembers copiers and scanners, saving to a PDF document? Basically based on the same…\nSo let’s focus a bit more on the next level of OCR, using Intelligent Document Processing\nUsing Intelligent Document Processing or IDP Similar to the Computer Vision Read API and Vision Studio, Azure AI also provides the Form Recognizer Service , which got recently renamed to Intelligent Document Processing or IDP.\nDocument Intelligence Read Optical Character Recognition (OCR) model runs at a higher resolution than Azure AI Vision Read and extracts print and handwritten text from PDF documents and scanned images. It also includes support for extracting text from Microsoft Word, Excel, PowerPoint, and HTML documents. It detects paragraphs, text lines, words, locations, and languages. The Read model is the underlying OCR engine for other Document Intelligence prebuilt models like Layout, General Document, Invoice, Receipt, Identity (ID) document, Health insurance card, W2 in addition to custom models.\nOptical Character Recognition (OCR) for documents is optimized for large text-heavy documents in multiple file formats and global languages. It includes features like higher-resolution scanning of document images for better handling of smaller and dense text; paragraph detection; and fillable form management. OCR capabilities also include advanced scenarios like single character boxes and accurate extraction of key fields commonly found in invoices, receipts, and other prebuilt scenarios.\nFrom the Azure AI Portal, navigate to Document Intelligence, and create a new resource within. Default settings should be ok as-is. Once deployed, from the Overview section, notice the Document Intelligence Studio option, and open it. In the previous examples, the content was coming from an image-file type (jpeg,…). Where sometimes, we have more specific data types, such as forms, receipts, invoices, passport,…\nThis is where the compute vision text analyzer is not finetuned enough. That’s where we will use the form recognizer service, now known as document intelligence service.\nAzure AI Document Intelligence is a cloud-based Azure AI service that enables you to build intelligent document processing solutions. Massive amounts of data, spanning a wide variety of data types, are stored in forms and documents. Document Intelligence enables you to effectively manage the velocity at which data is collected and processed and is key to improved operations, informed data-driven decisions, and enlightened innovation.\nDocument Intelligence recognizes 3 different models:\nDocument Analysis - enable text extraction from forms and documents and return structured business-ready content ready for your organization’s action, use, or progress. Prebuilt models - Prebuilt models enable you to add intelligent document processing to your apps and flows without having to train and build your own models. From the Document Intelligence Studio, select a prebuilt model type of choice. I’ll use Invoice but the approach is the same for the other ones. Click Run Analysis As you can see, the different text items from the document (Invoice) are getting identified and tagged with a label. Similar to before, the technical output is stored in a JSON file. How to train the IDP using your own custom models Custom models - Custom models are trained using your labeled datasets to extract distinct data from forms and documents, specific to your use cases. Standalone custom models can be combined to create composed models. Document Intelligence uses advanced machine learning technology to identify documents, detect and extract information from forms and documents, and return the extracted data in a structured JSON output. With Document Intelligence, you can use document analysis models, pre-built/pre-trained, or your trained standalone custom models.\nCustom models now include custom classification models for scenarios where you need to identify the document type prior to invoking the extraction model. Classifier models are available starting with the 2023-07-31 (GA) API. A classification model can be paired with a custom extraction model to analyze and extract fields from forms and documents specific to your business to create a document processing solution. Standalone custom extraction models can be combined to create composed models.\nCustom document models can be one of two types, custom template or custom form and custom neural or custom document models. The labeling and training process for both models is identical, but the models differ as follows:\nCustom extraction models To create a custom extraction model, label a dataset of documents with the values you want extracted and train the model on the labeled dataset. You only need five examples of the same form or document type to get started.\nCustom neural model The custom neural (custom document) model uses deep learning models and base model trained on a large collection of documents. This model is then fine-tuned or adapted to your data when you train the model with a labeled dataset. Custom neural models support structured, semi-structured, and unstructured documents to extract fields. Custom neural models currently support English-language documents. When you’re choosing between the two model types, start with a neural model to determine if it meets your functional needs. See neural models to learn more about custom document models.\nThe custom template or custom form model relies on a consistent visual template to extract the labeled data. Variances in the visual structure of your documents affect the accuracy of your model. Structured forms such as questionnaires or applications are examples of consistent visual templates.\nYour training set consists of structured documents where the formatting and layout are static and constant from one document instance to the next. Custom template models support key-value pairs, selection marks, tables, signature fields, and regions. Template models and can be trained on documents in any of the supported languages. For more information, see custom template models.\nIf the language of your documents and extraction scenarios supports custom neural models, we recommend that you use custom neural models over template models for higher accuracy.\nFrom Document Intelligence Studio, scroll down and select Custom Models. Next, select Custom Extraction Model\nFrom here, create a new project\nYou need to specify where your document model sources (e.g. I am using my electricity bills, but could be receipts, delivery notes, business forms,…) can be found in Azure Blob Storage, but apart from that, all settings should be clear I hope.\nOpen the project you created, from where it allows you to upload sample files. Upload 5-10 identical documents, as that is what is required to train the model\nYou can choose to use the Auto Label feature, or Draw Region to establish the different labels for the different text sections of your documents.\nOnce done for several identical documents, click Train. Which allows you to create an AI Data Model.\nLast, you can run a test to validate how a new custom document gets analyzed and all items in the document will get recognized.\nSummary In this article, I wanted to introduce you to the exciting world of Azure AI, and more specifically how Computer Vision can be used to recognize text in images, known as OCR, but even more so, how Azure AI Document Intelligence API allows to bring in more advanced document template recognition into your applications.\nThanks to the Azure Festive Tech Calendar team for having me! Take care and Happy Holidays!\nCheers!!\n/Peter\n",
-  "wordCount" : "2432",
-  "inLanguage": "en",
-  "datePublished": "2023-12-23T00:00:00Z",
-  "dateModified": "2023-12-23T00:00:00Z",
-  "author":{
-    "@type": "Person",
-    "name": "Peter De Tender"
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "http://localhost:1313/post/festive-2023-ocr-on-steroids/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Azure Readiness starts here...",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "http://localhost:1313/favicon.ico"
-    }
-  }
-}
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
 </script>
-</head>
-<body id="top">
-    <header class="header">
-    <nav class="nav">
-        <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="Azure Readiness starts here... (Alt + H)">Azure Readiness starts here...</a>
-            <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
+<div class="container main-container flex on-phone--column compact"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        <figure class="site-avatar">
+                <a href="/">
+                    <img src="/img/007ffflearning-ape.png" 
+                        width="596"
+                        height="842"
+                        class="site-logo"
+                        loading="lazy"
+                        alt="Avatar">
+                </a>
+                
+                    <span class="emoji">🎓</span>
+                
+            </figure>
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Azure Readiness starts here...</a></h1>
+            <h2 class="site-description">Bring me an audience, I&#39;ll give them Azure knowledge in return</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://pdtit.bsky.social'
+                        
+                        title="Bluesky"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 530" fill="currentColor">
+  <path d="m135.72 44.03c66.496 49.921 138.02 151.14 164.28 205.46 26.262-54.316 97.782-155.54 164.28-205.46 47.98-36.021 125.72-63.892 125.72 24.795 0 17.712-10.155 148.79-16.111 170.07-20.703 73.984-96.144 92.854-163.25 81.433 117.3 19.964 147.14 86.092 82.697 152.22-122.39 125.59-175.91-31.511-189.63-71.766-2.514-7.3797-3.6904-10.832-3.7077-7.8964-0.0174-2.9357-1.1937 0.51669-3.7077 7.8964-13.714 40.255-67.233 197.36-189.63 71.766-64.444-66.128-34.605-132.26 82.697-152.22-67.108 11.421-142.55-7.4491-163.25-81.433-5.9562-21.282-16.111-152.36-16.111-170.07 0-88.687 77.742-60.816 125.72-24.795z"/>
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/petender'
+                        
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pdtit/'
+                        
+                        title="LinkedIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/post/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Posts</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/books/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+</svg>
+
+                
+                <span>Books</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/festive-2023-ocr-on-steroids/">Festive Tech Calendar - Azure AI - OCR on Steroids</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime='2023-12-23T00:00:00Z'>Dec 23, 2023</time>
             </div>
-        </div>
-        <ul id="menu">
-            <li>
-                <a href="http://localhost:1313/post/" title="Posts">
-                    <span>Posts</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/books/" title="Books">
-                    <span>Books</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/about/" title="About">
-                    <span>About</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
-                    <span>Tags</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
-                    <span>Search</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+        
+
+        
+    </footer>
+    
+
+    
+
+    
+</div>
+
 </header>
-<main class="main">
 
-<article class="post-single">
-  <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/post/">Posts</a></div>
-    <h1 class="post-title entry-hint-parent">
-      Festive Tech Calendar - Azure AI - OCR on Steroids
-    </h1>
-    <div class="post-meta"><span title='2023-12-23 00:00:00 +0000 UTC'>December 23, 2023</span>&nbsp;·&nbsp;<span>12 min</span>&nbsp;·&nbsp;<span>2432 words</span>&nbsp;·&nbsp;<span>Peter De Tender</span>
+    
 
-</div>
-  </header> <div class="toc">
-    <details >
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">Table of Contents</span>
-        </summary>
-
-        <div class="inner"><nav id="TableOfContents">
-  <ul>
-    <li><a href="#deploying-azure-ai---computer-vision">Deploying Azure AI - Computer Vision</a></li>
-    <li><a href="#how-does-ocr-recognition-actually-work">How does OCR recognition actually work?</a></li>
-  </ul>
-</nav>
-        </div>
-    </details>
-</div>
-
-  <div class="post-content"><p><strong><a href="https://www.gohugo.io">Hugo</a></strong></p>
-<p><a href="https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-static-website-how-to?tabs=azure-portal">Azure Static Storage Sites</a></p>
-<p><img alt="Festive Tech Calendar 2023 - OCR on Steroids image" loading="lazy" src="../images/festive_2023.jpg"></p>
-<h1 id="welcome-to-this-years-festive-tech-calendar">Welcome to this year&rsquo;s Festive Tech Calendar!!<a hidden class="anchor" aria-hidden="true" href="#welcome-to-this-years-festive-tech-calendar">#</a></h1>
-<p>Hi everyone, welcome to my contribution to this year&rsquo;s Festive Tech Calendar once more. This will be the fourth year, and I still love the concept of bringing some (Azure) joy to you/your family this season. If you ask me what the biggest news in tech was this year, especially within the Microsoft ecosystem, it&rsquo;s <strong>Azure AI</strong>. Shouldn&rsquo;t be surprising to most of you who know me and my role within Microsoft as Technical Trainer - providing Azure workshops every week to our top customers and partners across the globe - we also integrated (A lot :)) of AI focus early in the year. And it is only becoming more imported.</p>
+    <section class="article-content">
+    
+    
+    <p><strong><a class="link" href="https://www.gohugo.io"  target="_blank" rel="noopener"
+    >Hugo</a></strong></p>
+<p><a class="link" href="https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-static-website-how-to?tabs=azure-portal"  target="_blank" rel="noopener"
+    >Azure Static Storage Sites</a></p>
+<p>
+  <img src="../images/festive_2023.jpg"
+    loading="lazy"
+    
+      alt="Festive Tech Calendar 2023 - OCR on Steroids image"
+    
+    
+  ></p>
+<h1 id="welcome-to-this-years-festive-tech-calendar">Welcome to this year&rsquo;s Festive Tech Calendar!!
+</h1><p>Hi everyone, welcome to my contribution to this year&rsquo;s Festive Tech Calendar once more. This will be the fourth year, and I still love the concept of bringing some (Azure) joy to you/your family this season. If you ask me what the biggest news in tech was this year, especially within the Microsoft ecosystem, it&rsquo;s <strong>Azure AI</strong>. Shouldn&rsquo;t be surprising to most of you who know me and my role within Microsoft as Technical Trainer - providing Azure workshops every week to our top customers and partners across the globe - we also integrated (A lot :)) of AI focus early in the year. And it is only becoming more imported.</p>
 <p>Therefore, I decided to bring you an <strong>Azure AI-inspired topic</strong> for this year&rsquo;s Festive Tech Calendar session, using <strong>Computer Vision - Document Intelligence</strong>, or what I describe as <strong>OCR on steroids</strong>.</p>
-<p>In the late 1920s and into the 1930s, <a href="https://en.wikipedia.org/wiki/Optical_character_recognition">Emanuel Goldberg</a> developed what he called a &ldquo;Statistical Machine&rdquo; for searching microfilm archives using an optical code recognition system, which evolved into an IBM OCR solution.</p>
+<p>In the late 1920s and into the 1930s, <a class="link" href="https://en.wikipedia.org/wiki/Optical_character_recognition"  target="_blank" rel="noopener"
+    >Emanuel Goldberg</a> developed what he called a &ldquo;Statistical Machine&rdquo; for searching microfilm archives using an optical code recognition system, which evolved into an IBM OCR solution.</p>
 <p>about 100 years after, OCR is transitioning into powerful document and text analysis capabilities, thanks to Azure AI Document Intelligence APIs.</p>
 <p>By <strong>reading through this post</strong>, and <strong>following the demo-steps</strong>, you can build your own &ldquo;Statistical Machine&rdquo; in no-time. And from there, learn about Azure AI Document Intelligence APIs, to take it even further&hellip; let&rsquo;s go!</p>
 <p>To embrace our Azure AI and Microsoft Copilot even more myself, I actually used it to create (parts) of this blog post. What a wonderful world we live in today!</p>
-<p><img alt="Office 365 Copilot" loading="lazy" src="../images/ocr_on_steroids_copilot.png"></p>
-<p>About 2 weeks ago, I presented a session on the same topic for the <strong><a href="https://globalai.community/conference">GlobalAI Community Conference</a></strong>, led by <strong><a href="https://twitter.com/SjoukjeZaal">Sjoukje Zaal</a>, <a href="https://twitter.com/AmyKateNicho">Amy Kate Boyd</a> and <a href="https://twitter.com/hboelman">Henk Boelman</a></strong>, for which the video is available <a href="https://www.youtube.com/watch?v=G860AXhO9lg">On Youtube</a></p>
+<p>
+  <img src="../images/ocr_on_steroids_copilot.png"
+    loading="lazy"
+    
+      alt="Office 365 Copilot"
+    
+    
+  ></p>
+<p>About 2 weeks ago, I presented a session on the same topic for the <strong><a class="link" href="https://globalai.community/conference"  target="_blank" rel="noopener"
+    >GlobalAI Community Conference</a></strong>, led by <strong><a class="link" href="https://twitter.com/SjoukjeZaal"  target="_blank" rel="noopener"
+    >Sjoukje Zaal</a>, <a class="link" href="https://twitter.com/AmyKateNicho"  target="_blank" rel="noopener"
+    >Amy Kate Boyd</a> and <a class="link" href="https://twitter.com/hboelman"  target="_blank" rel="noopener"
+    >Henk Boelman</a></strong>, for which the video is available <a class="link" href="https://www.youtube.com/watch?v=G860AXhO9lg"  target="_blank" rel="noopener"
+    >On Youtube</a></p>
 <p>So instead of creating a similar video, I worked with Azure AI, Microsoft Copilot and my own notes, to produce this article. Let me know if you liked it&hellip;</p>
 <p>In this article, I will use the following flow:</p>
 <ul>
@@ -280,19 +360,28 @@ Hi everyone, welcome to my contribution to this year&rsquo;s Festive Tech Calend
 <p>And I hope to do all this using several demos… which you can go through in your own Azure subscriptions</p>
 </li>
 </ul>
-<h1 id="setting-the-scene-on-azure-ai-using-computer-vision-for-ocr">setting the scene on Azure AI, using Computer Vision for OCR<a hidden class="anchor" aria-hidden="true" href="#setting-the-scene-on-azure-ai-using-computer-vision-for-ocr">#</a></h1>
-<p>Computer Vision allows for different use cases, of which the most important ones are:</p>
+<h1 id="setting-the-scene-on-azure-ai-using-computer-vision-for-ocr">setting the scene on Azure AI, using Computer Vision for OCR
+</h1><p>Computer Vision allows for different use cases, of which the most important ones are:</p>
 <ul>
 <li><strong>Image Analysis</strong> – typically used to detect objects or items</li>
 <li><strong>Spatial Analysis</strong> – is what you would use to detect people, like video cameras in a store</li>
 <li><strong>OCR or Optical Character Recognition</strong> – allows you to recognize text, both printed and handwritten</li>
 <li><strong>Facial Recognition</strong> – recognize human identity, without exposing privacy details</li>
 </ul>
-<p><img alt="Computer Vision" loading="lazy" src="../images/azureai_ocr_Slide6.PNG"></p>
-<h2 id="deploying-azure-ai---computer-vision">Deploying Azure AI - Computer Vision<a hidden class="anchor" aria-hidden="true" href="#deploying-azure-ai---computer-vision">#</a></h2>
-<p>If you don’t already have one in your subscription, you’ll need to provision an Azure AI Services resource. If you don&rsquo;t have an Azure subscription yet, you can sign up for a <strong>[Free subscription]</strong>(<a href="https://azure.microsoft.com/en-us/free)">https://azure.microsoft.com/en-us/free)</a>.</p>
+<p>
+  <img src="../images/azureai_ocr_Slide6.PNG"
+    loading="lazy"
+    
+      alt="Computer Vision"
+    
+    
+  ></p>
+<h2 id="deploying-azure-ai---computer-vision">Deploying Azure AI - Computer Vision
+</h2><p>If you don’t already have one in your subscription, you’ll need to provision an Azure AI Services resource. If you don&rsquo;t have an Azure subscription yet, you can sign up for a <strong>[Free subscription]</strong>(<a class="link" href="https://azure.microsoft.com/en-us/free%29"  target="_blank" rel="noopener"
+    >https://azure.microsoft.com/en-us/free)</a>.</p>
 <ol>
-<li>Open the Azure portal at <a href="https://portal.azure.com">https://portal.azure.com</a>, and sign in using the Microsoft account associated with your Azure subscription.</li>
+<li>Open the Azure portal at <a class="link" href="https://portal.azure.com"  target="_blank" rel="noopener"
+    >https://portal.azure.com</a>, and sign in using the Microsoft account associated with your Azure subscription.</li>
 <li>In the top search bar, search for <strong>Azure AI services</strong>, select Azure AI Services, and create an Azure AI services <strong>multi-service account resource</strong> with the following settings:</li>
 </ol>
 <ul>
@@ -310,26 +399,54 @@ Hi everyone, welcome to my contribution to this year&rsquo;s Festive Tech Calend
 <li>From the <strong>ComputerVision</strong> tab within <strong>Azure AI Services</strong>, create a new Computer Vision Resource, keeping most default settings as-is.</li>
 <li>Wait for deployment to complete. From the <strong>Overview</strong> section of Computer Vision, notice the <strong>Vision Studio</strong> button.</li>
 </ol>
-<p><img alt="Azure AI Computer Vision" loading="lazy" src="../images/azureai_ocr_ComputerVision.png"></p>
+<p>
+  <img src="../images/azureai_ocr_ComputerVision.png"
+    loading="lazy"
+    
+      alt="Azure AI Computer Vision"
+    
+    
+  ></p>
 <ol start="8">
 <li><strong>Click</strong> the <strong>Open Vision Studio</strong> button to navigate to Azure AI Compute Vision Studio.</li>
 <li>From here, select <strong>Optical Character Recognition</strong> , and select <strong>Extract text from images</strong></li>
 <li>Here, you can test the functionality of how text is getting recognized, using the sample images provided, or you can upload your own images as well. I would recommend you to try with handwritten notes as well, especially when your handwriting skills are as great as mine&hellip;</li>
 </ol>
-<p><img alt="Azure AI Computer Vision Recognizing handwriting" loading="lazy" src="../images/azureai_ocr_handwrittennotes.png"></p>
-<h2 id="how-does-ocr-recognition-actually-work">How does OCR recognition actually work?<a hidden class="anchor" aria-hidden="true" href="#how-does-ocr-recognition-actually-work">#</a></h2>
-<p>When we talk about Azure AI, it means using APIs, which allow you to bring in a source into the AI engine, from there processes a given scenario – like read text in the case of OCR, and from there we call the result</p>
+<p>
+  <img src="../images/azureai_ocr_handwrittennotes.png"
+    loading="lazy"
+    
+      alt="Azure AI Computer Vision Recognizing handwriting"
+    
+    
+  ></p>
+<h2 id="how-does-ocr-recognition-actually-work">How does OCR recognition actually work?
+</h2><p>When we talk about Azure AI, it means using APIs, which allow you to bring in a source into the AI engine, from there processes a given scenario – like read text in the case of OCR, and from there we call the result</p>
 <p>Looking at this example, and I’ll show you in a quick demo, each item of text gets moved into a box/a boundary, which gets translated into understandable characters -&gt; forming words</p>
 <p><strong>Step 1</strong> involves <strong>creating a requestID</strong>
 <strong>Step 2</strong> means <strong>reading out the results, for the specific requestID</strong></p>
 <ol>
 <li>Going back to the <strong>Vision Studio</strong> in the Azure Portal, where you uploaded or selected an image, and saw the outcome of how text gets recognized, select <strong>JSON</strong>.</li>
 </ol>
-<p><img alt="Azure AI Computer Vision Boundbox" loading="lazy" src="../images/azureai_ocr_boundbox.png"></p>
+<p>
+  <img src="../images/azureai_ocr_boundbox.png"
+    loading="lazy"
+    
+      alt="Azure AI Computer Vision Boundbox"
+    
+    
+  ></p>
 <ol start="2">
 <li>For each character or set of characters recognized as text, different JSON properties and values are getting created. These identify the boundaries of the text on the image.</li>
 </ol>
-<p><img alt="Azure AI Computer Vision Boundbox" loading="lazy" src="../images/azureai_ocr_Slide8.PNG"></p>
+<p>
+  <img src="../images/azureai_ocr_Slide8.PNG"
+    loading="lazy"
+    
+      alt="Azure AI Computer Vision Boundbox"
+    
+    
+  ></p>
 <ol start="3">
 <li>
 <p>This is the core work of the <strong>Read API</strong>. So let&rsquo;s have a more detailed look into that one for a second. The easiest I found to show this, is spinning up a <strong>Azure Cognitive Service Vision</strong> Docker Container.</p>
@@ -338,29 +455,73 @@ Hi everyone, welcome to my contribution to this year&rsquo;s Festive Tech Calend
 <p>Assuming you know a bit about Docker containers, and you have Docker Engine running on your local machine, execute the following command:</p>
 </li>
 </ol>
-<pre tabindex="0"><code>docker run --rm -it -p 5050:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-model-2022-04-30 Eula=accept Billing=https://yourcomputevisionresource.cognitiveservices.azure.com/ ApiKey=yourcomputevisionapikey
-</code></pre><p>Replacing the <strong>Billing</strong> and <strong>ApiKey</strong> with the correct values from the Computer Vision Keys picked up earlier.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">docker run --rm -it -p 5050:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-model-2022-04-30 Eula=accept Billing=https://yourcomputevisionresource.cognitiveservices.azure.com/ ApiKey=yourcomputevisionapikey
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Replacing the <strong>Billing</strong> and <strong>ApiKey</strong> with the correct values from the Computer Vision Keys picked up earlier.</p>
 <ol start="5">
 <li>With the Docker container running, open the browser to <strong>http://localhost:5050/status</strong>, which confirms the ReadAPI service is ready, and your API Key is valid</li>
 </ol>
-<p><img alt="Azure AI Computer Vision Docker Ready" loading="lazy" src="../images/azureai_ocr_docker_ready.png"></p>
+<p>
+  <img src="../images/azureai_ocr_docker_ready.png"
+    loading="lazy"
+    
+      alt="Azure AI Computer Vision Docker Ready"
+    
+    
+  ></p>
 <ol start="6">
 <li>Next, connecto to <strong>http://localhost:5050/swagger</strong> to interact with the different API endpoints of the Language Service running within the container</li>
 </ol>
-<p><img alt="Azure AI Computer Vision Read API Swagger" loading="lazy" src="../images/azureai_ocr_swagger.png"></p>
+<p>
+  <img src="../images/azureai_ocr_swagger.png"
+    loading="lazy"
+    
+      alt="Azure AI Computer Vision Read API Swagger"
+    
+    
+  ></p>
 <ol start="7">
 <li>From the swagger API interface, select <strong>POST</strong> in the <strong>Analyze</strong> section, and click <strong>Try it out</strong>.</li>
 <li>Scroll down a bit, and in the <strong>Request body</strong> section, provide a URL to an actual image. For example, you can use the sample image below, which is the same one available in the Vision Studio portal, showing the nutrition facts about some food item.</li>
 </ol>
-<pre tabindex="0"><code>{
-  &#34;url&#34;: &#34;https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/printed_text.jpg&#34;
-}
-</code></pre><p><img alt="Azure AI Computer Vision Read API Request Body" loading="lazy" src="../images/azureai_ocr_readapi_requestbody.png"></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;url&#34;: &#34;https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/printed_text.jpg&#34;
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>
+  <img src="../images/azureai_ocr_readapi_requestbody.png"
+    loading="lazy"
+    
+      alt="Azure AI Computer Vision Read API Request Body"
+    
+    
+  ></p>
 <ol start="9">
 <li>Click the <strong>Execute</strong> button.</li>
 <li>This sends an API request and returns an analyze request ID from this URL: http://localhost:5000/vision/v3.2/read/analyze</li>
 </ol>
-<p><img alt="Azure AI Computer Vision Read API Response" loading="lazy" src="../images/azureai_ocr_readapi_response.png"></p>
+<p>
+  <img src="../images/azureai_ocr_readapi_response.png"
+    loading="lazy"
+    
+      alt="Azure AI Computer Vision Read API Response"
+    
+    
+  ></p>
 <ol start="11">
 <li>
 <p>Copy the request id, and open it in the browser, e.g. http://localhost:5050/vision/v3.2/read/analyzeResults/339da9a7-aa6b-4c81-a5d0-5840448fdfaf</p>
@@ -369,21 +530,42 @@ Hi everyone, welcome to my contribution to this year&rsquo;s Festive Tech Calend
 <p>This brings up the full JSON structure of the analyzed text, including text snippets, bounding boxes,…</p>
 </li>
 </ol>
-<p><img alt="Azure AI Computer Vision Read API JSON Response" loading="lazy" src="../images/azureai_ocr_jsonresponse.png"></p>
+<p>
+  <img src="../images/azureai_ocr_jsonresponse.png"
+    loading="lazy"
+    
+      alt="Azure AI Computer Vision Read API JSON Response"
+    
+    
+  ></p>
 <p>While quite impressive if you ask me, we had OCR technology doing almost the same, for the last 50-60 years already. Anyone remembers copiers and scanners, saving to a PDF document? Basically based on the same…</p>
 <p>So let’s focus a bit more on the next level of OCR, using Intelligent Document Processing</p>
-<h1 id="using-intelligent-document-processing-or-idp">Using Intelligent Document Processing or IDP<a hidden class="anchor" aria-hidden="true" href="#using-intelligent-document-processing-or-idp">#</a></h1>
-<p>Similar to the Computer Vision Read API and Vision Studio, Azure AI also provides the <strong>Form Recognizer Service</strong> , which got recently renamed to <strong>Intelligent Document Processing</strong> or IDP.</p>
+<h1 id="using-intelligent-document-processing-or-idp">Using Intelligent Document Processing or IDP
+</h1><p>Similar to the Computer Vision Read API and Vision Studio, Azure AI also provides the <strong>Form Recognizer Service</strong> , which got recently renamed to <strong>Intelligent Document Processing</strong> or IDP.</p>
 <p>Document Intelligence Read Optical Character Recognition (OCR) model runs at a higher resolution than Azure AI Vision Read and extracts print and handwritten text from PDF documents and scanned images. It also includes support for extracting text from Microsoft Word, Excel, PowerPoint, and HTML documents. It detects paragraphs, text lines, words, locations, and languages. The Read model is the underlying OCR engine for other Document Intelligence prebuilt models like Layout, General Document, Invoice, Receipt, Identity (ID) document, Health insurance card, W2 in addition to custom models.</p>
 <p>Optical Character Recognition (OCR) for documents is optimized for large text-heavy documents in multiple file formats and global languages. It includes features like higher-resolution scanning of document images for better handling of smaller and dense text; paragraph detection; and fillable form management. OCR capabilities also include advanced scenarios like single character boxes and accurate extraction of key fields commonly found in invoices, receipts, and other prebuilt scenarios.</p>
 <ol>
 <li>From the Azure AI Portal, navigate to <strong>Document Intelligence</strong>, and create a new resource within. Default settings should be ok as-is.</li>
 </ol>
-<p><img alt="Azure AI Document Intelligence" loading="lazy" src="../images/azureai_ocr_docintel.png"></p>
+<p>
+  <img src="../images/azureai_ocr_docintel.png"
+    loading="lazy"
+    
+      alt="Azure AI Document Intelligence"
+    
+    
+  ></p>
 <ol start="2">
 <li>Once deployed, from the <strong>Overview</strong> section, notice the <strong>Document Intelligence Studio</strong> option, and open it.</li>
 </ol>
-<p><img alt="Azure AI Document Intelligence Studio" loading="lazy" src="../images/azureai_ocr_docintelstudio.png"></p>
+<p>
+  <img src="../images/azureai_ocr_docintelstudio.png"
+    loading="lazy"
+    
+      alt="Azure AI Document Intelligence Studio"
+    
+    
+  ></p>
 <p>In the previous examples, the content was coming from an image-file type (jpeg,…). Where sometimes, we have more specific data types, such as forms, receipts, invoices, passport,…</p>
 <p>This is where the compute vision text analyzer is not finetuned enough. That’s where we will use the form recognizer service, now known as document intelligence service.</p>
 <p>Azure AI Document Intelligence is a cloud-based Azure AI service that enables you to build intelligent document processing solutions. Massive amounts of data, spanning a wide variety of data types, are stored in forms and documents. Document Intelligence enables you to effectively manage the velocity at which data is collected and processed and is key to improved operations, informed data-driven decisions, and enlightened innovation.</p>
@@ -391,29 +573,71 @@ Hi everyone, welcome to my contribution to this year&rsquo;s Festive Tech Calend
 <ul>
 <li><strong>Document Analysis</strong> - enable text extraction from forms and documents and return structured business-ready content ready for your organization&rsquo;s action, use, or progress.</li>
 </ul>
-<p><img alt="Azure AI Document Intelligence Studio" loading="lazy" src="../images/azureai_ocr_Slide12.PNG"></p>
+<p>
+  <img src="../images/azureai_ocr_Slide12.PNG"
+    loading="lazy"
+    
+      alt="Azure AI Document Intelligence Studio"
+    
+    
+  ></p>
 <ul>
 <li><strong>Prebuilt models</strong> - Prebuilt models enable you to add intelligent document processing to your apps and flows without having to train and build your own models.</li>
 </ul>
-<p><img alt="Azure AI Document Prebuilt Models" loading="lazy" src="../images/azureai_ocr_prebuiltmodels.png"></p>
+<p>
+  <img src="../images/azureai_ocr_prebuiltmodels.png"
+    loading="lazy"
+    
+      alt="Azure AI Document Prebuilt Models"
+    
+    
+  ></p>
 <ol>
 <li>From the Document Intelligence Studio, select a prebuilt model type of choice. I&rsquo;ll use <strong>Invoice</strong> but the approach is the same for the other ones.</li>
 </ol>
-<p><img alt="Azure AI Document Prebuilt Invoice Models" loading="lazy" src="../images/azureai_ocr_invoice.png"></p>
+<p>
+  <img src="../images/azureai_ocr_invoice.png"
+    loading="lazy"
+    
+      alt="Azure AI Document Prebuilt Invoice Models"
+    
+    
+  ></p>
 <ol start="2">
 <li>Click <strong>Run Analysis</strong></li>
 </ol>
-<p><img alt="Azure AI Document Prebuilt Invoice Analysis" loading="lazy" src="../images/azureai_ocr_invoice_analysis.png"></p>
+<p>
+  <img src="../images/azureai_ocr_invoice_analysis.png"
+    loading="lazy"
+    
+      alt="Azure AI Document Prebuilt Invoice Analysis"
+    
+    
+  ></p>
 <ol start="3">
 <li>As you can see, the different text items from the document (Invoice) are <strong>getting identified</strong> and <strong>tagged with a label</strong>. Similar to before, the technical output is stored in a <strong>JSON file</strong>.</li>
 </ol>
-<p><img alt="Azure AI Document Prebuilt Invoice Analysis JSON output" loading="lazy" src="../images/azureai_ocr_invoice_analysis_json.png"></p>
-<h1 id="how-to-train-the-idp-using-your-own-custom-models">How to train the IDP using your own custom models<a hidden class="anchor" aria-hidden="true" href="#how-to-train-the-idp-using-your-own-custom-models">#</a></h1>
-<ul>
+<p>
+  <img src="../images/azureai_ocr_invoice_analysis_json.png"
+    loading="lazy"
+    
+      alt="Azure AI Document Prebuilt Invoice Analysis JSON output"
+    
+    
+  ></p>
+<h1 id="how-to-train-the-idp-using-your-own-custom-models">How to train the IDP using your own custom models
+</h1><ul>
 <li><strong>Custom models</strong> - Custom models are trained using your labeled datasets to extract distinct data from forms and documents, specific to your use cases. Standalone custom models can be combined to create composed models.</li>
 </ul>
 <p>Document Intelligence uses advanced machine learning technology to identify documents, detect and extract information from forms and documents, and return the extracted data in a structured JSON output. With Document Intelligence, you can use document analysis models, pre-built/pre-trained, or your trained standalone custom models.</p>
-<p><img alt="Azure AI Document Intelligence - Custom Model" loading="lazy" src="../images/azureai_ocr_docintel_custom.png"></p>
+<p>
+  <img src="../images/azureai_ocr_docintel_custom.png"
+    loading="lazy"
+    
+      alt="Azure AI Document Intelligence - Custom Model"
+    
+    
+  ></p>
 <p>Custom models now include <strong>custom classification models</strong> for scenarios where you need to identify the document type prior to invoking the extraction model. Classifier models are available starting with the 2023-07-31 (GA) API. A classification model can be paired with a custom extraction model to analyze and extract fields from forms and documents specific to your business to create a document processing solution. Standalone custom extraction models can be combined to create composed models.</p>
 <p>Custom document models can be one of two types, custom template or custom form and custom neural or custom document models. The labeling and training process for both models is identical, but the models differ as follows:</p>
 <p>Custom extraction models
@@ -431,7 +655,14 @@ The custom neural (custom document) model uses deep learning models and base mod
 <p>From here, create <strong>a new project</strong></p>
 </li>
 </ol>
-<p><img alt="Azure AI Document Custom Model" loading="lazy" src="../images/azureai_ocr_custommodelproject.png"></p>
+<p>
+  <img src="../images/azureai_ocr_custommodelproject.png"
+    loading="lazy"
+    
+      alt="Azure AI Document Custom Model"
+    
+    
+  ></p>
 <ol start="3">
 <li>
 <p>You need to specify where your document model sources (e.g. I am using my electricity bills, but could be receipts, delivery notes, business forms,&hellip;) can be found in Azure Blob Storage, but apart from that, all settings should be clear I hope.</p>
@@ -440,7 +671,14 @@ The custom neural (custom document) model uses deep learning models and base mod
 <p>Open the <strong>project</strong> you created, from where it allows you to <strong>upload sample files</strong>. <strong>Upload 5-10 identical documents, as that is what is required to train the model</strong></p>
 </li>
 </ol>
-<p><img alt="Azure AI Document Custom Label Data" loading="lazy" src="../images/azureai_ocr_custom_labeldata.png"></p>
+<p>
+  <img src="../images/azureai_ocr_custom_labeldata.png"
+    loading="lazy"
+    
+      alt="Azure AI Document Custom Label Data"
+    
+    
+  ></p>
 <ol start="5">
 <li>
 <p>You can choose to use the <strong>Auto Label</strong> feature, or <strong>Draw Region</strong> to establish the different labels for the different text sections of your documents.</p>
@@ -452,229 +690,231 @@ The custom neural (custom document) model uses deep learning models and base mod
 <p>Last, you can run a <strong>test</strong> to validate how a new custom document gets analyzed and all items in the document will get recognized.</p>
 </li>
 </ol>
-<h1 id="summary">Summary<a hidden class="anchor" aria-hidden="true" href="#summary">#</a></h1>
-<p>In this article, I wanted to introduce you to the exciting world of Azure AI, and more specifically how <strong>Computer Vision</strong> can be used to recognize text in images, known as <strong>OCR</strong>, but even more so, how Azure AI <strong>Document Intelligence API</strong> allows to bring in more advanced document template recognition into your applications.</p>
+<h1 id="summary">Summary
+</h1><p>In this article, I wanted to introduce you to the exciting world of Azure AI, and more specifically how <strong>Computer Vision</strong> can be used to recognize text in images, known as <strong>OCR</strong>, but even more so, how Azure AI <strong>Document Intelligence API</strong> allows to bring in more advanced document template recognition into your applications.</p>
 <p>Thanks to the Azure Festive Tech Calendar team for having me! Take care and Happy Holidays!</p>
-<p><img alt="Thank you " loading="lazy" src="../images/azureai_ocr_Slide20.PNG"></p>
-<p><a href="https://www.buymeacoffee.com/pdtit"><img alt="BuyMeACoffee" loading="lazy" src="../images/buy_me_a_coffee.png"></a></p>
+<p>
+  <img src="../images/azureai_ocr_Slide20.PNG"
+    loading="lazy"
+    
+      alt="Thank you "
+    
+    
+  ></p>
+<p><a class="link" href="https://www.buymeacoffee.com/pdtit"  target="_blank" rel="noopener"
+    >
+  <img src="../images/buy_me_a_coffee.png"
+    loading="lazy"
+    
+      alt="BuyMeACoffee"
+    
+    
+  ></a></p>
 <p>Cheers!!</p>
 <p>/Peter</p>
 
-
-  </div>
-
-  <footer class="post-footer">
-    <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/azure/">Azure</a></li>
-      <li><a href="http://localhost:1313/tags/ai/">AI</a></li>
-    </ul>
-<nav class="paginav">
-  <a class="prev" href="http://localhost:1313/post/sending-emails-from-ado-pipelines-using-powershell/">
-    <span class="title">« Prev</span>
-    <br>
-    <span>Sending Emails from Azure DevOps using PowerShell and Azure LogicApps</span>
-  </a>
-  <a class="next" href="http://localhost:1313/post/packt-book-review---azure-architecture-explained/">
-    <span class="title">Next »</span>
-    <br>
-    <span>Packt Book Review - Azure Architecture Explained</span>
-  </a>
-</nav>
+</section>
 
 
-<ul class="share-buttons">
-    <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Festive Tech Calendar - Azure AI - OCR on Steroids on x"
-            href="https://x.com/intent/tweet/?text=Festive%20Tech%20Calendar%20-%20Azure%20AI%20-%20OCR%20on%20Steroids&amp;url=http%3a%2f%2flocalhost%3a1313%2fpost%2ffestive-2023-ocr-on-steroids%2f&amp;hashtags=Azure%2cAI">
-            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-                <path
-                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
-            </svg>
-        </a>
-    </li>
-    <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Festive Tech Calendar - Azure AI - OCR on Steroids on linkedin"
-            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fpost%2ffestive-2023-ocr-on-steroids%2f&amp;title=Festive%20Tech%20Calendar%20-%20Azure%20AI%20-%20OCR%20on%20Steroids&amp;summary=Festive%20Tech%20Calendar%20-%20Azure%20AI%20-%20OCR%20on%20Steroids&amp;source=http%3a%2f%2flocalhost%3a1313%2fpost%2ffestive-2023-ocr-on-steroids%2f">
-            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-                <path
-                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
-            </svg>
-        </a>
-    </li>
-    <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Festive Tech Calendar - Azure AI - OCR on Steroids on reddit"
-            href="https://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fpost%2ffestive-2023-ocr-on-steroids%2f&title=Festive%20Tech%20Calendar%20-%20Azure%20AI%20-%20OCR%20on%20Steroids">
-            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-                <path
-                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
-            </svg>
-        </a>
-    </li>
-    <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Festive Tech Calendar - Azure AI - OCR on Steroids on facebook"
-            href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fpost%2ffestive-2023-ocr-on-steroids%2f">
-            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-                <path
-                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
-            </svg>
-        </a>
-    </li>
-    <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Festive Tech Calendar - Azure AI - OCR on Steroids on whatsapp"
-            href="https://api.whatsapp.com/send?text=Festive%20Tech%20Calendar%20-%20Azure%20AI%20-%20OCR%20on%20Steroids%20-%20http%3a%2f%2flocalhost%3a1313%2fpost%2ffestive-2023-ocr-on-steroids%2f">
-            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-                <path
-                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
-            </svg>
-        </a>
-    </li>
-    <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Festive Tech Calendar - Azure AI - OCR on Steroids on telegram"
-            href="https://telegram.me/share/url?text=Festive%20Tech%20Calendar%20-%20Azure%20AI%20-%20OCR%20on%20Steroids&amp;url=http%3a%2f%2flocalhost%3a1313%2fpost%2ffestive-2023-ocr-on-steroids%2f">
-            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
-                <path
-                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
-            </svg>
-        </a>
-    </li>
-    <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Festive Tech Calendar - Azure AI - OCR on Steroids on ycombinator"
-            href="https://news.ycombinator.com/submitlink?t=Festive%20Tech%20Calendar%20-%20Azure%20AI%20-%20OCR%20on%20Steroids&u=http%3a%2f%2flocalhost%3a1313%2fpost%2ffestive-2023-ocr-on-steroids%2f">
-            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
-                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
-                <path
-                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
-            </svg>
-        </a>
-    </li>
-</ul>
-
-  </footer>
-</article>
-    </main>
+    <footer class="article-footer">
     
-<footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1313/">Azure Readiness starts here...</a></span> · 
+    <section class="article-tags">
+        
+            <a href="/tags/azure/">Azure</a>
+        
+            <a href="/tags/ai/">AI</a>
+        
+    </section>
 
-    <span>
-        Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/post/build-an-azure-ai-chatbot-using-your-own-data-in-blob-storage/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Build an Azure AI chatbot using your own data from blob storage </h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/post/packt-book-review---azure-architecture-explained/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Packt Book Review - Azure Architecture Explained</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/post/packt-book-review---azure-for-business-decision-makers/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Packt Book Review - Azure for Business Decision Makers</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/post/trigger-yaml-pipeline-from-classic-release-in-ado/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Trigger a YAML Pipeline from a Classic Release Pipeline in Azure DevOps</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/post/achieving-sre-on-azure/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Azure Back to School - Achieving SRE on Azure</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2021 - 
+        
+        2026 Azure Readiness starts here...
+    </section>
+    
+    <section class="powerby">
+        
+            The best way to know the future, is to learn it <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="4.0.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
-    </svg>
-</a>
 
-<script>
-    let menu = document.getElementById('menu');
-    if (menu) {
-        
-        const scrollPosition = localStorage.getItem("menu-scroll-position");
-        if (scrollPosition) {
-            menu.scrollLeft = parseInt(scrollPosition, 10);
-        }
-        
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
+
+    
+
+
+
+<script type="module">
+    import gallery from '\/ts\/gallery.js';
+
+    const articleContent = document.querySelector('.article-content');
+    const shouldLoad = articleContent && (articleContent.querySelectorAll('figure').length > 0 || articleContent.querySelectorAll('img.gallery-image').length > 0);
+    
+    if (shouldLoad) {
+        gallery(articleContent);
+
+        const PhotoSwipeLightbox = (await import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js")).default;
+        const styleHref = "https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.css";
+
+        const styleTag = document.createElement('link');
+        styleTag.rel = 'stylesheet';
+        styleTag.href = styleHref;
+        document.head.appendChild(styleTag);
+
+        const lightbox = new PhotoSwipeLightbox({
+            gallerySelector: '.article-content',
+            childSelector: 'figure a.image-link',
+            pswpModule: () => import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js")
+        });
+        lightbox.init();
     }
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
-        });
-    });
-
 </script>
-<script>
-    var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
-        } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
-        }
-    };
+    
 
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        const html = document.querySelector("html");
-        if (html.dataset.theme === "dark") {
-            html.dataset.theme = 'light';
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            html.dataset.theme = 'dark';
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
+            </main>
+        </div>
+        
+    <div id="cookie-consent-banner" class="cookie-banner" aria-hidden="true" role="dialog" aria-labelledby="cookie-banner-title">
+    <div class="cookie-banner__content">
+        <div class="cookie-banner__text">
+            <strong id="cookie-banner-title">Cookie Consent</strong>
+            <p>We use cookies to enhance your browsing experience and analyze site traffic.</p>
+        </div>
 
-</script>
-<script>
-    document.querySelectorAll('pre > code').forEach((codeblock) => {
-        const container = codeblock.parentNode.parentNode;
+        <div class="cookie-banner__actions">
+            <button class="cookie-btn cookie-btn--secondary" data-cookie-action="deny">
+                Deny
+            </button>
+            <button class="cookie-btn cookie-btn--primary" data-cookie-action="accept">
+                Accept All
+            </button>
+        </div>
+        <button class="cookie-banner__settings-link" data-cookie-action="settings">
+            Manage preferences
+        </button>
 
-        const copybutton = document.createElement('button');
-        copybutton.classList.add('copy-code');
-        copybutton.innerHTML = 'copy';
+        
+        <div id="cookie-settings-panel" class="cookie-settings" aria-hidden="true">
+            <h3>Cookie Preferences</h3>
 
-        function copyingDone() {
-            copybutton.innerHTML = 'copied!';
-            setTimeout(() => {
-                copybutton.innerHTML = 'copy';
-            }, 2000);
-        }
+            <div class="cookie-category">
+                <label>
+                    <input type="checkbox" name="necessary" checked disabled />
+                    <strong>Necessary</strong>
+                </label>
+                <p>These cookies are required for the website to function and cannot be disabled.</p>
+            </div><div class="cookie-category">
+                <label>
+                    <input type="checkbox" name="analytics" data-cookie-category="analytics" />
+                    <strong>Analytics</strong>
+                </label>
+                <p>These cookies help us understand how visitors interact with our website.</p>
+            </div><div class="cookie-category">
+                <label>
+                    <input type="checkbox" name="functional" data-cookie-category="functional" />
+                    <strong>Functional</strong>
+                </label>
+                <p>These cookies enable features like comments and embedded content.</p>
+            </div><div class="cookie-settings__actions">
+                <button class="cookie-btn cookie-btn--secondary" data-cookie-action="cancel">
+                    Cancel
+                </button>
+                <button class="cookie-btn cookie-btn--primary" data-cookie-action="save">
+                    Save preferences
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 
-        copybutton.addEventListener('click', (cb) => {
-            if ('clipboard' in navigator) {
-                navigator.clipboard.writeText(codeblock.textContent);
-                copyingDone();
-                return;
-            }
 
-            const range = document.createRange();
-            range.selectNodeContents(codeblock);
-            const selection = window.getSelection();
-            selection.removeAllRanges();
-            selection.addRange(range);
-            try {
-                document.execCommand('copy');
-                copyingDone();
-            } catch (e) { };
-            selection.removeRange(range);
-        });
+    <script type="text/javascript" src="/ts/cookies.fb6e3f54ec5cefc5dd04ebdb731fbb630fe36104d843ad1ef773c6462b788568.js" defer></script>
+<script type="text/javascript" src="/ts/main.7aaef5b0228fe199f3d764416965e34f5bf182cbe0650a0f3ea1a716021ba381.js" defer></script>
 
-        if (container.classList.contains("highlight")) {
-            container.appendChild(copybutton);
-        } else if (container.parentNode.firstChild == container) {
-            
-        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
-            
-            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
-        } else {
-            
-            codeblock.parentNode.appendChild(copybutton);
-        }
-    });
-</script>
-</body>
 
+    </body>
 </html>

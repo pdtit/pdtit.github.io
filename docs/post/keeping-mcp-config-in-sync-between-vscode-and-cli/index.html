@@ -1,295 +1,321 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto" data-theme="auto">
+<html lang="en-us" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Hey awesome people,\nOver the last weeks, I’ve been jumping between VS Code and Copilot CLI a lot more than usual. One thing kept annoying me: my MCP setup was perfect in VS Code, but I had to keep tweaking pieces again in CLI.\nIf that sounds familiar, good news: if you already have MCP servers working in VS Code, you can reuse most of that setup in GitHub Copilot CLI.\n">
+<title>Keeping MCP Server config in sync between VS Code and GitHub Copilot CLI</title>
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
-<title>Keeping MCP Server config in sync between VS Code and GitHub Copilot CLI | Azure Readiness starts here...</title>
-<meta name="keywords" content="GitHub Copilot, MCP, VSCode">
-<meta name="description" content="Hey awesome people,
-Over the last weeks, I’ve been jumping between VS Code and Copilot CLI a lot more than usual. One thing kept annoying me: my MCP setup was perfect in VS Code, but I had to keep tweaking pieces again in CLI.
-If that sounds familiar, good news: if you already have MCP servers working in VS Code, you can reuse most of that setup in GitHub Copilot CLI.">
-<meta name="author" content="Peter De Tender">
+
 <link rel="canonical" href="http://localhost:1313/post/keeping-mcp-config-in-sync-between-vscode-and-cli/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.8369b950114d6445e67a717fe985c3f6c6da2f22526bfb9d5b4e2dea350d3ef5.css" integrity="sha256-g2m5UBFNZEXmenF/6YXD9sbaLyJSa/udW04t6jUNPvU=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
-<meta name="theme-color" content="#007FFF">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/post/keeping-mcp-config-in-sync-between-vscode-and-cli/">
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
 
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --code-block-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-                color-scheme: dark;
-            }
 
-            .list {
-                background: var(--theme);
-            }
-
-            .toc {
-                background: var(--entry);
-            }
-        }
-
-        @media (prefers-color-scheme: light) {
-            .list::-webkit-scrollbar-thumb {
-                border-color: var(--code-bg);
-            }
-        }
-
-    </style>
-</noscript>
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.querySelector("html").dataset.theme = 'dark';
-    } else if (localStorage.getItem("pref-theme") === "light") {
-       document.querySelector("html").dataset.theme = 'light';
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.querySelector("html").dataset.theme = 'dark';
-    } else {
-        document.querySelector("html").dataset.theme = 'light';
-    }
-
-</script>
-<script type="text/javascript">
-var appInsights=window.appInsights||function(a){
-    function b(a){c[a]=function(){var b=arguments;c.queue.push(function(){c[a].apply(c,b)})}}var c={config:a},d=document,e=window;setTimeout(function(){var b=d.createElement("script");b.src=a.url||"https://az416426.vo.msecnd.net/scripts/a/ai.0.js",d.getElementsByTagName("script")[0].parentNode.appendChild(b)});try{c.cookie=d.cookie}catch(a){}c.queue=[];for(var f=["Event","Exception","Metric","PageView","Trace","Dependency"];f.length;)b("track"+f.pop());if(b("setAuthenticatedUserContext"),b("clearAuthenticatedUserContext"),b("startTrackEvent"),b("stopTrackEvent"),b("startTrackPage"),b("stopTrackPage"),b("flush"),!a.disableExceptionTracking){f="onerror",b("_"+f);var g=e[f];e[f]=function(a,b,d,e,h){var i=g&&g(a,b,d,e,h);return!0!==i&&c["_"+f](a,b,d,e,h),i}}return c
-}({
-    instrumentationKey:"100a91c6-40e4-4e8e-a4ee-57873dc4eee3"
-}));
-
-window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&appInsights.trackPageView();
-</script>
-<script type="text/javascript">
-var appInsights=window.appInsights||function(a){
-    function b(a){c[a]=function(){var b=arguments;c.queue.push(function(){c[a].apply(c,b)})}}var c={config:a},d=document,e=window;setTimeout(function(){var b=d.createElement("script");b.src=a.url||"https://az416426.vo.msecnd.net/scripts/a/ai.0.js",d.getElementsByTagName("script")[0].parentNode.appendChild(b)});try{c.cookie=d.cookie}catch(a){}c.queue=[];for(var f=["Event","Exception","Metric","PageView","Trace","Dependency"];f.length;)b("track"+f.pop());if(b("setAuthenticatedUserContext"),b("clearAuthenticatedUserContext"),b("startTrackEvent"),b("stopTrackEvent"),b("startTrackPage"),b("stopTrackPage"),b("flush"),!a.disableExceptionTracking){f="onerror",b("_"+f);var g=e[f];e[f]=function(a,b,d,e,h){var i=g&&g(a,b,d,e,h);return!0!==i&&c["_"+f](a,b,d,e,h),i}}return c
-}({
-    instrumentationKey:"100a91c6-40e4-4e8e-a4ee-57873dc4eee3"
-});
-
-window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&appInsights.trackPageView();
-</script><meta property="og:url" content="http://localhost:1313/post/keeping-mcp-config-in-sync-between-vscode-and-cli/">
-  <meta property="og:site_name" content="Azure Readiness starts here...">
-  <meta property="og:title" content="Keeping MCP Server config in sync between VS Code and GitHub Copilot CLI">
-  <meta property="og:description" content="Hey awesome people,
-Over the last weeks, I’ve been jumping between VS Code and Copilot CLI a lot more than usual. One thing kept annoying me: my MCP setup was perfect in VS Code, but I had to keep tweaking pieces again in CLI.
-If that sounds familiar, good news: if you already have MCP servers working in VS Code, you can reuse most of that setup in GitHub Copilot CLI.">
-  <meta property="og:locale" content="en-us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="post">
-    <meta property="article:published_time" content="2026-02-26T00:00:00+00:00">
-    <meta property="article:modified_time" content="2026-02-26T00:00:00+00:00">
-    <meta property="article:tag" content="GitHub Copilot">
-    <meta property="article:tag" content="MCP">
-    <meta property="article:tag" content="VSCode">
-<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/scss/style.min.3fe054e425b56de773b19f095f1e2017ce9a57c1bdf515298b0b20fbe7002c92.css"><meta property='og:title' content="Keeping MCP Server config in sync between VS Code and GitHub Copilot CLI">
+<meta property='og:description' content="Hey awesome people,\nOver the last weeks, I’ve been jumping between VS Code and Copilot CLI a lot more than usual. One thing kept annoying me: my MCP setup was perfect in VS Code, but I had to keep tweaking pieces again in CLI.\nIf that sounds familiar, good news: if you already have MCP servers working in VS Code, you can reuse most of that setup in GitHub Copilot CLI.\n">
+<meta property='og:url' content='http://localhost:1313/post/keeping-mcp-config-in-sync-between-vscode-and-cli/'>
+<meta property='og:site_name' content='Azure Readiness starts here...'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='GitHub Copilot' /><meta property='article:tag' content='MCP' /><meta property='article:tag' content='VSCode' /><meta property='article:published_time' content='2026-02-26T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2026-02-26T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Keeping MCP Server config in sync between VS Code and GitHub Copilot CLI">
-<meta name="twitter:description" content="Hey awesome people,
-Over the last weeks, I’ve been jumping between VS Code and Copilot CLI a lot more than usual. One thing kept annoying me: my MCP setup was perfect in VS Code, but I had to keep tweaking pieces again in CLI.
-If that sounds familiar, good news: if you already have MCP servers working in VS Code, you can reuse most of that setup in GitHub Copilot CLI.">
+<meta name="twitter:description" content="Hey awesome people,\nOver the last weeks, I’ve been jumping between VS Code and Copilot CLI a lot more than usual. One thing kept annoying me: my MCP setup was perfect in VS Code, but I had to keep tweaking pieces again in CLI.\nIf that sounds familiar, good news: if you already have MCP servers working in VS Code, you can reuse most of that setup in GitHub Copilot CLI.\n">
+    <link rel="shortcut icon" href="/img/007ffflearning-ape.png" />
+<script type="text/javascript">
+    !function(T,l,y){var S=T.location,k="script",D="instrumentationKey",C="ingestionendpoint",I="disableExceptionTracking",E="ai.device.",b="toLowerCase",w="crossOrigin",N="POST",e="appInsightsSDK",t=y.name||"appInsights";(y.name||T[e])&&(T[e]=t);var n=T[t]||function(d){var g=!1,f=!1,m={initialize:!0,queue:[],sv:"5",version:2,config:d};function v(e,t){var n={},a="Browser";return n[E+"id"]=a[b](),n[E+"type"]=a,n["ai.operation.name"]=S&&S.pathname||"_unknown_",n["ai.internal.sdkVersion"]="javascript:snippet_"+(m.sv||m.version),{time:function(){var e=new Date;function t(e){var t=""+e;return 1===t.length&&(t="0"+t),t}return e.getUTCFullYear()+"-"+t(1+e.getUTCMonth())+"-"+t(e.getUTCDate())+"T"+t(e.getUTCHours())+":"+t(e.getUTCMinutes())+":"+t(e.getUTCSeconds())+"."+((e.getUTCMilliseconds()/1e3).toFixed(3)+"").slice(2,5)+"Z"}(),iKey:e,name:"Microsoft.ApplicationInsights."+e.replace(/-/g,"")+"."+t,sampleRate:100,tags:n,data:{baseData:{ver:2}}}}var h=d.url||y.src;if(h){function a(e){var t,n,a,i,r,o,s,c,u,p,l;g=!0,m.queue=[],f||(f=!0,t=h,s=function(){var e={},t=d.connectionString;if(t)for(var n=t.split(";"),a=0;a<n.length;a++){var i=n[a].split("=");2===i.length&&(e[i[0][b]()]=i[1])}if(!e[C]){var r=e.endpointsuffix,o=r?e.location:null;e[C]="https://"+(o?o+".":"")+"dc."+(r||"services.visualstudio.com")}return e}(),c=s[D]||d[D]||"",u=s[C],p=u?u+"/v2/track":d.endpointUrl,(l=[]).push((n="SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details)",a=t,i=p,(o=(r=v(c,"Exception")).data).baseType="ExceptionData",o.baseData.exceptions=[{typeName:"SDKLoadFailed",message:n.replace(/\./g,"-"),hasFullStack:!1,stack:n+"\nSnippet failed to load ["+a+"] -- Telemetry is disabled\nHelp Link: https://go.microsoft.com/fwlink/?linkid=2128109\nHost: "+(S&&S.pathname||"_unknown_")+"\nEndpoint: "+i,parsedStack:[]}],r)),l.push(function(e,t,n,a){var i=v(c,"Message"),r=i.data;r.baseType="MessageData";var o=r.baseData;return o.message='AI (Internal): 99 message:"'+("SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details) ("+n+")").replace(/\"/g,"")+'"',o.properties={endpoint:a},i}(0,0,t,p)),function(e,t){if(JSON){var n=T.fetch;if(n&&!y.useXhr)n(t,{method:N,body:JSON.stringify(e),mode:"cors"});else if(XMLHttpRequest){var a=new XMLHttpRequest;a.open(N,t),a.setRequestHeader("Content-type","application/json"),a.send(JSON.stringify(e))}}}(l,p))}function i(e,t){f||setTimeout(function(){!t&&m.core||a()},500)}var e=function(){var n=l.createElement(k);n.src=h;var e=y[w];return!e&&""!==e||"undefined"==n[w]||(n[w]=e),n.onload=i,n.onerror=a,n.onreadystatechange=function(e,t){"loaded"!==n.readyState&&"complete"!==n.readyState||i(0,t)},n}();y.ld<0?l.getElementsByTagName("head")[0].appendChild(e):setTimeout(function(){l.getElementsByTagName(k)[0].parentNode.appendChild(e)},y.ld||0)}try{m.cookie=l.cookie}catch(p){}function t(e){for(;e.length;)!function(t){m[t]=function(){var e=arguments;g||m.queue.push(function(){m[t].apply(m,e)})}}(e.pop())}var n="track",r="TrackPage",o="TrackEvent";t([n+"Event",n+"PageView",n+"Exception",n+"Trace",n+"DependencyData",n+"Metric",n+"PageViewPerformance","start"+r,"stop"+r,"start"+o,"stop"+o,"addTelemetryInitializer","setAuthenticatedUserContext","clearAuthenticatedUserContext","flush"]),m.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4};var s=(d.extensionConfig||{}).ApplicationInsightsAnalytics||{};if(!0!==d[I]&&!0!==s[I]){var c="onerror";t(["_"+c]);var u=T[c];T[c]=function(e,t,n,a,i){var r=u&&u(e,t,n,a,i);return!0!==r&&m["_"+c]({message:e,url:t,lineNumber:n,columnNumber:a,error:i}),r},d.autoExceptionInstrumented=!0}return m}(y.cfg);function a(){y.onInit&&y.onInit(n)}(T[t]=n).queue&&0===n.queue.length?(n.queue.push(a),n.trackPageView({})):a()}(window,document,{
+    src: "https://js.monitor.azure.com/scripts/b/ai.2.min.js",
+    cfg: {
+        instrumentationKey: "100a91c6-40e4-4e8e-a4ee-57873dc4eee3"
+    }
+    });
+</script>
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column compact"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        <figure class="site-avatar">
+                <a href="/">
+                    <img src="/img/007ffflearning-ape.png" 
+                        width="596"
+                        height="842"
+                        class="site-logo"
+                        loading="lazy"
+                        alt="Avatar">
+                </a>
+                
+                    <span class="emoji">🎓</span>
+                
+            </figure>
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Azure Readiness starts here...</a></h1>
+            <h2 class="site-description">Bring me an audience, I&#39;ll give them Azure knowledge in return</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://pdtit.bsky.social'
+                        
+                        title="Bluesky"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 530" fill="currentColor">
+  <path d="m135.72 44.03c66.496 49.921 138.02 151.14 164.28 205.46 26.262-54.316 97.782-155.54 164.28-205.46 47.98-36.021 125.72-63.892 125.72 24.795 0 17.712-10.155 148.79-16.111 170.07-20.703 73.984-96.144 92.854-163.25 81.433 117.3 19.964 147.14 86.092 82.697 152.22-122.39 125.59-175.91-31.511-189.63-71.766-2.514-7.3797-3.6904-10.832-3.7077-7.8964-0.0174-2.9357-1.1937 0.51669-3.7077 7.8964-13.714 40.255-67.233 197.36-189.63 71.766-64.444-66.128-34.605-132.26 82.697-152.22-67.108 11.421-142.55-7.4491-163.25-81.433-5.9562-21.282-16.111-152.36-16.111-170.07 0-88.687 77.742-60.816 125.72-24.795z"/>
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/petender'
+                        
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
 
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Posts",
-      "item": "http://localhost:1313/post/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "Keeping MCP Server config in sync between VS Code and GitHub Copilot CLI",
-      "item": "http://localhost:1313/post/keeping-mcp-config-in-sync-between-vscode-and-cli/"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Keeping MCP Server config in sync between VS Code and GitHub Copilot CLI",
-  "name": "Keeping MCP Server config in sync between VS Code and GitHub Copilot CLI",
-  "description": "Hey awesome people,\nOver the last weeks, I’ve been jumping between VS Code and Copilot CLI a lot more than usual. One thing kept annoying me: my MCP setup was perfect in VS Code, but I had to keep tweaking pieces again in CLI.\nIf that sounds familiar, good news: if you already have MCP servers working in VS Code, you can reuse most of that setup in GitHub Copilot CLI.\n",
-  "keywords": [
-    "GitHub Copilot", "MCP", "VSCode"
-  ],
-  "articleBody": "Hey awesome people,\nOver the last weeks, I’ve been jumping between VS Code and Copilot CLI a lot more than usual. One thing kept annoying me: my MCP setup was perfect in VS Code, but I had to keep tweaking pieces again in CLI.\nIf that sounds familiar, good news: if you already have MCP servers working in VS Code, you can reuse most of that setup in GitHub Copilot CLI.\nIn this post, I’ll show you the fastest way to ‘keep both in sync’ from VS Code mcp.json to Copilot CLI mcp-config.json, with the necessary commands for both PowerShell and Bash.\nWhy this matters When you move between VS Code and terminal workflows, you really don’t want to rebuild MCP config from scratch every time.\nI made that mistake once (probably multiple times, but didn’t want to exagerate too much…), and it was exactly as fun as it sounds: tiny syntax differences, one invalid server name, one missing env var, and suddenly you’re troubleshooting config instead of actually building. (Although I can tell you that this would be a perfect use case for GenAI GitHub Copilot, lol)\nThis guide helps you:\nkeep one consistent MCP setup style (VSCode MCP Config as the ‘main’ source) avoid common config parsing errors in Copilot CLI ‘keep-in-sync’ in a few minutes, even if you’re new to MCP MCP in plain English MCP (Model Context Protocol) lets AI tools connect to external capabilities.\nThink of MCP servers as “skill plugins” for your assistant, like:\ndocumentation search GitHub actions (issues, PRs, code search) browser automation Azure DevOps operations File locations you should know VS Code MCP config is typically found at:\nWorkspace: ./mcp.json or ./.vscode/mcp.json User-level: Windows: %APPDATA%\\\\Code\\\\User\\\\mcp.json macOS: ~/Library/Application Support/Code/User/mcp.json Linux: ~/.config/Code/User/mcp.json Copilot CLI MCP config lives here on all platforms:\n~/.copilot/mcp-config.json VS Code vs Copilot CLI: the important differences The two formats are very close, but not identical:\nTop-level key\nVS Code: servers Copilot CLI: mcpServers Server ID naming rules in Copilot CLI\nallowed: letters, numbers, _, - server keys with / must be renamed VS Code inputs\nsupported in VS Code flow not used in Copilot CLI config Placeholder syntax\nVS Code often uses ${env:VAR} and ${input:name} Copilot CLI expects $VAR and supports explicit env mappings None of this is hard, but it’s just different enough to break things when done manually in a hurry.\nFast path (recommended): automate conversion You can grab both scripts directly from my GitHub repo:\nhttps://github.com/petender/MCP-Clone_VSCode2CLI Quick clone commands (PowerShell, bash, zsh):\ngit clone https://github.com/petender/MCP-Clone_VSCode2CLI.git cd MCP-Clone_VSCode2CLI Use one of these scripts:\nconvert-mcp-config.ps1 (Windows/macOS/Linux with pwsh) convert-mcp-config.sh (macOS/Linux with bash + python3) I personally use the PowerShell version most of the time, no surprise I’m primarily a Windows-guy, but didn’t want to assume everyone is using PowerShell nowadays. (You should though ;)\nWhat the script converts automatically servers -\u003e mcpServers removes VS Code-only inputs converts ${input:name} -\u003e $NAME converts ${env:VAR} -\u003e $VAR adds/merges env mappings like \"VAR\": \"$VAR\" renames invalid server IDs (for example containing /) This is exactly the part that saves the most time (and avoids the most headaches).\nPowerShell usage (convert-mcp-config.ps1) The script supports cross-platform defaults using your home path.\nEasiest mode pwsh -ExecutionPolicy Bypass -File ./convert-mcp-config.ps1 This auto-discovers common input locations and writes to ~/.copilot/mcp-config.json.\nExplicit input, default output pwsh -ExecutionPolicy Bypass -File ./convert-mcp-config.ps1 \\ -InputPath ./mcp.json Explicit input and output pwsh -ExecutionPolicy Bypass -File ./convert-mcp-config.ps1 \\ -InputPath ./mcp.json \\ -OutputPath ~/.copilot/mcp-config.json Custom home path pwsh -ExecutionPolicy Bypass -File ./convert-mcp-config.ps1 \\ -InputPath ./mcp.json \\ -UserHome /home/\u003cuser\u003e Bash usage (convert-mcp-config.sh) First run:\nchmod +x ./convert-mcp-config.sh Easiest mode ./convert-mcp-config.sh Explicit input, default output ./convert-mcp-config.sh --input ./mcp.json Explicit input and output ./convert-mcp-config.sh --input ./mcp.json --output ~/.copilot/mcp-config.json Custom home path ./convert-mcp-config.sh --input ./mcp.json --user-home /home/ Bash prerequisites bash python3 Verify in Copilot CLI After conversion, open Copilot CLI and run:\n/mcp reload /mcp show If your config is valid, your servers should load without parsing errors.\nIf they don’t show up right away, don’t panic. In most cases it’s either naming rules or env vars (both covered below).\nRequired environment variables (for the sample config) Set these before launching Copilot CLI:\nGITHUB_PERSONAL_ACCESS_TOKEN ADO_ORG ADO_DOMAIN PowerShell session example:\n$env:GITHUB_PERSONAL_ACCESS_TOKEN = \"\" $env:ADO_ORG = \"\" $env:ADO_DOMAIN = \"core\" bash/zsh example:\nexport GITHUB_PERSONAL_ACCESS_TOKEN=\"\" export ADO_ORG=\"\" export ADO_DOMAIN=\"core\" Manual conversion checklist If you want to edit by hand, follow this sequence:\nrename servers to mcpServers remove inputs replace ${input:name} with $NAME replace ${env:VAR} with $VAR and add/update env rename server IDs that contain unsupported characters keep operational properties unchanged (type, command, args, url, version, gallery) This checklist is also useful as a review checklist in PRs.\nCommon errors and quick fixes MCP server name must only contain alphanumeric characters, underscores, and hyphens Cause: a server key still contains / (or another invalid character).\nFix example:\nmicrosoft/playwright-mcp -\u003e microsoft_playwright_mcp Server starts but fails with auth/runtime errors Cause: missing or wrong environment variable values.\nFix:\nvalidate variable names exactly confirm values exist in the active shell session run /mcp reload again Also make sure you start Copilot CLI from the same shell/session where variables are set.\ncommand not found Cause: one of the required tools is missing.\nFix:\ninstall dependencies used by your config (docker, npx, uvx, etc.) Summary Most VS Code MCP config can be reused in Copilot CLI. The key differences are server ID naming, top-level key name, and placeholder handling.\nWhile one could assume that the MCP Configuration should be standardized across platforms, once I figured out the key syntax differences (GitHub Copilot for the win!), it ended up being much easier than I expected once I stopped doing it manually and automated the boring parts (GitHub Copilot for the win x2!).\nIf this helped you, feel free to share it with your team so everyone can standardize MCP config faster. And maybe give a little GitHub Star on the repo, so I know you like it ;).\nCheers!!\n/Peter\n",
-  "wordCount" : "980",
-  "inLanguage": "en",
-  "datePublished": "2026-02-26T00:00:00Z",
-  "dateModified": "2026-02-26T00:00:00Z",
-  "author":{
-    "@type": "Person",
-    "name": "Peter De Tender"
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "http://localhost:1313/post/keeping-mcp-config-in-sync-between-vscode-and-cli/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Azure Readiness starts here...",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "http://localhost:1313/favicon.ico"
-    }
-  }
-}
-</script>
-</head>
-<body id="top">
-    <header class="header">
-    <nav class="nav">
-        <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="Azure Readiness starts here... (Alt + H)">Azure Readiness starts here...</a>
-            <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pdtit/'
+                        
+                        title="LinkedIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/post/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Posts</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/books/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+</svg>
+
+                
+                <span>Books</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/keeping-mcp-config-in-sync-between-vscode-and-cli/">Keeping MCP Server config in sync between VS Code and GitHub Copilot CLI</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime='2026-02-26T00:00:00Z'>Feb 26, 2026</time>
             </div>
-        </div>
-        <ul id="menu">
-            <li>
-                <a href="http://localhost:1313/post/" title="Posts">
-                    <span>Posts</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/books/" title="Books">
-                    <span>Books</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/about/" title="About">
-                    <span>About</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
-                    <span>Tags</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
-                    <span>Search</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+        
+
+        
+    </footer>
+    
+
+    
+
+    
+</div>
+
 </header>
-<main class="main">
 
-<article class="post-single">
-  <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/post/">Posts</a></div>
-    <h1 class="post-title entry-hint-parent">
-      Keeping MCP Server config in sync between VS Code and GitHub Copilot CLI
-    </h1>
-    <div class="post-meta"><span title='2026-02-26 00:00:00 +0000 UTC'>February 26, 2026</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>980 words</span>&nbsp;·&nbsp;<span>Peter De Tender</span>
+    
 
-</div>
-  </header> <div class="toc">
-    <details >
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">Table of Contents</span>
-        </summary>
-
-        <div class="inner"><nav id="TableOfContents">
-  <ul>
-    <li><a href="#why-this-matters">Why this matters</a></li>
-    <li><a href="#mcp-in-plain-english">MCP in plain English</a></li>
-    <li><a href="#file-locations-you-should-know">File locations you should know</a></li>
-    <li><a href="#vs-code-vs-copilot-cli-the-important-differences">VS Code vs Copilot CLI: the important differences</a></li>
-    <li><a href="#fast-path-recommended-automate-conversion">Fast path (recommended): automate conversion</a>
-      <ul>
-        <li><a href="#what-the-script-converts-automatically">What the script converts automatically</a></li>
-      </ul>
-    </li>
-    <li><a href="#powershell-usage-convert-mcp-configps1">PowerShell usage (<code>convert-mcp-config.ps1</code>)</a>
-      <ul>
-        <li><a href="#easiest-mode">Easiest mode</a></li>
-        <li><a href="#explicit-input-default-output">Explicit input, default output</a></li>
-        <li><a href="#explicit-input-and-output">Explicit input and output</a></li>
-        <li><a href="#custom-home-path">Custom home path</a></li>
-      </ul>
-    </li>
-    <li><a href="#bash-usage-convert-mcp-configsh">Bash usage (<code>convert-mcp-config.sh</code>)</a>
-      <ul>
-        <li><a href="#easiest-mode-1">Easiest mode</a></li>
-        <li><a href="#explicit-input-default-output-1">Explicit input, default output</a></li>
-        <li><a href="#explicit-input-and-output-1">Explicit input and output</a></li>
-        <li><a href="#custom-home-path-1">Custom home path</a></li>
-        <li><a href="#bash-prerequisites">Bash prerequisites</a></li>
-      </ul>
-    </li>
-    <li><a href="#verify-in-copilot-cli">Verify in Copilot CLI</a></li>
-    <li><a href="#required-environment-variables-for-the-sample-config">Required environment variables (for the sample config)</a></li>
-    <li><a href="#manual-conversion-checklist">Manual conversion checklist</a></li>
-    <li><a href="#common-errors-and-quick-fixes">Common errors and quick fixes</a>
-      <ul>
-        <li><a href="#mcp-server-name-must-only-contain-alphanumeric-characters-underscores-and-hyphens"><code>MCP server name must only contain alphanumeric characters, underscores, and hyphens</code></a></li>
-        <li><a href="#server-starts-but-fails-with-authruntime-errors">Server starts but fails with auth/runtime errors</a></li>
-        <li><a href="#command-not-found"><code>command not found</code></a></li>
-      </ul>
-    </li>
-    <li><a href="#summary">Summary</a></li>
-  </ul>
-</nav>
-        </div>
-    </details>
-</div>
-
-  <div class="post-content"><p>Hey awesome people,</p>
+    <section class="article-content">
+    
+    
+    <p>Hey awesome people,</p>
 <p>Over the last weeks, I’ve been jumping between VS Code and Copilot CLI a lot more than usual. One thing kept annoying me: my MCP setup was perfect in VS Code, but I had to keep tweaking pieces again in CLI.</p>
 <p>If that sounds familiar, good news: if you already have MCP servers working in VS Code, you can reuse most of that setup in GitHub Copilot CLI.</p>
 <p>In this post, I’ll show you the fastest way to &lsquo;keep both in sync&rsquo; from VS Code <code>mcp.json</code> to Copilot CLI <code>mcp-config.json</code>, with the necessary commands for both PowerShell and Bash.</p>
-<h2 id="why-this-matters">Why this matters<a hidden class="anchor" aria-hidden="true" href="#why-this-matters">#</a></h2>
-<p>When you move between VS Code and terminal workflows, you really don’t want to rebuild MCP config from scratch every time.</p>
+<h2 id="why-this-matters">Why this matters
+</h2><p>When you move between VS Code and terminal workflows, you really don’t want to rebuild MCP config from scratch every time.</p>
 <p>I made that mistake once (probably multiple times, but didn&rsquo;t want to exagerate too much&hellip;), and it was exactly as fun as it sounds: tiny syntax differences, one invalid server name, one missing env var, and suddenly you’re troubleshooting config instead of actually building. (Although I can tell you that this would be a perfect use case for GenAI GitHub Copilot, lol)</p>
 <p>This guide helps you:</p>
 <ul>
@@ -297,8 +323,8 @@ If that sounds familiar, good news: if you already have MCP servers working in V
 <li>avoid common config parsing errors in Copilot CLI</li>
 <li>&lsquo;keep-in-sync&rsquo; in a few minutes, even if you’re new to MCP</li>
 </ul>
-<h2 id="mcp-in-plain-english">MCP in plain English<a hidden class="anchor" aria-hidden="true" href="#mcp-in-plain-english">#</a></h2>
-<p>MCP (Model Context Protocol) lets AI tools connect to external capabilities.</p>
+<h2 id="mcp-in-plain-english">MCP in plain English
+</h2><p>MCP (Model Context Protocol) lets AI tools connect to external capabilities.</p>
 <p>Think of MCP servers as “skill plugins” for your assistant, like:</p>
 <ul>
 <li>documentation search</li>
@@ -306,8 +332,8 @@ If that sounds familiar, good news: if you already have MCP servers working in V
 <li>browser automation</li>
 <li>Azure DevOps operations</li>
 </ul>
-<h2 id="file-locations-you-should-know">File locations you should know<a hidden class="anchor" aria-hidden="true" href="#file-locations-you-should-know">#</a></h2>
-<p>VS Code MCP config is typically found at:</p>
+<h2 id="file-locations-you-should-know">File locations you should know
+</h2><p>VS Code MCP config is typically found at:</p>
 <ul>
 <li>Workspace: <code>./mcp.json</code> or <code>./.vscode/mcp.json</code></li>
 <li>User-level:
@@ -322,8 +348,8 @@ If that sounds familiar, good news: if you already have MCP servers working in V
 <ul>
 <li><code>~/.copilot/mcp-config.json</code></li>
 </ul>
-<h2 id="vs-code-vs-copilot-cli-the-important-differences">VS Code vs Copilot CLI: the important differences<a hidden class="anchor" aria-hidden="true" href="#vs-code-vs-copilot-cli-the-important-differences">#</a></h2>
-<p>The two formats are very close, but not identical:</p>
+<h2 id="vs-code-vs-copilot-cli-the-important-differences">VS Code vs Copilot CLI: the important differences
+</h2><p>The two formats are very close, but not identical:</p>
 <ol>
 <li>
 <p>Top-level key</p>
@@ -355,22 +381,31 @@ If that sounds familiar, good news: if you already have MCP servers working in V
 </li>
 </ol>
 <p>None of this is hard, but it’s just different enough to break things when done manually in a hurry.</p>
-<h2 id="fast-path-recommended-automate-conversion">Fast path (recommended): automate conversion<a hidden class="anchor" aria-hidden="true" href="#fast-path-recommended-automate-conversion">#</a></h2>
-<p>You can grab both scripts directly from my GitHub repo:</p>
+<h2 id="fast-path-recommended-automate-conversion">Fast path (recommended): automate conversion
+</h2><p>You can grab both scripts directly from my GitHub repo:</p>
 <ul>
-<li><a href="https://github.com/petender/MCP-Clone_VSCode2CLI">https://github.com/petender/MCP-Clone_VSCode2CLI</a></li>
+<li><a class="link" href="https://github.com/petender/MCP-Clone_VSCode2CLI"  target="_blank" rel="noopener"
+    >https://github.com/petender/MCP-Clone_VSCode2CLI</a></li>
 </ul>
 <p>Quick clone commands (PowerShell, bash, zsh):</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone https://github.com/petender/MCP-Clone_VSCode2CLI.git
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone https://github.com/petender/MCP-Clone_VSCode2CLI.git
 </span></span><span class="line"><span class="cl"><span class="nb">cd</span> MCP-Clone_VSCode2CLI
-</span></span></code></pre></div><p>Use one of these scripts:</p>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Use one of these scripts:</p>
 <ul>
 <li><code>convert-mcp-config.ps1</code> (Windows/macOS/Linux with <code>pwsh</code>)</li>
 <li><code>convert-mcp-config.sh</code> (macOS/Linux with <code>bash</code> + <code>python3</code>)</li>
 </ul>
 <p>I personally use the PowerShell version most of the time, no surprise I&rsquo;m primarily a Windows-guy, but didn&rsquo;t want to assume everyone is using PowerShell nowadays. (You should though ;)</p>
-<h3 id="what-the-script-converts-automatically">What the script converts automatically<a hidden class="anchor" aria-hidden="true" href="#what-the-script-converts-automatically">#</a></h3>
-<ul>
+<h3 id="what-the-script-converts-automatically">What the script converts automatically
+</h3><ul>
 <li><code>servers</code> -&gt; <code>mcpServers</code></li>
 <li>removes VS Code-only <code>inputs</code></li>
 <li>converts <code>${input:name}</code> -&gt; <code>$NAME</code></li>
@@ -379,63 +414,149 @@ If that sounds familiar, good news: if you already have MCP servers working in V
 <li>renames invalid server IDs (for example containing <code>/</code>)</li>
 </ul>
 <p>This is exactly the part that saves the most time (and avoids the most headaches).</p>
-<h2 id="powershell-usage-convert-mcp-configps1">PowerShell usage (<code>convert-mcp-config.ps1</code>)<a hidden class="anchor" aria-hidden="true" href="#powershell-usage-convert-mcp-configps1">#</a></h2>
-<p>The script supports cross-platform defaults using your home path.</p>
-<h3 id="easiest-mode">Easiest mode<a hidden class="anchor" aria-hidden="true" href="#easiest-mode">#</a></h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">pwsh</span> <span class="n">-ExecutionPolicy</span> <span class="n">Bypass</span> <span class="o">-File</span> <span class="p">./</span><span class="nb">convert-mcp</span><span class="n">-config</span><span class="p">.</span><span class="py">ps1</span>
-</span></span></code></pre></div><p>This auto-discovers common input locations and writes to <code>~/.copilot/mcp-config.json</code>.</p>
-<h3 id="explicit-input-default-output">Explicit input, default output<a hidden class="anchor" aria-hidden="true" href="#explicit-input-default-output">#</a></h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">pwsh</span> <span class="n">-ExecutionPolicy</span> <span class="n">Bypass</span> <span class="o">-File</span> <span class="p">./</span><span class="nb">convert-mcp</span><span class="n">-config</span><span class="p">.</span><span class="py">ps1</span> <span class="p">\</span>
+<h2 id="powershell-usage-convert-mcp-configps1">PowerShell usage (<code>convert-mcp-config.ps1</code>)
+</h2><p>The script supports cross-platform defaults using your home path.</p>
+<h3 id="easiest-mode">Easiest mode
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">pwsh</span> <span class="n">-ExecutionPolicy</span> <span class="n">Bypass</span> <span class="o">-File</span> <span class="p">./</span><span class="nb">convert-mcp</span><span class="n">-config</span><span class="p">.</span><span class="py">ps1</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>This auto-discovers common input locations and writes to <code>~/.copilot/mcp-config.json</code>.</p>
+<h3 id="explicit-input-default-output">Explicit input, default output
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">pwsh</span> <span class="n">-ExecutionPolicy</span> <span class="n">Bypass</span> <span class="o">-File</span> <span class="p">./</span><span class="nb">convert-mcp</span><span class="n">-config</span><span class="p">.</span><span class="py">ps1</span> <span class="p">\</span>
 </span></span><span class="line"><span class="cl">  <span class="n">-InputPath</span> <span class="p">./</span><span class="n">mcp</span><span class="p">.</span><span class="py">json</span>
-</span></span></code></pre></div><h3 id="explicit-input-and-output">Explicit input and output<a hidden class="anchor" aria-hidden="true" href="#explicit-input-and-output">#</a></h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">pwsh</span> <span class="n">-ExecutionPolicy</span> <span class="n">Bypass</span> <span class="o">-File</span> <span class="p">./</span><span class="nb">convert-mcp</span><span class="n">-config</span><span class="p">.</span><span class="py">ps1</span> <span class="p">\</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="explicit-input-and-output">Explicit input and output
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">pwsh</span> <span class="n">-ExecutionPolicy</span> <span class="n">Bypass</span> <span class="o">-File</span> <span class="p">./</span><span class="nb">convert-mcp</span><span class="n">-config</span><span class="p">.</span><span class="py">ps1</span> <span class="p">\</span>
 </span></span><span class="line"><span class="cl">  <span class="n">-InputPath</span> <span class="p">./</span><span class="n">mcp</span><span class="p">.</span><span class="py">json</span> <span class="p">\</span>
 </span></span><span class="line"><span class="cl">  <span class="n">-OutputPath</span> <span class="p">~/.</span><span class="n">copilot</span><span class="p">/</span><span class="nb">mcp-config</span><span class="p">.</span><span class="py">json</span>
-</span></span></code></pre></div><h3 id="custom-home-path">Custom home path<a hidden class="anchor" aria-hidden="true" href="#custom-home-path">#</a></h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">pwsh</span> <span class="n">-ExecutionPolicy</span> <span class="n">Bypass</span> <span class="o">-File</span> <span class="p">./</span><span class="nb">convert-mcp</span><span class="n">-config</span><span class="p">.</span><span class="py">ps1</span> <span class="p">\</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="custom-home-path">Custom home path
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">pwsh</span> <span class="n">-ExecutionPolicy</span> <span class="n">Bypass</span> <span class="o">-File</span> <span class="p">./</span><span class="nb">convert-mcp</span><span class="n">-config</span><span class="p">.</span><span class="py">ps1</span> <span class="p">\</span>
 </span></span><span class="line"><span class="cl">  <span class="n">-InputPath</span> <span class="p">./</span><span class="n">mcp</span><span class="p">.</span><span class="py">json</span> <span class="p">\</span>
 </span></span><span class="line"><span class="cl">  <span class="n">-UserHome</span> <span class="p">/</span><span class="n">home</span><span class="p">/&lt;</span><span class="n">user</span><span class="p">&gt;</span>
-</span></span></code></pre></div><h2 id="bash-usage-convert-mcp-configsh">Bash usage (<code>convert-mcp-config.sh</code>)<a hidden class="anchor" aria-hidden="true" href="#bash-usage-convert-mcp-configsh">#</a></h2>
-<p>First run:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">chmod +x ./convert-mcp-config.sh
-</span></span></code></pre></div><h3 id="easiest-mode-1">Easiest mode<a hidden class="anchor" aria-hidden="true" href="#easiest-mode-1">#</a></h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">./convert-mcp-config.sh
-</span></span></code></pre></div><h3 id="explicit-input-default-output-1">Explicit input, default output<a hidden class="anchor" aria-hidden="true" href="#explicit-input-default-output-1">#</a></h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">./convert-mcp-config.sh --input ./mcp.json
-</span></span></code></pre></div><h3 id="explicit-input-and-output-1">Explicit input and output<a hidden class="anchor" aria-hidden="true" href="#explicit-input-and-output-1">#</a></h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">./convert-mcp-config.sh --input ./mcp.json --output ~/.copilot/mcp-config.json
-</span></span></code></pre></div><h3 id="custom-home-path-1">Custom home path<a hidden class="anchor" aria-hidden="true" href="#custom-home-path-1">#</a></h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">./convert-mcp-config.sh --input ./mcp.json --user-home /home/&lt;user&gt;
-</span></span></code></pre></div><h3 id="bash-prerequisites">Bash prerequisites<a hidden class="anchor" aria-hidden="true" href="#bash-prerequisites">#</a></h3>
-<ul>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="bash-usage-convert-mcp-configsh">Bash usage (<code>convert-mcp-config.sh</code>)
+</h2><p>First run:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">chmod +x ./convert-mcp-config.sh
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="easiest-mode-1">Easiest mode
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">./convert-mcp-config.sh
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="explicit-input-default-output-1">Explicit input, default output
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">./convert-mcp-config.sh --input ./mcp.json
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="explicit-input-and-output-1">Explicit input and output
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">./convert-mcp-config.sh --input ./mcp.json --output ~/.copilot/mcp-config.json
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="custom-home-path-1">Custom home path
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">./convert-mcp-config.sh --input ./mcp.json --user-home /home/&lt;user&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="bash-prerequisites">Bash prerequisites
+</h3><ul>
 <li><code>bash</code></li>
 <li><code>python3</code></li>
 </ul>
-<h2 id="verify-in-copilot-cli">Verify in Copilot CLI<a hidden class="anchor" aria-hidden="true" href="#verify-in-copilot-cli">#</a></h2>
-<p>After conversion, open Copilot CLI and run:</p>
+<h2 id="verify-in-copilot-cli">Verify in Copilot CLI
+</h2><p>After conversion, open Copilot CLI and run:</p>
 <ol>
 <li><code>/mcp reload</code></li>
 <li><code>/mcp show</code></li>
 </ol>
 <p>If your config is valid, your servers should load without parsing errors.</p>
 <p>If they don’t show up right away, don’t panic. In most cases it’s either naming rules or env vars (both covered below).</p>
-<h2 id="required-environment-variables-for-the-sample-config">Required environment variables (for the sample config)<a hidden class="anchor" aria-hidden="true" href="#required-environment-variables-for-the-sample-config">#</a></h2>
-<p>Set these before launching Copilot CLI:</p>
+<h2 id="required-environment-variables-for-the-sample-config">Required environment variables (for the sample config)
+</h2><p>Set these before launching Copilot CLI:</p>
 <ul>
 <li><code>GITHUB_PERSONAL_ACCESS_TOKEN</code></li>
 <li><code>ADO_ORG</code></li>
 <li><code>ADO_DOMAIN</code></li>
 </ul>
 <p>PowerShell session example:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$env:GITHUB_PERSONAL_ACCESS_TOKEN</span> <span class="p">=</span> <span class="s2">&#34;&lt;your_token&gt;&#34;</span>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$env:GITHUB_PERSONAL_ACCESS_TOKEN</span> <span class="p">=</span> <span class="s2">&#34;&lt;your_token&gt;&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="nv">$env:ADO_ORG</span> <span class="p">=</span> <span class="s2">&#34;&lt;your_ado_org&gt;&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="nv">$env:ADO_DOMAIN</span> <span class="p">=</span> <span class="s2">&#34;core&#34;</span>
-</span></span></code></pre></div><p>bash/zsh example:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">GITHUB_PERSONAL_ACCESS_TOKEN</span><span class="o">=</span><span class="s2">&#34;&lt;your_token&gt;&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>bash/zsh example:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">GITHUB_PERSONAL_ACCESS_TOKEN</span><span class="o">=</span><span class="s2">&#34;&lt;your_token&gt;&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">ADO_ORG</span><span class="o">=</span><span class="s2">&#34;&lt;your_ado_org&gt;&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">ADO_DOMAIN</span><span class="o">=</span><span class="s2">&#34;core&#34;</span>
-</span></span></code></pre></div><h2 id="manual-conversion-checklist">Manual conversion checklist<a hidden class="anchor" aria-hidden="true" href="#manual-conversion-checklist">#</a></h2>
-<p>If you want to edit by hand, follow this sequence:</p>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="manual-conversion-checklist">Manual conversion checklist
+</h2><p>If you want to edit by hand, follow this sequence:</p>
 <ul>
 <li>rename <code>servers</code> to <code>mcpServers</code></li>
 <li>remove <code>inputs</code></li>
@@ -445,15 +566,15 @@ If that sounds familiar, good news: if you already have MCP servers working in V
 <li>keep operational properties unchanged (<code>type</code>, <code>command</code>, <code>args</code>, <code>url</code>, <code>version</code>, <code>gallery</code>)</li>
 </ul>
 <p>This checklist is also useful as a review checklist in PRs.</p>
-<h2 id="common-errors-and-quick-fixes">Common errors and quick fixes<a hidden class="anchor" aria-hidden="true" href="#common-errors-and-quick-fixes">#</a></h2>
-<h3 id="mcp-server-name-must-only-contain-alphanumeric-characters-underscores-and-hyphens"><code>MCP server name must only contain alphanumeric characters, underscores, and hyphens</code><a hidden class="anchor" aria-hidden="true" href="#mcp-server-name-must-only-contain-alphanumeric-characters-underscores-and-hyphens">#</a></h3>
-<p>Cause: a server key still contains <code>/</code> (or another invalid character).</p>
+<h2 id="common-errors-and-quick-fixes">Common errors and quick fixes
+</h2><h3 id="mcp-server-name-must-only-contain-alphanumeric-characters-underscores-and-hyphens"><code>MCP server name must only contain alphanumeric characters, underscores, and hyphens</code>
+</h3><p>Cause: a server key still contains <code>/</code> (or another invalid character).</p>
 <p>Fix example:</p>
 <ul>
 <li><code>microsoft/playwright-mcp</code> -&gt; <code>microsoft_playwright_mcp</code></li>
 </ul>
-<h3 id="server-starts-but-fails-with-authruntime-errors">Server starts but fails with auth/runtime errors<a hidden class="anchor" aria-hidden="true" href="#server-starts-but-fails-with-authruntime-errors">#</a></h3>
-<p>Cause: missing or wrong environment variable values.</p>
+<h3 id="server-starts-but-fails-with-authruntime-errors">Server starts but fails with auth/runtime errors
+</h3><p>Cause: missing or wrong environment variable values.</p>
 <p>Fix:</p>
 <ul>
 <li>validate variable names exactly</li>
@@ -461,231 +582,199 @@ If that sounds familiar, good news: if you already have MCP servers working in V
 <li>run <code>/mcp reload</code> again</li>
 </ul>
 <p>Also make sure you start Copilot CLI from the same shell/session where variables are set.</p>
-<h3 id="command-not-found"><code>command not found</code><a hidden class="anchor" aria-hidden="true" href="#command-not-found">#</a></h3>
-<p>Cause: one of the required tools is missing.</p>
+<h3 id="command-not-found"><code>command not found</code>
+</h3><p>Cause: one of the required tools is missing.</p>
 <p>Fix:</p>
 <ul>
 <li>install dependencies used by your config (<code>docker</code>, <code>npx</code>, <code>uvx</code>, etc.)</li>
 </ul>
-<h2 id="summary">Summary<a hidden class="anchor" aria-hidden="true" href="#summary">#</a></h2>
-<p>Most VS Code MCP config can be reused in Copilot CLI. The key differences are server ID naming, top-level key name, and placeholder handling.</p>
+<h2 id="summary">Summary
+</h2><p>Most VS Code MCP config can be reused in Copilot CLI. The key differences are server ID naming, top-level key name, and placeholder handling.</p>
 <p>While one could assume that the MCP Configuration should be standardized across platforms, once I figured out the key syntax differences (GitHub Copilot for the win!), it ended up being much easier than I expected once I stopped doing it manually and automated the boring parts (GitHub Copilot for the win x2!).</p>
 <p>If this helped you, feel free to share it with your team so everyone can standardize MCP config faster. And maybe give a little GitHub Star on the repo, so I know you like it ;).</p>
-<p><a href="https://www.buymeacoffee.com/pdtit"><img alt="BuyMeACoffee" loading="lazy" src="../images/buy_me_a_coffee.png"></a></p>
+<p><a class="link" href="https://www.buymeacoffee.com/pdtit"  target="_blank" rel="noopener"
+    >
+  <img src="../images/buy_me_a_coffee.png"
+    loading="lazy"
+    
+      alt="BuyMeACoffee"
+    
+    
+  ></a></p>
 <p>Cheers!!</p>
 <p>/Peter</p>
 
-
-  </div>
-
-  <footer class="post-footer">
-    <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/github-copilot/">GitHub Copilot</a></li>
-      <li><a href="http://localhost:1313/tags/mcp/">MCP</a></li>
-      <li><a href="http://localhost:1313/tags/vscode/">VSCode</a></li>
-    </ul>
-<nav class="paginav">
-  <a class="next" href="http://localhost:1313/post/packt-book-review---azure-for-developers/">
-    <span class="title">Next »</span>
-    <br>
-    <span>Packt Book Review - Azure for Developers</span>
-  </a>
-</nav>
+</section>
 
 
-<ul class="share-buttons">
-    <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Keeping MCP Server config in sync between VS Code and GitHub Copilot CLI on x"
-            href="https://x.com/intent/tweet/?text=Keeping%20MCP%20Server%20config%20in%20sync%20between%20VS%20Code%20and%20GitHub%20Copilot%20CLI&amp;url=http%3a%2f%2flocalhost%3a1313%2fpost%2fkeeping-mcp-config-in-sync-between-vscode-and-cli%2f&amp;hashtags=GitHubCopilot%2cMCP%2cVSCode">
-            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-                <path
-                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
-            </svg>
-        </a>
-    </li>
-    <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Keeping MCP Server config in sync between VS Code and GitHub Copilot CLI on linkedin"
-            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fpost%2fkeeping-mcp-config-in-sync-between-vscode-and-cli%2f&amp;title=Keeping%20MCP%20Server%20config%20in%20sync%20between%20VS%20Code%20and%20GitHub%20Copilot%20CLI&amp;summary=Keeping%20MCP%20Server%20config%20in%20sync%20between%20VS%20Code%20and%20GitHub%20Copilot%20CLI&amp;source=http%3a%2f%2flocalhost%3a1313%2fpost%2fkeeping-mcp-config-in-sync-between-vscode-and-cli%2f">
-            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-                <path
-                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
-            </svg>
-        </a>
-    </li>
-    <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Keeping MCP Server config in sync between VS Code and GitHub Copilot CLI on reddit"
-            href="https://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fpost%2fkeeping-mcp-config-in-sync-between-vscode-and-cli%2f&title=Keeping%20MCP%20Server%20config%20in%20sync%20between%20VS%20Code%20and%20GitHub%20Copilot%20CLI">
-            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-                <path
-                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
-            </svg>
-        </a>
-    </li>
-    <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Keeping MCP Server config in sync between VS Code and GitHub Copilot CLI on facebook"
-            href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fpost%2fkeeping-mcp-config-in-sync-between-vscode-and-cli%2f">
-            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-                <path
-                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
-            </svg>
-        </a>
-    </li>
-    <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Keeping MCP Server config in sync between VS Code and GitHub Copilot CLI on whatsapp"
-            href="https://api.whatsapp.com/send?text=Keeping%20MCP%20Server%20config%20in%20sync%20between%20VS%20Code%20and%20GitHub%20Copilot%20CLI%20-%20http%3a%2f%2flocalhost%3a1313%2fpost%2fkeeping-mcp-config-in-sync-between-vscode-and-cli%2f">
-            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-                <path
-                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
-            </svg>
-        </a>
-    </li>
-    <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Keeping MCP Server config in sync between VS Code and GitHub Copilot CLI on telegram"
-            href="https://telegram.me/share/url?text=Keeping%20MCP%20Server%20config%20in%20sync%20between%20VS%20Code%20and%20GitHub%20Copilot%20CLI&amp;url=http%3a%2f%2flocalhost%3a1313%2fpost%2fkeeping-mcp-config-in-sync-between-vscode-and-cli%2f">
-            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
-                <path
-                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
-            </svg>
-        </a>
-    </li>
-    <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Keeping MCP Server config in sync between VS Code and GitHub Copilot CLI on ycombinator"
-            href="https://news.ycombinator.com/submitlink?t=Keeping%20MCP%20Server%20config%20in%20sync%20between%20VS%20Code%20and%20GitHub%20Copilot%20CLI&u=http%3a%2f%2flocalhost%3a1313%2fpost%2fkeeping-mcp-config-in-sync-between-vscode-and-cli%2f">
-            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
-                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
-                <path
-                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
-            </svg>
-        </a>
-    </li>
-</ul>
-
-  </footer>
-</article>
-    </main>
+    <footer class="article-footer">
     
-<footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1313/">Azure Readiness starts here...</a></span> · 
+    <section class="article-tags">
+        
+            <a href="/tags/github-copilot/">GitHub Copilot</a>
+        
+            <a href="/tags/mcp/">MCP</a>
+        
+            <a href="/tags/vscode/">VSCode</a>
+        
+    </section>
 
-    <span>
-        Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/post/using-github-copilot-agent-mode-to-vibe-code-a-python-shooting-game/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Using GitHub Copilot Agent Mode to vibe code a Python shooting game</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/post/using-github-copilot-agent-mode-to-transform-arm-templates-to-bicep/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Using GitHub Copilot Agent Mode to transform ARM templates to BICEP</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2021 - 
+        
+        2026 Azure Readiness starts here...
+    </section>
+    
+    <section class="powerby">
+        
+            The best way to know the future, is to learn it <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="4.0.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
-    </svg>
-</a>
 
-<script>
-    let menu = document.getElementById('menu');
-    if (menu) {
-        
-        const scrollPosition = localStorage.getItem("menu-scroll-position");
-        if (scrollPosition) {
-            menu.scrollLeft = parseInt(scrollPosition, 10);
-        }
-        
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
+
+    
+
+
+
+<script type="module">
+    import gallery from '\/ts\/gallery.js';
+
+    const articleContent = document.querySelector('.article-content');
+    const shouldLoad = articleContent && (articleContent.querySelectorAll('figure').length > 0 || articleContent.querySelectorAll('img.gallery-image').length > 0);
+    
+    if (shouldLoad) {
+        gallery(articleContent);
+
+        const PhotoSwipeLightbox = (await import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js")).default;
+        const styleHref = "https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.css";
+
+        const styleTag = document.createElement('link');
+        styleTag.rel = 'stylesheet';
+        styleTag.href = styleHref;
+        document.head.appendChild(styleTag);
+
+        const lightbox = new PhotoSwipeLightbox({
+            gallerySelector: '.article-content',
+            childSelector: 'figure a.image-link',
+            pswpModule: () => import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js")
+        });
+        lightbox.init();
     }
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
-        });
-    });
-
 </script>
-<script>
-    var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
-        } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
-        }
-    };
+    
 
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        const html = document.querySelector("html");
-        if (html.dataset.theme === "dark") {
-            html.dataset.theme = 'light';
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            html.dataset.theme = 'dark';
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
+            </main>
+        </div>
+        
+    <div id="cookie-consent-banner" class="cookie-banner" aria-hidden="true" role="dialog" aria-labelledby="cookie-banner-title">
+    <div class="cookie-banner__content">
+        <div class="cookie-banner__text">
+            <strong id="cookie-banner-title">Cookie Consent</strong>
+            <p>We use cookies to enhance your browsing experience and analyze site traffic.</p>
+        </div>
 
-</script>
-<script>
-    document.querySelectorAll('pre > code').forEach((codeblock) => {
-        const container = codeblock.parentNode.parentNode;
+        <div class="cookie-banner__actions">
+            <button class="cookie-btn cookie-btn--secondary" data-cookie-action="deny">
+                Deny
+            </button>
+            <button class="cookie-btn cookie-btn--primary" data-cookie-action="accept">
+                Accept All
+            </button>
+        </div>
+        <button class="cookie-banner__settings-link" data-cookie-action="settings">
+            Manage preferences
+        </button>
 
-        const copybutton = document.createElement('button');
-        copybutton.classList.add('copy-code');
-        copybutton.innerHTML = 'copy';
+        
+        <div id="cookie-settings-panel" class="cookie-settings" aria-hidden="true">
+            <h3>Cookie Preferences</h3>
 
-        function copyingDone() {
-            copybutton.innerHTML = 'copied!';
-            setTimeout(() => {
-                copybutton.innerHTML = 'copy';
-            }, 2000);
-        }
+            <div class="cookie-category">
+                <label>
+                    <input type="checkbox" name="necessary" checked disabled />
+                    <strong>Necessary</strong>
+                </label>
+                <p>These cookies are required for the website to function and cannot be disabled.</p>
+            </div><div class="cookie-category">
+                <label>
+                    <input type="checkbox" name="analytics" data-cookie-category="analytics" />
+                    <strong>Analytics</strong>
+                </label>
+                <p>These cookies help us understand how visitors interact with our website.</p>
+            </div><div class="cookie-category">
+                <label>
+                    <input type="checkbox" name="functional" data-cookie-category="functional" />
+                    <strong>Functional</strong>
+                </label>
+                <p>These cookies enable features like comments and embedded content.</p>
+            </div><div class="cookie-settings__actions">
+                <button class="cookie-btn cookie-btn--secondary" data-cookie-action="cancel">
+                    Cancel
+                </button>
+                <button class="cookie-btn cookie-btn--primary" data-cookie-action="save">
+                    Save preferences
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 
-        copybutton.addEventListener('click', (cb) => {
-            if ('clipboard' in navigator) {
-                navigator.clipboard.writeText(codeblock.textContent);
-                copyingDone();
-                return;
-            }
 
-            const range = document.createRange();
-            range.selectNodeContents(codeblock);
-            const selection = window.getSelection();
-            selection.removeAllRanges();
-            selection.addRange(range);
-            try {
-                document.execCommand('copy');
-                copyingDone();
-            } catch (e) { };
-            selection.removeRange(range);
-        });
+    <script type="text/javascript" src="/ts/cookies.fb6e3f54ec5cefc5dd04ebdb731fbb630fe36104d843ad1ef773c6462b788568.js" defer></script>
+<script type="text/javascript" src="/ts/main.7aaef5b0228fe199f3d764416965e34f5bf182cbe0650a0f3ea1a716021ba381.js" defer></script>
 
-        if (container.classList.contains("highlight")) {
-            container.appendChild(copybutton);
-        } else if (container.parentNode.firstChild == container) {
-            
-        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
-            
-            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
-        } else {
-            
-            codeblock.parentNode.appendChild(copybutton);
-        }
-    });
-</script>
-</body>
 
+    </body>
 </html>

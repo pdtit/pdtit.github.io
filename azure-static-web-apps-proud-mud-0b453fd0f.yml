@@ -19,7 +19,7 @@ jobs:
   - group: Azure-Static-Web-Apps-proud-mud-0b453fd0f-variable-group
   steps:
   - checkout: self
-    submodules: true
+    submodules: false
   - task: AzureStaticWebApp@0
     inputs:
       azure_static_web_apps_api_token: $(AZURE_STATIC_WEB_APPS_API_TOKEN_PROUD_MUD_0B453FD0F)
@@ -29,6 +29,6 @@ jobs:
       api_location: "" # Api source code path - optional
       output_location: "docs" # Built app content directory - optional
     env:
-      HUGO_VERSION: '0.146.0'  # Required for PaperMod theme compatibility
+      HUGO_VERSION: '0.157.0'  # Required for Stack theme compatibility
 ###### End of Repository/Build Configurations ######
 

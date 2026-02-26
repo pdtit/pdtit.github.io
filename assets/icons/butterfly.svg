@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Left top wing -->
+  <path d="M6.5 4.5c-1.5 0-2.5 1-2.5 2.5s1 2.5 2.5 2.5c1 0 1.8-.6 2.2-1.5"/>
+  <!-- Left bottom wing -->
+  <path d="M6.5 19.5c-1.5 0-2.5-1-2.5-2.5s1-2.5 2.5-2.5c1 0 1.8.6 2.2 1.5"/>
+  <!-- Right top wing -->
+  <path d="M17.5 4.5c1.5 0 2.5 1 2.5 2.5s-1 2.5-2.5 2.5c-1 0-1.8-.6-2.2-1.5"/>
+  <!-- Right bottom wing -->
+  <path d="M17.5 19.5c1.5 0 2.5-1 2.5-2.5s-1-2.5-2.5-2.5c-1 0-1.8.6-2.2 1.5"/>
+  <!-- Body -->
+  <path d="M12 3v18"/>
+  <!-- Antennae -->
+  <path d="M11 3c-.5-1-1-2-2-2"/>
+  <path d="M13 3c.5-1 1-2 2-2"/>
+  <!-- Wing connections -->
+  <path d="M12 7c-.5.5-2 2-3.5 2.5"/>
+  <path d="M12 7c.5.5 2 2 3.5 2.5"/>
+  <path d="M12 17c-.5-.5-2-2-3.5-2.5"/>
+  <path d="M12 17c.5-.5 2-2 3.5-2.5"/>
+</svg>

@@ -1,0 +1,123 @@
+/* Custom color scheme for 007FFF Learning - Azure Blue Theme */
+
+:root {
+    /* Override Stack theme's default colors with Azure blue variants */
+    
+    /* Light mode background - change from grey (#f5f5fa) to light azure blue */
+    --body-background: #E6F2FF;
+    
+    /* Accent colors - change from dark grey to azure blue shades */
+    --accent-color: #005ACC;          /* Main accent - darker azure blue */
+    --accent-color-darker: #004B99;   /* Darker variant */
+    
+    /* Keep text readable */
+    --accent-color-text: #fff;
+    --body-text-color: #505050;       /* Slightly darker for better contrast on light blue */
+    
+    /* Card backgrounds adjusted for light blue theme */
+    --card-background: #ffffff;
+    --card-background-selected: #D6E9FF;  /* Light azure blue for selected state */
+    
+    /* Scrollbar colors adjusted */
+    --scrollbar-thumb: #99C9FF;
+    --scrollbar-track: var(--body-background);
+}
+
+/* Dark mode overrides */
+:root[data-scheme="dark"] {
+    /* Keep dark mode background dark */
+    --body-background: #1a1a1a;
+    
+    /* Use azure blue as accent in dark mode instead of light grey */
+    --accent-color: #007FFF;          /* Azure blue instead of #ecf0f1 */
+    --accent-color-darker: #0099FF;   /* Lighter variant for hover */
+    --accent-color-text: #000;
+    --body-text-color: rgba(255, 255, 255, 0.85);
+    
+    /* Dark mode cards */
+    --card-background: #2a2a2a;
+    --card-background-selected: rgba(0, 127, 255, 0.16);
+    
+    /* Scrollbar for dark mode */
+    --scrollbar-thumb: #007FFF;
+    --scrollbar-track: var(--body-background);
+}
+
+/* Additional refinements for menu items */
+.menu a {
+    transition: all 0.3s ease;
+}
+
+.menu a:hover {
+    color: #007FFF !important;
+}
+
+[data-scheme="dark"] .menu a:hover {
+    color: #66B3FF !important;
+}
+
+/* Ensure menu icons match the text color */
+.menu svg {
+    transition: stroke 0.3s ease;
+}
+
+/* Social media icons styling */
+.menu-social a {
+    color: var(--accent-color) !important;
+    transition: all 0.3s ease;
+}
+
+.menu-social a:hover {
+    color: #007FFF !important;
+}
+
+.menu-social svg {
+    stroke: var(--accent-color);
+    transition: stroke 0.3s ease;
+}
+
+.menu-social a:hover svg {
+    stroke: #007FFF;
+}
+
+[data-scheme="dark"] .menu-social a {
+    color: #007FFF !important;
+}
+
+[data-scheme="dark"] .menu-social a:hover {
+    color: #66B3FF !important;
+}
+
+[data-scheme="dark"] .menu-social svg {
+    stroke: #007FFF;
+}
+
+[data-scheme="dark"] .menu-social a:hover svg {
+    stroke: #66B3FF;
+}
+
+/* Article date/time styling for cards and detail view */
+.article-time {
+    color: var(--accent-color) !important;
+}
+
+.article-time svg {
+    stroke: var(--accent-color);
+}
+
+.article-time time {
+    color: var(--accent-color) !important;
+}
+
+[data-scheme="dark"] .article-time {
+    color: #007FFF !important;
+}
+
+[data-scheme="dark"] .article-time svg {
+    stroke: #007FFF;
+}
+
+[data-scheme="dark"] .article-time time {
+    color: #007FFF !important;
+}
+

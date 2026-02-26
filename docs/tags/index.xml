@@ -1,425 +1,363 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Tags on </title>
-    <link>//localhost:1313/tags/</link>
-    <description>Recent content in Tags on </description>
-    <generator>Hugo</generator>
-    <language>en</language>
-    <lastBuildDate>Thu, 26 Feb 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>GitHub Copilot</title>
-      <link>//localhost:1313/tags/github-copilot/</link>
-      <pubDate>Thu, 26 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/github-copilot/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>MCP</title>
-      <link>//localhost:1313/tags/mcp/</link>
-      <pubDate>Thu, 26 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/mcp/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>VSCode</title>
-      <link>//localhost:1313/tags/vscode/</link>
-      <pubDate>Thu, 26 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/vscode/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Azure</title>
-      <link>//localhost:1313/tags/azure/</link>
-      <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/azure/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Packt</title>
-      <link>//localhost:1313/tags/packt/</link>
-      <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/packt/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>AI</title>
-      <link>//localhost:1313/tags/ai/</link>
-      <pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/ai/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>GitHub</title>
-      <link>//localhost:1313/tags/github/</link>
-      <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/github/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Copilot Studio</title>
-      <link>//localhost:1313/tags/copilot-studio/</link>
-      <pubDate>Sat, 09 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/copilot-studio/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>ARM</title>
-      <link>//localhost:1313/tags/arm/</link>
-      <pubDate>Sat, 12 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/arm/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Bicep</title>
-      <link>//localhost:1313/tags/bicep/</link>
-      <pubDate>Sat, 12 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/bicep/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Books</title>
-      <link>//localhost:1313/tags/books/</link>
-      <pubDate>Sun, 09 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/books/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Microsoft</title>
-      <link>//localhost:1313/tags/microsoft/</link>
-      <pubDate>Sun, 09 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/microsoft/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>DevOps</title>
-      <link>//localhost:1313/tags/devops/</link>
-      <pubDate>Thu, 06 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/devops/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Monitoring</title>
-      <link>//localhost:1313/tags/monitoring/</link>
-      <pubDate>Thu, 06 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/monitoring/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>.NET</title>
-      <link>//localhost:1313/tags/.net/</link>
-      <pubDate>Sat, 07 Dec 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/.net/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Semantic Kernel</title>
-      <link>//localhost:1313/tags/semantic-kernel/</link>
-      <pubDate>Sat, 07 Dec 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/semantic-kernel/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>AI Studio</title>
-      <link>//localhost:1313/tags/ai-studio/</link>
-      <pubDate>Sun, 15 Sep 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/ai-studio/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>.NET8</title>
-      <link>//localhost:1313/tags/.net8/</link>
-      <pubDate>Thu, 30 May 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/.net8/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Blazor</title>
-      <link>//localhost:1313/tags/blazor/</link>
-      <pubDate>Thu, 30 May 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/blazor/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Azure DevOps</title>
-      <link>//localhost:1313/tags/azure-devops/</link>
-      <pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/azure-devops/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Logic Apps</title>
-      <link>//localhost:1313/tags/logic-apps/</link>
-      <pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/logic-apps/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>SRE</title>
-      <link>//localhost:1313/tags/sre/</link>
-      <pubDate>Sat, 09 Sep 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/sre/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Chaos Studio</title>
-      <link>//localhost:1313/tags/chaos-studio/</link>
-      <pubDate>Sun, 27 Aug 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/chaos-studio/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>App Service</title>
-      <link>//localhost:1313/tags/app-service/</link>
-      <pubDate>Sun, 30 Apr 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/app-service/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Office Forms</title>
-      <link>//localhost:1313/tags/office-forms/</link>
-      <pubDate>Sun, 26 Mar 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/office-forms/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>ACA</title>
-      <link>//localhost:1313/tags/aca/</link>
-      <pubDate>Wed, 15 Mar 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/aca/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>AKS</title>
-      <link>//localhost:1313/tags/aks/</link>
-      <pubDate>Wed, 15 Mar 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/aks/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Containers</title>
-      <link>//localhost:1313/tags/containers/</link>
-      <pubDate>Wed, 15 Mar 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/containers/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Docker</title>
-      <link>//localhost:1313/tags/docker/</link>
-      <pubDate>Wed, 15 Mar 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/docker/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Random</title>
-      <link>//localhost:1313/tags/random/</link>
-      <pubDate>Fri, 23 Dec 2022 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/random/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Application Insights</title>
-      <link>//localhost:1313/tags/application-insights/</link>
-      <pubDate>Sun, 30 Oct 2022 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/application-insights/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Hugo</title>
-      <link>//localhost:1313/tags/hugo/</link>
-      <pubDate>Sun, 30 Oct 2022 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/hugo/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Apress</title>
-      <link>//localhost:1313/tags/apress/</link>
-      <pubDate>Sat, 29 Oct 2022 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/apress/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>DevSecOps</title>
-      <link>//localhost:1313/tags/devsecops/</link>
-      <pubDate>Sun, 03 Apr 2022 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/devsecops/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Security</title>
-      <link>//localhost:1313/tags/security/</link>
-      <pubDate>Thu, 17 Mar 2022 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/security/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>DotNet</title>
-      <link>//localhost:1313/tags/dotnet/</link>
-      <pubDate>Mon, 08 Nov 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/dotnet/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>General</title>
-      <link>//localhost:1313/tags/general/</link>
-      <pubDate>Tue, 21 Sep 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/general/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Ebooks</title>
-      <link>//localhost:1313/tags/ebooks/</link>
-      <pubDate>Fri, 18 Jun 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/ebooks/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Kubernetes</title>
-      <link>//localhost:1313/tags/kubernetes/</link>
-      <pubDate>Fri, 18 Jun 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/kubernetes/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>HashiCorp</title>
-      <link>//localhost:1313/tags/hashicorp/</link>
-      <pubDate>Sat, 17 Apr 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/hashicorp/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>IAC</title>
-      <link>//localhost:1313/tags/iac/</link>
-      <pubDate>Wed, 24 Mar 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/iac/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Pulumi</title>
-      <link>//localhost:1313/tags/pulumi/</link>
-      <pubDate>Wed, 24 Mar 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/pulumi/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>TerraForm</title>
-      <link>//localhost:1313/tags/terraform/</link>
-      <pubDate>Wed, 24 Mar 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/terraform/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Visual Studio</title>
-      <link>//localhost:1313/tags/visual-studio/</link>
-      <pubDate>Tue, 10 Nov 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/visual-studio/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Personal</title>
-      <link>//localhost:1313/tags/personal/</link>
-      <pubDate>Sun, 16 Aug 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/personal/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>ACI</title>
-      <link>//localhost:1313/tags/aci/</link>
-      <pubDate>Sun, 05 Jul 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/aci/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Bing</title>
-      <link>//localhost:1313/tags/bing/</link>
-      <pubDate>Sun, 10 May 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/bing/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>LogicApps</title>
-      <link>//localhost:1313/tags/logicapps/</link>
-      <pubDate>Sun, 10 May 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/logicapps/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Office365</title>
-      <link>//localhost:1313/tags/office365/</link>
-      <pubDate>Sun, 10 May 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/office365/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Teams</title>
-      <link>//localhost:1313/tags/teams/</link>
-      <pubDate>Sun, 10 May 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/teams/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Azure Front Door</title>
-      <link>//localhost:1313/tags/azure-front-door/</link>
-      <pubDate>Sat, 25 Apr 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/azure-front-door/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Static Site</title>
-      <link>//localhost:1313/tags/static-site/</link>
-      <pubDate>Sat, 25 Apr 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/static-site/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Architecting</title>
-      <link>//localhost:1313/tags/architecting/</link>
-      <pubDate>Mon, 03 Feb 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/architecting/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Strategy</title>
-      <link>//localhost:1313/tags/strategy/</link>
-      <pubDate>Mon, 03 Feb 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/strategy/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Certification</title>
-      <link>//localhost:1313/tags/certification/</link>
-      <pubDate>Sat, 25 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/certification/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Exams</title>
-      <link>//localhost:1313/tags/exams/</link>
-      <pubDate>Sat, 25 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/exams/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Learning</title>
-      <link>//localhost:1313/tags/learning/</link>
-      <pubDate>Sat, 25 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/learning/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>IAAS</title>
-      <link>//localhost:1313/tags/iaas/</link>
-      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/iaas/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>PAAS</title>
-      <link>//localhost:1313/tags/paas/</link>
-      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/paas/</guid>
-      <description></description>
-    </item>
-  </channel>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Tags on Azure Readiness starts here...</title>
+        <link>http://localhost:1313/tags/</link>
+        <description>Recent content in Tags on Azure Readiness starts here...</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Thu, 26 Feb 2026 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+            <title>GitHub Copilot</title>
+            <link>http://localhost:1313/tags/github-copilot/</link>
+            <pubDate>Thu, 26 Feb 2026 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/github-copilot/</guid>
+            <description></description>
+        </item><item>
+            <title>MCP</title>
+            <link>http://localhost:1313/tags/mcp/</link>
+            <pubDate>Thu, 26 Feb 2026 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/mcp/</guid>
+            <description></description>
+        </item><item>
+            <title>VSCode</title>
+            <link>http://localhost:1313/tags/vscode/</link>
+            <pubDate>Thu, 26 Feb 2026 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/vscode/</guid>
+            <description></description>
+        </item><item>
+            <title>Azure</title>
+            <link>http://localhost:1313/tags/azure/</link>
+            <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/azure/</guid>
+            <description></description>
+        </item><item>
+            <title>Packt</title>
+            <link>http://localhost:1313/tags/packt/</link>
+            <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/packt/</guid>
+            <description></description>
+        </item><item>
+            <title>AI</title>
+            <link>http://localhost:1313/tags/ai/</link>
+            <pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/ai/</guid>
+            <description></description>
+        </item><item>
+            <title>GitHub</title>
+            <link>http://localhost:1313/tags/github/</link>
+            <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/github/</guid>
+            <description></description>
+        </item><item>
+            <title>Copilot Studio</title>
+            <link>http://localhost:1313/tags/copilot-studio/</link>
+            <pubDate>Sat, 09 Aug 2025 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/copilot-studio/</guid>
+            <description></description>
+        </item><item>
+            <title>ARM</title>
+            <link>http://localhost:1313/tags/arm/</link>
+            <pubDate>Sat, 12 Jul 2025 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/arm/</guid>
+            <description></description>
+        </item><item>
+            <title>Bicep</title>
+            <link>http://localhost:1313/tags/bicep/</link>
+            <pubDate>Sat, 12 Jul 2025 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/bicep/</guid>
+            <description></description>
+        </item><item>
+            <title>Books</title>
+            <link>http://localhost:1313/tags/books/</link>
+            <pubDate>Sun, 09 Mar 2025 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/books/</guid>
+            <description></description>
+        </item><item>
+            <title>Microsoft</title>
+            <link>http://localhost:1313/tags/microsoft/</link>
+            <pubDate>Sun, 09 Mar 2025 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/microsoft/</guid>
+            <description></description>
+        </item><item>
+            <title>DevOps</title>
+            <link>http://localhost:1313/tags/devops/</link>
+            <pubDate>Thu, 06 Mar 2025 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/devops/</guid>
+            <description></description>
+        </item><item>
+            <title>Monitoring</title>
+            <link>http://localhost:1313/tags/monitoring/</link>
+            <pubDate>Thu, 06 Mar 2025 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/monitoring/</guid>
+            <description></description>
+        </item><item>
+            <title>.NET</title>
+            <link>http://localhost:1313/tags/.net/</link>
+            <pubDate>Sat, 07 Dec 2024 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/.net/</guid>
+            <description></description>
+        </item><item>
+            <title>Semantic Kernel</title>
+            <link>http://localhost:1313/tags/semantic-kernel/</link>
+            <pubDate>Sat, 07 Dec 2024 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/semantic-kernel/</guid>
+            <description></description>
+        </item><item>
+            <title>AI Studio</title>
+            <link>http://localhost:1313/tags/ai-studio/</link>
+            <pubDate>Sun, 15 Sep 2024 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/ai-studio/</guid>
+            <description></description>
+        </item><item>
+            <title>.NET8</title>
+            <link>http://localhost:1313/tags/.net8/</link>
+            <pubDate>Thu, 30 May 2024 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/.net8/</guid>
+            <description></description>
+        </item><item>
+            <title>Blazor</title>
+            <link>http://localhost:1313/tags/blazor/</link>
+            <pubDate>Thu, 30 May 2024 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/blazor/</guid>
+            <description></description>
+        </item><item>
+            <title>Azure DevOps</title>
+            <link>http://localhost:1313/tags/azure-devops/</link>
+            <pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/azure-devops/</guid>
+            <description></description>
+        </item><item>
+            <title>Logic Apps</title>
+            <link>http://localhost:1313/tags/logic-apps/</link>
+            <pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/logic-apps/</guid>
+            <description></description>
+        </item><item>
+            <title>SRE</title>
+            <link>http://localhost:1313/tags/sre/</link>
+            <pubDate>Sat, 09 Sep 2023 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/sre/</guid>
+            <description></description>
+        </item><item>
+            <title>Chaos Studio</title>
+            <link>http://localhost:1313/tags/chaos-studio/</link>
+            <pubDate>Sun, 27 Aug 2023 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/chaos-studio/</guid>
+            <description></description>
+        </item><item>
+            <title>App Service</title>
+            <link>http://localhost:1313/tags/app-service/</link>
+            <pubDate>Sun, 30 Apr 2023 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/app-service/</guid>
+            <description></description>
+        </item><item>
+            <title>Office Forms</title>
+            <link>http://localhost:1313/tags/office-forms/</link>
+            <pubDate>Sun, 26 Mar 2023 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/office-forms/</guid>
+            <description></description>
+        </item><item>
+            <title>ACA</title>
+            <link>http://localhost:1313/tags/aca/</link>
+            <pubDate>Wed, 15 Mar 2023 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/aca/</guid>
+            <description></description>
+        </item><item>
+            <title>AKS</title>
+            <link>http://localhost:1313/tags/aks/</link>
+            <pubDate>Wed, 15 Mar 2023 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/aks/</guid>
+            <description></description>
+        </item><item>
+            <title>Containers</title>
+            <link>http://localhost:1313/tags/containers/</link>
+            <pubDate>Wed, 15 Mar 2023 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/containers/</guid>
+            <description></description>
+        </item><item>
+            <title>Docker</title>
+            <link>http://localhost:1313/tags/docker/</link>
+            <pubDate>Wed, 15 Mar 2023 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/docker/</guid>
+            <description></description>
+        </item><item>
+            <title>Random</title>
+            <link>http://localhost:1313/tags/random/</link>
+            <pubDate>Fri, 23 Dec 2022 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/random/</guid>
+            <description></description>
+        </item><item>
+            <title>Application Insights</title>
+            <link>http://localhost:1313/tags/application-insights/</link>
+            <pubDate>Sun, 30 Oct 2022 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/application-insights/</guid>
+            <description></description>
+        </item><item>
+            <title>Hugo</title>
+            <link>http://localhost:1313/tags/hugo/</link>
+            <pubDate>Sun, 30 Oct 2022 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/hugo/</guid>
+            <description></description>
+        </item><item>
+            <title>Apress</title>
+            <link>http://localhost:1313/tags/apress/</link>
+            <pubDate>Sat, 29 Oct 2022 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/apress/</guid>
+            <description></description>
+        </item><item>
+            <title>DevSecOps</title>
+            <link>http://localhost:1313/tags/devsecops/</link>
+            <pubDate>Sun, 03 Apr 2022 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/devsecops/</guid>
+            <description></description>
+        </item><item>
+            <title>Security</title>
+            <link>http://localhost:1313/tags/security/</link>
+            <pubDate>Thu, 17 Mar 2022 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/security/</guid>
+            <description></description>
+        </item><item>
+            <title>DotNet</title>
+            <link>http://localhost:1313/tags/dotnet/</link>
+            <pubDate>Mon, 08 Nov 2021 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/dotnet/</guid>
+            <description></description>
+        </item><item>
+            <title>General</title>
+            <link>http://localhost:1313/tags/general/</link>
+            <pubDate>Tue, 21 Sep 2021 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/general/</guid>
+            <description></description>
+        </item><item>
+            <title>Ebooks</title>
+            <link>http://localhost:1313/tags/ebooks/</link>
+            <pubDate>Fri, 18 Jun 2021 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/ebooks/</guid>
+            <description></description>
+        </item><item>
+            <title>Kubernetes</title>
+            <link>http://localhost:1313/tags/kubernetes/</link>
+            <pubDate>Fri, 18 Jun 2021 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/kubernetes/</guid>
+            <description></description>
+        </item><item>
+            <title>HashiCorp</title>
+            <link>http://localhost:1313/tags/hashicorp/</link>
+            <pubDate>Sat, 17 Apr 2021 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/hashicorp/</guid>
+            <description></description>
+        </item><item>
+            <title>IAC</title>
+            <link>http://localhost:1313/tags/iac/</link>
+            <pubDate>Wed, 24 Mar 2021 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/iac/</guid>
+            <description></description>
+        </item><item>
+            <title>Pulumi</title>
+            <link>http://localhost:1313/tags/pulumi/</link>
+            <pubDate>Wed, 24 Mar 2021 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/pulumi/</guid>
+            <description></description>
+        </item><item>
+            <title>TerraForm</title>
+            <link>http://localhost:1313/tags/terraform/</link>
+            <pubDate>Wed, 24 Mar 2021 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/terraform/</guid>
+            <description></description>
+        </item><item>
+            <title>Visual Studio</title>
+            <link>http://localhost:1313/tags/visual-studio/</link>
+            <pubDate>Tue, 10 Nov 2020 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/visual-studio/</guid>
+            <description></description>
+        </item><item>
+            <title>Personal</title>
+            <link>http://localhost:1313/tags/personal/</link>
+            <pubDate>Sun, 16 Aug 2020 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/personal/</guid>
+            <description></description>
+        </item><item>
+            <title>ACI</title>
+            <link>http://localhost:1313/tags/aci/</link>
+            <pubDate>Sun, 05 Jul 2020 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/aci/</guid>
+            <description></description>
+        </item><item>
+            <title>Bing</title>
+            <link>http://localhost:1313/tags/bing/</link>
+            <pubDate>Sun, 10 May 2020 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/bing/</guid>
+            <description></description>
+        </item><item>
+            <title>LogicApps</title>
+            <link>http://localhost:1313/tags/logicapps/</link>
+            <pubDate>Sun, 10 May 2020 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/logicapps/</guid>
+            <description></description>
+        </item><item>
+            <title>Office365</title>
+            <link>http://localhost:1313/tags/office365/</link>
+            <pubDate>Sun, 10 May 2020 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/office365/</guid>
+            <description></description>
+        </item><item>
+            <title>Teams</title>
+            <link>http://localhost:1313/tags/teams/</link>
+            <pubDate>Sun, 10 May 2020 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/teams/</guid>
+            <description></description>
+        </item><item>
+            <title>Azure Front Door</title>
+            <link>http://localhost:1313/tags/azure-front-door/</link>
+            <pubDate>Sat, 25 Apr 2020 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/azure-front-door/</guid>
+            <description></description>
+        </item><item>
+            <title>Static Site</title>
+            <link>http://localhost:1313/tags/static-site/</link>
+            <pubDate>Sat, 25 Apr 2020 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/static-site/</guid>
+            <description></description>
+        </item><item>
+            <title>Architecting</title>
+            <link>http://localhost:1313/tags/architecting/</link>
+            <pubDate>Mon, 03 Feb 2020 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/architecting/</guid>
+            <description></description>
+        </item><item>
+            <title>Strategy</title>
+            <link>http://localhost:1313/tags/strategy/</link>
+            <pubDate>Mon, 03 Feb 2020 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/strategy/</guid>
+            <description></description>
+        </item><item>
+            <title>Certification</title>
+            <link>http://localhost:1313/tags/certification/</link>
+            <pubDate>Sat, 25 Jan 2020 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/certification/</guid>
+            <description></description>
+        </item><item>
+            <title>Exams</title>
+            <link>http://localhost:1313/tags/exams/</link>
+            <pubDate>Sat, 25 Jan 2020 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/exams/</guid>
+            <description></description>
+        </item><item>
+            <title>Learning</title>
+            <link>http://localhost:1313/tags/learning/</link>
+            <pubDate>Sat, 25 Jan 2020 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/learning/</guid>
+            <description></description>
+        </item><item>
+            <title>IAAS</title>
+            <link>http://localhost:1313/tags/iaas/</link>
+            <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/iaas/</guid>
+            <description></description>
+        </item><item>
+            <title>PAAS</title>
+            <link>http://localhost:1313/tags/paas/</link>
+            <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/paas/</guid>
+            <description></description>
+        </item></channel>
 </rss>
