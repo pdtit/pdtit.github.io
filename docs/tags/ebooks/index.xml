@@ -1,31 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ebooks on Azure Readiness starts here...</title>
-    <link>https://www.007ffflearning.com/tags/ebooks/</link>
-    <description>Recent content in Ebooks on Azure Readiness starts here...</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 18 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/ebooks/index.xml" rel="self" type="application/rss+xml" />
+    <title>Ebooks on </title>
+    <link>//localhost:1313/tags/ebooks/</link>
+    <description>Recent content in Ebooks on </description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 18 Jun 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/ebooks/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Another Tech Reviewing done: Azure Strategy and Implementation Guide - 4th edition</title>
-      <link>https://www.007ffflearning.com/post/azure-strategy-reviewing-done/</link>
+      <link>//localhost:1313/post/azure-strategy---reviewing-done/</link>
       <pubDate>Fri, 18 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/azure-strategy-reviewing-done/</guid>
-      <description>As most of you know, I enjoy writing technical (Azure related) books, but over the last year, I didn&amp;rsquo;t focus that much on writing myself, but supporting other authors in their writing-journey as well as performing technical reviewing of the book they are writing.
-The one I want to highlight in this post, has an interesting back-story. Mid 2019, I got approached by Packt, to write an update to their best-seller title &amp;ldquo;Azure Strategy and Implementation Guide&amp;rdquo;, in sponsorship with Microsoft.</description>
+      <guid>//localhost:1313/post/azure-strategy---reviewing-done/</guid>
+      <description>&lt;p&gt;As most of you know, I enjoy writing technical (Azure related) &lt;strong&gt;&lt;a href=&#34;https://www.007ffflearning.com/books&#34;&gt;books&lt;/a&gt;&lt;/strong&gt;, but over the last year, I didn&amp;rsquo;t focus that much on writing myself, but supporting other authors in their writing-journey as well as performing technical reviewing of the book they are writing.&lt;/p&gt;&#xA;&lt;p&gt;The one I want to highlight in this post, has an interesting back-story. Mid 2019, I got approached by &lt;strong&gt;&lt;a href=&#34;http://www.packt.com&#34;&gt;Packt&lt;/a&gt;&lt;/strong&gt;, to write an update to their best-seller title &lt;strong&gt;&amp;ldquo;Azure Strategy and Implementation Guide&amp;rdquo;&lt;/strong&gt;, in sponsorship with Microsoft. That was the third edition, which got released Oct 2019. About a year later, I got asked to write another update. As I was a Microsoft employee in meantime, and the book got sponsored by Microsoft, it could be a bit tricky :), so I decided to pull out of the writing process, avoiding conflicts of interest.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Another Tech Reviewing done: Azure For Architects - 3rd edition</title>
-      <link>https://www.007ffflearning.com/post/azure-for-architects-reviewing-done/</link>
+      <link>//localhost:1313/post/azure-for-architects---reviewing-done/</link>
       <pubDate>Sun, 02 Aug 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/azure-for-architects-reviewing-done/</guid>
-      <description>As most of you know, I enjoy writing technical (Azure related) books, but every now and then I am not writing myself, but rather do technical reviewing. A few weeks ago, I was approached by Packt, asking me to review their Azure for Architects - third edition
-Don&amp;rsquo;t let the reference to &amp;ldquo;third edition&amp;rdquo; fool you, there has been a massive rewrite of several chapters, with fresh new content, more technical information and new chapters were added as well.</description>
+      <guid>//localhost:1313/post/azure-for-architects---reviewing-done/</guid>
+      <description>&lt;p&gt;As most of you know, I enjoy writing technical (Azure related) &lt;strong&gt;&lt;a href=&#34;https://www.007ffflearning.com/books&#34;&gt;books&lt;/a&gt;&lt;/strong&gt;, but every now and then I am not writing myself, but rather do technical reviewing. A few weeks ago, I was approached by &lt;strong&gt;&lt;a href=&#34;http://www.packt.com&#34;&gt;Packt&lt;/a&gt;&lt;/strong&gt;, asking me to review their &lt;strong&gt;&lt;a href=&#34;https://www.packtpub.com/cloud-networking/azure-for-architects-third-edition&#34;&gt;Azure for Architects - third edition&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/azure_for_architects.jpeg&#34; alt=&#34;Azure_for_Architects_cover&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Don&amp;rsquo;t let the reference to &amp;ldquo;third edition&amp;rdquo; fool you, there has been a massive rewrite of several chapters, with fresh new content, more technical information and new chapters were added as well.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

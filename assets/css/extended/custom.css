@@ -1,0 +1,121 @@
+/* Custom home page header styling */
+.home-header {
+    background-image: url('/img/home-bg-azure.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 100px 20px;
+    text-align: center;
+    color: white;
+    margin-bottom: 40px;
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Page background - futuristic theme */
+body {
+    /* Azure blue gradient background - more saturated */
+    background: linear-gradient(135deg, #b3d9ff 0%, #80bfff 50%, #4da6ff 100%);
+    
+    /* Add geometric pattern using Azure blue */
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMwMDdGRkYiIGZpbGwtb3BhY2l0eT0iMC4xNSI+PHBhdGggZD0iTTM2IDE0YzMuMzEzIDAgNiAyLjY4NyA2IDZzLTIuNjg3IDYtNiA2LTYtMi42ODctNi02IDIuNjg3LTYgNi02ek0yNCAxNGMzLjMxMyAwIDYgMi42ODcgNiA2cy0yLjY4NyA2LTYgNi02LTIuNjg3LTYtNiAyLjY4Ny02IDYtNnpNMiAzOGMzLjMxMyAwIDYgMi42ODcgNiA2cy0yLjY4NyA2LTYgNi02LTIuNjg3LTYtNiAyLjY4Ny02IDYtNnoiLz48L2c+PC9nPjwvc3ZnPg==');
+    
+    /* For custom image, uncomment and set path below: */
+    /* background-image: url('/img/background-space.jpg'); */
+    
+    background-attachment: fixed;
+    background-size: auto;
+    background-repeat: repeat;
+}
+
+/* Ensure main content area has white/clean background */
+.main {
+    background-color: var(--entry);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Home page: make main container transparent to show blue background */
+.list .main {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+/* Make list container have clean background */
+.list {
+    background-color: transparent;
+}
+
+/* Individual post entries get white background */
+.post-entry, .first-entry {
+    background-color: var(--entry);
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.home-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 8px;
+}
+
+.home-header > div {
+    position: relative;
+    z-index: 1;
+    padding: 40px;
+    border-radius: 8px;
+}
+
+.home-header h1 {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    color: #007FFF !important;
+}
+
+.home-header p {
+    font-size: 20px;
+    margin: 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    color: white;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .home-header {
+        padding: 60px 15px;
+    }
+    
+    .home-header h1 {
+        font-size: 32px;
+    }
+    
+    .home-header p {
+        font-size: 16px;
+    }
+    
+    .home-header > div {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-header {
+        padding: 40px 10px;
+    }
+    
+    .home-header h1 {
+        font-size: 24px;
+    }
+    
+    .home-header p {
+        font-size: 14px;
+    }
+}

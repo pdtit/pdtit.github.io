@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Copilot Studio on </title>
+    <link>//localhost:1313/tags/copilot-studio/</link>
+    <description>Recent content in Copilot Studio on </description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 09 Aug 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/copilot-studio/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Generate Azure JWT Token in Copilot Studio</title>
+      <link>//localhost:1313/post/generate-azure-jwt-token-in-copilot-studio/</link>
+      <pubDate>Sat, 09 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/post/generate-azure-jwt-token-in-copilot-studio/</guid>
+      <description>&lt;p&gt;Out of my role as a Lead Technical Trainer at Microsoft, the portfolio of trainings I&amp;rsquo;m covering has heavily shifted to Azure AI and Copilot over the last few months. Still doing Azure Architecture and Developing courses as well, but not as frequent anymore. This confirms the interest we see at customers in adopting Generative AI solutions. Apart from &lt;a href=&#34;https://www.microsoft.com/microsoft-365/copilot&#34;&gt;Copilot in M365&lt;/a&gt;, or using &lt;a href=&#34;https://azure.microsoft.com/en-us/products/ai-foundry&#34;&gt;Azure AI Foundry&lt;/a&gt;, I also started digging into &lt;a href=&#34;https://azure.microsoft.com/en-us/products/copilot-studio&#34;&gt;Copilot Studio&lt;/a&gt; a lot more. Having a good background in Azure LogicApps and a bit of PowerPlatform, Copilot Studio feels quite comfortable to me.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

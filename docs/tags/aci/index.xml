@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>ACI on Azure Readiness starts here...</title>
-    <link>https://www.007ffflearning.com/tags/aci/</link>
-    <description>Recent content in ACI on Azure Readiness starts here...</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 05 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/aci/index.xml" rel="self" type="application/rss+xml" />
+    <title>ACI on </title>
+    <link>//localhost:1313/tags/aci/</link>
+    <description>Recent content in ACI on </description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 05 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/aci/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Use Docker Edge to Deploy Azure Container Instance - ACI</title>
-      <link>https://www.007ffflearning.com/post/use_docker_edge_to_deploy_aci/</link>
+      <link>//localhost:1313/post/use_docker_edge_to_deploy_aci/</link>
       <pubDate>Sun, 05 Jul 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/use_docker_edge_to_deploy_aci/</guid>
-      <description>Hey there,
-At the recent DockerCon (virtual) Conference, Docker announced a more tightened partnership with Microsoft, boosting the adoption and integration of Docker containers for Windows Server as well as Azure-running workloads. A first announcement involved a cool integration with Azure Container Instance (ACI), a low-level container runtime on Azure, allowing you to run a container without the typical complexity. While ACI has been around for 2 or more years already, it now becomes possible to manage and run your ACI-based containers directly from the Docker commandline.</description>
+      <guid>//localhost:1313/post/use_docker_edge_to_deploy_aci/</guid>
+      <description>&lt;p&gt;Hey there,&lt;/p&gt;&#xA;&lt;p&gt;At the recent DockerCon (virtual) Conference, Docker announced a more tightened partnership with Microsoft, boosting the adoption and integration of Docker containers for  Windows Server as well as Azure-running workloads. A first announcement involved a cool integration with Azure Container Instance (ACI), a low-level container runtime on Azure, allowing you to run a container without the typical complexity. While ACI has been around for 2 or more years already, it &lt;strong&gt;now becomes possible to manage and run your ACI-based containers directly from the Docker commandline&lt;/strong&gt;.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

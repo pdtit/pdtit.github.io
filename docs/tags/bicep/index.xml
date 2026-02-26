@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bicep on </title>
+    <link>//localhost:1313/tags/bicep/</link>
+    <description>Recent content in Bicep on </description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 12 Jul 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/bicep/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Using GitHub Copilot Agent Mode to transform ARM templates to BICEP</title>
+      <link>//localhost:1313/post/using-github-copilot-agent-mode-to-transform-arm-templates-to-bicep/</link>
+      <pubDate>Sat, 12 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/post/using-github-copilot-agent-mode-to-transform-arm-templates-to-bicep/</guid>
+      <description>&lt;p&gt;Over the last few months, I&amp;rsquo;ve been working on an exciting project for our Microsoft Technical Trainer team, known as &lt;a href=&#34;https://aka.ms/trainer-demo-deploy&#34;&gt;&amp;ldquo;Trainer-Demo-Deploy&amp;rdquo;&lt;/a&gt;, a catalog of Azure end-to-end demo scenarios, available as an Open-Source project.&lt;/p&gt;&#xA;&lt;p&gt;While we managed to get about 50 templates live, there can never be enough scenarios to integrate into your Azure classes or POC activities if you ask me. One of the challenging tasks in the project is not only coming up with demo ideas, but also creating the actual artifacts, such as Azure templates with Bicep, sample apps and sample data.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

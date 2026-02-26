@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>App Service on Azure Readiness starts here...</title>
-    <link>https://www.007ffflearning.com/tags/app-service/</link>
-    <description>Recent content in App Service on Azure Readiness starts here...</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 30 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/app-service/index.xml" rel="self" type="application/rss+xml" />
+    <title>App Service on </title>
+    <link>//localhost:1313/tags/app-service/</link>
+    <description>Recent content in App Service on </description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 30 Apr 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/app-service/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>You do not have permissions to view this directory or page after publishing to Azure App Service</title>
-      <link>https://www.007ffflearning.com/post/you-do-not-have-permissions-error-after-publishing-to-azure-app-services/</link>
+      <link>//localhost:1313/post/you-do-not-have-permissions-error-after-publishing-to-azure-app-services/</link>
       <pubDate>Sun, 30 Apr 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/you-do-not-have-permissions-error-after-publishing-to-azure-app-services/</guid>
-      <description>Earlier this week, I got an interesting phenomenon when publishing a code update to an existing Azure App Service. As this was a small project, I&amp;rsquo;ve always been deploying updates in a manual way from right-click / publish in Visual Studio. But than I said to myself, Peter, as a passionate DevOps engineer and trainer, just go out and create a pipeline for this.
-And that&amp;rsquo;s what happened.
-Running the release pipeline came back successful, but the site threw an error:</description>
+      <guid>//localhost:1313/post/you-do-not-have-permissions-error-after-publishing-to-azure-app-services/</guid>
+      <description>&lt;p&gt;Earlier this week, I got an interesting phenomenon when publishing a code update to an existing Azure App Service. As this was a small project, I&amp;rsquo;ve always been deploying updates in a manual way from &lt;strong&gt;right-click / publish&lt;/strong&gt; in Visual Studio. But than I said to myself, Peter, as a passionate DevOps engineer and trainer, just go out and create a pipeline for this.&lt;/p&gt;&#xA;&lt;p&gt;And that&amp;rsquo;s what happened.&lt;/p&gt;&#xA;&lt;p&gt;Running the release pipeline came back successful, but the site threw an error:&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

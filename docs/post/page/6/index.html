@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Posts | Azure Readiness starts here...</title>
+<meta name="keywords" content="">
+<meta name="description" content="Posts - Azure Readiness starts here...">
+<meta name="author" content="Peter De Tender">
+<link rel="canonical" href="http://localhost:1313/post/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.8369b950114d6445e67a717fe985c3f6c6da2f22526bfb9d5b4e2dea350d3ef5.css" integrity="sha256-g2m5UBFNZEXmenF/6YXD9sbaLyJSa/udW04t6jUNPvU=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#007FFF">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/post/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/post/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+<script type="text/javascript">
+var appInsights=window.appInsights||function(a){
+    function b(a){c[a]=function(){var b=arguments;c.queue.push(function(){c[a].apply(c,b)})}}var c={config:a},d=document,e=window;setTimeout(function(){var b=d.createElement("script");b.src=a.url||"https://az416426.vo.msecnd.net/scripts/a/ai.0.js",d.getElementsByTagName("script")[0].parentNode.appendChild(b)});try{c.cookie=d.cookie}catch(a){}c.queue=[];for(var f=["Event","Exception","Metric","PageView","Trace","Dependency"];f.length;)b("track"+f.pop());if(b("setAuthenticatedUserContext"),b("clearAuthenticatedUserContext"),b("startTrackEvent"),b("stopTrackEvent"),b("startTrackPage"),b("stopTrackPage"),b("flush"),!a.disableExceptionTracking){f="onerror",b("_"+f);var g=e[f];e[f]=function(a,b,d,e,h){var i=g&&g(a,b,d,e,h);return!0!==i&&c["_"+f](a,b,d,e,h),i}}return c
+}({
+    instrumentationKey:"100a91c6-40e4-4e8e-a4ee-57873dc4eee3"
+}));
+
+window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&appInsights.trackPageView();
+</script>
+<script type="text/javascript">
+var appInsights=window.appInsights||function(a){
+    function b(a){c[a]=function(){var b=arguments;c.queue.push(function(){c[a].apply(c,b)})}}var c={config:a},d=document,e=window;setTimeout(function(){var b=d.createElement("script");b.src=a.url||"https://az416426.vo.msecnd.net/scripts/a/ai.0.js",d.getElementsByTagName("script")[0].parentNode.appendChild(b)});try{c.cookie=d.cookie}catch(a){}c.queue=[];for(var f=["Event","Exception","Metric","PageView","Trace","Dependency"];f.length;)b("track"+f.pop());if(b("setAuthenticatedUserContext"),b("clearAuthenticatedUserContext"),b("startTrackEvent"),b("stopTrackEvent"),b("startTrackPage"),b("stopTrackPage"),b("flush"),!a.disableExceptionTracking){f="onerror",b("_"+f);var g=e[f];e[f]=function(a,b,d,e,h){var i=g&&g(a,b,d,e,h);return!0!==i&&c["_"+f](a,b,d,e,h),i}}return c
+}({
+    instrumentationKey:"100a91c6-40e4-4e8e-a4ee-57873dc4eee3"
+});
+
+window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&appInsights.trackPageView();
+</script><meta property="og:url" content="http://localhost:1313/post/">
+  <meta property="og:site_name" content="Azure Readiness starts here...">
+  <meta property="og:title" content="Posts">
+  <meta property="og:description" content="The best way to know the future, is to learn it">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Posts">
+<meta name="twitter:description" content="The best way to know the future, is to learn it">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://localhost:1313/post/"
+    }
+  ]
+}
+</script>
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Azure Readiness starts here... (Alt + H)">Azure Readiness starts here...</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/post/" title="Posts">
+                    <span class="active">Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/books/" title="Books">
+                    <span>Books</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="http://localhost:1313/">Home</a></div>
+  <h1>
+    Posts
+    <a href="/post/index.xml" title="RSS" aria-label="RSS">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" height="23">
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </h1>
+</header>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">DevOps for Dummies - Emily Freeman - Review
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hey,
+As some of you know me for years already, you also know I’m rather bad in coding (although I’m learning Blazor since a few weeks, but more on that journey in future posts…), and always “got scared” about DevOps. Especially the Dev part in the word 😊. I still remember being in Bangalore, India early 2016 to deliver an Azure workshop to Microsoft GSI Partners (Wipro, Tech Mahindra, Accenture,…) as a freelance trainer together with Microsoft AzureCAT engineers. While my sessions were totally in my Azure comfort zone (Networking, Storage, Azure Active Directory), I also learned a lot from the Azure App sessions my colleagues delivered. But then all of a sudden, I had to jump in on Wednesday afternoon, taking over the “DevOps practices” session due to some urgent facts. Oh man, down went my comfort level. Me, the guy they saw earlier in the week, delivering Azure Infra sessions with ease, now needing to talk about DevOps, something I didn’t know at all? I hardly used Visual Studio at that time, let alone I could talk about this process.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2020-08-22 00:00:00 +0000 UTC'>August 22, 2020</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>930 words</span>&nbsp;·&nbsp;<span>Peter De Tender</span></footer>
+  <a class="entry-link" aria-label="post link to DevOps for Dummies - Emily Freeman - Review" href="http://localhost:1313/post/devops-for-dummies-review/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">I found me another challenge: The Conqueror
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hi there,
+If you wonder why it’s been a bit quite on the blog front, it’s because I enjoyed 2 weeks off from work, distracting a bit from Azure, technology and spending some needed family time. Bonus was that these 2 weeks probably had the nicest weather of the whole year (although my wife would argue on that, since she is more into snow and cold, not the humid hot sweaty weather we had).
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2020-08-16 00:00:00 +0000 UTC'>August 16, 2020</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>638 words</span>&nbsp;·&nbsp;<span>Peter De Tender</span></footer>
+  <a class="entry-link" aria-label="post link to I found me another challenge: The Conqueror" href="http://localhost:1313/post/i-found-me-another-challenge/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Another Tech Reviewing done: Azure For Architects - 3rd edition
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>As most of you know, I enjoy writing technical (Azure related) books, but every now and then I am not writing myself, but rather do technical reviewing. A few weeks ago, I was approached by Packt, asking me to review their Azure for Architects - third edition
+Don’t let the reference to “third edition” fool you, there has been a massive rewrite of several chapters, with fresh new content, more technical information and new chapters were added as well.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2020-08-02 00:00:00 +0000 UTC'>August 2, 2020</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>956 words</span>&nbsp;·&nbsp;<span>Peter De Tender</span></footer>
+  <a class="entry-link" aria-label="post link to Another Tech Reviewing done: Azure For Architects - 3rd edition" href="http://localhost:1313/post/azure-for-architects---reviewing-done/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Use Docker Edge to Deploy Azure Container Instance - ACI
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hey there,
+At the recent DockerCon (virtual) Conference, Docker announced a more tightened partnership with Microsoft, boosting the adoption and integration of Docker containers for Windows Server as well as Azure-running workloads. A first announcement involved a cool integration with Azure Container Instance (ACI), a low-level container runtime on Azure, allowing you to run a container without the typical complexity. While ACI has been around for 2 or more years already, it now becomes possible to manage and run your ACI-based containers directly from the Docker commandline.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2020-07-05 00:00:00 +0000 UTC'>July 5, 2020</span>&nbsp;·&nbsp;<span>7 min</span>&nbsp;·&nbsp;<span>1446 words</span>&nbsp;·&nbsp;<span>Peter De Tender</span></footer>
+  <a class="entry-link" aria-label="post link to Use Docker Edge to Deploy Azure Container Instance - ACI" href="http://localhost:1313/post/use_docker_edge_to_deploy_aci/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Azure DevOps Pipelines - YAML or Classic Designer
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>During several of my AZ-400 Designing and Implementing Microsoft DevOps Solutions training deliveries, one recurring point of conversation is Should we use YAML or the Classic Designer for our Release pipelines?
+So I thought sharing my view in another blog post could be helpful.
+Before answering the question more accurately, let’s go over each scenario a bit more in detail:
+Classic Designer Classic Designer has been the long-standing approach on how Azure DevOps Pipelines have been created. Using a user-friendly graphical User Interface, one can add tasks to create a pipeline just by searching for them from a list of tasks, and complete necessary parameters.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2020-06-21 00:00:00 +0000 UTC'>June 21, 2020</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>853 words</span>&nbsp;·&nbsp;<span>Peter De Tender</span></footer>
+  <a class="entry-link" aria-label="post link to Azure DevOps Pipelines - YAML or Classic Designer" href="http://localhost:1313/post/azure_devops-pipelines-yaml_or_classic_designer/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Azure is 100% High Available!! or is it...?
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Last Friday, I delivered an online session at the “Azure Day Rome 2020”, titled “Azure is 100% high available, or is it?”
+Since the conference sessions were only 45min, I didn’t have much time to drill down on all the details, but apparently I managed to provide a clear and easy overview of several misconceptions around public cloud high-availability, and even more important, how Azure provides several services and architectures, to optimize the overall high availability of your workloads. Whether you deploy IAAS, PAAS or Serverless.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2020-06-14 00:00:00 +0000 UTC'>June 14, 2020</span>&nbsp;·&nbsp;<span>8 min</span>&nbsp;·&nbsp;<span>1555 words</span>&nbsp;·&nbsp;<span>Peter De Tender</span></footer>
+  <a class="entry-link" aria-label="post link to Azure is 100% High Available!! or is it...?" href="http://localhost:1313/post/azure_is_100_high_available/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">How to delete a POD from Azure Kubernetes Services (AKS)
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hi again,
+In about every Azure training delivered the last few months, I am talking about Docker and Azure Kubernetes Services - AKS
+Along these months, the amount of “sample PODS” I am running within the Kubernetes cluster was continuously growing, resulting in a less efficient demo scenario to show.
+So cleaning up these running PODS was my 5 seconds action this Saturday morning. While not super hard, it actually took me a bit longer than 5 seconds (more like 10min :)), since I forgot a few “basics” on how Kubernetes is running PODS.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2020-06-06 00:00:00 +0000 UTC'>June 6, 2020</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>766 words</span>&nbsp;·&nbsp;<span>Peter De Tender</span></footer>
+  <a class="entry-link" aria-label="post link to How to delete a POD from Azure Kubernetes Services (AKS)" href="http://localhost:1313/post/how-to-delete-an-aks-pod/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Migrating Docker Desktop to WSL2
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hey there,
+With the May update of Windows 10 (named Windows 2004 :) ) being available since this week, together with DockerCon virtual conference, I think it was the right time to (finally) migrate my current Docker Desktop in Hyper-V mode to the new WSL 2 (Windows Subsystem for Linux).
+In short, the process was smooth, straight forward, and not having any real impact on my “demo environment” I’m using continuously during my Azure training workshops and public speaking gigs.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2020-05-30 00:00:00 +0000 UTC'>May 30, 2020</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>1084 words</span>&nbsp;·&nbsp;<span>Peter De Tender</span></footer>
+  <a class="entry-link" aria-label="post link to Migrating Docker Desktop to WSL2" href="http://localhost:1313/post/migrate-docker-desktop-to-wsl2/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Running your Hugo site on Azure Static WebApps (Preview)
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Only about a month ago, I decided to move my former website (running on Wix) to the Open Source Hugo platform, running it as a static website with MarkDown, using Azure Storage Static Website. For more details on how to do this, have a look at my blog post here
+I have to say, it runs fine, is cheap, fast, reliable,…
+But then I discovered the new Azure Static Web App capability, as announced during //Build conference earlier this week, so I wanted to give it a try.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2020-05-21 00:00:00 +0000 UTC'>May 21, 2020</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>830 words</span>&nbsp;·&nbsp;<span>Peter De Tender</span></footer>
+  <a class="entry-link" aria-label="post link to Running your Hugo site on Azure Static WebApps (Preview)" href="http://localhost:1313/post/running-your-hugo-site-on-azure-static-webapps/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">is HTML parameter gone from Logic Apps Send Email Connector
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hi,
+For almost 2 years, I have been using the “Office 365 Outlook Connector” as part of my Logic Apps flows, to send emails internally and externally. Mainly for external receivers, I used the “is HTML” parameter for the body of the email.
+This weekend, I was building a new Logic Apps flow, and to my surprise, finding out that the “V2” of this same connector / action, doesn’t have that parameter anymore.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2020-05-10 00:00:00 +0000 UTC'>May 10, 2020</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>379 words</span>&nbsp;·&nbsp;<span>Peter De Tender</span></footer>
+  <a class="entry-link" aria-label="post link to is HTML parameter gone from Logic Apps Send Email Connector" href="http://localhost:1313/post/email-is-html-gone-logicapps/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="prev" href="http://localhost:1313/post/page/5/">
+      «&nbsp;Prev&nbsp;
+    </a>
+    <a class="next" href="http://localhost:1313/post/page/7/">Next&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">Azure Readiness starts here...</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

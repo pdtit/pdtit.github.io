@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Pulumi on Azure Readiness starts here...</title>
-    <link>https://www.007ffflearning.com/tags/pulumi/</link>
-    <description>Recent content in Pulumi on Azure Readiness starts here...</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Wed, 24 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/pulumi/index.xml" rel="self" type="application/rss+xml" />
+    <title>Pulumi on </title>
+    <link>//localhost:1313/tags/pulumi/</link>
+    <description>Recent content in Pulumi on </description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 24 Mar 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/pulumi/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>The labyrinth of Azure Infrastructure as Code Tools - Azure Spring Clean</title>
-      <link>https://www.007ffflearning.com/post/the-labyrinth-of-azure-iac/</link>
+      <link>//localhost:1313/post/the-labyrinth-of-azure-iac/</link>
       <pubDate>Wed, 24 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/the-labyrinth-of-azure-iac/</guid>
-      <description>Hey everyone,
-Thanks for joining the Azure Spring Clean online event again, in which the Azure community steps up once more, sharing the best tips &amp;amp; tricks on how to keep your Azure environments clean. Discussing optimizations, covering new services and features or overall giving you a view on how to manage your Azure subscriptions even better.
-You can check out all other blog posts or videos, which can guide you with best practices, lessons learned, or help you with some of the more difficult Azure Management topics at Azure Spring Clean.</description>
+      <guid>//localhost:1313/post/the-labyrinth-of-azure-iac/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;../images/Azure_Spring_Clean_Logo.jpg&#34; alt=&#34;Azure Spring Clean&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Hey everyone,&lt;/p&gt;&#xA;&lt;p&gt;Thanks for joining the &lt;strong&gt;Azure Spring Clean&lt;/strong&gt; online event again, in which the Azure community steps up once more, sharing the best tips &amp;amp; tricks on how to keep your Azure environments clean. Discussing optimizations, covering new services and features or overall giving you a view on how to manage your Azure subscriptions even better.&lt;/p&gt;&#xA;&lt;p&gt;You can check out all other blog posts or videos, which can guide you with best practices, lessons learned, or help you with some of the more difficult Azure Management topics at &lt;a href=&#34;https://www.azurespringclean.com&#34;&gt;Azure Spring Clean&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -1,32 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Certification on Azure Readiness starts here...</title>
-    <link>https://www.007ffflearning.com/tags/certification/</link>
-    <description>Recent content in Certification on Azure Readiness starts here...</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sat, 25 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/certification/index.xml" rel="self" type="application/rss+xml" />
+    <title>Certification on </title>
+    <link>//localhost:1313/tags/certification/</link>
+    <description>Recent content in Certification on </description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 25 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/certification/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Updated Azure Exams Announced</title>
-      <link>https://www.007ffflearning.com/post/updated-azure-exams/</link>
+      <link>//localhost:1313/post/updated-azure-exams/</link>
       <pubDate>Sat, 25 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/updated-azure-exams/</guid>
-      <description>Things are going fast in the Azure world, and apparently exams are more and more following that pace. Before you start screaming and worrying, as you might be preparing for a current exam, let me share a bit about several steps happening before an exam becomes available.
-Exam Objectives (OD) For a long time, Microsoft Learning has based exams on &amp;ldquo;exam objectives&amp;rdquo;, which is typically a list of &amp;ldquo;services, features, activities&amp;rdquo; anyone taking the exam, should master.</description>
+      <guid>//localhost:1313/post/updated-azure-exams/</guid>
+      <description>&lt;p&gt;Things are going fast in the Azure world, and apparently exams are more and more following that pace. Before you start screaming and worrying, as you might be preparing for a current exam, let me share a bit about several steps happening before an exam becomes available.&lt;/p&gt;&#xA;&lt;h3 id=&#34;exam-objectives-od&#34;&gt;Exam Objectives (OD)&lt;/h3&gt;&#xA;&lt;p&gt;For a long time, Microsoft Learning has based exams on &amp;ldquo;exam objectives&amp;rdquo;, which is typically a list of &amp;ldquo;services, features, activities&amp;rdquo; anyone taking the exam, should master. An easy example from the Exchange Server 2007 time frame could have been:&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Azure Learning Resources</title>
-      <link>https://www.007ffflearning.com/post/azure-learning-resources/</link>
+      <link>//localhost:1313/post/azure-learning-resources/</link>
       <pubDate>Sun, 22 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/azure-learning-resources/</guid>
-      <description>As I got asked so many times what Azure learning resources are available, I thought this could make up an excellent blog post :) - This is actually based on a summary slide I have added to my in-person and online Azure training workshops closing deck, but updated where needed. Below order is a random listing of resources, not forcing any priority or preference:
-  Microsoft Learn
-  Microsoft Hands-on Labs</description>
+      <guid>//localhost:1313/post/azure-learning-resources/</guid>
+      <description>&lt;p&gt;As I got asked so many times what Azure learning resources are available, I thought this could make up an excellent blog post :) - This is actually based on a summary slide I have added to my in-person and online Azure training workshops closing deck, but updated where needed. Below order is a random listing of resources, not forcing any priority or preference:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Microsoft Learn&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Microsoft Hands-on Labs&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Azure Docs&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

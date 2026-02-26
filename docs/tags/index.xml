@@ -1,434 +1,425 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Azure Readiness starts here...</title>
-    <link>https://www.007ffflearning.com/tags/</link>
-    <description>Recent content in Tags on Azure Readiness starts here...</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 03 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <title>Tags on </title>
+    <link>//localhost:1313/tags/</link>
+    <description>Recent content in Tags on </description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 26 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Azure DevOps</title>
-      <link>https://www.007ffflearning.com/tags/azure-devops/</link>
-      <pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/azure-devops/</guid>
+      <title>GitHub Copilot</title>
+      <link>//localhost:1313/tags/github-copilot/</link>
+      <pubDate>Thu, 26 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/github-copilot/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>Logic Apps</title>
-      <link>https://www.007ffflearning.com/tags/logic-apps/</link>
-      <pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/logic-apps/</guid>
+      <title>MCP</title>
+      <link>//localhost:1313/tags/mcp/</link>
+      <pubDate>Thu, 26 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/mcp/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>AI</title>
-      <link>https://www.007ffflearning.com/tags/ai/</link>
-      <pubDate>Sat, 23 Dec 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/ai/</guid>
+      <title>VSCode</title>
+      <link>//localhost:1313/tags/vscode/</link>
+      <pubDate>Thu, 26 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/vscode/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Azure</title>
-      <link>https://www.007ffflearning.com/tags/azure/</link>
-      <pubDate>Sat, 23 Dec 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/azure/</guid>
+      <link>//localhost:1313/tags/azure/</link>
+      <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/azure/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Packt</title>
-      <link>https://www.007ffflearning.com/tags/packt/</link>
-      <pubDate>Sun, 10 Dec 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/packt/</guid>
+      <link>//localhost:1313/tags/packt/</link>
+      <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/packt/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>SRE</title>
-      <link>https://www.007ffflearning.com/tags/sre/</link>
-      <pubDate>Sat, 09 Sep 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/sre/</guid>
+      <title>AI</title>
+      <link>//localhost:1313/tags/ai/</link>
+      <pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/ai/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>Chaos Studio</title>
-      <link>https://www.007ffflearning.com/tags/chaos-studio/</link>
-      <pubDate>Sun, 27 Aug 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/chaos-studio/</guid>
+      <title>GitHub</title>
+      <link>//localhost:1313/tags/github/</link>
+      <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/github/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>App Service</title>
-      <link>https://www.007ffflearning.com/tags/app-service/</link>
-      <pubDate>Sun, 30 Apr 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/app-service/</guid>
+      <title>Copilot Studio</title>
+      <link>//localhost:1313/tags/copilot-studio/</link>
+      <pubDate>Sat, 09 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/copilot-studio/</guid>
       <description></description>
     </item>
-    
-    <item>
-      <title>Office Forms</title>
-      <link>https://www.007ffflearning.com/tags/office-forms/</link>
-      <pubDate>Sun, 26 Mar 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/office-forms/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>ACA</title>
-      <link>https://www.007ffflearning.com/tags/aca/</link>
-      <pubDate>Wed, 15 Mar 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/aca/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>AKS</title>
-      <link>https://www.007ffflearning.com/tags/aks/</link>
-      <pubDate>Wed, 15 Mar 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/aks/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Containers</title>
-      <link>https://www.007ffflearning.com/tags/containers/</link>
-      <pubDate>Wed, 15 Mar 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/containers/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Docker</title>
-      <link>https://www.007ffflearning.com/tags/docker/</link>
-      <pubDate>Wed, 15 Mar 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/docker/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Blazor</title>
-      <link>https://www.007ffflearning.com/tags/blazor/</link>
-      <pubDate>Wed, 28 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/blazor/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Random</title>
-      <link>https://www.007ffflearning.com/tags/random/</link>
-      <pubDate>Fri, 23 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/random/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Application Insights</title>
-      <link>https://www.007ffflearning.com/tags/application-insights/</link>
-      <pubDate>Sun, 30 Oct 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/application-insights/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Hugo</title>
-      <link>https://www.007ffflearning.com/tags/hugo/</link>
-      <pubDate>Sun, 30 Oct 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/hugo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Apress</title>
-      <link>https://www.007ffflearning.com/tags/apress/</link>
-      <pubDate>Sat, 29 Oct 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/apress/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Books</title>
-      <link>https://www.007ffflearning.com/tags/books/</link>
-      <pubDate>Sat, 29 Oct 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/books/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>DevOps</title>
-      <link>https://www.007ffflearning.com/tags/devops/</link>
-      <pubDate>Sun, 03 Apr 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/devops/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>DevSecOps</title>
-      <link>https://www.007ffflearning.com/tags/devsecops/</link>
-      <pubDate>Sun, 03 Apr 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/devsecops/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Security</title>
-      <link>https://www.007ffflearning.com/tags/security/</link>
-      <pubDate>Thu, 17 Mar 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/security/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>DotNet</title>
-      <link>https://www.007ffflearning.com/tags/dotnet/</link>
-      <pubDate>Mon, 08 Nov 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/dotnet/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>General</title>
-      <link>https://www.007ffflearning.com/tags/general/</link>
-      <pubDate>Tue, 21 Sep 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/general/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Ebooks</title>
-      <link>https://www.007ffflearning.com/tags/ebooks/</link>
-      <pubDate>Fri, 18 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/ebooks/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Kubernetes</title>
-      <link>https://www.007ffflearning.com/tags/kubernetes/</link>
-      <pubDate>Fri, 18 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/kubernetes/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>HashiCorp</title>
-      <link>https://www.007ffflearning.com/tags/hashicorp/</link>
-      <pubDate>Sat, 17 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/hashicorp/</guid>
-      <description></description>
-    </item>
-    
     <item>
       <title>ARM</title>
-      <link>https://www.007ffflearning.com/tags/arm/</link>
-      <pubDate>Wed, 24 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/arm/</guid>
+      <link>//localhost:1313/tags/arm/</link>
+      <pubDate>Sat, 12 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/arm/</guid>
       <description></description>
     </item>
-    
+    <item>
+      <title>Bicep</title>
+      <link>//localhost:1313/tags/bicep/</link>
+      <pubDate>Sat, 12 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/bicep/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Books</title>
+      <link>//localhost:1313/tags/books/</link>
+      <pubDate>Sun, 09 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/books/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Microsoft</title>
+      <link>//localhost:1313/tags/microsoft/</link>
+      <pubDate>Sun, 09 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/microsoft/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>DevOps</title>
+      <link>//localhost:1313/tags/devops/</link>
+      <pubDate>Thu, 06 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/devops/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Monitoring</title>
+      <link>//localhost:1313/tags/monitoring/</link>
+      <pubDate>Thu, 06 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/monitoring/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>.NET</title>
+      <link>//localhost:1313/tags/.net/</link>
+      <pubDate>Sat, 07 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/.net/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Semantic Kernel</title>
+      <link>//localhost:1313/tags/semantic-kernel/</link>
+      <pubDate>Sat, 07 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/semantic-kernel/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>AI Studio</title>
+      <link>//localhost:1313/tags/ai-studio/</link>
+      <pubDate>Sun, 15 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/ai-studio/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>.NET8</title>
+      <link>//localhost:1313/tags/.net8/</link>
+      <pubDate>Thu, 30 May 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/.net8/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Blazor</title>
+      <link>//localhost:1313/tags/blazor/</link>
+      <pubDate>Thu, 30 May 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/blazor/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Azure DevOps</title>
+      <link>//localhost:1313/tags/azure-devops/</link>
+      <pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/azure-devops/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Logic Apps</title>
+      <link>//localhost:1313/tags/logic-apps/</link>
+      <pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/logic-apps/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>SRE</title>
+      <link>//localhost:1313/tags/sre/</link>
+      <pubDate>Sat, 09 Sep 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/sre/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Chaos Studio</title>
+      <link>//localhost:1313/tags/chaos-studio/</link>
+      <pubDate>Sun, 27 Aug 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/chaos-studio/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>App Service</title>
+      <link>//localhost:1313/tags/app-service/</link>
+      <pubDate>Sun, 30 Apr 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/app-service/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Office Forms</title>
+      <link>//localhost:1313/tags/office-forms/</link>
+      <pubDate>Sun, 26 Mar 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/office-forms/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ACA</title>
+      <link>//localhost:1313/tags/aca/</link>
+      <pubDate>Wed, 15 Mar 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/aca/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>AKS</title>
+      <link>//localhost:1313/tags/aks/</link>
+      <pubDate>Wed, 15 Mar 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/aks/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Containers</title>
+      <link>//localhost:1313/tags/containers/</link>
+      <pubDate>Wed, 15 Mar 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/containers/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Docker</title>
+      <link>//localhost:1313/tags/docker/</link>
+      <pubDate>Wed, 15 Mar 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/docker/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Random</title>
+      <link>//localhost:1313/tags/random/</link>
+      <pubDate>Fri, 23 Dec 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/random/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Application Insights</title>
+      <link>//localhost:1313/tags/application-insights/</link>
+      <pubDate>Sun, 30 Oct 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/application-insights/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hugo</title>
+      <link>//localhost:1313/tags/hugo/</link>
+      <pubDate>Sun, 30 Oct 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/hugo/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Apress</title>
+      <link>//localhost:1313/tags/apress/</link>
+      <pubDate>Sat, 29 Oct 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/apress/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>DevSecOps</title>
+      <link>//localhost:1313/tags/devsecops/</link>
+      <pubDate>Sun, 03 Apr 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/devsecops/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Security</title>
+      <link>//localhost:1313/tags/security/</link>
+      <pubDate>Thu, 17 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/security/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>DotNet</title>
+      <link>//localhost:1313/tags/dotnet/</link>
+      <pubDate>Mon, 08 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/dotnet/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>General</title>
+      <link>//localhost:1313/tags/general/</link>
+      <pubDate>Tue, 21 Sep 2021 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/general/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ebooks</title>
+      <link>//localhost:1313/tags/ebooks/</link>
+      <pubDate>Fri, 18 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/ebooks/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Kubernetes</title>
+      <link>//localhost:1313/tags/kubernetes/</link>
+      <pubDate>Fri, 18 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/kubernetes/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>HashiCorp</title>
+      <link>//localhost:1313/tags/hashicorp/</link>
+      <pubDate>Sat, 17 Apr 2021 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/hashicorp/</guid>
+      <description></description>
+    </item>
     <item>
       <title>IAC</title>
-      <link>https://www.007ffflearning.com/tags/iac/</link>
+      <link>//localhost:1313/tags/iac/</link>
       <pubDate>Wed, 24 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/iac/</guid>
+      <guid>//localhost:1313/tags/iac/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Pulumi</title>
-      <link>https://www.007ffflearning.com/tags/pulumi/</link>
+      <link>//localhost:1313/tags/pulumi/</link>
       <pubDate>Wed, 24 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/pulumi/</guid>
+      <guid>//localhost:1313/tags/pulumi/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>TerraForm</title>
-      <link>https://www.007ffflearning.com/tags/terraform/</link>
+      <link>//localhost:1313/tags/terraform/</link>
       <pubDate>Wed, 24 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/terraform/</guid>
+      <guid>//localhost:1313/tags/terraform/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Visual Studio</title>
-      <link>https://www.007ffflearning.com/tags/visual-studio/</link>
+      <link>//localhost:1313/tags/visual-studio/</link>
       <pubDate>Tue, 10 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/visual-studio/</guid>
+      <guid>//localhost:1313/tags/visual-studio/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Personal</title>
-      <link>https://www.007ffflearning.com/tags/personal/</link>
+      <link>//localhost:1313/tags/personal/</link>
       <pubDate>Sun, 16 Aug 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/personal/</guid>
+      <guid>//localhost:1313/tags/personal/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>ACI</title>
-      <link>https://www.007ffflearning.com/tags/aci/</link>
+      <link>//localhost:1313/tags/aci/</link>
       <pubDate>Sun, 05 Jul 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/aci/</guid>
+      <guid>//localhost:1313/tags/aci/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Bing</title>
-      <link>https://www.007ffflearning.com/tags/bing/</link>
+      <link>//localhost:1313/tags/bing/</link>
       <pubDate>Sun, 10 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/bing/</guid>
+      <guid>//localhost:1313/tags/bing/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>LogicApps</title>
-      <link>https://www.007ffflearning.com/tags/logicapps/</link>
+      <link>//localhost:1313/tags/logicapps/</link>
       <pubDate>Sun, 10 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/logicapps/</guid>
+      <guid>//localhost:1313/tags/logicapps/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Office365</title>
-      <link>https://www.007ffflearning.com/tags/office365/</link>
+      <link>//localhost:1313/tags/office365/</link>
       <pubDate>Sun, 10 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/office365/</guid>
+      <guid>//localhost:1313/tags/office365/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Teams</title>
-      <link>https://www.007ffflearning.com/tags/teams/</link>
+      <link>//localhost:1313/tags/teams/</link>
       <pubDate>Sun, 10 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/teams/</guid>
+      <guid>//localhost:1313/tags/teams/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Azure Front Door</title>
-      <link>https://www.007ffflearning.com/tags/azure-front-door/</link>
+      <link>//localhost:1313/tags/azure-front-door/</link>
       <pubDate>Sat, 25 Apr 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/azure-front-door/</guid>
+      <guid>//localhost:1313/tags/azure-front-door/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Static Site</title>
-      <link>https://www.007ffflearning.com/tags/static-site/</link>
+      <link>//localhost:1313/tags/static-site/</link>
       <pubDate>Sat, 25 Apr 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/static-site/</guid>
+      <guid>//localhost:1313/tags/static-site/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Architecting</title>
-      <link>https://www.007ffflearning.com/tags/architecting/</link>
+      <link>//localhost:1313/tags/architecting/</link>
       <pubDate>Mon, 03 Feb 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/architecting/</guid>
+      <guid>//localhost:1313/tags/architecting/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Strategy</title>
-      <link>https://www.007ffflearning.com/tags/strategy/</link>
+      <link>//localhost:1313/tags/strategy/</link>
       <pubDate>Mon, 03 Feb 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/strategy/</guid>
+      <guid>//localhost:1313/tags/strategy/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Certification</title>
-      <link>https://www.007ffflearning.com/tags/certification/</link>
+      <link>//localhost:1313/tags/certification/</link>
       <pubDate>Sat, 25 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/certification/</guid>
+      <guid>//localhost:1313/tags/certification/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Exams</title>
-      <link>https://www.007ffflearning.com/tags/exams/</link>
+      <link>//localhost:1313/tags/exams/</link>
       <pubDate>Sat, 25 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/exams/</guid>
+      <guid>//localhost:1313/tags/exams/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Learning</title>
-      <link>https://www.007ffflearning.com/tags/learning/</link>
+      <link>//localhost:1313/tags/learning/</link>
       <pubDate>Sat, 25 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/learning/</guid>
+      <guid>//localhost:1313/tags/learning/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>IAAS</title>
-      <link>https://www.007ffflearning.com/tags/iaas/</link>
+      <link>//localhost:1313/tags/iaas/</link>
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/iaas/</guid>
+      <guid>//localhost:1313/tags/iaas/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>PAAS</title>
-      <link>https://www.007ffflearning.com/tags/paas/</link>
+      <link>//localhost:1313/tags/paas/</link>
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/tags/paas/</guid>
+      <guid>//localhost:1313/tags/paas/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AI Studio on </title>
+    <link>//localhost:1313/tags/ai-studio/</link>
+    <description>Recent content in AI Studio on </description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 15 Sep 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/ai-studio/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introduction to Semantic Kernel</title>
+      <link>//localhost:1313/post/introduction-to-semantic-kernel/</link>
+      <pubDate>Sun, 15 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/post/introduction-to-semantic-kernel/</guid>
+      <description>&lt;h2 id=&#34;introduction-to-developing-azure-ai-solutions&#34;&gt;Introduction to Developing Azure AI Solutions&lt;/h2&gt;&#xA;&lt;p&gt;In today&amp;rsquo;s rapidly evolving tech landscape, Artificial Intelligence (AI) has become a cornerstone for innovation. Azure AI offers a robust suite of tools and services that empower developers to build intelligent applications. From natural language processing (NLP) to computer vision, &lt;a href=&#34;https://azure.microsoft.com/en-us/solutions/ai&#34;&gt;Azure AI&lt;/a&gt; provides the building blocks to create solutions that can understand, interpret, and respond to human inputs in a meaningful way. While Microsoft has several Copilot offerings for different use cases, ranging from an &lt;a href=&#34;https://azure.microsoft.com/en-us/products/copilot&#34;&gt;AI assistant in Azure&lt;/a&gt;, &lt;a href=&#34;https://www.microsoft.com/en-us/microsoft-365/copilot&#34;&gt;Copilot in M365&lt;/a&gt; or &lt;a href=&#34;https://copilot.microsoft.com&#34;&gt;web and mobile&lt;/a&gt;, there are still valid use cases for developing your own custom Copilot. One of the key components in this ecosystem is the &lt;strong&gt;Semantic Kernel&lt;/strong&gt;, a powerful tool that enhances the capabilities of AI models by providing semantic understanding.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

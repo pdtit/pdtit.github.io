@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GitHub Copilot on </title>
+    <link>//localhost:1313/tags/github-copilot/</link>
+    <description>Recent content in GitHub Copilot on </description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 26 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/github-copilot/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Keeping MCP Server config in sync between VS Code and GitHub Copilot CLI</title>
+      <link>//localhost:1313/post/keeping-mcp-config-in-sync-between-vscode-and-cli/</link>
+      <pubDate>Thu, 26 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/post/keeping-mcp-config-in-sync-between-vscode-and-cli/</guid>
+      <description>&lt;p&gt;Hey awesome people,&lt;/p&gt;&#xA;&lt;p&gt;Over the last weeks, I’ve been jumping between VS Code and Copilot CLI a lot more than usual. One thing kept annoying me: my MCP setup was perfect in VS Code, but I had to keep tweaking pieces again in CLI.&lt;/p&gt;&#xA;&lt;p&gt;If that sounds familiar, good news: if you already have MCP servers working in VS Code, you can reuse most of that setup in GitHub Copilot CLI.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Using GitHub Copilot Agent Mode to vibe code a Python shooting game</title>
+      <link>//localhost:1313/post/using-github-copilot-agent-mode-to-vibe-code-a-python-shooting-game/</link>
+      <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/post/using-github-copilot-agent-mode-to-vibe-code-a-python-shooting-game/</guid>
+      <description>&lt;p&gt;For about a year now, I&amp;rsquo;ve been teaching a lot on &lt;a href=&#34;https://github.com/copilot&#34;&gt;GitHub Copilot&lt;/a&gt; as part of my Microsoft role. Our program offers 2 different learning paths, one created by the Microsoft Content developers, &lt;a href=&#34;https://learn.microsoft.com/en-us/training/paths/accelerate-app-development-using-github-copilot/&#34;&gt;AZ-2007&lt;/a&gt;, and the other one is managed by GitHub Content team, known as &lt;a href=&#34;https://learn.microsoft.com/en-us/training/paths/copilot/&#34;&gt;GH-300&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;If you know my approach to teaching tech a bit, which a learner in my class lately called &lt;strong&gt;inspiring through technology&lt;/strong&gt;, it means I&amp;rsquo;m trying to explain as much as possible through compelling, live demos. After walking learners through different GitHub Copilot features such as documenting/explaining code, generate application code (on different development frameworks), but also Azure CLI, CI/CD pipeline, Dockerfile, YAML, JSON and alike, I usually close with &lt;a href=&#34;https://docs.github.com/en/copilot/concepts/agents/coding-agent/about-coding-agent&#34;&gt;Agent Mode&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Using GitHub Copilot Agent Mode to transform ARM templates to BICEP</title>
+      <link>//localhost:1313/post/using-github-copilot-agent-mode-to-transform-arm-templates-to-bicep/</link>
+      <pubDate>Sat, 12 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/post/using-github-copilot-agent-mode-to-transform-arm-templates-to-bicep/</guid>
+      <description>&lt;p&gt;Over the last few months, I&amp;rsquo;ve been working on an exciting project for our Microsoft Technical Trainer team, known as &lt;a href=&#34;https://aka.ms/trainer-demo-deploy&#34;&gt;&amp;ldquo;Trainer-Demo-Deploy&amp;rdquo;&lt;/a&gt;, a catalog of Azure end-to-end demo scenarios, available as an Open-Source project.&lt;/p&gt;&#xA;&lt;p&gt;While we managed to get about 50 templates live, there can never be enough scenarios to integrate into your Azure classes or POC activities if you ask me. One of the challenging tasks in the project is not only coming up with demo ideas, but also creating the actual artifacts, such as Azure templates with Bicep, sample apps and sample data.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,32 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>SRE on Azure Readiness starts here...</title>
-    <link>https://www.007ffflearning.com/tags/sre/</link>
-    <description>Recent content in SRE on Azure Readiness starts here...</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sat, 09 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/sre/index.xml" rel="self" type="application/rss+xml" />
+    <title>SRE on </title>
+    <link>//localhost:1313/tags/sre/</link>
+    <description>Recent content in SRE on </description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 09 Sep 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/sre/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Azure Back to School - Achieving SRE on Azure</title>
-      <link>https://www.007ffflearning.com/post/achieving-sre-on-azure/</link>
+      <link>//localhost:1313/post/achieving-sre-on-azure/</link>
       <pubDate>Sat, 09 Sep 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/achieving-sre-on-azure/</guid>
-      <description>Disclaimer: this was supposed to be a recorded session for Azure Back To School 2023, but due to a too-busy-work-and-family-schedule over the last 2 weeks, I didn&amp;rsquo;t find the time anymore. While I don&amp;rsquo;t like to let down this amazing community, I hope the textual descriptions of what I was going to talk about is still appreciated.
-Achieving Site Reliability Engineering with Azure In today&amp;rsquo;s digitally driven landscape, ensuring the reliability of cloud-based applications and services is paramount.</description>
+      <guid>//localhost:1313/post/achieving-sre-on-azure/</guid>
+      <description>&lt;p&gt;Disclaimer: this was supposed to be a recorded session for &lt;strong&gt;&lt;a href=&#34;https://azurebacktoschool.github.io/edge%20case/azure-back-to-school-2023-session-schedule/&#34;&gt;Azure Back To School 2023&lt;/a&gt;&lt;/strong&gt;, but due to a &lt;strong&gt;too-busy-work-and-family-schedule&lt;/strong&gt; over the last 2 weeks, I didn&amp;rsquo;t find the time anymore. While I don&amp;rsquo;t like to let down this amazing community, I hope the textual descriptions of what I was going to talk about is still appreciated.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/Azure_rectangular_logo_without_background.png&#34; alt=&#34;Azure Back To School&#34;&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;achieving-site-reliability-engineering-with-azure&#34;&gt;Achieving Site Reliability Engineering with Azure&lt;/h1&gt;&#xA;&lt;p&gt;In today&amp;rsquo;s digitally driven landscape, ensuring the &lt;strong&gt;reliability&lt;/strong&gt; of cloud-based applications and services is paramount. &lt;strong&gt;Site Reliability Engineering (SRE)&lt;/strong&gt; has emerged as a crucial discipline for achieving this goal. In this technical article, we will explore how &lt;strong&gt;Azure&lt;/strong&gt;, Microsoft&amp;rsquo;s cloud platform, can be leveraged to implement and enhance Site Reliability Engineering practices. We&amp;rsquo;ll delve into key topics such as the &lt;strong&gt;Azure Well Architected Framework&lt;/strong&gt;, &lt;strong&gt;Azure Service Level Agreements (SLAs)&lt;/strong&gt;, best practices around &lt;strong&gt;DevOps&lt;/strong&gt;, and the powerful toolset of &lt;strong&gt;Chaos Engineering&lt;/strong&gt;, including &lt;strong&gt;Azure Chaos Studio&lt;/strong&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Intro to Chaos Engineering and Azure Chaos Studio (Preview)</title>
-      <link>https://www.007ffflearning.com/post/intro-to-chaos-engineering-and-azure-chaos-studio-preview/</link>
+      <link>//localhost:1313/post/intro-to-chaos-engineering-and-azure-chaos-studio-preview/</link>
       <pubDate>Sun, 27 Aug 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/intro-to-chaos-engineering-and-azure-chaos-studio-preview/</guid>
-      <description>Hey folks,
-For the ones who have been following me here for a while, know I&amp;rsquo;m passionate about Azure and DevOps (and yes, also Azure DevOps, lol). But to be honest, I&amp;rsquo;ve been eyeing to another Azure Service for a while, Azure Chaos Studio, available in public preview.
-This article shares an introduction to Chaos Engineering, as well as walks you through the first steps it takes to set up Azure Chaos Studio, create experiments and validate the outcome.</description>
+      <guid>//localhost:1313/post/intro-to-chaos-engineering-and-azure-chaos-studio-preview/</guid>
+      <description>&lt;p&gt;Hey folks,&lt;/p&gt;&#xA;&lt;p&gt;For the ones who have been following me here for a while, know I&amp;rsquo;m passionate about Azure and DevOps (and yes, also Azure DevOps, lol). But to be honest, I&amp;rsquo;ve been eyeing to another Azure Service for a while, &lt;strong&gt;Azure Chaos Studio&lt;/strong&gt;, available in public preview.&lt;/p&gt;&#xA;&lt;p&gt;This article shares an introduction to Chaos Engineering, as well as walks you through the first steps it takes to set up &lt;strong&gt;Azure Chaos Studio&lt;/strong&gt;, create experiments and validate the outcome.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

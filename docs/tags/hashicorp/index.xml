@@ -1,24 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>HashiCorp on Azure Readiness starts here...</title>
-    <link>https://www.007ffflearning.com/tags/hashicorp/</link>
-    <description>Recent content in HashiCorp on Azure Readiness starts here...</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sat, 17 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/hashicorp/index.xml" rel="self" type="application/rss+xml" />
+    <title>HashiCorp on </title>
+    <link>//localhost:1313/tags/hashicorp/</link>
+    <description>Recent content in HashiCorp on </description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 17 Apr 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/hashicorp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>I&#39;m recognized as a HashiCorp Ambassador</title>
-      <link>https://www.007ffflearning.com/post/hashicorp-ambassador/</link>
+      <link>//localhost:1313/post/hashicorp-ambassador/</link>
       <pubDate>Sat, 17 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/hashicorp-ambassador/</guid>
-      <description>Hey,
-I got some GREAT NEWS to share, based on an email I received earlier this week:
-which informed me I am recognized as a HashiCorp Ambassador!!
-I can imagine that some of you might not be familiar with this recognition. Easy said, it is much like the Microsoft MVP title, rewarding individuals for their outstanding contributions in the technical communities.
-In my personal case, my first adventures with Terraform started about 5 years ago.</description>
+      <guid>//localhost:1313/post/hashicorp-ambassador/</guid>
+      <description>&lt;p&gt;Hey,&lt;/p&gt;&#xA;&lt;p&gt;I got some &lt;strong&gt;GREAT NEWS&lt;/strong&gt; to share, based on an email I received earlier this week:&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2021-04-17_01.png&#34; alt=&#34;Nice_Email&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;which informed me &lt;strong&gt;I am recognized as a HashiCorp Ambassador&lt;/strong&gt;!!&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/HC_ambassador_badge_2021.png&#34; alt=&#34;HashiCorp_Ambassador_2021&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;I can imagine that some of you might not be familiar with this recognition. Easy said, it is much like the &lt;strong&gt;Microsoft MVP&lt;/strong&gt; title, rewarding individuals for their outstanding contributions in the technical communities.&lt;/p&gt;&#xA;&lt;p&gt;In my personal case, my first adventures with &lt;a href=&#34;https://www.hashicorp.com/terraform&#34;&gt;Terraform&lt;/a&gt; started about 5 years ago. I was struggling with Azure ARM templates, and Terraform seemed like an easier language to achieve the same purpose, deploying Azure resources.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

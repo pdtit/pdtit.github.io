@@ -1,67 +1,47 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>DotNet on Azure Readiness starts here...</title>
-    <link>https://www.007ffflearning.com/tags/dotnet/</link>
-    <description>Recent content in DotNet on Azure Readiness starts here...</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 08 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/dotnet/index.xml" rel="self" type="application/rss+xml" />
+    <title>DotNet on </title>
+    <link>//localhost:1313/tags/dotnet/</link>
+    <description>Recent content in DotNet on </description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 08 Nov 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/dotnet/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Deploying .NET6.0 Blazor App using dotnet commandline</title>
-      <link>https://www.007ffflearning.com/post/deploying-blazor-apps-using-dotnet-commandline/</link>
+      <link>//localhost:1313/post/deploying-blazor-apps-using-dotnet-commandline/</link>
       <pubDate>Mon, 08 Nov 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/deploying-blazor-apps-using-dotnet-commandline/</guid>
-      <description>Hello readers,
-About 2 months ago, I promised I would start writing down my adventures in the DotNet Blazor development world, which you can read about in my first and second post.
-Welcome to &amp;ldquo;Coding Apps in Blazor from a non-developer standpoint - Part 3&amp;rdquo;
-This next article will cover about the same as the previous one, deploying the Blazor Server app template, but instead of using Visual Studio GUI for this, I&amp;rsquo;ll use the dotnet commandline tool this time.</description>
+      <guid>//localhost:1313/post/deploying-blazor-apps-using-dotnet-commandline/</guid>
+      <description>&lt;p&gt;Hello readers,&lt;/p&gt;&#xA;&lt;p&gt;About 2 months ago, I promised I would start writing down my adventures in the DotNet Blazor development world, which you can read about in my &lt;a href=&#34;https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer/&#34;&gt;first&lt;/a&gt; and &lt;a href=&#34;https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer-part-2/&#34;&gt;second&lt;/a&gt; post.&lt;/p&gt;&#xA;&lt;p&gt;Welcome to &amp;ldquo;Coding Apps in Blazor from a non-developer standpoint - Part 3&amp;rdquo;&lt;/p&gt;&#xA;&lt;p&gt;This next article will cover about the same as the previous one, deploying the Blazor Server app template, but instead of using Visual Studio GUI for this, I&amp;rsquo;ll use the &lt;strong&gt;dotnet commandline&lt;/strong&gt; tool this time. As it comes with some cool enhancements and options. And, next to that, it&amp;rsquo;s always nice to rely on command shell to speed up certain tasks.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Coding Apps in Blazor from a non-developer standpoint - Part 2</title>
-      <link>https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer-part-2/</link>
+      <link>//localhost:1313/post/coding-apps-in-blazor-from-a-non-developer---part-2/</link>
       <pubDate>Sun, 07 Nov 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer-part-2/</guid>
-      <description>Hello readers,
-About 2 months ago, I promised I would start writing down my adventures in the DotNet Blazor development world, which you can read in my first Blazor-related post here.
-While that post was more of a &amp;ldquo;setting the scene&amp;rdquo; how I ended up in learning Blazor (and C# mainly) and what the differences are between Blazor Server and Blazor WebAssembly, it also listed up the TOP 8 objectives I want to get out of these articles.</description>
+      <guid>//localhost:1313/post/coding-apps-in-blazor-from-a-non-developer---part-2/</guid>
+      <description>&lt;p&gt;Hello readers,&lt;/p&gt;&#xA;&lt;p&gt;About 2 months ago, I promised I would start writing down my adventures in the DotNet Blazor development world, which you can read in my &lt;a href=&#34;https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer/&#34;&gt;first Blazor-related post here&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;While that post was more of a &amp;ldquo;setting the scene&amp;rdquo; how I ended up in learning Blazor (and C# mainly) and what the differences are between Blazor Server and Blazor WebAssembly, it also listed up the TOP 8 objectives I want to get out of these articles.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Coding Apps in Blazor from a non-developer standpoint</title>
-      <link>https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer/</link>
+      <link>//localhost:1313/post/coding-apps-in-blazor-from-a-non-developer/</link>
       <pubDate>Mon, 06 Sep 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer/</guid>
-      <description>Hello readers,
-The ones who know me already, know I have used traditional on-premises datacenter infrastructure for the first 15 years of my career, before I jumped onto Azure public cloud. Yes, I was an infra guy. And sometimes I still think I am, although I&amp;rsquo;m more and more shifting to containers and devops over the last 3 years.
-With the 25 years of IT experience, there was always 1 skillset missing&amp;hellip; coding, or learning a development language in better words.</description>
+      <guid>//localhost:1313/post/coding-apps-in-blazor-from-a-non-developer/</guid>
+      <description>&lt;p&gt;Hello readers,&lt;/p&gt;&#xA;&lt;p&gt;The ones who know me already, know I have used traditional on-premises datacenter infrastructure for the first 15 years of my career, before I jumped onto Azure public cloud. Yes, I was an infra guy. And sometimes I still think I am, although I&amp;rsquo;m more and more shifting to containers and devops over the last 3 years.&lt;/p&gt;&#xA;&lt;p&gt;With the 25 years of IT experience, there was always 1 skillset missing&amp;hellip; coding, or learning a development language in better words.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Dotnet tool install dotnet-ef failing with unauthorized</title>
-      <link>https://www.007ffflearning.com/post/dotnet-tool-install-dotnet-ef-failing-with-unauthorized/</link>
+      <link>//localhost:1313/post/dotnet-tool-install-dotnet-ef-failing-with-unauthorized/</link>
       <pubDate>Sun, 27 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/dotnet-tool-install-dotnet-ef-failing-with-unauthorized/</guid>
-      <description>Hi all,
-I hope you all have great holidays this time around, giving you the opportunity to spend time with your family as well as having the opportunity to learn some new skills, which in my case means learning Blazor, a Framework within the DotNet family, allowing for &amp;ldquo;any-client&amp;rdquo; applications (browser, mobile device).
-My learning journey involves building a front-end Web App, connecting to a SQL (Azure) database back-end. To make this work, I want to use the SQL Server Entity Framework.</description>
+      <guid>//localhost:1313/post/dotnet-tool-install-dotnet-ef-failing-with-unauthorized/</guid>
+      <description>&lt;p&gt;Hi all,&lt;/p&gt;&#xA;&lt;p&gt;I hope you all have great holidays this time around, giving you the opportunity to spend time with your family as well as having the opportunity to learn some new skills, which in my case means learning &lt;strong&gt;&lt;a href=&#34;https://docs.microsoft.com/en-us/aspnet/core/blazor/?view=aspnetcore-5.0&#34;&gt;Blazor&lt;/a&gt;&lt;/strong&gt;, a Framework within the DotNet family, allowing for &amp;ldquo;any-client&amp;rdquo; applications (browser, mobile device).&lt;/p&gt;&#xA;&lt;p&gt;My learning journey involves building a front-end Web App, connecting to a SQL (Azure) database back-end. To make this work, I want to use the &lt;strong&gt;&lt;a href=&#34;https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/ef/overview&#34;&gt;SQL Server Entity Framework&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>publish your first dotnet5 app to Azure App Services</title>
-      <link>https://www.007ffflearning.com/post/publish-your-first-dotnet5-app-to-azure-app-services/</link>
+      <link>//localhost:1313/post/publish-your-first-dotnet5-app-to-azure-app-services/</link>
       <pubDate>Tue, 10 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/publish-your-first-dotnet5-app-to-azure-app-services/</guid>
-      <description>Today, Nov 10th, was the official date of the long-announced &amp;ldquo;dotnet5 Framework&amp;rdquo;, and it is described as a major release. Still being new in the developer world myself, I know the basics of ASP.NET 3.7 and 4.5, so I can imagine jumping to a 5.0 release is indeed a big thing.
-.NET 5.0 improvements The biggest improvements announced by the Product Team are:
- Migration-friendly for older .NET versions Production-ready from day 1 of release (thorough-tested for http://www.</description>
+      <guid>//localhost:1313/post/publish-your-first-dotnet5-app-to-azure-app-services/</guid>
+      <description>&lt;p&gt;Today, Nov 10th, was the official date of the long-announced &lt;a href=&#34;https://dotnet.microsoft.com/download/dotnet/5.0&#34;&gt;&amp;ldquo;dotnet5 Framework&amp;rdquo;&lt;/a&gt;, and it is described as a major release. Still being new in the developer world myself, I know the basics of ASP.NET 3.7 and 4.5, so I can imagine jumping to a 5.0 release is indeed a big thing.&lt;/p&gt;&#xA;&lt;h2 id=&#34;net-50-improvements&#34;&gt;.NET 5.0 improvements&lt;/h2&gt;&#xA;&lt;p&gt;The biggest improvements announced by the Product Team are:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Migration-friendly for older .NET versions&lt;/li&gt;&#xA;&lt;li&gt;Production-ready from day 1 of release (thorough-tested for &lt;a href=&#34;http://www.dot.net&#34;&gt;http://www.dot.net&lt;/a&gt; and &lt;a href=&#34;http://www.bing.com&#34;&gt;http://www.bing.com&lt;/a&gt; websites)&lt;/li&gt;&#xA;&lt;li&gt;Enhanced performance&lt;/li&gt;&#xA;&lt;li&gt;ClickOnce client app publishing&lt;/li&gt;&#xA;&lt;li&gt;Smaller container image footprint&lt;/li&gt;&#xA;&lt;li&gt;Supportability for Windows Arm64 and WebAssembly (Blazor)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Support will go into Feb 2022, which seems the release date for DotNet 6.0 LTS&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Logic Apps on Azure Readiness starts here...</title>
-    <link>https://www.007ffflearning.com/tags/logic-apps/</link>
-    <description>Recent content in Logic Apps on Azure Readiness starts here...</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 03 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/logic-apps/index.xml" rel="self" type="application/rss+xml" />
+    <title>Logic Apps on </title>
+    <link>//localhost:1313/tags/logic-apps/</link>
+    <description>Recent content in Logic Apps on </description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 03 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/logic-apps/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Sending Emails from Azure DevOps using PowerShell and Azure LogicApps</title>
-      <link>https://www.007ffflearning.com/post/sending-emails-from-ado-pipelines-using-powershell/</link>
+      <link>//localhost:1313/post/sending-emails-from-ado-pipelines-using-powershell/</link>
       <pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/sending-emails-from-ado-pipelines-using-powershell/</guid>
-      <description>Hi Readers,
-This post is merely for myself, documenting all the steps I needed to go through to be able to send emails from a PowerShell script, as part of an Azure DevOps YAML pipeline flow. And since I was documenting it for our internal application, I thought it would hopefully help someone out there looking for a similar solution.
-Why not using the built-in Email Notification system Azure DevOps provides email notification features, but this comes with a few assumptions.</description>
+      <guid>//localhost:1313/post/sending-emails-from-ado-pipelines-using-powershell/</guid>
+      <description>&lt;p&gt;Hi Readers,&lt;/p&gt;&#xA;&lt;p&gt;This post is merely for myself, documenting all the steps I needed to go through to be able to send emails from a PowerShell script, as part of an Azure DevOps YAML pipeline flow. And since I was documenting it for our internal application, I thought it would hopefully help someone out there looking for a similar solution.&lt;/p&gt;&#xA;&lt;h2 id=&#34;why-not-using-the-built-in-email-notification-system&#34;&gt;Why not using the built-in Email Notification system&lt;/h2&gt;&#xA;&lt;p&gt;Azure DevOps provides &lt;a href=&#34;https://learn.microsoft.com/en-us/azure/devops/organizations/notifications/about-notifications?view=azure-devops&#34;&gt;email notification features&lt;/a&gt;, but this comes with a few assumptions. The biggest one being the receiver(s) should be Project Members. Which was not the case in my scenario, since I want to send out deployment status emails, at the start of a pipeline and when completed successfully, to external recipients.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

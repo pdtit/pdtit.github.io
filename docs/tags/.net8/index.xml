@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>.NET8 on </title>
+    <link>//localhost:1313/tags/.net8/</link>
+    <description>Recent content in .NET8 on </description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 30 May 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/.net8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building your first Blazor .NET8 app - MSTS Summit </title>
+      <link>//localhost:1313/post/building-your-first-blazor-.net8-app---msts-summit-companion/</link>
+      <pubDate>Thu, 30 May 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/post/building-your-first-blazor-.net8-app---msts-summit-companion/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;I got invited to present on Blazor .NET8 as part of the [https://mstechsummit.pl/en/](MS Tech Summit Poland (MSTS Summit)), for which I&amp;rsquo;m very excited and honored. For most of my public speaking engagements, I try to focus on live demos, with only a minimum amount of slides, and this session is no different.&lt;/p&gt;&#xA;&lt;p&gt;To help my audience in reproducing the demos in their own time, I decided to write out the steps.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>ScifiDevCon 2024 : Building a Marvel Hero App using Blazor and .NET8 </title>
+      <link>//localhost:1313/post/building-a-marvel-hero-app-with-blazor-.net8/</link>
+      <pubDate>Sat, 18 May 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/post/building-a-marvel-hero-app-with-blazor-.net8/</guid>
+      <description>&lt;p&gt;Building a Marvel Hero catalog app using Blazor Server and .NET8&lt;/p&gt;&#xA;&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;&#xA;&lt;p&gt;At the end of 2022, as part of the &lt;em&gt;Festive Tech Calendar&lt;/em&gt; community initiative, I provided a step-by-step instruction blog on how to build a Blazor Web Assembly app from scratch, using .NET7.&lt;/p&gt;&#xA;&lt;p&gt;About 18 months later, a lot of things have changed in the &lt;strong&gt;.NET8 world&lt;/strong&gt;, which also impacted &lt;strong&gt;positively&lt;/strong&gt; new features around the Blazor Web App Framework, on both Web Assembly (Client/Browser) and Server side.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

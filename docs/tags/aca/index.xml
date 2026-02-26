@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>ACA on Azure Readiness starts here...</title>
-    <link>https://www.007ffflearning.com/tags/aca/</link>
-    <description>Recent content in ACA on Azure Readiness starts here...</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Wed, 15 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/aca/index.xml" rel="self" type="application/rss+xml" />
+    <title>ACA on </title>
+    <link>//localhost:1313/tags/aca/</link>
+    <description>Recent content in ACA on </description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 15 Mar 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/aca/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Azure Spring Clean - DCK, ACR, ACI, AKS, ACA, the Azure Container Alphabet Soup</title>
-      <link>https://www.007ffflearning.com/post/dck-acr-aci-aks-aca-the-azure-container-alphabet-soup/</link>
+      <link>//localhost:1313/post/dck-acr-aci-aks-aca-the-azure-container-alphabet-soup/</link>
       <pubDate>Wed, 15 Mar 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/dck-acr-aci-aks-aca-the-azure-container-alphabet-soup/</guid>
-      <description>Hey friends,
-Welcome to #AzureSpringClean, an initiative from Joe Carlyle and Thomas Thornton where I&amp;rsquo;m honored to be able to participate in again for the 4th year already. Thanks guys for trusting me once more for sharing some Azure knowledge&amp;hellip;
-This time, I wanted to try and guide you through the buzzword of the last couple of years, containers&amp;hellip; and more specifically, what different options you have in Azure to run your containerized workloads.</description>
+      <guid>//localhost:1313/post/dck-acr-aci-aks-aca-the-azure-container-alphabet-soup/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;../images/AzureSpringClean2023-logo.png&#34; alt=&#34;Azure Spring Clean&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Hey friends,&lt;/p&gt;&#xA;&lt;p&gt;Welcome to #AzureSpringClean, an initiative from &lt;strong&gt;&lt;a href=&#34;https://twitter.com/wedoazure&#34;&gt;Joe Carlyle&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/tamstar1234&#34;&gt;Thomas Thornton&lt;/a&gt;&lt;/strong&gt;&#xA;where I&amp;rsquo;m honored to be able to participate in again for the 4th year already. Thanks guys for trusting me once more for sharing some Azure knowledge&amp;hellip;&lt;/p&gt;&#xA;&lt;p&gt;This time, I wanted to try and guide you through the buzzword of the last couple of years, &lt;strong&gt;containers&lt;/strong&gt;&amp;hellip; and more specifically, what different options you have in Azure to run your containerized workloads.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

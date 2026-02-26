@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>VSCode on </title>
+    <link>//localhost:1313/tags/vscode/</link>
+    <description>Recent content in VSCode on </description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 26 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/vscode/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Keeping MCP Server config in sync between VS Code and GitHub Copilot CLI</title>
+      <link>//localhost:1313/post/keeping-mcp-config-in-sync-between-vscode-and-cli/</link>
+      <pubDate>Thu, 26 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/post/keeping-mcp-config-in-sync-between-vscode-and-cli/</guid>
+      <description>&lt;p&gt;Hey awesome people,&lt;/p&gt;&#xA;&lt;p&gt;Over the last weeks, I’ve been jumping between VS Code and Copilot CLI a lot more than usual. One thing kept annoying me: my MCP setup was perfect in VS Code, but I had to keep tweaking pieces again in CLI.&lt;/p&gt;&#xA;&lt;p&gt;If that sounds familiar, good news: if you already have MCP servers working in VS Code, you can reuse most of that setup in GitHub Copilot CLI.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

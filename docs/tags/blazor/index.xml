@@ -1,77 +1,68 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blazor on Azure Readiness starts here...</title>
-    <link>https://www.007ffflearning.com/tags/blazor/</link>
-    <description>Recent content in Blazor on Azure Readiness starts here...</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Wed, 28 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/blazor/index.xml" rel="self" type="application/rss+xml" />
+    <title>Blazor on </title>
+    <link>//localhost:1313/tags/blazor/</link>
+    <description>Recent content in Blazor on </description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 30 May 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/blazor/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building your first Blazor .NET8 app - MSTS Summit </title>
+      <link>//localhost:1313/post/building-your-first-blazor-.net8-app---msts-summit-companion/</link>
+      <pubDate>Thu, 30 May 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/post/building-your-first-blazor-.net8-app---msts-summit-companion/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;I got invited to present on Blazor .NET8 as part of the [https://mstechsummit.pl/en/](MS Tech Summit Poland (MSTS Summit)), for which I&amp;rsquo;m very excited and honored. For most of my public speaking engagements, I try to focus on live demos, with only a minimum amount of slides, and this session is no different.&lt;/p&gt;&#xA;&lt;p&gt;To help my audience in reproducing the demos in their own time, I decided to write out the steps.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>ScifiDevCon 2024 : Building a Marvel Hero App using Blazor and .NET8 </title>
+      <link>//localhost:1313/post/building-a-marvel-hero-app-with-blazor-.net8/</link>
+      <pubDate>Sat, 18 May 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/post/building-a-marvel-hero-app-with-blazor-.net8/</guid>
+      <description>&lt;p&gt;Building a Marvel Hero catalog app using Blazor Server and .NET8&lt;/p&gt;&#xA;&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;&#xA;&lt;p&gt;At the end of 2022, as part of the &lt;em&gt;Festive Tech Calendar&lt;/em&gt; community initiative, I provided a step-by-step instruction blog on how to build a Blazor Web Assembly app from scratch, using .NET7.&lt;/p&gt;&#xA;&lt;p&gt;About 18 months later, a lot of things have changed in the &lt;strong&gt;.NET8 world&lt;/strong&gt;, which also impacted &lt;strong&gt;positively&lt;/strong&gt; new features around the Blazor Web App Framework, on both Web Assembly (Client/Browser) and Server side.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Festive Tech Calendar 2022 - Building a Marvel Hero app using Blazor Web Assembly and Azure Static Web Apps</title>
-      <link>https://www.007ffflearning.com/post/steps-for-blazor-marvel-webassembly/</link>
+      <link>//localhost:1313/post/steps-for-blazor-marvel---webassembly/</link>
       <pubDate>Wed, 28 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/steps-for-blazor-marvel-webassembly/</guid>
-      <description>Building a Marvel Hero catalog app using Blazor Web Assembly
-Introduction This article describes all the steps on how to develop a Marvel Hero catalog app, using Blazor Web Assembly, and is a companion guide to the Festive Tech Calendar 2022 session I presented. This app introduces Blazor .NET development, and more specifically how to easily create a Single Page App using HTML, CSS and API calls to an external API Service at https://developer.</description>
+      <guid>//localhost:1313/post/steps-for-blazor-marvel---webassembly/</guid>
+      <description>&lt;p&gt;Building a Marvel Hero catalog app using Blazor Web Assembly&lt;/p&gt;&#xA;&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;&#xA;&lt;p&gt;This article describes all the steps on how to develop a Marvel Hero catalog app, using Blazor Web Assembly, and is a companion guide to the Festive Tech Calendar 2022 session I presented. This app introduces Blazor .NET development, and more specifically how to easily create a Single Page App using HTML, CSS and API calls to an external API Service at &lt;a href=&#34;https://developer.marvel.com&#34;&gt;https://developer.marvel.com&lt;/a&gt;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Book review - Building Blazor WebAssembly Applications with gRPC</title>
-      <link>https://www.007ffflearning.com/post/packt-book-review-blazor-wasm-with-grpc/</link>
+      <link>//localhost:1313/post/packt-book-review---blazor-wasm-with-grpc/</link>
       <pubDate>Sat, 17 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/packt-book-review-blazor-wasm-with-grpc/</guid>
-      <description>In this post, I want to share my review of another Blazor book I read recently, Building Blazor WebAssembly Applications with gRPC this time from Vaclav Perakek, published by Packt Publishing and available on Amazon as well as other e-book subscription platforms.
-If you have been following me for a while, you know I&amp;rsquo;m gradually learning more about coding and developing applications, especially using the Blazor .NET framework.
-What intrigued me even more with this book, is the gRPC integration.</description>
+      <guid>//localhost:1313/post/packt-book-review---blazor-wasm-with-grpc/</guid>
+      <description>&lt;p&gt;In this post, I want to share my review of another Blazor book I read recently, &lt;strong&gt;Building Blazor WebAssembly Applications with gRPC&lt;/strong&gt; this time from &lt;a href=&#34;https://twitter.com/vaclavperakek&#34;&gt;Vaclav Perakek&lt;/a&gt;, published by &lt;a href=&#34;https://www.packtpub.com/product/building-blazor-webassembly-applications-with-grpc/9781804610558?_ga=2.130113295.1693879135.1671300604-32592472.1664947786&#34;&gt;Packt Publishing&lt;/a&gt; and available on &lt;a href=&#34;https://www.amazon.com/Building-Blazor-WebAssembly-Applications-gRPC/dp/1804610550&#34;&gt;Amazon&lt;/a&gt; as well as other e-book subscription platforms.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2022-12-17_10-12-08.png&#34; alt=&#34;Book Cover&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;If you have been following me for a while, you know I&amp;rsquo;m gradually learning more about coding and developing applications, especially using the &lt;a href=&#34;https://dotnet.microsoft.com/en-us/apps/aspnet/web-apps/blazor&#34;&gt;Blazor .NET framework&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;What intrigued me even more with this book, is the gRPC integration. While I heard about before, from far away honestly, I never really looked into it. So besides learning more about Blazor itself, seeing how other much more advanced developers are using the framework, as well as learning on how they write code, I also learned more about what gRPC is all about.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Deploying .NET6.0 Blazor App using dotnet commandline</title>
-      <link>https://www.007ffflearning.com/post/deploying-blazor-apps-using-dotnet-commandline/</link>
+      <link>//localhost:1313/post/deploying-blazor-apps-using-dotnet-commandline/</link>
       <pubDate>Mon, 08 Nov 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/deploying-blazor-apps-using-dotnet-commandline/</guid>
-      <description>Hello readers,
-About 2 months ago, I promised I would start writing down my adventures in the DotNet Blazor development world, which you can read about in my first and second post.
-Welcome to &amp;ldquo;Coding Apps in Blazor from a non-developer standpoint - Part 3&amp;rdquo;
-This next article will cover about the same as the previous one, deploying the Blazor Server app template, but instead of using Visual Studio GUI for this, I&amp;rsquo;ll use the dotnet commandline tool this time.</description>
+      <guid>//localhost:1313/post/deploying-blazor-apps-using-dotnet-commandline/</guid>
+      <description>&lt;p&gt;Hello readers,&lt;/p&gt;&#xA;&lt;p&gt;About 2 months ago, I promised I would start writing down my adventures in the DotNet Blazor development world, which you can read about in my &lt;a href=&#34;https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer/&#34;&gt;first&lt;/a&gt; and &lt;a href=&#34;https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer-part-2/&#34;&gt;second&lt;/a&gt; post.&lt;/p&gt;&#xA;&lt;p&gt;Welcome to &amp;ldquo;Coding Apps in Blazor from a non-developer standpoint - Part 3&amp;rdquo;&lt;/p&gt;&#xA;&lt;p&gt;This next article will cover about the same as the previous one, deploying the Blazor Server app template, but instead of using Visual Studio GUI for this, I&amp;rsquo;ll use the &lt;strong&gt;dotnet commandline&lt;/strong&gt; tool this time. As it comes with some cool enhancements and options. And, next to that, it&amp;rsquo;s always nice to rely on command shell to speed up certain tasks.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Coding Apps in Blazor from a non-developer standpoint - Part 2</title>
-      <link>https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer-part-2/</link>
+      <link>//localhost:1313/post/coding-apps-in-blazor-from-a-non-developer---part-2/</link>
       <pubDate>Sun, 07 Nov 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer-part-2/</guid>
-      <description>Hello readers,
-About 2 months ago, I promised I would start writing down my adventures in the DotNet Blazor development world, which you can read in my first Blazor-related post here.
-While that post was more of a &amp;ldquo;setting the scene&amp;rdquo; how I ended up in learning Blazor (and C# mainly) and what the differences are between Blazor Server and Blazor WebAssembly, it also listed up the TOP 8 objectives I want to get out of these articles.</description>
+      <guid>//localhost:1313/post/coding-apps-in-blazor-from-a-non-developer---part-2/</guid>
+      <description>&lt;p&gt;Hello readers,&lt;/p&gt;&#xA;&lt;p&gt;About 2 months ago, I promised I would start writing down my adventures in the DotNet Blazor development world, which you can read in my &lt;a href=&#34;https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer/&#34;&gt;first Blazor-related post here&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;While that post was more of a &amp;ldquo;setting the scene&amp;rdquo; how I ended up in learning Blazor (and C# mainly) and what the differences are between Blazor Server and Blazor WebAssembly, it also listed up the TOP 8 objectives I want to get out of these articles.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Coding Apps in Blazor from a non-developer standpoint</title>
-      <link>https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer/</link>
+      <link>//localhost:1313/post/coding-apps-in-blazor-from-a-non-developer/</link>
       <pubDate>Mon, 06 Sep 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer/</guid>
-      <description>Hello readers,
-The ones who know me already, know I have used traditional on-premises datacenter infrastructure for the first 15 years of my career, before I jumped onto Azure public cloud. Yes, I was an infra guy. And sometimes I still think I am, although I&amp;rsquo;m more and more shifting to containers and devops over the last 3 years.
-With the 25 years of IT experience, there was always 1 skillset missing&amp;hellip; coding, or learning a development language in better words.</description>
+      <guid>//localhost:1313/post/coding-apps-in-blazor-from-a-non-developer/</guid>
+      <description>&lt;p&gt;Hello readers,&lt;/p&gt;&#xA;&lt;p&gt;The ones who know me already, know I have used traditional on-premises datacenter infrastructure for the first 15 years of my career, before I jumped onto Azure public cloud. Yes, I was an infra guy. And sometimes I still think I am, although I&amp;rsquo;m more and more shifting to containers and devops over the last 3 years.&lt;/p&gt;&#xA;&lt;p&gt;With the 25 years of IT experience, there was always 1 skillset missing&amp;hellip; coding, or learning a development language in better words.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Dotnet tool install dotnet-ef failing with unauthorized</title>
-      <link>https://www.007ffflearning.com/post/dotnet-tool-install-dotnet-ef-failing-with-unauthorized/</link>
+      <link>//localhost:1313/post/dotnet-tool-install-dotnet-ef-failing-with-unauthorized/</link>
       <pubDate>Sun, 27 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/dotnet-tool-install-dotnet-ef-failing-with-unauthorized/</guid>
-      <description>Hi all,
-I hope you all have great holidays this time around, giving you the opportunity to spend time with your family as well as having the opportunity to learn some new skills, which in my case means learning Blazor, a Framework within the DotNet family, allowing for &amp;ldquo;any-client&amp;rdquo; applications (browser, mobile device).
-My learning journey involves building a front-end Web App, connecting to a SQL (Azure) database back-end. To make this work, I want to use the SQL Server Entity Framework.</description>
+      <guid>//localhost:1313/post/dotnet-tool-install-dotnet-ef-failing-with-unauthorized/</guid>
+      <description>&lt;p&gt;Hi all,&lt;/p&gt;&#xA;&lt;p&gt;I hope you all have great holidays this time around, giving you the opportunity to spend time with your family as well as having the opportunity to learn some new skills, which in my case means learning &lt;strong&gt;&lt;a href=&#34;https://docs.microsoft.com/en-us/aspnet/core/blazor/?view=aspnetcore-5.0&#34;&gt;Blazor&lt;/a&gt;&lt;/strong&gt;, a Framework within the DotNet family, allowing for &amp;ldquo;any-client&amp;rdquo; applications (browser, mobile device).&lt;/p&gt;&#xA;&lt;p&gt;My learning journey involves building a front-end Web App, connecting to a SQL (Azure) database back-end. To make this work, I want to use the &lt;strong&gt;&lt;a href=&#34;https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/ef/overview&#34;&gt;SQL Server Entity Framework&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

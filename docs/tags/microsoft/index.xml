@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Microsoft on </title>
+    <link>//localhost:1313/tags/microsoft/</link>
+    <description>Recent content in Microsoft on </description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 09 Mar 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/microsoft/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Innovation at Microsoft - Book Review</title>
+      <link>//localhost:1313/post/innovation-at-microsoft---book-review/</link>
+      <pubDate>Sun, 09 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/post/innovation-at-microsoft---book-review/</guid>
+      <description>&lt;p&gt;The &lt;strong&gt;&lt;a href=&#34;https://posthillpress.com/book/the-insiders-guide-to-innovation-at-microsoft&#34;&gt;Insider’s Guide to Innovation at Microsoft&lt;/a&gt;&lt;/strong&gt;, written by Dean Carignan and JoAnn Garbin, and published by PostHillPress publishers, explores the innovation strategies and practices at Microsoft over the past 50 years.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/innovation_at_microsoft.jpg&#34; alt=&#34;Book Cover&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;When I heard about this book, I ordered myself a copy during pre-order, and got excited from the day I got it in the mail. This was honestly one of the few books I read cover to finish in just a weekend.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

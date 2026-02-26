@@ -1,31 +1,54 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>AI on Azure Readiness starts here...</title>
-    <link>https://www.007ffflearning.com/tags/ai/</link>
-    <description>Recent content in AI on Azure Readiness starts here...</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sat, 23 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <title>AI on </title>
+    <link>//localhost:1313/tags/ai/</link>
+    <description>Recent content in AI on </description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 29 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How Spotify disappointed me with AI Artists</title>
+      <link>//localhost:1313/post/spotify-disappointed-me-with-ai-artists/</link>
+      <pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/post/spotify-disappointed-me-with-ai-artists/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;m usually pretty excited about AI and more specifically about Generative AI, especially with &lt;strong&gt;&lt;a href=&#34;https://copilot.microsoft.com&#34;&gt;Microsoft Copilot&lt;/a&gt;&lt;/strong&gt;, &lt;strong&gt;&lt;a href=&#34;https://github.com/copilot&#34;&gt;GitHub Copilot&lt;/a&gt;&lt;/strong&gt; and &lt;strong&gt;&lt;a href=&#34;https://azure.microsoft.com/products/ai-foundry&#34;&gt;Microsoft Foundry&lt;/a&gt;&lt;/strong&gt;. I might be biased, but outside of my professional interactions with GenAI, I&amp;rsquo;m not into all the social media hypes around it (&lt;a href=&#34;https://www.forbes.com/sites/danidiplacido/2025/03/27/the-ai-generated-studio-ghibli-trend-explained/&#34;&gt;anyone remembers the Studio Gihbli hype from summer&lt;/a&gt; or any similar?)&lt;/p&gt;&#xA;&lt;p&gt;With a few days off for Thanksgiving here in the USA, I wanted to spend a bit more time on updating my Spotify playlists. While not always perfect, at least a few of the &amp;lsquo;recommended artists&amp;rsquo; are closely in line with the artists and songs I like.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Using GitHub Copilot Agent Mode to vibe code a Python shooting game</title>
+      <link>//localhost:1313/post/using-github-copilot-agent-mode-to-vibe-code-a-python-shooting-game/</link>
+      <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/post/using-github-copilot-agent-mode-to-vibe-code-a-python-shooting-game/</guid>
+      <description>&lt;p&gt;For about a year now, I&amp;rsquo;ve been teaching a lot on &lt;a href=&#34;https://github.com/copilot&#34;&gt;GitHub Copilot&lt;/a&gt; as part of my Microsoft role. Our program offers 2 different learning paths, one created by the Microsoft Content developers, &lt;a href=&#34;https://learn.microsoft.com/en-us/training/paths/accelerate-app-development-using-github-copilot/&#34;&gt;AZ-2007&lt;/a&gt;, and the other one is managed by GitHub Content team, known as &lt;a href=&#34;https://learn.microsoft.com/en-us/training/paths/copilot/&#34;&gt;GH-300&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;If you know my approach to teaching tech a bit, which a learner in my class lately called &lt;strong&gt;inspiring through technology&lt;/strong&gt;, it means I&amp;rsquo;m trying to explain as much as possible through compelling, live demos. After walking learners through different GitHub Copilot features such as documenting/explaining code, generate application code (on different development frameworks), but also Azure CLI, CI/CD pipeline, Dockerfile, YAML, JSON and alike, I usually close with &lt;a href=&#34;https://docs.github.com/en/copilot/concepts/agents/coding-agent/about-coding-agent&#34;&gt;Agent Mode&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Using GitHub Copilot Agent Mode to transform ARM templates to BICEP</title>
+      <link>//localhost:1313/post/using-github-copilot-agent-mode-to-transform-arm-templates-to-bicep/</link>
+      <pubDate>Sat, 12 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/post/using-github-copilot-agent-mode-to-transform-arm-templates-to-bicep/</guid>
+      <description>&lt;p&gt;Over the last few months, I&amp;rsquo;ve been working on an exciting project for our Microsoft Technical Trainer team, known as &lt;a href=&#34;https://aka.ms/trainer-demo-deploy&#34;&gt;&amp;ldquo;Trainer-Demo-Deploy&amp;rdquo;&lt;/a&gt;, a catalog of Azure end-to-end demo scenarios, available as an Open-Source project.&lt;/p&gt;&#xA;&lt;p&gt;While we managed to get about 50 templates live, there can never be enough scenarios to integrate into your Azure classes or POC activities if you ask me. One of the challenging tasks in the project is not only coming up with demo ideas, but also creating the actual artifacts, such as Azure templates with Bicep, sample apps and sample data.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Introduction to Semantic Kernel</title>
+      <link>//localhost:1313/post/introduction-to-semantic-kernel/</link>
+      <pubDate>Sun, 15 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/post/introduction-to-semantic-kernel/</guid>
+      <description>&lt;h2 id=&#34;introduction-to-developing-azure-ai-solutions&#34;&gt;Introduction to Developing Azure AI Solutions&lt;/h2&gt;&#xA;&lt;p&gt;In today&amp;rsquo;s rapidly evolving tech landscape, Artificial Intelligence (AI) has become a cornerstone for innovation. Azure AI offers a robust suite of tools and services that empower developers to build intelligent applications. From natural language processing (NLP) to computer vision, &lt;a href=&#34;https://azure.microsoft.com/en-us/solutions/ai&#34;&gt;Azure AI&lt;/a&gt; provides the building blocks to create solutions that can understand, interpret, and respond to human inputs in a meaningful way. While Microsoft has several Copilot offerings for different use cases, ranging from an &lt;a href=&#34;https://azure.microsoft.com/en-us/products/copilot&#34;&gt;AI assistant in Azure&lt;/a&gt;, &lt;a href=&#34;https://www.microsoft.com/en-us/microsoft-365/copilot&#34;&gt;Copilot in M365&lt;/a&gt; or &lt;a href=&#34;https://copilot.microsoft.com&#34;&gt;web and mobile&lt;/a&gt;, there are still valid use cases for developing your own custom Copilot. One of the key components in this ecosystem is the &lt;strong&gt;Semantic Kernel&lt;/strong&gt;, a powerful tool that enhances the capabilities of AI models by providing semantic understanding.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Festive Tech Calendar - Azure AI - OCR on Steroids</title>
-      <link>https://www.007ffflearning.com/post/festive-2023-ocr-on-steroids/</link>
+      <link>//localhost:1313/post/festive-2023-ocr-on-steroids/</link>
       <pubDate>Sat, 23 Dec 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/festive-2023-ocr-on-steroids/</guid>
-      <description>Hugo
-Azure Static Storage Sites
-Welcome to this year&amp;rsquo;s Festive Tech Calendar!! Hi everyone, welcome to my contribution to this year&amp;rsquo;s Festive Tech Calendar once more. This will be the fourth year, and I still love the concept of bringing some (Azure) joy to you/your family this season. If you ask me what the biggest news in tech was this year, especially within the Microsoft ecosystem, it&amp;rsquo;s Azure AI. Shouldn&amp;rsquo;t be surprising to most of you who know me and my role within Microsoft as Technical Trainer - providing Azure workshops every week to our top customers and partners across the globe - we also integrated (A lot :)) of AI focus early in the year.</description>
+      <guid>//localhost:1313/post/festive-2023-ocr-on-steroids/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://www.gohugo.io&#34;&gt;Hugo&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-static-website-how-to?tabs=azure-portal&#34;&gt;Azure Static Storage Sites&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/festive_2023.jpg&#34; alt=&#34;Festive Tech Calendar 2023 - OCR on Steroids image&#34;&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;welcome-to-this-years-festive-tech-calendar&#34;&gt;Welcome to this year&amp;rsquo;s Festive Tech Calendar!!&lt;/h1&gt;&#xA;&lt;p&gt;Hi everyone, welcome to my contribution to this year&amp;rsquo;s Festive Tech Calendar once more. This will be the fourth year, and I still love the concept of bringing some (Azure) joy to you/your family this season. If you ask me what the biggest news in tech was this year, especially within the Microsoft ecosystem, it&amp;rsquo;s &lt;strong&gt;Azure AI&lt;/strong&gt;. Shouldn&amp;rsquo;t be surprising to most of you who know me and my role within Microsoft as Technical Trainer - providing Azure workshops every week to our top customers and partners across the globe - we also integrated (A lot :)) of AI focus early in the year. And it is only becoming more imported.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Build an Azure AI chatbot using your own data from blob storage </title>
-      <link>https://www.007ffflearning.com/post/build-an-azure-ai-chatbot-using-your-own-data-in-blob-storage/</link>
+      <link>//localhost:1313/post/build-an-azure-ai-chatbot-using-your-own-data-in-blob-storage/</link>
       <pubDate>Mon, 17 Jul 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/build-an-azure-ai-chatbot-using-your-own-data-in-blob-storage/</guid>
-      <description>You must have lived under a rock if you didn&amp;rsquo;t hear about how important Azure AI is for Microsoft and its partner and customer ecosystem. Thanks to Artificial Intelligence (AI), companies will be more innovative, employees will be more productive. While I honestly was a bit hesitant at first myself - knowing a big part of my job is providing training, and seeing what AI can do here in terms of content creation, video creation and alike, yes the trainer role will definitely (has to) change over the next coming months - once I started digging into its capabilities more, I started to see the AI engine potential.</description>
+      <guid>//localhost:1313/post/build-an-azure-ai-chatbot-using-your-own-data-in-blob-storage/</guid>
+      <description>&lt;p&gt;You must have lived under a rock if you didn&amp;rsquo;t hear about how important &lt;a href=&#34;https://azure.microsoft.com/en-us/solutions/ai/&#34;&gt;Azure AI&lt;/a&gt; is for Microsoft and its partner and customer ecosystem. Thanks to Artificial Intelligence (AI), companies will be more innovative, employees will be more productive. While I honestly was a bit hesitant at first myself - knowing a big part of my job is providing training, and seeing what AI can do here in terms of content creation, video creation and alike, yes the trainer role will definitely (has to) change over the next coming months - once I started digging into its capabilities more, I started to see the AI engine potential.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

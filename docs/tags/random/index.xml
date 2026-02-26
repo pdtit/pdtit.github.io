@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Random on Azure Readiness starts here...</title>
-    <link>https://www.007ffflearning.com/tags/random/</link>
-    <description>Recent content in Random on Azure Readiness starts here...</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 23 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/random/index.xml" rel="self" type="application/rss+xml" />
+    <title>Random on </title>
+    <link>//localhost:1313/tags/random/</link>
+    <description>Recent content in Random on </description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 23 Dec 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/random/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How OnyxBoox - with some help from a friend - got me back to reading more... books</title>
-      <link>https://www.007ffflearning.com/post/how-boox-got-me-back-to-reading/</link>
+      <link>//localhost:1313/post/how-boox-got-me-back-to-reading/</link>
       <pubDate>Fri, 23 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/how-boox-got-me-back-to-reading/</guid>
-      <description>I have to admit, I am not a real book reader, and the bit of reading I am doing typically involves Azure-related tech books, or what my wife and family describes as &amp;ldquo;business books&amp;rdquo; (Biographies, Non-fiction company stories such as the start of Netflix, Uber, Silicon Valley,&amp;hellip;). For several years, I relied on an Amazon Kindle app on my (cheap) Samsung A8 tablet, dating from the time I was traveling weekly and wanted to travel light.</description>
+      <guid>//localhost:1313/post/how-boox-got-me-back-to-reading/</guid>
+      <description>&lt;p&gt;I have to admit, I am not a real book reader, and the bit of reading I am doing typically involves Azure-related tech books, or what my wife and family describes as &amp;ldquo;business books&amp;rdquo; (Biographies, Non-fiction company stories such as the start of Netflix, Uber, Silicon Valley,&amp;hellip;). For several years, I relied on an Amazon Kindle app on my (cheap) Samsung A8 tablet, dating from the time I was traveling weekly and wanted to travel light. While it still runs fine, the 8&amp;quot; form factor is sometimes a bit small - especially when screenshots of development code are involved - and I was also missing the capability to take notes (apart from the basic notes in Kindle app).&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

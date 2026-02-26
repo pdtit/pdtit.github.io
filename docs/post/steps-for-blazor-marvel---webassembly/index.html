@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Festive Tech Calendar 2022 - Building a Marvel Hero app using Blazor Web Assembly and Azure Static Web Apps | Azure Readiness starts here...</title>
+<meta name="keywords" content="Blazor, Azure">
+<meta name="description" content="Building a Marvel Hero catalog app using Blazor Web Assembly
+Introduction
+This article describes all the steps on how to develop a Marvel Hero catalog app, using Blazor Web Assembly, and is a companion guide to the Festive Tech Calendar 2022 session I presented. This app introduces Blazor .NET development, and more specifically how to easily create a Single Page App using HTML, CSS and API calls to an external API Service at https://developer.marvel.com">
+<meta name="author" content="Peter De Tender">
+<link rel="canonical" href="http://localhost:1313/post/steps-for-blazor-marvel---webassembly/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.8369b950114d6445e67a717fe985c3f6c6da2f22526bfb9d5b4e2dea350d3ef5.css" integrity="sha256-g2m5UBFNZEXmenF/6YXD9sbaLyJSa/udW04t6jUNPvU=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#007FFF">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/post/steps-for-blazor-marvel---webassembly/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+<script type="text/javascript">
+var appInsights=window.appInsights||function(a){
+    function b(a){c[a]=function(){var b=arguments;c.queue.push(function(){c[a].apply(c,b)})}}var c={config:a},d=document,e=window;setTimeout(function(){var b=d.createElement("script");b.src=a.url||"https://az416426.vo.msecnd.net/scripts/a/ai.0.js",d.getElementsByTagName("script")[0].parentNode.appendChild(b)});try{c.cookie=d.cookie}catch(a){}c.queue=[];for(var f=["Event","Exception","Metric","PageView","Trace","Dependency"];f.length;)b("track"+f.pop());if(b("setAuthenticatedUserContext"),b("clearAuthenticatedUserContext"),b("startTrackEvent"),b("stopTrackEvent"),b("startTrackPage"),b("stopTrackPage"),b("flush"),!a.disableExceptionTracking){f="onerror",b("_"+f);var g=e[f];e[f]=function(a,b,d,e,h){var i=g&&g(a,b,d,e,h);return!0!==i&&c["_"+f](a,b,d,e,h),i}}return c
+}({
+    instrumentationKey:"100a91c6-40e4-4e8e-a4ee-57873dc4eee3"
+}));
+
+window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&appInsights.trackPageView();
+</script>
+<script type="text/javascript">
+var appInsights=window.appInsights||function(a){
+    function b(a){c[a]=function(){var b=arguments;c.queue.push(function(){c[a].apply(c,b)})}}var c={config:a},d=document,e=window;setTimeout(function(){var b=d.createElement("script");b.src=a.url||"https://az416426.vo.msecnd.net/scripts/a/ai.0.js",d.getElementsByTagName("script")[0].parentNode.appendChild(b)});try{c.cookie=d.cookie}catch(a){}c.queue=[];for(var f=["Event","Exception","Metric","PageView","Trace","Dependency"];f.length;)b("track"+f.pop());if(b("setAuthenticatedUserContext"),b("clearAuthenticatedUserContext"),b("startTrackEvent"),b("stopTrackEvent"),b("startTrackPage"),b("stopTrackPage"),b("flush"),!a.disableExceptionTracking){f="onerror",b("_"+f);var g=e[f];e[f]=function(a,b,d,e,h){var i=g&&g(a,b,d,e,h);return!0!==i&&c["_"+f](a,b,d,e,h),i}}return c
+}({
+    instrumentationKey:"100a91c6-40e4-4e8e-a4ee-57873dc4eee3"
+});
+
+window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&appInsights.trackPageView();
+</script><meta property="og:url" content="http://localhost:1313/post/steps-for-blazor-marvel---webassembly/">
+  <meta property="og:site_name" content="Azure Readiness starts here...">
+  <meta property="og:title" content="Festive Tech Calendar 2022 - Building a Marvel Hero app using Blazor Web Assembly and Azure Static Web Apps">
+  <meta property="og:description" content="Building a Marvel Hero catalog app using Blazor Web Assembly
+Introduction This article describes all the steps on how to develop a Marvel Hero catalog app, using Blazor Web Assembly, and is a companion guide to the Festive Tech Calendar 2022 session I presented. This app introduces Blazor .NET development, and more specifically how to easily create a Single Page App using HTML, CSS and API calls to an external API Service at https://developer.marvel.com">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2022-12-28T00:00:00+00:00">
+    <meta property="article:modified_time" content="2022-12-28T00:00:00+00:00">
+    <meta property="article:tag" content="Blazor">
+    <meta property="article:tag" content="Azure">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Festive Tech Calendar 2022 - Building a Marvel Hero app using Blazor Web Assembly and Azure Static Web Apps">
+<meta name="twitter:description" content="Building a Marvel Hero catalog app using Blazor Web Assembly
+Introduction
+This article describes all the steps on how to develop a Marvel Hero catalog app, using Blazor Web Assembly, and is a companion guide to the Festive Tech Calendar 2022 session I presented. This app introduces Blazor .NET development, and more specifically how to easily create a Single Page App using HTML, CSS and API calls to an external API Service at https://developer.marvel.com">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://localhost:1313/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Festive Tech Calendar 2022 - Building a Marvel Hero app using Blazor Web Assembly and Azure Static Web Apps",
+      "item": "http://localhost:1313/post/steps-for-blazor-marvel---webassembly/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Festive Tech Calendar 2022 - Building a Marvel Hero app using Blazor Web Assembly and Azure Static Web Apps",
+  "name": "Festive Tech Calendar 2022 - Building a Marvel Hero app using Blazor Web Assembly and Azure Static Web Apps",
+  "description": "Building a Marvel Hero catalog app using Blazor Web Assembly\nIntroduction This article describes all the steps on how to develop a Marvel Hero catalog app, using Blazor Web Assembly, and is a companion guide to the Festive Tech Calendar 2022 session I presented. This app introduces Blazor .NET development, and more specifically how to easily create a Single Page App using HTML, CSS and API calls to an external API Service at https://developer.marvel.com\n",
+  "keywords": [
+    "Blazor", "Azure"
+  ],
+  "articleBody": "Building a Marvel Hero catalog app using Blazor Web Assembly\nIntroduction This article describes all the steps on how to develop a Marvel Hero catalog app, using Blazor Web Assembly, and is a companion guide to the Festive Tech Calendar 2022 session I presented. This app introduces Blazor .NET development, and more specifically how to easily create a Single Page App using HTML, CSS and API calls to an external API Service at https://developer.marvel.com\nAs I am learning development with .NET for the first time in 47 years, and succeeding in having an actual app up-and-running, I wanted to share my experience, inspiring other readers (and viewers of the session) to learn coding as well. And maybe becoming a passionate Marvel Comics fan as myself.\nI hope you enjoy the steps, feel free to contribute to this project at petender/FestiveBlazor2022live (github.com) if you want to co-learn more Blazor stuff together with me.\nPrerequisites If you want to follow along and building this sample app from scratch, you need a few tools to get started:\nVisual Studio 2022 to develop the application (VSCode or other dev tools will work as well) Community Edition can be downloaded for free here (Visual Studio 2022 Community Edition – Download Latest Free Version (microsoft.com)) GitHub Account to store the application code in source control Sign Up for free here (https://github.com/join) Azure Subscription to run Azure Static Web Apps web application Get a Free Azure Subscription here (https://azure.microsoft.com/en-us/free/) Marvel Developer Account to get access to the API back-end Register for free at https://developer.marvel.com Deploying your first Blazor Web Assembly app from a template Visual Studio provides Blazor Web Assembly templates, both as an “empty template”, as well as one with a functional “sample weather app”. Although I won’t use a lot from the template, I like to start with the weather app sample application, as it comes with all necessary building blocks to get started.\nLaunch Visual Studio 2022, and select Create New Project From the list of templates, select Blazor Web Assembly App Click Next to continue the project creation wizard Select .NET 7 (Standard Term Support) as Framework version Keep all other default settings as is Click Create to complete the project creation wizard and wait for the template to get deployed in the Visual Studio development environment. The Solution Explorer looks like below: Run the app by pressing Ctrl-F5 or select Run from the upper menu (the green arrow) and wait for the compile and build phase to complete. The web app should load successfully in a new browser window. Wander around the different parts of the web app to get a bit familiar with the features. The Home button brings up the index.razor page, and can be seen as the Homepage of the app. The + Counter Page demonstrates how you can build out interaction using buttons and running a count function. The Fetch data section shows a basic outcome of an API-call to a JSON-data-structure, to publish data in a gridview. Close the browser, which brings you back into the Visual Studio development environment. This confirms the Blazor Web Assembly app is running as expected In the next section, you learn how to update the index.razor page and add your own custom HTML-layout, CSS structure and actual runtime code.\nUpdating the template with your custom code Blazor allows you to combine web page layout code, basically HTML and CSS, together with actual application source code, in the same razor files. I can’t compare it with previous development environments, but it seems to be one of the great things about Blazor – and I really like it, since it’s somewhat simplifying the structure of your application source code itself.\nAnother take is creating the web page layout first, and only adding logic later on. So let’s start with creating a basic web page, adding a search field and a button\nYou can chose to reuse the index.razor sample page and continue from there, or create a new Razor Page and update the route path. For simplicity and ease of this scenario, I’m reusing the existing index.razor page. In this part, we start with adding a search field and a search button to the web page layout. Insert the following snippet of code: \u003c**PageTitle**\u003eIndex\u003c/**PageTitle**\u003e \u003ch1 class=\"text-center text-primary\"\u003e Blazor Marvel Finder\u003c/h1\u003e \u003cdiv class=\"text-center\"\u003e \u003cdiv class=\"p-2\"\u003e \u003cinput class=\"form-control form-control-lg w-50 mx-auto mt-4\" placeholder=\"Enter Marvel Character\" /\u003e \u003c/div\u003e \u003cdiv class=\"p-2\"\u003e \u003cbutton class=\"btn btn-primary btn-lg\"\u003eFind your Favorite Marvel Hero\u003c/button\u003e \u003c/div\u003e \u003c/div\u003e This adds the necessary objects on the web page. And let’s run this update to see what we have for now. So the layout for the search part of the app is done. Let’s move on with the design of the actual response / result items. The return from the Marvel API can be presented in a table gridview, but that’s not that nice-looking; I remembered having physical cards as collector items as a kid, so I did some searching for a similar digital experience. Interesting enough, there is a CSS-class object “card”, which nicely reflects this experience. So let’s add the next snippet of code for this response layout. Add the following code: \u003cdiv class=\"container\"\u003e \u003cdiv class=\"row row-cols-1 row-cols-md-2 row-cols-lg-3\"\u003e \u003cdiv class=\"col mb-4\"\u003e \u003cdiv class=\"card\"\u003e \u003cimg src=\"https://via.placeholder.com/300x200\" class=\"card-img-top\"\u003e \u003cdiv class=\"card-body\"\u003e \u003ch5 class=\"card-title\"\u003eMarvel Hero Name\u003c/h5\u003e \u003cp class=\"card-text\"\u003e Character details \u003c/p\u003e \u003c/div\u003e \u003c/div\u003e \u003c/div\u003e \u003c/div\u003e \u003c/div\u003e What this snippet does, is adding a “container” object, in which we create a small table view having 3 rows and 1 column. The card composition shows the Hero title on top, the Marvel Hero character details in the middle and an image of the character as well.\nLet’s run the code again to test if everything works as expected. Now wait, we lose quite some time on stopping the app, updating code, starting it again – so what we can do is use the new VS2022 feature called Hot Reload / if I set this to “Hot Reload on Save”, it will dynamically update the runtime state of the app based on my edits. Let’s check it out. While in debugging mode, check the “flame” icon in the menu: Enable the setting “Hot Reload on File Save”. Edit the card-title “Marvel Hero Name” to “Marvel Character Name” and check how the app refreshes itself without needing to stop/start. The search field is not doing anything yet, so we need to make sure – that whenever we type something in that field, it kicks of an API call to the Marvel API back-end. First, we need to use the bind-value parameter for this field, linking it to a search task; Update the line with the field box as follows: \u003cinput class=\"form-control form-control-lg w-50 mx-auto mt-4\" placeholder=\"Enter Marvel Character\" @bind-value=\"whotofind\" /\u003e add @bind-value=”whotofind” at the end of the line\nIgnore the errors regarding the “whotofind” for now.\nNext, we need to update the button code to actually pick up an action when clicking on it; this is done using the @onclick event\nAdd @onclick=FindMarvel\nThe code snippet complains about unknown attributes, which is what we need to add in the actual code section of the app page: Those were the 2 placeholders for the Blazor code section, which can be defined within the same Razor page, a rather unique approach to Blazor code. Save the updates again; notice how Hot Reload is not able to refresh the changes just like that, since it is more than just a cosmetic change in HTML. Click Edit for now, since we will add more code to the Page. Add the following @code section below the HTML/CSS layout\nWithin the curly brackets, we can use regular C# code Start with defining a string for the “whotofind” Followed by defining a method (task) for the FindMarvel onclick action – for now, let’s write something to the console to validate our search field is working as expected The code syntax looks like this:\nprivate string whotofind; private async Task FindMarvel() { Console.WriteLine(whotofind); } The string “whotofind” refers to the search field object, where the Task “FindMarvel” refers to the button click action. So easy said, whenever we click the button, it will pick up the string content from the search field, and send it to the Marvel API back-end. As we don’t have that yet, I’m just writing the data to the console, which is always a great test to validate the code is working as expected. Save the file, which will throw a warning regarding the hot reload. Since we added new actual code snippets, hot reload can’t just go and recognize it. So a reload is needed… Select “Rebuild and Apply Changes”\nEnter the name of a Marvel character, for example “thor”, which will move that to the Output console. This confirms both the bind-value property as well as the search button and corresponding action behind it is working as it should be.\nI think the app is ready from our perspective, so it’s time to set up the Marvel API-part of the solution in the next section.\nConfiguring the Marvel Developer API Backend head over to the Marvel Developer website https://developer.marvel.com and grab the necessary API information. Select Create Account + Accept Terms \u0026 Conditions\nGrab the API keys (public \u0026 private)\nPublic: 579a41c9eccaf70a3a09c1xxxxxxxxxxx\nPrivate: 6362bd53a4c307c96fb27xxxxxxxxxx\nTo allow requests to come into the Marvel API back-end, you need to specify the source URL domains where the requests are coming from. Add localhost here, which is the URL you use for all testing on your development workstation. Later on, once the app runs in Azure, you need to add the Azure Service URL here as well…\nOnce set up, head over to “interactive documentation”, and walk through the different API placeholders and keywords one can use, to show the capabilities. For the app later on, we will use the “namestartswith”, as it is the most easy to use – names could work, but it requires knowing the explicit name of the character, and having it correctly spelled. Click the “Try it out” button. The result shows the outcome + the exact URL that was used: Blazor Web Assembly already has an HTTP Client built-in, although if you want, you could also find Nuget packages that provide similar functionality – but for now, let’s stick with the built-in one. The details of this service are part of the program.cs file The hostenvironment points to our local development workstation, so the only thing we need to do hear is changing this Uri to the Marvel API Gateway Uri, as follows: https://gateway.marvel.com:443/v1/public/\"\nbuilder.Services.AddScoped(sp =\u003e new HttpClient { BaseAddress = new Uri(“https://gateway.marvel.com:443/v1/public/\") });\nnext, relying on Blazor dependency injection, create a reference to the HTTPCLient in your Blazor index.razor page @page \"/\" @inject HttpClient HttpClient \u003c**PageTitle**\u003eIndex\u003c/**PageTitle**\u003e As you could see from the Marvel output, they are using JSON; this means, when calling the HttpClient, we also receive a JSON object back, which is not useful for presenting the data as such. What we need to do is deserialize the result, for which we create a class A useful website for helping with this, is jSON2CSharp.com, allowing you to paste in a JSON payload, which gets converted to c# class structure In the VStudio project, create a new folder “Models”, and add a new Item in there, called MarvelResult.cs We could copy the content from the JSON deserialize output into this class object, but for this sample, we don’t need all the provided data by Marvel – so I made some changes and ended up with the core pieces of data I want, like image, name, description The code snippet looks like follows:\n{ public class MarvelResult { public string AttributionText { get; set; } public Datawrapper Data { get; set; } public class Datawrapper { public List\u003cResult\u003e Results { get; set; } } public class Result { public int Id { get; set; } public string Name { get; set; } public string Description { get; set; } public Image Thumbnail { get; set; } public class Image { public string Path { get; set; } public string Extension { get; set; } } } } } With the class in place, let’s update the code to compile the dynamic URL, instead of the fixed gateway.marvel.com one. First, we need to add a private MarvelResult, reflecting the data class we just created; private MarvelResult _marvelResult; as we stored this in a different folder within the application source code, we also need to update our Page details, telling it to “use” the Models subfolder to find it. This is done using the @using statement on top of the index.razor Where now the Class gets nicely recognized\nLet’s update the Task FIndMarvel, with the required code snippet to recognize the dynamic URL to connect to, as well as calling the HttpClient function As per the Marvel API docs, we need to integrate the api Private key into our URL search string, so we have to define the string for this @code { private MarvelResult _marvelResult; private string whotofind; private string MarvelapiKey = \"579a41c9eccaf70a3a09c1722ef6c2fc\"; After which we can update the Task FindMarvel as follows: private async Task FindMarvel() { Console.WriteLine(whotofind); var url = $\"characters?nameStartsWith={whotofind}\u0026apikey={MarvelapiKey}\"; _marvelResult = await HttpClient.GetFromJsonAsync\u003cMarvelResult\u003e(url, new System.Text.Json.JsonSerializerOptions { PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase }); } Where the url is coming from the gateway.marvel.com part in the HttpClient service definition + the dynamic url part where we specify the characters search option, the nameStartsWith, pointing at the bind-value object whotofind, and adding the MarvelapiKey string. While all the code pieces are done, note that .NET6 started checking for Nullable values. This is what the green squickly lines are identifying. What this means is that the value could be equal to null, which could potentially break your application, since it expects to have a real value in there. I wouldn’t recommend it to change, but for this little sample app, it would be totally OK to disable the nullable check. This can be done from the Properties of the Project That’s all from a code snippet perspective, where now the last piece of updates is back into the HTML Layout of the web page itself, updating the content of the card object: Since we most probably get an array of results back, meaning more than one, we need to go through a “for each” loop; also, there might be scenarios where we are not getting back any results (like the character doesn’t exist, a typo in the character’s name,…), so we will add a little validation check on that too, using an if = !null Let’s go ahead!\nAt the top of the card object (class=container), or right below the section where we defined the search button, insert the @if statement, and move the whole div section between the curly brackets @if (_marvelResult != null) { \u003cdiv class=\"container\"\u003e Next, define the @foreach loop for the actual card item, and update the image placeholder URL with the content from the MarvelResult JSON string (thumbnail path and extension: @foreach (var result in _marvelResult.Data.Results) { \u003cdiv class=\"col mb-4\"\u003e \u003cdiv class=\"card\"\u003e \u003cimg src=\"@($\"{result.Thumbnail.Path}.{result.Thumbnail.Extension}\")\" class=\"card-img-top\"\u003e \u003cdiv class=\"card-body\"\u003e \u003ch5 class=\"card-title\"\u003e@result.Name\u003c/h5\u003e \u003cp class=\"card-text\"\u003e @result.Description \u003c/p\u003e \u003c/div\u003e \u003c/div\u003e \u003c/div\u003e } Run the app and see the result in action That’s it for now. Great job! Making the cards ‘flip’ Note: this part is left out of the Festive Tech Calendar presentation to keep the video within the expected time – what we’re doing here is integrating more CSS layout components on to a new Page in the web app, which provides a more dynamic look-and-feel to the Marvel cards we have.\nWhile CSS can be difficult – and trust me it is – I literally googled for “flipping cards CSS” and found a snippet of code on https://w3schools.com, and it worked almost straight away…\nHere we go:\nLet’s copy the current state of the page we have, and store it in a different page; so we grab index.razor and copy/paste it to flip.razor this will allow me to also demonstrate some other Blazor features around Menu Navigation and how to use object-specific css; meaning, CSS that will only be picked up by the specific page, and not interfere with the rest of the application CSS we already have.\nOpen flip.razor page; First thing we need to change, is the Page Routing, pointing to the “/flip” routing directory instead of the “/”, as that one is linked to the index.razor page.\nGo to this link: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_flip_card\nSelect the code between the objects, including the / tags\n\u003cstyle\u003e body { font-family: Arial, Helvetica, sans-serif; } .flip-card { background-color: transparent; width: 300px; height: 300px; perspective: 1000px; } .flip-card-inner { position: relative; width: 300px; height: 300px; text-align: center; transition: transform 0.6s; transform-style: preserve-3d; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); } .flip-card:hover .flip-card-inner { transform: rotateY(180deg); } .flip-card-front, .flip-card-back { position: absolute; width: 300px; height: 300px; -webkit-backface-visibility: hidden; backface-visibility: hidden; } .flip-card-front { background-color: #bbb; color: black; } .flip-card-back { background-color: #2980b9; color: white; transform: rotateY(180deg); } \u003c/style\u003e and paste this under the @using section and the section of the code you already have (Note: ignore the @using marveltake2.models in the screenshot, it’s the name of my test project) Next, we need to update the layout of the card item itself, in the section within the “foreach” loop, as that’s where the data is coming in, and getting displayed @foreach(var result in _marvelResult.Data.Results)\n{ \u003cdiv class=\"col mb-4\"\u003e \u003cdiv class=\"flip-card\"\u003e \u003cdiv class=\"flip-card-inner\"\u003e \u003cdiv class=\"flip-card-front\"\u003e \u003cimg class=\"thumbnail\" src=\"@($\"{result.Thumbnail.Path}.{result.Thumbnail.Extension}\")\" style=\"width:300px;height:300px;\"\u003e \u003c/div\u003e \u003cdiv class=\"flip-card-back\"\u003e \u003ch5\u003e@result.Name\u003c/h5\u003e \u003cp\u003e @result.Description \u003c/p\u003e \u003c/div\u003e \u003c/div\u003e \u003c/div\u003e \u003c/div\u003e } What we do here is basically pointing to the different CSS-snippets for each style we want to get applied; we have the flip-card div class, next the flip-card-inner and flip-card-front. For the front, we want to use the image, so we keep the img class details as is, but change the width and height to 300px, to make sure it looks like a nice rectangular on screen.\nNext, we add a class for the flip-card-back, where we will show the Marvel character name and description.\nThat’s all we need to have for now; so let’s have a look, by launching the app\nSince the previous page was index.razor, it’s getting loaded by design (from the index.html). so we need to update the URL to pick up the /flip page, by adding it to the end of the URL, such as https://localhost:7110?flip (note, the port number will be different on your end) Search for a character, and see the outcome cards: About the same as before, but let’s hoover over a card: It flips and shows the character name and description (if provided by Marvel) to the back of the card Cool!!\nLet’s switch back to the code and add a menu item for the “flip” page to our left-side navigation menu. Open the file NavMenu.razor within the Shared folder. Add a new section for this menu item, by copying one from above + make minor changes to the href reference (flip) and change the Menu item word to Flip The icons are coming from the open iconic library, which is also referenced as part of Blazor bootstrap. Know you can change to MudBlazor, Telerik Progress or several other bootstrap frameworks to have layout-rich styles. Open https:://useiconic.com and find a suitable icon, for example loop-circular \u003cdiv class=\"nav-item px-3\"\u003e \u003c**NavLink** class=\"nav-link\" href=\"flip\"\u003e \u003cspan class=\"oi oi-loop-circular\" aria-hidden=\"true\"\u003e\u003c/span\u003e Flip \u003c/**NavLink**\u003e \u003c/div\u003e When you run the app again, the new Menu item will appear. Given the href=”flip”, it will redirect to the base URL (https://localhost:7110) /flip route Since we are changing the layout a bit here, why not modify the default purple color from the Blazor template, to the well-known Marvel dark-red?\nOpen MainLayout.razor Notice the Paste in the following style object: \u003cdiv style=\"background-image:none;background-color:darkred;\" class=\"sidebar\"\u003e This changes the default purple color to darkred. This completes our development part. Let’s move on to the next step, and integrate our app code with GitHub Source Control (which actually should have happened at the start, before writing a single line of code – but hey, it’s a sample scenario right) Integrating Visual Studio with GitHub Source Control With that, let’s close this project and save it to GitHub; so you can grab it as a reference. From the explorer, click “Git changes” tab and select Create GitHub Repository Click Create and Push, and provide a description as commit message (I typically call this first action the “init”).\nWait for the git clone action to complete successfully. Connect to the GitHub repository and confirm all source code is there.\nNote: the actual source code I used for the Festive Tech Calendar presentation can be found here: petender/FestiveBlazor2022live (github.com)\nWhenever you would make changes in the source code in Visual Studio and save the changes, Git Source Control will keep track of these and allowing you to commit the changes into the GitHub repository. I would recommend you to commit changes frequently, basically after each “important” update to the code. Publish Blazor Web Assembly app to Azure Static Web Apps In this last section, I will show you how to publish this webapp to Azure Static Web Apps, a web hosting service in Azure for static web frameworks like Blazor, React, Vue and several other.\nFrom the Azure Portal, create new resource / static web app\nProvide base information for this deployment:\nResource group – any name of choice\nName of the app – any unique name for the app\nSource = GitHub\nPlan = Free\nRegion = any region of your choice\nScroll down and authenticate to GitHub; Next, select your source repo in Github where the code is stored (the one we just created)\nClick Build Details to provide more parameters regarding the Blazor app itself. Note you need to change the default App location from /Client to /, since our source code is in the root of the Blazor Web Assembly, without using ASP.Net hosted back-end.\nOnce published, it will trigger a GitHub Actions pipeline to publish the actual content\nThe YAML pipeline code is stored in the .github/workflows/ subfolder within the GitHub repository. You shouldn’t need to update this file though. It just works out-of-the-box.\nCheck in Actions what’s happening:\nOpen the details for the Build \u0026 Deploy workflow\nSelecting any step in the Action workflow will show more details:\nWait for the workflow to complete successfully.\nNavigate back to the Azure Static Web app, click it’s URL and see the Blazor Web App is running as expected.\nWhen searching for a Marvel Character, this throws an error though, which can be validated from the Inspect option of the browser:\nRemember at the start, where we configured the API calls at the Marvel Developer site, we needed to specify the source URLs from where the calls are allowed. This Azure Static Web App URL is not configured. (Hence why I didn’t worry too much about including my APIKey as hard-coded string in the source code).\nClick Update to save those changes. Trigger a new search, which should reveal the actual Marvel character details. Remember you can use both the default (index) page, as well as the flip page.\nSummary In this article, I provided all the necessary steps to build a Blazor Web Assembly application. Started from the default template, you updated snippets of code to create a search field and corresponding action button to trigger the search. You learned about using HTTPClient to interact with an external API Back-End. Once this was all working, you looked into using some additional “flip card” CSS layout features, and how to update the Blazor Navigation Menu.\nOnce the development work was done, we saved the code in a GitHub repository.\nLast, you deployed an Azure Static Web App, interacting with the GitHub repository to pick up the source code and publish it using GitHub Actions workflow.\nI would like to thank the organizing team of Festive Tech Calendar 2022 for having accepted my session submission for the 3rd year in a row. Especially since this was my first attempt to do some (semi)live coding, to share my excitement of how I learned to write and build code at age 47. I’m already brainstorming on what Blazor app I can share in next year’s edition\nHappy Holidays everyone!\n/Peter\n",
+  "wordCount" : "4032",
+  "inLanguage": "en",
+  "datePublished": "2022-12-28T00:00:00Z",
+  "dateModified": "2022-12-28T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Peter De Tender"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/post/steps-for-blazor-marvel---webassembly/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Azure Readiness starts here...",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Azure Readiness starts here... (Alt + H)">Azure Readiness starts here...</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/post/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/books/" title="Books">
+                    <span>Books</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/post/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Festive Tech Calendar 2022 - Building a Marvel Hero app using Blazor Web Assembly and Azure Static Web Apps
+    </h1>
+    <div class="post-meta"><span title='2022-12-28 00:00:00 +0000 UTC'>December 28, 2022</span>&nbsp;·&nbsp;<span>19 min</span>&nbsp;·&nbsp;<span>4032 words</span>&nbsp;·&nbsp;<span>Peter De Tender</span>
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><nav id="TableOfContents"></nav>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>Building a Marvel Hero catalog app using Blazor Web Assembly</p>
+<h1 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h1>
+<p>This article describes all the steps on how to develop a Marvel Hero catalog app, using Blazor Web Assembly, and is a companion guide to the Festive Tech Calendar 2022 session I presented. This app introduces Blazor .NET development, and more specifically how to easily create a Single Page App using HTML, CSS and API calls to an external API Service at <a href="https://developer.marvel.com">https://developer.marvel.com</a></p>
+<p>As I am learning development with .NET for the first time in 47 years, and succeeding in having an actual app up-and-running, I wanted to share my experience, inspiring other readers (and viewers of the session) to learn coding as well. And maybe becoming a passionate Marvel Comics fan as myself.</p>
+<p>I hope you enjoy the steps, feel free to contribute to this project at <a href="https://github.com/petender/FestiveBlazor2022live">petender/FestiveBlazor2022live (github.com)</a> if you want to co-learn more Blazor stuff together with me.</p>
+<p><img loading="lazy" src="../images//4877892754490f536f9fdb606c2973a0.png"></p>
+<h1 id="prerequisites">Prerequisites<a hidden class="anchor" aria-hidden="true" href="#prerequisites">#</a></h1>
+<p>If you want to follow along and building this sample app from scratch, you need a few tools to get started:</p>
+<ul>
+<li>Visual Studio 2022 to develop the application (VSCode or other dev tools will work as well)
+<ul>
+<li>Community Edition can be downloaded for free here (<a href="https://visualstudio.microsoft.com/vs/community/">Visual Studio 2022 Community Edition – Download Latest Free Version (microsoft.com)</a>)</li>
+</ul>
+</li>
+<li>GitHub Account to store the application code in source control
+<ul>
+<li>Sign Up for free here (<a href="https://github.com/join">https://github.com/join</a>)</li>
+</ul>
+</li>
+<li>Azure Subscription to run Azure Static Web Apps web application
+<ul>
+<li>Get a Free Azure Subscription here (<a href="https://azure.microsoft.com/en-us/free/">https://azure.microsoft.com/en-us/free/</a>)</li>
+</ul>
+</li>
+<li>Marvel Developer Account to get access to the API back-end
+<ul>
+<li>Register for free at <a href="https://developer.marvel.com">https://developer.marvel.com</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="deploying-your-first-blazor-web-assembly-app-from-a-template">Deploying your first Blazor Web Assembly app from a template<a hidden class="anchor" aria-hidden="true" href="#deploying-your-first-blazor-web-assembly-app-from-a-template">#</a></h1>
+<p>Visual Studio provides Blazor Web Assembly templates, both as an “empty template”, as well as one with a functional “sample weather app”. Although I won’t use a lot from the template, I like to start with the weather app sample application, as it comes with all necessary building blocks to get started.</p>
+<ol>
+<li>Launch <strong>Visual Studio 2022</strong>, and select <strong>Create New Project</strong></li>
+<li>From the list of templates, select <strong>Blazor Web Assembly App</strong></li>
+</ol>
+<p><img alt="Graphical user interface, text, application Description automatically generated" loading="lazy" src="../images//346d3ff20756116b64f5b9a3bb0b7a89.png"></p>
+<ol>
+<li>Click <strong>Next</strong> to continue the project creation wizard</li>
+<li>Select <strong>.NET 7</strong> (Standard Term Support) as Framework version</li>
+<li>Keep all other default settings as is</li>
+</ol>
+<p><img alt="Graphical user interface, text, application, email Description automatically generated" loading="lazy" src="../images//dc2d3620ce75ab09c4a69cca0d6abca5.png"></p>
+<ol>
+<li>Click <strong>Create</strong> to complete the project creation wizard and wait for the template to get deployed in the Visual Studio development environment. The Solution Explorer looks like below:</li>
+</ol>
+<p><img alt="Graphical user interface, text, application, email Description automatically generated" loading="lazy" src="../images//a0423ea6058f8059f67f3a6ffbe83568.png"></p>
+<ol>
+<li>Run the app by pressing <strong>Ctrl-F5</strong> or select <strong>Run</strong> from the upper menu (the green arrow) and wait for the compile and build phase to complete. The web app should load successfully in a new browser window.</li>
+</ol>
+<p><img alt="Graphical user interface, application Description automatically generated" loading="lazy" src="../images//4e3fc2454745fe4f43d837e2d8b90d16.png"></p>
+<ol>
+<li>Wander around the different parts of the web app to get a bit familiar with the features. The Home button brings up the index.razor page, and can be seen as the Homepage of the app. The + Counter Page demonstrates how you can build out interaction using buttons and running a count function. The Fetch data section shows a basic outcome of an API-call to a JSON-data-structure, to publish data in a gridview.</li>
+<li>Close the browser, which brings you back into the Visual Studio development environment.</li>
+<li>This confirms the Blazor Web Assembly app is running as expected</li>
+</ol>
+<p>In the next section, you learn how to update the index.razor page and add your own custom HTML-layout, CSS structure and actual runtime code.</p>
+<h1 id="updating-the-template-with-your-custom-code">Updating the template with your custom code<a hidden class="anchor" aria-hidden="true" href="#updating-the-template-with-your-custom-code">#</a></h1>
+<p>Blazor allows you to combine web page layout code, basically HTML and CSS, together with actual application source code, in the same razor files. I can’t compare it with previous development environments, but it seems to be one of the great things about Blazor – and I really like it, since it’s somewhat simplifying the structure of your application source code itself.</p>
+<p>Another take is creating the web page layout first, and only adding logic later on. So let’s start with creating a basic web page, adding a search field and a button</p>
+<ol>
+<li>You can chose to reuse the index.razor sample page and continue from there, or create a new Razor Page and update the route path. For simplicity and ease of this scenario, I’m reusing the existing index.razor page.</li>
+<li>In this part, we start with adding a search field and a search button to the web page layout. Insert the following snippet of code:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="p">&lt;**</span><span class="n">PageTitle</span><span class="p">**&gt;</span><span class="n">Index</span><span class="p">&lt;/**</span><span class="n">PageTitle</span><span class="p">**&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="n">h1</span> <span class="n">class</span><span class="p">=</span><span class="s">&#34;text-center text-primary&#34;</span><span class="p">&gt;</span> <span class="n">Blazor</span> <span class="n">Marvel</span> <span class="n">Finder</span><span class="p">&lt;/</span><span class="n">h1</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="p">=</span><span class="s">&#34;text-center&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="p">=</span><span class="s">&#34;p-2&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="n">input</span> <span class="n">class</span><span class="p">=</span><span class="s">&#34;form-control form-control-lg w-50 mx-auto mt-4&#34;</span> <span class="n">placeholder</span><span class="p">=</span><span class="s">&#34;Enter Marvel Character&#34;</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="n">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="p">=</span><span class="s">&#34;p-2&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="n">button</span> <span class="n">class</span><span class="p">=</span><span class="s">&#34;btn btn-primary btn-lg&#34;</span><span class="p">&gt;</span><span class="n">Find</span> <span class="n">your</span> <span class="n">Favorite</span> <span class="n">Marvel</span> <span class="n">Hero</span><span class="p">&lt;/</span><span class="n">button</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="n">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="n">div</span><span class="p">&gt;</span>
+</span></span></code></pre></div><ol>
+<li>This adds the necessary objects on the web page.</li>
+<li>And let’s run this update to see what we have for now.</li>
+</ol>
+<p><img alt="Graphical user interface, application Description automatically generated" loading="lazy" src="../images//2203f41bba0a5cd31dbcf283685239b5.png"></p>
+<ol>
+<li>So the layout for the search part of the app is done. Let’s move on with the design of the actual response / result items. The return from the Marvel API can be presented in a table gridview, but that’s not that nice-looking; I remembered having physical cards as collector items as a kid, so I did some searching for a similar digital experience. Interesting enough, there is a CSS-class object “card”, which nicely reflects this experience. So let’s add the next snippet of code for this response layout.</li>
+<li>Add the following code:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="p">=</span><span class="s">&#34;container&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="p">=</span><span class="s">&#34;row row-cols-1 row-cols-md-2 row-cols-lg-3&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="p">=</span><span class="s">&#34;col mb-4&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="p">=</span><span class="s">&#34;card&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="p">=</span><span class="s">&#34;https://via.placeholder.com/300x200&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">class</span><span class="p">=</span><span class="s">&#34;card-img-top&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="p">=</span><span class="s">&#34;card-body&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="n">h5</span> <span class="n">class</span><span class="p">=</span><span class="s">&#34;card-title&#34;</span><span class="p">&gt;</span><span class="n">Marvel</span> <span class="n">Hero</span> <span class="n">Name</span><span class="p">&lt;/</span><span class="n">h5</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="n">p</span> <span class="n">class</span><span class="p">=</span><span class="s">&#34;card-text&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">Character</span> <span class="n">details</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="n">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="n">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="n">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="n">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="n">div</span><span class="p">&gt;</span>
+</span></span></code></pre></div><p>What this snippet does, is adding a “container” object, in which we create a small table view having 3 rows and 1 column. The card composition shows the Hero title on top, the Marvel Hero character details in the middle and an image of the character as well.</p>
+<ol>
+<li>Let’s run the code again to test if everything works as expected.</li>
+</ol>
+<p><img alt="Graphical user interface, text, application, chat or text message Description automatically generated" loading="lazy" src="../images//206d69e62ef3c84e6ba58653a5dcc975.png"></p>
+<ol>
+<li>Now wait, we lose quite some time on stopping the app, updating code, starting it again – so what we can do is use the new VS2022 feature called Hot Reload / if I set this to “Hot Reload on Save”, it will dynamically update the runtime state of the app based on my edits. Let’s check it out.</li>
+<li>While in debugging mode, check the “flame” icon in the menu:</li>
+</ol>
+<p><img alt="Graphical user interface, application Description automatically generated" loading="lazy" src="../images//aac3e147fb9372f56413cd14c4789d98.png"></p>
+<ol>
+<li>Enable the setting “Hot Reload on File Save”.</li>
+<li>Edit the card-title “Marvel Hero Name” to “Marvel Character Name” and check how the app refreshes itself without needing to stop/start.</li>
+</ol>
+<p><img alt="Graphical user interface, application, Word Description automatically generated" loading="lazy" src="../images//39ff9a003fca6aac2471b8027c6ed5b8.png"></p>
+<ol>
+<li>The search field is not doing anything yet, so we need to make sure – that whenever we type something in that field, it kicks of an API call to the Marvel API back-end.</li>
+<li>First, we need to use the bind-value parameter for this field, linking it to a search task; Update the line with the field box as follows:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl">      
+</span></span><span class="line"><span class="cl">     <span class="p">&lt;</span><span class="n">input</span> <span class="n">class</span><span class="p">=</span><span class="s">&#34;form-control form-control-lg w-50 mx-auto mt-4&#34;</span> <span class="n">placeholder</span><span class="p">=</span><span class="s">&#34;Enter Marvel Character&#34;</span> <span class="n">@bind</span><span class="p">-</span><span class="k">value</span><span class="p">=</span><span class="s">&#34;whotofind&#34;</span> <span class="p">/&gt;</span>
+</span></span></code></pre></div><p><img loading="lazy" src="../images//6a1218295f8c2dea8ab453ff28c81d62.png"></p>
+<p>add <strong>@bind-value=”whotofind”</strong> at the end of the line</p>
+<p>Ignore the errors regarding the “whotofind” for now.</p>
+<ol>
+<li>
+<p>Next, we need to update the button code to actually pick up an action when clicking on it; this is done using the @onclick event</p>
+<p>Add <strong>@onclick=FindMarvel</strong></p>
+</li>
+</ol>
+<p><img loading="lazy" src="../images//a224d0544320ffa737cfaf56b90d8fad.png"></p>
+<ol>
+<li>The code snippet complains about unknown attributes, which is what we need to add in the actual code section of the app page:</li>
+</ol>
+<p><img alt="A picture containing text Description automatically generated" loading="lazy" src="../images//5c72b7d3cc9b8e66fc444fee5ba3f502.png"></p>
+<ol>
+<li>Those were the 2 placeholders for the Blazor code section, which can be defined within the same Razor page, a rather unique approach to Blazor code.</li>
+<li>Save the updates again; notice how Hot Reload is not able to refresh the changes just like that, since it is more than just a cosmetic change in HTML.</li>
+</ol>
+<p><img alt="Graphical user interface, text, application, email Description automatically generated" loading="lazy" src="../images//6effed869888d90dae9a5854cc8fb133.png"></p>
+<ol start="18">
+<li>Click Edit for now, since we will add more code to the Page.</li>
+</ol>
+<p>Add the following @code section below the HTML/CSS layout</p>
+<p><img alt="A picture containing application Description automatically generated" loading="lazy" src="../images//635e278b2df728255f471d3f68c03c92.png"></p>
+<ol>
+<li>Within the curly brackets, we can use regular C# code</li>
+<li>Start with defining a string for the “whotofind”</li>
+<li>Followed by defining a method (task) for the FindMarvel onclick action – for now, let’s write something to the console to validate our search field is working as expected</li>
+</ol>
+<p>The code syntax looks like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">private</span> <span class="kt">string</span> <span class="n">whotofind</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">private</span> <span class="kd">async</span> <span class="n">Task</span> <span class="n">FindMarvel</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">whotofind</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><ol>
+<li>The string “whotofind” refers to the search field object, where the Task “FindMarvel” refers to the button click action. So easy said, whenever we click the button, it will pick up the string content from the search field, and send it to the Marvel API back-end. As we don’t have that yet, I’m just writing the data to the console, which is always a great test to validate the code is working as expected.</li>
+</ol>
+<p><img alt="Graphical user interface, text, application, email Description automatically generated" loading="lazy" src="../images//e5009d941ff5ecfac46d8dc3eb5005e5.png"></p>
+<ol>
+<li>Save the file, which will throw a warning regarding the hot reload. Since we added new actual code snippets, hot reload can’t just go and recognize it. So a reload is needed…</li>
+</ol>
+<p><img loading="lazy" src="../images//d0be33cb6858972b3c00724c40f485e3.png"></p>
+<ol>
+<li>
+<p>Select “Rebuild and Apply Changes”</p>
+</li>
+<li>
+<p>Enter the name of a Marvel character, for example “thor”, which will move that to the Output console. This confirms both the bind-value property as well as the search button and corresponding action behind it is working as it should be.</p>
+<p><img alt="Text Description automatically generated" loading="lazy" src="../images//04aa07efd434de84b30d012b6fb9ba8a.png"></p>
+</li>
+<li>
+<p>I think the app is ready from our perspective, so it’s time to set up the Marvel API-part of the solution in the next section.</p>
+</li>
+</ol>
+<h1 id="configuring-the-marvel-developer-api-backend">Configuring the Marvel Developer API Backend<a hidden class="anchor" aria-hidden="true" href="#configuring-the-marvel-developer-api-backend">#</a></h1>
+<ol>
+<li>head over to the Marvel Developer website <a href="https://developer.marvel.com">https://developer.marvel.com</a> and grab the necessary API information.</li>
+</ol>
+<p><img alt="A screenshot of a video game Description automatically generated" loading="lazy" src="../images//fc2a542cfdbca3fb86519841f3f53999.png"></p>
+<ol>
+<li>
+<p>Select Create Account + Accept Terms &amp; Conditions</p>
+</li>
+<li>
+<p>Grab the API keys (public &amp; private)</p>
+<p><strong>Public:</strong> 579a41c9eccaf70a3a09c1xxxxxxxxxxx</p>
+<p><strong>Private:</strong> 6362bd53a4c307c96fb27xxxxxxxxxx</p>
+</li>
+<li>
+<p>To allow requests to come into the Marvel API back-end, you need to specify the source URL domains where the requests are coming from. Add <strong>localhost</strong> here, which is the URL you use for all testing on your development workstation. Later on, once the app runs in Azure, you need to add the Azure Service URL here as well…</p>
+</li>
+</ol>
+<p><img alt="Graphical user interface, text, application, email Description automatically generated" loading="lazy" src="../images//a7dd9d49c1402deb787b6ab792a0fb38.png"></p>
+<ol>
+<li>Once set up, head over to “interactive documentation”, and walk through the different API placeholders and keywords one can use, to show the capabilities. For the app later on, we will use the “namestartswith”, as it is the most easy to use – names could work, but it requires knowing the explicit name of the character, and having it correctly spelled.</li>
+</ol>
+<p><img alt="Graphical user interface, text, application Description automatically generated" loading="lazy" src="../images//d9552cc8c4ec1ff4e0f2e32a767a4f42.png"></p>
+<p><img alt="Text Description automatically generated" loading="lazy" src="../images//57bc3634f004877c8cff9942d9e6e8d3.png"></p>
+<p><img loading="lazy" src="../images//4f749b51a5d1bdf6d51e81f614c8d72a.png"></p>
+<p><img alt="Graphical user interface, text Description automatically generated" loading="lazy" src="../images//9883c08decac6bffde5cb763539b953f.png"></p>
+<ol>
+<li>Click the “Try it out” button. The result shows the outcome + the exact URL that was used:</li>
+</ol>
+<p><img alt="Graphical user interface, text, application Description automatically generated" loading="lazy" src="../images//b3aab53a282e9d00b58ba5c91e81afa0.png"></p>
+<ol>
+<li>Blazor Web Assembly already has an HTTP Client built-in, although if you want, you could also find Nuget packages that provide similar functionality – but for now, let’s stick with the built-in one. The details of this service are part of the <strong>program.cs</strong> file</li>
+</ol>
+<p><img loading="lazy" src="../images//17346fd8ca00d8cb076bf965ffe1860f.png"></p>
+<ol>
+<li>The hostenvironment points to our local development workstation, so the only thing we need to do hear is changing this Uri to the Marvel API Gateway Uri, as follows:</li>
+</ol>
+<p><a href="https://gateway.marvel.com:443/v1/public/%22">https://gateway.marvel.com:443/v1/public/&quot;</a></p>
+<p>builder.Services.AddScoped(sp =&gt; new HttpClient { BaseAddress = new Uri(&ldquo;<a href="https://gateway.marvel.com:443/v1/public/%22">https://gateway.marvel.com:443/v1/public/&quot;</a>) });</p>
+<p><img alt="A picture containing scatter chart Description automatically generated" loading="lazy" src="../images//6a58c2be63ed4f27902531e43cb740c8.png"></p>
+<ol>
+<li>next, relying on Blazor dependency injection, create a reference to the HTTPCLient in your Blazor index.razor page</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">@page</span> <span class="s">&#34;/&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">@inject</span> <span class="n">HttpClient</span> <span class="n">HttpClient</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;**</span><span class="n">PageTitle</span><span class="p">**&gt;</span><span class="n">Index</span><span class="p">&lt;/**</span><span class="n">PageTitle</span><span class="p">**&gt;</span>
+</span></span></code></pre></div><p><img alt="Graphical user interface, text, application Description automatically generated" loading="lazy" src="../images//77d4a8f23696d726c85a0a73bb377649.png"></p>
+<ol>
+<li>As you could see from the Marvel output, they are using JSON; this means, when calling the HttpClient, we also receive a JSON object back, which is not useful for presenting the data as such. What we need to do is deserialize the result, for which we create a class</li>
+</ol>
+<p><img alt="Graphical user interface, text, application Description automatically generated" loading="lazy" src="../images//6ace0a137db04fd541e730b90bf18a42.png"></p>
+<ol>
+<li>A useful website for helping with this, is jSON2CSharp.com, allowing you to paste in a JSON payload, which gets converted to c# class structure</li>
+</ol>
+<p><img alt="Text Description automatically generated" loading="lazy" src="../images//7840c5de3eda79f2d196079bc0081756.png"></p>
+<ol>
+<li>In the VStudio project, create a new folder “Models”, and add a new Item in there, called MarvelResult.cs</li>
+</ol>
+<p><img alt="Graphical user interface, application Description automatically generated" loading="lazy" src="../images//3bb34b057bc24ab07c3280a90a41e829.png"></p>
+<ol>
+<li>We could copy the content from the JSON deserialize output into this class object, but for this sample, we don’t need all the provided data by Marvel – so I made some changes and ended up with the core pieces of data I want, like image, name, description</li>
+</ol>
+<p>The code snippet looks like follows:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">MarvelResult</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">string</span> <span class="n">AttributionText</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="n">Datawrapper</span> <span class="n">Data</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">Datawrapper</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Result</span><span class="p">&gt;</span> <span class="n">Results</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">Result</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">string</span> <span class="n">Description</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="n">Image</span> <span class="n">Thumbnail</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">Image</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">string</span> <span class="n">Path</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">string</span> <span class="n">Extension</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p><img alt="Graphical user interface, text, application, email Description automatically generated" loading="lazy" src="../images//be893ab65370d88766953389372a0361.png"></p>
+<p><img alt="Graphical user interface, application Description automatically generated" loading="lazy" src="../images//6113286c6b043494da253117ca059980.png"></p>
+<ol>
+<li>With the class in place, let’s update the code to compile the dynamic URL, instead of the fixed gateway.marvel.com one. First, we need to add a private MarvelResult, reflecting the data class we just created;</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">private</span> <span class="n">MarvelResult</span> <span class="n">_marvelResult</span><span class="p">;</span>
+</span></span></code></pre></div><p><img alt="Graphical user interface, text, application, email Description automatically generated" loading="lazy" src="../images//a825fa81178e7264d2e102fc9fd6cc2b.png"></p>
+<p><img alt="Graphical user interface, text Description automatically generated" loading="lazy" src="../images//a27435fbce5013ef1f6b578f99e7178b.png"></p>
+<ol>
+<li>as we stored this in a different folder within the application source code, we also need to update our Page details, telling it to “use” the Models subfolder to find it. This is done using the @using statement on top of the index.razor</li>
+</ol>
+<p><img alt="Graphical user interface, application Description automatically generated" loading="lazy" src="../images//b69f2fa62103c959395f9f79d243cb08.png"></p>
+<p>Where now the Class gets nicely recognized</p>
+<p><img alt="Graphical user interface, text, application Description automatically generated" loading="lazy" src="../images//3ab85373e56d2621ce4fa9bffb9e1323.png"></p>
+<ol>
+<li>Let’s update the Task FIndMarvel, with the required code snippet to recognize the dynamic URL to connect to, as well as calling the HttpClient function</li>
+<li>As per the Marvel API docs, we need to integrate the api Private key into our URL search string, so we have to define the string for this</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">@code</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">private</span> <span class="n">MarvelResult</span> <span class="n">_marvelResult</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">private</span> <span class="kt">string</span> <span class="n">whotofind</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">private</span> <span class="kt">string</span> <span class="n">MarvelapiKey</span> <span class="p">=</span> <span class="s">&#34;579a41c9eccaf70a3a09c1722ef6c2fc&#34;</span><span class="p">;</span>
+</span></span></code></pre></div><ol>
+<li>After which we can update the Task FindMarvel as follows:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">private</span> <span class="kd">async</span> <span class="n">Task</span> <span class="n">FindMarvel</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">whotofind</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">url</span> <span class="p">=</span> <span class="s">$&#34;characters?nameStartsWith={whotofind}&amp;apikey={MarvelapiKey}&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">_marvelResult</span> <span class="p">=</span> <span class="k">await</span> <span class="n">HttpClient</span><span class="p">.</span><span class="n">GetFromJsonAsync</span><span class="p">&lt;</span><span class="n">MarvelResult</span><span class="p">&gt;(</span><span class="n">url</span><span class="p">,</span> <span class="k">new</span> <span class="n">System</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="n">Json</span><span class="p">.</span><span class="n">JsonSerializerOptions</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">PropertyNamingPolicy</span> <span class="p">=</span> <span class="n">System</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="n">Json</span><span class="p">.</span><span class="n">JsonNamingPolicy</span><span class="p">.</span><span class="n">CamelCase</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p><img alt="Graphical user interface, application Description automatically generated with medium confidence" loading="lazy" src="../images//88a6f657a0adfca57021b3606066f8db.png"></p>
+<ol>
+<li>Where the url is coming from the gateway.marvel.com part in the HttpClient service definition + the dynamic url part where we specify the characters search option, the nameStartsWith, pointing at the bind-value object whotofind, and adding the MarvelapiKey string.</li>
+<li>While all the code pieces are done, note that .NET6 started checking for Nullable values. This is what the green squickly lines are identifying. What this means is that the value could be equal to null, which could potentially break your application, since it expects to have a real value in there.</li>
+<li>I wouldn’t recommend it to change, but for this little sample app, it would be totally OK to disable the nullable check. This can be done from the Properties of the Project</li>
+</ol>
+<p><img alt="Graphical user interface, text, application, email Description automatically generated" loading="lazy" src="../images//0170c39b8c1b92ea9ab0a98c9b5d9c6b.png"></p>
+<ol>
+<li>That’s all from a code snippet perspective, where now the last piece of updates is back into the HTML Layout of the web page itself, updating the content of the card object:</li>
+<li>Since we most probably get an array of results back, meaning more than one, we need to go through a “for each” loop; also, there might be scenarios where we are not getting back any results (like the character doesn’t exist, a typo in the character’s name,…), so we will add a little validation check on that too, using an if = !null</li>
+</ol>
+<p>Let’s go ahead!</p>
+<ol>
+<li>At the top of the card object (class=container), or right below the <!-- raw HTML omitted --> section where we defined the search button, insert the @if statement, and move the whole div section between the curly brackets</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">@if</span> <span class="p">(</span><span class="n">_marvelResult</span> <span class="p">!=</span> <span class="kc">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="p">=</span><span class="s">&#34;container&#34;</span><span class="p">&gt;</span>
+</span></span></code></pre></div><p><img alt="Text Description automatically generated" loading="lazy" src="../images//ed9d515c32722c11a5710d74544947ff.png"></p>
+<ol>
+<li>Next, define the @foreach loop for the actual card item, and update the image placeholder URL with the content from the MarvelResult JSON string (thumbnail path and extension:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">@foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">result</span> <span class="k">in</span> <span class="n">_marvelResult</span><span class="p">.</span><span class="n">Data</span><span class="p">.</span><span class="n">Results</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="p">=</span><span class="s">&#34;col mb-4&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="p">=</span><span class="s">&#34;card&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="p">=</span><span class="s">&#34;@($&#34;</span><span class="p">{</span><span class="n">result</span><span class="p">.</span><span class="n">Thumbnail</span><span class="p">.</span><span class="n">Path</span><span class="p">}.{</span><span class="n">result</span><span class="p">.</span><span class="n">Thumbnail</span><span class="p">.</span><span class="n">Extension</span><span class="p">}</span><span class="s">&#34;)&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">class</span><span class="p">=</span><span class="s">&#34;card-img-top&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="p">=</span><span class="s">&#34;card-body&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="n">h5</span> <span class="n">class</span><span class="p">=</span><span class="s">&#34;card-title&#34;</span><span class="p">&gt;</span><span class="n">@result</span><span class="p">.</span><span class="n">Name</span><span class="p">&lt;/</span><span class="n">h5</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="n">p</span> <span class="n">class</span><span class="p">=</span><span class="s">&#34;card-text&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">@result</span><span class="p">.</span><span class="n">Description</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="n">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="n">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="n">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><ol>
+<li>Run the app and see the result in action</li>
+</ol>
+<p><img alt="Graphical user interface, website Description automatically generated" loading="lazy" src="../images//44856923dff937c6cad7d953b046c1bd.png"></p>
+<ol>
+<li>That’s it for now. Great job!</li>
+</ol>
+<h1 id="making-the-cards-flip">Making the cards ‘flip’<a hidden class="anchor" aria-hidden="true" href="#making-the-cards-flip">#</a></h1>
+<p><strong>Note: this part is left out of the Festive Tech Calendar presentation to keep the video within the expected time – what we’re doing here is integrating more CSS layout components on to a new Page in the web app, which provides a more dynamic look-and-feel to the Marvel cards we have.</strong></p>
+<p>While CSS can be difficult – and trust me it is – I literally googled for “flipping cards CSS” and found a snippet of code on <a href="https://w3schools.com">https://w3schools.com</a>, and it worked almost straight away…</p>
+<p>Here we go:</p>
+<ol>
+<li>
+<p>Let’s copy the current state of the page we have, and store it in a different page; so we grab <strong>index.razor</strong> and copy/paste it to <strong>flip.razor</strong> this will allow me to also demonstrate some other Blazor features around Menu Navigation and how to use object-specific css; meaning, CSS that will only be picked up by the specific page, and not interfere with the rest of the application CSS we already have.</p>
+</li>
+<li>
+<p>Open flip.razor page; First thing we need to change, is the Page Routing, pointing to the “/flip” routing directory instead of the “/”, as that one is linked to the index.razor page.</p>
+<p><img alt="Graphical user interface, text, application Description automatically generated" loading="lazy" src="../images//46aac649d4ecfb4be03d1ce021141274.png"></p>
+</li>
+<li>
+<p>Go to this link: <a href="https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_flip_card">https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_flip_card</a></p>
+</li>
+<li>
+<p>Select the code between the <!-- raw HTML omitted --> objects, including the <!-- raw HTML omitted -->/<!-- raw HTML omitted --> tags</p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="n">style</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">body</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">font</span><span class="p">-</span><span class="n">family</span><span class="p">:</span> <span class="n">Arial</span><span class="p">,</span> <span class="n">Helvetica</span><span class="p">,</span> <span class="n">sans</span><span class="p">-</span><span class="n">serif</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="n">flip</span><span class="p">-</span><span class="n">card</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">background</span><span class="p">-</span><span class="n">color</span><span class="p">:</span> <span class="n">transparent</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">width</span><span class="p">:</span> <span class="m">300</span><span class="n">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">height</span><span class="p">:</span> <span class="m">300</span><span class="n">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">perspective</span><span class="p">:</span> <span class="m">1000</span><span class="n">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="n">flip</span><span class="p">-</span><span class="n">card</span><span class="p">-</span><span class="n">inner</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">position</span><span class="p">:</span> <span class="n">relative</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">width</span><span class="p">:</span> <span class="m">300</span><span class="n">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">height</span><span class="p">:</span> <span class="m">300</span><span class="n">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">text</span><span class="p">-</span><span class="n">align</span><span class="p">:</span> <span class="n">center</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">transition</span><span class="p">:</span> <span class="n">transform</span> <span class="m">0.6</span><span class="n">s</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">transform</span><span class="p">-</span><span class="n">style</span><span class="p">:</span> <span class="n">preserve</span><span class="p">-</span><span class="m">3d</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">box</span><span class="p">-</span><span class="n">shadow</span><span class="p">:</span> <span class="m">0</span> <span class="m">4</span><span class="n">px</span> <span class="m">8</span><span class="n">px</span> <span class="m">0</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0.2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="n">flip</span><span class="p">-</span><span class="n">card</span><span class="p">:</span><span class="n">hover</span> <span class="p">.</span><span class="n">flip</span><span class="p">-</span><span class="n">card</span><span class="p">-</span><span class="n">inner</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">transform</span><span class="p">:</span> <span class="n">rotateY</span><span class="p">(</span><span class="m">180d</span><span class="n">eg</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="n">flip</span><span class="p">-</span><span class="n">card</span><span class="p">-</span><span class="n">front</span><span class="p">,</span> <span class="p">.</span><span class="n">flip</span><span class="p">-</span><span class="n">card</span><span class="p">-</span><span class="n">back</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">position</span><span class="p">:</span> <span class="n">absolute</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">width</span><span class="p">:</span> <span class="m">300</span><span class="n">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">height</span><span class="p">:</span> <span class="m">300</span><span class="n">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">-</span><span class="n">webkit</span><span class="p">-</span><span class="n">backface</span><span class="p">-</span><span class="n">visibility</span><span class="p">:</span> <span class="n">hidden</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">backface</span><span class="p">-</span><span class="n">visibility</span><span class="p">:</span> <span class="n">hidden</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="n">flip</span><span class="p">-</span><span class="n">card</span><span class="p">-</span><span class="n">front</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">background</span><span class="p">-</span><span class="n">color</span><span class="p">:</span> <span class="err">#</span><span class="n">bbb</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">color</span><span class="p">:</span> <span class="n">black</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="n">flip</span><span class="p">-</span><span class="n">card</span><span class="p">-</span><span class="n">back</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">background</span><span class="p">-</span><span class="n">color</span><span class="p">:</span> <span class="err">#</span><span class="m">2980</span><span class="n">b9</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">color</span><span class="p">:</span> <span class="n">white</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">transform</span><span class="p">:</span> <span class="n">rotateY</span><span class="p">(</span><span class="m">180d</span><span class="n">eg</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="n">style</span><span class="p">&gt;</span>
+</span></span></code></pre></div><ol>
+<li>and paste this under the @using section and the <!-- raw HTML omitted --> section of the code you already have (Note: ignore the @using marveltake2.models in the screenshot, it’s the name of my test project)</li>
+</ol>
+<p><img alt="Graphical user interface, application Description automatically generated" loading="lazy" src="../images//e28cd81c4d68ae3560000e3a047e15f9.png"></p>
+<ol>
+<li>Next, we need to update the layout of the card item itself, in the section within the “foreach” loop, as that’s where the data is coming in, and getting displayed</li>
+</ol>
+<p>@foreach(var result in _marvelResult.Data.Results)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="p">=</span><span class="s">&#34;col mb-4&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="p">=</span><span class="s">&#34;flip-card&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="p">=</span><span class="s">&#34;flip-card-inner&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="p">=</span><span class="s">&#34;flip-card-front&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="n">img</span> <span class="n">class</span><span class="p">=</span><span class="s">&#34;thumbnail&#34;</span> <span class="n">src</span><span class="p">=</span><span class="s">&#34;@($&#34;</span><span class="p">{</span><span class="n">result</span><span class="p">.</span><span class="n">Thumbnail</span><span class="p">.</span><span class="n">Path</span><span class="p">}.{</span><span class="n">result</span><span class="p">.</span><span class="n">Thumbnail</span><span class="p">.</span><span class="n">Extension</span><span class="p">}</span><span class="s">&#34;)&#34;</span> <span class="n">style</span><span class="p">=</span><span class="s">&#34;width:300px;height:300px;&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="n">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="p">=</span><span class="s">&#34;flip-card-back&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="n">h5</span><span class="p">&gt;</span><span class="n">@result</span><span class="p">.</span><span class="n">Name</span><span class="p">&lt;/</span><span class="n">h5</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">@result</span><span class="p">.</span><span class="n">Description</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="n">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="n">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="n">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="n">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>What we do here is basically pointing to the different CSS-snippets for each style we want to get applied; we have the flip-card div class, next the flip-card-inner and flip-card-front. For the front, we want to use the image, so we keep the img class details as is, but change the width and height to 300px, to make sure it looks like a nice rectangular on screen.</p>
+<ol>
+<li>
+<p>Next, we add a class for the flip-card-back, where we will show the Marvel character name and description.</p>
+<p><img alt="Graphical user interface, text, application, email Description automatically generated" loading="lazy" src="../images//4082873f68fc45f018526dcce23ec2b7.png"></p>
+</li>
+</ol>
+<p>That’s all we need to have for now; so let’s have a look, by launching the app</p>
+<ol>
+<li>Since the previous page was index.razor, it’s getting loaded by design (from the index.html). so we need to update the URL to pick up the /flip page, by adding it to the end of the URL, such as <a href="https://localhost:7110?flip">https://localhost:7110?flip</a> (note, the port number will be different on your end)</li>
+</ol>
+<p><img alt="Graphical user interface, application Description automatically generated" loading="lazy" src="../images//7ce7af6f54af8a7aee9535ff23b92e47.png"></p>
+<ol>
+<li>Search for a character, and see the outcome cards:</li>
+</ol>
+<p><img alt="Graphical user interface Description automatically generated" loading="lazy" src="../images//b2a599d62eb62f38570ce2865d97a8a0.png"></p>
+<ol>
+<li>About the same as before, but let’s hoover over a card:</li>
+<li>It flips and shows the character name and description (if provided by Marvel) to the back of the card</li>
+</ol>
+<p><img alt="Text Description automatically generated" loading="lazy" src="../images//445529556f9af96a20cecb08dee76707.png"></p>
+<p>Cool!!</p>
+<ol>
+<li>Let’s switch back to the code and add a menu item for the “flip” page to our left-side navigation menu.</li>
+<li>Open the file NavMenu.razor within the Shared folder.</li>
+<li>Add a new <!-- raw HTML omitted --> section for this menu item, by copying one from above + make minor changes to the href reference (flip) and change the Menu item word to Flip</li>
+<li>The icons are coming from the open iconic library, which is also referenced as part of Blazor bootstrap. Know you can change to MudBlazor, Telerik Progress or several other bootstrap frameworks to have layout-rich styles.</li>
+<li>Open https:://useiconic.com and find a suitable icon, for example loop-circular</li>
+</ol>
+<p><img alt="Chart Description automatically generated with medium confidence" loading="lazy" src="../images//934083c32d1deed78048f9f953f85869.png"></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="p">=</span><span class="s">&#34;nav-item px-3&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;**</span><span class="n">NavLink</span><span class="p">**</span> <span class="n">class</span><span class="p">=</span><span class="s">&#34;nav-link&#34;</span> <span class="n">href</span><span class="p">=</span><span class="s">&#34;flip&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="n">span</span> <span class="n">class</span><span class="p">=</span><span class="s">&#34;oi oi-loop-circular&#34;</span> <span class="n">aria</span><span class="p">-</span><span class="n">hidden</span><span class="p">=</span><span class="s">&#34;true&#34;</span><span class="p">&gt;&lt;/</span><span class="n">span</span><span class="p">&gt;</span> <span class="n">Flip</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/**</span><span class="n">NavLink</span><span class="p">**&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="n">div</span><span class="p">&gt;</span>
+</span></span></code></pre></div><ol>
+<li>When you run the app again, the new Menu item will appear. Given the href=”flip”, it will redirect to the base URL (<a href="https://localhost:7110">https://localhost:7110</a>) /flip route</li>
+</ol>
+<p><img alt="Graphical user interface, application Description automatically generated" loading="lazy" src="../images//d9276771ac7e7f6fb7800724605797cc.png"></p>
+<p>Since we are changing the layout a bit here, why not modify the default purple color from the Blazor template, to the well-known Marvel dark-red?</p>
+<ol>
+<li>Open MainLayout.razor</li>
+<li>Notice the <!-- raw HTML omitted --></li>
+<li>Paste in the following style object:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="n">div</span> <span class="n">style</span><span class="p">=</span><span class="s">&#34;background-image:none;background-color:darkred;&#34;</span> <span class="n">class</span><span class="p">=</span><span class="s">&#34;sidebar&#34;</span><span class="p">&gt;</span>
+</span></span></code></pre></div><ol>
+<li>This changes the default purple color to darkred.</li>
+</ol>
+<p><img alt="Graphical user interface, application Description automatically generated" loading="lazy" src="../images//33d3c7a7c6df44851c787ad147d4904e.png"></p>
+<ol>
+<li>This completes our development part. Let’s move on to the next step, and integrate our app code with GitHub Source Control (which actually should have happened at the start, before writing a single line of code – but hey, it’s a sample scenario right)</li>
+</ol>
+<h1 id="integrating-visual-studio-with-github-source-control">Integrating Visual Studio with GitHub Source Control<a hidden class="anchor" aria-hidden="true" href="#integrating-visual-studio-with-github-source-control">#</a></h1>
+<ol>
+<li>With that, let’s close this project and save it to GitHub; so you can grab it as a reference. From the explorer, click “Git changes” tab and select Create GitHub Repository</li>
+</ol>
+<p><img alt="Graphical user interface, application Description automatically generated" loading="lazy" src="../images//51bf9482699dc85b868b603bab0406d8.png"></p>
+<ol>
+<li>
+<p>Click Create and Push, and provide a description as commit message (I typically call this first action the “init”).</p>
+</li>
+<li>
+<p>Wait for the git clone action to complete successfully. Connect to the GitHub repository and confirm all source code is there.</p>
+<p><strong>Note: the actual source code I used for the Festive Tech Calendar presentation can be found here:</strong> <a href="https://github.com/petender/FestiveBlazor2022live">petender/FestiveBlazor2022live (github.com)</a></p>
+</li>
+</ol>
+<p><img alt="A screenshot of a computer Description automatically generated with medium confidence" loading="lazy" src="../images//4d09932a92c0b020a566940e79741aeb.png"></p>
+<ol>
+<li>Whenever you would make changes in the source code in Visual Studio and save the changes, Git Source Control will keep track of these and allowing you to commit the changes into the GitHub repository. I would recommend you to commit changes frequently, basically after each “important” update to the code.</li>
+</ol>
+<h1 id="publish-blazor-web-assembly-app-to-azure-static-web-apps">Publish Blazor Web Assembly app to Azure Static Web Apps<a hidden class="anchor" aria-hidden="true" href="#publish-blazor-web-assembly-app-to-azure-static-web-apps">#</a></h1>
+<p>In this last section, I will show you how to publish this webapp to Azure Static Web Apps, a web hosting service in Azure for static web frameworks like Blazor, React, Vue and several other.</p>
+<ol>
+<li>
+<p>From the Azure Portal, create new resource / static web app</p>
+<p><img alt="Graphical user interface, text, application Description automatically generated" loading="lazy" src="../images//756a5b2424f865b6cf86eefab8492d2e.png"></p>
+</li>
+<li>
+<p>Provide base information for this deployment:</p>
+</li>
+</ol>
+<ul>
+<li>
+<p>Resource group – any name of choice</p>
+</li>
+<li>
+<p>Name of the app – any unique name for the app</p>
+</li>
+<li>
+<p>Source = GitHub</p>
+</li>
+<li>
+<p>Plan = Free</p>
+</li>
+<li>
+<p>Region = any region of your choice</p>
+<p><img alt="Graphical user interface, text, application Description automatically generated" loading="lazy" src="../images//3910c87d613034cbd0c9ed1392dfda7b.png"></p>
+</li>
+</ul>
+<ol>
+<li>
+<p>Scroll down and authenticate to GitHub; Next, select your source repo in Github where the code is stored (the one we just created)</p>
+<p><img alt="Graphical user interface, text, application Description automatically generated" loading="lazy" src="../images//1bd1ddddd3602c3ba2d84b540da393aa.png"></p>
+</li>
+<li>
+<p>Click Build Details to provide more parameters regarding the Blazor app itself. Note you need to change the default App location from /Client to /, since our source code is in the root of the Blazor Web Assembly, without using ASP.Net hosted back-end.</p>
+<p><img alt="Graphical user interface, application, email Description automatically generated" loading="lazy" src="../images//420cbce0770a41dc39ddf2184948363e.png"></p>
+</li>
+<li>
+<p>Once published, it will trigger a GitHub Actions pipeline to publish the actual content</p>
+<p><img loading="lazy" src="../images//ba208857aa01b6d744c79606a7a76b53.png"></p>
+</li>
+<li>
+<p>The YAML pipeline code is stored in the .github/workflows/ subfolder within the GitHub repository. You shouldn’t need to update this file though. It just works out-of-the-box.</p>
+<p><img alt="Graphical user interface, text, application, email Description automatically generated" loading="lazy" src="../images//7d89901490cd8ae277355c130085551f.png"></p>
+</li>
+<li>
+<p>Check in Actions what’s happening:</p>
+<p><img alt="Graphical user interface, text, application, email Description automatically generated" loading="lazy" src="../images//97f08b3e40277869ee85a42fa0d2a343.png"></p>
+</li>
+<li>
+<p>Open the details for the Build &amp; Deploy workflow</p>
+<p><img alt="Text Description automatically generated" loading="lazy" src="../images//da5cda0e73ed46fcc4274becc2f4a30e.png"></p>
+</li>
+<li>
+<p>Selecting any step in the Action workflow will show more details:</p>
+<p><img alt="Graphical user interface, text Description automatically generated" loading="lazy" src="../images//765fda402ec958a1267c45c8d15592df.png"></p>
+</li>
+<li>
+<p>Wait for the workflow to complete successfully.</p>
+<p><img alt="Text Description automatically generated" loading="lazy" src="../images//291538dda0fbb66c1ccc93f67b3ed263.png"></p>
+</li>
+<li>
+<p>Navigate back to the Azure Static Web app, click it’s URL and see the Blazor Web App is running as expected.</p>
+<p><img alt="Graphical user interface, text, application Description automatically generated" loading="lazy" src="../images//71e0fdcd38b8f4e3df22af93a6c04215.png"></p>
+</li>
+<li>
+<p>When searching for a Marvel Character, this throws an error though, which can be validated from the Inspect option of the browser:</p>
+<p><img alt="A screenshot of a computer Description automatically generated" loading="lazy" src="../images//aebf1488e59ba401c5c69708ed8b2958.png"></p>
+</li>
+<li>
+<p>Remember at the start, where we configured the API calls at the Marvel Developer site, we needed to specify the source URLs from where the calls are allowed. This Azure Static Web App URL is not configured. (Hence why I didn’t worry too much about including my APIKey as hard-coded string in the source code).</p>
+<p><img alt="Graphical user interface, text, application, email Description automatically generated" loading="lazy" src="../images//07a00ae95a0f1548ac84f149b11ccd34.png"></p>
+</li>
+<li>
+<p>Click Update to save those changes. Trigger a new search, which should reveal the actual Marvel character details. Remember you can use both the default (index) page, as well as the flip page.</p>
+</li>
+</ol>
+<h1 id="summary">Summary<a hidden class="anchor" aria-hidden="true" href="#summary">#</a></h1>
+<p>In this article, I provided all the necessary steps to build a Blazor Web Assembly application. Started from the default template, you updated snippets of code to create a search field and corresponding action button to trigger the search. You learned about using HTTPClient to interact with an external API Back-End. Once this was all working, you looked into using some additional “flip card” CSS layout features, and how to update the Blazor Navigation Menu.</p>
+<p>Once the development work was done, we saved the code in a GitHub repository.</p>
+<p>Last, you deployed an Azure Static Web App, interacting with the GitHub repository to pick up the source code and publish it using GitHub Actions workflow.</p>
+<p>I would like to thank the organizing team of Festive Tech Calendar 2022 for having accepted my session submission for the 3rd year in a row. Especially since this was my first attempt to do some (semi)live coding, to share my excitement of how I learned to write and build code at age 47. I’m already brainstorming on what Blazor app I can share in next year’s edition</p>
+<p>Happy Holidays everyone!</p>
+<p>/Peter</p>
+<p><a href="https://www.buymeacoffee.com/pdtit"><img alt="BuyMeACoffee" loading="lazy" src="../images/buy_me_a_coffee.png"></a></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/blazor/">Blazor</a></li>
+      <li><a href="http://localhost:1313/tags/azure/">Azure</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="http://localhost:1313/post/dck-acr-aci-aks-aca-the-azure-container-alphabet-soup/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Azure Spring Clean - DCK, ACR, ACI, AKS, ACA, the Azure Container Alphabet Soup</span>
+  </a>
+  <a class="next" href="http://localhost:1313/post/how-boox-got-me-back-to-reading/">
+    <span class="title">Next »</span>
+    <br>
+    <span>How OnyxBoox - with some help from a friend - got me back to reading more... books</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Festive Tech Calendar 2022 - Building a Marvel Hero app using Blazor Web Assembly and Azure Static Web Apps on x"
+            href="https://x.com/intent/tweet/?text=Festive%20Tech%20Calendar%202022%20-%20Building%20a%20Marvel%20Hero%20app%20using%20Blazor%20Web%20Assembly%20and%20Azure%20Static%20Web%20Apps&amp;url=http%3a%2f%2flocalhost%3a1313%2fpost%2fsteps-for-blazor-marvel---webassembly%2f&amp;hashtags=Blazor%2cAzure">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Festive Tech Calendar 2022 - Building a Marvel Hero app using Blazor Web Assembly and Azure Static Web Apps on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fpost%2fsteps-for-blazor-marvel---webassembly%2f&amp;title=Festive%20Tech%20Calendar%202022%20-%20Building%20a%20Marvel%20Hero%20app%20using%20Blazor%20Web%20Assembly%20and%20Azure%20Static%20Web%20Apps&amp;summary=Festive%20Tech%20Calendar%202022%20-%20Building%20a%20Marvel%20Hero%20app%20using%20Blazor%20Web%20Assembly%20and%20Azure%20Static%20Web%20Apps&amp;source=http%3a%2f%2flocalhost%3a1313%2fpost%2fsteps-for-blazor-marvel---webassembly%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Festive Tech Calendar 2022 - Building a Marvel Hero app using Blazor Web Assembly and Azure Static Web Apps on reddit"
+            href="https://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fpost%2fsteps-for-blazor-marvel---webassembly%2f&title=Festive%20Tech%20Calendar%202022%20-%20Building%20a%20Marvel%20Hero%20app%20using%20Blazor%20Web%20Assembly%20and%20Azure%20Static%20Web%20Apps">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Festive Tech Calendar 2022 - Building a Marvel Hero app using Blazor Web Assembly and Azure Static Web Apps on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fpost%2fsteps-for-blazor-marvel---webassembly%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Festive Tech Calendar 2022 - Building a Marvel Hero app using Blazor Web Assembly and Azure Static Web Apps on whatsapp"
+            href="https://api.whatsapp.com/send?text=Festive%20Tech%20Calendar%202022%20-%20Building%20a%20Marvel%20Hero%20app%20using%20Blazor%20Web%20Assembly%20and%20Azure%20Static%20Web%20Apps%20-%20http%3a%2f%2flocalhost%3a1313%2fpost%2fsteps-for-blazor-marvel---webassembly%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Festive Tech Calendar 2022 - Building a Marvel Hero app using Blazor Web Assembly and Azure Static Web Apps on telegram"
+            href="https://telegram.me/share/url?text=Festive%20Tech%20Calendar%202022%20-%20Building%20a%20Marvel%20Hero%20app%20using%20Blazor%20Web%20Assembly%20and%20Azure%20Static%20Web%20Apps&amp;url=http%3a%2f%2flocalhost%3a1313%2fpost%2fsteps-for-blazor-marvel---webassembly%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Festive Tech Calendar 2022 - Building a Marvel Hero app using Blazor Web Assembly and Azure Static Web Apps on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=Festive%20Tech%20Calendar%202022%20-%20Building%20a%20Marvel%20Hero%20app%20using%20Blazor%20Web%20Assembly%20and%20Azure%20Static%20Web%20Apps&u=http%3a%2f%2flocalhost%3a1313%2fpost%2fsteps-for-blazor-marvel---webassembly%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">Azure Readiness starts here...</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

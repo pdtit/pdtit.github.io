@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>.NET on </title>
+    <link>//localhost:1313/tags/.net/</link>
+    <description>Recent content in .NET on </description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 07 Dec 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/.net/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Packt Book Review - Data Science in .NET with Polyglot Notebooks</title>
+      <link>//localhost:1313/post/packt-book-review---data-science-in-.net-with-polyglot-notebooks/</link>
+      <pubDate>Sat, 07 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/post/packt-book-review---data-science-in-.net-with-polyglot-notebooks/</guid>
+      <description>&lt;p&gt;In this post, I want to share my review of my next technical book I read recently, &lt;strong&gt;Data Science in .NET with Polyglot Notebooks&lt;/strong&gt; this time from &lt;a href=&#34;https://twitter.com/integerman&#34;&gt;Matt Eland&lt;/a&gt;, (&lt;a href=&#34;https://bsky.app/profile/matteland.dev&#34;&gt;https://bsky.app/profile/matteland.dev&lt;/a&gt;) published by &lt;a href=&#34;https://www.packtpub.com/en-us/product/data-science-with-net-and-polyglot-notebooks-9781835882962?type=subscription&#34;&gt;Packt Publishing&lt;/a&gt; and available on &lt;a href=&#34;https://www.amazon.com/Data-Science-NET-Polyglot-Notebooks-ebook/dp/B0D4L1HNMK&#34;&gt;Amazon&lt;/a&gt; as well as other e-book subscription platforms.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2024-12-07-01.jpg&#34; alt=&#34;Book Cover&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;If you have been following me for a while, you know I&amp;rsquo;m gradually learning more about coding and developing applications, especially using the &lt;a href=&#34;https://dotnet.microsoft.com/&#34;&gt;.NET framework&lt;/a&gt;. More recently, I also started using &lt;strong&gt;Jupyter Notebooks&lt;/strong&gt; to animate my Azure AI workshops - specifically Semantic Kernel demos - a bit more, by running &lt;strong&gt;.NET Interactive mode&lt;/strong&gt;, which allows me to show snippets of .NET code running from the Notebook, instead of the (boring) Terminal window.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

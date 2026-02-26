@@ -1,679 +1,558 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Azure Readiness starts here...</title>
-    <link>https://www.007ffflearning.com/</link>
-    <description>Recent content on Azure Readiness starts here...</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 03 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/index.xml" rel="self" type="application/rss+xml" />
+    <title></title>
+    <link>//localhost:1313/</link>
+    <description>Recent content on </description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 26 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>My Published Azure Books</title>
-      <link>https://www.007ffflearning.com/books/</link>
+      <link>//localhost:1313/books/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/books/</guid>
-      <description>                     - -    </description>
+      <guid>//localhost:1313/books/</guid>
+      <description>&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;a href=&#34;https://www.apress.com/gp/book/9781484249093&#34;&gt;&lt;img src=&#34;../images/Pro_Azure_Governance_cover.png&#34; alt=&#34;Pro Azure Governance&#34;&gt;&lt;/a&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;a href=&#34;https://azure.microsoft.com/en-us/resources/azure-strategy-and-implementation-guide-third-edition/&#34;&gt;&lt;img src=&#34;../images/Cover_Azure_Strategy_and_Implementation_Guide.png&#34; alt=&#34;Azure Strategy &amp;amp; Implementation Guide (FREE)&#34;&gt;&lt;/a&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;a href=&#34;https://azure.microsoft.com/en-us/resources/get-started-with-kubernetes-on-azure/&#34;&gt;&lt;img src=&#34;../images/whitepaper-get-started-with-aks.png&#34; alt=&#34;Hands On Kubernetes on Azure -FREE&#34;&gt;&lt;/a&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;a href=&#34;https://leanpub.com/efficientlymigratingworkloadstoazure/&#34;&gt;&lt;img src=&#34;../images/Efficiently_migrating_cover_small.png&#34; alt=&#34;Efficiently Migrating to Azure&#34;&gt;&lt;/a&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;a href=&#34;https://www.apress.com/gp/book/9781484218259&#34;&gt;&lt;img src=&#34;../images/Azure_OMS_cover.png&#34; alt=&#34;Implementing Azure OMS&#34;&gt;&lt;/a&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;a href=&#34;&#34;&gt;&lt;img src=&#34;../images/work_in_progress.jpeg&#34; alt=&#34;Release date July 2020&#34;&gt;&lt;/a&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;a href=&#34;https://www.packtpub.com/cloud-networking/azure-for-architects-third-edition&#34;&gt;&lt;img src=&#34;../images/azure_for_architects.jpeg&#34; alt=&#34;Azure for Architects&#34;&gt;&lt;/a&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;-&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;-&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;</description>
     </item>
-    
     <item>
       <title>My Published Azure Books</title>
-      <link>https://www.007ffflearning.com/publications/books/</link>
+      <link>//localhost:1313/publications/books/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/publications/books/</guid>
-      <description>                    Pro Azure Governance Azure Strategy &amp;amp; Implementation Guide Hands On Kubernetes on Azure   * * *        Buy Your Copy Here Get Your FREE copy Here Get Your FREE copy Here   * * *                  Efficiently Migrating to Azure Implementing Azure OMS Azure Infrastructure as Code   * * *        Buy Your Copy Here Buy Your Copy Here [Release date July 2020]         </description>
+      <guid>//localhost:1313/publications/books/</guid>
+      <description>&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;img src=&#34;../images/Pro_Azure_Governance_cover.png&#34; alt=&#34;&#34;&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;img src=&#34;../images/Cover_Azure_Strategy_and_Implementation_Guide.png&#34; alt=&#34;&#34;&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;img src=&#34;../images/whitepaper-get-started-with-aks.png&#34; alt=&#34;&#34;&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;Pro Azure Governance&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;Azure Strategy &amp;amp; Implementation Guide&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;Hands On Kubernetes on Azure&lt;/strong&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;*&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;*&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;*&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;&lt;a href=&#34;https://www.apress.com/gp/book/9781484249093&#34;&gt;Buy Your Copy Here&lt;/a&gt;&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;&lt;a href=&#34;https://azure.microsoft.com/en-us/resources/azure-strategy-and-implementation-guide-third-edition/&#34;&gt;Get Your FREE copy Here&lt;/a&gt;&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;&lt;a href=&#34;https://azure.microsoft.com/en-us/resources/get-started-with-kubernetes-on-azure/&#34;&gt;Get Your FREE copy Here&lt;/a&gt;&lt;/strong&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;*&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;*&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;*&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;img src=&#34;../images/Efficiently_migrating_cover_small.png&#34; alt=&#34;&#34;&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;img src=&#34;../images/Azure_OMS_cover.png&#34; alt=&#34;&#34;&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;img src=&#34;../images/work_in_progress.jpeg&#34; alt=&#34;&#34;&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;Efficiently Migrating to Azure&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;Implementing Azure OMS&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;Azure Infrastructure as Code&lt;/strong&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;*&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;*&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;*&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;&lt;a href=&#34;https://leanpub.com/efficientlymigratingworkloadstoazure/&#34;&gt;Buy Your Copy Here&lt;/a&gt;&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;&lt;a href=&#34;https://www.apress.com/gp/book/9781484218259&#34;&gt;Buy Your Copy Here&lt;/a&gt;&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;[Release date July 2020]&lt;/strong&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;</description>
     </item>
-    
     <item>
       <title>My Published Azure Videos</title>
-      <link>https://www.007ffflearning.com/publications/videos/</link>
+      <link>//localhost:1313/publications/videos/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/publications/videos/</guid>
-      <description>                    Architecting an Azure Compute Infrastructure Learning Microsoft Azure Azure Security (Packt)   * * *        Buy Your Copy Here Get Your FREE copy Here [Release date May 2020]             Several Azure Online Courses     * * *        Check Out The List      </description>
+      <guid>//localhost:1313/publications/videos/</guid>
+      <description>&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;img src=&#34;../images/architecting_compute_packt.png&#34; alt=&#34;&#34;&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;img src=&#34;../images/learning_azure_packt.jpg&#34; alt=&#34;&#34;&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;img src=&#34;../images/work_in_progress.jpeg&#34; alt=&#34;&#34;&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;Architecting an Azure Compute Infrastructure&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;Learning Microsoft Azure&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;Azure Security (Packt)&lt;/strong&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;*&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;*&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;*&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;&lt;a href=&#34;https://www.packtpub.com/eu/virtualization-and-cloud/architecting-azure-compute-infrastructure-video&#34;&gt;Buy Your Copy Here&lt;/a&gt;&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;&lt;a href=&#34;https://azure.microsoft.com/en-us/resources/azure-strategy-and-implementation-guide-third-edition/&#34;&gt;Get Your FREE copy Here&lt;/a&gt;&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;[Release date May 2020]&lt;/strong&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;img src=&#34;../images/skillmeup.png&#34; alt=&#34;&#34;&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;Several Azure Online Courses&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;*&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;*&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;*&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;&lt;a href=&#34;https://skillmeup.com/Author/peterdetender&#34;&gt;Check Out The List&lt;/a&gt;&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;</description>
     </item>
-    
     <item>
       <title>My Published Azure Videos</title>
-      <link>https://www.007ffflearning.com/videos/</link>
+      <link>//localhost:1313/videos/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/videos/</guid>
-      <description>Click on the video images for more details                      </description>
+      <guid>//localhost:1313/videos/</guid>
+      <description>&lt;h2 id=&#34;click-on-the-video-images-for-more-details&#34;&gt;Click on the video images for more details&lt;/h2&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;a href=&#34;https://www.packtpub.com/eu/virtualization-and-cloud/architecting-azure-compute-infrastructure-video&#34;&gt;&lt;img src=&#34;../images/architecting_compute_packt.png&#34; alt=&#34;Architecting an Azure Compute Infrastructure&#34;&gt;&lt;/a&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;a href=&#34;https://www.packtpub.com/eu/virtualization-and-cloud/learning-microsoft-azure-video&#34;&gt;&lt;img src=&#34;../images/learning_azure_packt.jpg&#34; alt=&#34;Learning Microsoft Azure&#34;&gt;&lt;/a&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;a href=&#34;&#34;&gt;&lt;img src=&#34;../images/work_in_progress.jpeg&#34; alt=&#34;Infrastructure as Code&#34;&gt;&lt;/a&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;a href=&#34;https://skillmeup.com/Author/peterdetender&#34;&gt;&lt;img src=&#34;../images/skillmeup.png&#34; alt=&#34;SkillMeUp&#34;&gt;&lt;/a&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;</description>
     </item>
-    
+    <item>
+      <title>Keeping MCP Server config in sync between VS Code and GitHub Copilot CLI</title>
+      <link>//localhost:1313/post/keeping-mcp-config-in-sync-between-vscode-and-cli/</link>
+      <pubDate>Thu, 26 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/post/keeping-mcp-config-in-sync-between-vscode-and-cli/</guid>
+      <description>&lt;p&gt;Hey awesome people,&lt;/p&gt;&#xA;&lt;p&gt;Over the last weeks, I’ve been jumping between VS Code and Copilot CLI a lot more than usual. One thing kept annoying me: my MCP setup was perfect in VS Code, but I had to keep tweaking pieces again in CLI.&lt;/p&gt;&#xA;&lt;p&gt;If that sounds familiar, good news: if you already have MCP servers working in VS Code, you can reuse most of that setup in GitHub Copilot CLI.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Packt Book Review - Azure for Developers</title>
+      <link>//localhost:1313/post/packt-book-review---azure-for-developers/</link>
+      <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/post/packt-book-review---azure-for-developers/</guid>
+      <description>&lt;p&gt;In this post, I want to share my review of &lt;strong&gt;Azure for Developers&lt;/strong&gt; (Third Edition) by &lt;a href=&#34;https://www.linkedin.com/in/kamil-mrzyg%C5%82%C3%B3d-31470376/&#34;&gt;Kamil Mrzygłód&lt;/a&gt;, published by &lt;a href=&#34;https://www.packtpub.com/en-us/product/azure-for-developers-9781836203506&#34;&gt;Packt Publishing&lt;/a&gt; and available on &lt;a href=&#34;https://www.amazon.com/dp/1836203508&#34;&gt;Amazon&lt;/a&gt; as well as other e-book subscription platforms.&lt;/p&gt;&#xA;&lt;p&gt;This definitive guide focuses on creating secure, scalable Azure apps with GenAI, serverless, and DevOps pipelines, making it an essential resource for developers looking to build modern cloud-native applications on Azure with the latest technologies.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/azure_for_developers.png&#34; alt=&#34;Book Cover&#34;&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;about-the-book-from-the-cover&#34;&gt;About the book (from the cover)&lt;/h2&gt;&#xA;&lt;p&gt;Supercharge your development career by mastering Azure&amp;rsquo;s evolving GenAI, container, and serverless capabilities to build scalable, secure applications with confidence. This third edition of Azure for Developers transforms complex cloud concepts into practical skills, guiding you through the design, deployment, and management of cloud-native solutions while eliminating infrastructure headaches.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>How Spotify disappointed me with AI Artists</title>
+      <link>//localhost:1313/post/spotify-disappointed-me-with-ai-artists/</link>
+      <pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/post/spotify-disappointed-me-with-ai-artists/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;m usually pretty excited about AI and more specifically about Generative AI, especially with &lt;strong&gt;&lt;a href=&#34;https://copilot.microsoft.com&#34;&gt;Microsoft Copilot&lt;/a&gt;&lt;/strong&gt;, &lt;strong&gt;&lt;a href=&#34;https://github.com/copilot&#34;&gt;GitHub Copilot&lt;/a&gt;&lt;/strong&gt; and &lt;strong&gt;&lt;a href=&#34;https://azure.microsoft.com/products/ai-foundry&#34;&gt;Microsoft Foundry&lt;/a&gt;&lt;/strong&gt;. I might be biased, but outside of my professional interactions with GenAI, I&amp;rsquo;m not into all the social media hypes around it (&lt;a href=&#34;https://www.forbes.com/sites/danidiplacido/2025/03/27/the-ai-generated-studio-ghibli-trend-explained/&#34;&gt;anyone remembers the Studio Gihbli hype from summer&lt;/a&gt; or any similar?)&lt;/p&gt;&#xA;&lt;p&gt;With a few days off for Thanksgiving here in the USA, I wanted to spend a bit more time on updating my Spotify playlists. While not always perfect, at least a few of the &amp;lsquo;recommended artists&amp;rsquo; are closely in line with the artists and songs I like.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Using GitHub Copilot Agent Mode to vibe code a Python shooting game</title>
+      <link>//localhost:1313/post/using-github-copilot-agent-mode-to-vibe-code-a-python-shooting-game/</link>
+      <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/post/using-github-copilot-agent-mode-to-vibe-code-a-python-shooting-game/</guid>
+      <description>&lt;p&gt;For about a year now, I&amp;rsquo;ve been teaching a lot on &lt;a href=&#34;https://github.com/copilot&#34;&gt;GitHub Copilot&lt;/a&gt; as part of my Microsoft role. Our program offers 2 different learning paths, one created by the Microsoft Content developers, &lt;a href=&#34;https://learn.microsoft.com/en-us/training/paths/accelerate-app-development-using-github-copilot/&#34;&gt;AZ-2007&lt;/a&gt;, and the other one is managed by GitHub Content team, known as &lt;a href=&#34;https://learn.microsoft.com/en-us/training/paths/copilot/&#34;&gt;GH-300&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;If you know my approach to teaching tech a bit, which a learner in my class lately called &lt;strong&gt;inspiring through technology&lt;/strong&gt;, it means I&amp;rsquo;m trying to explain as much as possible through compelling, live demos. After walking learners through different GitHub Copilot features such as documenting/explaining code, generate application code (on different development frameworks), but also Azure CLI, CI/CD pipeline, Dockerfile, YAML, JSON and alike, I usually close with &lt;a href=&#34;https://docs.github.com/en/copilot/concepts/agents/coding-agent/about-coding-agent&#34;&gt;Agent Mode&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Generate Azure JWT Token in Copilot Studio</title>
+      <link>//localhost:1313/post/generate-azure-jwt-token-in-copilot-studio/</link>
+      <pubDate>Sat, 09 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/post/generate-azure-jwt-token-in-copilot-studio/</guid>
+      <description>&lt;p&gt;Out of my role as a Lead Technical Trainer at Microsoft, the portfolio of trainings I&amp;rsquo;m covering has heavily shifted to Azure AI and Copilot over the last few months. Still doing Azure Architecture and Developing courses as well, but not as frequent anymore. This confirms the interest we see at customers in adopting Generative AI solutions. Apart from &lt;a href=&#34;https://www.microsoft.com/microsoft-365/copilot&#34;&gt;Copilot in M365&lt;/a&gt;, or using &lt;a href=&#34;https://azure.microsoft.com/en-us/products/ai-foundry&#34;&gt;Azure AI Foundry&lt;/a&gt;, I also started digging into &lt;a href=&#34;https://azure.microsoft.com/en-us/products/copilot-studio&#34;&gt;Copilot Studio&lt;/a&gt; a lot more. Having a good background in Azure LogicApps and a bit of PowerPlatform, Copilot Studio feels quite comfortable to me.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Using GitHub Copilot Agent Mode to transform ARM templates to BICEP</title>
+      <link>//localhost:1313/post/using-github-copilot-agent-mode-to-transform-arm-templates-to-bicep/</link>
+      <pubDate>Sat, 12 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/post/using-github-copilot-agent-mode-to-transform-arm-templates-to-bicep/</guid>
+      <description>&lt;p&gt;Over the last few months, I&amp;rsquo;ve been working on an exciting project for our Microsoft Technical Trainer team, known as &lt;a href=&#34;https://aka.ms/trainer-demo-deploy&#34;&gt;&amp;ldquo;Trainer-Demo-Deploy&amp;rdquo;&lt;/a&gt;, a catalog of Azure end-to-end demo scenarios, available as an Open-Source project.&lt;/p&gt;&#xA;&lt;p&gt;While we managed to get about 50 templates live, there can never be enough scenarios to integrate into your Azure classes or POC activities if you ask me. One of the challenging tasks in the project is not only coming up with demo ideas, but also creating the actual artifacts, such as Azure templates with Bicep, sample apps and sample data.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Innovation at Microsoft - Book Review</title>
+      <link>//localhost:1313/post/innovation-at-microsoft---book-review/</link>
+      <pubDate>Sun, 09 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/post/innovation-at-microsoft---book-review/</guid>
+      <description>&lt;p&gt;The &lt;strong&gt;&lt;a href=&#34;https://posthillpress.com/book/the-insiders-guide-to-innovation-at-microsoft&#34;&gt;Insider’s Guide to Innovation at Microsoft&lt;/a&gt;&lt;/strong&gt;, written by Dean Carignan and JoAnn Garbin, and published by PostHillPress publishers, explores the innovation strategies and practices at Microsoft over the past 50 years.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/innovation_at_microsoft.jpg&#34; alt=&#34;Book Cover&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;When I heard about this book, I ordered myself a copy during pre-order, and got excited from the day I got it in the mail. This was honestly one of the few books I read cover to finish in just a weekend.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Azure Spring Clean - Application Insights - Inside Out</title>
+      <link>//localhost:1313/post/azure-spring-clean---application-insights---inside-out/</link>
+      <pubDate>Thu, 06 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/post/azure-spring-clean---application-insights---inside-out/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;../images/AzureSpringClean2025-logo.png&#34; alt=&#34;Azure Spring Clean&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Hey folks,&lt;/p&gt;&#xA;&lt;p&gt;Welcome to #AzureSpringClean, an initiative from &lt;strong&gt;&lt;a href=&#34;https://twitter.com/wedoazure&#34;&gt;Joe Carlyle&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/tamstar1234&#34;&gt;Thomas Thornton&lt;/a&gt;&lt;/strong&gt; which celebrates its 4th edition this year. I&amp;rsquo;m thrilled to be part of this again for the 3nd time this year. My &lt;a href=&#34;https://www.007ffflearning.com/post/azure-spring-clean-demystifying-service-principal-and-managed-identities/&#34;&gt;first article&lt;/a&gt; had &lt;strong&gt;security in mind, explaining the difference between Azure Service Principals and Managed Identity&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;p&gt;My 2nd article focused on &lt;strong&gt;understand DevSecOps, and how you can optimize security in your application deployment lifecycle, by &amp;ldquo;shifting left&amp;rdquo;&lt;/strong&gt;.&#xA;(&lt;a href=&#34;https://www.007ffflearning.com/post/azure-spring-clean---devsecops-and-shifting-left-to-publish-secure-software/&#34;&gt;https://www.007ffflearning.com/post/azure-spring-clean---devsecops-and-shifting-left-to-publish-secure-software/&lt;/a&gt;)&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Book Review - Azure Cookbook</title>
+      <link>//localhost:1313/post/book-review---azure-cookbook/</link>
+      <pubDate>Thu, 26 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/post/book-review---azure-cookbook/</guid>
+      <description>&lt;p&gt;In this post, I want to share my review of my next technical book I read recently, &lt;strong&gt;Azure Cookbook&lt;/strong&gt; this time from &lt;a href=&#34;https://www.linkedin.com/in/massimobonanni/&#34;&gt;Massimo Bonammi&lt;/a&gt; and &lt;a href=&#34;https://www.linkedin.com/in/marco-obinu-omegamadlab/&#34;&gt;Marco Obinu&lt;/a&gt; published by &lt;a href=&#34;https://bpbonline.com/products/azure-cookbook-1?_pos=1&amp;amp;_sid=a03968c8e&amp;amp;_ss=r&#34;&gt;BPB Online&lt;/a&gt; and available on &lt;a href=&#34;https://www.amazon.com/Azure-Cookbook-Essential-automation-solutions/dp/9365890195&#34;&gt;Amazon&lt;/a&gt; as well as other e-book subscription platforms.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2024-12-26-01.jpg&#34; alt=&#34;Book Cover&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;I have the joy of calling both fine Italian gentlemen my friends and colleagues for a few years already. I bumped into Marco around 2017 when I was delivering an Azure Architect workshop for his employer. Massimo was one of my EMEA colleagues in the Microsoft Technical Trainer team and we had the pleasure of delivering a few in-person training days together before COVID. Marco joined the Technical Trainer team about 2 years later, when I was already relocated to the USA.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Packt Book Review - Data Science in .NET with Polyglot Notebooks</title>
+      <link>//localhost:1313/post/packt-book-review---data-science-in-.net-with-polyglot-notebooks/</link>
+      <pubDate>Sat, 07 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/post/packt-book-review---data-science-in-.net-with-polyglot-notebooks/</guid>
+      <description>&lt;p&gt;In this post, I want to share my review of my next technical book I read recently, &lt;strong&gt;Data Science in .NET with Polyglot Notebooks&lt;/strong&gt; this time from &lt;a href=&#34;https://twitter.com/integerman&#34;&gt;Matt Eland&lt;/a&gt;, (&lt;a href=&#34;https://bsky.app/profile/matteland.dev&#34;&gt;https://bsky.app/profile/matteland.dev&lt;/a&gt;) published by &lt;a href=&#34;https://www.packtpub.com/en-us/product/data-science-with-net-and-polyglot-notebooks-9781835882962?type=subscription&#34;&gt;Packt Publishing&lt;/a&gt; and available on &lt;a href=&#34;https://www.amazon.com/Data-Science-NET-Polyglot-Notebooks-ebook/dp/B0D4L1HNMK&#34;&gt;Amazon&lt;/a&gt; as well as other e-book subscription platforms.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2024-12-07-01.jpg&#34; alt=&#34;Book Cover&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;If you have been following me for a while, you know I&amp;rsquo;m gradually learning more about coding and developing applications, especially using the &lt;a href=&#34;https://dotnet.microsoft.com/&#34;&gt;.NET framework&lt;/a&gt;. More recently, I also started using &lt;strong&gt;Jupyter Notebooks&lt;/strong&gt; to animate my Azure AI workshops - specifically Semantic Kernel demos - a bit more, by running &lt;strong&gt;.NET Interactive mode&lt;/strong&gt;, which allows me to show snippets of .NET code running from the Notebook, instead of the (boring) Terminal window.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Introduction to Semantic Kernel</title>
+      <link>//localhost:1313/post/introduction-to-semantic-kernel/</link>
+      <pubDate>Sun, 15 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/post/introduction-to-semantic-kernel/</guid>
+      <description>&lt;h2 id=&#34;introduction-to-developing-azure-ai-solutions&#34;&gt;Introduction to Developing Azure AI Solutions&lt;/h2&gt;&#xA;&lt;p&gt;In today&amp;rsquo;s rapidly evolving tech landscape, Artificial Intelligence (AI) has become a cornerstone for innovation. Azure AI offers a robust suite of tools and services that empower developers to build intelligent applications. From natural language processing (NLP) to computer vision, &lt;a href=&#34;https://azure.microsoft.com/en-us/solutions/ai&#34;&gt;Azure AI&lt;/a&gt; provides the building blocks to create solutions that can understand, interpret, and respond to human inputs in a meaningful way. While Microsoft has several Copilot offerings for different use cases, ranging from an &lt;a href=&#34;https://azure.microsoft.com/en-us/products/copilot&#34;&gt;AI assistant in Azure&lt;/a&gt;, &lt;a href=&#34;https://www.microsoft.com/en-us/microsoft-365/copilot&#34;&gt;Copilot in M365&lt;/a&gt; or &lt;a href=&#34;https://copilot.microsoft.com&#34;&gt;web and mobile&lt;/a&gt;, there are still valid use cases for developing your own custom Copilot. One of the key components in this ecosystem is the &lt;strong&gt;Semantic Kernel&lt;/strong&gt;, a powerful tool that enhances the capabilities of AI models by providing semantic understanding.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Building your first Blazor .NET8 app - MSTS Summit </title>
+      <link>//localhost:1313/post/building-your-first-blazor-.net8-app---msts-summit-companion/</link>
+      <pubDate>Thu, 30 May 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/post/building-your-first-blazor-.net8-app---msts-summit-companion/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;I got invited to present on Blazor .NET8 as part of the [https://mstechsummit.pl/en/](MS Tech Summit Poland (MSTS Summit)), for which I&amp;rsquo;m very excited and honored. For most of my public speaking engagements, I try to focus on live demos, with only a minimum amount of slides, and this session is no different.&lt;/p&gt;&#xA;&lt;p&gt;To help my audience in reproducing the demos in their own time, I decided to write out the steps.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>ScifiDevCon 2024 : Building a Marvel Hero App using Blazor and .NET8 </title>
+      <link>//localhost:1313/post/building-a-marvel-hero-app-with-blazor-.net8/</link>
+      <pubDate>Sat, 18 May 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/post/building-a-marvel-hero-app-with-blazor-.net8/</guid>
+      <description>&lt;p&gt;Building a Marvel Hero catalog app using Blazor Server and .NET8&lt;/p&gt;&#xA;&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;&#xA;&lt;p&gt;At the end of 2022, as part of the &lt;em&gt;Festive Tech Calendar&lt;/em&gt; community initiative, I provided a step-by-step instruction blog on how to build a Blazor Web Assembly app from scratch, using .NET7.&lt;/p&gt;&#xA;&lt;p&gt;About 18 months later, a lot of things have changed in the &lt;strong&gt;.NET8 world&lt;/strong&gt;, which also impacted &lt;strong&gt;positively&lt;/strong&gt; new features around the Blazor Web App Framework, on both Web Assembly (Client/Browser) and Server side.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Sending Emails from Azure DevOps using PowerShell and Azure LogicApps</title>
-      <link>https://www.007ffflearning.com/post/sending-emails-from-ado-pipelines-using-powershell/</link>
+      <link>//localhost:1313/post/sending-emails-from-ado-pipelines-using-powershell/</link>
       <pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/sending-emails-from-ado-pipelines-using-powershell/</guid>
-      <description>Hi Readers,
-This post is merely for myself, documenting all the steps I needed to go through to be able to send emails from a PowerShell script, as part of an Azure DevOps YAML pipeline flow. And since I was documenting it for our internal application, I thought it would hopefully help someone out there looking for a similar solution.
-Why not using the built-in Email Notification system Azure DevOps provides email notification features, but this comes with a few assumptions.</description>
+      <guid>//localhost:1313/post/sending-emails-from-ado-pipelines-using-powershell/</guid>
+      <description>&lt;p&gt;Hi Readers,&lt;/p&gt;&#xA;&lt;p&gt;This post is merely for myself, documenting all the steps I needed to go through to be able to send emails from a PowerShell script, as part of an Azure DevOps YAML pipeline flow. And since I was documenting it for our internal application, I thought it would hopefully help someone out there looking for a similar solution.&lt;/p&gt;&#xA;&lt;h2 id=&#34;why-not-using-the-built-in-email-notification-system&#34;&gt;Why not using the built-in Email Notification system&lt;/h2&gt;&#xA;&lt;p&gt;Azure DevOps provides &lt;a href=&#34;https://learn.microsoft.com/en-us/azure/devops/organizations/notifications/about-notifications?view=azure-devops&#34;&gt;email notification features&lt;/a&gt;, but this comes with a few assumptions. The biggest one being the receiver(s) should be Project Members. Which was not the case in my scenario, since I want to send out deployment status emails, at the start of a pipeline and when completed successfully, to external recipients.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Festive Tech Calendar - Azure AI - OCR on Steroids</title>
-      <link>https://www.007ffflearning.com/post/festive-2023-ocr-on-steroids/</link>
+      <link>//localhost:1313/post/festive-2023-ocr-on-steroids/</link>
       <pubDate>Sat, 23 Dec 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/festive-2023-ocr-on-steroids/</guid>
-      <description>Hugo
-Azure Static Storage Sites
-Welcome to this year&amp;rsquo;s Festive Tech Calendar!! Hi everyone, welcome to my contribution to this year&amp;rsquo;s Festive Tech Calendar once more. This will be the fourth year, and I still love the concept of bringing some (Azure) joy to you/your family this season. If you ask me what the biggest news in tech was this year, especially within the Microsoft ecosystem, it&amp;rsquo;s Azure AI. Shouldn&amp;rsquo;t be surprising to most of you who know me and my role within Microsoft as Technical Trainer - providing Azure workshops every week to our top customers and partners across the globe - we also integrated (A lot :)) of AI focus early in the year.</description>
+      <guid>//localhost:1313/post/festive-2023-ocr-on-steroids/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://www.gohugo.io&#34;&gt;Hugo&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-static-website-how-to?tabs=azure-portal&#34;&gt;Azure Static Storage Sites&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/festive_2023.jpg&#34; alt=&#34;Festive Tech Calendar 2023 - OCR on Steroids image&#34;&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;welcome-to-this-years-festive-tech-calendar&#34;&gt;Welcome to this year&amp;rsquo;s Festive Tech Calendar!!&lt;/h1&gt;&#xA;&lt;p&gt;Hi everyone, welcome to my contribution to this year&amp;rsquo;s Festive Tech Calendar once more. This will be the fourth year, and I still love the concept of bringing some (Azure) joy to you/your family this season. If you ask me what the biggest news in tech was this year, especially within the Microsoft ecosystem, it&amp;rsquo;s &lt;strong&gt;Azure AI&lt;/strong&gt;. Shouldn&amp;rsquo;t be surprising to most of you who know me and my role within Microsoft as Technical Trainer - providing Azure workshops every week to our top customers and partners across the globe - we also integrated (A lot :)) of AI focus early in the year. And it is only becoming more imported.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Packt Book Review - Azure Architecture Explained</title>
-      <link>https://www.007ffflearning.com/post/packt-book-review-azure-architecture-explained/</link>
+      <link>//localhost:1313/post/packt-book-review---azure-architecture-explained/</link>
       <pubDate>Sun, 10 Dec 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/packt-book-review-azure-architecture-explained/</guid>
-      <description>In this post, I want to share my review of another Azure book I read recently, Azure Architecture Explained this time from Brett Hargreaves and David Rendon published by Packt Publishing and available on Amazon as well as other e-book subscription platforms.
-Apart from the great content, it was nice to see one of my own Microsoft Technical Trainer Team colleagues, Sarah Kong, providing the foreword.
-About the book (from the cover) This book provides you with a clear path to designing optimal cloud-based solutions in Azure, by delving into the platform&amp;rsquo;s intricacies.</description>
+      <guid>//localhost:1313/post/packt-book-review---azure-architecture-explained/</guid>
+      <description>&lt;p&gt;In this post, I want to share my review of another Azure book I read recently, &lt;strong&gt;Azure Architecture Explained&lt;/strong&gt; this time from &lt;a href=&#34;https://twitter.com/BrettTheGeek&#34;&gt;Brett Hargreaves&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/daverndn&#34;&gt;David Rendon&lt;/a&gt; published by &lt;a href=&#34;https://www.packtpub.com/product/azure-architecture-explained/9781837634811&#34;&gt;Packt Publishing&lt;/a&gt; and available on &lt;a href=&#34;https://www.amazon.com/Azure-Architecture-Explained-comprehensive-effective/dp/1837634815&#34;&gt;Amazon&lt;/a&gt; as well as other e-book subscription platforms.&lt;/p&gt;&#xA;&lt;p&gt;Apart from the great content, it was nice to see one of my own Microsoft Technical Trainer Team colleagues, &lt;a href=&#34;https://www.linkedin.com/in/konger/&#34;&gt;Sarah Kong&lt;/a&gt;, providing the foreword.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2023-12-10_10-54-01.png&#34; alt=&#34;Book Cover&#34;&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;about-the-book-from-the-cover&#34;&gt;About the book (from the cover)&lt;/h2&gt;&#xA;&lt;p&gt;This book provides you with a clear path to designing optimal cloud-based solutions in Azure, by delving into the platform&amp;rsquo;s intricacies.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Packt Book Review - Azure for Business Decision Makers</title>
-      <link>https://www.007ffflearning.com/post/packt-book-review-azure-for-business-decision-makers/</link>
+      <link>//localhost:1313/post/packt-book-review---azure-for-business-decision-makers/</link>
       <pubDate>Sun, 22 Oct 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/packt-book-review-azure-for-business-decision-makers/</guid>
-      <description>In this post, I want to share my review of another Azure book I read recently, Azure for Decision Makers this time from Jack Lee, Jason Milgram and David Rendon published by Packt Publishing and available on Amazon as well as other e-book subscription platforms.
-About the book Azure for Decision Makers provides a comprehensive overview of the latest updates in cloud security, hybrid cloud and multi-cloud solutions, and cloud migration in Azure.</description>
+      <guid>//localhost:1313/post/packt-book-review---azure-for-business-decision-makers/</guid>
+      <description>&lt;p&gt;In this post, I want to share my review of another Azure book I read recently, &lt;strong&gt;Azure for Decision Makers&lt;/strong&gt; this time from &lt;a href=&#34;https://twitter.com/jleeconsulting&#34;&gt;Jack Lee&lt;/a&gt;, Jason Milgram and &lt;a href=&#34;https://twitter.com/daverndn&#34;&gt;David Rendon&lt;/a&gt; published by &lt;a href=&#34;https://www.packtpub.com/product/azure-for-decision-makers/9781837639915&#34;&gt;Packt Publishing&lt;/a&gt; and available on &lt;a href=&#34;https://www.amazon.com/Azure-Decision-Makers-essential-business-ebook/dp/B0CGRMMJ6Y/&#34;&gt;Amazon&lt;/a&gt; as well as other e-book subscription platforms.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2023-10-22_10-40-06.png&#34; alt=&#34;Book Cover&#34;&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;about-the-book&#34;&gt;About the book&lt;/h2&gt;&#xA;&lt;p&gt;Azure for Decision Makers provides a comprehensive overview of the latest updates in cloud security, hybrid cloud and multi-cloud solutions, and cloud migration in Azure. This book is a must-have introduction to the Microsoft Azure cloud platform, demonstrating the substantial scope of digital transformation and innovation that can be achieved with Azure&amp;rsquo;s capabilities.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Trigger a YAML Pipeline from a Classic Release Pipeline in Azure DevOps</title>
-      <link>https://www.007ffflearning.com/post/trigger-yaml-pipeline-from-classic-release-in-ado/</link>
+      <link>//localhost:1313/post/trigger-yaml-pipeline-from-classic-release-in-ado/</link>
       <pubDate>Sat, 30 Sep 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/trigger-yaml-pipeline-from-classic-release-in-ado/</guid>
-      <description>Hi y&amp;rsquo;all!
-Over the last 18 months, I&amp;rsquo;ve been developing a tool for our internal Microsoft Trainer team, allowing them to deploy trainer demo scenarios in Azure using a Blazor Front-End web app, connecting to Azure DevOps pipelines using REST API calls.
-At the start of the project, Classic Release pipelines were still common, since YAML was too new, and rather unknown. However, over the last few months, more and more I was thinking of shifting from Classic to YAML Pipelines.</description>
+      <guid>//localhost:1313/post/trigger-yaml-pipeline-from-classic-release-in-ado/</guid>
+      <description>&lt;p&gt;Hi y&amp;rsquo;all!&lt;/p&gt;&#xA;&lt;p&gt;Over the last 18 months, I&amp;rsquo;ve been developing a tool for our internal Microsoft Trainer team, allowing them to deploy trainer demo scenarios in Azure using a Blazor Front-End web app, connecting to Azure DevOps pipelines using REST API calls.&lt;/p&gt;&#xA;&lt;p&gt;At the start of the project, Classic Release pipelines were still common, since YAML was too new, and rather unknown. However, over the last few months, more and more I was thinking of shifting from Classic to YAML Pipelines. But - although the app isn&amp;rsquo;t that big or complex - it means connecting to different API endpoints for YAML, reading out the status of ongoing pipelines would be different, and getting a listing of all deployed pipelines for a given trainer, would also be different.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Azure Back to School - Achieving SRE on Azure</title>
-      <link>https://www.007ffflearning.com/post/achieving-sre-on-azure/</link>
+      <link>//localhost:1313/post/achieving-sre-on-azure/</link>
       <pubDate>Sat, 09 Sep 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/achieving-sre-on-azure/</guid>
-      <description>Disclaimer: this was supposed to be a recorded session for Azure Back To School 2023, but due to a too-busy-work-and-family-schedule over the last 2 weeks, I didn&amp;rsquo;t find the time anymore. While I don&amp;rsquo;t like to let down this amazing community, I hope the textual descriptions of what I was going to talk about is still appreciated.
-Achieving Site Reliability Engineering with Azure In today&amp;rsquo;s digitally driven landscape, ensuring the reliability of cloud-based applications and services is paramount.</description>
+      <guid>//localhost:1313/post/achieving-sre-on-azure/</guid>
+      <description>&lt;p&gt;Disclaimer: this was supposed to be a recorded session for &lt;strong&gt;&lt;a href=&#34;https://azurebacktoschool.github.io/edge%20case/azure-back-to-school-2023-session-schedule/&#34;&gt;Azure Back To School 2023&lt;/a&gt;&lt;/strong&gt;, but due to a &lt;strong&gt;too-busy-work-and-family-schedule&lt;/strong&gt; over the last 2 weeks, I didn&amp;rsquo;t find the time anymore. While I don&amp;rsquo;t like to let down this amazing community, I hope the textual descriptions of what I was going to talk about is still appreciated.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/Azure_rectangular_logo_without_background.png&#34; alt=&#34;Azure Back To School&#34;&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;achieving-site-reliability-engineering-with-azure&#34;&gt;Achieving Site Reliability Engineering with Azure&lt;/h1&gt;&#xA;&lt;p&gt;In today&amp;rsquo;s digitally driven landscape, ensuring the &lt;strong&gt;reliability&lt;/strong&gt; of cloud-based applications and services is paramount. &lt;strong&gt;Site Reliability Engineering (SRE)&lt;/strong&gt; has emerged as a crucial discipline for achieving this goal. In this technical article, we will explore how &lt;strong&gt;Azure&lt;/strong&gt;, Microsoft&amp;rsquo;s cloud platform, can be leveraged to implement and enhance Site Reliability Engineering practices. We&amp;rsquo;ll delve into key topics such as the &lt;strong&gt;Azure Well Architected Framework&lt;/strong&gt;, &lt;strong&gt;Azure Service Level Agreements (SLAs)&lt;/strong&gt;, best practices around &lt;strong&gt;DevOps&lt;/strong&gt;, and the powerful toolset of &lt;strong&gt;Chaos Engineering&lt;/strong&gt;, including &lt;strong&gt;Azure Chaos Studio&lt;/strong&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Intro to Chaos Engineering and Azure Chaos Studio (Preview)</title>
-      <link>https://www.007ffflearning.com/post/intro-to-chaos-engineering-and-azure-chaos-studio-preview/</link>
+      <link>//localhost:1313/post/intro-to-chaos-engineering-and-azure-chaos-studio-preview/</link>
       <pubDate>Sun, 27 Aug 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/intro-to-chaos-engineering-and-azure-chaos-studio-preview/</guid>
-      <description>Hey folks,
-For the ones who have been following me here for a while, know I&amp;rsquo;m passionate about Azure and DevOps (and yes, also Azure DevOps, lol). But to be honest, I&amp;rsquo;ve been eyeing to another Azure Service for a while, Azure Chaos Studio, available in public preview.
-This article shares an introduction to Chaos Engineering, as well as walks you through the first steps it takes to set up Azure Chaos Studio, create experiments and validate the outcome.</description>
+      <guid>//localhost:1313/post/intro-to-chaos-engineering-and-azure-chaos-studio-preview/</guid>
+      <description>&lt;p&gt;Hey folks,&lt;/p&gt;&#xA;&lt;p&gt;For the ones who have been following me here for a while, know I&amp;rsquo;m passionate about Azure and DevOps (and yes, also Azure DevOps, lol). But to be honest, I&amp;rsquo;ve been eyeing to another Azure Service for a while, &lt;strong&gt;Azure Chaos Studio&lt;/strong&gt;, available in public preview.&lt;/p&gt;&#xA;&lt;p&gt;This article shares an introduction to Chaos Engineering, as well as walks you through the first steps it takes to set up &lt;strong&gt;Azure Chaos Studio&lt;/strong&gt;, create experiments and validate the outcome.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Build an Azure AI chatbot using your own data from blob storage </title>
-      <link>https://www.007ffflearning.com/post/build-an-azure-ai-chatbot-using-your-own-data-in-blob-storage/</link>
+      <link>//localhost:1313/post/build-an-azure-ai-chatbot-using-your-own-data-in-blob-storage/</link>
       <pubDate>Mon, 17 Jul 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/build-an-azure-ai-chatbot-using-your-own-data-in-blob-storage/</guid>
-      <description>You must have lived under a rock if you didn&amp;rsquo;t hear about how important Azure AI is for Microsoft and its partner and customer ecosystem. Thanks to Artificial Intelligence (AI), companies will be more innovative, employees will be more productive. While I honestly was a bit hesitant at first myself - knowing a big part of my job is providing training, and seeing what AI can do here in terms of content creation, video creation and alike, yes the trainer role will definitely (has to) change over the next coming months - once I started digging into its capabilities more, I started to see the AI engine potential.</description>
+      <guid>//localhost:1313/post/build-an-azure-ai-chatbot-using-your-own-data-in-blob-storage/</guid>
+      <description>&lt;p&gt;You must have lived under a rock if you didn&amp;rsquo;t hear about how important &lt;a href=&#34;https://azure.microsoft.com/en-us/solutions/ai/&#34;&gt;Azure AI&lt;/a&gt; is for Microsoft and its partner and customer ecosystem. Thanks to Artificial Intelligence (AI), companies will be more innovative, employees will be more productive. While I honestly was a bit hesitant at first myself - knowing a big part of my job is providing training, and seeing what AI can do here in terms of content creation, video creation and alike, yes the trainer role will definitely (has to) change over the next coming months - once I started digging into its capabilities more, I started to see the AI engine potential.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>You do not have permissions to view this directory or page after publishing to Azure App Service</title>
-      <link>https://www.007ffflearning.com/post/you-do-not-have-permissions-error-after-publishing-to-azure-app-services/</link>
+      <link>//localhost:1313/post/you-do-not-have-permissions-error-after-publishing-to-azure-app-services/</link>
       <pubDate>Sun, 30 Apr 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/you-do-not-have-permissions-error-after-publishing-to-azure-app-services/</guid>
-      <description>Earlier this week, I got an interesting phenomenon when publishing a code update to an existing Azure App Service. As this was a small project, I&amp;rsquo;ve always been deploying updates in a manual way from right-click / publish in Visual Studio. But than I said to myself, Peter, as a passionate DevOps engineer and trainer, just go out and create a pipeline for this.
-And that&amp;rsquo;s what happened.
-Running the release pipeline came back successful, but the site threw an error:</description>
+      <guid>//localhost:1313/post/you-do-not-have-permissions-error-after-publishing-to-azure-app-services/</guid>
+      <description>&lt;p&gt;Earlier this week, I got an interesting phenomenon when publishing a code update to an existing Azure App Service. As this was a small project, I&amp;rsquo;ve always been deploying updates in a manual way from &lt;strong&gt;right-click / publish&lt;/strong&gt; in Visual Studio. But than I said to myself, Peter, as a passionate DevOps engineer and trainer, just go out and create a pipeline for this.&lt;/p&gt;&#xA;&lt;p&gt;And that&amp;rsquo;s what happened.&lt;/p&gt;&#xA;&lt;p&gt;Running the release pipeline came back successful, but the site threw an error:&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Collecting Feedback in ADO work items from Office Forms</title>
-      <link>https://www.007ffflearning.com/post/collecting-feedback-in-ado-work-items-from-office-forms/</link>
+      <link>//localhost:1313/post/collecting-feedback-in-ado-work-items-from-office-forms/</link>
       <pubDate>Sun, 26 Mar 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/collecting-feedback-in-ado-work-items-from-office-forms/</guid>
-      <description>Hey folks,
-I&amp;rsquo;m a fond user of Azure DevOps for testing application builds, running CI/CD pipelines to publish Azure demo scenarios and train our Microsoft global customers on it every few weeks out of AZ-400 training deliveries.
-One of the lesser-known, yet AWESOMELY POWERFUL features besides &amp;lsquo;running pipelines&amp;rsquo; is Azure Boards, providing an end-to-end project methodology platform using Scrum, Agile, CMMI or custom approach.
-In this post, I mainly wanted to zoom in on the custom capabilities, capturing feedback from employees - which got entered through an Office Forms form, picked up by Azure Logic Apps, and stored in a customized Azure Boards Work Item.</description>
+      <guid>//localhost:1313/post/collecting-feedback-in-ado-work-items-from-office-forms/</guid>
+      <description>&lt;p&gt;Hey folks,&lt;/p&gt;&#xA;&lt;p&gt;I&amp;rsquo;m a fond user of Azure DevOps for testing application builds, running CI/CD pipelines to publish Azure demo scenarios and train our Microsoft global customers on it every few weeks out of AZ-400 training deliveries.&lt;/p&gt;&#xA;&lt;p&gt;One of the lesser-known, yet AWESOMELY POWERFUL features besides &amp;lsquo;running pipelines&amp;rsquo; is &lt;a href=&#34;https://azure.microsoft.com/en-us/products/devops/boards/&#34;&gt;Azure Boards&lt;/a&gt;, providing an &lt;strong&gt;end-to-end project methodology platform&lt;/strong&gt; using Scrum, Agile, CMMI or custom approach.&lt;/p&gt;&#xA;&lt;p&gt;In this post, I mainly wanted to zoom in on the &lt;strong&gt;custom&lt;/strong&gt; capabilities, capturing feedback from employees - which got entered through an &lt;strong&gt;Office Forms&lt;/strong&gt; form, picked up by &lt;strong&gt;Azure Logic Apps&lt;/strong&gt;, and stored in a customized &lt;strong&gt;Azure Boards Work Item&lt;/strong&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Azure Spring Clean - DCK, ACR, ACI, AKS, ACA, the Azure Container Alphabet Soup</title>
-      <link>https://www.007ffflearning.com/post/dck-acr-aci-aks-aca-the-azure-container-alphabet-soup/</link>
+      <link>//localhost:1313/post/dck-acr-aci-aks-aca-the-azure-container-alphabet-soup/</link>
       <pubDate>Wed, 15 Mar 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/dck-acr-aci-aks-aca-the-azure-container-alphabet-soup/</guid>
-      <description>Hey friends,
-Welcome to #AzureSpringClean, an initiative from Joe Carlyle and Thomas Thornton where I&amp;rsquo;m honored to be able to participate in again for the 4th year already. Thanks guys for trusting me once more for sharing some Azure knowledge&amp;hellip;
-This time, I wanted to try and guide you through the buzzword of the last couple of years, containers&amp;hellip; and more specifically, what different options you have in Azure to run your containerized workloads.</description>
+      <guid>//localhost:1313/post/dck-acr-aci-aks-aca-the-azure-container-alphabet-soup/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;../images/AzureSpringClean2023-logo.png&#34; alt=&#34;Azure Spring Clean&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Hey friends,&lt;/p&gt;&#xA;&lt;p&gt;Welcome to #AzureSpringClean, an initiative from &lt;strong&gt;&lt;a href=&#34;https://twitter.com/wedoazure&#34;&gt;Joe Carlyle&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/tamstar1234&#34;&gt;Thomas Thornton&lt;/a&gt;&lt;/strong&gt;&#xA;where I&amp;rsquo;m honored to be able to participate in again for the 4th year already. Thanks guys for trusting me once more for sharing some Azure knowledge&amp;hellip;&lt;/p&gt;&#xA;&lt;p&gt;This time, I wanted to try and guide you through the buzzword of the last couple of years, &lt;strong&gt;containers&lt;/strong&gt;&amp;hellip; and more specifically, what different options you have in Azure to run your containerized workloads.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Festive Tech Calendar 2022 - Building a Marvel Hero app using Blazor Web Assembly and Azure Static Web Apps</title>
-      <link>https://www.007ffflearning.com/post/steps-for-blazor-marvel-webassembly/</link>
+      <link>//localhost:1313/post/steps-for-blazor-marvel---webassembly/</link>
       <pubDate>Wed, 28 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/steps-for-blazor-marvel-webassembly/</guid>
-      <description>Building a Marvel Hero catalog app using Blazor Web Assembly
-Introduction This article describes all the steps on how to develop a Marvel Hero catalog app, using Blazor Web Assembly, and is a companion guide to the Festive Tech Calendar 2022 session I presented. This app introduces Blazor .NET development, and more specifically how to easily create a Single Page App using HTML, CSS and API calls to an external API Service at https://developer.</description>
+      <guid>//localhost:1313/post/steps-for-blazor-marvel---webassembly/</guid>
+      <description>&lt;p&gt;Building a Marvel Hero catalog app using Blazor Web Assembly&lt;/p&gt;&#xA;&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;&#xA;&lt;p&gt;This article describes all the steps on how to develop a Marvel Hero catalog app, using Blazor Web Assembly, and is a companion guide to the Festive Tech Calendar 2022 session I presented. This app introduces Blazor .NET development, and more specifically how to easily create a Single Page App using HTML, CSS and API calls to an external API Service at &lt;a href=&#34;https://developer.marvel.com&#34;&gt;https://developer.marvel.com&lt;/a&gt;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>How OnyxBoox - with some help from a friend - got me back to reading more... books</title>
-      <link>https://www.007ffflearning.com/post/how-boox-got-me-back-to-reading/</link>
+      <link>//localhost:1313/post/how-boox-got-me-back-to-reading/</link>
       <pubDate>Fri, 23 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/how-boox-got-me-back-to-reading/</guid>
-      <description>I have to admit, I am not a real book reader, and the bit of reading I am doing typically involves Azure-related tech books, or what my wife and family describes as &amp;ldquo;business books&amp;rdquo; (Biographies, Non-fiction company stories such as the start of Netflix, Uber, Silicon Valley,&amp;hellip;). For several years, I relied on an Amazon Kindle app on my (cheap) Samsung A8 tablet, dating from the time I was traveling weekly and wanted to travel light.</description>
+      <guid>//localhost:1313/post/how-boox-got-me-back-to-reading/</guid>
+      <description>&lt;p&gt;I have to admit, I am not a real book reader, and the bit of reading I am doing typically involves Azure-related tech books, or what my wife and family describes as &amp;ldquo;business books&amp;rdquo; (Biographies, Non-fiction company stories such as the start of Netflix, Uber, Silicon Valley,&amp;hellip;). For several years, I relied on an Amazon Kindle app on my (cheap) Samsung A8 tablet, dating from the time I was traveling weekly and wanted to travel light. While it still runs fine, the 8&amp;quot; form factor is sometimes a bit small - especially when screenshots of development code are involved - and I was also missing the capability to take notes (apart from the basic notes in Kindle app).&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>How to clear the Azure Portal Recent Resources list</title>
-      <link>https://www.007ffflearning.com/post/how-to-clear-the-azure-portal-recent-resources-list/</link>
+      <link>//localhost:1313/post/how-to-clear-the-azure-portal-recent-resources-list/</link>
       <pubDate>Fri, 23 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/how-to-clear-the-azure-portal-recent-resources-list/</guid>
-      <description>This post is a short one, but something that has been bugging me for a while, where I didn&amp;rsquo;t even know how to fix it.
-As I am deploying a lot of different Azure Resources every week while delivering Azure trainings, I also run a lot of deletions during the week, or at least by the end of the week. To repeat about the same process the week after when doing another Azure training delivery.</description>
+      <guid>//localhost:1313/post/how-to-clear-the-azure-portal-recent-resources-list/</guid>
+      <description>&lt;p&gt;This post is a short one, but something that has been bugging me for a while, where I didn&amp;rsquo;t even know how to fix it.&lt;/p&gt;&#xA;&lt;p&gt;As I am deploying a lot of different Azure Resources every week while delivering Azure trainings, I also run a lot of deletions during the week, or at least by the end of the week. To repeat about the same process the week after when doing another Azure training delivery.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Book review - Building Blazor WebAssembly Applications with gRPC</title>
-      <link>https://www.007ffflearning.com/post/packt-book-review-blazor-wasm-with-grpc/</link>
+      <link>//localhost:1313/post/packt-book-review---blazor-wasm-with-grpc/</link>
       <pubDate>Sat, 17 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/packt-book-review-blazor-wasm-with-grpc/</guid>
-      <description>In this post, I want to share my review of another Blazor book I read recently, Building Blazor WebAssembly Applications with gRPC this time from Vaclav Perakek, published by Packt Publishing and available on Amazon as well as other e-book subscription platforms.
-If you have been following me for a while, you know I&amp;rsquo;m gradually learning more about coding and developing applications, especially using the Blazor .NET framework.
-What intrigued me even more with this book, is the gRPC integration.</description>
+      <guid>//localhost:1313/post/packt-book-review---blazor-wasm-with-grpc/</guid>
+      <description>&lt;p&gt;In this post, I want to share my review of another Blazor book I read recently, &lt;strong&gt;Building Blazor WebAssembly Applications with gRPC&lt;/strong&gt; this time from &lt;a href=&#34;https://twitter.com/vaclavperakek&#34;&gt;Vaclav Perakek&lt;/a&gt;, published by &lt;a href=&#34;https://www.packtpub.com/product/building-blazor-webassembly-applications-with-grpc/9781804610558?_ga=2.130113295.1693879135.1671300604-32592472.1664947786&#34;&gt;Packt Publishing&lt;/a&gt; and available on &lt;a href=&#34;https://www.amazon.com/Building-Blazor-WebAssembly-Applications-gRPC/dp/1804610550&#34;&gt;Amazon&lt;/a&gt; as well as other e-book subscription platforms.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2022-12-17_10-12-08.png&#34; alt=&#34;Book Cover&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;If you have been following me for a while, you know I&amp;rsquo;m gradually learning more about coding and developing applications, especially using the &lt;a href=&#34;https://dotnet.microsoft.com/en-us/apps/aspnet/web-apps/blazor&#34;&gt;Blazor .NET framework&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;What intrigued me even more with this book, is the gRPC integration. While I heard about before, from far away honestly, I never really looked into it. So besides learning more about Blazor itself, seeing how other much more advanced developers are using the framework, as well as learning on how they write code, I also learned more about what gRPC is all about.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Using Packt Publishing Credits for free books</title>
-      <link>https://www.007ffflearning.com/post/using-packt-credits-for-free-books/</link>
-      <pubDate>Sat, 12 Nov 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/using-packt-credits-for-free-books/</guid>
-      <description>Hey readers,
-This is actually a less technical post, although it can lead to a lot of technical resources. I honestly wrote this blog for myself this time, as I struggled in finding a way to get free books in my Packt Publishing subscription. I had credits, but I always forget how to claim them :). So I guess I&amp;rsquo;m not the only one having that problem.
-What are Packt Credits, and how to get them Packt allows for one-time paying for a book, getting a monthly paid subscription, a 12-month or 18-month one.</description>
+      <link>//localhost:1313/post/using-packt-credits-for-free-books/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/post/using-packt-credits-for-free-books/</guid>
+      <description>&lt;p&gt;Hey readers,&lt;/p&gt;&#xA;&lt;p&gt;This is actually a less technical post, although it can lead to a lot of technical resources. I honestly wrote this blog for myself this time, as I struggled in finding a way to get free books in my &lt;a href=&#34;https://www.packtpub.com&#34;&gt;Packt Publishing&lt;/a&gt; subscription. I had credits, but I always forget how to claim them :). So I guess I&amp;rsquo;m not the only one having that problem.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-are-packt-credits-and-how-to-get-them&#34;&gt;What are Packt Credits, and how to get them&lt;/h2&gt;&#xA;&lt;p&gt;Packt allows for one-time paying for a book, getting a monthly paid subscription, a 12-month or 18-month one. It&amp;rsquo;s with these last 2 you get a Credit added to your account once per month, as well as earning an additional credit each month, upon completing 40 sections of learning. So easy said, the more sections (chapter units) you read monthly, the more credits you get as a bonus.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>How I migrated my Hugo site from Azure Storage Site to Azure Static Web Apps</title>
-      <link>https://www.007ffflearning.com/post/deploying-or-migrating-a-hugo-blog-on-azure-static-web-apps/</link>
+      <link>//localhost:1313/post/deploying-or-migrating-a-hugo-blog-on-azure-static-web-apps/</link>
       <pubDate>Sun, 30 Oct 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/deploying-or-migrating-a-hugo-blog-on-azure-static-web-apps/</guid>
-      <description>For about 3 years now, I&amp;rsquo;ve been running this personal blog site using Hugo, running on Azure Static Storage Sites and Azure Front Door as load balancer/TLS protection service.
-About 18 months back, Microsoft released Azure Static Web Apps, a platform built for exactly that, hosting Static Web sites, such as Vue, React, Angular, Svelte, .NET Blazor, and also&amp;hellip; Hugo :).
-As I had to migrate my resources to a new Azure subscription and tenant, I thought this was a perfect moment to migrate to SWA.</description>
+      <guid>//localhost:1313/post/deploying-or-migrating-a-hugo-blog-on-azure-static-web-apps/</guid>
+      <description>&lt;p&gt;For about 3 years now, I&amp;rsquo;ve been running this personal blog site using &lt;strong&gt;&lt;a href=&#34;https://www.gohugo.io&#34;&gt;Hugo&lt;/a&gt;&lt;/strong&gt;, running on &lt;a href=&#34;https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-static-website-how-to?tabs=azure-portal&#34;&gt;Azure Static Storage Sites&lt;/a&gt; and &lt;a href=&#34;https://learn.microsoft.com/en-us/azure/frontdoor/front-door-overview&#34;&gt;Azure Front Door&lt;/a&gt; as load balancer/TLS protection service.&lt;/p&gt;&#xA;&lt;p&gt;About 18 months back, Microsoft released &lt;strong&gt;&lt;a href=&#34;https://learn.microsoft.com/en-us/azure/static-web-apps/overview&#34;&gt;Azure Static Web Apps&lt;/a&gt;&lt;/strong&gt;, a platform built for exactly that, hosting Static Web sites, such as Vue, React, Angular, Svelte, .NET Blazor, and also&amp;hellip; Hugo :).&lt;/p&gt;&#xA;&lt;p&gt;As I had to migrate my resources to a new Azure subscription and tenant, I thought this was a perfect moment to migrate to SWA. While the process was surprisingly smooth, I wanted to blog about it, to help and convince others who are in the same situation as myself, giving confidence how easy it actually is.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Integrating Azure App Insights for Hugo on Static Web Apps</title>
-      <link>https://www.007ffflearning.com/post/integrating-azure-app-insights-for-hugo-on-static-web-apps/</link>
+      <link>//localhost:1313/post/integrating-azure-app-insights-for-hugo-on-static-web-apps/</link>
       <pubDate>Sun, 30 Oct 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/integrating-azure-app-insights-for-hugo-on-static-web-apps/</guid>
-      <description>Hey folks,
-Earlier this week, I wrote about how I migrated my Hugo blog site from Azure Storage Account-based site to the newer Azure Static Web Apps with Hugo.
-While this was a smooth process, both migrating the actual site content, as well as transferring the public domain name, the piece missing was the statistics. I always used Azure Application Insights for this, but specifically for Azure Static Web Apps, App Insights is only supported when using Functions (as per this article on the Microsoft docs).</description>
+      <guid>//localhost:1313/post/integrating-azure-app-insights-for-hugo-on-static-web-apps/</guid>
+      <description>&lt;p&gt;Hey folks,&lt;/p&gt;&#xA;&lt;p&gt;Earlier this week, I &lt;a href=&#34;https://www.007ffflearning.com/post/deploying-or-migrating-a-hugo-blog-on-azure-static-web-apps/&#34;&gt;wrote&lt;/a&gt; about how I migrated my Hugo blog site from Azure Storage Account-based site to the newer Azure Static Web Apps with Hugo.&lt;/p&gt;&#xA;&lt;p&gt;While this was a smooth process, both migrating the actual site content, as well as transferring the public domain name, the piece missing was the statistics. I always used &lt;a href=&#34;https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview?tabs=net&#34;&gt;Azure Application Insights&lt;/a&gt; for this, but specifically for Azure Static Web Apps, App Insights is only supported when using Functions (as per &lt;a href=&#34;https://learn.microsoft.com/en-us/azure/static-web-apps/monitor&#34;&gt;this article&lt;/a&gt; on the Microsoft docs). Which I don&amp;rsquo;t have with Hugo.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>The Art of Realizing SRE on Azure - Book Review</title>
-      <link>https://www.007ffflearning.com/post/the-art-of-realizing-sre-on-azure/</link>
+      <link>//localhost:1313/post/the-art-of-realizing-sre-on-azure/</link>
       <pubDate>Sat, 29 Oct 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/the-art-of-realizing-sre-on-azure/</guid>
-      <description>As most of you know already, I enjoy writing technical (Azure related) books. So if you are wondering why it&amp;rsquo;s been quiet lately, there is a good reason for it.
-Actually, I was writing on my 9th book, making it 9 books in 9 years straight, but something got in-between the writing process and publishing. It&amp;rsquo;s called US Visa regulations :). Beginning this year, January 5th actually, I relocated from Belgium to Redmond, WA for Microsoft Corp.</description>
+      <guid>//localhost:1313/post/the-art-of-realizing-sre-on-azure/</guid>
+      <description>&lt;p&gt;As most of you know already, I enjoy writing technical (Azure related) &lt;strong&gt;&lt;a href=&#34;https://www.007ffflearning.com/books&#34;&gt;books&lt;/a&gt;&lt;/strong&gt;. So if you are wondering why it&amp;rsquo;s been quiet lately, there is a good reason for it.&lt;/p&gt;&#xA;&lt;p&gt;Actually, I was writing on my 9th book, making it 9 books in 9 years straight, but something got in-between the writing process and publishing. It&amp;rsquo;s called US Visa regulations :). Beginning this year, January 5th actually, I relocated from Belgium to Redmond, WA for Microsoft Corp. The work Visa I&amp;rsquo;m on allows me to only work for Microsoft, which obviously makes sense. But that meant I had to stop my side-activity as a book author with Apress.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>DevOps Workflow Generator</title>
-      <link>https://www.007ffflearning.com/post/devops-workflow-generator/</link>
+      <link>//localhost:1313/post/devops-workflow-generator/</link>
       <pubDate>Sun, 03 Apr 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/devops-workflow-generator/</guid>
-      <description>Hey awesome people,
-For the ones who know me, it shouldn&amp;rsquo;t be a surprise I&amp;rsquo;m interested in DevOps, mainly using Azure DevOps and GitHub as core technologies, as well as several side-solutions that integrate with them. So when I heard about the DevOps Workflow Generator, a new free tool from the Microsoft Research Lab division, I wanted to give it a spin.
-The Concepts of DevOps DevOps according to Microsoft’s Definition: The Union of People, Processes and Products, to enable continuous delivery of value to the business</description>
+      <guid>//localhost:1313/post/devops-workflow-generator/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;../images/2022-03-26_16-07-28.png&#34; alt=&#34;DevOps Workflow Generator&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Hey awesome people,&lt;/p&gt;&#xA;&lt;p&gt;For the ones who know me, it shouldn&amp;rsquo;t be a surprise I&amp;rsquo;m interested in DevOps, mainly using Azure DevOps and GitHub as core technologies, as well as several side-solutions that integrate with them. So when I heard about the &lt;strong&gt;DevOps Workflow Generator&lt;/strong&gt;, a new free tool from the Microsoft Research Lab division, I wanted to give it a spin.&lt;/p&gt;&#xA;&lt;h2 id=&#34;the-concepts-of-devops&#34;&gt;The Concepts of DevOps&lt;/h2&gt;&#xA;&lt;p&gt;DevOps according to Microsoft’s Definition: The Union of People, Processes and Products, to enable continuous delivery of value to the business&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Azure Spring Clean - DevSecOps and Shifting Left</title>
-      <link>https://www.007ffflearning.com/post/azure-spring-clean-devsecops-and-shifting-left-to-publish-secure-software/</link>
+      <link>//localhost:1313/post/azure-spring-clean---devsecops-and-shifting-left-to-publish-secure-software/</link>
       <pubDate>Thu, 17 Mar 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/azure-spring-clean-devsecops-and-shifting-left-to-publish-secure-software/</guid>
-      <description>Hey folks,
-Welcome to #AzureSpringClean, an initiative from Joe Carlyle and Thomas Thornton which celebrates its 3rd edition this year. I&amp;rsquo;m thrilled to be part of this again for the 2nd time this year. My first article had security in mind, explaining the difference between Azure Service Principals and Managed Identity.
-For this second article, I&amp;rsquo;m staying in the security focus, helping you understand DevSecOps, and how you can optimize security in your application deployment lifecycle, by &amp;ldquo;shifting left&amp;rdquo;.</description>
+      <guid>//localhost:1313/post/azure-spring-clean---devsecops-and-shifting-left-to-publish-secure-software/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;../images/AzureSpringClean-logo.png&#34; alt=&#34;Azure Spring Clean&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Hey folks,&lt;/p&gt;&#xA;&lt;p&gt;Welcome to #AzureSpringClean, an initiative from &lt;strong&gt;&lt;a href=&#34;https://twitter.com/wedoazure&#34;&gt;Joe Carlyle&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/tamstar1234&#34;&gt;Thomas Thornton&lt;/a&gt;&lt;/strong&gt; which celebrates its 3rd edition this year. I&amp;rsquo;m thrilled to be part of this again for the 2nd time this year. My &lt;a href=&#34;https://www.007ffflearning.com/post/azure-spring-clean-demystifying-service-principal-and-managed-identities/&#34;&gt;first article&lt;/a&gt; had security in mind, explaining the difference between Azure Service Principals and Managed Identity.&lt;/p&gt;&#xA;&lt;p&gt;For this second article, I&amp;rsquo;m staying in the security focus, helping you &lt;strong&gt;understand DevSecOps, and how you can optimize security in your application deployment lifecycle, by &amp;ldquo;shifting left&amp;rdquo;&lt;/strong&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Azure Spring Clean - Service Principals - Managed Identities</title>
-      <link>https://www.007ffflearning.com/post/azure-spring-clean-demystifying-service-principal-and-managed-identities/</link>
+      <link>//localhost:1313/post/azure-spring-clean---demystifying-service-principal-and-managed-identities/</link>
       <pubDate>Mon, 14 Mar 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/azure-spring-clean-demystifying-service-principal-and-managed-identities/</guid>
-      <description>Hey friends,
-Welcome to #AzureSpringClean, an initiative from Joe Carlyle and Thomas Thornton which celebrates its 3rd edition this year. I&amp;rsquo;m thrilled to be part of this again as well, helping you understanding the confusion and difference between Azure Service Principals and Azure Managed Identities. As I recently relocated from Belgium to Redmond, and didn&amp;rsquo;t have all my video/audio equipment up for a recording, I decided to share this information in a blog post.</description>
+      <guid>//localhost:1313/post/azure-spring-clean---demystifying-service-principal-and-managed-identities/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;../images/AzureSpringClean-logo.png&#34; alt=&#34;Azure Spring Clean&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Hey friends,&lt;/p&gt;&#xA;&lt;p&gt;Welcome to #AzureSpringClean, an initiative from &lt;strong&gt;&lt;a href=&#34;https://twitter.com/wedoazure&#34;&gt;Joe Carlyle&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/tamstar1234&#34;&gt;Thomas Thornton&lt;/a&gt;&lt;/strong&gt; which celebrates its 3rd edition this year. I&amp;rsquo;m thrilled to be part of this again as well, helping you &lt;strong&gt;understanding the confusion and difference between Azure Service Principals and Azure Managed Identities&lt;/strong&gt;. As I recently relocated from Belgium to Redmond, and didn&amp;rsquo;t have all my video/audio equipment up for a recording, I decided to share this information in a blog post.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Deploying .NET6.0 Blazor App using dotnet commandline</title>
-      <link>https://www.007ffflearning.com/post/deploying-blazor-apps-using-dotnet-commandline/</link>
+      <link>//localhost:1313/post/deploying-blazor-apps-using-dotnet-commandline/</link>
       <pubDate>Mon, 08 Nov 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/deploying-blazor-apps-using-dotnet-commandline/</guid>
-      <description>Hello readers,
-About 2 months ago, I promised I would start writing down my adventures in the DotNet Blazor development world, which you can read about in my first and second post.
-Welcome to &amp;ldquo;Coding Apps in Blazor from a non-developer standpoint - Part 3&amp;rdquo;
-This next article will cover about the same as the previous one, deploying the Blazor Server app template, but instead of using Visual Studio GUI for this, I&amp;rsquo;ll use the dotnet commandline tool this time.</description>
+      <guid>//localhost:1313/post/deploying-blazor-apps-using-dotnet-commandline/</guid>
+      <description>&lt;p&gt;Hello readers,&lt;/p&gt;&#xA;&lt;p&gt;About 2 months ago, I promised I would start writing down my adventures in the DotNet Blazor development world, which you can read about in my &lt;a href=&#34;https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer/&#34;&gt;first&lt;/a&gt; and &lt;a href=&#34;https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer-part-2/&#34;&gt;second&lt;/a&gt; post.&lt;/p&gt;&#xA;&lt;p&gt;Welcome to &amp;ldquo;Coding Apps in Blazor from a non-developer standpoint - Part 3&amp;rdquo;&lt;/p&gt;&#xA;&lt;p&gt;This next article will cover about the same as the previous one, deploying the Blazor Server app template, but instead of using Visual Studio GUI for this, I&amp;rsquo;ll use the &lt;strong&gt;dotnet commandline&lt;/strong&gt; tool this time. As it comes with some cool enhancements and options. And, next to that, it&amp;rsquo;s always nice to rely on command shell to speed up certain tasks.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Coding Apps in Blazor from a non-developer standpoint - Part 2</title>
-      <link>https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer-part-2/</link>
+      <link>//localhost:1313/post/coding-apps-in-blazor-from-a-non-developer---part-2/</link>
       <pubDate>Sun, 07 Nov 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer-part-2/</guid>
-      <description>Hello readers,
-About 2 months ago, I promised I would start writing down my adventures in the DotNet Blazor development world, which you can read in my first Blazor-related post here.
-While that post was more of a &amp;ldquo;setting the scene&amp;rdquo; how I ended up in learning Blazor (and C# mainly) and what the differences are between Blazor Server and Blazor WebAssembly, it also listed up the TOP 8 objectives I want to get out of these articles.</description>
+      <guid>//localhost:1313/post/coding-apps-in-blazor-from-a-non-developer---part-2/</guid>
+      <description>&lt;p&gt;Hello readers,&lt;/p&gt;&#xA;&lt;p&gt;About 2 months ago, I promised I would start writing down my adventures in the DotNet Blazor development world, which you can read in my &lt;a href=&#34;https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer/&#34;&gt;first Blazor-related post here&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;While that post was more of a &amp;ldquo;setting the scene&amp;rdquo; how I ended up in learning Blazor (and C# mainly) and what the differences are between Blazor Server and Blazor WebAssembly, it also listed up the TOP 8 objectives I want to get out of these articles.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>My 2 years as an Azure Technical Trainer at Microsoft</title>
-      <link>https://www.007ffflearning.com/post/my-first-2-years-as-att/</link>
+      <link>//localhost:1313/post/my-first-2-years-as-att/</link>
       <pubDate>Tue, 21 Sep 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/my-first-2-years-as-att/</guid>
-      <description>Hey,
-April last year, I wrote a post in which I looked back at my 1st 6 months as an Azure Technical Trainer. Where I think it makes sense to update this post in the week I&amp;rsquo;m officially starting my 3rd year in the role :).
-April 2020 was literally in the middle of the (first) pandemic lock-down, where we all thought it would clear out by May; little did we know it would last for another 18 months from there, facing another 2 or 3 lockdowns and still not seeing the end of it, although there is some tiny spark of light at the end of the tunnel.</description>
+      <guid>//localhost:1313/post/my-first-2-years-as-att/</guid>
+      <description>&lt;p&gt;Hey,&lt;/p&gt;&#xA;&lt;p&gt;April last year, I wrote a post in which I looked back at my 1st 6 months as an Azure Technical Trainer. Where I think it makes sense to update this post in the week I&amp;rsquo;m officially starting my 3rd year in the role :).&lt;/p&gt;&#xA;&lt;p&gt;April 2020 was literally in the middle of the (first) pandemic lock-down, where we all thought it would clear out by May; little did we know it would last for another 18 months from there, facing another 2 or 3 lockdowns and still not seeing the end of it, although there is some tiny spark of light at the end of the tunnel.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Coding Apps in Blazor from a non-developer standpoint</title>
-      <link>https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer/</link>
+      <link>//localhost:1313/post/coding-apps-in-blazor-from-a-non-developer/</link>
       <pubDate>Mon, 06 Sep 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer/</guid>
-      <description>Hello readers,
-The ones who know me already, know I have used traditional on-premises datacenter infrastructure for the first 15 years of my career, before I jumped onto Azure public cloud. Yes, I was an infra guy. And sometimes I still think I am, although I&amp;rsquo;m more and more shifting to containers and devops over the last 3 years.
-With the 25 years of IT experience, there was always 1 skillset missing&amp;hellip; coding, or learning a development language in better words.</description>
+      <guid>//localhost:1313/post/coding-apps-in-blazor-from-a-non-developer/</guid>
+      <description>&lt;p&gt;Hello readers,&lt;/p&gt;&#xA;&lt;p&gt;The ones who know me already, know I have used traditional on-premises datacenter infrastructure for the first 15 years of my career, before I jumped onto Azure public cloud. Yes, I was an infra guy. And sometimes I still think I am, although I&amp;rsquo;m more and more shifting to containers and devops over the last 3 years.&lt;/p&gt;&#xA;&lt;p&gt;With the 25 years of IT experience, there was always 1 skillset missing&amp;hellip; coding, or learning a development language in better words.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Another Tech Reviewing done: Azure Strategy and Implementation Guide - 4th edition</title>
-      <link>https://www.007ffflearning.com/post/azure-strategy-reviewing-done/</link>
+      <link>//localhost:1313/post/azure-strategy---reviewing-done/</link>
       <pubDate>Fri, 18 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/azure-strategy-reviewing-done/</guid>
-      <description>As most of you know, I enjoy writing technical (Azure related) books, but over the last year, I didn&amp;rsquo;t focus that much on writing myself, but supporting other authors in their writing-journey as well as performing technical reviewing of the book they are writing.
-The one I want to highlight in this post, has an interesting back-story. Mid 2019, I got approached by Packt, to write an update to their best-seller title &amp;ldquo;Azure Strategy and Implementation Guide&amp;rdquo;, in sponsorship with Microsoft.</description>
+      <guid>//localhost:1313/post/azure-strategy---reviewing-done/</guid>
+      <description>&lt;p&gt;As most of you know, I enjoy writing technical (Azure related) &lt;strong&gt;&lt;a href=&#34;https://www.007ffflearning.com/books&#34;&gt;books&lt;/a&gt;&lt;/strong&gt;, but over the last year, I didn&amp;rsquo;t focus that much on writing myself, but supporting other authors in their writing-journey as well as performing technical reviewing of the book they are writing.&lt;/p&gt;&#xA;&lt;p&gt;The one I want to highlight in this post, has an interesting back-story. Mid 2019, I got approached by &lt;strong&gt;&lt;a href=&#34;http://www.packt.com&#34;&gt;Packt&lt;/a&gt;&lt;/strong&gt;, to write an update to their best-seller title &lt;strong&gt;&amp;ldquo;Azure Strategy and Implementation Guide&amp;rdquo;&lt;/strong&gt;, in sponsorship with Microsoft. That was the third edition, which got released Oct 2019. About a year later, I got asked to write another update. As I was a Microsoft employee in meantime, and the book got sponsored by Microsoft, it could be a bit tricky :), so I decided to pull out of the writing process, avoiding conflicts of interest.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Upgrading an AKS cluster in 20 min</title>
-      <link>https://www.007ffflearning.com/post/upgrading_aks_in_20min/</link>
+      <link>//localhost:1313/post/upgrading_aks_in_20min/</link>
       <pubDate>Fri, 18 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/upgrading_aks_in_20min/</guid>
-      <description>Ever since I joined Microsoft (Sept 2019) and started working in the Azure Technical Trainer team, I deployed a demo Azure Kubernetes Service (AKS) with a few sample containers. Helping me in walking training attendees through the architecture, the management concepts and what it takes to run containerized workloads using the advanced capabilities coming with Kubernetes on Azure.
-Knowing this AKS cluster got deployed about 20 months back, it also meant my setup was getting a little bit out-of-date.</description>
+      <guid>//localhost:1313/post/upgrading_aks_in_20min/</guid>
+      <description>&lt;p&gt;Ever since I joined Microsoft (Sept 2019) and started working in the Azure Technical Trainer team, I deployed a demo &lt;strong&gt;&lt;a href=&#34;https://azure.microsoft.com/en-us/services/kubernetes-service/&#34;&gt;Azure Kubernetes Service (AKS)&lt;/a&gt;&lt;/strong&gt; with a few sample containers. Helping me in walking training attendees through the architecture, the management concepts and what it takes to run containerized workloads using the advanced capabilities coming with Kubernetes on Azure.&lt;/p&gt;&#xA;&lt;p&gt;Knowing this AKS cluster got deployed about 20 months back, it also meant my setup was getting &lt;em&gt;a little bit out-of-date&lt;/em&gt;. Interesting enough, it ran for almost 500 days (I considered waiting to publish this article to celebrate its anniversary&amp;hellip;)&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>I&#39;m recognized as a HashiCorp Ambassador</title>
-      <link>https://www.007ffflearning.com/post/hashicorp-ambassador/</link>
+      <link>//localhost:1313/post/hashicorp-ambassador/</link>
       <pubDate>Sat, 17 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/hashicorp-ambassador/</guid>
-      <description>Hey,
-I got some GREAT NEWS to share, based on an email I received earlier this week:
-which informed me I am recognized as a HashiCorp Ambassador!!
-I can imagine that some of you might not be familiar with this recognition. Easy said, it is much like the Microsoft MVP title, rewarding individuals for their outstanding contributions in the technical communities.
-In my personal case, my first adventures with Terraform started about 5 years ago.</description>
+      <guid>//localhost:1313/post/hashicorp-ambassador/</guid>
+      <description>&lt;p&gt;Hey,&lt;/p&gt;&#xA;&lt;p&gt;I got some &lt;strong&gt;GREAT NEWS&lt;/strong&gt; to share, based on an email I received earlier this week:&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2021-04-17_01.png&#34; alt=&#34;Nice_Email&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;which informed me &lt;strong&gt;I am recognized as a HashiCorp Ambassador&lt;/strong&gt;!!&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/HC_ambassador_badge_2021.png&#34; alt=&#34;HashiCorp_Ambassador_2021&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;I can imagine that some of you might not be familiar with this recognition. Easy said, it is much like the &lt;strong&gt;Microsoft MVP&lt;/strong&gt; title, rewarding individuals for their outstanding contributions in the technical communities.&lt;/p&gt;&#xA;&lt;p&gt;In my personal case, my first adventures with &lt;a href=&#34;https://www.hashicorp.com/terraform&#34;&gt;Terraform&lt;/a&gt; started about 5 years ago. I was struggling with Azure ARM templates, and Terraform seemed like an easier language to achieve the same purpose, deploying Azure resources.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>The labyrinth of Azure Infrastructure as Code Tools - Azure Spring Clean</title>
-      <link>https://www.007ffflearning.com/post/the-labyrinth-of-azure-iac/</link>
+      <link>//localhost:1313/post/the-labyrinth-of-azure-iac/</link>
       <pubDate>Wed, 24 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/the-labyrinth-of-azure-iac/</guid>
-      <description>Hey everyone,
-Thanks for joining the Azure Spring Clean online event again, in which the Azure community steps up once more, sharing the best tips &amp;amp; tricks on how to keep your Azure environments clean. Discussing optimizations, covering new services and features or overall giving you a view on how to manage your Azure subscriptions even better.
-You can check out all other blog posts or videos, which can guide you with best practices, lessons learned, or help you with some of the more difficult Azure Management topics at Azure Spring Clean.</description>
+      <guid>//localhost:1313/post/the-labyrinth-of-azure-iac/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;../images/Azure_Spring_Clean_Logo.jpg&#34; alt=&#34;Azure Spring Clean&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Hey everyone,&lt;/p&gt;&#xA;&lt;p&gt;Thanks for joining the &lt;strong&gt;Azure Spring Clean&lt;/strong&gt; online event again, in which the Azure community steps up once more, sharing the best tips &amp;amp; tricks on how to keep your Azure environments clean. Discussing optimizations, covering new services and features or overall giving you a view on how to manage your Azure subscriptions even better.&lt;/p&gt;&#xA;&lt;p&gt;You can check out all other blog posts or videos, which can guide you with best practices, lessons learned, or help you with some of the more difficult Azure Management topics at &lt;a href=&#34;https://www.azurespringclean.com&#34;&gt;Azure Spring Clean&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>AKS ErrImagePull and ImagePullBackOff on AKS after a year</title>
-      <link>https://www.007ffflearning.com/post/renewing-expired-aks-service-principal/</link>
+      <link>//localhost:1313/post/renewing-expired-aks-service-principal/</link>
       <pubDate>Tue, 23 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/renewing-expired-aks-service-principal/</guid>
-      <description>Hi all,
-I&amp;rsquo;ve deployed me an AKS - Azure Kubernetes Service environment that I use in my Azure training class deliveries almost every week (yes, every AZ-course touches on AKS and Containers&amp;hellip;)
-The Problem My AKS environment was running fine all this time (a bit over a year), allowing me to rely on existing deployed Kubernetes services, as well as building new services as a live demo. Until this morning, where all of a sudden, my own services didn&amp;rsquo;t start at all, but the kube-system services did.</description>
+      <guid>//localhost:1313/post/renewing-expired-aks-service-principal/</guid>
+      <description>&lt;p&gt;Hi all,&lt;/p&gt;&#xA;&lt;p&gt;I&amp;rsquo;ve deployed me an &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/aks/tutorial-kubernetes-deploy-cluster&#34;&gt;AKS - Azure Kubernetes Service&lt;/a&gt; environment that I use in my Azure training class deliveries almost every week (yes, every AZ-course touches on AKS and Containers&amp;hellip;)&lt;/p&gt;&#xA;&lt;h2 id=&#34;the-problem&#34;&gt;The Problem&lt;/h2&gt;&#xA;&lt;p&gt;My AKS environment was running fine all this time (a bit over a year), allowing me to rely on existing deployed Kubernetes services, as well as building new services as a live demo. Until this morning, where all of a sudden, my own services didn&amp;rsquo;t start at all, but the kube-system services did. The error message I noticed for this service was &lt;strong&gt;ImagePullBackOff&lt;/strong&gt; and &lt;strong&gt;ErrImagePull&lt;/strong&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Dotnet tool install dotnet-ef failing with unauthorized</title>
-      <link>https://www.007ffflearning.com/post/dotnet-tool-install-dotnet-ef-failing-with-unauthorized/</link>
+      <link>//localhost:1313/post/dotnet-tool-install-dotnet-ef-failing-with-unauthorized/</link>
       <pubDate>Sun, 27 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/dotnet-tool-install-dotnet-ef-failing-with-unauthorized/</guid>
-      <description>Hi all,
-I hope you all have great holidays this time around, giving you the opportunity to spend time with your family as well as having the opportunity to learn some new skills, which in my case means learning Blazor, a Framework within the DotNet family, allowing for &amp;ldquo;any-client&amp;rdquo; applications (browser, mobile device).
-My learning journey involves building a front-end Web App, connecting to a SQL (Azure) database back-end. To make this work, I want to use the SQL Server Entity Framework.</description>
+      <guid>//localhost:1313/post/dotnet-tool-install-dotnet-ef-failing-with-unauthorized/</guid>
+      <description>&lt;p&gt;Hi all,&lt;/p&gt;&#xA;&lt;p&gt;I hope you all have great holidays this time around, giving you the opportunity to spend time with your family as well as having the opportunity to learn some new skills, which in my case means learning &lt;strong&gt;&lt;a href=&#34;https://docs.microsoft.com/en-us/aspnet/core/blazor/?view=aspnetcore-5.0&#34;&gt;Blazor&lt;/a&gt;&lt;/strong&gt;, a Framework within the DotNet family, allowing for &amp;ldquo;any-client&amp;rdquo; applications (browser, mobile device).&lt;/p&gt;&#xA;&lt;p&gt;My learning journey involves building a front-end Web App, connecting to a SQL (Azure) database back-end. To make this work, I want to use the &lt;strong&gt;&lt;a href=&#34;https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/ef/overview&#34;&gt;SQL Server Entity Framework&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>AzCopy failing in Azure Devops with error ServiceCode=AuthorizationPermissionMismatch</title>
-      <link>https://www.007ffflearning.com/post/azcopy-failing-in-azure-devops/</link>
+      <link>//localhost:1313/post/azcopy-failing-in-azure-devops/</link>
       <pubDate>Mon, 14 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/azcopy-failing-in-azure-devops/</guid>
-      <description>Hi all,
-This is one of the nail biting challenges of our industry, failing in running a straight-forward task. Especially when it is failing&amp;hellip;
-What happened? I was creating a pipeline in Azure DevOps to deploy an ARM template for VM setups with VM Extensions. To prep this deployment, the artifacts (DSC scripts) should be copied to Azure Blob Storage, in order for the Azure DevOps build agent to &amp;ldquo;find&amp;rdquo; it.</description>
+      <guid>//localhost:1313/post/azcopy-failing-in-azure-devops/</guid>
+      <description>&lt;p&gt;Hi all,&lt;/p&gt;&#xA;&lt;p&gt;This is one of the nail biting challenges of our industry, failing in running a &lt;strong&gt;straight-forward&lt;/strong&gt; task. Especially when it is failing&amp;hellip;&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-happened&#34;&gt;What happened?&lt;/h2&gt;&#xA;&lt;p&gt;I was creating a pipeline in &lt;strong&gt;Azure DevOps&lt;/strong&gt; to deploy an ARM template for VM setups with VM Extensions. To prep this deployment, the artifacts (DSC scripts) should be copied to Azure Blob Storage, in order for the Azure DevOps build agent to &amp;ldquo;find&amp;rdquo; it. Easy-peasy, there is a predefined task for that, called &lt;strong&gt;&lt;a href=&#34;https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-file-copy&#34;&gt;Azure Blob File Copy&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>The weird case of the Visual Studio 2019 Dockerfile</title>
-      <link>https://www.007ffflearning.com/post/the-weird-case-of-visualstudio2019-dockerfile/</link>
+      <link>//localhost:1313/post/the-weird-case-of-visualstudio2019-dockerfile/</link>
       <pubDate>Sun, 22 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/the-weird-case-of-visualstudio2019-dockerfile/</guid>
-      <description>Hey there,
-I&amp;rsquo;ve been doing quite a lot with Docker and the different Azure Container Services offerings like Azure Container Instance and Azure Kubernetes Services.
-As you probably know, the starting point of a containerized application is the Dockerfile. Look at this like an instruction script, which tells Docker what needs to happen, in order to grab the application source code, compile it and produce the container image.
-Besides the complexity of running containers by itself, I personally think writing a Dockerfile is equally difficult and complex.</description>
+      <guid>//localhost:1313/post/the-weird-case-of-visualstudio2019-dockerfile/</guid>
+      <description>&lt;p&gt;Hey there,&lt;/p&gt;&#xA;&lt;p&gt;I&amp;rsquo;ve been doing quite a lot with &lt;a href=&#34;http://www.docker.com&#34;&gt;Docker&lt;/a&gt; and the different Azure Container Services offerings like &lt;a href=&#34;https://azure.microsoft.com/en-us/services/container-instances/&#34;&gt;Azure Container Instance&lt;/a&gt; and &lt;a href=&#34;https://azure.microsoft.com/en-us/services/kubernetes-service/&#34;&gt;Azure Kubernetes Services&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;As you probably know, the starting point of a containerized application is the Dockerfile. Look at this like an instruction script, which tells Docker what needs to happen, in order to grab the application source code, compile it and produce the container image.&lt;/p&gt;&#xA;&lt;p&gt;Besides the complexity of running containers by itself, I personally think writing a Dockerfile is equally difficult and complex. So I am more than happy to know that &lt;a href=&#34;https://www.visualstudio.com&#34;&gt;Visual Studio (2017 and 2019)&lt;/a&gt; comes with some interesting &lt;strong&gt;Container Tools&lt;/strong&gt;. Aside from helping in debugging containerized workloads, providing some interaction with the Docker engine, it also helps in compiling a Dockerfile for you.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>publish your first dotnet5 app to Azure App Services</title>
-      <link>https://www.007ffflearning.com/post/publish-your-first-dotnet5-app-to-azure-app-services/</link>
+      <link>//localhost:1313/post/publish-your-first-dotnet5-app-to-azure-app-services/</link>
       <pubDate>Tue, 10 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/publish-your-first-dotnet5-app-to-azure-app-services/</guid>
-      <description>Today, Nov 10th, was the official date of the long-announced &amp;ldquo;dotnet5 Framework&amp;rdquo;, and it is described as a major release. Still being new in the developer world myself, I know the basics of ASP.NET 3.7 and 4.5, so I can imagine jumping to a 5.0 release is indeed a big thing.
-.NET 5.0 improvements The biggest improvements announced by the Product Team are:
- Migration-friendly for older .NET versions Production-ready from day 1 of release (thorough-tested for http://www.</description>
+      <guid>//localhost:1313/post/publish-your-first-dotnet5-app-to-azure-app-services/</guid>
+      <description>&lt;p&gt;Today, Nov 10th, was the official date of the long-announced &lt;a href=&#34;https://dotnet.microsoft.com/download/dotnet/5.0&#34;&gt;&amp;ldquo;dotnet5 Framework&amp;rdquo;&lt;/a&gt;, and it is described as a major release. Still being new in the developer world myself, I know the basics of ASP.NET 3.7 and 4.5, so I can imagine jumping to a 5.0 release is indeed a big thing.&lt;/p&gt;&#xA;&lt;h2 id=&#34;net-50-improvements&#34;&gt;.NET 5.0 improvements&lt;/h2&gt;&#xA;&lt;p&gt;The biggest improvements announced by the Product Team are:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Migration-friendly for older .NET versions&lt;/li&gt;&#xA;&lt;li&gt;Production-ready from day 1 of release (thorough-tested for &lt;a href=&#34;http://www.dot.net&#34;&gt;http://www.dot.net&lt;/a&gt; and &lt;a href=&#34;http://www.bing.com&#34;&gt;http://www.bing.com&lt;/a&gt; websites)&lt;/li&gt;&#xA;&lt;li&gt;Enhanced performance&lt;/li&gt;&#xA;&lt;li&gt;ClickOnce client app publishing&lt;/li&gt;&#xA;&lt;li&gt;Smaller container image footprint&lt;/li&gt;&#xA;&lt;li&gt;Supportability for Windows Arm64 and WebAssembly (Blazor)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Support will go into Feb 2022, which seems the release date for DotNet 6.0 LTS&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Azure Back To School (with Azure DevOps)</title>
-      <link>https://www.007ffflearning.com/post/azure-back-to-school/</link>
+      <link>//localhost:1313/post/azure-back-to-school/</link>
       <pubDate>Sun, 13 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/azure-back-to-school/</guid>
-      <description>Hey everyone,
-Wow, it&amp;rsquo;s September already! Where has summer been? And honestly, where has the (nice) year been? Most of you, just like myself, are probably still working from home, and I guess the same are your kids.
-Where September used to feel like a fresh start (remember that smell of your new school outfit, the new school equipment, fresh-sharpened pencils, the excitement of learning new things, meeting new class mates,&amp;hellip; almost seems like I want to go back to school myself.</description>
+      <guid>//localhost:1313/post/azure-back-to-school/</guid>
+      <description>&lt;p&gt;Hey everyone,&lt;/p&gt;&#xA;&lt;p&gt;Wow, it&amp;rsquo;s September already! Where has summer been? And honestly, where has the (nice) year been? Most of you, just like myself, are probably still working from home, and I guess the same are your kids.&lt;/p&gt;&#xA;&lt;p&gt;Where September used to feel like a fresh start (remember that smell of your new school outfit, the new school equipment, fresh-sharpened pencils, the excitement of learning new things, meeting new class mates,&amp;hellip; almost seems like I want to go back to school myself.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Terraform showing an error Panic not a collection type</title>
-      <link>https://www.007ffflearning.com/post/terraform-panic-error/</link>
+      <link>//localhost:1313/post/terraform-panic-error/</link>
       <pubDate>Sun, 06 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/terraform-panic-error/</guid>
-      <description>Hi all,
-Earlier this week, I got blown away by an interesting Terraform issue.
-The Problem Running a deployment that ran fine for months. I initiated a new deployment using the usual &amp;ldquo;terraform init&amp;rdquo; step, which ran fine. Followed by the usual &amp;ldquo;terraform plan&amp;rdquo;, and BOOM, the following message appeared:
-Panic: not a collection type
-Since this was a new template I created, I assumed an issue with the syntax or anything similar.</description>
+      <guid>//localhost:1313/post/terraform-panic-error/</guid>
+      <description>&lt;p&gt;Hi all,&lt;/p&gt;&#xA;&lt;p&gt;Earlier this week, I got blown away by an interesting &lt;strong&gt;&lt;a href=&#34;http://www.terraform.io&#34;&gt;Terraform&lt;/a&gt;&lt;/strong&gt; issue.&lt;/p&gt;&#xA;&lt;h2 id=&#34;the-problem&#34;&gt;The Problem&lt;/h2&gt;&#xA;&lt;p&gt;Running a deployment that ran fine for months. I initiated a new deployment using the usual &lt;strong&gt;&amp;ldquo;terraform init&amp;rdquo;&lt;/strong&gt; step, which ran fine. Followed by the usual &lt;strong&gt;&amp;ldquo;terraform plan&amp;rdquo;&lt;/strong&gt;, and &lt;strong&gt;BOOM&lt;/strong&gt;, the following message appeared:&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Panic: not a collection type&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2020-09-06_01.jpg&#34; alt=&#34;Panic error message&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Since this was a new template I created, I assumed an issue with the syntax or anything similar. As I couldn&amp;rsquo;t find anything, I tried running the same steps with a &amp;ldquo;valid&amp;rdquo; template. Only to find out it produced the same error message.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>DevOps for Dummies - Emily Freeman - Review</title>
-      <link>https://www.007ffflearning.com/post/devops-for-dummies-review/</link>
+      <link>//localhost:1313/post/devops-for-dummies-review/</link>
       <pubDate>Sat, 22 Aug 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/devops-for-dummies-review/</guid>
-      <description>Hey,
-As some of you know me for years already, you also know I’m rather bad in coding (although I&amp;rsquo;m learning Blazor since a few weeks, but more on that journey in future posts&amp;hellip;), and always “got scared” about DevOps. Especially the Dev part in the word 😊. I still remember being in Bangalore, India early 2016 to deliver an Azure workshop to Microsoft GSI Partners (Wipro, Tech Mahindra, Accenture,&amp;hellip;) as a freelance trainer together with Microsoft AzureCAT engineers.</description>
+      <guid>//localhost:1313/post/devops-for-dummies-review/</guid>
+      <description>&lt;p&gt;Hey,&lt;/p&gt;&#xA;&lt;p&gt;As some of you know me for years already, you also know I’m rather bad in coding (although I&amp;rsquo;m learning &lt;a href=&#34;https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor&#34;&gt;Blazor&lt;/a&gt; since a few weeks, but more on that journey in future posts&amp;hellip;), and always “got scared” about DevOps. Especially the Dev part in the word 😊. I still remember being in Bangalore, India early 2016 to deliver an Azure workshop to Microsoft GSI Partners (Wipro, Tech Mahindra, Accenture,&amp;hellip;) as a freelance trainer together with Microsoft AzureCAT engineers. While my sessions were totally in my Azure comfort zone (Networking, Storage, Azure Active Directory), I also learned a lot from the Azure App sessions my colleagues delivered. But then all of a sudden, I had to jump in on Wednesday afternoon, taking over the “DevOps practices” session due to some urgent facts. Oh man, down went my comfort level. Me, the guy they saw earlier in the week, delivering Azure Infra sessions with ease, now needing to talk about DevOps, something I didn’t know at all? I hardly used Visual Studio at that time, let alone I could talk about this process.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>I found me another challenge: The Conqueror</title>
-      <link>https://www.007ffflearning.com/post/i-found-me-another-challenge/</link>
+      <link>//localhost:1313/post/i-found-me-another-challenge/</link>
       <pubDate>Sun, 16 Aug 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/i-found-me-another-challenge/</guid>
-      <description>Hi there,
-If you wonder why it&amp;rsquo;s been a bit quite on the blog front, it&amp;rsquo;s because I enjoyed 2 weeks off from work, distracting a bit from Azure, technology and spending some needed family time. Bonus was that these 2 weeks probably had the nicest weather of the whole year (although my wife would argue on that, since she is more into snow and cold, not the humid hot sweaty weather we had).</description>
+      <guid>//localhost:1313/post/i-found-me-another-challenge/</guid>
+      <description>&lt;p&gt;Hi there,&lt;/p&gt;&#xA;&lt;p&gt;If you wonder why it&amp;rsquo;s been a bit quite on the blog front, it&amp;rsquo;s because I enjoyed 2 weeks off from work, distracting a bit from Azure, technology and spending some needed family time. Bonus was that these 2 weeks probably had the nicest weather of the whole year (although my wife would argue on that, since she is more into snow and cold, not the humid hot sweaty weather we had).&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Another Tech Reviewing done: Azure For Architects - 3rd edition</title>
-      <link>https://www.007ffflearning.com/post/azure-for-architects-reviewing-done/</link>
+      <link>//localhost:1313/post/azure-for-architects---reviewing-done/</link>
       <pubDate>Sun, 02 Aug 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/azure-for-architects-reviewing-done/</guid>
-      <description>As most of you know, I enjoy writing technical (Azure related) books, but every now and then I am not writing myself, but rather do technical reviewing. A few weeks ago, I was approached by Packt, asking me to review their Azure for Architects - third edition
-Don&amp;rsquo;t let the reference to &amp;ldquo;third edition&amp;rdquo; fool you, there has been a massive rewrite of several chapters, with fresh new content, more technical information and new chapters were added as well.</description>
+      <guid>//localhost:1313/post/azure-for-architects---reviewing-done/</guid>
+      <description>&lt;p&gt;As most of you know, I enjoy writing technical (Azure related) &lt;strong&gt;&lt;a href=&#34;https://www.007ffflearning.com/books&#34;&gt;books&lt;/a&gt;&lt;/strong&gt;, but every now and then I am not writing myself, but rather do technical reviewing. A few weeks ago, I was approached by &lt;strong&gt;&lt;a href=&#34;http://www.packt.com&#34;&gt;Packt&lt;/a&gt;&lt;/strong&gt;, asking me to review their &lt;strong&gt;&lt;a href=&#34;https://www.packtpub.com/cloud-networking/azure-for-architects-third-edition&#34;&gt;Azure for Architects - third edition&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/azure_for_architects.jpeg&#34; alt=&#34;Azure_for_Architects_cover&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Don&amp;rsquo;t let the reference to &amp;ldquo;third edition&amp;rdquo; fool you, there has been a massive rewrite of several chapters, with fresh new content, more technical information and new chapters were added as well.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Use Docker Edge to Deploy Azure Container Instance - ACI</title>
-      <link>https://www.007ffflearning.com/post/use_docker_edge_to_deploy_aci/</link>
+      <link>//localhost:1313/post/use_docker_edge_to_deploy_aci/</link>
       <pubDate>Sun, 05 Jul 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/use_docker_edge_to_deploy_aci/</guid>
-      <description>Hey there,
-At the recent DockerCon (virtual) Conference, Docker announced a more tightened partnership with Microsoft, boosting the adoption and integration of Docker containers for Windows Server as well as Azure-running workloads. A first announcement involved a cool integration with Azure Container Instance (ACI), a low-level container runtime on Azure, allowing you to run a container without the typical complexity. While ACI has been around for 2 or more years already, it now becomes possible to manage and run your ACI-based containers directly from the Docker commandline.</description>
+      <guid>//localhost:1313/post/use_docker_edge_to_deploy_aci/</guid>
+      <description>&lt;p&gt;Hey there,&lt;/p&gt;&#xA;&lt;p&gt;At the recent DockerCon (virtual) Conference, Docker announced a more tightened partnership with Microsoft, boosting the adoption and integration of Docker containers for  Windows Server as well as Azure-running workloads. A first announcement involved a cool integration with Azure Container Instance (ACI), a low-level container runtime on Azure, allowing you to run a container without the typical complexity. While ACI has been around for 2 or more years already, it &lt;strong&gt;now becomes possible to manage and run your ACI-based containers directly from the Docker commandline&lt;/strong&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Azure DevOps Pipelines - YAML or Classic Designer</title>
-      <link>https://www.007ffflearning.com/post/azure_devops-pipelines-yaml_or_classic_designer/</link>
+      <link>//localhost:1313/post/azure_devops-pipelines-yaml_or_classic_designer/</link>
       <pubDate>Sun, 21 Jun 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/azure_devops-pipelines-yaml_or_classic_designer/</guid>
-      <description>During several of my AZ-400 Designing and Implementing Microsoft DevOps Solutions training deliveries, one recurring point of conversation is Should we use YAML or the Classic Designer for our Release pipelines?
-So I thought sharing my view in another blog post could be helpful.
-Before answering the question more accurately, let&amp;rsquo;s go over each scenario a bit more in detail:
-Classic Designer Classic Designer has been the long-standing approach on how Azure DevOps Pipelines have been created.</description>
+      <guid>//localhost:1313/post/azure_devops-pipelines-yaml_or_classic_designer/</guid>
+      <description>&lt;p&gt;During several of my &lt;a href=&#34;https://docs.microsoft.com/en-us/learn/certifications/exams/az-400&#34;&gt;AZ-400 Designing and Implementing Microsoft DevOps Solutions&lt;/a&gt; training deliveries, one recurring point of conversation is &lt;strong&gt;Should we use YAML or the Classic Designer&lt;/strong&gt; for our Release pipelines?&lt;/p&gt;&#xA;&lt;p&gt;So I thought sharing my view in another blog post could be helpful.&lt;/p&gt;&#xA;&lt;p&gt;Before answering the question more accurately, let&amp;rsquo;s go over each scenario a bit more in detail:&lt;/p&gt;&#xA;&lt;h1 id=&#34;classic-designer&#34;&gt;Classic Designer&lt;/h1&gt;&#xA;&lt;p&gt;Classic Designer has been the long-standing approach on how Azure DevOps Pipelines have been created. Using a user-friendly graphical User Interface, one can add tasks to create a pipeline just by searching for them from a list of tasks, and complete necessary parameters.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Azure is 100% High Available!! or is it...?</title>
-      <link>https://www.007ffflearning.com/post/azure_is_100_high_available/</link>
+      <link>//localhost:1313/post/azure_is_100_high_available/</link>
       <pubDate>Sun, 14 Jun 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/azure_is_100_high_available/</guid>
-      <description>Last Friday, I delivered an online session at the &amp;ldquo;Azure Day Rome 2020&amp;rdquo;, titled &amp;ldquo;Azure is 100% high available, or is it?&amp;rdquo;
-Since the conference sessions were only 45min, I didn&amp;rsquo;t have much time to drill down on all the details, but apparently I managed to provide a clear and easy overview of several misconceptions around public cloud high-availability, and even more important, how Azure provides several services and architectures, to optimize the overall high availability of your workloads.</description>
+      <guid>//localhost:1313/post/azure_is_100_high_available/</guid>
+      <description>&lt;p&gt;Last Friday, I delivered an online session at the &amp;ldquo;&lt;a href=&#34;http://www.azureday.it&#34;&gt;Azure Day Rome 2020&lt;/a&gt;&amp;rdquo;, titled &amp;ldquo;Azure is 100% high available, or is it?&amp;rdquo;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2020-06-14-1.jpg&#34; alt=&#34;Azure Day Rome session&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Since the conference sessions were only 45min, I didn&amp;rsquo;t have much time to drill down on all the details, but apparently I managed to provide a clear and easy  overview of several misconceptions around public cloud high-availability, and even more important, how Azure provides several services and architectures, to optimize the overall high availability of your workloads. Whether you deploy IAAS, PAAS or Serverless.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>How to delete a POD from Azure Kubernetes Services (AKS)</title>
-      <link>https://www.007ffflearning.com/post/how-to-delete-an-aks-pod/</link>
+      <link>//localhost:1313/post/how-to-delete-an-aks-pod/</link>
       <pubDate>Sat, 06 Jun 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/how-to-delete-an-aks-pod/</guid>
-      <description>Hi again,
-In about every Azure training delivered the last few months, I am talking about Docker and Azure Kubernetes Services - AKS
-Along these months, the amount of &amp;ldquo;sample PODS&amp;rdquo; I am running within the Kubernetes cluster was continuously growing, resulting in a less efficient demo scenario to show.
-So cleaning up these running PODS was my 5 seconds action this Saturday morning. While not super hard, it actually took me a bit longer than 5 seconds (more like 10min :)), since I forgot a few &amp;ldquo;basics&amp;rdquo; on how Kubernetes is running PODS.</description>
+      <guid>//localhost:1313/post/how-to-delete-an-aks-pod/</guid>
+      <description>&lt;p&gt;Hi again,&lt;/p&gt;&#xA;&lt;p&gt;In about every Azure training delivered the last few months, I am talking about &lt;a href=&#34;http://www.docker.com&#34;&gt;Docker&lt;/a&gt; and &lt;a href=&#34;https://azure.microsoft.com/en-us/services/kubernetes-service/&#34;&gt;Azure Kubernetes Services - AKS&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Along these months, the amount of &amp;ldquo;sample PODS&amp;rdquo; I am running within the Kubernetes cluster was continuously growing, resulting in a less efficient demo scenario to show.&lt;/p&gt;&#xA;&lt;p&gt;So cleaning up these running PODS was my 5 seconds action this Saturday morning. While not super hard, it actually took me a bit longer than 5 seconds (more like 10min :)), since I forgot a few &amp;ldquo;basics&amp;rdquo; on how Kubernetes is running PODS.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Migrating Docker Desktop to WSL2</title>
-      <link>https://www.007ffflearning.com/post/migrate-docker-desktop-to-wsl2/</link>
+      <link>//localhost:1313/post/migrate-docker-desktop-to-wsl2/</link>
       <pubDate>Sat, 30 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/migrate-docker-desktop-to-wsl2/</guid>
-      <description>Hey there,
-With the May update of Windows 10 (named Windows 2004 :) ) being available since this week, together with DockerCon virtual conference, I think it was the right time to (finally) migrate my current Docker Desktop in Hyper-V mode to the new WSL 2 (Windows Subsystem for Linux).
-In short, the process was smooth, straight forward, and not having any real impact on my &amp;ldquo;demo environment&amp;rdquo; I&amp;rsquo;m using continuously during my Azure training workshops and public speaking gigs.</description>
+      <guid>//localhost:1313/post/migrate-docker-desktop-to-wsl2/</guid>
+      <description>&lt;p&gt;Hey there,&lt;/p&gt;&#xA;&lt;p&gt;With the May update of Windows 10 (named Windows 2004 :) ) being available since this week, together with DockerCon virtual conference, I think it was the right time to (finally) migrate my current Docker Desktop in Hyper-V mode to the new WSL 2 (Windows Subsystem for Linux).&lt;/p&gt;&#xA;&lt;p&gt;In short, the process was smooth, straight forward, and not having any real impact on my &amp;ldquo;demo environment&amp;rdquo; I&amp;rsquo;m using continuously during my Azure training workshops and public speaking gigs.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Running your Hugo site on Azure Static WebApps (Preview)</title>
-      <link>https://www.007ffflearning.com/post/running-your-hugo-site-on-azure-static-webapps/</link>
+      <link>//localhost:1313/post/running-your-hugo-site-on-azure-static-webapps/</link>
       <pubDate>Thu, 21 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/running-your-hugo-site-on-azure-static-webapps/</guid>
-      <description>Only about a month ago, I decided to move my former website (running on Wix) to the Open Source Hugo platform, running it as a static website with MarkDown, using Azure Storage Static Website. For more details on how to do this, have a look at my blog post here
-I have to say, it runs fine, is cheap, fast, reliable,&amp;hellip;
-But then I discovered the new Azure Static Web App capability, as announced during //Build conference earlier this week, so I wanted to give it a try.</description>
+      <guid>//localhost:1313/post/running-your-hugo-site-on-azure-static-webapps/</guid>
+      <description>&lt;p&gt;Only about a month ago, I decided to move my former website (running on Wix) to the Open Source &lt;strong&gt;&lt;a href=&#34;http://www.gohugo.io&#34;&gt;Hugo&lt;/a&gt;&lt;/strong&gt; platform, running it as a static website with MarkDown, using &lt;strong&gt;&lt;a href=&#34;https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-static-website&#34;&gt;Azure Storage Static Website&lt;/a&gt;&lt;/strong&gt;. For more details on how to do this, have a look at my blog post &lt;strong&gt;&lt;a href=&#34;https://www.007ffflearning.com/post/static_site_frontdoor/&#34;&gt;here&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;I have to say, it runs fine, is cheap, fast, reliable,&amp;hellip;&lt;/p&gt;&#xA;&lt;p&gt;But then I discovered the new &lt;strong&gt;&lt;a href=&#34;https://docs.microsoft.com/en-us/azure/static-web-apps/&#34;&gt;Azure Static Web App&lt;/a&gt;&lt;/strong&gt; capability, as announced during &lt;strong&gt;&lt;a href=&#34;https://mybuild.microsoft.com/&#34;&gt;//Build&lt;/a&gt;&lt;/strong&gt; conference earlier this week, so I wanted to give it a try.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>is HTML parameter gone from Logic Apps Send Email Connector</title>
-      <link>https://www.007ffflearning.com/post/email-is-html-gone-logicapps/</link>
+      <link>//localhost:1313/post/email-is-html-gone-logicapps/</link>
       <pubDate>Sun, 10 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/email-is-html-gone-logicapps/</guid>
-      <description>Hi,
-For almost 2 years, I have been using the &amp;ldquo;Office 365 Outlook Connector&amp;rdquo; as part of my Logic Apps flows, to send emails internally and externally. Mainly for external receivers, I used the &amp;ldquo;is HTML&amp;rdquo; parameter for the body of the email.
-This weekend, I was building a new Logic Apps flow, and to my surprise, finding out that the &amp;ldquo;V2&amp;rdquo; of this same connector / action, doesn&amp;rsquo;t have that parameter anymore.</description>
+      <guid>//localhost:1313/post/email-is-html-gone-logicapps/</guid>
+      <description>&lt;p&gt;Hi,&lt;/p&gt;&#xA;&lt;p&gt;For almost 2 years, I have been using the &amp;ldquo;Office 365 Outlook Connector&amp;rdquo; as part of my Logic Apps flows, to send emails internally and externally. Mainly for external receivers, I used the &amp;ldquo;is HTML&amp;rdquo; parameter for the body of the email.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/20200510_01.jpg&#34; alt=&#34;Is HTML parameter&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;This weekend, I was building a new Logic Apps flow, and to my surprise, finding out that the &amp;ldquo;V2&amp;rdquo; of this same connector / action, doesn&amp;rsquo;t have that parameter anymore.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Use Bing Desktop Wallpapers as background images in Teams calls</title>
-      <link>https://www.007ffflearning.com/post/use-bing-wallpaper-as-background-in-teams/</link>
+      <link>//localhost:1313/post/use-bing-wallpaper-as-background-in-teams/</link>
       <pubDate>Sun, 10 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/use-bing-wallpaper-as-background-in-teams/</guid>
-      <description>A few days ago, I blogged about Bing Desktop Wallpapers, a nice little tool you can install on your Windows Machine to enjoy some of the amazing views of the world.
-Knowing these got stored on your local machine as JPEGs (C:\Users&amp;lt;user&amp;gt;\AppData\Local\Microsoft\BingWallpaperApp\WPImages), got me the idea to reuse these as &amp;ldquo;Teams Backgrounds&amp;rdquo; during video calls.
-As the Bing Wallpaper gets updated every day, it would be nice to have a different image in Teams&amp;hellip; every day.</description>
+      <guid>//localhost:1313/post/use-bing-wallpaper-as-background-in-teams/</guid>
+      <description>&lt;p&gt;A few days ago, I blogged about &lt;strong&gt;&lt;a href=&#34;https://www.007ffflearning.com/post/bing-wallpaper/&#34;&gt;Bing Desktop Wallpapers&lt;/a&gt;&lt;/strong&gt;, a nice little tool you can install on your Windows Machine to enjoy some of the amazing views of the world.&lt;/p&gt;&#xA;&lt;p&gt;Knowing these got stored on your local machine as JPEGs (C:\Users&amp;lt;user&amp;gt;\AppData\Local\Microsoft\BingWallpaperApp\WPImages), got me the idea to reuse these as &amp;ldquo;Teams Backgrounds&amp;rdquo; during video calls.&lt;/p&gt;&#xA;&lt;p&gt;As the Bing Wallpaper gets updated every day, it would be nice to have a different image in Teams&amp;hellip; every day. So instead of trying to remember to copy a Bing Wallpaper image, why not using a Windows Scheduled Task for this, based on a little PowerShell script?&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Collecting Hugo static site statistics using Azure Application Insights</title>
-      <link>https://www.007ffflearning.com/post/hugo_site_statistics_app_insights/</link>
+      <link>//localhost:1313/post/hugo_site_statistics_app_insights/</link>
       <pubDate>Sun, 26 Apr 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/hugo_site_statistics_app_insights/</guid>
-      <description>Welcome back!
-About a month ago, I decided to move my former 007FFFLearning website from Wix.com to something &amp;ldquo;easier&amp;rdquo; to use for blog writing. While Wix is an excellent platform, offering an easy way to build a graphical website, besides a ton of plug-ins, it also comes with a cost. And since I didn&amp;rsquo;t have a need for a lot of the built-in features I was using out of my own business before I joined Microsoft, I wanted to try something new.</description>
+      <guid>//localhost:1313/post/hugo_site_statistics_app_insights/</guid>
+      <description>&lt;p&gt;Welcome back!&lt;/p&gt;&#xA;&lt;p&gt;About a month ago, I decided to move my former 007FFFLearning website from Wix.com to something &amp;ldquo;easier&amp;rdquo; to use for blog writing. While Wix is an excellent platform, offering an easy way to build a graphical website, besides a ton of plug-ins, it also comes with a cost. And since I didn&amp;rsquo;t have a need for a lot of the built-in features I was using out of my own business before I joined Microsoft, I wanted to try something new.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Running an Azure Storage Static Site, protected by Azure Front Door</title>
-      <link>https://www.007ffflearning.com/post/static_site_frontdoor/</link>
+      <link>//localhost:1313/post/static_site_frontdoor/</link>
       <pubDate>Sat, 25 Apr 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/static_site_frontdoor/</guid>
-      <description>Earlier this week, I had the honor to present a session for the Belgian MC2MC Microsoft community, as part of a broader online event week with other Belgian community User Groups (https://www.mc2mc.be/events/be-community-week-mc2mc-evening).
-My session topic was based on a little real-life project I worked on myself only a few weeks ago, deploying a “Hugo” based static website on Azure Storage Account Static Site (Yes, this site you are reading right now&amp;hellip;).</description>
+      <guid>//localhost:1313/post/static_site_frontdoor/</guid>
+      <description>&lt;p&gt;Earlier this week, I had the honor to present a session for the Belgian&#xA;&lt;strong&gt;&lt;a href=&#34;http://www.mc2mc.be&#34;&gt;MC2MC&lt;/a&gt;&lt;/strong&gt; Microsoft community, as part of a broader online event&#xA;week with other Belgian community User Groups&#xA;(&lt;a href=&#34;https://www.mc2mc.be/events/be-community-week-mc2mc-evening)&#34;&gt;https://www.mc2mc.be/events/be-community-week-mc2mc-evening)&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;My session topic was based on a little real-life project I worked on myself only&#xA;a few weeks ago, deploying a “Hugo” based static website on Azure Storage&#xA;Account Static Site (Yes, this site you are reading right now&amp;hellip;).&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Bing Desktop Wallpapers take you on a trip around the world</title>
-      <link>https://www.007ffflearning.com/post/bing-wallpaper/</link>
+      <link>//localhost:1313/post/bing-wallpaper/</link>
       <pubDate>Sun, 19 Apr 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/bing-wallpaper/</guid>
-      <description>Due to COVID19, my traveling rhythm went down from an avg 90% the last six years, to 0%. I have never been that much at home without travel than in these last 5 weeks (and a few more to come).
-While the primary reason for my travel is business related, every now and then, I have the opportunity to enjoy the area, if even only for a short moment, or in-between delivering sessions.</description>
+      <guid>//localhost:1313/post/bing-wallpaper/</guid>
+      <description>&lt;p&gt;Due to COVID19, my traveling rhythm went down from an avg 90% the last six years, to 0%. I have never been that much at home without travel than in these last 5 weeks (and a few more to come).&lt;/p&gt;&#xA;&lt;p&gt;While the primary reason for my travel is business related, every now and then, I have the opportunity to enjoy the area, if even only for a short moment, or in-between delivering sessions. Some locations immediately coming to mind:&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>My 1st 6 months as an Azure Technical Trainer at Microsoft</title>
-      <link>https://www.007ffflearning.com/post/my-first-6-months-as-att/</link>
+      <link>//localhost:1313/post/my-first-6-months-as-att/</link>
       <pubDate>Sun, 12 Apr 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/my-first-6-months-as-att/</guid>
-      <description>Hey,
-It has been quiet for several weeks on the blog front, but that doesn&amp;rsquo;t mean nothing happened! The core subject of this post is sharing my happiness around being in the Azure Technical Trainer role for more than 6 months now. (Last time I was at Microsoft in 2016, this was about the time where I figured out I needed to move out of the team, exploring other opportunities&amp;hellip;) but not so this time!</description>
+      <guid>//localhost:1313/post/my-first-6-months-as-att/</guid>
+      <description>&lt;p&gt;Hey,&lt;/p&gt;&#xA;&lt;p&gt;It has been quiet for several weeks on the blog front, but that doesn&amp;rsquo;t mean nothing happened! The core subject of this post is sharing my happiness around being in the Azure Technical Trainer role for more than 6 months now. (Last time I was at Microsoft in 2016, this was about the time where I figured out I needed to move out of the team, exploring other opportunities&amp;hellip;) but not so this time!!&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>New book published: Azure Strategy and Implementation Guide, 3rd edition</title>
-      <link>https://www.007ffflearning.com/post/new-book-published/</link>
+      <link>//localhost:1313/post/new-book-published/</link>
       <pubDate>Mon, 03 Feb 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/new-book-published/</guid>
-      <description>You might get amazed, finding out I managed to publish yet another book, where the previous one Efficiently Migrating your workloads to Azure only got published around Christmas.
-However, this new one was a &amp;ldquo;longer work in progress&amp;rdquo;, and not something I could spew out in just a few weeks.
-Several months ago, I got approached by Packt Publishing, asking me to &amp;ldquo;write a quick note on how I look at Azure strategic implementation and migration&amp;rdquo;.</description>
+      <guid>//localhost:1313/post/new-book-published/</guid>
+      <description>&lt;p&gt;You might get amazed, finding out I managed to publish yet another book, where the previous one &lt;strong&gt;&lt;a href=&#34;https://leanpub.com/efficientlymigratingworkloadstoazure&#34;&gt;Efficiently Migrating your workloads to Azure&lt;/a&gt;&lt;/strong&gt; only got published around Christmas.&lt;/p&gt;&#xA;&lt;p&gt;However, this new one was a &amp;ldquo;longer work in progress&amp;rdquo;, and not something I could spew out in just a few weeks.&lt;/p&gt;&#xA;&lt;p&gt;Several months ago, I got approached by Packt Publishing, asking me to &amp;ldquo;write a quick note on how I look at Azure strategic implementation and migration&amp;rdquo;. Which was initially sized at max. 20 pages. However, it became clear, this quick writing gig would end up becoming a lot larger, and eventually involve multiple authors, to cover the full Azure platform spectrum.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Updated Azure Exams Announced</title>
-      <link>https://www.007ffflearning.com/post/updated-azure-exams/</link>
+      <link>//localhost:1313/post/updated-azure-exams/</link>
       <pubDate>Sat, 25 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/updated-azure-exams/</guid>
-      <description>Things are going fast in the Azure world, and apparently exams are more and more following that pace. Before you start screaming and worrying, as you might be preparing for a current exam, let me share a bit about several steps happening before an exam becomes available.
-Exam Objectives (OD) For a long time, Microsoft Learning has based exams on &amp;ldquo;exam objectives&amp;rdquo;, which is typically a list of &amp;ldquo;services, features, activities&amp;rdquo; anyone taking the exam, should master.</description>
+      <guid>//localhost:1313/post/updated-azure-exams/</guid>
+      <description>&lt;p&gt;Things are going fast in the Azure world, and apparently exams are more and more following that pace. Before you start screaming and worrying, as you might be preparing for a current exam, let me share a bit about several steps happening before an exam becomes available.&lt;/p&gt;&#xA;&lt;h3 id=&#34;exam-objectives-od&#34;&gt;Exam Objectives (OD)&lt;/h3&gt;&#xA;&lt;p&gt;For a long time, Microsoft Learning has based exams on &amp;ldquo;exam objectives&amp;rdquo;, which is typically a list of &amp;ldquo;services, features, activities&amp;rdquo; anyone taking the exam, should master. An easy example from the Exchange Server 2007 time frame could have been:&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Happy to announce my newest Azure book got (self) published</title>
-      <link>https://www.007ffflearning.com/post/new-azure-book-selfpublish/</link>
+      <link>//localhost:1313/post/new-azure-book-selfpublish/</link>
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/new-azure-book-selfpublish/</guid>
-      <description>I&amp;rsquo;m excited about this next project that finally got live, thanks to a bit of quiet time during the Holidays. While it is not up to the full 100% of what I had in mind, I didn&amp;rsquo;t want to hold back the content any longer, since Azure is moving already that fast&amp;hellip;
-The original idea of this material was based on a workshop I created for Microsoft Internal (Azure Developer Series) in Sept 2018 as a contractor, which was a combination of slides, videos and lab guides.</description>
+      <guid>//localhost:1313/post/new-azure-book-selfpublish/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;m excited about this next project that finally got live, thanks to a bit of quiet time during the Holidays. While it is not up to the full 100% of what I had in mind, I didn&amp;rsquo;t want to hold back the content any longer, since Azure is moving already that fast&amp;hellip;&lt;/p&gt;&#xA;&lt;p&gt;The original idea of this material was based on a workshop I created for Microsoft Internal (Azure Developer Series) in Sept 2018 as a contractor, which was a combination of slides, videos and lab guides. The workshop existed in both in-person and virtual delivery format. At that time, the sample application was rather basic. Early July 2019, I got asked to work on an update of the content, and extend it with Azure DevOps, which was well-adopted in the market already, but still unknown to a lot. Instead of just working on “updates”, I decided to start from scratch, and work towards a more “business ready” application, using  &lt;strong&gt;&lt;a href=&#34;http://www.simplcommerce.com&#34;&gt;SimplCommerce&lt;/a&gt;&lt;/strong&gt;, an Open Sourced E-commerce platform application, built in .NET / .NET Core, and supporting different database back-ends.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Azure Mystery Mansion</title>
-      <link>https://www.007ffflearning.com/post/azure-mystery-mansion/</link>
+      <link>//localhost:1313/post/azure-mystery-mansion/</link>
       <pubDate>Tue, 31 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/azure-mystery-mansion/</guid>
-      <description>Earlier this week, I discovered &amp;quot;[Azure Mystery Mansion]https://www.microsoft.com/mysterymansion&amp;quot;, published by the Microsoft Azure marketing team. As an Azure enthusiast, I wanted to find out about this mystery ;), actually being really excited about it, as it is primarily focused around giving you an easy, fun, yet interesting learning experience.
-What is it? It heavily reminded me of several PC games I played as a teenager (yes, early &amp;rsquo;90s), where you could move around a game, and even deciding on the flow and ending, by clicking keywords.</description>
+      <guid>//localhost:1313/post/azure-mystery-mansion/</guid>
+      <description>&lt;p&gt;Earlier this week, I discovered &lt;strong&gt;&amp;quot;[Azure Mystery Mansion]https://www.microsoft.com/mysterymansion&amp;quot;&lt;/strong&gt;, published by the Microsoft Azure marketing team. As an Azure enthusiast, I wanted to find out about this mystery ;), actually being really excited about it, as it is primarily focused around giving you an easy, fun, yet interesting learning experience.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/Azure_Mystery_Mansion.png&#34; alt=&#34;Azure_Mystery_Mansion&#34;&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;what-is-it&#34;&gt;What is it?&lt;/h3&gt;&#xA;&lt;p&gt;It heavily reminded me of several PC games I played as a teenager (yes, early &amp;rsquo;90s), where you could move around a game, and even deciding on the flow and ending, by clicking keywords. Behind every phrase was a new adventure, and it often felt like you really owned the game, or had a conversation with the characters.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Azure Learning Resources</title>
-      <link>https://www.007ffflearning.com/post/azure-learning-resources/</link>
+      <link>//localhost:1313/post/azure-learning-resources/</link>
       <pubDate>Sun, 22 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/azure-learning-resources/</guid>
-      <description>As I got asked so many times what Azure learning resources are available, I thought this could make up an excellent blog post :) - This is actually based on a summary slide I have added to my in-person and online Azure training workshops closing deck, but updated where needed. Below order is a random listing of resources, not forcing any priority or preference:
-  Microsoft Learn
-  Microsoft Hands-on Labs</description>
+      <guid>//localhost:1313/post/azure-learning-resources/</guid>
+      <description>&lt;p&gt;As I got asked so many times what Azure learning resources are available, I thought this could make up an excellent blog post :) - This is actually based on a summary slide I have added to my in-person and online Azure training workshops closing deck, but updated where needed. Below order is a random listing of resources, not forcing any priority or preference:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Microsoft Learn&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Microsoft Hands-on Labs&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Azure Docs&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>My 1st quarter as an Azure Technical Trainer at Microsoft</title>
-      <link>https://www.007ffflearning.com/post/1st-quarter-as-att/</link>
+      <link>//localhost:1313/post/1st-quarter-as-att/</link>
       <pubDate>Sun, 15 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/1st-quarter-as-att/</guid>
-      <description>Hey,
-As most of you probably know in meantime, I joined Microsoft as a full-time employee mid September this year, in the prestigious Azure Technical Trainer team - EMEA. This team is part of the WorldWide Learning (WWL) organization, and working on the Enterprise Skills Initiative (ESI) program.
-As the name says, as Azure Technical Trainer, my role is to provide training to larger Microsoft Partners and customers in EMEA, helping them in being successful in using Azure, and mainly focusing on skilling up the IT teams (sysadmins, developers, solution architects).</description>
+      <guid>//localhost:1313/post/1st-quarter-as-att/</guid>
+      <description>&lt;p&gt;Hey,&lt;/p&gt;&#xA;&lt;p&gt;As most of you probably know in meantime, I joined Microsoft as a full-time employee mid September this year, in the prestigious Azure Technical Trainer team - EMEA. This team is part of the WorldWide Learning (WWL) organization, and working on the Enterprise Skills Initiative (ESI) program.&lt;/p&gt;&#xA;&lt;p&gt;As the name says, as Azure Technical Trainer, my role is to provide training to larger Microsoft Partners and customers in EMEA, helping them in being successful in using Azure, and mainly focusing on skilling up the IT teams (sysadmins, developers, solution architects). While the training starts from the Microsoft Official Courseware (MOC), we are not bound to only using that material. Which was a huge plus to me, knowing I built and delivered most of the workshops using my own content (or vendor content I was involved in building) before.&lt;/p&gt;</description>
     </item>
-    
+    <item>
+      <title>Template title</title>
+      <link>//localhost:1313/post/live1218demo/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/post/live1218demo/</guid>
+      <description>&lt;p&gt;peter updated the text file&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Search</title>
+      <link>//localhost:1313/search/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/search/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Welcome to 007FFFLearning.com</title>
-      <link>https://www.007ffflearning.com/about/</link>
+      <link>//localhost:1313/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/about/</guid>
-      <description>Hi, my name is Peter De Tender. I am a Microsoft Technical Trainer (MTT) within the Microsoft World Wide Learning Organization. Out of this role, I provide Azure readiness workshops to larger Microsoft customers and partners across the globe, skilling up their Azure knowledge, and preparing them for Azure certification. Having lived in Belgium for 45 years, I recently relocated to Redmond, WA, USA, to continue my role as MTT out of the West US team.</description>
+      <guid>//localhost:1313/about/</guid>
+      <description>&lt;h1 id=&#34;hi-my-name-is-peter-de-tender&#34;&gt;Hi, my name is Peter De Tender.&lt;/h1&gt;&#xA;&lt;h3 id=&#34;i-am-a-microsoft-technical-trainer-mtt-within-the-microsoft-world-wide-learning-organization-out-of-this-role-i-provide-azure-readiness-workshops-to-larger-microsoft-customers-and-partners-across-the-globe-skilling-up-their-azure-knowledge-and-preparing-them-for-azure-certification-having-lived-in-belgium-for-45-years-i-recently-relocated-to-redmond-wa-usa-to-continue-my-role-as-mtt-out-of-the-west-us-team&#34;&gt;I am a &lt;strong&gt;Microsoft Technical Trainer (MTT)&lt;/strong&gt; within the &lt;strong&gt;Microsoft&lt;/strong&gt; World Wide Learning Organization. Out of this role, I provide Azure readiness workshops to larger Microsoft customers and partners across the globe, skilling up their Azure knowledge, and preparing them for Azure certification. Having lived in Belgium for 45 years, &lt;strong&gt;I recently relocated to Redmond, WA, USA&lt;/strong&gt;, to continue my role as MTT out of the West US team.&lt;/h3&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/007FFFLearning_Background.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

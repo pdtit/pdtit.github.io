@@ -1,67 +1,47 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Docker on Azure Readiness starts here...</title>
-    <link>https://www.007ffflearning.com/tags/docker/</link>
-    <description>Recent content in Docker on Azure Readiness starts here...</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Wed, 15 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <title>Docker on </title>
+    <link>//localhost:1313/tags/docker/</link>
+    <description>Recent content in Docker on </description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 15 Mar 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Azure Spring Clean - DCK, ACR, ACI, AKS, ACA, the Azure Container Alphabet Soup</title>
-      <link>https://www.007ffflearning.com/post/dck-acr-aci-aks-aca-the-azure-container-alphabet-soup/</link>
+      <link>//localhost:1313/post/dck-acr-aci-aks-aca-the-azure-container-alphabet-soup/</link>
       <pubDate>Wed, 15 Mar 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/dck-acr-aci-aks-aca-the-azure-container-alphabet-soup/</guid>
-      <description>Hey friends,
-Welcome to #AzureSpringClean, an initiative from Joe Carlyle and Thomas Thornton where I&amp;rsquo;m honored to be able to participate in again for the 4th year already. Thanks guys for trusting me once more for sharing some Azure knowledge&amp;hellip;
-This time, I wanted to try and guide you through the buzzword of the last couple of years, containers&amp;hellip; and more specifically, what different options you have in Azure to run your containerized workloads.</description>
+      <guid>//localhost:1313/post/dck-acr-aci-aks-aca-the-azure-container-alphabet-soup/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;../images/AzureSpringClean2023-logo.png&#34; alt=&#34;Azure Spring Clean&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Hey friends,&lt;/p&gt;&#xA;&lt;p&gt;Welcome to #AzureSpringClean, an initiative from &lt;strong&gt;&lt;a href=&#34;https://twitter.com/wedoazure&#34;&gt;Joe Carlyle&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/tamstar1234&#34;&gt;Thomas Thornton&lt;/a&gt;&lt;/strong&gt;&#xA;where I&amp;rsquo;m honored to be able to participate in again for the 4th year already. Thanks guys for trusting me once more for sharing some Azure knowledge&amp;hellip;&lt;/p&gt;&#xA;&lt;p&gt;This time, I wanted to try and guide you through the buzzword of the last couple of years, &lt;strong&gt;containers&lt;/strong&gt;&amp;hellip; and more specifically, what different options you have in Azure to run your containerized workloads.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>The weird case of the Visual Studio 2019 Dockerfile</title>
-      <link>https://www.007ffflearning.com/post/the-weird-case-of-visualstudio2019-dockerfile/</link>
+      <link>//localhost:1313/post/the-weird-case-of-visualstudio2019-dockerfile/</link>
       <pubDate>Sun, 22 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/the-weird-case-of-visualstudio2019-dockerfile/</guid>
-      <description>Hey there,
-I&amp;rsquo;ve been doing quite a lot with Docker and the different Azure Container Services offerings like Azure Container Instance and Azure Kubernetes Services.
-As you probably know, the starting point of a containerized application is the Dockerfile. Look at this like an instruction script, which tells Docker what needs to happen, in order to grab the application source code, compile it and produce the container image.
-Besides the complexity of running containers by itself, I personally think writing a Dockerfile is equally difficult and complex.</description>
+      <guid>//localhost:1313/post/the-weird-case-of-visualstudio2019-dockerfile/</guid>
+      <description>&lt;p&gt;Hey there,&lt;/p&gt;&#xA;&lt;p&gt;I&amp;rsquo;ve been doing quite a lot with &lt;a href=&#34;http://www.docker.com&#34;&gt;Docker&lt;/a&gt; and the different Azure Container Services offerings like &lt;a href=&#34;https://azure.microsoft.com/en-us/services/container-instances/&#34;&gt;Azure Container Instance&lt;/a&gt; and &lt;a href=&#34;https://azure.microsoft.com/en-us/services/kubernetes-service/&#34;&gt;Azure Kubernetes Services&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;As you probably know, the starting point of a containerized application is the Dockerfile. Look at this like an instruction script, which tells Docker what needs to happen, in order to grab the application source code, compile it and produce the container image.&lt;/p&gt;&#xA;&lt;p&gt;Besides the complexity of running containers by itself, I personally think writing a Dockerfile is equally difficult and complex. So I am more than happy to know that &lt;a href=&#34;https://www.visualstudio.com&#34;&gt;Visual Studio (2017 and 2019)&lt;/a&gt; comes with some interesting &lt;strong&gt;Container Tools&lt;/strong&gt;. Aside from helping in debugging containerized workloads, providing some interaction with the Docker engine, it also helps in compiling a Dockerfile for you.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Use Docker Edge to Deploy Azure Container Instance - ACI</title>
-      <link>https://www.007ffflearning.com/post/use_docker_edge_to_deploy_aci/</link>
+      <link>//localhost:1313/post/use_docker_edge_to_deploy_aci/</link>
       <pubDate>Sun, 05 Jul 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/use_docker_edge_to_deploy_aci/</guid>
-      <description>Hey there,
-At the recent DockerCon (virtual) Conference, Docker announced a more tightened partnership with Microsoft, boosting the adoption and integration of Docker containers for Windows Server as well as Azure-running workloads. A first announcement involved a cool integration with Azure Container Instance (ACI), a low-level container runtime on Azure, allowing you to run a container without the typical complexity. While ACI has been around for 2 or more years already, it now becomes possible to manage and run your ACI-based containers directly from the Docker commandline.</description>
+      <guid>//localhost:1313/post/use_docker_edge_to_deploy_aci/</guid>
+      <description>&lt;p&gt;Hey there,&lt;/p&gt;&#xA;&lt;p&gt;At the recent DockerCon (virtual) Conference, Docker announced a more tightened partnership with Microsoft, boosting the adoption and integration of Docker containers for  Windows Server as well as Azure-running workloads. A first announcement involved a cool integration with Azure Container Instance (ACI), a low-level container runtime on Azure, allowing you to run a container without the typical complexity. While ACI has been around for 2 or more years already, it &lt;strong&gt;now becomes possible to manage and run your ACI-based containers directly from the Docker commandline&lt;/strong&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>How to delete a POD from Azure Kubernetes Services (AKS)</title>
-      <link>https://www.007ffflearning.com/post/how-to-delete-an-aks-pod/</link>
+      <link>//localhost:1313/post/how-to-delete-an-aks-pod/</link>
       <pubDate>Sat, 06 Jun 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/how-to-delete-an-aks-pod/</guid>
-      <description>Hi again,
-In about every Azure training delivered the last few months, I am talking about Docker and Azure Kubernetes Services - AKS
-Along these months, the amount of &amp;ldquo;sample PODS&amp;rdquo; I am running within the Kubernetes cluster was continuously growing, resulting in a less efficient demo scenario to show.
-So cleaning up these running PODS was my 5 seconds action this Saturday morning. While not super hard, it actually took me a bit longer than 5 seconds (more like 10min :)), since I forgot a few &amp;ldquo;basics&amp;rdquo; on how Kubernetes is running PODS.</description>
+      <guid>//localhost:1313/post/how-to-delete-an-aks-pod/</guid>
+      <description>&lt;p&gt;Hi again,&lt;/p&gt;&#xA;&lt;p&gt;In about every Azure training delivered the last few months, I am talking about &lt;a href=&#34;http://www.docker.com&#34;&gt;Docker&lt;/a&gt; and &lt;a href=&#34;https://azure.microsoft.com/en-us/services/kubernetes-service/&#34;&gt;Azure Kubernetes Services - AKS&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Along these months, the amount of &amp;ldquo;sample PODS&amp;rdquo; I am running within the Kubernetes cluster was continuously growing, resulting in a less efficient demo scenario to show.&lt;/p&gt;&#xA;&lt;p&gt;So cleaning up these running PODS was my 5 seconds action this Saturday morning. While not super hard, it actually took me a bit longer than 5 seconds (more like 10min :)), since I forgot a few &amp;ldquo;basics&amp;rdquo; on how Kubernetes is running PODS.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Migrating Docker Desktop to WSL2</title>
-      <link>https://www.007ffflearning.com/post/migrate-docker-desktop-to-wsl2/</link>
+      <link>//localhost:1313/post/migrate-docker-desktop-to-wsl2/</link>
       <pubDate>Sat, 30 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/migrate-docker-desktop-to-wsl2/</guid>
-      <description>Hey there,
-With the May update of Windows 10 (named Windows 2004 :) ) being available since this week, together with DockerCon virtual conference, I think it was the right time to (finally) migrate my current Docker Desktop in Hyper-V mode to the new WSL 2 (Windows Subsystem for Linux).
-In short, the process was smooth, straight forward, and not having any real impact on my &amp;ldquo;demo environment&amp;rdquo; I&amp;rsquo;m using continuously during my Azure training workshops and public speaking gigs.</description>
+      <guid>//localhost:1313/post/migrate-docker-desktop-to-wsl2/</guid>
+      <description>&lt;p&gt;Hey there,&lt;/p&gt;&#xA;&lt;p&gt;With the May update of Windows 10 (named Windows 2004 :) ) being available since this week, together with DockerCon virtual conference, I think it was the right time to (finally) migrate my current Docker Desktop in Hyper-V mode to the new WSL 2 (Windows Subsystem for Linux).&lt;/p&gt;&#xA;&lt;p&gt;In short, the process was smooth, straight forward, and not having any real impact on my &amp;ldquo;demo environment&amp;rdquo; I&amp;rsquo;m using continuously during my Azure training workshops and public speaking gigs.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

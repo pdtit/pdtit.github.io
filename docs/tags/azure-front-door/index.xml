@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Azure Front Door on Azure Readiness starts here...</title>
-    <link>https://www.007ffflearning.com/tags/azure-front-door/</link>
-    <description>Recent content in Azure Front Door on Azure Readiness starts here...</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sat, 25 Apr 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/azure-front-door/index.xml" rel="self" type="application/rss+xml" />
+    <title>Azure Front Door on </title>
+    <link>//localhost:1313/tags/azure-front-door/</link>
+    <description>Recent content in Azure Front Door on </description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 25 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/azure-front-door/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Running an Azure Storage Static Site, protected by Azure Front Door</title>
-      <link>https://www.007ffflearning.com/post/static_site_frontdoor/</link>
+      <link>//localhost:1313/post/static_site_frontdoor/</link>
       <pubDate>Sat, 25 Apr 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/static_site_frontdoor/</guid>
-      <description>Earlier this week, I had the honor to present a session for the Belgian MC2MC Microsoft community, as part of a broader online event week with other Belgian community User Groups (https://www.mc2mc.be/events/be-community-week-mc2mc-evening).
-My session topic was based on a little real-life project I worked on myself only a few weeks ago, deploying a “Hugo” based static website on Azure Storage Account Static Site (Yes, this site you are reading right now&amp;hellip;).</description>
+      <guid>//localhost:1313/post/static_site_frontdoor/</guid>
+      <description>&lt;p&gt;Earlier this week, I had the honor to present a session for the Belgian&#xA;&lt;strong&gt;&lt;a href=&#34;http://www.mc2mc.be&#34;&gt;MC2MC&lt;/a&gt;&lt;/strong&gt; Microsoft community, as part of a broader online event&#xA;week with other Belgian community User Groups&#xA;(&lt;a href=&#34;https://www.mc2mc.be/events/be-community-week-mc2mc-evening)&#34;&gt;https://www.mc2mc.be/events/be-community-week-mc2mc-evening)&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;My session topic was based on a little real-life project I worked on myself only&#xA;a few weeks ago, deploying a “Hugo” based static website on Azure Storage&#xA;Account Static Site (Yes, this site you are reading right now&amp;hellip;).&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

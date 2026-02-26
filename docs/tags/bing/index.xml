@@ -1,32 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Bing on Azure Readiness starts here...</title>
-    <link>https://www.007ffflearning.com/tags/bing/</link>
-    <description>Recent content in Bing on Azure Readiness starts here...</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 10 May 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/bing/index.xml" rel="self" type="application/rss+xml" />
+    <title>Bing on </title>
+    <link>//localhost:1313/tags/bing/</link>
+    <description>Recent content in Bing on </description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 10 May 2020 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/bing/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Use Bing Desktop Wallpapers as background images in Teams calls</title>
-      <link>https://www.007ffflearning.com/post/use-bing-wallpaper-as-background-in-teams/</link>
+      <link>//localhost:1313/post/use-bing-wallpaper-as-background-in-teams/</link>
       <pubDate>Sun, 10 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/use-bing-wallpaper-as-background-in-teams/</guid>
-      <description>A few days ago, I blogged about Bing Desktop Wallpapers, a nice little tool you can install on your Windows Machine to enjoy some of the amazing views of the world.
-Knowing these got stored on your local machine as JPEGs (C:\Users&amp;lt;user&amp;gt;\AppData\Local\Microsoft\BingWallpaperApp\WPImages), got me the idea to reuse these as &amp;ldquo;Teams Backgrounds&amp;rdquo; during video calls.
-As the Bing Wallpaper gets updated every day, it would be nice to have a different image in Teams&amp;hellip; every day.</description>
+      <guid>//localhost:1313/post/use-bing-wallpaper-as-background-in-teams/</guid>
+      <description>&lt;p&gt;A few days ago, I blogged about &lt;strong&gt;&lt;a href=&#34;https://www.007ffflearning.com/post/bing-wallpaper/&#34;&gt;Bing Desktop Wallpapers&lt;/a&gt;&lt;/strong&gt;, a nice little tool you can install on your Windows Machine to enjoy some of the amazing views of the world.&lt;/p&gt;&#xA;&lt;p&gt;Knowing these got stored on your local machine as JPEGs (C:\Users&amp;lt;user&amp;gt;\AppData\Local\Microsoft\BingWallpaperApp\WPImages), got me the idea to reuse these as &amp;ldquo;Teams Backgrounds&amp;rdquo; during video calls.&lt;/p&gt;&#xA;&lt;p&gt;As the Bing Wallpaper gets updated every day, it would be nice to have a different image in Teams&amp;hellip; every day. So instead of trying to remember to copy a Bing Wallpaper image, why not using a Windows Scheduled Task for this, based on a little PowerShell script?&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Bing Desktop Wallpapers take you on a trip around the world</title>
-      <link>https://www.007ffflearning.com/post/bing-wallpaper/</link>
+      <link>//localhost:1313/post/bing-wallpaper/</link>
       <pubDate>Sun, 19 Apr 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.007ffflearning.com/post/bing-wallpaper/</guid>
-      <description>Due to COVID19, my traveling rhythm went down from an avg 90% the last six years, to 0%. I have never been that much at home without travel than in these last 5 weeks (and a few more to come).
-While the primary reason for my travel is business related, every now and then, I have the opportunity to enjoy the area, if even only for a short moment, or in-between delivering sessions.</description>
+      <guid>//localhost:1313/post/bing-wallpaper/</guid>
+      <description>&lt;p&gt;Due to COVID19, my traveling rhythm went down from an avg 90% the last six years, to 0%. I have never been that much at home without travel than in these last 5 weeks (and a few more to come).&lt;/p&gt;&#xA;&lt;p&gt;While the primary reason for my travel is business related, every now and then, I have the opportunity to enjoy the area, if even only for a short moment, or in-between delivering sessions. Some locations immediately coming to mind:&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

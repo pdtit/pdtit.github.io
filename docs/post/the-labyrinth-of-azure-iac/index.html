@@ -1,490 +1,511 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="en" dir="auto" data-theme="auto">
 
-    <script type="text/javascript">
-        !function(T,l,y){var S=T.location,u="script",k="instrumentationKey",D="ingestionendpoint",C="disableExceptionTracking",E="ai.device.",I="toLowerCase",b="crossOrigin",w="POST",e="appInsightsSDK",t=y.name||"appInsights";(y.name||T[e])&&(T[e]=t);var n=T[t]||function(d){var g=!1,f=!1,m={initialize:!0,queue:[],sv:"4",version:2,config:d};function v(e,t){var n={},a="Browser";return n[E+"id"]=a[I](),n[E+"type"]=a,n["ai.operation.name"]=S&&S.pathname||"_unknown_",n["ai.internal.sdkVersion"]="javascript:snippet_"+(m.sv||m.version),{time:function(){var e=new Date;function t(e){var t=""+e;return 1===t.length&&(t="0"+t),t}return e.getUTCFullYear()+"-"+t(1+e.getUTCMonth())+"-"+t(e.getUTCDate())+"T"+t(e.getUTCHours())+":"+t(e.getUTCMinutes())+":"+t(e.getUTCSeconds())+"."+((e.getUTCMilliseconds()/1e3).toFixed(3)+"").slice(2,5)+"Z"}(),iKey:e,name:"Microsoft.ApplicationInsights."+e.replace(/-/g,"")+"."+t,sampleRate:100,tags:n,data:{baseData:{ver:2}}}}var h=d.url||y.src;if(h){function a(e){var t,n,a,i,r,o,s,c,p,l,u;g=!0,m.queue=[],f||(f=!0,t=h,s=function(){var e={},t=d.connectionString;if(t)for(var n=t.split(";"),a=0;a<n.length;a++){var i=n[a].split("=");2===i.length&&(e[i[0][I]()]=i[1])}if(!e[D]){var r=e.endpointsuffix,o=r?e.location:null;e[D]="https://"+(o?o+".":"")+"dc."+(r||"services.visualstudio.com")}return e}(),c=s[k]||d[k]||"",p=s[D],l=p?p+"/v2/track":config.endpointUrl,(u=[]).push((n="SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details)",a=t,i=l,(o=(r=v(c,"Exception")).data).baseType="ExceptionData",o.baseData.exceptions=[{typeName:"SDKLoadFailed",message:n.replace(/\./g,"-"),hasFullStack:!1,stack:n+"\nSnippet failed to load ["+a+"] -- Telemetry is disabled\nHelp Link: https://go.microsoft.com/fwlink/?linkid=2128109\nHost: "+(S&&S.pathname||"_unknown_")+"\nEndpoint: "+i,parsedStack:[]}],r)),u.push(function(e,t,n,a){var i=v(c,"Message"),r=i.data;r.baseType="MessageData";var o=r.baseData;return o.message='AI (Internal): 99 message:"'+("SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details) ("+n+")").replace(/\"/g,"")+'"',o.properties={endpoint:a},i}(0,0,t,l)),function(e,t){if(JSON){var n=T.fetch;if(n&&!y.useXhr)n(t,{method:w,body:JSON.stringify(e),mode:"cors"});else if(XMLHttpRequest){var a=new XMLHttpRequest;a.open(w,t),a.setRequestHeader("Content-type","application/json"),a.send(JSON.stringify(e))}}}(u,l))}function i(e,t){f||setTimeout(function(){!t&&m.core||a()},500)}var e=function(){var n=l.createElement(u);n.src=h;var e=y[b];return!e&&""!==e||"undefined"==n[b]||(n[b]=e),n.onload=i,n.onerror=a,n.onreadystatechange=function(e,t){"loaded"!==n.readyState&&"complete"!==n.readyState||i(0,t)},n}();y.ld<0?l.getElementsByTagName("head")[0].appendChild(e):setTimeout(function(){l.getElementsByTagName(u)[0].parentNode.appendChild(e)},y.ld||0)}try{m.cookie=l.cookie}catch(p){}function t(e){for(;e.length;)!function(t){m[t]=function(){var e=arguments;g||m.queue.push(function(){m[t].apply(m,e)})}}(e.pop())}var n="track",r="TrackPage",o="TrackEvent";t([n+"Event",n+"PageView",n+"Exception",n+"Trace",n+"DependencyData",n+"Metric",n+"PageViewPerformance","start"+r,"stop"+r,"start"+o,"stop"+o,"addTelemetryInitializer","setAuthenticatedUserContext","clearAuthenticatedUserContext","flush"]),m.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4};var s=(d.extensionConfig||{}).ApplicationInsightsAnalytics||{};if(!0!==d[C]&&!0!==s[C]){method="onerror",t(["_"+method]);var c=T[method];T[method]=function(e,t,n,a,i){var r=c&&c(e,t,n,a,i);return!0!==r&&m["_"+method]({message:e,url:t,lineNumber:n,columnNumber:a,error:i}),r},d.autoExceptionInstrumented=!0}return m}(y.cfg);(T[t]=n).queue&&0===n.queue.length&&n.trackPageView({})}(window,document,{
-        src: "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js", 
-        
-        
-        
-        
-        cfg: { 
-            instrumentationKey: "4ecca3df-ab58-4882-903e-3ab2c030f009"
-             
-        }});
-        </script>
-    
-<head>
-    
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    
-    <meta property="og:site_name" content="Azure Readiness starts here...">
-    <meta property="og:type" content="article">
-
-    
-    <meta property="og:image" content="https://www.007ffflearning.com/img/home-bg-azure.jpg">
-    <meta property="twitter:image" content="https://www.007ffflearning.com/img/home-bg-azure.jpg" />
-    
-
-    
-    <meta name="title" content="The labyrinth of Azure Infrastructure as Code Tools - Azure Spring Clean" />
-    <meta property="og:title" content="The labyrinth of Azure Infrastructure as Code Tools - Azure Spring Clean" />
-    <meta property="twitter:title" content="The labyrinth of Azure Infrastructure as Code Tools - Azure Spring Clean" />
-    
-
-    
-    <meta name="description" content="">
-    <meta property="og:description" content="" />
-    <meta property="twitter:description" content="" />
-    
-
-    
-    <meta property="twitter:card" content="summary" />
-    
-    
-
-    <meta name="keyword"  content="Azure, Learning, Certification, Technology">
-    <link rel="shortcut icon" href="/img/favicon.ico">
-
-    <title>The labyrinth of Azure Infrastructure as Code Tools - Azure Spring Clean-Azure Readiness Starts Here</title>
-
-    
-    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
-	
-    
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-
-    
-    <link rel="stylesheet" href="/css/hux-blog.min.css">
-
-    
-    <link rel="stylesheet" href="/css/zanshang.css">
-    
-    
-    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    
-    
-
-    
-    
-    <script src="/js/jquery.min.js"></script>
-    
-    
-    <script src="/js/bootstrap.min.js"></script>
-    
-    
-    <script src="/js/hux-blog.min.js"></script>
-
-    
-    
-
-    <script type="text/javascript">
-            var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){function n(e){t[e]=function(){var n=arguments;t.queue.push(function(){t[e].apply(t,n)})}}var t={config:e};t.initialize=!0;var i=document,a=window;setTimeout(function(){var n=i.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",i.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{t.cookie=i.cookie}catch(e){}t.queue=[],t.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var s="Track"+r[0];if(n("start"+s),n("stop"+s),n("setAuthenticatedUserContext"),n("clearAuthenticatedUserContext"),n("flush"),!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var o=a[r];a[r]=function(e,n,i,a,s){var c=o&&o(e,n,i,a,s);return!0!==c&&t["_"+r]({message:e,url:n,lineNumber:i,columnNumber:a,error:s}),c},e.autoExceptionInstrumented=!0}return t}(
-            {
-               instrumentationKey:"4f4ba091-4cff-4bd9-95e3-c5d564a1adde"
-            }
-            );window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
-    </script>
-
-</head>
-
-
-
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-    <div class="container-fluid">
-        
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">Azure Readiness starts here...</a>
-        </div>
-
-        
-        
-        <div id="huxblog_navbar">
-            <div class="navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="/">Home</a>
-                    </li>
-                    
-                        
-                    
-                    
-		    
-                        <li><a href="/books/">BOOKS</a></li>
-                    
-                        <li><a href="/about/">ABOUT ME</a></li>
-                    
-
-                    
-                </ul>
-            </div>
-        </div>
-        
-    </div>
-    
-</nav>
-<script>
-    
-    
-    
-    var $body   = document.body;
-    var $toggle = document.querySelector('.navbar-toggle');
-    var $navbar = document.querySelector('#huxblog_navbar');
-    var $collapse = document.querySelector('.navbar-collapse');
-
-    $toggle.addEventListener('click', handleMagic)
-    function handleMagic(e){
-        if ($navbar.className.indexOf('in') > 0) {
-        
-            $navbar.className = " ";
-            
-            setTimeout(function(){
-                
-                if($navbar.className.indexOf('in') < 0) {
-                    $collapse.style.height = "0px"
-                }
-            },400)
-        }else{
-        
-            $collapse.style.height = "auto"
-            $navbar.className += " in";
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>The labyrinth of Azure Infrastructure as Code Tools - Azure Spring Clean | Azure Readiness starts here...</title>
+<meta name="keywords" content="Azure, IAC, TerraForm, Pulumi, ARM">
+<meta name="description" content="
+Hey everyone,
+Thanks for joining the Azure Spring Clean online event again, in which the Azure community steps up once more, sharing the best tips &amp; tricks on how to keep your Azure environments clean. Discussing optimizations, covering new services and features or overall giving you a view on how to manage your Azure subscriptions even better.
+You can check out all other blog posts or videos, which can guide you with best practices, lessons learned, or help you with some of the more difficult Azure Management topics at Azure Spring Clean.">
+<meta name="author" content="Peter De Tender">
+<link rel="canonical" href="http://localhost:1313/post/the-labyrinth-of-azure-iac/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.8369b950114d6445e67a717fe985c3f6c6da2f22526bfb9d5b4e2dea350d3ef5.css" integrity="sha256-g2m5UBFNZEXmenF/6YXD9sbaLyJSa/udW04t6jUNPvU=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#007FFF">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/post/the-labyrinth-of-azure-iac/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
         }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
     }
+
 </script>
+<script type="text/javascript">
+var appInsights=window.appInsights||function(a){
+    function b(a){c[a]=function(){var b=arguments;c.queue.push(function(){c[a].apply(c,b)})}}var c={config:a},d=document,e=window;setTimeout(function(){var b=d.createElement("script");b.src=a.url||"https://az416426.vo.msecnd.net/scripts/a/ai.0.js",d.getElementsByTagName("script")[0].parentNode.appendChild(b)});try{c.cookie=d.cookie}catch(a){}c.queue=[];for(var f=["Event","Exception","Metric","PageView","Trace","Dependency"];f.length;)b("track"+f.pop());if(b("setAuthenticatedUserContext"),b("clearAuthenticatedUserContext"),b("startTrackEvent"),b("stopTrackEvent"),b("startTrackPage"),b("stopTrackPage"),b("flush"),!a.disableExceptionTracking){f="onerror",b("_"+f);var g=e[f];e[f]=function(a,b,d,e,h){var i=g&&g(a,b,d,e,h);return!0!==i&&c["_"+f](a,b,d,e,h),i}}return c
+}({
+    instrumentationKey:"100a91c6-40e4-4e8e-a4ee-57873dc4eee3"
+}));
+
+window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&appInsights.trackPageView();
+</script>
+<script type="text/javascript">
+var appInsights=window.appInsights||function(a){
+    function b(a){c[a]=function(){var b=arguments;c.queue.push(function(){c[a].apply(c,b)})}}var c={config:a},d=document,e=window;setTimeout(function(){var b=d.createElement("script");b.src=a.url||"https://az416426.vo.msecnd.net/scripts/a/ai.0.js",d.getElementsByTagName("script")[0].parentNode.appendChild(b)});try{c.cookie=d.cookie}catch(a){}c.queue=[];for(var f=["Event","Exception","Metric","PageView","Trace","Dependency"];f.length;)b("track"+f.pop());if(b("setAuthenticatedUserContext"),b("clearAuthenticatedUserContext"),b("startTrackEvent"),b("stopTrackEvent"),b("startTrackPage"),b("stopTrackPage"),b("flush"),!a.disableExceptionTracking){f="onerror",b("_"+f);var g=e[f];e[f]=function(a,b,d,e,h){var i=g&&g(a,b,d,e,h);return!0!==i&&c["_"+f](a,b,d,e,h),i}}return c
+}({
+    instrumentationKey:"100a91c6-40e4-4e8e-a4ee-57873dc4eee3"
+});
+
+window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&appInsights.trackPageView();
+</script><meta property="og:url" content="http://localhost:1313/post/the-labyrinth-of-azure-iac/">
+  <meta property="og:site_name" content="Azure Readiness starts here...">
+  <meta property="og:title" content="The labyrinth of Azure Infrastructure as Code Tools - Azure Spring Clean">
+  <meta property="og:description" content="
+Hey everyone,
+Thanks for joining the Azure Spring Clean online event again, in which the Azure community steps up once more, sharing the best tips &amp; tricks on how to keep your Azure environments clean. Discussing optimizations, covering new services and features or overall giving you a view on how to manage your Azure subscriptions even better.
+You can check out all other blog posts or videos, which can guide you with best practices, lessons learned, or help you with some of the more difficult Azure Management topics at Azure Spring Clean.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2021-03-24T00:00:00+00:00">
+    <meta property="article:modified_time" content="2021-03-24T00:00:00+00:00">
+    <meta property="article:tag" content="Azure">
+    <meta property="article:tag" content="IAC">
+    <meta property="article:tag" content="TerraForm">
+    <meta property="article:tag" content="Pulumi">
+    <meta property="article:tag" content="ARM">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="The labyrinth of Azure Infrastructure as Code Tools - Azure Spring Clean">
+<meta name="twitter:description" content="
+Hey everyone,
+Thanks for joining the Azure Spring Clean online event again, in which the Azure community steps up once more, sharing the best tips &amp; tricks on how to keep your Azure environments clean. Discussing optimizations, covering new services and features or overall giving you a view on how to manage your Azure subscriptions even better.
+You can check out all other blog posts or videos, which can guide you with best practices, lessons learned, or help you with some of the more difficult Azure Management topics at Azure Spring Clean.">
 
 
-
-
-<style type="text/css">
-    header.intro-header {
-        background-image: url('/img/home-bg-azure.jpg')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://localhost:1313/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "The labyrinth of Azure Infrastructure as Code Tools - Azure Spring Clean",
+      "item": "http://localhost:1313/post/the-labyrinth-of-azure-iac/"
     }
-</style>
-<header class="intro-header">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="post-heading">
-                    <div class="tags">
-                        
-                        <a class="tag" href="/tags/azure" title="Azure">
-                            Azure
-                        </a>
-                        
-                        <a class="tag" href="/tags/iac" title="IAC">
-                            IAC
-                        </a>
-                        
-                        <a class="tag" href="/tags/terraform" title="TerraForm">
-                            TerraForm
-                        </a>
-                        
-                        <a class="tag" href="/tags/pulumi" title="Pulumi">
-                            Pulumi
-                        </a>
-                        
-                        <a class="tag" href="/tags/arm" title="ARM">
-                            ARM
-                        </a>
-                        
-                    </div>
-                    <h1>The labyrinth of Azure Infrastructure as Code Tools - Azure Spring Clean</h1>
-                    <h2 class="subheading"></h2>
-                    <span class="meta">
-                        Posted by 
-                        
-                                Azure Readiness starts here...
-                         
-                        on 
-                        Wednesday, March 24, 2021
-                        
-                        
-                        
-                    </span>
-                </div>
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "The labyrinth of Azure Infrastructure as Code Tools - Azure Spring Clean",
+  "name": "The labyrinth of Azure Infrastructure as Code Tools - Azure Spring Clean",
+  "description": "\nHey everyone,\nThanks for joining the Azure Spring Clean online event again, in which the Azure community steps up once more, sharing the best tips \u0026amp; tricks on how to keep your Azure environments clean. Discussing optimizations, covering new services and features or overall giving you a view on how to manage your Azure subscriptions even better.\nYou can check out all other blog posts or videos, which can guide you with best practices, lessons learned, or help you with some of the more difficult Azure Management topics at Azure Spring Clean.\n",
+  "keywords": [
+    "Azure", "IAC", "TerraForm", "Pulumi", "ARM"
+  ],
+  "articleBody": "\nHey everyone,\nThanks for joining the Azure Spring Clean online event again, in which the Azure community steps up once more, sharing the best tips \u0026 tricks on how to keep your Azure environments clean. Discussing optimizations, covering new services and features or overall giving you a view on how to manage your Azure subscriptions even better.\nYou can check out all other blog posts or videos, which can guide you with best practices, lessons learned, or help you with some of the more difficult Azure Management topics at Azure Spring Clean.\nYou can also keep an eye on Twitter for the hashtag #AzureSpringClean so you won’t miss any of these Azure “spring” cleaning tips.\nI had the joy of participating again this year and decided to share a bit about IAC - Infrastructure As Code, sharing my view on some of the interesting tools and practices that could help you in automating your Azure deployments.\nWhat is Infrastructure As Code By using Infrastructure as Code, you define the infrastructure that needs to be deployed. The infrastructure code becomes part of your project. Just like the application source code, you store the infrastructure code in a source repository (GitHub, Azure Repos,…) and version it. Anyone on your team can run the code and deploy similar environments. Infrastructure as Code (IaC) is the management of infrastructure (networks, virtual machines, load balancers, and connection topology), but can also be used to deploy the baseline of your platform services (App Services, Functions, Database services,…). It is using a descriptive model, relying on the same versioning concept used by DevOps teams for their source code.\nInfrastructure as Code helps in avoiding or minimizing the problem of environment drift during a release deployment. Without IaC, a cloud team must maintain the settings of individual deployment environments (Dev/Test, Staging, Production). Over time, each environment tends to become a snowflake, that is, a unique configuration that cannot be reproduced automatically. This also leads to inconsistency among environments which again leads to issues during deployments. With snowflakes, most deployments and maintenance of the underlying cloud infrastructure is based on manual processes, maybe a combination of stand-alone scripts coming from all over the place, are hard to track and are the main source for errors.\nAnother characteristic of IaC is Idempotence. Idempotence is the principal that a deployment command always sets the target environment into the same configuration, regardless of the environment’s starting state or regardless the environment itself. Idempotency is achieved by either automatically configuring an existing target or by discarding the existing target and redeploying it from scratch (Spring Clean anyone? :)).\nAccordingly, with IaC, cloud teams apply changes to the environment description and integrate versioning into the configuration model, which is typically in well-documented code formats such as JSON or YAML. If the environment should be reconfigured or changes should get applied, you edit the source (IaC-files), you are not directly touching on the target.\nTeams who implement IaC can deliver stable environments rapidly and at scale. Teams avoid manual configuration of environments and enforce consistency by representing the desired state of their environments via code. Infrastructure deployments with IaC are repeatable and prevent runtime issues caused by configuration drift or missing dependencies. DevOps teams can work together with a unified set of practices and tools to deliver applications and their supporting infrastructure rapidly, reliably, and at scale.\nWhere to get started Now you know what Infrastructure as Code is, as well as recognize some of the main benefits, the typical next question is where to get started. The good news is, you can start right away, since Azure provides a few mechanisms out-of-the-box to create, update or import templates, known as ARM Templates (Azure Resource Manager). (Amazon AWS is offering something similar called CloudFormation btw…)\nBesides using the Microsoft ARM scenario, several third-party tools exist, allowing you to embrace all concepts of Infrastructure as Code. These tools are typically supporting multiple cloud platforms, and not just targeting one single cloud vendor.\nIn the remaining part of this article, I’ll share some insights in ARM Templates, as well as discussing some other tools that I’ve used over the years (and still am) with some specifics.\nARM Templates Probably the first scenario of using IaC in Azure is Azure Resource Manager (ARM) templatesThe template is a JavaScript Object Notation (JSON) file that defines the infrastructure and configuration for your project. The template uses declarative syntax, which lets you state what you intend to deploy without having to write the sequence of programming commands to create it. In the template, you specify the resources to deploy and the properties for those resources.\nARM Templates can be authored in any editor (JSON is just text), but I can definitely recommend VS Code to do that. And make sure you install the ARM Template tools extension. Once you have your ARM template file(s), deploying them is possible from PowerShell, Azure CLI or directly from the Azure Portal.\nA sample ARM Template (which you can use right away…) to deploy a Windows 2019 Virtual Machine with Visual Studio, looks like this:\n{ \"$schema\": \"https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#\", \"contentVersion\": \"1.0.0.0\", \"parameters\": { \"adminUsername\": { \"type\": \"string\", \"minLength\": 1, \"defaultValue\": \"labadmin\", \"metadata\": { \"description\": \"Username for the Virtual Machine.\" } }, \"adminPassword\": { \"type\": \"securestring\", \"defaultValue\": \"L@BadminPa55w.rd\", \"metadata\": { \"description\": \"Password for the Virtual Machine.\" } } }, \"variables\": { \"imagePublisher\": \"MicrosoftVisualStudio\", \"imageOffer\": \"VisualStudio2019latest\", \"imageSku\": \"vs-2019-comm-latest-ws2019\", \"OSDiskName\": \"jumpvmosdisk\", \"nicName\": \"jumpvmnic\", \"addressPrefix\": \"10.1.0.0/16\", \"subnetName\": \"Subnet\", \"subnetPrefix\": \"10.1.0.0/24\", \"vhdStorageType\": \"Premium_LRS\", \"publicIPAddressName\": \"jumpvmip\", \"publicIPAddressType\": \"static\", \"vhdStorageContainerName\": \"vhds\", \"vmName\": \"jumpvm\", \"vmSize\": \"Standard_DS8_V2\", \"virtualNetworkName\": \"jumpvmVNet\", \"vnetId\": \"[resourceId('Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]\", \"subnetRef\": \"[concat(variables('vnetId'), '/subnets/', variables('subnetName'))]\", \"vhdStorageAccountName\": \"[concat('vhdstorage', uniqueString(resourceGroup().id))]\", \"scriptFolder\": \".\", \"scriptFileName\": \"config-winvm.ps1\", \"fileToBeCopied\": \"ExtensionLog.txt\" }, \"resources\": [ { \"type\": \"Microsoft.Storage/storageAccounts\", \"name\": \"[variables('vhdStorageAccountName')]\", \"apiVersion\": \"2016-01-01\", \"location\": \"[resourceGroup().location]\", \"tags\": { \"displayName\": \"StorageAccount\" }, \"sku\": { \"name\": \"[variables('vhdStorageType')]\" }, \"kind\": \"Storage\" }, { \"apiVersion\": \"2016-03-30\", \"type\": \"Microsoft.Network/publicIPAddresses\", \"name\": \"[variables('publicIPAddressName')]\", \"location\": \"[resourceGroup().location]\", \"tags\": { \"displayName\": \"PublicIPAddress\" }, \"properties\": { \"publicIPAllocationMethod\": \"[variables('publicIPAddressType')]\" } }, { \"apiVersion\": \"2016-03-30\", \"type\": \"Microsoft.Network/virtualNetworks\", \"name\": \"[variables('virtualNetworkName')]\", \"location\": \"[resourceGroup().location]\", \"tags\": { \"displayName\": \"VirtualNetwork\" }, \"properties\": { \"addressSpace\": { \"addressPrefixes\": [ \"[variables('addressPrefix')]\" ] }, \"subnets\": [ { \"name\": \"[variables('subnetName')]\", \"properties\": { \"addressPrefix\": \"[variables('subnetPrefix')]\" } } ] } }, { \"apiVersion\": \"2016-03-30\", \"type\": \"Microsoft.Network/networkInterfaces\", \"name\": \"[variables('nicName')]\", \"location\": \"[resourceGroup().location]\", \"tags\": { \"displayName\": \"NetworkInterface\" }, \"dependsOn\": [ \"[resourceId('Microsoft.Network/publicIPAddresses/', variables('publicIPAddressName'))]\", \"[resourceId('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]\" ], \"properties\": { \"ipConfigurations\": [ { \"name\": \"ipconfig1\", \"properties\": { \"privateIPAllocationMethod\": \"Dynamic\", \"publicIPAddress\": { \"id\": \"[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName'))]\" }, \"subnet\": { \"id\": \"[variables('subnetRef')]\" } } } ] } }, { \"apiVersion\": \"2015-06-15\", \"type\": \"Microsoft.Compute/virtualMachines\", \"name\": \"[variables('vmName')]\", \"location\": \"[resourceGroup().location]\", \"tags\": { \"displayName\": \"JumpVM\" }, \"dependsOn\": [ \"[resourceId('Microsoft.Storage/storageAccounts/', variables('vhdStorageAccountName'))]\", \"[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]\" ], \"properties\": { \"hardwareProfile\": { \"vmSize\": \"[variables('vmSize')]\" }, \"osProfile\": { \"computerName\": \"[variables('vmName')]\", \"adminUsername\": \"[parameters('adminUsername')]\", \"adminPassword\": \"[parameters('adminPassword')]\" }, \"storageProfile\": { \"imageReference\": { \"publisher\": \"[variables('imagePublisher')]\", \"offer\": \"[variables('imageOffer')]\", \"sku\": \"[variables('imageSku')]\", \"version\": \"latest\" }, \"osDisk\": { \"name\": \"osdisk\", \"vhd\": { \"uri\": \"[concat(reference(resourceId('Microsoft.Storage/storageAccounts', variables('vhdStorageAccountName')), '2016-01-01').primaryEndpoints.blob, variables('vhdStorageContainerName'), '/', variables('OSDiskName'), '.vhd')]\" }, \"caching\": \"ReadWrite\", \"createOption\": \"FromImage\" } }, \"networkProfile\": { \"networkInterfaces\": [ { \"id\": \"[resourceId('Microsoft.Network/networkInterfaces', variables('nicName'))]\" } ] }, \"diagnosticsProfile\": { \"bootDiagnostics\": { \"enabled\": false } } }, \"resources\": [ { \"apiVersion\": \"2018-06-01\", \"type\": \"Microsoft.Compute/virtualMachines/extensions\", \"name\": \"[concat(variables('vmName'),'/', 'VMConfig')]\", \"location\": \"[resourceGroup().location]\", \"dependsOn\": [ \"[concat('Microsoft.Compute/virtualMachines/',variables('vmName'))]\" ], \"properties\": { \"publisher\": \"Microsoft.Compute\", \"type\": \"CustomScriptExtension\", \"typeHandlerVersion\": \"1.7\", \"autoUpgradeMinorVersion\":true, \"settings\": { \"fileUris\": [ \"https://raw.githubusercontent.com/pdtit/ARMtemplates/master/JumpVM/configurevm.ps1\" ], \"commandToExecute\": \"powershell.exe -ExecutionPolicy Unrestricted -File configurevm.ps1\" } } } ] } ], \"outputs\": { \"JumpVM Public IP address\": { \"type\": \"string\", \"value\": \"[reference(resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPAddressName'))).IpAddress]\" } } } You can read more information on ARM templates at the following links:\nARM template documentation\nTo get a headstart on using and authoring your own templates, you can use an amazing GitHub repository called Azure Quickstart Templates, providing more than a 1000 sample templates to deploy about anything on Azure.\nIf you are pretty unknown in the domain of ARM templates, I could recommend these sources to practice: Tutorial: Create and deploy your first ARM template as well as Microsoft Learn: Build Azure Resource Manager templates\nI also rely on ARM Templates myself a lot. Feel free to grab a few of my sample templates from my GitHub repo\nTerraform Another really, really, really popular method of deploying your infrastructure to Azure is by using Terraform by Hashicorp. Hashicorp Terraform is an open-source tool for provisioning and managing cloud infrastructure, not just Azure. Using their own Terraform providers, it is possible to target more than 35 cloud backends (Azure, AWS, GCP, Kubernetes,…)\nFollowing all concepts of IaC, with Terraform, you codify your infrastructure in configuration files in which you describe the topology of cloud resources. These resources include both Infrastructure as a Service (Virtual Machine, storage, network,…) as Platform as a Service (App Services, Kubernetes, Monitoring,…).\nSome benefits of Terraform, compared to ARM Templates:\n(WAY) easier syntax (using HCL - HashiCorp Configuration Language) Multi-platform aware (keep in mind this still requires creating platform-specific templates) Terraform CLI to interact and deploy templates Pre-flight capability: allowing you to validate and test your deployment, before running the actual deployment Terraform TFState - State file, which keeps track of an already executed deployment state and becomes the starting point for future deployment updates A sample Terraform template (you can use right away…) to deploy an Ubuntu Virtual Machine on Azure, looks like this\n# Configure the Microsoft Azure Provider\rprovider \"azurerm\" {\r# The \"feature\" block is required for AzureRM provider 2.x. # If you're using version 1.x, the \"features\" block is not allowed.\rversion = \"~\u003e2.0\"\rfeatures {}\r}\r# Create a resource group if it doesn't exist\rresource \"azurerm_resource_group\" \"my1stTFRG\" {\rname = \"my1stTFRG\"\rlocation = \"eastus\"\rtags = {\renvironment = \"TF Demo\"\r}\r}\r# Create virtual network\rresource \"azurerm_virtual_network\" \"my1stTFVNET\" {\rname = \"my1stTFVnet\"\raddress_space = [\"10.0.0.0/16\"]\rlocation = \"eastus\"\rresource_group_name = azurerm_resource_group.my1stTFRG.name\rtags = {\renvironment = \"Terraform Demo\"\r}\r}\r# Create subnet\rresource \"azurerm_subnet\" \"myterraformsubnet\" {\rname = \"mySubnet\"\rresource_group_name = azurerm_resource_group.my1stTFRG.name\rvirtual_network_name = azurerm_virtual_network.my1stTFVNET.name\raddress_prefixes = [\"10.0.1.0/24\"]\r}\r# Create public IPs\rresource \"azurerm_public_ip\" \"myterraformpublicip\" {\rname = \"myPublicIP\"\rlocation = \"eastus\"\rresource_group_name = azurerm_resource_group.my1stTFRG.name\rallocation_method = \"Dynamic\"\rtags = {\renvironment = \"Terraform Demo\"\r}\r}\r# Create Network Security Group and rule\rresource \"azurerm_network_security_group\" \"myterraformnsg\" {\rname = \"myNetworkSecurityGroup\"\rlocation = \"eastus\"\rresource_group_name = azurerm_resource_group.my1stTFRG.name\rsecurity_rule {\rname = \"SSH\"\rpriority = 1001\rdirection = \"Inbound\"\raccess = \"Allow\"\rprotocol = \"Tcp\"\rsource_port_range = \"*\"\rdestination_port_range = \"22\"\rsource_address_prefix = \"*\"\rdestination_address_prefix = \"*\"\r}\rtags = {\renvironment = \"Terraform Demo\"\r}\r}\r# Create network interface\rresource \"azurerm_network_interface\" \"myterraformnic\" {\rname = \"myNIC\"\rlocation = \"eastus\"\rresource_group_name = azurerm_resource_group.my1stTFRG.name\rip_configuration {\rname = \"myNicConfiguration\"\rsubnet_id = azurerm_subnet.myterraformsubnet.id\rprivate_ip_address_allocation = \"Dynamic\"\rpublic_ip_address_id = azurerm_public_ip.myterraformpublicip.id\r}\rtags = {\renvironment = \"Terraform Demo\"\r}\r}\r# Connect the security group to the network interface\rresource \"azurerm_network_interface_security_group_association\" \"example\" {\rnetwork_interface_id = azurerm_network_interface.myterraformnic.id\rnetwork_security_group_id = azurerm_network_security_group.myterraformnsg.id\r}\r# Generate random text for a unique storage account name\rresource \"random_id\" \"randomId\" {\rkeepers = {\r# Generate a new ID only when a new resource group is defined\rresource_group = azurerm_resource_group.my1stTFRG.name\r}\rbyte_length = 8\r}\r# Create storage account for boot diagnostics\rresource \"azurerm_storage_account\" \"mystorageaccount\" {\rname = \"diag${random_id.randomId.hex}\"\rresource_group_name = azurerm_resource_group.my1stTFRG.name\rlocation = \"eastus\"\raccount_tier = \"Standard\"\raccount_replication_type = \"LRS\"\rtags = {\renvironment = \"Terraform Demo\"\r}\r}\r# Create (and display) an SSH key\rresource \"tls_private_key\" \"example_ssh\" {\ralgorithm = \"RSA\"\rrsa_bits = 4096\r}\routput \"tls_private_key\" { value = \"tls_private_key.example_ssh.private_key_pem\" }\r# Create virtual machine\rresource \"azurerm_linux_virtual_machine\" \"myterraformvm\" {\rname = \"myVM\"\rlocation = \"eastus\"\rresource_group_name = azurerm_resource_group.my1stTFRG.name\rnetwork_interface_ids = [azurerm_network_interface.myterraformnic.id]\rsize = \"Standard_DS4_v2\"\ros_disk {\rname = \"myOsDisk\"\rcaching = \"ReadWrite\"\rstorage_account_type = \"Premium_LRS\"\r}\rsource_image_reference {\rpublisher = \"Canonical\"\roffer = \"UbuntuServer\"\rsku = \"16.04.0-LTS\"\rversion = \"latest\"\r}\rcomputer_name = \"myvm\"\radmin_username = \"azureuser\"\rdisable_password_authentication = true\radmin_ssh_key {\rusername = \"azureuser\"\rpublic_key = tls_private_key.example_ssh.public_key_openssh\r}\rboot_diagnostics {\rstorage_account_uri = azurerm_storage_account.mystorageaccount.primary_blob_endpoint\r}\rtags = {\renvironment = \"Terraform Demo\"\r}\r} As should be clear, the syntax is rather straight forward, intuitive and clean (Azure Spring Clean anyone…?)\nYou can find more details on Terraform for Azure here or you could grab a few of my sample template files from my Github Repo.\nPulumi Infrastructure as Code as we already know it, typically uses language-independent data formats, such as JSON or YAML to define our infrastructure. Terraform is slightly different, and uses a Domain Specific Language (DSL), Hashicorp Configuration Language (HCL) to construct our templates.\nThis is where Pulumi is slightly different. With Pulumi, we don’t need to learn a DSL or use JSON or YAML. If we’re already familiar with a programming language, think of DotNet, Java, Python,… Pulumi allows you to define your cloud infrastructure using that exact same development language. Which also means you can leverage the standard functions within those programming languages too, things like loops, variables, error handling etc.\nThese functions are available in the other tools we’ve mentioned too. For example, creating multiple resources could be achieved by using a for loop in Python if using Pulumi or by using the copy functionality if using Azure Resource Manager (ARM).\nTo get started with Pulumi, you don’t need too much of tooling:\nAzure CLI Pulumi CLI Your development language Framework installed (Python, DotNet,…) Compared to TerraForm and ARM Templates, Pulumi looks at each IaC concept as a “Project”; where within a project, you define “Stacks”. Projects are where we will store all of the code for a particular workload. You can think of a project like a source code repository, if something was going to have it’s own repo, then it should probably be it’s own project.\nYou can think of stacks as different instances of the code within our project, normally with differing configuration. In its simplest form you’d have a single project and a stack per environment (dev, test, prod) for example. There are a number of different patterns that you can adopt.\nA sample Pulumi script could look like this:\n\"\"\"An Azure Python Pulumi program\"\"\"\rimport pulumi\rfrom pulumi_azure import core, storage\r# Create an Azure Resource Group\rresource_group = core.ResourceGroup('resource_group')\r# Create an Azure resource (Storage Account)\raccount = storage.Account('storage',\r# The location for the storage account will be derived automatically from the resource group.\rresource_group_name=resource_group.name,\raccount_tier='Standard',\raccount_replication_type='LRS')\r# Export the connection string for the storage account\rpulumi.export('connection_string', account.primary_connection_string) Head over to the following link to dive in some sample project practices to get Pulumi up and running for Azure: Pulumi Azure Get-Started as well as the Pulumi Azure Tutorials\nAzure Bicep The last tool I want to highlight here is back to where we started, another Microsoft-owned scenario, similar to ARM Templates, but at the same time also different.\nBicep is a language for declaratively deploying Azure resources. You can use Bicep instead of JSON for developing your Azure Resource Manager templates (ARM templates). Bicep simplifies the authoring experience by:\nproviding concise syntax, better support for code reuse, and improved type safety. Bicep is a domain-specific language (DSL), which means it’s designed for a particular scenario or domain. It isn’t intended as a general programming language for writing applications.\nThe JSON syntax for creating template can be verbose and require complicated expression. Bicep improves that experience without losing any of the capabilities of a JSON template. It’s a transparent abstraction over the JSON for ARM templates. Each Bicep file compiles to a standard ARM template. Resource types, API versions, and properties that are valid in an ARM template are valid in a Bicep file. There are a few known limitations in the current release.\nTo start with Bicep, install the required tools.\nAfter installing the tools, try the Bicep tutorial. The tutorial series walks you through the structure and capabilities of Bicep. You deploy Bicep files, and convert an ARM template into the equivalent Bicep file.\nTo view equivalent JSON and Bicep files side by side, see the Bicep Playground.\nIf you have an existing ARM template that you would like to convert to Bicep, you can also do that, using this approach.\nBicep offers an easier and more concise syntax when compared to the equivalent JSON. You don’t use […] expressions. Instead, you directly call functions, and get values from parameters and variables. You give each deployed resource a symbolic name, which makes it easy to reference that resource in your template.\nFor example, the following JSON returns an output value from a resource property:\n\"outputs\": { \"hostname\": { \"type\": \"string\", \"value\": \"[reference(resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName'))).dnsSettings.fqdn]\" }, } The equivalent output expression in Bicep is easier to write. The following example returns the same property by using the symbolic name publicIP for a resource that is defined within the template:\noutput hostname string = publicIP.properties.dnsSettings.fqdn For a full comparison of the syntax, see Comparing JSON and Bicep for templates.\nBicep automatically manages dependencies between resources. You can avoid setting dependsOn when the symbolic name of a resource is used in another resource declaration.\nWith Bicep, you can break your project into multiple modules.\nThe structure of the Bicep file is more flexible than the JSON template. You can declare parameters, variables, and outputs anywhere in the file. In JSON, you have to declare all parameters, variables, and outputs within the corresponding sections of the template.\nThe VS Code extension for Bicep offers rich validation and intellisense. For example, you can use the extension’s intellisense for getting properties of a resource.\nSummary Infrastructure as Code helps cloud engineers in optimizing the deployment and management of (cloud) infrastructure. Azure provides ARM Templates by nature as the go-to scenario. Other vendors/tools that are popular in the Azure world are Terraform, Pulumi and recently developed Microsoft Bicep.\nI hope you got some more insights on Infrastructure as Code and how template-based deployments can dramatically improve your Azure deployment, or if you want… Spring Clean up tasks.\nHave a great day, and enjoy the rest of Azure Spring Clean 2021\n/Peter\n",
+  "wordCount" : "2955",
+  "inLanguage": "en",
+  "datePublished": "2021-03-24T00:00:00Z",
+  "dateModified": "2021-03-24T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Peter De Tender"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/post/the-labyrinth-of-azure-iac/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Azure Readiness starts here...",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Azure Readiness starts here... (Alt + H)">Azure Readiness starts here...</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
             </div>
         </div>
-    </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/post/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/books/" title="Books">
+                    <span>Books</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
 </header>
+<main class="main">
 
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/post/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      The labyrinth of Azure Infrastructure as Code Tools - Azure Spring Clean
+    </h1>
+    <div class="post-meta"><span title='2021-03-24 00:00:00 +0000 UTC'>March 24, 2021</span>&nbsp;·&nbsp;<span>14 min</span>&nbsp;·&nbsp;<span>2955 words</span>&nbsp;·&nbsp;<span>Peter De Tender</span>
 
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
 
+        <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-infrastructure-as-code">What is Infrastructure As Code</a></li>
+    <li><a href="#where-to-get-started">Where to get started</a></li>
+    <li><a href="#arm-templates">ARM Templates</a></li>
+    <li><a href="#terraform">Terraform</a></li>
+    <li><a href="#pulumi">Pulumi</a></li>
+    <li><a href="#azure-bicep">Azure Bicep</a></li>
+    <li><a href="#summary">Summary</a></li>
+  </ul>
+</nav>
+        </div>
+    </details>
+</div>
 
-<article>
-    <div class="container">
-        <div class="row">
-
-            
-            <div class="
-                col-lg-11 col-lg-offset-1
-                col-md-10 col-md-offset-1
-                post-container">
-
-                
-                <header>
-                    
-                </header>
-                
-                
-                <p><img src="../images/Azure_Spring_Clean_Logo.jpg" alt="Azure Spring Clean"></p>
+  <div class="post-content"><p><img alt="Azure Spring Clean" loading="lazy" src="../images/Azure_Spring_Clean_Logo.jpg"></p>
 <p>Hey everyone,</p>
 <p>Thanks for joining the <strong>Azure Spring Clean</strong> online event again, in which the Azure community steps up once more, sharing the best tips &amp; tricks on how to keep your Azure environments clean. Discussing optimizations, covering new services and features or overall giving you a view on how to manage your Azure subscriptions even better.</p>
 <p>You can check out all other blog posts or videos, which can guide you with best practices, lessons learned, or help you with some of the more difficult Azure Management topics at <a href="https://www.azurespringclean.com">Azure Spring Clean</a>.</p>
 <p>You can also keep an eye on <a href="https://twitter.com/AzureSpringClean">Twitter</a> for the hashtag #AzureSpringClean so you won’t miss any of these Azure “spring” cleaning tips.</p>
 <p>I had the joy of participating again this year and decided to share a bit about <strong>IAC - Infrastructure As Code</strong>, sharing my view on some of the interesting tools and practices that could help you in automating your Azure deployments.</p>
-<h2 id="what-is-infrastructure-as-code">What is Infrastructure As Code</h2>
+<h2 id="what-is-infrastructure-as-code">What is Infrastructure As Code<a hidden class="anchor" aria-hidden="true" href="#what-is-infrastructure-as-code">#</a></h2>
 <p>By using Infrastructure as Code, you define the infrastructure that needs to be deployed. The infrastructure code becomes part of your project. Just like the application source code, you store the infrastructure code in a source repository (GitHub, Azure Repos,&hellip;) and version it. Anyone on your team can run the code and deploy similar environments. Infrastructure as Code (IaC) is the management of infrastructure (networks, virtual machines, load balancers, and connection topology), but can also be used to deploy the baseline of your platform services (App Services, Functions, Database services,&hellip;). It is using a <strong>descriptive</strong> model, relying on the same versioning concept used by DevOps teams for their source code.</p>
 <p>Infrastructure as Code helps in avoiding or minimizing the problem of <strong>environment drift</strong> during a release deployment. Without IaC, a cloud team must maintain the settings of individual deployment environments (Dev/Test, Staging, Production). Over time, each environment tends to become a snowflake, that is, a unique configuration that cannot be reproduced automatically. This also leads to inconsistency among environments which again leads to issues during deployments. With snowflakes, most deployments and maintenance of the underlying cloud infrastructure is based on manual processes, maybe a combination of stand-alone scripts coming from all over the place, are hard to track and are the main source for errors.</p>
 <p>Another characteristic of IaC is <strong>Idempotence</strong>. Idempotence is the principal that a deployment command always sets the target environment into the same configuration, regardless of the environment’s starting state or regardless the environment itself. Idempotency is achieved by either automatically configuring an existing target or by discarding the existing target and redeploying it from scratch (Spring Clean anyone? :)).</p>
 <p>Accordingly, with IaC, cloud teams apply changes to the environment description and integrate versioning into the configuration model, which is typically in well-documented code formats such as JSON or YAML. If the environment should be reconfigured or changes should get applied, you edit the source (IaC-files), you are not directly touching on the target.</p>
 <p>Teams who implement IaC can deliver stable environments rapidly and at scale. Teams avoid manual configuration of environments and enforce consistency by representing the desired state of their environments via code. Infrastructure deployments with IaC are repeatable and prevent runtime issues caused by configuration drift or missing dependencies. DevOps teams can work together with a unified set of practices and tools to deliver applications and their supporting infrastructure rapidly, reliably, and at scale.</p>
-<p><img src="../images/iac_diagram.png" alt="IaC"></p>
-<h2 id="where-to-get-started">Where to get started</h2>
+<p><img alt="IaC" loading="lazy" src="../images/iac_diagram.png"></p>
+<h2 id="where-to-get-started">Where to get started<a hidden class="anchor" aria-hidden="true" href="#where-to-get-started">#</a></h2>
 <p>Now you know what Infrastructure as Code is, as well as recognize some of the main benefits, the typical next question is <strong>where to get started</strong>. The good news is, you can start right away, since Azure provides a few mechanisms out-of-the-box to create, update or import templates, known as ARM Templates (Azure Resource Manager). (Amazon AWS is offering something similar called CloudFormation btw&hellip;)</p>
 <p>Besides using the Microsoft ARM scenario, several third-party tools exist, allowing you to embrace all concepts of Infrastructure as Code. These tools are typically supporting multiple cloud platforms, and not just targeting one single cloud vendor.</p>
 <p>In the remaining part of this article, I&rsquo;ll share some insights in ARM Templates, as well as discussing some other tools that I&rsquo;ve used over the years (and still am) with some specifics.</p>
-<h2 id="arm-templates">ARM Templates</h2>
+<h2 id="arm-templates">ARM Templates<a hidden class="anchor" aria-hidden="true" href="#arm-templates">#</a></h2>
 <p>Probably the first scenario of using IaC in Azure is <a href="https://docs.microsoft.com//azure/azure-resource-manager/templates/">Azure Resource Manager (ARM) templates</a>The template is a JavaScript Object Notation (JSON) file that defines the infrastructure and configuration for your project. The template uses declarative syntax, which lets you state what you intend to deploy without having to write the sequence of programming commands to create it. In the template, you specify the resources to deploy and the properties for those resources.</p>
 <p>ARM Templates can be authored in any editor (JSON is just text), but I can definitely recommend VS Code to do that. And make sure you install the ARM Template tools extension. Once you have your ARM template file(s), deploying them is possible from PowerShell, Azure CLI or directly from the Azure Portal.</p>
-<p><img src="../images/armoverview.png" alt="ARM Template"></p>
+<p><img alt="ARM Template" loading="lazy" src="../images/armoverview.png"></p>
 <p>A sample ARM Template (which you can use right away&hellip;) to deploy a Windows 2019 Virtual Machine with Visual Studio, looks like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON">
-{
-  <span style="color:#ff79c6">&#34;$schema&#34;</span>: <span style="color:#f1fa8c">&#34;https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#&#34;</span>,
-  <span style="color:#ff79c6">&#34;contentVersion&#34;</span>: <span style="color:#f1fa8c">&#34;1.0.0.0&#34;</span>,
-  <span style="color:#ff79c6">&#34;parameters&#34;</span>: {
-    <span style="color:#ff79c6">&#34;adminUsername&#34;</span>: {
-      <span style="color:#ff79c6">&#34;type&#34;</span>: <span style="color:#f1fa8c">&#34;string&#34;</span>,
-      <span style="color:#ff79c6">&#34;minLength&#34;</span>: <span style="color:#bd93f9">1</span>,
-      <span style="color:#ff79c6">&#34;defaultValue&#34;</span>: <span style="color:#f1fa8c">&#34;labadmin&#34;</span>,
-      <span style="color:#ff79c6">&#34;metadata&#34;</span>: {
-        <span style="color:#ff79c6">&#34;description&#34;</span>: <span style="color:#f1fa8c">&#34;Username for the Virtual Machine.&#34;</span>
-      }
-    },
-    <span style="color:#ff79c6">&#34;adminPassword&#34;</span>: {
-      <span style="color:#ff79c6">&#34;type&#34;</span>: <span style="color:#f1fa8c">&#34;securestring&#34;</span>,
-      <span style="color:#ff79c6">&#34;defaultValue&#34;</span>: <span style="color:#f1fa8c">&#34;L@BadminPa55w.rd&#34;</span>,
-      <span style="color:#ff79c6">&#34;metadata&#34;</span>: {
-        <span style="color:#ff79c6">&#34;description&#34;</span>: <span style="color:#f1fa8c">&#34;Password for the Virtual Machine.&#34;</span>
-      }
-    }
-    
-  },
-
-  <span style="color:#ff79c6">&#34;variables&#34;</span>: {
-    <span style="color:#ff79c6">&#34;imagePublisher&#34;</span>: <span style="color:#f1fa8c">&#34;MicrosoftVisualStudio&#34;</span>,
-    <span style="color:#ff79c6">&#34;imageOffer&#34;</span>: <span style="color:#f1fa8c">&#34;VisualStudio2019latest&#34;</span>,
-    <span style="color:#ff79c6">&#34;imageSku&#34;</span>: <span style="color:#f1fa8c">&#34;vs-2019-comm-latest-ws2019&#34;</span>,
-    <span style="color:#ff79c6">&#34;OSDiskName&#34;</span>: <span style="color:#f1fa8c">&#34;jumpvmosdisk&#34;</span>,
-    <span style="color:#ff79c6">&#34;nicName&#34;</span>: <span style="color:#f1fa8c">&#34;jumpvmnic&#34;</span>,
-    <span style="color:#ff79c6">&#34;addressPrefix&#34;</span>: <span style="color:#f1fa8c">&#34;10.1.0.0/16&#34;</span>,
-    <span style="color:#ff79c6">&#34;subnetName&#34;</span>: <span style="color:#f1fa8c">&#34;Subnet&#34;</span>,
-    <span style="color:#ff79c6">&#34;subnetPrefix&#34;</span>: <span style="color:#f1fa8c">&#34;10.1.0.0/24&#34;</span>,
-    <span style="color:#ff79c6">&#34;vhdStorageType&#34;</span>: <span style="color:#f1fa8c">&#34;Premium_LRS&#34;</span>,
-    <span style="color:#ff79c6">&#34;publicIPAddressName&#34;</span>: <span style="color:#f1fa8c">&#34;jumpvmip&#34;</span>,
-    <span style="color:#ff79c6">&#34;publicIPAddressType&#34;</span>: <span style="color:#f1fa8c">&#34;static&#34;</span>,
-    <span style="color:#ff79c6">&#34;vhdStorageContainerName&#34;</span>: <span style="color:#f1fa8c">&#34;vhds&#34;</span>,
-    <span style="color:#ff79c6">&#34;vmName&#34;</span>: <span style="color:#f1fa8c">&#34;jumpvm&#34;</span>,
-    <span style="color:#ff79c6">&#34;vmSize&#34;</span>: <span style="color:#f1fa8c">&#34;Standard_DS8_V2&#34;</span>,
-    <span style="color:#ff79c6">&#34;virtualNetworkName&#34;</span>: <span style="color:#f1fa8c">&#34;jumpvmVNet&#34;</span>,
-    <span style="color:#ff79c6">&#34;vnetId&#34;</span>: <span style="color:#f1fa8c">&#34;[resourceId(&#39;Microsoft.Network/virtualNetworks&#39;, variables(&#39;virtualNetworkName&#39;))]&#34;</span>,
-    <span style="color:#ff79c6">&#34;subnetRef&#34;</span>: <span style="color:#f1fa8c">&#34;[concat(variables(&#39;vnetId&#39;), &#39;/subnets/&#39;, variables(&#39;subnetName&#39;))]&#34;</span>,
-    <span style="color:#ff79c6">&#34;vhdStorageAccountName&#34;</span>: <span style="color:#f1fa8c">&#34;[concat(&#39;vhdstorage&#39;, uniqueString(resourceGroup().id))]&#34;</span>,
-    <span style="color:#ff79c6">&#34;scriptFolder&#34;</span>: <span style="color:#f1fa8c">&#34;.&#34;</span>,
-    <span style="color:#ff79c6">&#34;scriptFileName&#34;</span>: <span style="color:#f1fa8c">&#34;config-winvm.ps1&#34;</span>,
-    <span style="color:#ff79c6">&#34;fileToBeCopied&#34;</span>: <span style="color:#f1fa8c">&#34;ExtensionLog.txt&#34;</span>
-    
-  },
-
-  <span style="color:#ff79c6">&#34;resources&#34;</span>: [
-    {
-      <span style="color:#ff79c6">&#34;type&#34;</span>: <span style="color:#f1fa8c">&#34;Microsoft.Storage/storageAccounts&#34;</span>,
-      <span style="color:#ff79c6">&#34;name&#34;</span>: <span style="color:#f1fa8c">&#34;[variables(&#39;vhdStorageAccountName&#39;)]&#34;</span>,
-      <span style="color:#ff79c6">&#34;apiVersion&#34;</span>: <span style="color:#f1fa8c">&#34;2016-01-01&#34;</span>,
-      <span style="color:#ff79c6">&#34;location&#34;</span>: <span style="color:#f1fa8c">&#34;[resourceGroup().location]&#34;</span>,
-      <span style="color:#ff79c6">&#34;tags&#34;</span>: {
-        <span style="color:#ff79c6">&#34;displayName&#34;</span>: <span style="color:#f1fa8c">&#34;StorageAccount&#34;</span>
-      },
-      <span style="color:#ff79c6">&#34;sku&#34;</span>: {
-        <span style="color:#ff79c6">&#34;name&#34;</span>: <span style="color:#f1fa8c">&#34;[variables(&#39;vhdStorageType&#39;)]&#34;</span>
-      },
-      <span style="color:#ff79c6">&#34;kind&#34;</span>: <span style="color:#f1fa8c">&#34;Storage&#34;</span>
-    },
-    {
-      <span style="color:#ff79c6">&#34;apiVersion&#34;</span>: <span style="color:#f1fa8c">&#34;2016-03-30&#34;</span>,
-      <span style="color:#ff79c6">&#34;type&#34;</span>: <span style="color:#f1fa8c">&#34;Microsoft.Network/publicIPAddresses&#34;</span>,
-      <span style="color:#ff79c6">&#34;name&#34;</span>: <span style="color:#f1fa8c">&#34;[variables(&#39;publicIPAddressName&#39;)]&#34;</span>,
-      <span style="color:#ff79c6">&#34;location&#34;</span>: <span style="color:#f1fa8c">&#34;[resourceGroup().location]&#34;</span>,
-      <span style="color:#ff79c6">&#34;tags&#34;</span>: {
-        <span style="color:#ff79c6">&#34;displayName&#34;</span>: <span style="color:#f1fa8c">&#34;PublicIPAddress&#34;</span>
-      },
-      <span style="color:#ff79c6">&#34;properties&#34;</span>: {
-        <span style="color:#ff79c6">&#34;publicIPAllocationMethod&#34;</span>: <span style="color:#f1fa8c">&#34;[variables(&#39;publicIPAddressType&#39;)]&#34;</span>
-      }
-    },
-    {
-      <span style="color:#ff79c6">&#34;apiVersion&#34;</span>: <span style="color:#f1fa8c">&#34;2016-03-30&#34;</span>,
-      <span style="color:#ff79c6">&#34;type&#34;</span>: <span style="color:#f1fa8c">&#34;Microsoft.Network/virtualNetworks&#34;</span>,
-      <span style="color:#ff79c6">&#34;name&#34;</span>: <span style="color:#f1fa8c">&#34;[variables(&#39;virtualNetworkName&#39;)]&#34;</span>,
-      <span style="color:#ff79c6">&#34;location&#34;</span>: <span style="color:#f1fa8c">&#34;[resourceGroup().location]&#34;</span>,
-      <span style="color:#ff79c6">&#34;tags&#34;</span>: {
-        <span style="color:#ff79c6">&#34;displayName&#34;</span>: <span style="color:#f1fa8c">&#34;VirtualNetwork&#34;</span>
-      },
-      <span style="color:#ff79c6">&#34;properties&#34;</span>: {
-        <span style="color:#ff79c6">&#34;addressSpace&#34;</span>: {
-          <span style="color:#ff79c6">&#34;addressPrefixes&#34;</span>: [
-            <span style="color:#f1fa8c">&#34;[variables(&#39;addressPrefix&#39;)]&#34;</span>
-          ]
-        },
-        <span style="color:#ff79c6">&#34;subnets&#34;</span>: [
-          {
-            <span style="color:#ff79c6">&#34;name&#34;</span>: <span style="color:#f1fa8c">&#34;[variables(&#39;subnetName&#39;)]&#34;</span>,
-            <span style="color:#ff79c6">&#34;properties&#34;</span>: {
-              <span style="color:#ff79c6">&#34;addressPrefix&#34;</span>: <span style="color:#f1fa8c">&#34;[variables(&#39;subnetPrefix&#39;)]&#34;</span>
-            }
-          }
-        ]
-      }
-    },
-    {
-      <span style="color:#ff79c6">&#34;apiVersion&#34;</span>: <span style="color:#f1fa8c">&#34;2016-03-30&#34;</span>,
-      <span style="color:#ff79c6">&#34;type&#34;</span>: <span style="color:#f1fa8c">&#34;Microsoft.Network/networkInterfaces&#34;</span>,
-      <span style="color:#ff79c6">&#34;name&#34;</span>: <span style="color:#f1fa8c">&#34;[variables(&#39;nicName&#39;)]&#34;</span>,
-      <span style="color:#ff79c6">&#34;location&#34;</span>: <span style="color:#f1fa8c">&#34;[resourceGroup().location]&#34;</span>,
-      <span style="color:#ff79c6">&#34;tags&#34;</span>: {
-        <span style="color:#ff79c6">&#34;displayName&#34;</span>: <span style="color:#f1fa8c">&#34;NetworkInterface&#34;</span>
-      },
-      <span style="color:#ff79c6">&#34;dependsOn&#34;</span>: [
-        <span style="color:#f1fa8c">&#34;[resourceId(&#39;Microsoft.Network/publicIPAddresses/&#39;, variables(&#39;publicIPAddressName&#39;))]&#34;</span>,
-        <span style="color:#f1fa8c">&#34;[resourceId(&#39;Microsoft.Network/virtualNetworks/&#39;, variables(&#39;virtualNetworkName&#39;))]&#34;</span>
-      ],
-      <span style="color:#ff79c6">&#34;properties&#34;</span>: {
-        <span style="color:#ff79c6">&#34;ipConfigurations&#34;</span>: [
-          {
-            <span style="color:#ff79c6">&#34;name&#34;</span>: <span style="color:#f1fa8c">&#34;ipconfig1&#34;</span>,
-            <span style="color:#ff79c6">&#34;properties&#34;</span>: {
-              <span style="color:#ff79c6">&#34;privateIPAllocationMethod&#34;</span>: <span style="color:#f1fa8c">&#34;Dynamic&#34;</span>,
-              <span style="color:#ff79c6">&#34;publicIPAddress&#34;</span>: {
-                <span style="color:#ff79c6">&#34;id&#34;</span>: <span style="color:#f1fa8c">&#34;[resourceId(&#39;Microsoft.Network/publicIPAddresses&#39;, variables(&#39;publicIPAddressName&#39;))]&#34;</span>
-              },
-              <span style="color:#ff79c6">&#34;subnet&#34;</span>: {
-                <span style="color:#ff79c6">&#34;id&#34;</span>: <span style="color:#f1fa8c">&#34;[variables(&#39;subnetRef&#39;)]&#34;</span>
-              }
-            }
-          }
-        ]
-      }
-    },
-    {
-      <span style="color:#ff79c6">&#34;apiVersion&#34;</span>: <span style="color:#f1fa8c">&#34;2015-06-15&#34;</span>,
-      <span style="color:#ff79c6">&#34;type&#34;</span>: <span style="color:#f1fa8c">&#34;Microsoft.Compute/virtualMachines&#34;</span>,
-      <span style="color:#ff79c6">&#34;name&#34;</span>: <span style="color:#f1fa8c">&#34;[variables(&#39;vmName&#39;)]&#34;</span>,
-      <span style="color:#ff79c6">&#34;location&#34;</span>: <span style="color:#f1fa8c">&#34;[resourceGroup().location]&#34;</span>,
-      <span style="color:#ff79c6">&#34;tags&#34;</span>: {
-        <span style="color:#ff79c6">&#34;displayName&#34;</span>: <span style="color:#f1fa8c">&#34;JumpVM&#34;</span>
-      },
-      <span style="color:#ff79c6">&#34;dependsOn&#34;</span>: [
-        <span style="color:#f1fa8c">&#34;[resourceId(&#39;Microsoft.Storage/storageAccounts/&#39;, variables(&#39;vhdStorageAccountName&#39;))]&#34;</span>,
-        <span style="color:#f1fa8c">&#34;[resourceId(&#39;Microsoft.Network/networkInterfaces/&#39;, variables(&#39;nicName&#39;))]&#34;</span>
-      ],
-      <span style="color:#ff79c6">&#34;properties&#34;</span>: {
-        <span style="color:#ff79c6">&#34;hardwareProfile&#34;</span>: {
-          <span style="color:#ff79c6">&#34;vmSize&#34;</span>: <span style="color:#f1fa8c">&#34;[variables(&#39;vmSize&#39;)]&#34;</span>
-        },
-        <span style="color:#ff79c6">&#34;osProfile&#34;</span>: {
-          <span style="color:#ff79c6">&#34;computerName&#34;</span>: <span style="color:#f1fa8c">&#34;[variables(&#39;vmName&#39;)]&#34;</span>,
-          <span style="color:#ff79c6">&#34;adminUsername&#34;</span>: <span style="color:#f1fa8c">&#34;[parameters(&#39;adminUsername&#39;)]&#34;</span>,
-          <span style="color:#ff79c6">&#34;adminPassword&#34;</span>: <span style="color:#f1fa8c">&#34;[parameters(&#39;adminPassword&#39;)]&#34;</span>
-        },
-        <span style="color:#ff79c6">&#34;storageProfile&#34;</span>: {
-          <span style="color:#ff79c6">&#34;imageReference&#34;</span>: {
-            <span style="color:#ff79c6">&#34;publisher&#34;</span>: <span style="color:#f1fa8c">&#34;[variables(&#39;imagePublisher&#39;)]&#34;</span>,
-            <span style="color:#ff79c6">&#34;offer&#34;</span>: <span style="color:#f1fa8c">&#34;[variables(&#39;imageOffer&#39;)]&#34;</span>,
-            <span style="color:#ff79c6">&#34;sku&#34;</span>: <span style="color:#f1fa8c">&#34;[variables(&#39;imageSku&#39;)]&#34;</span>,
-            <span style="color:#ff79c6">&#34;version&#34;</span>: <span style="color:#f1fa8c">&#34;latest&#34;</span>
-          },
-          <span style="color:#ff79c6">&#34;osDisk&#34;</span>: {
-            <span style="color:#ff79c6">&#34;name&#34;</span>: <span style="color:#f1fa8c">&#34;osdisk&#34;</span>,
-            <span style="color:#ff79c6">&#34;vhd&#34;</span>: {
-              <span style="color:#ff79c6">&#34;uri&#34;</span>: <span style="color:#f1fa8c">&#34;[concat(reference(resourceId(&#39;Microsoft.Storage/storageAccounts&#39;, variables(&#39;vhdStorageAccountName&#39;)), &#39;2016-01-01&#39;).primaryEndpoints.blob, variables(&#39;vhdStorageContainerName&#39;), &#39;/&#39;, variables(&#39;OSDiskName&#39;), &#39;.vhd&#39;)]&#34;</span>
-            },
-            <span style="color:#ff79c6">&#34;caching&#34;</span>: <span style="color:#f1fa8c">&#34;ReadWrite&#34;</span>,
-            <span style="color:#ff79c6">&#34;createOption&#34;</span>: <span style="color:#f1fa8c">&#34;FromImage&#34;</span>
-          }
-        },
-        <span style="color:#ff79c6">&#34;networkProfile&#34;</span>: {
-          <span style="color:#ff79c6">&#34;networkInterfaces&#34;</span>: [
-            {
-              <span style="color:#ff79c6">&#34;id&#34;</span>: <span style="color:#f1fa8c">&#34;[resourceId(&#39;Microsoft.Network/networkInterfaces&#39;, variables(&#39;nicName&#39;))]&#34;</span>
-            }
-          ]
-        },
-        <span style="color:#ff79c6">&#34;diagnosticsProfile&#34;</span>: {
-          <span style="color:#ff79c6">&#34;bootDiagnostics&#34;</span>: {
-            <span style="color:#ff79c6">&#34;enabled&#34;</span>: <span style="color:#ff79c6">false</span>
-          }
-        }
-      },
-      <span style="color:#ff79c6">&#34;resources&#34;</span>: [
-        {
-          <span style="color:#ff79c6">&#34;apiVersion&#34;</span>: <span style="color:#f1fa8c">&#34;2018-06-01&#34;</span>,
-          <span style="color:#ff79c6">&#34;type&#34;</span>: <span style="color:#f1fa8c">&#34;Microsoft.Compute/virtualMachines/extensions&#34;</span>,
-          <span style="color:#ff79c6">&#34;name&#34;</span>: <span style="color:#f1fa8c">&#34;[concat(variables(&#39;vmName&#39;),&#39;/&#39;, &#39;VMConfig&#39;)]&#34;</span>,
-          <span style="color:#ff79c6">&#34;location&#34;</span>: <span style="color:#f1fa8c">&#34;[resourceGroup().location]&#34;</span>,
-          <span style="color:#ff79c6">&#34;dependsOn&#34;</span>: [
-              <span style="color:#f1fa8c">&#34;[concat(&#39;Microsoft.Compute/virtualMachines/&#39;,variables(&#39;vmName&#39;))]&#34;</span>
-          ],
-          <span style="color:#ff79c6">&#34;properties&#34;</span>: {
-              <span style="color:#ff79c6">&#34;publisher&#34;</span>: <span style="color:#f1fa8c">&#34;Microsoft.Compute&#34;</span>,
-              <span style="color:#ff79c6">&#34;type&#34;</span>: <span style="color:#f1fa8c">&#34;CustomScriptExtension&#34;</span>,
-              <span style="color:#ff79c6">&#34;typeHandlerVersion&#34;</span>: <span style="color:#f1fa8c">&#34;1.7&#34;</span>,
-              <span style="color:#ff79c6">&#34;autoUpgradeMinorVersion&#34;</span>:<span style="color:#ff79c6">true</span>,
-              <span style="color:#ff79c6">&#34;settings&#34;</span>: {
-                  <span style="color:#ff79c6">&#34;fileUris&#34;</span>: [
-                     <span style="color:#f1fa8c">&#34;https://raw.githubusercontent.com/pdtit/ARMtemplates/master/JumpVM/configurevm.ps1&#34;</span>
-                  ],
-                  <span style="color:#ff79c6">&#34;commandToExecute&#34;</span>: <span style="color:#f1fa8c">&#34;powershell.exe -ExecutionPolicy Unrestricted -File configurevm.ps1&#34;</span>
-              }
-          }
-      }
-      ]
-    }
-
-
-
-
-
-  ],
-  <span style="color:#ff79c6">&#34;outputs&#34;</span>: {
-    <span style="color:#ff79c6">&#34;JumpVM Public IP address&#34;</span>: {
-      <span style="color:#ff79c6">&#34;type&#34;</span>: <span style="color:#f1fa8c">&#34;string&#34;</span>,
-      <span style="color:#ff79c6">&#34;value&#34;</span>: <span style="color:#f1fa8c">&#34;[reference(resourceId(&#39;Microsoft.Network/publicIPAddresses&#39;,variables(&#39;publicIPAddressName&#39;))).IpAddress]&#34;</span>
-
-    }
-  }
-}
-  
-
-
-</code></pre></div><p>You can read more information on ARM templates at the following links:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-JSON" data-lang="JSON"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;$schema&#34;</span><span class="p">:</span> <span class="s2">&#34;https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;contentVersion&#34;</span><span class="p">:</span> <span class="s2">&#34;1.0.0.0&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;parameters&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;adminUsername&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;minLength&#34;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;defaultValue&#34;</span><span class="p">:</span> <span class="s2">&#34;labadmin&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;metadata&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;Username for the Virtual Machine.&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;adminPassword&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;securestring&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;defaultValue&#34;</span><span class="p">:</span> <span class="s2">&#34;L@BadminPa55w.rd&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;metadata&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;Password for the Virtual Machine.&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;variables&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;imagePublisher&#34;</span><span class="p">:</span> <span class="s2">&#34;MicrosoftVisualStudio&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;imageOffer&#34;</span><span class="p">:</span> <span class="s2">&#34;VisualStudio2019latest&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;imageSku&#34;</span><span class="p">:</span> <span class="s2">&#34;vs-2019-comm-latest-ws2019&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;OSDiskName&#34;</span><span class="p">:</span> <span class="s2">&#34;jumpvmosdisk&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;nicName&#34;</span><span class="p">:</span> <span class="s2">&#34;jumpvmnic&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;addressPrefix&#34;</span><span class="p">:</span> <span class="s2">&#34;10.1.0.0/16&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;subnetName&#34;</span><span class="p">:</span> <span class="s2">&#34;Subnet&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;subnetPrefix&#34;</span><span class="p">:</span> <span class="s2">&#34;10.1.0.0/24&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;vhdStorageType&#34;</span><span class="p">:</span> <span class="s2">&#34;Premium_LRS&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;publicIPAddressName&#34;</span><span class="p">:</span> <span class="s2">&#34;jumpvmip&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;publicIPAddressType&#34;</span><span class="p">:</span> <span class="s2">&#34;static&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;vhdStorageContainerName&#34;</span><span class="p">:</span> <span class="s2">&#34;vhds&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;vmName&#34;</span><span class="p">:</span> <span class="s2">&#34;jumpvm&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;vmSize&#34;</span><span class="p">:</span> <span class="s2">&#34;Standard_DS8_V2&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;virtualNetworkName&#34;</span><span class="p">:</span> <span class="s2">&#34;jumpvmVNet&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;vnetId&#34;</span><span class="p">:</span> <span class="s2">&#34;[resourceId(&#39;Microsoft.Network/virtualNetworks&#39;, variables(&#39;virtualNetworkName&#39;))]&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;subnetRef&#34;</span><span class="p">:</span> <span class="s2">&#34;[concat(variables(&#39;vnetId&#39;), &#39;/subnets/&#39;, variables(&#39;subnetName&#39;))]&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;vhdStorageAccountName&#34;</span><span class="p">:</span> <span class="s2">&#34;[concat(&#39;vhdstorage&#39;, uniqueString(resourceGroup().id))]&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;scriptFolder&#34;</span><span class="p">:</span> <span class="s2">&#34;.&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;scriptFileName&#34;</span><span class="p">:</span> <span class="s2">&#34;config-winvm.ps1&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;fileToBeCopied&#34;</span><span class="p">:</span> <span class="s2">&#34;ExtensionLog.txt&#34;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;resources&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;Microsoft.Storage/storageAccounts&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;[variables(&#39;vhdStorageAccountName&#39;)]&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;apiVersion&#34;</span><span class="p">:</span> <span class="s2">&#34;2016-01-01&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;location&#34;</span><span class="p">:</span> <span class="s2">&#34;[resourceGroup().location]&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;tags&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;displayName&#34;</span><span class="p">:</span> <span class="s2">&#34;StorageAccount&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;sku&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;[variables(&#39;vhdStorageType&#39;)]&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;kind&#34;</span><span class="p">:</span> <span class="s2">&#34;Storage&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;apiVersion&#34;</span><span class="p">:</span> <span class="s2">&#34;2016-03-30&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;Microsoft.Network/publicIPAddresses&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;[variables(&#39;publicIPAddressName&#39;)]&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;location&#34;</span><span class="p">:</span> <span class="s2">&#34;[resourceGroup().location]&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;tags&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;displayName&#34;</span><span class="p">:</span> <span class="s2">&#34;PublicIPAddress&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;properties&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;publicIPAllocationMethod&#34;</span><span class="p">:</span> <span class="s2">&#34;[variables(&#39;publicIPAddressType&#39;)]&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;apiVersion&#34;</span><span class="p">:</span> <span class="s2">&#34;2016-03-30&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;Microsoft.Network/virtualNetworks&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;[variables(&#39;virtualNetworkName&#39;)]&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;location&#34;</span><span class="p">:</span> <span class="s2">&#34;[resourceGroup().location]&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;tags&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;displayName&#34;</span><span class="p">:</span> <span class="s2">&#34;VirtualNetwork&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;properties&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;addressSpace&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;addressPrefixes&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;[variables(&#39;addressPrefix&#39;)]&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;subnets&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">          <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;[variables(&#39;subnetName&#39;)]&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;properties&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">              <span class="nt">&#34;addressPrefix&#34;</span><span class="p">:</span> <span class="s2">&#34;[variables(&#39;subnetPrefix&#39;)]&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">]</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;apiVersion&#34;</span><span class="p">:</span> <span class="s2">&#34;2016-03-30&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;Microsoft.Network/networkInterfaces&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;[variables(&#39;nicName&#39;)]&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;location&#34;</span><span class="p">:</span> <span class="s2">&#34;[resourceGroup().location]&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;tags&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;displayName&#34;</span><span class="p">:</span> <span class="s2">&#34;NetworkInterface&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;dependsOn&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;[resourceId(&#39;Microsoft.Network/publicIPAddresses/&#39;, variables(&#39;publicIPAddressName&#39;))]&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;[resourceId(&#39;Microsoft.Network/virtualNetworks/&#39;, variables(&#39;virtualNetworkName&#39;))]&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">],</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;properties&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;ipConfigurations&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">          <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;ipconfig1&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;properties&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">              <span class="nt">&#34;privateIPAllocationMethod&#34;</span><span class="p">:</span> <span class="s2">&#34;Dynamic&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="nt">&#34;publicIPAddress&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="s2">&#34;[resourceId(&#39;Microsoft.Network/publicIPAddresses&#39;, variables(&#39;publicIPAddressName&#39;))]&#34;</span>
+</span></span><span class="line"><span class="cl">              <span class="p">},</span>
+</span></span><span class="line"><span class="cl">              <span class="nt">&#34;subnet&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="s2">&#34;[variables(&#39;subnetRef&#39;)]&#34;</span>
+</span></span><span class="line"><span class="cl">              <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">]</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;apiVersion&#34;</span><span class="p">:</span> <span class="s2">&#34;2015-06-15&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;Microsoft.Compute/virtualMachines&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;[variables(&#39;vmName&#39;)]&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;location&#34;</span><span class="p">:</span> <span class="s2">&#34;[resourceGroup().location]&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;tags&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;displayName&#34;</span><span class="p">:</span> <span class="s2">&#34;JumpVM&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;dependsOn&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;[resourceId(&#39;Microsoft.Storage/storageAccounts/&#39;, variables(&#39;vhdStorageAccountName&#39;))]&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;[resourceId(&#39;Microsoft.Network/networkInterfaces/&#39;, variables(&#39;nicName&#39;))]&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">],</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;properties&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;hardwareProfile&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;vmSize&#34;</span><span class="p">:</span> <span class="s2">&#34;[variables(&#39;vmSize&#39;)]&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;osProfile&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;computerName&#34;</span><span class="p">:</span> <span class="s2">&#34;[variables(&#39;vmName&#39;)]&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;adminUsername&#34;</span><span class="p">:</span> <span class="s2">&#34;[parameters(&#39;adminUsername&#39;)]&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;adminPassword&#34;</span><span class="p">:</span> <span class="s2">&#34;[parameters(&#39;adminPassword&#39;)]&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;storageProfile&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;imageReference&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;publisher&#34;</span><span class="p">:</span> <span class="s2">&#34;[variables(&#39;imagePublisher&#39;)]&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;offer&#34;</span><span class="p">:</span> <span class="s2">&#34;[variables(&#39;imageOffer&#39;)]&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;sku&#34;</span><span class="p">:</span> <span class="s2">&#34;[variables(&#39;imageSku&#39;)]&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;latest&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="p">},</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;osDisk&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;osdisk&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;vhd&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">              <span class="nt">&#34;uri&#34;</span><span class="p">:</span> <span class="s2">&#34;[concat(reference(resourceId(&#39;Microsoft.Storage/storageAccounts&#39;, variables(&#39;vhdStorageAccountName&#39;)), &#39;2016-01-01&#39;).primaryEndpoints.blob, variables(&#39;vhdStorageContainerName&#39;), &#39;/&#39;, variables(&#39;OSDiskName&#39;), &#39;.vhd&#39;)]&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">},</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;caching&#34;</span><span class="p">:</span> <span class="s2">&#34;ReadWrite&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;createOption&#34;</span><span class="p">:</span> <span class="s2">&#34;FromImage&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;networkProfile&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;networkInterfaces&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">              <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="s2">&#34;[resourceId(&#39;Microsoft.Network/networkInterfaces&#39;, variables(&#39;nicName&#39;))]&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">          <span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;diagnosticsProfile&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;bootDiagnostics&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;enabled&#34;</span><span class="p">:</span> <span class="kc">false</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;resources&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;apiVersion&#34;</span><span class="p">:</span> <span class="s2">&#34;2018-06-01&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;Microsoft.Compute/virtualMachines/extensions&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;[concat(variables(&#39;vmName&#39;),&#39;/&#39;, &#39;VMConfig&#39;)]&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;location&#34;</span><span class="p">:</span> <span class="s2">&#34;[resourceGroup().location]&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;dependsOn&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">              <span class="s2">&#34;[concat(&#39;Microsoft.Compute/virtualMachines/&#39;,variables(&#39;vmName&#39;))]&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="p">],</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;properties&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">              <span class="nt">&#34;publisher&#34;</span><span class="p">:</span> <span class="s2">&#34;Microsoft.Compute&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;CustomScriptExtension&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="nt">&#34;typeHandlerVersion&#34;</span><span class="p">:</span> <span class="s2">&#34;1.7&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="nt">&#34;autoUpgradeMinorVersion&#34;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="nt">&#34;settings&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                  <span class="nt">&#34;fileUris&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">                     <span class="s2">&#34;https://raw.githubusercontent.com/pdtit/ARMtemplates/master/JumpVM/configurevm.ps1&#34;</span>
+</span></span><span class="line"><span class="cl">                  <span class="p">],</span>
+</span></span><span class="line"><span class="cl">                  <span class="nt">&#34;commandToExecute&#34;</span><span class="p">:</span> <span class="s2">&#34;powershell.exe -ExecutionPolicy Unrestricted -File configurevm.ps1&#34;</span>
+</span></span><span class="line"><span class="cl">              <span class="p">}</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="p">],</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;outputs&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;JumpVM Public IP address&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="s2">&#34;[reference(resourceId(&#39;Microsoft.Network/publicIPAddresses&#39;,variables(&#39;publicIPAddressName&#39;))).IpAddress]&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">  
+</span></span></code></pre></div><p>You can read more information on ARM templates at the following links:</p>
 <p><a href="https://docs.microsoft.com//azure/azure-resource-manager/templates/">ARM template documentation</a></p>
 <p>To get a headstart on using and authoring your own templates, you can use an amazing GitHub repository called <a href="https://azure.microsoft.com/resources/templates/">Azure Quickstart Templates</a>, providing more than a 1000 sample templates to deploy about anything on Azure.</p>
-<p>If you are pretty unknown in the domain of ARM templates, I could recommend these sources to practice: 
+<p>If you are pretty unknown in the domain of ARM templates, I could recommend these sources to practice:
 <a href="https://docs.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-create-first-template?tabs=azure-powershell">Tutorial: Create and deploy your first ARM template</a> as well as <a href="https://docs.microsoft.com/learn/modules/build-azure-vm-templates/">Microsoft Learn: Build Azure Resource Manager templates</a></p>
 <p>I also rely on ARM Templates myself a lot. Feel free to grab a few of my sample templates from <a href="https://github.com/pdtit/ARMTemplates">my GitHub repo</a></p>
-<h2 id="terraform">Terraform</h2>
+<h2 id="terraform">Terraform<a hidden class="anchor" aria-hidden="true" href="#terraform">#</a></h2>
 <p>Another really, really, really popular method of deploying your infrastructure to Azure is by using <strong>Terraform</strong> by <a href="https://www.hashicorp.com/products/terraform">Hashicorp</a>. Hashicorp Terraform is an open-source tool for provisioning and managing cloud infrastructure, not just Azure. Using their own Terraform providers, it is possible to target more than 35 cloud backends (Azure, AWS, GCP, Kubernetes,&hellip;)</p>
-<p><img src="../images/terraform_logo.png" alt="Terraform Logo"></p>
+<p><img alt="Terraform Logo" loading="lazy" src="../images/terraform_logo.png"></p>
 <p>Following all concepts of IaC, with Terraform, you codify your infrastructure in configuration files in which you describe the topology of cloud resources. These resources include both Infrastructure as a Service (Virtual Machine, storage, network,&hellip;) as Platform as a Service (App Services, Kubernetes, Monitoring,&hellip;).</p>
 <p>Some benefits of Terraform, compared to ARM Templates:</p>
 <ul>
@@ -495,105 +516,105 @@
 <li>Terraform TFState - State file, which keeps track of an already executed deployment state and becomes the starting point for future deployment updates</li>
 </ul>
 <p>A sample Terraform template (you can use right away&hellip;) to deploy an Ubuntu Virtual Machine on Azure, looks like this</p>
-<pre><code># Configure the Microsoft Azure Provider
-provider &quot;azurerm&quot; {
-    # The &quot;feature&quot; block is required for AzureRM provider 2.x. 
-    # If you're using version 1.x, the &quot;features&quot; block is not allowed.
-    version = &quot;~&gt;2.0&quot;
+<pre tabindex="0"><code># Configure the Microsoft Azure Provider
+provider &#34;azurerm&#34; {
+    # The &#34;feature&#34; block is required for AzureRM provider 2.x. 
+    # If you&#39;re using version 1.x, the &#34;features&#34; block is not allowed.
+    version = &#34;~&gt;2.0&#34;
     features {}
 }
 
-# Create a resource group if it doesn't exist
-resource &quot;azurerm_resource_group&quot; &quot;my1stTFRG&quot; {
-    name     = &quot;my1stTFRG&quot;
-    location = &quot;eastus&quot;
+# Create a resource group if it doesn&#39;t exist
+resource &#34;azurerm_resource_group&#34; &#34;my1stTFRG&#34; {
+    name     = &#34;my1stTFRG&#34;
+    location = &#34;eastus&#34;
 
     tags = {
-        environment = &quot;TF Demo&quot;
+        environment = &#34;TF Demo&#34;
     }
 }
 
 # Create virtual network
-resource &quot;azurerm_virtual_network&quot; &quot;my1stTFVNET&quot; {
-    name                = &quot;my1stTFVnet&quot;
-    address_space       = [&quot;10.0.0.0/16&quot;]
-    location            = &quot;eastus&quot;
+resource &#34;azurerm_virtual_network&#34; &#34;my1stTFVNET&#34; {
+    name                = &#34;my1stTFVnet&#34;
+    address_space       = [&#34;10.0.0.0/16&#34;]
+    location            = &#34;eastus&#34;
     resource_group_name = azurerm_resource_group.my1stTFRG.name
 
     tags = {
-        environment = &quot;Terraform Demo&quot;
+        environment = &#34;Terraform Demo&#34;
     }
 }
 
 # Create subnet
-resource &quot;azurerm_subnet&quot; &quot;myterraformsubnet&quot; {
-    name                 = &quot;mySubnet&quot;
+resource &#34;azurerm_subnet&#34; &#34;myterraformsubnet&#34; {
+    name                 = &#34;mySubnet&#34;
     resource_group_name  = azurerm_resource_group.my1stTFRG.name
     virtual_network_name = azurerm_virtual_network.my1stTFVNET.name
-    address_prefixes       = [&quot;10.0.1.0/24&quot;]
+    address_prefixes       = [&#34;10.0.1.0/24&#34;]
 }
 
 # Create public IPs
-resource &quot;azurerm_public_ip&quot; &quot;myterraformpublicip&quot; {
-    name                         = &quot;myPublicIP&quot;
-    location                     = &quot;eastus&quot;
+resource &#34;azurerm_public_ip&#34; &#34;myterraformpublicip&#34; {
+    name                         = &#34;myPublicIP&#34;
+    location                     = &#34;eastus&#34;
     resource_group_name          = azurerm_resource_group.my1stTFRG.name
-    allocation_method            = &quot;Dynamic&quot;
+    allocation_method            = &#34;Dynamic&#34;
 
     tags = {
-        environment = &quot;Terraform Demo&quot;
+        environment = &#34;Terraform Demo&#34;
     }
 }
 
 # Create Network Security Group and rule
-resource &quot;azurerm_network_security_group&quot; &quot;myterraformnsg&quot; {
-    name                = &quot;myNetworkSecurityGroup&quot;
-    location            = &quot;eastus&quot;
+resource &#34;azurerm_network_security_group&#34; &#34;myterraformnsg&#34; {
+    name                = &#34;myNetworkSecurityGroup&#34;
+    location            = &#34;eastus&#34;
     resource_group_name = azurerm_resource_group.my1stTFRG.name
     
     security_rule {
-        name                       = &quot;SSH&quot;
+        name                       = &#34;SSH&#34;
         priority                   = 1001
-        direction                  = &quot;Inbound&quot;
-        access                     = &quot;Allow&quot;
-        protocol                   = &quot;Tcp&quot;
-        source_port_range          = &quot;*&quot;
-        destination_port_range     = &quot;22&quot;
-        source_address_prefix      = &quot;*&quot;
-        destination_address_prefix = &quot;*&quot;
+        direction                  = &#34;Inbound&#34;
+        access                     = &#34;Allow&#34;
+        protocol                   = &#34;Tcp&#34;
+        source_port_range          = &#34;*&#34;
+        destination_port_range     = &#34;22&#34;
+        source_address_prefix      = &#34;*&#34;
+        destination_address_prefix = &#34;*&#34;
     }
 
     tags = {
-        environment = &quot;Terraform Demo&quot;
+        environment = &#34;Terraform Demo&#34;
     }
 }
 
 # Create network interface
-resource &quot;azurerm_network_interface&quot; &quot;myterraformnic&quot; {
-    name                      = &quot;myNIC&quot;
-    location                  = &quot;eastus&quot;
+resource &#34;azurerm_network_interface&#34; &#34;myterraformnic&#34; {
+    name                      = &#34;myNIC&#34;
+    location                  = &#34;eastus&#34;
     resource_group_name       = azurerm_resource_group.my1stTFRG.name
 
     ip_configuration {
-        name                          = &quot;myNicConfiguration&quot;
+        name                          = &#34;myNicConfiguration&#34;
         subnet_id                     = azurerm_subnet.myterraformsubnet.id
-        private_ip_address_allocation = &quot;Dynamic&quot;
+        private_ip_address_allocation = &#34;Dynamic&#34;
         public_ip_address_id          = azurerm_public_ip.myterraformpublicip.id
     }
 
     tags = {
-        environment = &quot;Terraform Demo&quot;
+        environment = &#34;Terraform Demo&#34;
     }
 }
 
 # Connect the security group to the network interface
-resource &quot;azurerm_network_interface_security_group_association&quot; &quot;example&quot; {
+resource &#34;azurerm_network_interface_security_group_association&#34; &#34;example&#34; {
     network_interface_id      = azurerm_network_interface.myterraformnic.id
     network_security_group_id = azurerm_network_security_group.myterraformnsg.id
 }
 
 # Generate random text for a unique storage account name
-resource &quot;random_id&quot; &quot;randomId&quot; {
+resource &#34;random_id&#34; &#34;randomId&#34; {
     keepers = {
         # Generate a new ID only when a new resource group is defined
         resource_group = azurerm_resource_group.my1stTFRG.name
@@ -603,52 +624,52 @@ resource &quot;random_id&quot; &quot;randomId&quot; {
 }
 
 # Create storage account for boot diagnostics
-resource &quot;azurerm_storage_account&quot; &quot;mystorageaccount&quot; {
-    name                        = &quot;diag${random_id.randomId.hex}&quot;
+resource &#34;azurerm_storage_account&#34; &#34;mystorageaccount&#34; {
+    name                        = &#34;diag${random_id.randomId.hex}&#34;
     resource_group_name         = azurerm_resource_group.my1stTFRG.name
-    location                    = &quot;eastus&quot;
-    account_tier                = &quot;Standard&quot;
-    account_replication_type    = &quot;LRS&quot;
+    location                    = &#34;eastus&#34;
+    account_tier                = &#34;Standard&#34;
+    account_replication_type    = &#34;LRS&#34;
 
     tags = {
-        environment = &quot;Terraform Demo&quot;
+        environment = &#34;Terraform Demo&#34;
     }
 }
 
 # Create (and display) an SSH key
-resource &quot;tls_private_key&quot; &quot;example_ssh&quot; {
-  algorithm = &quot;RSA&quot;
+resource &#34;tls_private_key&#34; &#34;example_ssh&#34; {
+  algorithm = &#34;RSA&#34;
   rsa_bits = 4096
 }
-output &quot;tls_private_key&quot; { value = &quot;tls_private_key.example_ssh.private_key_pem&quot; }
+output &#34;tls_private_key&#34; { value = &#34;tls_private_key.example_ssh.private_key_pem&#34; }
 
 # Create virtual machine
-resource &quot;azurerm_linux_virtual_machine&quot; &quot;myterraformvm&quot; {
-    name                  = &quot;myVM&quot;
-    location              = &quot;eastus&quot;
+resource &#34;azurerm_linux_virtual_machine&#34; &#34;myterraformvm&#34; {
+    name                  = &#34;myVM&#34;
+    location              = &#34;eastus&#34;
     resource_group_name   = azurerm_resource_group.my1stTFRG.name
     network_interface_ids = [azurerm_network_interface.myterraformnic.id]
-    size                  = &quot;Standard_DS4_v2&quot;
+    size                  = &#34;Standard_DS4_v2&#34;
 
     os_disk {
-        name              = &quot;myOsDisk&quot;
-        caching           = &quot;ReadWrite&quot;
-        storage_account_type = &quot;Premium_LRS&quot;
+        name              = &#34;myOsDisk&#34;
+        caching           = &#34;ReadWrite&#34;
+        storage_account_type = &#34;Premium_LRS&#34;
     }
 
     source_image_reference {
-        publisher = &quot;Canonical&quot;
-        offer     = &quot;UbuntuServer&quot;
-        sku       = &quot;16.04.0-LTS&quot;
-        version   = &quot;latest&quot;
+        publisher = &#34;Canonical&#34;
+        offer     = &#34;UbuntuServer&#34;
+        sku       = &#34;16.04.0-LTS&#34;
+        version   = &#34;latest&#34;
     }
 
-    computer_name  = &quot;myvm&quot;
-    admin_username = &quot;azureuser&quot;
+    computer_name  = &#34;myvm&#34;
+    admin_username = &#34;azureuser&#34;
     disable_password_authentication = true
         
     admin_ssh_key {
-        username       = &quot;azureuser&quot;
+        username       = &#34;azureuser&#34;
         public_key     = tls_private_key.example_ssh.public_key_openssh
     }
 
@@ -657,14 +678,14 @@ resource &quot;azurerm_linux_virtual_machine&quot; &quot;myterraformvm&quot; {
     }
 
     tags = {
-        environment = &quot;Terraform Demo&quot;
+        environment = &#34;Terraform Demo&#34;
     }
 }
 </code></pre><p>As should be clear, the syntax is rather straight forward, intuitive and clean (Azure Spring Clean anyone&hellip;?)</p>
 <p>You can find more details on Terraform for Azure <a href="https://learn.hashicorp.com/collections/terraform/azure-get-started">here</a> or you could grab a few of my sample template files from <a href="https://github.com/pdtit/myTFsamples">my Github Repo</a>.</p>
-<h2 id="pulumi">Pulumi</h2>
+<h2 id="pulumi">Pulumi<a hidden class="anchor" aria-hidden="true" href="#pulumi">#</a></h2>
 <p>Infrastructure as Code as we already know it, typically uses language-independent data formats, such as JSON or YAML to define our infrastructure. Terraform is slightly different, and uses a Domain Specific Language (DSL), Hashicorp Configuration Language (HCL) to construct our templates.</p>
-<p><img src="../images/pulumi_logo.png" alt="Pulumi logo"></p>
+<p><img alt="Pulumi logo" loading="lazy" src="../images/pulumi_logo.png"></p>
 <p>This is where <a href="https://www.pulumi.com">Pulumi</a> is slightly different. With Pulumi, we don’t need to learn a DSL or use JSON or YAML. If we’re already familiar with a programming language, think of DotNet, Java, Python,&hellip; Pulumi allows you to define your cloud infrastructure using that exact same development language. Which also means you can leverage the standard functions within those programming languages too, things like loops, variables, error handling etc.</p>
 <p>These functions are available in the other tools we’ve mentioned too. For example, creating multiple resources could be achieved by using a for loop in Python if using Pulumi or by using the copy functionality if using Azure Resource Manager (ARM).</p>
 <p>To get started with Pulumi, you don&rsquo;t need too much of tooling:</p>
@@ -676,25 +697,25 @@ resource &quot;azurerm_linux_virtual_machine&quot; &quot;myterraformvm&quot; {
 <p>Compared to TerraForm and ARM Templates, Pulumi looks at each IaC concept as a &ldquo;Project&rdquo;; where within a project, you define &ldquo;Stacks&rdquo;. Projects are where we will store all of the code for a particular workload. You can think of a project like a source code repository, if something was going to have it’s own repo, then it should probably be it’s own project.</p>
 <p>You can think of stacks as different instances of the code within our project, normally with differing configuration. In its simplest form you’d have a single project and a stack per environment (dev, test, prod) for example. There are a number of different patterns that you can adopt.</p>
 <p>A sample Pulumi script could look like this:</p>
-<pre><code>&quot;&quot;&quot;An Azure Python Pulumi program&quot;&quot;&quot;
+<pre tabindex="0"><code>&#34;&#34;&#34;An Azure Python Pulumi program&#34;&#34;&#34;
 
 import pulumi
 from pulumi_azure import core, storage
 
 # Create an Azure Resource Group
-resource_group = core.ResourceGroup('resource_group')
+resource_group = core.ResourceGroup(&#39;resource_group&#39;)
 
 # Create an Azure resource (Storage Account)
-account = storage.Account('storage',
+account = storage.Account(&#39;storage&#39;,
    # The location for the storage account will be derived automatically from the resource group.
    resource_group_name=resource_group.name,
-   account_tier='Standard',
-   account_replication_type='LRS')
+   account_tier=&#39;Standard&#39;,
+   account_replication_type=&#39;LRS&#39;)
 
 # Export the connection string for the storage account
-pulumi.export('connection_string', account.primary_connection_string)
+pulumi.export(&#39;connection_string&#39;, account.primary_connection_string)
 </code></pre><p>Head over to the following link to dive in some sample project practices to get Pulumi up and running for Azure: <a href="https://www.pulumi.com/docs/get-started/azure/">Pulumi Azure Get-Started</a> as well as the <a href="https://www.pulumi.com/docs/tutorials/azure/">Pulumi Azure Tutorials</a></p>
-<h2 id="azure-bicep">Azure Bicep</h2>
+<h2 id="azure-bicep">Azure Bicep<a hidden class="anchor" aria-hidden="true" href="#azure-bicep">#</a></h2>
 <p>The last tool I want to highlight here is back to where we started, another Microsoft-owned scenario, similar to ARM Templates, but at the same time also different.</p>
 <p><a href="https://github.com/Azure/bicep"><strong>Bicep</strong></a> is a language for declaratively deploying Azure resources. You can use Bicep instead of JSON for developing your Azure Resource Manager templates (ARM templates). Bicep simplifies the authoring experience by:</p>
 <ul>
@@ -710,381 +731,244 @@ pulumi.export('connection_string', account.primary_connection_string)
 <p>If you have an existing ARM template that you would like to convert to Bicep, you can also do that, using <a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/bicep-decompile">this approach</a>.</p>
 <p>Bicep offers an easier and more concise syntax when compared to the equivalent JSON. You don&rsquo;t use [&hellip;] expressions. Instead, you directly call functions, and get values from parameters and variables. You give each deployed resource a symbolic name, which makes it easy to reference that resource in your template.</p>
 <p>For example, the following JSON returns an output value from a resource property:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON"><span style="color:#f1fa8c">&#34;outputs&#34;</span>: {
-  <span style="color:#ff79c6">&#34;hostname&#34;</span>: {
-      <span style="color:#ff79c6">&#34;type&#34;</span>: <span style="color:#f1fa8c">&#34;string&#34;</span>,
-      <span style="color:#ff79c6">&#34;value&#34;</span>: <span style="color:#f1fa8c">&#34;[reference(resourceId(&#39;Microsoft.Network/publicIPAddresses&#39;, variables(&#39;publicIPAddressName&#39;))).dnsSettings.fqdn]&#34;</span>
-    },
-}
-</code></pre></div><p>The equivalent output expression in Bicep is easier to write. The following example returns the same property by using the symbolic name publicIP for a resource that is defined within the template:</p>
-<pre><code>output hostname string = publicIP.properties.dnsSettings.fqdn
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-JSON" data-lang="JSON"><span class="line"><span class="cl"><span class="s2">&#34;outputs&#34;</span><span class="err">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;hostname&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="s2">&#34;[reference(resourceId(&#39;Microsoft.Network/publicIPAddresses&#39;, variables(&#39;publicIPAddressName&#39;))).dnsSettings.fqdn]&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>The equivalent output expression in Bicep is easier to write. The following example returns the same property by using the symbolic name publicIP for a resource that is defined within the template:</p>
+<pre tabindex="0"><code>output hostname string = publicIP.properties.dnsSettings.fqdn
 </code></pre><p>For a full comparison of the syntax, see <a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/compare-template-syntax">Comparing JSON and Bicep for templates</a>.</p>
 <p>Bicep automatically manages dependencies between resources. You can avoid setting dependsOn when the symbolic name of a resource is used in another resource declaration.</p>
 <p>With Bicep, you can break your project into multiple modules.</p>
 <p>The structure of the Bicep file is more flexible than the JSON template. You can declare parameters, variables, and outputs anywhere in the file. In JSON, you have to declare all parameters, variables, and outputs within the corresponding sections of the template.</p>
 <p>The VS Code extension for Bicep offers rich validation and intellisense. For example, you can use the extension&rsquo;s intellisense for getting properties of a resource.</p>
-<h2 id="summary">Summary</h2>
+<h2 id="summary">Summary<a hidden class="anchor" aria-hidden="true" href="#summary">#</a></h2>
 <p>Infrastructure as Code helps cloud engineers in optimizing the deployment and management of (cloud) infrastructure. Azure provides ARM Templates by nature as the go-to scenario. Other vendors/tools that are popular in the Azure world are Terraform, Pulumi and recently developed Microsoft Bicep.</p>
 <p>I hope you got some more insights on Infrastructure as Code and how template-based deployments can dramatically improve your Azure deployment, or if you want&hellip; Spring Clean up tasks.</p>
 <p>Have a great day, and enjoy the rest of <a href="https://www.azurespringclean.com/">Azure Spring Clean 2021</a></p>
-<p><a href="https://www.buymeacoffee.com/pdtit"><img src="../images/buy_me_a_coffee.png" alt="BuyMeACoffee"></a></p>
+<p><a href="https://www.buymeacoffee.com/pdtit"><img alt="BuyMeACoffee" loading="lazy" src="../images/buy_me_a_coffee.png"></a></p>
 <p>/Peter</p>
 
 
-                
+  </div>
 
-                <hr>
-                
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/azure/">Azure</a></li>
+      <li><a href="http://localhost:1313/tags/iac/">IAC</a></li>
+      <li><a href="http://localhost:1313/tags/terraform/">TerraForm</a></li>
+      <li><a href="http://localhost:1313/tags/pulumi/">Pulumi</a></li>
+      <li><a href="http://localhost:1313/tags/arm/">ARM</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="http://localhost:1313/post/hashicorp-ambassador/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>I&#39;m recognized as a HashiCorp Ambassador</span>
+  </a>
+  <a class="next" href="http://localhost:1313/post/renewing-expired-aks-service-principal/">
+    <span class="title">Next »</span>
+    <br>
+    <span>AKS ErrImagePull and ImagePullBackOff on AKS after a year</span>
+  </a>
+</nav>
 
-                
-<div id="disqus-comment"></div>
 
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share The labyrinth of Azure Infrastructure as Code Tools - Azure Spring Clean on x"
+            href="https://x.com/intent/tweet/?text=The%20labyrinth%20of%20Azure%20Infrastructure%20as%20Code%20Tools%20-%20Azure%20Spring%20Clean&amp;url=http%3a%2f%2flocalhost%3a1313%2fpost%2fthe-labyrinth-of-azure-iac%2f&amp;hashtags=Azure%2cIAC%2cTerraForm%2cPulumi%2cARM">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share The labyrinth of Azure Infrastructure as Code Tools - Azure Spring Clean on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fpost%2fthe-labyrinth-of-azure-iac%2f&amp;title=The%20labyrinth%20of%20Azure%20Infrastructure%20as%20Code%20Tools%20-%20Azure%20Spring%20Clean&amp;summary=The%20labyrinth%20of%20Azure%20Infrastructure%20as%20Code%20Tools%20-%20Azure%20Spring%20Clean&amp;source=http%3a%2f%2flocalhost%3a1313%2fpost%2fthe-labyrinth-of-azure-iac%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share The labyrinth of Azure Infrastructure as Code Tools - Azure Spring Clean on reddit"
+            href="https://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fpost%2fthe-labyrinth-of-azure-iac%2f&title=The%20labyrinth%20of%20Azure%20Infrastructure%20as%20Code%20Tools%20-%20Azure%20Spring%20Clean">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share The labyrinth of Azure Infrastructure as Code Tools - Azure Spring Clean on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fpost%2fthe-labyrinth-of-azure-iac%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share The labyrinth of Azure Infrastructure as Code Tools - Azure Spring Clean on whatsapp"
+            href="https://api.whatsapp.com/send?text=The%20labyrinth%20of%20Azure%20Infrastructure%20as%20Code%20Tools%20-%20Azure%20Spring%20Clean%20-%20http%3a%2f%2flocalhost%3a1313%2fpost%2fthe-labyrinth-of-azure-iac%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share The labyrinth of Azure Infrastructure as Code Tools - Azure Spring Clean on telegram"
+            href="https://telegram.me/share/url?text=The%20labyrinth%20of%20Azure%20Infrastructure%20as%20Code%20Tools%20-%20Azure%20Spring%20Clean&amp;url=http%3a%2f%2flocalhost%3a1313%2fpost%2fthe-labyrinth-of-azure-iac%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share The labyrinth of Azure Infrastructure as Code Tools - Azure Spring Clean on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=The%20labyrinth%20of%20Azure%20Infrastructure%20as%20Code%20Tools%20-%20Azure%20Spring%20Clean&u=http%3a%2f%2flocalhost%3a1313%2fpost%2fthe-labyrinth-of-azure-iac%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
 
-
-            </div>
-            
-            <div class="
-                col-lg-11 col-lg-offset-1
-                col-md-10 col-md-offset-1
-                sidebar-container">
-
-                
-                
-                <section>
-                    <hr class="hidden-sm hidden-xs">
-                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-                    <div class="tags">
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        <a href="/tags/ai" title="ai">
-                            ai
-                        </a>
-                        
-                        
-                        
-                        <a href="/tags/aks" title="aks">
-                            aks
-                        </a>
-                        
-                        
-                        
-                        
-                        
-                        <a href="/tags/application-insights" title="application-insights">
-                            application-insights
-                        </a>
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        <a href="/tags/azure" title="azure">
-                            azure
-                        </a>
-                        
-                        
-                        
-                        <a href="/tags/azure-devops" title="azure-devops">
-                            azure-devops
-                        </a>
-                        
-                        
-                        
-                        
-                        
-                        <a href="/tags/bing" title="bing">
-                            bing
-                        </a>
-                        
-                        
-                        
-                        <a href="/tags/blazor" title="blazor">
-                            blazor
-                        </a>
-                        
-                        
-                        
-                        <a href="/tags/books" title="books">
-                            books
-                        </a>
-                        
-                        
-                        
-                        <a href="/tags/certification" title="certification">
-                            certification
-                        </a>
-                        
-                        
-                        
-                        
-                        
-                        <a href="/tags/containers" title="containers">
-                            containers
-                        </a>
-                        
-                        
-                        
-                        <a href="/tags/devops" title="devops">
-                            devops
-                        </a>
-                        
-                        
-                        
-                        <a href="/tags/devsecops" title="devsecops">
-                            devsecops
-                        </a>
-                        
-                        
-                        
-                        <a href="/tags/docker" title="docker">
-                            docker
-                        </a>
-                        
-                        
-                        
-                        <a href="/tags/dotnet" title="dotnet">
-                            dotnet
-                        </a>
-                        
-                        
-                        
-                        <a href="/tags/ebooks" title="ebooks">
-                            ebooks
-                        </a>
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        <a href="/tags/hugo" title="hugo">
-                            hugo
-                        </a>
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        <a href="/tags/kubernetes" title="kubernetes">
-                            kubernetes
-                        </a>
-                        
-                        
-                        
-                        <a href="/tags/learning" title="learning">
-                            learning
-                        </a>
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        <a href="/tags/packt" title="packt">
-                            packt
-                        </a>
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        <a href="/tags/security" title="security">
-                            security
-                        </a>
-                        
-                        
-                        
-                        <a href="/tags/sre" title="sre">
-                            sre
-                        </a>
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        <a href="/tags/terraform" title="terraform">
-                            terraform
-                        </a>
-                        
-                        
-                        
-                        
-                    </div>
-                </section>
-                
-
-                
-                
-            </div>
-        </div>
-    </div>
+  </footer>
 </article>
-
-
-
-
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <ul class="list-inline text-center">
-                   
-                   <li>
-                       <a href='' rel="alternate" type="application/rss+xml" title="Azure Readiness starts here..." >
-                           <span class="fa-stack fa-lg">
-                               <i class="fa fa-circle fa-stack-2x"></i>
-                               <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
-                           </span>
-                       </a>
-                   </li>
-                   
-                    
-                    <li>
-                        <a href="mailto:info@007ffflearning.com">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-		    
-                    
-                    
-                    <li>
-                        <a href="http://www.twitter.com/pdtit">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                    
-                    
-                    
-
-                    
-
-		    
-                    
-                    
-                    <li>
-                        <a target="_blank" href="https://github.com/petender">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-		    
-                    
-                    
-                    
-                    <li>
-                        <a target="_blank" href="https://www.linkedin.com/in/pdtit/">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-		    
-                    
-                    
-                    
-                    
-                    
-            
-            
-            
-                </ul>
-		<p class="copyright text-muted">
-                    Copyright &copy; Azure Readiness starts here... 2024
-                    <br>
-                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
-                    <iframe
-                        style="margin-left: 2px; margin-bottom:-5px;"
-                        frameborder="0" scrolling="0" width="100px" height="20px"
-                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
-                    </iframe>
-                </p>
-            </div>
-        </div>
-    </div>
-</footer>
-
-
-
-
-<script>
-    function async(u, c) {
-      var d = document, t = 'script',
-          o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-      s.parentNode.insertBefore(o, s);
-    }
-</script>
-
-
-
-
-
-
-<script>
+    </main>
     
-    if($('#tag_cloud').length !== 0){
-        async("/js/jquery.tagcloud.js",function(){
-            $.fn.tagcloud.defaults = {
-                
-                color: {start: '#bbbbee', end: '#0085a1'},
-            };
-            $('#tag_cloud a').tagcloud();
-        })
-    }
-</script>
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">Azure Readiness starts here...</a></span> · 
 
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
 
 <script>
-    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
-        var $nav = document.querySelector("nav");
-        if($nav) FastClick.attach($nav);
-    })
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
 </script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
 
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
 
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
 
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
 
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
 
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
 
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
 </body>
+
 </html>
