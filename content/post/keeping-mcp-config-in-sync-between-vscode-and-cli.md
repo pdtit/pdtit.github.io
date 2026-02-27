@@ -5,7 +5,7 @@ tags: ["GitHub Copilot", "MCP", "VSCode"]
 draft: false
 ---
 
-![Keeping MCP config in sync between VS Code and Copilot CLI](/post/images/sync-mcp-vscode-copilot.png)
+![Keeping MCP config in sync between VS Code and Copilot CLI](../images/sync-mcp-vscode-copilot.png)
 
 *Syncing MCP config from VS Code to Copilot CLI in a few simple steps.*
 
