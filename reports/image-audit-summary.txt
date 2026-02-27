@@ -1,6 +1,0 @@
-Markdown files scanned: 79
-Total resolved refs: 39
-Total missing refs: 693
-Total candidate image files: 736
-Total unused candidates: 712
-No files deleted in this audit run.
