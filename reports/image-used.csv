@@ -1,0 +1,40 @@
+source_markdown,image_ref,resolved_file
+content/about.md,../images/007FFFLearning_Background.jpg,content/images/007FFFLearning_Background.jpg
+content/about.md,../images/007FFFLearning_Logo.jpg,content/images/007FFFLearning_Logo.jpg
+content/books.md,../images/Azure_OMS_cover.png,content/images/Azure_OMS_cover.png
+content/books.md,../images/Cover_Azure_Strategy_and_Implementation_Guide.png,content/images/Cover_Azure_Strategy_and_Implementation_Guide.png
+content/books.md,../images/Efficiently_migrating_cover_small.png,content/images/Efficiently_migrating_cover_small.png
+content/books.md,../images/Pro_Azure_Governance_cover.png,content/images/Pro_Azure_Governance_cover.png
+content/books.md,../images/azure_for_architects.jpeg,content/images/azure_for_architects.jpeg
+content/books.md,../images/whitepaper-get-started-with-aks.png,content/images/whitepaper-get-started-with-aks.png
+content/books.md,../images/work_in_progress.jpeg,content/images/work_in_progress.jpeg
+content/post/Azure Spring Clean - DevSecOps and Shifting Left to publish secure software.md,../images/2022-03-17-01.png,content/images/2022-03-17-01.png
+content/post/Azure for Architects - Reviewing done.md,../images/azure_for_architects.jpeg,content/images/azure_for_architects.jpeg
+content/post/DevOps Workflow Generator.md,../images/2022-03-17-01.png,content/images/2022-03-17-01.png
+content/post/azure-learning-resources.md,../images/learn-getstarted.png,content/images/learn-getstarted.png
+content/post/azure-learning-resources.md,../images/learn-hol.png,content/images/learn-hol.png
+content/post/azure-learning-resources.md,../images/learn-learningpath.png,content/images/learn-learningpath.png
+content/post/azure-learning-resources.md,../images/learn-serverless.png,content/images/learn-serverless.png
+content/post/azure-learning-resources.md,../images/learn-subscriptions.png,content/images/learn-subscriptions.png
+content/post/azure-learning-resources.md,../images/learn-tutorial.png,content/images/learn-tutorial.png
+content/post/azure-learning-resources.md,../images/learn-website.png,content/images/learn-website.png
+content/post/azure-learning-resources.md,../images/learn-windows-vm.png,content/images/learn-windows-vm.png
+content/post/azure-mystery-mansion.md,../images/Azure_Mystery_Mansion.png,content/images/Azure_Mystery_Mansion.png
+content/post/azure-mystery-mansion.md,../images/Azure_Mystery_Mansion_Badge.png,content/images/Azure_Mystery_Mansion_Badge.png
+content/post/keeping-mcp-config-in-sync-between-vscode-and-cli.md,/post/images/sync-mcp-vscode-copilot.png,static/post/images/sync-mcp-vscode-copilot.png
+content/post/new-book-published.md,../images/Cover_Azure_Strategy_and_Implementation_Guide.png,content/images/Cover_Azure_Strategy_and_Implementation_Guide.png
+content/post/updated-azure-exams.md,../images/learn-website.png,content/images/learn-website.png
+content/publications/books.md,../images/Azure_OMS_cover.png,content/images/Azure_OMS_cover.png
+content/publications/books.md,../images/Cover_Azure_Strategy_and_Implementation_Guide.png,content/images/Cover_Azure_Strategy_and_Implementation_Guide.png
+content/publications/books.md,../images/Efficiently_migrating_cover_small.png,content/images/Efficiently_migrating_cover_small.png
+content/publications/books.md,../images/Pro_Azure_Governance_cover.png,content/images/Pro_Azure_Governance_cover.png
+content/publications/books.md,../images/whitepaper-get-started-with-aks.png,content/images/whitepaper-get-started-with-aks.png
+content/publications/books.md,../images/work_in_progress.jpeg,content/images/work_in_progress.jpeg
+content/publications/videos.md,../images/architecting_compute_packt.png,content/images/architecting_compute_packt.png
+content/publications/videos.md,../images/learning_azure_packt.jpg,content/images/learning_azure_packt.jpg
+content/publications/videos.md,../images/skillmeup.png,content/images/skillmeup.png
+content/publications/videos.md,../images/work_in_progress.jpeg,content/images/work_in_progress.jpeg
+content/videos.md,../images/architecting_compute_packt.png,content/images/architecting_compute_packt.png
+content/videos.md,../images/learning_azure_packt.jpg,content/images/learning_azure_packt.jpg
+content/videos.md,../images/skillmeup.png,content/images/skillmeup.png
+content/videos.md,../images/work_in_progress.jpeg,content/images/work_in_progress.jpeg
