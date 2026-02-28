@@ -4,7 +4,8 @@
         <link>http://localhost:1313/post/</link>
         <description>Recent content in Posts on Azure Readiness starts here...</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>en-us</language><atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <language>en-us</language>
+        <lastBuildDate>Thu, 26 Feb 2026 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" /><item>
             <title>Keeping MCP Server config in sync between VS Code and GitHub Copilot CLI</title>
             <link>http://localhost:1313/post/keeping-mcp-config-in-sync-between-vscode-and-cli/</link>
             <pubDate>Thu, 26 Feb 2026 00:00:00 +0000</pubDate>

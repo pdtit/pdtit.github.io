@@ -4,7 +4,8 @@
         <link>http://localhost:1313/tags/certification/</link>
         <description>Recent content in Certification on Azure Readiness starts here...</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>en-us</language><atom:link href="http://localhost:1313/tags/certification/index.xml" rel="self" type="application/rss+xml" /><item>
+        <language>en-us</language>
+        <lastBuildDate>Sat, 25 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/certification/index.xml" rel="self" type="application/rss+xml" /><item>
             <title>Updated Azure Exams Announced</title>
             <link>http://localhost:1313/post/updated-azure-exams/</link>
             <pubDate>Sat, 25 Jan 2020 00:00:00 +0000</pubDate>

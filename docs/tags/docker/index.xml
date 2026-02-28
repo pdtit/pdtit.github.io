@@ -4,7 +4,8 @@
         <link>http://localhost:1313/tags/docker/</link>
         <description>Recent content in Docker on Azure Readiness starts here...</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>en-us</language><atom:link href="http://localhost:1313/tags/docker/index.xml" rel="self" type="application/rss+xml" /><item>
+        <language>en-us</language>
+        <lastBuildDate>Wed, 15 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/docker/index.xml" rel="self" type="application/rss+xml" /><item>
             <title>Azure Spring Clean - DCK, ACR, ACI, AKS, ACA, the Azure Container Alphabet Soup</title>
             <link>http://localhost:1313/post/dck-acr-aci-aks-aca-the-azure-container-alphabet-soup/</link>
             <pubDate>Wed, 15 Mar 2023 00:00:00 +0000</pubDate>

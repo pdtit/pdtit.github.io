@@ -4,7 +4,8 @@
         <link>http://localhost:1313/tags/application-insights/</link>
         <description>Recent content in Application Insights on Azure Readiness starts here...</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>en-us</language><atom:link href="http://localhost:1313/tags/application-insights/index.xml" rel="self" type="application/rss+xml" /><item>
+        <language>en-us</language>
+        <lastBuildDate>Sun, 30 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/application-insights/index.xml" rel="self" type="application/rss+xml" /><item>
             <title>Integrating Azure App Insights for Hugo on Static Web Apps</title>
             <link>http://localhost:1313/post/integrating-azure-app-insights-for-hugo-on-static-web-apps/</link>
             <pubDate>Sun, 30 Oct 2022 00:00:00 +0000</pubDate>

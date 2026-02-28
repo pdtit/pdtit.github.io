@@ -1,10 +1,13 @@
 {{- $context := .Context -}}
 {{- $taxonomy := index $context.Site.Taxonomies "tags" -}}
-{{- if not $taxonomy -}}
+{{- $taxonomyPage := "" -}}
+{{- if $taxonomy -}}
+    {{- with $taxonomy.Page -}}
+        {{- $taxonomyPage = .RelPermalink -}}
+    {{- end -}}
+{{- else -}}
     {{- warnf "Taxonomy %s not found" "tags" -}}
 {{- end -}}
-
-{{- $taxonomyPage := $taxonomy.Page -}}
 {{- $widgetTitle := default (T "widget.tagCloud.title") .Params.title -}}
 {{- $limit := default (len $taxonomy) .Params.limit -}}
 {{- $icon := default "tag" .Params.icon -}}
@@ -15,8 +18,8 @@
         {{ partial "helper/icon" $icon }}
     </div>
     <h2 class="widget-title section-title">
-        {{ if $showLink }}
-            <a href="{{ $taxonomyPage.RelPermalink }}">
+        {{ if and $showLink $taxonomyPage }}
+            <a href="{{ $taxonomyPage }}">
                 {{ $widgetTitle }}
             </a>
         {{ else }}
@@ -25,10 +28,12 @@
     </h2>
 
     <div class="tagCloud-tags">
+        {{ if $taxonomy }}
         {{ range first $limit $taxonomy.Alphabetical }}
             <a href="{{ .Page.RelPermalink }}">
                 {{ .Page.Title }}
             </a>
+        {{ end }}
         {{ end }}
     </div>
 </section>
