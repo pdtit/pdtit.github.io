@@ -1,7 +1,7 @@
 ---
 title: "Azure Learning Resources"
 date: 2019-12-22
-tags: ["Azure", "Learning", "Certification"]
+tags: ["Azure", "General"]
 draft: false
 ---
 

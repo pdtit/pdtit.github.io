@@ -1,7 +1,7 @@
 ---
 title: "Azure Spring Clean - DevSecOps and Shifting Left"
 date: 2022-03-17
-tags: ["Azure", "Security", "DevOps", "DevSecOps"]
+tags: ["Azure", "DevOps"]
 draft: false
 ---
 

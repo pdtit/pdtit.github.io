@@ -2,7 +2,7 @@
 title: "How OnyxBoox - with some help from a friend - got me back to reading more... books"
 date: 2022-12-23
 publishdate: 2022-12-23
-tags: ["Random"]
+tags: ["General"]
 draft: false
 ---
 

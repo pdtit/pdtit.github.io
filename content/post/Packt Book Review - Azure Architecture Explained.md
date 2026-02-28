@@ -2,7 +2,7 @@
 title: "Packt Book Review - Azure Architecture Explained"
 date: 2023-12-10
 publishdate: 2023-12-10
-tags: ["Azure", "Packt"]
+tags: ["Azure", "Books"]
 draft: false
 ---
 

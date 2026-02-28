@@ -1,7 +1,7 @@
 ---
 title: "Keeping MCP Server config in sync between VS Code and GitHub Copilot CLI"
 date: 2026-02-26
-tags: ["GitHub Copilot", "MCP", "VSCode"]
+tags: ["GitHub Copilot", ".NET Development"]
 draft: false
 ---
 

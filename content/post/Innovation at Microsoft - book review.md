@@ -2,7 +2,7 @@
 title: "Innovation at Microsoft - Book Review"
 date: 2025-03-09
 publishdate: 2025-03-09
-tags: ["Microsoft", "Books"]
+tags: ["General", "Books"]
 draft: false
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "DevOps Workflow Generator"
 date: 2022-04-03
-tags: ["Azure", "DevOps", "DevSecOps"]
+tags: ["Azure", "DevOps"]
 draft: false
 ---
 

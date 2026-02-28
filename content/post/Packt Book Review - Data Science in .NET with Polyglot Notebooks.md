@@ -2,7 +2,7 @@
 title: "Packt Book Review - Data Science in .NET with Polyglot Notebooks"
 date: 2024-12-07
 publishdate: 2024-12-07
-tags: ["Packt", "Semantic Kernel", ".NET Development"]
+tags: ["Books", ".NET Development"]
 draft: false
 ---
 

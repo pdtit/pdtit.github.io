@@ -2,7 +2,7 @@
 title: "Intro to Chaos Engineering and Azure Chaos Studio (Preview)"
 date: 2023-08-27
 publishdate: 2023-08-27
-tags: ["Azure", "SRE"]
+tags: ["Azure"]
 draft: false
 ---
 

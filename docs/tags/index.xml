@@ -18,16 +18,10 @@
             <guid>https://www.007ffflearning.com/tags/hugo/</guid>
             <description></description>
         </item><item>
-            <title>MCP</title>
-            <link>https://www.007ffflearning.com/tags/mcp/</link>
+            <title>.NET Development</title>
+            <link>https://www.007ffflearning.com/tags/.net-development/</link>
             <pubDate>Thu, 26 Feb 2026 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/tags/mcp/</guid>
-            <description></description>
-        </item><item>
-            <title>VSCode</title>
-            <link>https://www.007ffflearning.com/tags/vscode/</link>
-            <pubDate>Thu, 26 Feb 2026 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/tags/vscode/</guid>
+            <guid>https://www.007ffflearning.com/tags/.net-development/</guid>
             <description></description>
         </item><item>
             <title>Azure</title>
@@ -36,10 +30,10 @@
             <guid>https://www.007ffflearning.com/tags/azure/</guid>
             <description></description>
         </item><item>
-            <title>Packt</title>
-            <link>https://www.007ffflearning.com/tags/packt/</link>
+            <title>Books</title>
+            <link>https://www.007ffflearning.com/tags/books/</link>
             <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/tags/packt/</guid>
+            <guid>https://www.007ffflearning.com/tags/books/</guid>
             <description></description>
         </item><item>
             <title>AI</title>
@@ -54,28 +48,16 @@
             <guid>https://www.007ffflearning.com/tags/github/</guid>
             <description></description>
         </item><item>
-            <title>Copilot Studio</title>
-            <link>https://www.007ffflearning.com/tags/copilot-studio/</link>
-            <pubDate>Sat, 09 Aug 2025 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/tags/copilot-studio/</guid>
-            <description></description>
-        </item><item>
             <title>Infrastructure as Code</title>
             <link>https://www.007ffflearning.com/tags/infrastructure-as-code/</link>
             <pubDate>Sat, 12 Jul 2025 00:00:00 +0000</pubDate>
             <guid>https://www.007ffflearning.com/tags/infrastructure-as-code/</guid>
             <description></description>
         </item><item>
-            <title>Books</title>
-            <link>https://www.007ffflearning.com/tags/books/</link>
+            <title>General</title>
+            <link>https://www.007ffflearning.com/tags/general/</link>
             <pubDate>Sun, 09 Mar 2025 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/tags/books/</guid>
-            <description></description>
-        </item><item>
-            <title>Microsoft</title>
-            <link>https://www.007ffflearning.com/tags/microsoft/</link>
-            <pubDate>Sun, 09 Mar 2025 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/tags/microsoft/</guid>
+            <guid>https://www.007ffflearning.com/tags/general/</guid>
             <description></description>
         </item><item>
             <title>DevOps</title>
@@ -84,40 +66,10 @@
             <guid>https://www.007ffflearning.com/tags/devops/</guid>
             <description></description>
         </item><item>
-            <title>Monitoring</title>
-            <link>https://www.007ffflearning.com/tags/monitoring/</link>
-            <pubDate>Thu, 06 Mar 2025 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/tags/monitoring/</guid>
-            <description></description>
-        </item><item>
-            <title>.NET Development</title>
-            <link>https://www.007ffflearning.com/tags/.net-development/</link>
-            <pubDate>Sat, 07 Dec 2024 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/tags/.net-development/</guid>
-            <description></description>
-        </item><item>
-            <title>Semantic Kernel</title>
-            <link>https://www.007ffflearning.com/tags/semantic-kernel/</link>
-            <pubDate>Sat, 07 Dec 2024 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/tags/semantic-kernel/</guid>
-            <description></description>
-        </item><item>
             <title>Azure DevOps</title>
             <link>https://www.007ffflearning.com/tags/azure-devops/</link>
             <pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate>
             <guid>https://www.007ffflearning.com/tags/azure-devops/</guid>
-            <description></description>
-        </item><item>
-            <title>SRE</title>
-            <link>https://www.007ffflearning.com/tags/sre/</link>
-            <pubDate>Sat, 09 Sep 2023 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/tags/sre/</guid>
-            <description></description>
-        </item><item>
-            <title>Office Forms</title>
-            <link>https://www.007ffflearning.com/tags/office-forms/</link>
-            <pubDate>Sun, 26 Mar 2023 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/tags/office-forms/</guid>
             <description></description>
         </item><item>
             <title>Containers</title>
@@ -126,106 +78,10 @@
             <guid>https://www.007ffflearning.com/tags/containers/</guid>
             <description></description>
         </item><item>
-            <title>Random</title>
-            <link>https://www.007ffflearning.com/tags/random/</link>
-            <pubDate>Fri, 23 Dec 2022 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/tags/random/</guid>
-            <description></description>
-        </item><item>
-            <title>Apress</title>
-            <link>https://www.007ffflearning.com/tags/apress/</link>
-            <pubDate>Sat, 29 Oct 2022 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/tags/apress/</guid>
-            <description></description>
-        </item><item>
-            <title>DevSecOps</title>
-            <link>https://www.007ffflearning.com/tags/devsecops/</link>
-            <pubDate>Sun, 03 Apr 2022 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/tags/devsecops/</guid>
-            <description></description>
-        </item><item>
-            <title>Security</title>
-            <link>https://www.007ffflearning.com/tags/security/</link>
-            <pubDate>Thu, 17 Mar 2022 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/tags/security/</guid>
-            <description></description>
-        </item><item>
-            <title>General</title>
-            <link>https://www.007ffflearning.com/tags/general/</link>
-            <pubDate>Tue, 21 Sep 2021 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/tags/general/</guid>
-            <description></description>
-        </item><item>
-            <title>Ebooks</title>
-            <link>https://www.007ffflearning.com/tags/ebooks/</link>
-            <pubDate>Fri, 18 Jun 2021 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/tags/ebooks/</guid>
-            <description></description>
-        </item><item>
-            <title>Visual Studio</title>
-            <link>https://www.007ffflearning.com/tags/visual-studio/</link>
-            <pubDate>Tue, 10 Nov 2020 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/tags/visual-studio/</guid>
-            <description></description>
-        </item><item>
-            <title>Personal</title>
-            <link>https://www.007ffflearning.com/tags/personal/</link>
-            <pubDate>Sun, 16 Aug 2020 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/tags/personal/</guid>
-            <description></description>
-        </item><item>
             <title>Bing</title>
             <link>https://www.007ffflearning.com/tags/bing/</link>
             <pubDate>Sun, 10 May 2020 00:00:00 +0000</pubDate>
             <guid>https://www.007ffflearning.com/tags/bing/</guid>
-            <description></description>
-        </item><item>
-            <title>Office365</title>
-            <link>https://www.007ffflearning.com/tags/office365/</link>
-            <pubDate>Sun, 10 May 2020 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/tags/office365/</guid>
-            <description></description>
-        </item><item>
-            <title>Teams</title>
-            <link>https://www.007ffflearning.com/tags/teams/</link>
-            <pubDate>Sun, 10 May 2020 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/tags/teams/</guid>
-            <description></description>
-        </item><item>
-            <title>Static Site</title>
-            <link>https://www.007ffflearning.com/tags/static-site/</link>
-            <pubDate>Sat, 25 Apr 2020 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/tags/static-site/</guid>
-            <description></description>
-        </item><item>
-            <title>Architecting</title>
-            <link>https://www.007ffflearning.com/tags/architecting/</link>
-            <pubDate>Mon, 03 Feb 2020 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/tags/architecting/</guid>
-            <description></description>
-        </item><item>
-            <title>Strategy</title>
-            <link>https://www.007ffflearning.com/tags/strategy/</link>
-            <pubDate>Mon, 03 Feb 2020 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/tags/strategy/</guid>
-            <description></description>
-        </item><item>
-            <title>Certification</title>
-            <link>https://www.007ffflearning.com/tags/certification/</link>
-            <pubDate>Sat, 25 Jan 2020 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/tags/certification/</guid>
-            <description></description>
-        </item><item>
-            <title>Exams</title>
-            <link>https://www.007ffflearning.com/tags/exams/</link>
-            <pubDate>Sat, 25 Jan 2020 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/tags/exams/</guid>
-            <description></description>
-        </item><item>
-            <title>Learning</title>
-            <link>https://www.007ffflearning.com/tags/learning/</link>
-            <pubDate>Sat, 25 Jan 2020 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/tags/learning/</guid>
             <description></description>
         </item></channel>
 </rss>

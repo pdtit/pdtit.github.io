@@ -2,7 +2,7 @@
 title: "Azure Back to School - Achieving SRE on Azure"
 date: 2023-09-09
 publishdate: 2023-09-09
-tags: ["Azure", "SRE"]
+tags: ["Azure"]
 draft: false
 ---
 

@@ -2,7 +2,7 @@
 title: "Using Packt Publishing Credits for free books"
 date: 2022-11-12
 publishdate: 2022-01-01
-tags: ["Packt"]
+tags: ["Books"]
 draft: false
 ---
 

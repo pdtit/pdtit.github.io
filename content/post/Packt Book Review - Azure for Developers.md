@@ -2,7 +2,7 @@
 title: "Packt Book Review - Azure for Developers"
 date: 2025-12-25
 publishdate: 2025-12-25
-tags: ["Azure", "Packt"]
+tags: ["Azure", "Books"]
 draft: false
 ---
 

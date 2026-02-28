@@ -2,7 +2,7 @@
 title: "Book review - Building Blazor WebAssembly Applications with gRPC"
 date: 2022-12-17
 publishdate: 2022-12-17
-tags: ["Azure", ".NET Development", "Packt"]
+tags: ["Azure", ".NET Development", "Books"]
 draft: false
 ---
 

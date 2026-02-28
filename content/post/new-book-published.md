@@ -1,7 +1,7 @@
 ---
 title: "New book published: Azure Strategy and Implementation Guide, 3rd edition"
 date: 2020-02-03
-tags: ["Azure", "Books", "Strategy", "Architecting"]
+tags: ["Azure", "Books"]
 draft: false
 ---
 

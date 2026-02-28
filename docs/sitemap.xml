@@ -22,19 +22,16 @@
     <loc>https://www.007ffflearning.com/tags/</loc>
     <lastmod>2026-02-28T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://www.007ffflearning.com/tags/.net-development/</loc>
+    <lastmod>2026-02-26T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://www.007ffflearning.com/post/keeping-mcp-config-in-sync-between-vscode-and-cli/</loc>
-    <lastmod>2026-02-26T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.007ffflearning.com/tags/mcp/</loc>
-    <lastmod>2026-02-26T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.007ffflearning.com/tags/vscode/</loc>
     <lastmod>2026-02-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.007ffflearning.com/tags/azure/</loc>
     <lastmod>2025-12-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.007ffflearning.com/tags/packt/</loc>
+    <loc>https://www.007ffflearning.com/tags/books/</loc>
     <lastmod>2025-12-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.007ffflearning.com/post/packt-book-review---azure-for-developers/</loc>
@@ -52,9 +49,6 @@
     <loc>https://www.007ffflearning.com/post/using-github-copilot-agent-mode-to-vibe-code-a-python-shooting-game/</loc>
     <lastmod>2025-11-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.007ffflearning.com/tags/copilot-studio/</loc>
-    <lastmod>2025-08-09T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.007ffflearning.com/post/generate-azure-jwt-token-in-copilot-studio/</loc>
     <lastmod>2025-08-09T00:00:00+00:00</lastmod>
   </url><url>
@@ -64,13 +58,10 @@
     <loc>https://www.007ffflearning.com/post/using-github-copilot-agent-mode-to-transform-arm-templates-to-bicep/</loc>
     <lastmod>2025-07-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.007ffflearning.com/tags/books/</loc>
+    <loc>https://www.007ffflearning.com/tags/general/</loc>
     <lastmod>2025-03-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.007ffflearning.com/post/innovation-at-microsoft---book-review/</loc>
-    <lastmod>2025-03-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.007ffflearning.com/tags/microsoft/</loc>
     <lastmod>2025-03-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.007ffflearning.com/post/azure-spring-clean---application-insights---inside-out/</loc>
@@ -79,19 +70,10 @@
     <loc>https://www.007ffflearning.com/tags/devops/</loc>
     <lastmod>2025-03-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.007ffflearning.com/tags/monitoring/</loc>
-    <lastmod>2025-03-06T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.007ffflearning.com/post/book-review---azure-cookbook/</loc>
     <lastmod>2024-12-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.007ffflearning.com/tags/.net-development/</loc>
-    <lastmod>2024-12-07T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.007ffflearning.com/post/packt-book-review---data-science-in-.net-with-polyglot-notebooks/</loc>
-    <lastmod>2024-12-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.007ffflearning.com/tags/semantic-kernel/</loc>
     <lastmod>2024-12-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.007ffflearning.com/post/introduction-to-semantic-kernel/</loc>
@@ -124,9 +106,6 @@
     <loc>https://www.007ffflearning.com/post/achieving-sre-on-azure/</loc>
     <lastmod>2023-09-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.007ffflearning.com/tags/sre/</loc>
-    <lastmod>2023-09-09T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.007ffflearning.com/post/intro-to-chaos-engineering-and-azure-chaos-studio-preview/</loc>
     <lastmod>2023-08-27T00:00:00+00:00</lastmod>
   </url><url>
@@ -137,9 +116,6 @@
     <lastmod>2023-04-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.007ffflearning.com/post/collecting-feedback-in-ado-work-items-from-office-forms/</loc>
-    <lastmod>2023-03-26T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.007ffflearning.com/tags/office-forms/</loc>
     <lastmod>2023-03-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.007ffflearning.com/post/dck-acr-aci-aks-aca-the-azure-container-alphabet-soup/</loc>
@@ -157,9 +133,6 @@
     <loc>https://www.007ffflearning.com/post/how-to-clear-the-azure-portal-recent-resources-list/</loc>
     <lastmod>2022-12-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.007ffflearning.com/tags/random/</loc>
-    <lastmod>2022-12-23T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.007ffflearning.com/post/packt-book-review---blazor-wasm-with-grpc/</loc>
     <lastmod>2022-12-17T00:00:00+00:00</lastmod>
   </url><url>
@@ -172,22 +145,13 @@
     <loc>https://www.007ffflearning.com/post/integrating-azure-app-insights-for-hugo-on-static-web-apps/</loc>
     <lastmod>2022-10-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.007ffflearning.com/tags/apress/</loc>
-    <lastmod>2022-10-29T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.007ffflearning.com/post/the-art-of-realizing-sre-on-azure/</loc>
     <lastmod>2022-10-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.007ffflearning.com/post/devops-workflow-generator/</loc>
     <lastmod>2022-04-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.007ffflearning.com/tags/devsecops/</loc>
-    <lastmod>2022-04-03T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.007ffflearning.com/post/azure-spring-clean---devsecops-and-shifting-left-to-publish-secure-software/</loc>
-    <lastmod>2022-03-17T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.007ffflearning.com/tags/security/</loc>
     <lastmod>2022-03-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.007ffflearning.com/post/azure-spring-clean---demystifying-service-principal-and-managed-identities/</loc>
@@ -199,9 +163,6 @@
     <loc>https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer---part-2/</loc>
     <lastmod>2021-11-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.007ffflearning.com/tags/general/</loc>
-    <lastmod>2021-09-21T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.007ffflearning.com/post/my-first-2-years-as-att/</loc>
     <lastmod>2021-09-21T00:00:00+00:00</lastmod>
   </url><url>
@@ -209,9 +170,6 @@
     <lastmod>2021-09-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.007ffflearning.com/post/azure-strategy---reviewing-done/</loc>
-    <lastmod>2021-06-18T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.007ffflearning.com/tags/ebooks/</loc>
     <lastmod>2021-06-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.007ffflearning.com/post/upgrading_aks_in_20min/</loc>
@@ -238,9 +196,6 @@
     <loc>https://www.007ffflearning.com/post/publish-your-first-dotnet5-app-to-azure-app-services/</loc>
     <lastmod>2020-11-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.007ffflearning.com/tags/visual-studio/</loc>
-    <lastmod>2020-11-10T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.007ffflearning.com/post/azure-back-to-school/</loc>
     <lastmod>2020-09-13T00:00:00+00:00</lastmod>
   </url><url>
@@ -251,9 +206,6 @@
     <lastmod>2020-08-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.007ffflearning.com/post/i-found-me-another-challenge/</loc>
-    <lastmod>2020-08-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.007ffflearning.com/tags/personal/</loc>
     <lastmod>2020-08-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.007ffflearning.com/post/azure-for-architects---reviewing-done/</loc>
@@ -283,12 +235,6 @@
     <loc>https://www.007ffflearning.com/post/email-is-html-gone-logicapps/</loc>
     <lastmod>2020-05-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.007ffflearning.com/tags/office365/</loc>
-    <lastmod>2020-05-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.007ffflearning.com/tags/teams/</loc>
-    <lastmod>2020-05-10T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.007ffflearning.com/post/use-bing-wallpaper-as-background-in-teams/</loc>
     <lastmod>2020-05-10T00:00:00+00:00</lastmod>
   </url><url>
@@ -298,32 +244,14 @@
     <loc>https://www.007ffflearning.com/post/static_site_frontdoor/</loc>
     <lastmod>2020-04-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.007ffflearning.com/tags/static-site/</loc>
-    <lastmod>2020-04-25T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.007ffflearning.com/post/bing-wallpaper/</loc>
     <lastmod>2020-04-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.007ffflearning.com/post/my-first-6-months-as-att/</loc>
     <lastmod>2020-04-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.007ffflearning.com/tags/architecting/</loc>
-    <lastmod>2020-02-03T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.007ffflearning.com/post/new-book-published/</loc>
     <lastmod>2020-02-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.007ffflearning.com/tags/strategy/</loc>
-    <lastmod>2020-02-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.007ffflearning.com/tags/certification/</loc>
-    <lastmod>2020-01-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.007ffflearning.com/tags/exams/</loc>
-    <lastmod>2020-01-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.007ffflearning.com/tags/learning/</loc>
-    <lastmod>2020-01-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.007ffflearning.com/post/updated-azure-exams/</loc>
     <lastmod>2020-01-25T00:00:00+00:00</lastmod>

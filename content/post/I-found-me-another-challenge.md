@@ -1,7 +1,7 @@
 ---
 title: "I found me another challenge: The Conqueror"
 date: 2020-08-16
-tags: ["Personal"]
+tags: ["General"]
 draft: false
 ---
 

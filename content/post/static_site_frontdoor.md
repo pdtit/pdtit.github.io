@@ -1,7 +1,7 @@
 ---
 title: "Running an Azure Storage Static Site, protected by Azure Front Door"
 date: 2020-04-25
-tags: ["Azure", "Hugo", "Static Site"]
+tags: ["Azure", "Hugo"]
 draft: false
 ---
 Earlier this week, I had the honor to present a session for the Belgian 

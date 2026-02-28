@@ -1,7 +1,7 @@
 ---
 title: "Updated Azure Exams Announced"
 date: 2020-01-25
-tags: ["Azure", "Learning", "Exams", "Certification"]
+tags: ["Azure", "General"]
 draft: false
 ---
 

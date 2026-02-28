@@ -2,7 +2,7 @@
 title: "Packt Book Review - Azure for Business Decision Makers"
 date: 2023-10-22
 publishdate: 2023-10-22
-tags: ["Azure", "Packt"]
+tags: ["Azure", "Books"]
 draft: false
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Another Tech Reviewing done: Azure For Architects - 3rd edition"
 date: 2020-08-02
-tags: ["Azure", "Packt", "Ebooks"]
+tags: ["Azure", "Books"]
 draft: false
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Azure Spring Clean - Application Insights - Inside Out"
 date: 2025-03-06
-tags: ["Azure", "Monitoring", "DevOps"]
+tags: ["Azure", "DevOps"]
 draft: false
 ---
 

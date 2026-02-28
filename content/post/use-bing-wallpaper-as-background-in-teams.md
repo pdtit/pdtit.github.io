@@ -1,7 +1,7 @@
 ---
 title: "Use Bing Desktop Wallpapers as background images in Teams calls"
 date: 2020-05-10
-tags: ["Bing", "Teams"]
+tags: ["Bing", "General"]
 draft: false
 ---
 

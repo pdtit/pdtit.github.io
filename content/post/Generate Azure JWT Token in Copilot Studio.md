@@ -2,7 +2,7 @@
 title: "Generate Azure JWT Token in Copilot Studio"
 date: 2025-08-09
 publishdate: 2025-08-09
-tags: ["Azure", "Copilot Studio"]
+tags: ["Azure", "AI"]
 draft: false
 ---
 

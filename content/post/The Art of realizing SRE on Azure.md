@@ -1,7 +1,7 @@
 ---
 title: "The Art of Realizing SRE on Azure - Book Review"
 date: 2022-10-29
-tags: ["Azure", "Apress", "Books"]
+tags: ["Azure", "Books"]
 draft: false
 ---
 

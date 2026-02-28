@@ -2,7 +2,7 @@
 title: "Collecting Feedback in ADO work items from Office Forms"
 date: 2023-03-26
 publishdate: 2023-03-26
-tags: ["Azure DevOps", "Office Forms"]
+tags: ["Azure DevOps", "General"]
 draft: false
 ---
 

@@ -2,7 +2,7 @@
 title: "Introduction to Semantic Kernel"
 date: 2024-09-15
 publishdate: 2024-09-15
-tags: ["Azure", "AI", "Semantic Kernel"]
+tags: ["Azure", "AI", ".NET Development"]
 draft: false
 ---
 

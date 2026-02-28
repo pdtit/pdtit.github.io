@@ -1,7 +1,7 @@
 ---
 title: "Another Tech Reviewing done: Azure Strategy and Implementation Guide - 4th edition"
 date: 2021-06-18
-tags: ["Azure", "Packt", "Ebooks"]
+tags: ["Azure", "Books"]
 draft: false
 ---
 
