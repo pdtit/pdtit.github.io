@@ -1,15 +1,47 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-    <channel>
-        <title>HashiCorp on Azure Readiness starts here...</title>
-        <link>https://www.007ffflearning.com/tags/hashicorp/</link>
-        <description>Recent content in HashiCorp on Azure Readiness starts here...</description>
-        <generator>Hugo -- gohugo.io</generator>
-        <language>en-us</language>
-        <lastBuildDate>Sat, 17 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/hashicorp/index.xml" rel="self" type="application/rss+xml" /><item>
-            <title>I&#39;m recognized as a HashiCorp Ambassador</title>
-            <link>https://www.007ffflearning.com/post/hashicorp-ambassador/</link>
-            <pubDate>Sat, 17 Apr 2021 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/post/hashicorp-ambassador/</guid>
-            <description>&lt;p&gt;Hey,&lt;/p&gt;&#xA;&lt;p&gt;I got some &lt;strong&gt;GREAT NEWS&lt;/strong&gt; to share, based on an email I received earlier this week:&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2021-04-17_01.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;Nice_Email&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;p&gt;which informed me &lt;strong&gt;I am recognized as a HashiCorp Ambassador&lt;/strong&gt;!!&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/HC_ambassador_badge_2021.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;HashiCorp_Ambassador_2021&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;p&gt;I can imagine that some of you might not be familiar with this recognition. Easy said, it is much like the &lt;strong&gt;Microsoft MVP&lt;/strong&gt; title, rewarding individuals for their outstanding contributions in the technical communities.&lt;/p&gt;&#xA;&lt;p&gt;In my personal case, my first adventures with &lt;a class=&#34;link&#34; href=&#34;https://www.hashicorp.com/terraform&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xD;&#xA;    &gt;Terraform&lt;/a&gt; started about 5 years ago. I was struggling with Azure ARM templates, and Terraform seemed like an easier language to achieve the same purpose, deploying Azure resources.&lt;/p&gt;&#xA;&lt;p&gt;From there, I started presenting at international User Group events on Terraform (did around 12 sessions in about 24 months&amp;hellip;), and integrating it in my Azure workshops. (The biggest reference was a German customer I helped migrating to Azure, where the year after, one of their cloud leads presented at &lt;a class=&#34;link&#34; href=&#34;https://hashiconf.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xD;&#xA;    &gt;HashiConf&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;When I moved to Microsoft in Sept 2019, I didn&amp;rsquo;t stop including Terraform in my demos on Infrastructure as Code across all Azure trainings I&amp;rsquo;m delivering.&lt;/p&gt;&#xA;&lt;p&gt;I created courseware on Terraform for Azure, contributed to GitHub projects on the same and overall continue using it myself.&lt;/p&gt;&#xA;&lt;p&gt;Earlier this year, I was a presenter at HashiTalks 2021, talking about the different ways to authenticate Terraform to Azure.&lt;/p&gt;&#xA;&lt;p&gt;Besides spreading the word on Terraform and other HashiCorp tools, it gives me the opportunity to participate in roundtables with the product teams and go through beta-testing of updates or new product features, as one of the early testers. And it&amp;rsquo;s also nice to have a stronger representation in the broader HashiCorp Ambassador family.&lt;/p&gt;&#xA;&lt;p&gt;The same as with the Microsoft MVP status in past years, it is a nice recognition for the community efforts. I don&amp;rsquo;t take this award lightly and am very proud and honored to have received it.&lt;/p&gt;&#xA;&lt;p&gt;I always did - and will continue doing community activities - for the community, not for the title.&lt;/p&gt;&#xA;&lt;p&gt;If you got any questions on HashiCorp, Terraform or the Ambassador program, feel free to reach out.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.buymeacoffee.com/pdtit&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xD;&#xA;    &gt;&lt;img src=&#34;../images/buy_me_a_coffee.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;BuyMeACoffee&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;/Peter&lt;/p&gt;&#xA;</description>
-        </item></channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>HashiCorp on Azure Readiness starts here...</title><link>https://www.007ffflearning.com/tags/hashicorp/</link><description>Recent content in HashiCorp on Azure Readiness starts here...</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 17 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/hashicorp/index.xml" rel="self" type="application/rss+xml"/><item><title>I'm recognized as a HashiCorp Ambassador</title><link>https://www.007ffflearning.com/post/hashicorp-ambassador/</link><pubDate>Sat, 17 Apr 2021 00:00:00 +0000</pubDate><guid>https://www.007ffflearning.com/post/hashicorp-ambassador/</guid><description>&lt;p&gt;Hey,&lt;/p&gt;
+&lt;p&gt;I got some &lt;strong&gt;GREAT NEWS&lt;/strong&gt; to share, based on an email I received earlier this week:&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/2021-04-17_01.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Nice_Email"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;which informed me &lt;strong&gt;I am recognized as a HashiCorp Ambassador&lt;/strong&gt;!!&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/HC_ambassador_badge_2021.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="HashiCorp_Ambassador_2021"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;I can imagine that some of you might not be familiar with this recognition. Easy said, it is much like the &lt;strong&gt;Microsoft MVP&lt;/strong&gt; title, rewarding individuals for their outstanding contributions in the technical communities.&lt;/p&gt;
+&lt;p&gt;In my personal case, my first adventures with &lt;a class="link" href="https://www.hashicorp.com/terraform" target="_blank" rel="noopener"
+ &gt;Terraform&lt;/a&gt; started about 5 years ago. I was struggling with Azure ARM templates, and Terraform seemed like an easier language to achieve the same purpose, deploying Azure resources.&lt;/p&gt;
+&lt;p&gt;From there, I started presenting at international User Group events on Terraform (did around 12 sessions in about 24 months&amp;hellip;), and integrating it in my Azure workshops. (The biggest reference was a German customer I helped migrating to Azure, where the year after, one of their cloud leads presented at &lt;a class="link" href="https://hashiconf.com/" target="_blank" rel="noopener"
+ &gt;HashiConf&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;When I moved to Microsoft in Sept 2019, I didn&amp;rsquo;t stop including Terraform in my demos on Infrastructure as Code across all Azure trainings I&amp;rsquo;m delivering.&lt;/p&gt;
+&lt;p&gt;I created courseware on Terraform for Azure, contributed to GitHub projects on the same and overall continue using it myself.&lt;/p&gt;
+&lt;p&gt;Earlier this year, I was a presenter at HashiTalks 2021, talking about the different ways to authenticate Terraform to Azure.&lt;/p&gt;
+&lt;p&gt;Besides spreading the word on Terraform and other HashiCorp tools, it gives me the opportunity to participate in roundtables with the product teams and go through beta-testing of updates or new product features, as one of the early testers. And it&amp;rsquo;s also nice to have a stronger representation in the broader HashiCorp Ambassador family.&lt;/p&gt;
+&lt;p&gt;The same as with the Microsoft MVP status in past years, it is a nice recognition for the community efforts. I don&amp;rsquo;t take this award lightly and am very proud and honored to have received it.&lt;/p&gt;
+&lt;p&gt;I always did - and will continue doing community activities - for the community, not for the title.&lt;/p&gt;
+&lt;p&gt;If you got any questions on HashiCorp, Terraform or the Ambassador program, feel free to reach out.&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
+ &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="BuyMeACoffee"
+ 
+ 
+ 
+ &gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;/Peter&lt;/p&gt;</description></item></channel></rss>

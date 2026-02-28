@@ -27,7 +27,7 @@ jobs:
 # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
       app_location: "/" # App source code path
       api_location: "" # Api source code path - optional
-      app_build_command: "hugo --gc --minify" # Force Hugo build from content
+      app_build_command: 'hugo --gc --minify && test -s docs/search/index.html && grep -q "search-form" docs/search/index.html && test -s docs/search/index.json && python3 -c "import json; json.load(open(\"docs/search/index.json\", encoding=\"utf-8\"))"' # Force Hugo build from content and fail if search artifacts are missing/invalid
       output_location: "docs" # Built app content directory - optional
     env:
       HUGO_VERSION: '0.128.2'  # Compatible with ubuntu-latest GLIBC; Stack theme modified for compatibility

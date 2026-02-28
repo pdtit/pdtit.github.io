@@ -1,20 +1,234 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-    <channel>
-        <title>Publications on Azure Readiness starts here...</title>
-        <link>https://www.007ffflearning.com/publications/</link>
-        <description>Recent content in Publications on Azure Readiness starts here...</description>
-        <generator>Hugo -- gohugo.io</generator>
-        <language>en-us</language><atom:link href="https://www.007ffflearning.com/publications/index.xml" rel="self" type="application/rss+xml" /><item>
-            <title>My Published Azure Books</title>
-            <link>https://www.007ffflearning.com/publications/books/</link>
-            <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/publications/books/</guid>
-            <description>&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;img src=&#34;../images/Pro_Azure_Governance_cover.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;img src=&#34;../images/Cover_Azure_Strategy_and_Implementation_Guide.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;img src=&#34;../images/whitepaper-get-started-with-aks.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;Pro Azure Governance&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;Azure Strategy &amp;amp; Implementation Guide&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;Hands On Kubernetes on Azure&lt;/strong&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;*&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;*&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;*&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.apress.com/gp/book/9781484249093&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xD;&#xA;    &gt;Buy Your Copy Here&lt;/a&gt;&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://azure.microsoft.com/en-us/resources/azure-strategy-and-implementation-guide-third-edition/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xD;&#xA;    &gt;Get Your FREE copy Here&lt;/a&gt;&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://azure.microsoft.com/en-us/resources/get-started-with-kubernetes-on-azure/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xD;&#xA;    &gt;Get Your FREE copy Here&lt;/a&gt;&lt;/strong&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;*&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;*&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;*&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;img src=&#34;../images/Efficiently_migrating_cover_small.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;img src=&#34;../images/Azure_OMS_cover.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;img src=&#34;../images/work_in_progress.jpeg&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;Efficiently Migrating to Azure&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;Implementing Azure OMS&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;Azure Infrastructure as Code&lt;/strong&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;*&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;*&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;*&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://leanpub.com/efficientlymigratingworkloadstoazure/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xD;&#xA;    &gt;Buy Your Copy Here&lt;/a&gt;&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.apress.com/gp/book/9781484218259&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xD;&#xA;    &gt;Buy Your Copy Here&lt;/a&gt;&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;[Release date July 2020]&lt;/strong&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;</description>
-        </item><item>
-            <title>My Published Azure Videos</title>
-            <link>https://www.007ffflearning.com/publications/videos/</link>
-            <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/publications/videos/</guid>
-            <description>&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;img src=&#34;../images/architecting_compute_packt.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;img src=&#34;../images/learning_azure_packt.jpg&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;img src=&#34;../images/work_in_progress.jpeg&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;Architecting an Azure Compute Infrastructure&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;Learning Microsoft Azure&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;Azure Security (Packt)&lt;/strong&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;*&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;*&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;*&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.packtpub.com/eu/virtualization-and-cloud/architecting-azure-compute-infrastructure-video&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xD;&#xA;    &gt;Buy Your Copy Here&lt;/a&gt;&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://azure.microsoft.com/en-us/resources/azure-strategy-and-implementation-guide-third-edition/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xD;&#xA;    &gt;Get Your FREE copy Here&lt;/a&gt;&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;[Release date May 2020]&lt;/strong&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;img src=&#34;../images/skillmeup.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;Several Azure Online Courses&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;*&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;*&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;*&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://skillmeup.com/Author/peterdetender&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xD;&#xA;    &gt;Check Out The List&lt;/a&gt;&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;</description>
-        </item></channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Publications on Azure Readiness starts here...</title><link>https://www.007ffflearning.com/publications/</link><description>Recent content in Publications on Azure Readiness starts here...</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><atom:link href="https://www.007ffflearning.com/publications/index.xml" rel="self" type="application/rss+xml"/><item><title>My Published Azure Books</title><link>https://www.007ffflearning.com/publications/books/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://www.007ffflearning.com/publications/books/</guid><description>&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th style="text-align: center"&gt;&lt;/th&gt;
+ &lt;th style="text-align: center"&gt;&lt;/th&gt;
+ &lt;th style="text-align: center"&gt;&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: center"&gt;&lt;img src="../images/Pro_Azure_Governance_cover.png"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;&lt;img src="../images/Cover_Azure_Strategy_and_Implementation_Guide.png"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;&lt;img src="../images/whitepaper-get-started-with-aks.png"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: center"&gt;&lt;strong&gt;Pro Azure Governance&lt;/strong&gt;&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;&lt;strong&gt;Azure Strategy &amp;amp; Implementation Guide&lt;/strong&gt;&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;&lt;strong&gt;Hands On Kubernetes on Azure&lt;/strong&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: center"&gt;*&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;*&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;*&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: center"&gt;&lt;strong&gt;&lt;a class="link" href="https://www.apress.com/gp/book/9781484249093" target="_blank" rel="noopener"
+ &gt;Buy Your Copy Here&lt;/a&gt;&lt;/strong&gt;&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;&lt;strong&gt;&lt;a class="link" href="https://azure.microsoft.com/en-us/resources/azure-strategy-and-implementation-guide-third-edition/" target="_blank" rel="noopener"
+ &gt;Get Your FREE copy Here&lt;/a&gt;&lt;/strong&gt;&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;&lt;strong&gt;&lt;a class="link" href="https://azure.microsoft.com/en-us/resources/get-started-with-kubernetes-on-azure/" target="_blank" rel="noopener"
+ &gt;Get Your FREE copy Here&lt;/a&gt;&lt;/strong&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: center"&gt;*&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;*&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;*&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: center"&gt;&lt;img src="../images/Efficiently_migrating_cover_small.png"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;&lt;img src="../images/Azure_OMS_cover.png"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;&lt;img src="../images/work_in_progress.jpeg"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: center"&gt;&lt;strong&gt;Efficiently Migrating to Azure&lt;/strong&gt;&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;&lt;strong&gt;Implementing Azure OMS&lt;/strong&gt;&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;&lt;strong&gt;Azure Infrastructure as Code&lt;/strong&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: center"&gt;*&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;*&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;*&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: center"&gt;&lt;strong&gt;&lt;a class="link" href="https://leanpub.com/efficientlymigratingworkloadstoazure/" target="_blank" rel="noopener"
+ &gt;Buy Your Copy Here&lt;/a&gt;&lt;/strong&gt;&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;&lt;strong&gt;&lt;a class="link" href="https://www.apress.com/gp/book/9781484218259" target="_blank" rel="noopener"
+ &gt;Buy Your Copy Here&lt;/a&gt;&lt;/strong&gt;&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;&lt;strong&gt;[Release date July 2020]&lt;/strong&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;</description></item><item><title>My Published Azure Videos</title><link>https://www.007ffflearning.com/publications/videos/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://www.007ffflearning.com/publications/videos/</guid><description>&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th style="text-align: center"&gt;&lt;/th&gt;
+ &lt;th style="text-align: center"&gt;&lt;/th&gt;
+ &lt;th style="text-align: center"&gt;&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: center"&gt;&lt;img src="../images/architecting_compute_packt.png"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;&lt;img src="../images/learning_azure_packt.jpg"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;&lt;img src="../images/work_in_progress.jpeg"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: center"&gt;&lt;strong&gt;Architecting an Azure Compute Infrastructure&lt;/strong&gt;&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;&lt;strong&gt;Learning Microsoft Azure&lt;/strong&gt;&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;&lt;strong&gt;Azure Security (Packt)&lt;/strong&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: center"&gt;*&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;*&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;*&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: center"&gt;&lt;strong&gt;&lt;a class="link" href="https://www.packtpub.com/eu/virtualization-and-cloud/architecting-azure-compute-infrastructure-video" target="_blank" rel="noopener"
+ &gt;Buy Your Copy Here&lt;/a&gt;&lt;/strong&gt;&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;&lt;strong&gt;&lt;a class="link" href="https://azure.microsoft.com/en-us/resources/azure-strategy-and-implementation-guide-third-edition/" target="_blank" rel="noopener"
+ &gt;Get Your FREE copy Here&lt;/a&gt;&lt;/strong&gt;&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;&lt;strong&gt;[Release date May 2020]&lt;/strong&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: center"&gt;&lt;img src="../images/skillmeup.png"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: center"&gt;&lt;strong&gt;Several Azure Online Courses&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: center"&gt;*&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;*&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;*&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: center"&gt;&lt;strong&gt;&lt;a class="link" href="https://skillmeup.com/Author/peterdetender" target="_blank" rel="noopener"
+ &gt;Check Out The List&lt;/a&gt;&lt;/strong&gt;&lt;/td&gt;
+ &lt;td style="text-align: center"&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;</description></item></channel></rss>

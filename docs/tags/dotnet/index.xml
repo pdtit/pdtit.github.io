@@ -1,39 +1,1086 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-    <channel>
-        <title>DotNet on Azure Readiness starts here...</title>
-        <link>https://www.007ffflearning.com/tags/dotnet/</link>
-        <description>Recent content in DotNet on Azure Readiness starts here...</description>
-        <generator>Hugo -- gohugo.io</generator>
-        <language>en-us</language>
-        <lastBuildDate>Mon, 08 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/dotnet/index.xml" rel="self" type="application/rss+xml" /><item>
-            <title>Deploying .NET6.0 Blazor App using dotnet commandline</title>
-            <link>https://www.007ffflearning.com/post/deploying-blazor-apps-using-dotnet-commandline/</link>
-            <pubDate>Mon, 08 Nov 2021 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/post/deploying-blazor-apps-using-dotnet-commandline/</guid>
-            <description>&lt;p&gt;Hello readers,&lt;/p&gt;&#xA;&lt;p&gt;About 2 months ago, I promised I would start writing down my adventures in the DotNet Blazor development world, which you can read about in my &lt;a class=&#34;link&#34; href=&#34;https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xD;&#xA;    &gt;first&lt;/a&gt; and &lt;a class=&#34;link&#34; href=&#34;https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer-part-2/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xD;&#xA;    &gt;second&lt;/a&gt; post.&lt;/p&gt;&#xA;&lt;p&gt;Welcome to &amp;ldquo;Coding Apps in Blazor from a non-developer standpoint - Part 3&amp;rdquo;&lt;/p&gt;&#xA;&lt;p&gt;This next article will cover about the same as the previous one, deploying the Blazor Server app template, but instead of using Visual Studio GUI for this, I&amp;rsquo;ll use the &lt;strong&gt;dotnet commandline&lt;/strong&gt; tool this time. As it comes with some cool enhancements and options. And, next to that, it&amp;rsquo;s always nice to rely on command shell to speed up certain tasks.&lt;/p&gt;&#xA;&lt;h1 id=&#34;prerequisites&#34;&gt;Prerequisites&#xD;&#xA;&lt;/h1&gt;&lt;p&gt;To make sure you are ready to go and follow-along, let me list up some prereqs:&lt;/p&gt;&#xA;&lt;p&gt;The only prereq for the actual creation part, would be the .NET RunTime:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://dotnet.microsoft.com/download/visual-studio-sdks&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xD;&#xA;    &gt;.NET RunTime&lt;/a&gt;&#xA;In order to run C# and .NET applications, one needs to have the necessary .NET RunTime installed on the development workstation. In a later article, I&amp;rsquo;ll describe how you can publish Blazor apps to Azure App Services or Containerized workloads, where you will notice the .NET RunTime is required as well. If you are running &lt;strong&gt;Visual Studio 2019&lt;/strong&gt;, install the&#xA;&lt;strong&gt;.NET 5.0&lt;/strong&gt; RunTime; if, like me, you are running &lt;strong&gt;Visual Studio 2022 Preview&lt;/strong&gt;, you can directly go for &lt;strong&gt;.NET 6.0&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;(I&amp;rsquo;m running Windows 11, Visual Studio 2022 Preview 7.0, which means it could look a bit different on your machine, although most steps will be identical&amp;hellip;)&lt;/p&gt;&#xA;&lt;p&gt;However, what&amp;rsquo;s the point in creating an application placeholder folder, if you are not customizing and developing, right? Which means you still need a Developer Interface for the actual coding. Nice thing is, that you are not limited to Visual Studio, but could also use Visual Studio Code, JetBrains Rider, or basically any other IDE you prefer.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community&amp;amp;rel=16&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xD;&#xA;    &gt;Visual Studio IDE&lt;/a&gt;&#xA;Any flavor of Visual Studio 2019 or later should work (know that 2022 is getting launched Nov 8th&amp;hellip;), and depending on your situation, you might already have access to a licensed edition of Standard, Professional or Enterprise from your employer. If not, totally fine, as there is also a &lt;strong&gt;free Community Edition&lt;/strong&gt; available from the link I shared&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://code.visualstudio.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xD;&#xA;    &gt;Visual Studio Code&lt;/a&gt;&#xA;VS Code is a &amp;ldquo;lightweight&amp;rdquo;, yet superpowerful source code editor which runs on your desktop and is available for Windows, macOS and Linux. It comes with built-in support for JavaScript, TypeScript and Node.js and has a rich ecosystem of extensions for other languages (such as C++, C#, Java, Python, PHP, Go) and runtimes (such as .NET and Unity). Common extensions I&amp;rsquo;ve been using since day 1 are Azure App Services, ARM Template tools, Docker Containers and  Kubernetes. And because of the built-in support for C# and .NET overall, it&amp;rsquo;s a perfect target for developing Blazor applications.&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h1 id=&#34;using-net-commandline-to-create-a-blazor-web-assembly-app&#34;&gt;Using .NET commandline to Create a Blazor Web Assembly App&#xD;&#xA;&lt;/h1&gt;&lt;p&gt;Assuming you have all the prereqs covered, you can create your first Blazor Web Assembly App by going through the following steps:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Open your preferred commandline Shell (Command Prompt, &lt;a class=&#34;link&#34; href=&#34;https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701?activetab=pivot:overviewtab&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xD;&#xA;    &gt;Windows Terminal&lt;/a&gt; or &lt;a class=&#34;link&#34; href=&#34;https://docs.microsoft.com/en-us/powershell/scripting/overview?view=powershell-7.1&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xD;&#xA;    &gt;PowerShell&lt;/a&gt;) &lt;strong&gt;and validate the dotnet version&lt;/strong&gt; by initiating the following command:&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dotnet --version&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;../images/2021-11-08_01.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;DotnetVersion&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;p&gt;In my case, I&amp;rsquo;m running the .NET 6.0 RC2 Preview, which should shift to a Release version later today :)&lt;/p&gt;&#xA;&lt;ol start=&#34;2&#34;&gt;&#xA;&lt;li&gt;Next, &lt;strong&gt;create a subfolder&lt;/strong&gt; for your Blazor Application, by initating the &amp;ldquo;MD&amp;rdquo; (Make Directory on a Windows Machine) command, and &amp;ldquo;CD&amp;rdquo; (Change Directory) to &lt;strong&gt;navigate to the subfolder&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;md dotnetblazordemo&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;followed by&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cd dotnetblazordemo&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;../images/2021-11-08_02.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;CreateSubfolder&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;ol start=&#34;3&#34;&gt;&#xA;&lt;li&gt;Next, pull up the &lt;strong&gt;Blazor templates&lt;/strong&gt; by initiating the following command:&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dotnet new --list Blazor&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;../images/2021-11-08_03.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;ListBlazor&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;ol start=&#34;4&#34;&gt;&#xA;&lt;li&gt;As you can see, there is &lt;strong&gt;both a template for Blazor Server and Blazor Web Assembly&lt;/strong&gt;; As I showed you how to deploy a Blazor Server App in the Visual Studio GUI &lt;a class=&#34;link&#34; href=&#34;https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer-part-2/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xD;&#xA;    &gt;post&lt;/a&gt;, let&amp;rsquo;s deploy a Blazor Web Assembly alternative this time. Remember, Web Assembly is a browser capability, allowing you to run full .NET code directly in the browser, without requiring a server-backend. For more details, check back on my &lt;a class=&#34;link&#34; href=&#34;%28https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer/%29&#34; &gt;Blazor introductory&lt;/a&gt; article in which I positioned the different Blazor versions and their characteristics.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;Inititate the following command:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dotnet new blazorwasm --hosted&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;Which nicely creates all necessary components for our Blazor App, containing the Client (Front-End), Server (Back-End) and Shared components.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2021-11-08_04.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;NewBlazorWasm&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;ol start=&#34;5&#34;&gt;&#xA;&lt;li&gt;To actually &lt;strong&gt;run the Blazor Web Assembly app&lt;/strong&gt;, move into the &amp;ldquo;Server&amp;rdquo; folder (cd Server&amp;hellip;) and kick off the &amp;ldquo;dotnet run&amp;rdquo; command:&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dotnet run&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;This starts with compiling (Building&amp;hellip;) the app, and showing a successful run, exposing the different ports the app is listening on (https and http)&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2021-11-08_05.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;DotNetRun&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;ol start=&#34;6&#34;&gt;&#xA;&lt;li&gt;Open your favorite browser, and connect to the https://localhost:&lt;port&gt; address; easiest (on Windows) is Ctrl+click and selecting the URL.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2021-11-08_06.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;BrowserApp&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;p&gt;You now have a fully functional Blazor App running in the browser. Congratulations. (for details on what the app is about, feel free to check my notes in my &lt;a class=&#34;link&#34; href=&#34;https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer-part-2/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xD;&#xA;    &gt;previous article&lt;/a&gt;)&lt;/p&gt;&#xA;&lt;h1 id=&#34;more-dotnet-blazor-command-line-options&#34;&gt;More dotnet Blazor command line options&#xD;&#xA;&lt;/h1&gt;&lt;p&gt;While I could have stopped the article here and thanking you for following along, I wanted to emphasize some other capabilities from the dotnet commandline, and covering some of the additional parameters to choose from. Note: I will only touch on the Blazor-specific options, not all the overall dotnet commandline options available.&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;To get an idea about all different options available, run the following command:&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dotnet new blazorwasm --help&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;../images/2021-11-08_07.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;BlazorWasmHelp&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;deploy-a-specific-framework-version&#34;&gt;deploy a specific Framework version&#xD;&#xA;&lt;/h2&gt;&lt;p&gt;With different .NET Framework versions available on the same developer station, it might be necessary to specify a specific version of .NET to use; this is possible by adding the &lt;strong&gt;-f or &amp;ndash;framework&lt;/strong&gt; parameter to the dotnet new blazorwasm syntax, followed by the version identifier &lt;strong&gt;net5.0&lt;/strong&gt;, &lt;strong&gt;net6.0&lt;/strong&gt; or &lt;strong&gt;netcoreapp3.1&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;include-aspnet-core-host&#34;&gt;include ASP.NET Core host&#xD;&#xA;&lt;/h2&gt;&lt;p&gt;We used this parameter in the previous steps, but I didn&amp;rsquo;t really explain what it did. If you want to build a &amp;ldquo;client&amp;rdquo; Web Assembly version, which runs with an ASP.NET Server-backend, you need to specify the &lt;strong&gt;-ho or &amp;ndash;hosted&lt;/strong&gt; parameter&lt;/p&gt;&#xA;&lt;p&gt;Let&amp;rsquo;s run a similar command as before to create a Blazor Web Assembly app, without specifying the &amp;ndash;hosted parameter, to see the difference:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dotnet new blazorwasm &#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;Once created, check the file structure of this new application folder:&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2021-11-08_08.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;BlazorWasmNoHosted&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;p&gt;As you can see, there is no separation for the Client and Server code files, but we only have the Pages and Shared folder.&lt;/p&gt;&#xA;&lt;h2 id=&#34;integrate-azure-ad-authentication&#34;&gt;Integrate Azure AD authentication&#xD;&#xA;&lt;/h2&gt;&lt;p&gt;It might be required to integrate authentication into your Blazor Web Assembly app, and why not considering Azure Active Directory for this, right? While there is a bit more required than what the commandline parameters give you, it&amp;rsquo;s a great starting point, deploying a new Blazor app which is pre-authentication ready. To do this, specify the &lt;strong&gt;-au or &amp;ndash;auth&lt;/strong&gt; parameter&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dotnet new blazorwasm -au individual&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;../images/2021-11-08_09.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;BlazorWasmAuth&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;p&gt;The creation process is about the same as before; so let&amp;rsquo;s trigger another &lt;strong&gt;dotnet run&lt;/strong&gt; action and connect to the app from the browser:&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2021-11-08_10.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;BlazorWasmAuth&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;p&gt;Nice! There is a prompt here, informing us to customize the Program.cs file, and provide the necessary Azure AD Authentication for our application identity&lt;/p&gt;&#xA;&lt;p&gt;Let&amp;rsquo;s have a look at the Program.cs file, which also contains a little snippet and pointer where to add the necessary Azure AD Authentication settings and where to find additional info in the docs.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2021-11-08_11.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;BlazorWasmAuth&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;running-blazor-app-as-progressive-web-app&#34;&gt;Running Blazor App as Progressive Web App&#xD;&#xA;&lt;/h2&gt;&lt;p&gt;I won&amp;rsquo;t drill down on all the details on what a Progressive Web App is about, but in short, it allows you to turn your Web Assembly browser-based app into a &amp;ldquo;desktop&amp;rdquo;-mode application, or even using it &amp;ldquo;offline&amp;rdquo; (depending on app specifics). This is done by defining the &lt;strong&gt;-p or &amp;ndash;pwa&lt;/strong&gt; parameter.&lt;/p&gt;&#xA;&lt;p&gt;Let&amp;rsquo;s try it out:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dotnet new blazorwasm -p &#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dotnet run&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;../images/2021-11-08_12.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;BlazorWasmAuth&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;p&gt;and testing it again from the browser by connecting to https://localhost:&lt;port&gt;&lt;/p&gt;&#xA;&lt;p&gt;From the browser properties, navigate to &lt;strong&gt;Apps&lt;/strong&gt; and select &lt;strong&gt;Install this app&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2021-11-08_13.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;BlazorWasmAuth&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;p&gt;and confirming the popup prompt &lt;strong&gt;Install&lt;/strong&gt; once more.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2021-11-08_14.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;BlazorWasmAuth&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;p&gt;Once installed, you can set some additional settings by clicking the &lt;strong&gt;Allow&lt;/strong&gt; button.&lt;/p&gt;&#xA;&lt;p&gt;From here, your app will run in a separate docked window, just like any other Windows Application. You could also add a shortcut to the desktop, taskbar or start Menu.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2021-11-08_15.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;BlazorWasmAuth&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;summary&#34;&gt;Summary&#xD;&#xA;&lt;/h1&gt;&lt;p&gt;In this post, I introduced you to creating your First Blazor Web Assembly App, using the dotnet commandline syntax. Starting from the base Blazorwasm template creation, I also covered several interesting creation parameters that could come in handy when creating Blazor Web Assembly apps, directly from the commandline.&lt;/p&gt;&#xA;&lt;p&gt;In a next Blazor-related post, I&amp;rsquo;ll walk you through some fundamental layout customization options, changing the look and feel of the navigation bar, the top bar and the actual web app pages themselves by introducing HTML and CSS primarily.&lt;/p&gt;&#xA;&lt;p&gt;For now, take care of yourself and your family, see you again soon with more Blazor-news.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.buymeacoffee.com/pdtit&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xD;&#xA;    &gt;&lt;img src=&#34;../images/buy_me_a_coffee.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;BuyMeACoffee&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Cheers, Peter&lt;/p&gt;&#xA;</description>
-        </item><item>
-            <title>Coding Apps in Blazor from a non-developer standpoint - Part 2</title>
-            <link>https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer---part-2/</link>
-            <pubDate>Sun, 07 Nov 2021 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer---part-2/</guid>
-            <description>&lt;p&gt;Hello readers,&lt;/p&gt;&#xA;&lt;p&gt;About 2 months ago, I promised I would start writing down my adventures in the DotNet Blazor development world, which you can read in my &lt;a class=&#34;link&#34; href=&#34;https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xD;&#xA;    &gt;first Blazor-related post here&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;While that post was more of a &amp;ldquo;setting the scene&amp;rdquo; how I ended up in learning Blazor (and C# mainly) and what the differences are between Blazor Server and Blazor WebAssembly, it also listed up the TOP 8 objectives I want to get out of these articles.&lt;/p&gt;&#xA;&lt;p&gt;Let&amp;rsquo;s kick it off with the first one, &lt;strong&gt;Deploying your first Blazor Server App&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;prerequisites&#34;&gt;Prerequisites&#xD;&#xA;&lt;/h1&gt;&lt;p&gt;To make sure you are ready to go and follow-along, let me list up some prereqs:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community&amp;amp;rel=16&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xD;&#xA;    &gt;Visual Studio IDE&lt;/a&gt;&#xA;Any flavor of Visual Studio 2019 or later should work (know that 2022 is getting launched Nov 8th&amp;hellip;), and depending on your situation, you might already have access to a licensed edition of Standard, Professional or Enterprise from your employer. If not, totally fine, as there is also a &lt;strong&gt;free Community Edition&lt;/strong&gt; available from the link I shared&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://dotnet.microsoft.com/download/visual-studio-sdks&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xD;&#xA;    &gt;.NET RunTime&lt;/a&gt;&#xA;In order to run C# and .NET applications, one needs to have the necessary .NET RunTime installed on the development workstation. In a later article, I&amp;rsquo;ll describe how you can publish Blazor apps to Azure App Services or Containerized workloads, where you will notice the .NET RunTime is required as well. If you are running &lt;strong&gt;Visual Studio 2019&lt;/strong&gt;, install the&#xA;&lt;strong&gt;.NET 5.0&lt;/strong&gt; RunTime; if, like me, you are running &lt;strong&gt;Visual Studio 2022 Preview&lt;/strong&gt;, you can directly go for &lt;strong&gt;.NET 6.0&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;(I&amp;rsquo;m running Windows 11, Visual Studio 2022 Preview 7.0, which means it could look a bit different on your machine, although most steps will be identical&amp;hellip;)&lt;/p&gt;&#xA;&lt;h1 id=&#34;using-visual-studio-ide-to-create-a-blazor-server-app&#34;&gt;Using Visual Studio IDE to Create a Blazor Server App&#xD;&#xA;&lt;/h1&gt;&lt;p&gt;Assuming you have all the prereqs covered, you can create your first Blazor Server App by going through the following steps:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Launch Visual Studio on your machine, and select &lt;strong&gt;Create a new Project&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2021-11-07_01.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;VisualStudioLaunch&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;ol start=&#34;2&#34;&gt;&#xA;&lt;li&gt;In the &lt;strong&gt;search box&lt;/strong&gt;, type blazor&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2021-11-07_02.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;SearchBlazor&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;ol start=&#34;3&#34;&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Notice there is a different template for a Blazor Server app or a Blazor Web Assembly app; for now, &lt;strong&gt;select Blazor Server App&lt;/strong&gt; + Next&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;In the &lt;em&gt;Configure Your New Project&lt;/em&gt; step, set a &lt;strong&gt;name&lt;/strong&gt; for your new project, for example &lt;strong&gt;MyFirstBlazorApp&lt;/strong&gt;, and update the location if needed (Notice how VStudio is by default pointing to your user&amp;rsquo;s profile directory, creating a sources and repos subfolder structure)&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2021-11-07_03.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;ConfigureProject&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;ol start=&#34;5&#34;&gt;&#xA;&lt;li&gt;This brings us to the &lt;em&gt;Additional Information&lt;/em&gt; step, where you specify the &lt;strong&gt;Framework&lt;/strong&gt;, which (preferably, but not required&amp;hellip;) is the latest &lt;strong&gt;.NET 6.0 (Long-Term Support)&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2021-11-07_04.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;60Framework&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;ol start=&#34;6&#34;&gt;&#xA;&lt;li&gt;Confirm by clicking the &lt;strong&gt;Create&lt;/strong&gt; button. After only a few minutes, the new Project got created and is available for &amp;ldquo;customizing&amp;rdquo;.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2021-11-07_05.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;60Framework&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;ol start=&#34;7&#34;&gt;&#xA;&lt;li&gt;Before launching the app and see it in action, let&amp;rsquo;s quickly describe the core application folder/file structure:&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2021-11-07_06.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;FolderFileStructure&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;(1). Solution - the way Visual Studio combines all code; a Solution can have a single project or multiple projects&#xD;&#xA;(2). Project - A project is a combination of dev source code, which gets compiled into a workable application (the runtime)&#xD;&#xA;(3). Data - SubFolder, which contains classes, presenting data; in this example, it generates weatherforecast information randomly&#xD;&#xA;(4). Pages - Blazor is using razor-pages, which are resonsible for the actual layout of a web page. It typically has a @page identifier for the actual page, followed by an HTML-code section and an actual C#-code section&#xD;&#xA;(5). Shared - Blazor can share code (pages) between a Server and Web Assembly (Client) project. Those pages will preferably be saved in the Shared folder, to avoid duplicating source code between both&#xD;&#xA;(6). Appsettings.JSON - this file contains application settings to run, for example Logging information, Database Connection Strings, Authentication Keys,...&#xD;&#xA;(7). Program.cs - The actual &amp;quot;core&amp;quot; of the application runtime; this is where you define which services should be used, amongst other coding information where relevant&#xD;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;ol start=&#34;8&#34;&gt;&#xA;&lt;li&gt;Run the sample app (in Debug Mode) by pressing &lt;strong&gt;&amp;ldquo;F5&amp;rdquo;&lt;/strong&gt; orby  &lt;strong&gt;Right-click on the Project / Debug / Run Instance&lt;/strong&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;This starts running the application on a dynamic browser port in your default browser,&lt;/li&gt;&#xA;&lt;li&gt;as well as automatically switching Visual Studio to the Diagnostics and Error blades&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2021-11-07_07.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;DebugView&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;ol start=&#34;9&#34;&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;The application loads in the browser and shows the layout of the app; feel free to click around the different menu options in the left &lt;strong&gt;Navigation Bar&lt;/strong&gt; and become familiar with the base app functionality&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Navigation Bar is the left menu, which allows you to easily navigate across your application pages&lt;/li&gt;&#xA;&lt;li&gt;The middle section is loading a specific razor-page, displaying HTML layout and data (the WeatherForecast information)&lt;/li&gt;&#xA;&lt;li&gt;Top Menu bar, currently only having an &amp;ldquo;About&amp;rdquo; hyperlink to the .NET website&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2021-11-07_08.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;RunningApp&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;ol start=&#34;10&#34;&gt;&#xA;&lt;li&gt;From the Navigation Bar, select &lt;strong&gt;Counter&lt;/strong&gt;; this opens the &amp;ldquo;Counter&amp;rdquo; page, which has a button, responding to each Click, and changing the value of the Current count field.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2021-11-07_09.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;Counter&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;ol start=&#34;11&#34;&gt;&#xA;&lt;li&gt;Switch back to Visual Studio, and open the &lt;strong&gt;Counter.razor&lt;/strong&gt; file, displaying the actual code content. Notice the first section (@page) has a pointer to &lt;strong&gt;/counter&lt;/strong&gt;; this is called a route. (If you would switch back to the browser, you will see that once you select the &lt;em&gt;Counter&lt;/em&gt; option in the Navigation Bar, the URL switches to &lt;url&gt;/counter; if you navigate to &lt;em&gt;Fetch Data&lt;/em&gt;, the route will switch to &lt;url&gt;/fetchdata, which is loading the FetchData.Razor page file. If you navigate to Home, it&amp;rsquo;s loading the index.html page from the Pages-directory).&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;The &lt;strong&gt;@code&lt;/strong&gt; section of the counter.razor page,  is where the actual C#-code lives. While it only has a few lines of code here, it actually works fine.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;The code section&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;private int currentCount = 0;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;specifies the currentCount field to be equal to zero. This happens every time the application is loaded (yes, you can try that out&amp;hellip;).&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;The next code section,&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;private void IncrementCount()&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    currentCount++;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;is getting triggered whenever the &amp;ldquo;Click Me&amp;rdquo; button is getting clicked, because of the @onclick-event specified for the button HTML-object. Followed by a basic C#-code language function &amp;ldquo;++&amp;rdquo;, which means, add a value 1 to the current value of the object currentCount.&lt;/p&gt;&#xA;&lt;p&gt;Easy said, whenever you start the app, the counter value is 0, but gets increased with a value &amp;ldquo;1&amp;rdquo;, every time you click the &amp;ldquo;Click Me&amp;rdquo; button.&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h1 id=&#34;debugging-a-blazor-app&#34;&gt;Debugging a Blazor App&#xD;&#xA;&lt;/h1&gt;&lt;p&gt;&lt;img src=&#34;../images/2021-11-07_10.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;Counter&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Since we are in &amp;ldquo;Visual Studio Debug mode&amp;rdquo; (I&amp;rsquo;ll write much more on that in a later article&amp;hellip;), let me briefly show you what it allows you to do. In short, it allows you to set a breakpoint, which gets prompted for during the run time of the application. To &lt;strong&gt;set a breakpoint&lt;/strong&gt;, move your mouse pointer to the front of a line of code (or a code section) (the grey bar), and click. This adds a red dot, which reflects the breakpoint.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;From here, switch back to the application in the browser, and click the &amp;ldquo;Click Me&amp;rdquo; button again in the Counter page. Notice how you get brought back into Visual Studio, where the breakpoint got updated with a yellow arrow, identifying where you are in the debugging (we only have 1 breakpoint for now, but very convenient if you have several of those set&amp;hellip;). It will also show the actual value of the CurrentCount in a little popup balloon message, as well as below in the Autos section&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2021-11-07_11.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;Counter&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;ol start=&#34;2&#34;&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Quit Debugging-mode by pressing &lt;strong&gt;Shift-F5&lt;/strong&gt;, or by clicking the &lt;strong&gt;Stop button&lt;/strong&gt; (red square button in the top menu) in Visual Studio, or by &lt;strong&gt;closing the browser&lt;/strong&gt; that&amp;rsquo;s running the Blazor app.&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Last, clear the Breakpoint in Visual Studio by clicking on it again.&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h1 id=&#34;summary&#34;&gt;Summary&#xD;&#xA;&lt;/h1&gt;&lt;p&gt;In this post, I introduced you to creating your First Blazor Server App, using the Visual Studio template for this application type. I described the core folder/file structure of your Blazor Project, as well as explaining some of the base concepts of razor pages. You learned how to run your application, as well as using the basics of debugging, by setting a breakpoint and validating the outcome.&lt;/p&gt;&#xA;&lt;p&gt;In a next Blazor-related post, I&amp;rsquo;ll walk you through some fundamental layout customization options, changing the look and feel of the navigation bar, the top bar and the actual web app pages themselves by introducing HTML and CSS primarily.&lt;/p&gt;&#xA;&lt;p&gt;Btw, if you are interested in developing with Blazor, you can &lt;a class=&#34;link&#34; href=&#34;https://www.toptal.com/blazor&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xD;&#xA;    &gt;hire a Blazor developer from Toptal&lt;/a&gt;, a leading platform for connecting top-tier developers with clients.&lt;/p&gt;&#xA;&lt;p&gt;For now, take care of yourself and your family, see you again soon with more Blazor-news.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.buymeacoffee.com/pdtit&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xD;&#xA;    &gt;&lt;img src=&#34;../images/buy_me_a_coffee.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;BuyMeACoffee&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Cheers, Peter&lt;/p&gt;&#xA;</description>
-        </item><item>
-            <title>Coding Apps in Blazor from a non-developer standpoint</title>
-            <link>https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer/</link>
-            <pubDate>Mon, 06 Sep 2021 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer/</guid>
-            <description>&lt;p&gt;Hello readers,&lt;/p&gt;&#xA;&lt;p&gt;The ones who know me already, know I have used traditional on-premises datacenter infrastructure for the first 15 years of my career, before I jumped onto Azure public cloud. Yes, I was an infra guy. And sometimes I still think I am, although I&amp;rsquo;m more and more shifting to containers and devops over the last 3 years.&lt;/p&gt;&#xA;&lt;p&gt;With the 25 years of IT experience, there was always 1 skillset missing&amp;hellip; coding, or learning a development language in better words.&lt;/p&gt;&#xA;&lt;p&gt;After talking to several DevOps folks within Microsoft and elsewhere, it became clear I had to learn some language, if I wanted to take this DevOps thing serious (trust me, it is not required, but definitely recommended, now I look back how I talk about DevOps with some development skills acquired)&lt;/p&gt;&#xA;&lt;h1 id=&#34;so-many-languages-to-choose-from&#34;&gt;So many languages to choose from&#xD;&#xA;&lt;/h1&gt;&lt;p&gt;Once I set my mind to it, the next question was, what language am I going to learn myself?&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Python seemed the easiest, is quite popular, but didn&amp;rsquo;t appeal to me for still an unknown reason.&lt;/li&gt;&#xA;&lt;li&gt;Java seemed the most professional, but also the most complex.&lt;/li&gt;&#xA;&lt;li&gt;Go looked promising, but I never really seen it in action.&lt;/li&gt;&#xA;&lt;li&gt;C# and DotNet was like the natural go to, as we are using a lot of DotNet examples during different Azure workshops I&amp;rsquo;m delivering every week&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h1 id=&#34;dotnet-as-my-logical-example&#34;&gt;DotNet as my logical example&#xD;&#xA;&lt;/h1&gt;&lt;p&gt;Within the DotNet (&lt;a class=&#34;link&#34; href=&#34;https://dotnet.microsoft.com/learn/dotnet/what-is-dotnet&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xD;&#xA;    &gt;https://dotnet.microsoft.com/learn/dotnet/what-is-dotnet&lt;/a&gt;) family, you still have a few different options:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;DotNet Core&lt;/strong&gt;, which gives you cross-platform .NET implementation for browsers, apps on any platform OS&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;DotNet Framework&lt;/strong&gt;, supporting full Windows applications, and websites&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Xamarin/Mono&lt;/strong&gt;, which is a DotNet implementation for mobile apps&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2021-09-06_01.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;DotNet&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;how-i-ended-up-with-blazor&#34;&gt;How I ended up with Blazor&#xD;&#xA;&lt;/h1&gt;&lt;p&gt;If I was going to develop &amp;ldquo;something&amp;rdquo;, it would probably be a console app (easy to demo) or a web application (perfect for my Azure training deliveries and I can run it in Azure and Containers -&amp;gt; bonus)&#xA;From there, my mind was set to start developing Web Applications, and more specifically by using &lt;strong&gt;Blazor&lt;/strong&gt; (&lt;a class=&#34;link&#34; href=&#34;https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor%29&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xD;&#xA;    &gt;https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor)&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2021-09-06_02.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;Blazor&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;p&gt;Over Christmas holidays, I started building my library of learning material, which consisted of Microsoft Docs, Youtube videos and other community sessions. (I&amp;rsquo;ll cover some of these in another article later)&lt;/p&gt;&#xA;&lt;p&gt;I also started working on building an app from scratch, which would make my life as an Azure trainer easier, as well as for my colleagues.&lt;/p&gt;&#xA;&lt;p&gt;I managed to build a &amp;ldquo;useable&amp;rdquo; web application over the course of a few months, spending about 10 hours a week; As I approached 3000 followers on Twitter recently, I decided to come up with a series of posts on Blazor, explaining what I learned, where I struggled (and still am), to help others who are like myself, starting with no dev experience whatsoever.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2021-09-06_03.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;3000 Twitter Followers&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;what-is-blazor&#34;&gt;What is Blazor&#xD;&#xA;&lt;/h1&gt;&lt;p&gt;Blazor comes in 2 different flavors:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Blazor Server&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Blazor Web Assembly&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;Blazor Server&lt;/strong&gt; is closest to a traditional ASP.Net application, running on a web server, which can be Windows or Linux, as well as a containerized platform. Updates in the web app layout, the actual events (clicking buttons, routing pages,&amp;hellip;) and JavaScript handling (yes, I&amp;rsquo;ll detail that in another article) are all transferred between client (your browser) and the server (the backend) using SignalR. Think of this as a messaging handler between client and server.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Blazor WebAssembly&lt;/strong&gt; is a 2nd flavor, which doesn&amp;rsquo;t require a server back-end, but rather runs all DotNet code directly in the browser. This is not a DotNet something, but rather a capability of WebAssembly (WASM in short), an open standard which aims to allow running powerful applications natively in a browser. If any Server-side events are needed, you can integrate it with Blazor Server or other API-based back-ends.&lt;/p&gt;&#xA;&lt;p&gt;Blazor as terminology is coming from a combination of &amp;ldquo;Browser&amp;rdquo; and &amp;ldquo;Razor&amp;rdquo; (&lt;a class=&#34;link&#34; href=&#34;https://docs.microsoft.com/en-us/aspnet/core/razor-pages/?view=aspnetcore-5.0&amp;amp;tabs=visual-studio%29&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xD;&#xA;    &gt;https://docs.microsoft.com/en-us/aspnet/core/razor-pages/?view=aspnetcore-5.0&amp;tabs=visual-studio)&lt;/a&gt;, if you were wondering.&lt;/p&gt;&#xA;&lt;p&gt;The way I see it (as non-developer :) ), is that those Razor Pages are like a simplified programming language in itself, combining HTML layout controls and actual C# coding together. By routing Razor Pages across different Razor-files (cshtml as extension), you build up your application. They are also recognized by the &amp;ldquo;@page&amp;rdquo; directive at the beginning of each file.&lt;/p&gt;&#xA;&lt;p&gt;Below is a sample Razor Page, coming from the default Blazor Server or Blazor Web Assembly template in Visual Studio - which I will describe in a later blog post how to deploy it and what it does).&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;@page &amp;#34;/counter&amp;#34;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;lt;h1&amp;gt;Counter&amp;lt;/h1&amp;gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;lt;p&amp;gt;Current count: @currentCount&amp;lt;/p&amp;gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;lt;button class=&amp;#34;btn btn-primary&amp;#34; @onclick=&amp;#34;IncrementCount&amp;#34;&amp;gt;Click me&amp;lt;/button&amp;gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;@code {&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    private int currentCount = 0;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    private void IncrementCount()&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    {&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        currentCount++;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    }&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;As you can see, the @page directive points to the &amp;ldquo;name&amp;rdquo; of this web page, being the &amp;ldquo;counter page&amp;rdquo;. Thinks of this as browsing to https://yourwebsiteURL/counter&lt;/p&gt;&#xA;&lt;p&gt;next, there is a bit of HTML code for the actual layout of the page, and last, it contains some C# code with the actual intelligence of the counter button.&lt;/p&gt;&#xA;&lt;p&gt;The way this page looks in the browser is like this:&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2021-09-06_04.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;Blazor sample&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;what-am-i-going-to-do-from-here&#34;&gt;What am I going to do from here?&#xD;&#xA;&lt;/h1&gt;&lt;p&gt;As promised, my idea is to share as much of what I learned from Blazor in the last few months, and taking you through a process to start learning to build your own Blazor applications. The following will be covered over a series of articles in the next coming weeks:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Deploying your first Blazor Server App&lt;/li&gt;&#xA;&lt;li&gt;Customizing the basic layout&lt;/li&gt;&#xA;&lt;li&gt;Updating Navigation Menu items&lt;/li&gt;&#xA;&lt;li&gt;Creating API Controllers to read data&lt;/li&gt;&#xA;&lt;li&gt;Integrating Entity Framework to read data from SQL DB&lt;/li&gt;&#xA;&lt;li&gt;Building forms for CRUD (create, read, update, delete) operations&lt;/li&gt;&#xA;&lt;li&gt;Integrating with external API Services to read data&lt;/li&gt;&#xA;&lt;li&gt;Publishing Blazor Server to Azure App Services&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;I hope you will learn from this, and enjoy the journey as much as I did, and still do. While I am far from calling myself a developer, it feels rather rewarding to see how code can be turned into a useful application!&lt;/p&gt;&#xA;&lt;p&gt;Btw, if you are interested in developing with Blazor, you can &lt;a class=&#34;link&#34; href=&#34;https://www.toptal.com/blazor&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xD;&#xA;    &gt;hire a Blazor developer from Toptal&lt;/a&gt;, a leading platform for connecting top-tier developers with clients.&lt;/p&gt;&#xA;&lt;p&gt;Talk to you soon,&lt;/p&gt;&#xA;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.buymeacoffee.com/pdtit&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xD;&#xA;    &gt;&lt;img src=&#34;../images/buy_me_a_coffee.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;BuyMeACoffee&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Cheers, Peter&lt;/p&gt;&#xA;</description>
-        </item><item>
-            <title>Dotnet tool install dotnet-ef failing with unauthorized</title>
-            <link>https://www.007ffflearning.com/post/dotnet-tool-install-dotnet-ef-failing-with-unauthorized/</link>
-            <pubDate>Sun, 27 Dec 2020 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/post/dotnet-tool-install-dotnet-ef-failing-with-unauthorized/</guid>
-            <description>&lt;p&gt;Hi all,&lt;/p&gt;&#xA;&lt;p&gt;I hope you all have great holidays this time around, giving you the opportunity to spend time with your family as well as having the opportunity to learn some new skills, which in my case means learning &lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.microsoft.com/en-us/aspnet/core/blazor/?view=aspnetcore-5.0&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xD;&#xA;    &gt;Blazor&lt;/a&gt;&lt;/strong&gt;, a Framework within the DotNet family, allowing for &amp;ldquo;any-client&amp;rdquo; applications (browser, mobile device).&lt;/p&gt;&#xA;&lt;p&gt;My learning journey involves building a front-end Web App, connecting to a SQL (Azure) database back-end. To make this work, I want to use the &lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/ef/overview&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xD;&#xA;    &gt;SQL Server Entity Framework&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-happened&#34;&gt;What happened?&#xD;&#xA;&lt;/h2&gt;&lt;p&gt;Besides installing the necessary Nuget Packages within my application, I also need to install the dotnet-ef Entity Framework Tools, initiating the following command:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gdscript3&#34; data-lang=&#34;gdscript3&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;dotnet&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;tool&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;global&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dotnet&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ef&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;which was throwing an error&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2020-12-27_1.jpg&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;Dotnet tool install error&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-to-check&#34;&gt;What to check?&#xD;&#xA;&lt;/h2&gt;&lt;p&gt;Based on the error message and description, there were a few things to validate:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Using Preview release features; &lt;em&gt;not valid in my case&lt;/em&gt; since I&amp;rsquo;m not using preview release.&lt;/li&gt;&#xA;&lt;li&gt;Unauthorized access to the Nuget Feed; &lt;em&gt;not valid in my case&lt;/em&gt;, since I am not using any Package Feed integration; all Nuget packages can be downloaded directly from Nuget.org&lt;/li&gt;&#xA;&lt;li&gt;Mistyped the name of the tool; &lt;em&gt;well, no, it was correct&lt;/em&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;I know I was using &lt;strong&gt;DotNet 5.0.1&lt;/strong&gt; for my Blazor project, and I know I have the correct SDK and Framework installed on my machine. Let&amp;rsquo;s validate by running&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dotnet --version&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;../images/2020-12-27_2.jpg&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;Dotnet version&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;p&gt;I also installed the different EntityFramework Packages I need (FrameworkCore, Design, SQLServer,&amp;hellip;), and those are also version 5.0.1&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2020-12-27_3.jpg&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;Package version&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;how-to-fix-this-error&#34;&gt;How to fix this error?&#xD;&#xA;&lt;/h2&gt;&lt;p&gt;This explicit versioning led me to the solution; &lt;strong&gt;what if I specify that version for the tool&lt;/strong&gt;, as somehow recommended as a first thing to check (although that was referring to preview, but hey, let&amp;rsquo;s give it a try&amp;hellip;)&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gdscript3&#34; data-lang=&#34;gdscript3&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;dotnet&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;tool&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;global&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dotnet&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ef&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;version&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;5.0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;../images/2020-12-27_4.jpg&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;dotnet install version&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;p&gt;following by running&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dotnet ef&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;which loaded fine this time! Problem solved!&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2020-12-27_5.jpg&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;dotnet ef&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;p&gt;I guess the root cause of the issue is related to my &amp;ldquo;mixed&amp;rdquo; setup, where I still have the dotnetcore 3.1 on my machine as well, probably confusing the dotnet environment. By explicitly referring to the version you want to use, you can avoid seeing weird error messages.&lt;/p&gt;&#xA;&lt;p&gt;thanks, Peter&lt;/p&gt;&#xA;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.buymeacoffee.com/pdtit&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xD;&#xA;    &gt;&lt;img src=&#34;../images/buy_me_a_coffee.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;BuyMeACoffee&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/a&gt;&lt;/p&gt;&#xA;</description>
-        </item><item>
-            <title>publish your first dotnet5 app to Azure App Services</title>
-            <link>https://www.007ffflearning.com/post/publish-your-first-dotnet5-app-to-azure-app-services/</link>
-            <pubDate>Tue, 10 Nov 2020 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/post/publish-your-first-dotnet5-app-to-azure-app-services/</guid>
-            <description>&lt;p&gt;Today, Nov 10th, was the official date of the long-announced &lt;a class=&#34;link&#34; href=&#34;https://dotnet.microsoft.com/download/dotnet/5.0&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xD;&#xA;    &gt;&amp;ldquo;dotnet5 Framework&amp;rdquo;&lt;/a&gt;, and it is described as a major release. Still being new in the developer world myself, I know the basics of ASP.NET 3.7 and 4.5, so I can imagine jumping to a 5.0 release is indeed a big thing.&lt;/p&gt;&#xA;&lt;h2 id=&#34;net-50-improvements&#34;&gt;.NET 5.0 improvements&#xD;&#xA;&lt;/h2&gt;&lt;p&gt;The biggest improvements announced by the Product Team are:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Migration-friendly for older .NET versions&lt;/li&gt;&#xA;&lt;li&gt;Production-ready from day 1 of release (thorough-tested for &lt;a class=&#34;link&#34; href=&#34;http://www.dot.net&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xD;&#xA;    &gt;http://www.dot.net&lt;/a&gt; and &lt;a class=&#34;link&#34; href=&#34;http://www.bing.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xD;&#xA;    &gt;http://www.bing.com&lt;/a&gt; websites)&lt;/li&gt;&#xA;&lt;li&gt;Enhanced performance&lt;/li&gt;&#xA;&lt;li&gt;ClickOnce client app publishing&lt;/li&gt;&#xA;&lt;li&gt;Smaller container image footprint&lt;/li&gt;&#xA;&lt;li&gt;Supportability for Windows Arm64 and WebAssembly (Blazor)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Support will go into Feb 2022, which seems the release date for DotNet 6.0 LTS&lt;/p&gt;&#xA;&lt;p&gt;Another big deal is the &lt;strong&gt;Unification&lt;/strong&gt; of the DotNet platform; what this means is that the .NET standard and characteristics will be available across different scenarios (mobile apps, web apps, webassembly, desktop apps, IOT,&amp;hellip;) relying on the same set of APIs, tools and languages. While not all has been integrated and unified yet, it&amp;rsquo;s still on the roadmap to become fully unified by version 6.0 in about 18 months from now.&lt;/p&gt;&#xA;&lt;p&gt;More details about the dotnet 5.0 release can be read in the &lt;a class=&#34;link&#34; href=&#34;https://devblogs.microsoft.com/dotnet/announcing-net-5-0/?utm_source=dotnet-website&amp;amp;utm_medium=banner&amp;amp;utm_campaign=blog-banner&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xD;&#xA;    &gt;&amp;ldquo;announcement blog:&amp;rdquo;&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;developer-environment-dependencies&#34;&gt;Developer Environment dependencies&#xD;&#xA;&lt;/h2&gt;&lt;h3 id=&#34;visual-studio-2019&#34;&gt;Visual Studio 2019&#xD;&#xA;&lt;/h3&gt;&lt;p&gt;In order to use the .NET 5.0 Framework, an update of &lt;strong&gt;Visual Studio 2019&lt;/strong&gt; is required. More specifically, it needs to be version &lt;strong&gt;16.8.0&lt;/strong&gt;; if all is set as default in your IDE, you should get this prompt to upgrade automatically; if this has been disabled, you could launch the upgrade yourself by starting the Visual Studio Installer from within the Visual Studio menu option &lt;strong&gt;Tools / Get Tools and Features&amp;hellip;&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2020-11-10_01.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;Visual Studio Installer&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;visual-studio-for-mac&#34;&gt;Visual Studio for MAC&#xD;&#xA;&lt;/h3&gt;&lt;p&gt;Updating to the &lt;a class=&#34;link&#34; href=&#34;https://visualstudio.microsoft.com/vs/mac/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xD;&#xA;    &gt;&amp;ldquo;latest version&amp;rdquo;&lt;/a&gt; of Visual Studio for MAC should bring in support for .NET 5.0;&lt;/p&gt;&#xA;&lt;h3 id=&#34;visual-studio-code&#34;&gt;Visual Studio Code&#xD;&#xA;&lt;/h3&gt;&lt;p&gt;Integration of .NET 5.0 into VIsual Studio Code is managed out of the &lt;a class=&#34;link&#34; href=&#34;https://code.visualstudio.com/docs/languages/dotnet&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xD;&#xA;    &gt;&amp;ldquo;C# Extension&amp;rdquo;&lt;/a&gt;, so if you update this one to the latest version, you are good to go too.&lt;/p&gt;&#xA;&lt;h2 id=&#34;creating-your-first-net-50-project-in-visual-studio&#34;&gt;Creating your first .NET 5.0 Project in Visual Studio&#xD;&#xA;&lt;/h2&gt;&lt;p&gt;Now the prerequirements have been covered, let&amp;rsquo;s give it a try and build a new ASP.NET Web Application:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;From the Visual Studio 2019 menu, select &lt;strong&gt;File / New / Project&amp;hellip;&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;From the list of templates, select &lt;strong&gt;&amp;ldquo;ASP.NET Core Web Application&amp;rdquo;&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2020-11-10_02.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;ASP.NET Web App Template&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;ol start=&#34;3&#34;&gt;&#xA;&lt;li&gt;&lt;strong&gt;Press Create&lt;/strong&gt;; in the next step, from the top, select &lt;strong&gt;.NET Core&lt;/strong&gt; and &lt;strong&gt;ASP.NET Core 5.0&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2020-11-10_03.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;ASP.NET Web App Template&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;ol start=&#34;4&#34;&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Choose &lt;strong&gt;ASP.NET Core Web App&lt;/strong&gt; as template + confirm by pressing the &lt;strong&gt;Create&lt;/strong&gt; button. Wait for the project to load.&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;From &lt;strong&gt;Solution Explorer&lt;/strong&gt;, select the Project you just created (the bold title), and open its &lt;strong&gt;Properties&lt;/strong&gt;; this will also confirm the &lt;strong&gt;.NET 5.0&lt;/strong&gt; Framework&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2020-11-10_04.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;ASP.NET Web App Template&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;publishing-your-web-app-to-azure-app-services&#34;&gt;Publishing your Web App to Azure App Services&#xD;&#xA;&lt;/h2&gt;&lt;p&gt;Developing an app is one thing, but what&amp;rsquo;s giving more joy than seeing it running in Azure? Here we go:&lt;/p&gt;&#xA;&lt;p&gt;(Assumptions: you have an active Azure subscription, and the necessary RBAC permissions to create and deploy App Services&amp;hellip;)&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;From Solution Explorer / select your Project (the bold title), &lt;strong&gt;right click&lt;/strong&gt; to open the context menu, and select &lt;strong&gt;publish&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2020-11-10_05.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;ASP.NET Web App Template&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;ol start=&#34;2&#34;&gt;&#xA;&lt;li&gt;From the &lt;strong&gt;Publish&lt;/strong&gt; wizard Target step, select &lt;strong&gt;Azure&lt;/strong&gt;; click Next&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2020-11-10_06.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;ASP.NET Web App Template&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;ol start=&#34;3&#34;&gt;&#xA;&lt;li&gt;From the wizard&amp;rsquo;s Specific Target step, select &lt;strong&gt;Azure App Service (Linux)&lt;/strong&gt;; click Next&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2020-11-10_07.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;ASP.NET Web App Template&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;ol start=&#34;4&#34;&gt;&#xA;&lt;li&gt;From the wizard&amp;rsquo;s App Service step, Click the &lt;strong&gt;+&lt;/strong&gt; sign to **create a new &lt;strong&gt;Azure App Service&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2020-11-10_08.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;ASP.NET Web App Template&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;- provide a **unique** name for the webapp, using lowercase characters&#xD;&#xA;- specify a new for a **new Resource Group**&#xD;&#xA;- specify a new **App Service Plan** for example S1 - 1.75Gb Memory&#xD;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2020-11-10_09.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;ASP.NET Web App Template&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;ol start=&#34;5&#34;&gt;&#xA;&lt;li&gt;Validate all the settings, and confirm by pressing &lt;strong&gt;Finish&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2020-11-10_10.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;ASP.NET Web App Template&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;ol start=&#34;6&#34;&gt;&#xA;&lt;li&gt;From the summary page, press &lt;strong&gt;Publish&lt;/strong&gt;; This starts the publishing process.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2020-11-10_11.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;ASP.NET Web App Template&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;ol start=&#34;7&#34;&gt;&#xA;&lt;li&gt;Wait for it to complete successfully. The process can be viewed from the &lt;strong&gt;Output window&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2020-11-10_12.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;ASP.NET Web App Template&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;ol start=&#34;8&#34;&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;After waiting another few seconds, your &lt;strong&gt;default browser&lt;/strong&gt; opens the Web App URL, and shows the web app running&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Let&amp;rsquo;s validate the App Service Configuration settings from within the Azure Portal:&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Log on to &lt;a class=&#34;link&#34; href=&#34;https://portal.azure.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xD;&#xA;    &gt;https://portal.azure.com&lt;/a&gt; using your Azure Admin Credentials&lt;/li&gt;&#xA;&lt;li&gt;Browse to App Services&lt;/li&gt;&#xA;&lt;li&gt;Notice the App Service you just created&lt;/li&gt;&#xA;&lt;li&gt;Browse to this App Service&amp;rsquo;s &lt;strong&gt;Configuration&lt;/strong&gt; (under Settings)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2020-11-10_13.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;ASP.NET Web App Template&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;ol start=&#34;10&#34;&gt;&#xA;&lt;li&gt;Notice the correct &lt;strong&gt;.NET 5.0&lt;/strong&gt; version&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;summary&#34;&gt;Summary&#xD;&#xA;&lt;/h2&gt;&lt;p&gt;In this article, you got introduced to the new .NET 5.0 Framework. I walked you through the Project setup in VIsual Studio 2019 for an ASP.NET Core 5.0 based web application, followed by publishing this to a new Azure App Service resource.&lt;/p&gt;&#xA;&lt;p&gt;As always, I hope you learned from this article; ping me whenever you got any (Azure) questions.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.buymeacoffee.com/pdtit&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xD;&#xA;    &gt;&lt;img src=&#34;../images/buy_me_a_coffee.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;BuyMeACoffee&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Take care, Peter&lt;/p&gt;&#xA;</description>
-        </item></channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>DotNet on Azure Readiness starts here...</title><link>https://www.007ffflearning.com/tags/dotnet/</link><description>Recent content in DotNet on Azure Readiness starts here...</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 08 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/dotnet/index.xml" rel="self" type="application/rss+xml"/><item><title>Deploying .NET6.0 Blazor App using dotnet commandline</title><link>https://www.007ffflearning.com/post/deploying-blazor-apps-using-dotnet-commandline/</link><pubDate>Mon, 08 Nov 2021 00:00:00 +0000</pubDate><guid>https://www.007ffflearning.com/post/deploying-blazor-apps-using-dotnet-commandline/</guid><description>&lt;p&gt;Hello readers,&lt;/p&gt;
+&lt;p&gt;About 2 months ago, I promised I would start writing down my adventures in the DotNet Blazor development world, which you can read about in my &lt;a class="link" href="https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer/" target="_blank" rel="noopener"
+ &gt;first&lt;/a&gt; and &lt;a class="link" href="https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer-part-2/" target="_blank" rel="noopener"
+ &gt;second&lt;/a&gt; post.&lt;/p&gt;
+&lt;p&gt;Welcome to &amp;ldquo;Coding Apps in Blazor from a non-developer standpoint - Part 3&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;This next article will cover about the same as the previous one, deploying the Blazor Server app template, but instead of using Visual Studio GUI for this, I&amp;rsquo;ll use the &lt;strong&gt;dotnet commandline&lt;/strong&gt; tool this time. As it comes with some cool enhancements and options. And, next to that, it&amp;rsquo;s always nice to rely on command shell to speed up certain tasks.&lt;/p&gt;
+&lt;h1 id="prerequisites"&gt;Prerequisites
+&lt;/h1&gt;&lt;p&gt;To make sure you are ready to go and follow-along, let me list up some prereqs:&lt;/p&gt;
+&lt;p&gt;The only prereq for the actual creation part, would be the .NET RunTime:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class="link" href="https://dotnet.microsoft.com/download/visual-studio-sdks" target="_blank" rel="noopener"
+ &gt;.NET RunTime&lt;/a&gt;
+In order to run C# and .NET applications, one needs to have the necessary .NET RunTime installed on the development workstation. In a later article, I&amp;rsquo;ll describe how you can publish Blazor apps to Azure App Services or Containerized workloads, where you will notice the .NET RunTime is required as well. If you are running &lt;strong&gt;Visual Studio 2019&lt;/strong&gt;, install the
+&lt;strong&gt;.NET 5.0&lt;/strong&gt; RunTime; if, like me, you are running &lt;strong&gt;Visual Studio 2022 Preview&lt;/strong&gt;, you can directly go for &lt;strong&gt;.NET 6.0&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;(I&amp;rsquo;m running Windows 11, Visual Studio 2022 Preview 7.0, which means it could look a bit different on your machine, although most steps will be identical&amp;hellip;)&lt;/p&gt;
+&lt;p&gt;However, what&amp;rsquo;s the point in creating an application placeholder folder, if you are not customizing and developing, right? Which means you still need a Developer Interface for the actual coding. Nice thing is, that you are not limited to Visual Studio, but could also use Visual Studio Code, JetBrains Rider, or basically any other IDE you prefer.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class="link" href="https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community&amp;amp;rel=16" target="_blank" rel="noopener"
+ &gt;Visual Studio IDE&lt;/a&gt;
+Any flavor of Visual Studio 2019 or later should work (know that 2022 is getting launched Nov 8th&amp;hellip;), and depending on your situation, you might already have access to a licensed edition of Standard, Professional or Enterprise from your employer. If not, totally fine, as there is also a &lt;strong&gt;free Community Edition&lt;/strong&gt; available from the link I shared&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class="link" href="https://code.visualstudio.com/" target="_blank" rel="noopener"
+ &gt;Visual Studio Code&lt;/a&gt;
+VS Code is a &amp;ldquo;lightweight&amp;rdquo;, yet superpowerful source code editor which runs on your desktop and is available for Windows, macOS and Linux. It comes with built-in support for JavaScript, TypeScript and Node.js and has a rich ecosystem of extensions for other languages (such as C++, C#, Java, Python, PHP, Go) and runtimes (such as .NET and Unity). Common extensions I&amp;rsquo;ve been using since day 1 are Azure App Services, ARM Template tools, Docker Containers and Kubernetes. And because of the built-in support for C# and .NET overall, it&amp;rsquo;s a perfect target for developing Blazor applications.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="using-net-commandline-to-create-a-blazor-web-assembly-app"&gt;Using .NET commandline to Create a Blazor Web Assembly App
+&lt;/h1&gt;&lt;p&gt;Assuming you have all the prereqs covered, you can create your first Blazor Web Assembly App by going through the following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Open your preferred commandline Shell (Command Prompt, &lt;a class="link" href="https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701?activetab=pivot:overviewtab" target="_blank" rel="noopener"
+ &gt;Windows Terminal&lt;/a&gt; or &lt;a class="link" href="https://docs.microsoft.com/en-us/powershell/scripting/overview?view=powershell-7.1" target="_blank" rel="noopener"
+ &gt;PowerShell&lt;/a&gt;) &lt;strong&gt;and validate the dotnet version&lt;/strong&gt; by initiating the following command:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;dotnet --version
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src="../images/2021-11-08_01.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="DotnetVersion"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;In my case, I&amp;rsquo;m running the .NET 6.0 RC2 Preview, which should shift to a Release version later today :)&lt;/p&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;Next, &lt;strong&gt;create a subfolder&lt;/strong&gt; for your Blazor Application, by initating the &amp;ldquo;MD&amp;rdquo; (Make Directory on a Windows Machine) command, and &amp;ldquo;CD&amp;rdquo; (Change Directory) to &lt;strong&gt;navigate to the subfolder&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;md dotnetblazordemo
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;followed by&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;cd dotnetblazordemo
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src="../images/2021-11-08_02.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="CreateSubfolder"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="3"&gt;
+&lt;li&gt;Next, pull up the &lt;strong&gt;Blazor templates&lt;/strong&gt; by initiating the following command:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;dotnet new --list Blazor
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src="../images/2021-11-08_03.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="ListBlazor"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="4"&gt;
+&lt;li&gt;As you can see, there is &lt;strong&gt;both a template for Blazor Server and Blazor Web Assembly&lt;/strong&gt;; As I showed you how to deploy a Blazor Server App in the Visual Studio GUI &lt;a class="link" href="https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer-part-2/" target="_blank" rel="noopener"
+ &gt;post&lt;/a&gt;, let&amp;rsquo;s deploy a Blazor Web Assembly alternative this time. Remember, Web Assembly is a browser capability, allowing you to run full .NET code directly in the browser, without requiring a server-backend. For more details, check back on my &lt;a class="link" href="%28https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer/%29" &gt;Blazor introductory&lt;/a&gt; article in which I positioned the different Blazor versions and their characteristics.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Inititate the following command:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;dotnet new blazorwasm --hosted
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Which nicely creates all necessary components for our Blazor App, containing the Client (Front-End), Server (Back-End) and Shared components.&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/2021-11-08_04.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="NewBlazorWasm"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="5"&gt;
+&lt;li&gt;To actually &lt;strong&gt;run the Blazor Web Assembly app&lt;/strong&gt;, move into the &amp;ldquo;Server&amp;rdquo; folder (cd Server&amp;hellip;) and kick off the &amp;ldquo;dotnet run&amp;rdquo; command:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;dotnet run
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;This starts with compiling (Building&amp;hellip;) the app, and showing a successful run, exposing the different ports the app is listening on (https and http)&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/2021-11-08_05.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="DotNetRun"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="6"&gt;
+&lt;li&gt;Open your favorite browser, and connect to the https://localhost:&lt;port&gt; address; easiest (on Windows) is Ctrl+click and selecting the URL.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2021-11-08_06.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="BrowserApp"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;You now have a fully functional Blazor App running in the browser. Congratulations. (for details on what the app is about, feel free to check my notes in my &lt;a class="link" href="https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer-part-2/" target="_blank" rel="noopener"
+ &gt;previous article&lt;/a&gt;)&lt;/p&gt;
+&lt;h1 id="more-dotnet-blazor-command-line-options"&gt;More dotnet Blazor command line options
+&lt;/h1&gt;&lt;p&gt;While I could have stopped the article here and thanking you for following along, I wanted to emphasize some other capabilities from the dotnet commandline, and covering some of the additional parameters to choose from. Note: I will only touch on the Blazor-specific options, not all the overall dotnet commandline options available.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;To get an idea about all different options available, run the following command:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;dotnet new blazorwasm --help
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src="../images/2021-11-08_07.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="BlazorWasmHelp"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;h2 id="deploy-a-specific-framework-version"&gt;deploy a specific Framework version
+&lt;/h2&gt;&lt;p&gt;With different .NET Framework versions available on the same developer station, it might be necessary to specify a specific version of .NET to use; this is possible by adding the &lt;strong&gt;-f or &amp;ndash;framework&lt;/strong&gt; parameter to the dotnet new blazorwasm syntax, followed by the version identifier &lt;strong&gt;net5.0&lt;/strong&gt;, &lt;strong&gt;net6.0&lt;/strong&gt; or &lt;strong&gt;netcoreapp3.1&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id="include-aspnet-core-host"&gt;include ASP.NET Core host
+&lt;/h2&gt;&lt;p&gt;We used this parameter in the previous steps, but I didn&amp;rsquo;t really explain what it did. If you want to build a &amp;ldquo;client&amp;rdquo; Web Assembly version, which runs with an ASP.NET Server-backend, you need to specify the &lt;strong&gt;-ho or &amp;ndash;hosted&lt;/strong&gt; parameter&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s run a similar command as before to create a Blazor Web Assembly app, without specifying the &amp;ndash;hosted parameter, to see the difference:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;dotnet new blazorwasm 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Once created, check the file structure of this new application folder:&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/2021-11-08_08.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="BlazorWasmNoHosted"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;As you can see, there is no separation for the Client and Server code files, but we only have the Pages and Shared folder.&lt;/p&gt;
+&lt;h2 id="integrate-azure-ad-authentication"&gt;Integrate Azure AD authentication
+&lt;/h2&gt;&lt;p&gt;It might be required to integrate authentication into your Blazor Web Assembly app, and why not considering Azure Active Directory for this, right? While there is a bit more required than what the commandline parameters give you, it&amp;rsquo;s a great starting point, deploying a new Blazor app which is pre-authentication ready. To do this, specify the &lt;strong&gt;-au or &amp;ndash;auth&lt;/strong&gt; parameter&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;dotnet new blazorwasm -au individual
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src="../images/2021-11-08_09.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="BlazorWasmAuth"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;The creation process is about the same as before; so let&amp;rsquo;s trigger another &lt;strong&gt;dotnet run&lt;/strong&gt; action and connect to the app from the browser:&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/2021-11-08_10.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="BlazorWasmAuth"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;Nice! There is a prompt here, informing us to customize the Program.cs file, and provide the necessary Azure AD Authentication for our application identity&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s have a look at the Program.cs file, which also contains a little snippet and pointer where to add the necessary Azure AD Authentication settings and where to find additional info in the docs.&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/2021-11-08_11.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="BlazorWasmAuth"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;h2 id="running-blazor-app-as-progressive-web-app"&gt;Running Blazor App as Progressive Web App
+&lt;/h2&gt;&lt;p&gt;I won&amp;rsquo;t drill down on all the details on what a Progressive Web App is about, but in short, it allows you to turn your Web Assembly browser-based app into a &amp;ldquo;desktop&amp;rdquo;-mode application, or even using it &amp;ldquo;offline&amp;rdquo; (depending on app specifics). This is done by defining the &lt;strong&gt;-p or &amp;ndash;pwa&lt;/strong&gt; parameter.&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s try it out:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;span class="lnt"&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;dotnet new blazorwasm -p 
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;dotnet run
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src="../images/2021-11-08_12.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="BlazorWasmAuth"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;and testing it again from the browser by connecting to https://localhost:&lt;port&gt;&lt;/p&gt;
+&lt;p&gt;From the browser properties, navigate to &lt;strong&gt;Apps&lt;/strong&gt; and select &lt;strong&gt;Install this app&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/2021-11-08_13.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="BlazorWasmAuth"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;and confirming the popup prompt &lt;strong&gt;Install&lt;/strong&gt; once more.&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/2021-11-08_14.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="BlazorWasmAuth"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;Once installed, you can set some additional settings by clicking the &lt;strong&gt;Allow&lt;/strong&gt; button.&lt;/p&gt;
+&lt;p&gt;From here, your app will run in a separate docked window, just like any other Windows Application. You could also add a shortcut to the desktop, taskbar or start Menu.&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/2021-11-08_15.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="BlazorWasmAuth"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;h1 id="summary"&gt;Summary
+&lt;/h1&gt;&lt;p&gt;In this post, I introduced you to creating your First Blazor Web Assembly App, using the dotnet commandline syntax. Starting from the base Blazorwasm template creation, I also covered several interesting creation parameters that could come in handy when creating Blazor Web Assembly apps, directly from the commandline.&lt;/p&gt;
+&lt;p&gt;In a next Blazor-related post, I&amp;rsquo;ll walk you through some fundamental layout customization options, changing the look and feel of the navigation bar, the top bar and the actual web app pages themselves by introducing HTML and CSS primarily.&lt;/p&gt;
+&lt;p&gt;For now, take care of yourself and your family, see you again soon with more Blazor-news.&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
+ &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="BuyMeACoffee"
+ 
+ 
+ 
+ &gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Cheers, Peter&lt;/p&gt;</description></item><item><title>Coding Apps in Blazor from a non-developer standpoint - Part 2</title><link>https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer---part-2/</link><pubDate>Sun, 07 Nov 2021 00:00:00 +0000</pubDate><guid>https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer---part-2/</guid><description>&lt;p&gt;Hello readers,&lt;/p&gt;
+&lt;p&gt;About 2 months ago, I promised I would start writing down my adventures in the DotNet Blazor development world, which you can read in my &lt;a class="link" href="https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer/" target="_blank" rel="noopener"
+ &gt;first Blazor-related post here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;While that post was more of a &amp;ldquo;setting the scene&amp;rdquo; how I ended up in learning Blazor (and C# mainly) and what the differences are between Blazor Server and Blazor WebAssembly, it also listed up the TOP 8 objectives I want to get out of these articles.&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s kick it off with the first one, &lt;strong&gt;Deploying your first Blazor Server App&lt;/strong&gt;&lt;/p&gt;
+&lt;h1 id="prerequisites"&gt;Prerequisites
+&lt;/h1&gt;&lt;p&gt;To make sure you are ready to go and follow-along, let me list up some prereqs:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class="link" href="https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community&amp;amp;rel=16" target="_blank" rel="noopener"
+ &gt;Visual Studio IDE&lt;/a&gt;
+Any flavor of Visual Studio 2019 or later should work (know that 2022 is getting launched Nov 8th&amp;hellip;), and depending on your situation, you might already have access to a licensed edition of Standard, Professional or Enterprise from your employer. If not, totally fine, as there is also a &lt;strong&gt;free Community Edition&lt;/strong&gt; available from the link I shared&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class="link" href="https://dotnet.microsoft.com/download/visual-studio-sdks" target="_blank" rel="noopener"
+ &gt;.NET RunTime&lt;/a&gt;
+In order to run C# and .NET applications, one needs to have the necessary .NET RunTime installed on the development workstation. In a later article, I&amp;rsquo;ll describe how you can publish Blazor apps to Azure App Services or Containerized workloads, where you will notice the .NET RunTime is required as well. If you are running &lt;strong&gt;Visual Studio 2019&lt;/strong&gt;, install the
+&lt;strong&gt;.NET 5.0&lt;/strong&gt; RunTime; if, like me, you are running &lt;strong&gt;Visual Studio 2022 Preview&lt;/strong&gt;, you can directly go for &lt;strong&gt;.NET 6.0&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;(I&amp;rsquo;m running Windows 11, Visual Studio 2022 Preview 7.0, which means it could look a bit different on your machine, although most steps will be identical&amp;hellip;)&lt;/p&gt;
+&lt;h1 id="using-visual-studio-ide-to-create-a-blazor-server-app"&gt;Using Visual Studio IDE to Create a Blazor Server App
+&lt;/h1&gt;&lt;p&gt;Assuming you have all the prereqs covered, you can create your first Blazor Server App by going through the following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Launch Visual Studio on your machine, and select &lt;strong&gt;Create a new Project&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2021-11-07_01.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="VisualStudioLaunch"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;In the &lt;strong&gt;search box&lt;/strong&gt;, type blazor&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2021-11-07_02.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="SearchBlazor"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="3"&gt;
+&lt;li&gt;
+&lt;p&gt;Notice there is a different template for a Blazor Server app or a Blazor Web Assembly app; for now, &lt;strong&gt;select Blazor Server App&lt;/strong&gt; + Next&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;In the &lt;em&gt;Configure Your New Project&lt;/em&gt; step, set a &lt;strong&gt;name&lt;/strong&gt; for your new project, for example &lt;strong&gt;MyFirstBlazorApp&lt;/strong&gt;, and update the location if needed (Notice how VStudio is by default pointing to your user&amp;rsquo;s profile directory, creating a sources and repos subfolder structure)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2021-11-07_03.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="ConfigureProject"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="5"&gt;
+&lt;li&gt;This brings us to the &lt;em&gt;Additional Information&lt;/em&gt; step, where you specify the &lt;strong&gt;Framework&lt;/strong&gt;, which (preferably, but not required&amp;hellip;) is the latest &lt;strong&gt;.NET 6.0 (Long-Term Support)&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2021-11-07_04.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="60Framework"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="6"&gt;
+&lt;li&gt;Confirm by clicking the &lt;strong&gt;Create&lt;/strong&gt; button. After only a few minutes, the new Project got created and is available for &amp;ldquo;customizing&amp;rdquo;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2021-11-07_05.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="60Framework"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="7"&gt;
+&lt;li&gt;Before launching the app and see it in action, let&amp;rsquo;s quickly describe the core application folder/file structure:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2021-11-07_06.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="FolderFileStructure"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;(1). Solution - the way Visual Studio combines all code; a Solution can have a single project or multiple projects
+(2). Project - A project is a combination of dev source code, which gets compiled into a workable application (the runtime)
+(3). Data - SubFolder, which contains classes, presenting data; in this example, it generates weatherforecast information randomly
+(4). Pages - Blazor is using razor-pages, which are resonsible for the actual layout of a web page. It typically has a @page identifier for the actual page, followed by an HTML-code section and an actual C#-code section
+(5). Shared - Blazor can share code (pages) between a Server and Web Assembly (Client) project. Those pages will preferably be saved in the Shared folder, to avoid duplicating source code between both
+(6). Appsettings.JSON - this file contains application settings to run, for example Logging information, Database Connection Strings, Authentication Keys,...
+(7). Program.cs - The actual &amp;quot;core&amp;quot; of the application runtime; this is where you define which services should be used, amongst other coding information where relevant
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start="8"&gt;
+&lt;li&gt;Run the sample app (in Debug Mode) by pressing &lt;strong&gt;&amp;ldquo;F5&amp;rdquo;&lt;/strong&gt; orby &lt;strong&gt;Right-click on the Project / Debug / Run Instance&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;This starts running the application on a dynamic browser port in your default browser,&lt;/li&gt;
+&lt;li&gt;as well as automatically switching Visual Studio to the Diagnostics and Error blades&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2021-11-07_07.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="DebugView"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="9"&gt;
+&lt;li&gt;
+&lt;p&gt;The application loads in the browser and shows the layout of the app; feel free to click around the different menu options in the left &lt;strong&gt;Navigation Bar&lt;/strong&gt; and become familiar with the base app functionality&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Navigation Bar is the left menu, which allows you to easily navigate across your application pages&lt;/li&gt;
+&lt;li&gt;The middle section is loading a specific razor-page, displaying HTML layout and data (the WeatherForecast information)&lt;/li&gt;
+&lt;li&gt;Top Menu bar, currently only having an &amp;ldquo;About&amp;rdquo; hyperlink to the .NET website&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2021-11-07_08.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="RunningApp"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="10"&gt;
+&lt;li&gt;From the Navigation Bar, select &lt;strong&gt;Counter&lt;/strong&gt;; this opens the &amp;ldquo;Counter&amp;rdquo; page, which has a button, responding to each Click, and changing the value of the Current count field.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2021-11-07_09.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Counter"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="11"&gt;
+&lt;li&gt;Switch back to Visual Studio, and open the &lt;strong&gt;Counter.razor&lt;/strong&gt; file, displaying the actual code content. Notice the first section (@page) has a pointer to &lt;strong&gt;/counter&lt;/strong&gt;; this is called a route. (If you would switch back to the browser, you will see that once you select the &lt;em&gt;Counter&lt;/em&gt; option in the Navigation Bar, the URL switches to &lt;url&gt;/counter; if you navigate to &lt;em&gt;Fetch Data&lt;/em&gt;, the route will switch to &lt;url&gt;/fetchdata, which is loading the FetchData.Razor page file. If you navigate to Home, it&amp;rsquo;s loading the index.html page from the Pages-directory).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The &lt;strong&gt;@code&lt;/strong&gt; section of the counter.razor page, is where the actual C#-code lives. While it only has a few lines of code here, it actually works fine.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;The code section&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;private int currentCount = 0;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;specifies the currentCount field to be equal to zero. This happens every time the application is loaded (yes, you can try that out&amp;hellip;).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The next code section,&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;span class="lnt"&gt;3
+&lt;/span&gt;&lt;span class="lnt"&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;private void IncrementCount()
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; currentCount++;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;is getting triggered whenever the &amp;ldquo;Click Me&amp;rdquo; button is getting clicked, because of the @onclick-event specified for the button HTML-object. Followed by a basic C#-code language function &amp;ldquo;++&amp;rdquo;, which means, add a value 1 to the current value of the object currentCount.&lt;/p&gt;
+&lt;p&gt;Easy said, whenever you start the app, the counter value is 0, but gets increased with a value &amp;ldquo;1&amp;rdquo;, every time you click the &amp;ldquo;Click Me&amp;rdquo; button.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="debugging-a-blazor-app"&gt;Debugging a Blazor App
+&lt;/h1&gt;&lt;p&gt;&lt;img src="../images/2021-11-07_10.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Counter"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Since we are in &amp;ldquo;Visual Studio Debug mode&amp;rdquo; (I&amp;rsquo;ll write much more on that in a later article&amp;hellip;), let me briefly show you what it allows you to do. In short, it allows you to set a breakpoint, which gets prompted for during the run time of the application. To &lt;strong&gt;set a breakpoint&lt;/strong&gt;, move your mouse pointer to the front of a line of code (or a code section) (the grey bar), and click. This adds a red dot, which reflects the breakpoint.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;From here, switch back to the application in the browser, and click the &amp;ldquo;Click Me&amp;rdquo; button again in the Counter page. Notice how you get brought back into Visual Studio, where the breakpoint got updated with a yellow arrow, identifying where you are in the debugging (we only have 1 breakpoint for now, but very convenient if you have several of those set&amp;hellip;). It will also show the actual value of the CurrentCount in a little popup balloon message, as well as below in the Autos section&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/2021-11-07_11.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Counter"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;
+&lt;p&gt;Quit Debugging-mode by pressing &lt;strong&gt;Shift-F5&lt;/strong&gt;, or by clicking the &lt;strong&gt;Stop button&lt;/strong&gt; (red square button in the top menu) in Visual Studio, or by &lt;strong&gt;closing the browser&lt;/strong&gt; that&amp;rsquo;s running the Blazor app.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Last, clear the Breakpoint in Visual Studio by clicking on it again.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id="summary"&gt;Summary
+&lt;/h1&gt;&lt;p&gt;In this post, I introduced you to creating your First Blazor Server App, using the Visual Studio template for this application type. I described the core folder/file structure of your Blazor Project, as well as explaining some of the base concepts of razor pages. You learned how to run your application, as well as using the basics of debugging, by setting a breakpoint and validating the outcome.&lt;/p&gt;
+&lt;p&gt;In a next Blazor-related post, I&amp;rsquo;ll walk you through some fundamental layout customization options, changing the look and feel of the navigation bar, the top bar and the actual web app pages themselves by introducing HTML and CSS primarily.&lt;/p&gt;
+&lt;p&gt;Btw, if you are interested in developing with Blazor, you can &lt;a class="link" href="https://www.toptal.com/blazor" target="_blank" rel="noopener"
+ &gt;hire a Blazor developer from Toptal&lt;/a&gt;, a leading platform for connecting top-tier developers with clients.&lt;/p&gt;
+&lt;p&gt;For now, take care of yourself and your family, see you again soon with more Blazor-news.&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
+ &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="BuyMeACoffee"
+ 
+ 
+ 
+ &gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Cheers, Peter&lt;/p&gt;</description></item><item><title>Coding Apps in Blazor from a non-developer standpoint</title><link>https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer/</link><pubDate>Mon, 06 Sep 2021 00:00:00 +0000</pubDate><guid>https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer/</guid><description>&lt;p&gt;Hello readers,&lt;/p&gt;
+&lt;p&gt;The ones who know me already, know I have used traditional on-premises datacenter infrastructure for the first 15 years of my career, before I jumped onto Azure public cloud. Yes, I was an infra guy. And sometimes I still think I am, although I&amp;rsquo;m more and more shifting to containers and devops over the last 3 years.&lt;/p&gt;
+&lt;p&gt;With the 25 years of IT experience, there was always 1 skillset missing&amp;hellip; coding, or learning a development language in better words.&lt;/p&gt;
+&lt;p&gt;After talking to several DevOps folks within Microsoft and elsewhere, it became clear I had to learn some language, if I wanted to take this DevOps thing serious (trust me, it is not required, but definitely recommended, now I look back how I talk about DevOps with some development skills acquired)&lt;/p&gt;
+&lt;h1 id="so-many-languages-to-choose-from"&gt;So many languages to choose from
+&lt;/h1&gt;&lt;p&gt;Once I set my mind to it, the next question was, what language am I going to learn myself?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Python seemed the easiest, is quite popular, but didn&amp;rsquo;t appeal to me for still an unknown reason.&lt;/li&gt;
+&lt;li&gt;Java seemed the most professional, but also the most complex.&lt;/li&gt;
+&lt;li&gt;Go looked promising, but I never really seen it in action.&lt;/li&gt;
+&lt;li&gt;C# and DotNet was like the natural go to, as we are using a lot of DotNet examples during different Azure workshops I&amp;rsquo;m delivering every week&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="dotnet-as-my-logical-example"&gt;DotNet as my logical example
+&lt;/h1&gt;&lt;p&gt;Within the DotNet (&lt;a class="link" href="https://dotnet.microsoft.com/learn/dotnet/what-is-dotnet" target="_blank" rel="noopener"
+ &gt;https://dotnet.microsoft.com/learn/dotnet/what-is-dotnet&lt;/a&gt;) family, you still have a few different options:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;DotNet Core&lt;/strong&gt;, which gives you cross-platform .NET implementation for browsers, apps on any platform OS&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;DotNet Framework&lt;/strong&gt;, supporting full Windows applications, and websites&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Xamarin/Mono&lt;/strong&gt;, which is a DotNet implementation for mobile apps&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="../images/2021-09-06_01.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="DotNet"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;h1 id="how-i-ended-up-with-blazor"&gt;How I ended up with Blazor
+&lt;/h1&gt;&lt;p&gt;If I was going to develop &amp;ldquo;something&amp;rdquo;, it would probably be a console app (easy to demo) or a web application (perfect for my Azure training deliveries and I can run it in Azure and Containers -&amp;gt; bonus)
+From there, my mind was set to start developing Web Applications, and more specifically by using &lt;strong&gt;Blazor&lt;/strong&gt; (&lt;a class="link" href="https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor%29" target="_blank" rel="noopener"
+ &gt;https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor)&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/2021-09-06_02.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Blazor"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;Over Christmas holidays, I started building my library of learning material, which consisted of Microsoft Docs, Youtube videos and other community sessions. (I&amp;rsquo;ll cover some of these in another article later)&lt;/p&gt;
+&lt;p&gt;I also started working on building an app from scratch, which would make my life as an Azure trainer easier, as well as for my colleagues.&lt;/p&gt;
+&lt;p&gt;I managed to build a &amp;ldquo;useable&amp;rdquo; web application over the course of a few months, spending about 10 hours a week; As I approached 3000 followers on Twitter recently, I decided to come up with a series of posts on Blazor, explaining what I learned, where I struggled (and still am), to help others who are like myself, starting with no dev experience whatsoever.&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/2021-09-06_03.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="3000 Twitter Followers"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;h1 id="what-is-blazor"&gt;What is Blazor
+&lt;/h1&gt;&lt;p&gt;Blazor comes in 2 different flavors:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Blazor Server&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Blazor Web Assembly&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Blazor Server&lt;/strong&gt; is closest to a traditional ASP.Net application, running on a web server, which can be Windows or Linux, as well as a containerized platform. Updates in the web app layout, the actual events (clicking buttons, routing pages,&amp;hellip;) and JavaScript handling (yes, I&amp;rsquo;ll detail that in another article) are all transferred between client (your browser) and the server (the backend) using SignalR. Think of this as a messaging handler between client and server.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Blazor WebAssembly&lt;/strong&gt; is a 2nd flavor, which doesn&amp;rsquo;t require a server back-end, but rather runs all DotNet code directly in the browser. This is not a DotNet something, but rather a capability of WebAssembly (WASM in short), an open standard which aims to allow running powerful applications natively in a browser. If any Server-side events are needed, you can integrate it with Blazor Server or other API-based back-ends.&lt;/p&gt;
+&lt;p&gt;Blazor as terminology is coming from a combination of &amp;ldquo;Browser&amp;rdquo; and &amp;ldquo;Razor&amp;rdquo; (&lt;a class="link" href="https://docs.microsoft.com/en-us/aspnet/core/razor-pages/?view=aspnetcore-5.0&amp;amp;tabs=visual-studio%29" target="_blank" rel="noopener"
+ &gt;https://docs.microsoft.com/en-us/aspnet/core/razor-pages/?view=aspnetcore-5.0&amp;tabs=visual-studio)&lt;/a&gt;, if you were wondering.&lt;/p&gt;
+&lt;p&gt;The way I see it (as non-developer :) ), is that those Razor Pages are like a simplified programming language in itself, combining HTML layout controls and actual C# coding together. By routing Razor Pages across different Razor-files (cshtml as extension), you build up your application. They are also recognized by the &amp;ldquo;@page&amp;rdquo; directive at the beginning of each file.&lt;/p&gt;
+&lt;p&gt;Below is a sample Razor Page, coming from the default Blazor Server or Blazor Web Assembly template in Visual Studio - which I will describe in a later blog post how to deploy it and what it does).&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt; 1
+&lt;/span&gt;&lt;span class="lnt"&gt; 2
+&lt;/span&gt;&lt;span class="lnt"&gt; 3
+&lt;/span&gt;&lt;span class="lnt"&gt; 4
+&lt;/span&gt;&lt;span class="lnt"&gt; 5
+&lt;/span&gt;&lt;span class="lnt"&gt; 6
+&lt;/span&gt;&lt;span class="lnt"&gt; 7
+&lt;/span&gt;&lt;span class="lnt"&gt; 8
+&lt;/span&gt;&lt;span class="lnt"&gt; 9
+&lt;/span&gt;&lt;span class="lnt"&gt;10
+&lt;/span&gt;&lt;span class="lnt"&gt;11
+&lt;/span&gt;&lt;span class="lnt"&gt;12
+&lt;/span&gt;&lt;span class="lnt"&gt;13
+&lt;/span&gt;&lt;span class="lnt"&gt;14
+&lt;/span&gt;&lt;span class="lnt"&gt;15
+&lt;/span&gt;&lt;span class="lnt"&gt;16
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;@page &amp;#34;/counter&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&amp;lt;h1&amp;gt;Counter&amp;lt;/h1&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&amp;lt;p&amp;gt;Current count: @currentCount&amp;lt;/p&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&amp;lt;button class=&amp;#34;btn btn-primary&amp;#34; @onclick=&amp;#34;IncrementCount&amp;#34;&amp;gt;Click me&amp;lt;/button&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;@code {
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; private int currentCount = 0;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; private void IncrementCount()
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; currentCount++;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;As you can see, the @page directive points to the &amp;ldquo;name&amp;rdquo; of this web page, being the &amp;ldquo;counter page&amp;rdquo;. Thinks of this as browsing to https://yourwebsiteURL/counter&lt;/p&gt;
+&lt;p&gt;next, there is a bit of HTML code for the actual layout of the page, and last, it contains some C# code with the actual intelligence of the counter button.&lt;/p&gt;
+&lt;p&gt;The way this page looks in the browser is like this:&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/2021-09-06_04.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Blazor sample"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;h1 id="what-am-i-going-to-do-from-here"&gt;What am I going to do from here?
+&lt;/h1&gt;&lt;p&gt;As promised, my idea is to share as much of what I learned from Blazor in the last few months, and taking you through a process to start learning to build your own Blazor applications. The following will be covered over a series of articles in the next coming weeks:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Deploying your first Blazor Server App&lt;/li&gt;
+&lt;li&gt;Customizing the basic layout&lt;/li&gt;
+&lt;li&gt;Updating Navigation Menu items&lt;/li&gt;
+&lt;li&gt;Creating API Controllers to read data&lt;/li&gt;
+&lt;li&gt;Integrating Entity Framework to read data from SQL DB&lt;/li&gt;
+&lt;li&gt;Building forms for CRUD (create, read, update, delete) operations&lt;/li&gt;
+&lt;li&gt;Integrating with external API Services to read data&lt;/li&gt;
+&lt;li&gt;Publishing Blazor Server to Azure App Services&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I hope you will learn from this, and enjoy the journey as much as I did, and still do. While I am far from calling myself a developer, it feels rather rewarding to see how code can be turned into a useful application!&lt;/p&gt;
+&lt;p&gt;Btw, if you are interested in developing with Blazor, you can &lt;a class="link" href="https://www.toptal.com/blazor" target="_blank" rel="noopener"
+ &gt;hire a Blazor developer from Toptal&lt;/a&gt;, a leading platform for connecting top-tier developers with clients.&lt;/p&gt;
+&lt;p&gt;Talk to you soon,&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
+ &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="BuyMeACoffee"
+ 
+ 
+ 
+ &gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Cheers, Peter&lt;/p&gt;</description></item><item><title>Dotnet tool install dotnet-ef failing with unauthorized</title><link>https://www.007ffflearning.com/post/dotnet-tool-install-dotnet-ef-failing-with-unauthorized/</link><pubDate>Sun, 27 Dec 2020 00:00:00 +0000</pubDate><guid>https://www.007ffflearning.com/post/dotnet-tool-install-dotnet-ef-failing-with-unauthorized/</guid><description>&lt;p&gt;Hi all,&lt;/p&gt;
+&lt;p&gt;I hope you all have great holidays this time around, giving you the opportunity to spend time with your family as well as having the opportunity to learn some new skills, which in my case means learning &lt;strong&gt;&lt;a class="link" href="https://docs.microsoft.com/en-us/aspnet/core/blazor/?view=aspnetcore-5.0" target="_blank" rel="noopener"
+ &gt;Blazor&lt;/a&gt;&lt;/strong&gt;, a Framework within the DotNet family, allowing for &amp;ldquo;any-client&amp;rdquo; applications (browser, mobile device).&lt;/p&gt;
+&lt;p&gt;My learning journey involves building a front-end Web App, connecting to a SQL (Azure) database back-end. To make this work, I want to use the &lt;strong&gt;&lt;a class="link" href="https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/ef/overview" target="_blank" rel="noopener"
+ &gt;SQL Server Entity Framework&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2 id="what-happened"&gt;What happened?
+&lt;/h2&gt;&lt;p&gt;Besides installing the necessary Nuget Packages within my application, I also need to install the dotnet-ef Entity Framework Tools, initiating the following command:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-gdscript3" data-lang="gdscript3"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;dotnet&lt;/span&gt; &lt;span class="k"&gt;tool&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;global&lt;/span&gt; &lt;span class="n"&gt;dotnet&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ef&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;which was throwing an error&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/2020-12-27_1.jpg"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Dotnet tool install error"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;h2 id="what-to-check"&gt;What to check?
+&lt;/h2&gt;&lt;p&gt;Based on the error message and description, there were a few things to validate:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Using Preview release features; &lt;em&gt;not valid in my case&lt;/em&gt; since I&amp;rsquo;m not using preview release.&lt;/li&gt;
+&lt;li&gt;Unauthorized access to the Nuget Feed; &lt;em&gt;not valid in my case&lt;/em&gt;, since I am not using any Package Feed integration; all Nuget packages can be downloaded directly from Nuget.org&lt;/li&gt;
+&lt;li&gt;Mistyped the name of the tool; &lt;em&gt;well, no, it was correct&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I know I was using &lt;strong&gt;DotNet 5.0.1&lt;/strong&gt; for my Blazor project, and I know I have the correct SDK and Framework installed on my machine. Let&amp;rsquo;s validate by running&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;dotnet --version
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src="../images/2020-12-27_2.jpg"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Dotnet version"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;I also installed the different EntityFramework Packages I need (FrameworkCore, Design, SQLServer,&amp;hellip;), and those are also version 5.0.1&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/2020-12-27_3.jpg"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Package version"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;h2 id="how-to-fix-this-error"&gt;How to fix this error?
+&lt;/h2&gt;&lt;p&gt;This explicit versioning led me to the solution; &lt;strong&gt;what if I specify that version for the tool&lt;/strong&gt;, as somehow recommended as a first thing to check (although that was referring to preview, but hey, let&amp;rsquo;s give it a try&amp;hellip;)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-gdscript3" data-lang="gdscript3"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;dotnet&lt;/span&gt; &lt;span class="k"&gt;tool&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;global&lt;/span&gt; &lt;span class="n"&gt;dotnet&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ef&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;version&lt;/span&gt; &lt;span class="mf"&gt;5.0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src="../images/2020-12-27_4.jpg"
+ 
+ 
+ loading="lazy"
+ 
+ alt="dotnet install version"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;following by running&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;dotnet ef
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;which loaded fine this time! Problem solved!&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/2020-12-27_5.jpg"
+ 
+ 
+ loading="lazy"
+ 
+ alt="dotnet ef"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;I guess the root cause of the issue is related to my &amp;ldquo;mixed&amp;rdquo; setup, where I still have the dotnetcore 3.1 on my machine as well, probably confusing the dotnet environment. By explicitly referring to the version you want to use, you can avoid seeing weird error messages.&lt;/p&gt;
+&lt;p&gt;thanks, Peter&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
+ &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="BuyMeACoffee"
+ 
+ 
+ 
+ &gt;&lt;/a&gt;&lt;/p&gt;</description></item><item><title>publish your first dotnet5 app to Azure App Services</title><link>https://www.007ffflearning.com/post/publish-your-first-dotnet5-app-to-azure-app-services/</link><pubDate>Tue, 10 Nov 2020 00:00:00 +0000</pubDate><guid>https://www.007ffflearning.com/post/publish-your-first-dotnet5-app-to-azure-app-services/</guid><description>&lt;p&gt;Today, Nov 10th, was the official date of the long-announced &lt;a class="link" href="https://dotnet.microsoft.com/download/dotnet/5.0" target="_blank" rel="noopener"
+ &gt;&amp;ldquo;dotnet5 Framework&amp;rdquo;&lt;/a&gt;, and it is described as a major release. Still being new in the developer world myself, I know the basics of ASP.NET 3.7 and 4.5, so I can imagine jumping to a 5.0 release is indeed a big thing.&lt;/p&gt;
+&lt;h2 id="net-50-improvements"&gt;.NET 5.0 improvements
+&lt;/h2&gt;&lt;p&gt;The biggest improvements announced by the Product Team are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Migration-friendly for older .NET versions&lt;/li&gt;
+&lt;li&gt;Production-ready from day 1 of release (thorough-tested for &lt;a class="link" href="http://www.dot.net" target="_blank" rel="noopener"
+ &gt;http://www.dot.net&lt;/a&gt; and &lt;a class="link" href="http://www.bing.com" target="_blank" rel="noopener"
+ &gt;http://www.bing.com&lt;/a&gt; websites)&lt;/li&gt;
+&lt;li&gt;Enhanced performance&lt;/li&gt;
+&lt;li&gt;ClickOnce client app publishing&lt;/li&gt;
+&lt;li&gt;Smaller container image footprint&lt;/li&gt;
+&lt;li&gt;Supportability for Windows Arm64 and WebAssembly (Blazor)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Support will go into Feb 2022, which seems the release date for DotNet 6.0 LTS&lt;/p&gt;
+&lt;p&gt;Another big deal is the &lt;strong&gt;Unification&lt;/strong&gt; of the DotNet platform; what this means is that the .NET standard and characteristics will be available across different scenarios (mobile apps, web apps, webassembly, desktop apps, IOT,&amp;hellip;) relying on the same set of APIs, tools and languages. While not all has been integrated and unified yet, it&amp;rsquo;s still on the roadmap to become fully unified by version 6.0 in about 18 months from now.&lt;/p&gt;
+&lt;p&gt;More details about the dotnet 5.0 release can be read in the &lt;a class="link" href="https://devblogs.microsoft.com/dotnet/announcing-net-5-0/?utm_source=dotnet-website&amp;amp;utm_medium=banner&amp;amp;utm_campaign=blog-banner" target="_blank" rel="noopener"
+ &gt;&amp;ldquo;announcement blog:&amp;rdquo;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="developer-environment-dependencies"&gt;Developer Environment dependencies
+&lt;/h2&gt;&lt;h3 id="visual-studio-2019"&gt;Visual Studio 2019
+&lt;/h3&gt;&lt;p&gt;In order to use the .NET 5.0 Framework, an update of &lt;strong&gt;Visual Studio 2019&lt;/strong&gt; is required. More specifically, it needs to be version &lt;strong&gt;16.8.0&lt;/strong&gt;; if all is set as default in your IDE, you should get this prompt to upgrade automatically; if this has been disabled, you could launch the upgrade yourself by starting the Visual Studio Installer from within the Visual Studio menu option &lt;strong&gt;Tools / Get Tools and Features&amp;hellip;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/2020-11-10_01.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Visual Studio Installer"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;h3 id="visual-studio-for-mac"&gt;Visual Studio for MAC
+&lt;/h3&gt;&lt;p&gt;Updating to the &lt;a class="link" href="https://visualstudio.microsoft.com/vs/mac/" target="_blank" rel="noopener"
+ &gt;&amp;ldquo;latest version&amp;rdquo;&lt;/a&gt; of Visual Studio for MAC should bring in support for .NET 5.0;&lt;/p&gt;
+&lt;h3 id="visual-studio-code"&gt;Visual Studio Code
+&lt;/h3&gt;&lt;p&gt;Integration of .NET 5.0 into VIsual Studio Code is managed out of the &lt;a class="link" href="https://code.visualstudio.com/docs/languages/dotnet" target="_blank" rel="noopener"
+ &gt;&amp;ldquo;C# Extension&amp;rdquo;&lt;/a&gt;, so if you update this one to the latest version, you are good to go too.&lt;/p&gt;
+&lt;h2 id="creating-your-first-net-50-project-in-visual-studio"&gt;Creating your first .NET 5.0 Project in Visual Studio
+&lt;/h2&gt;&lt;p&gt;Now the prerequirements have been covered, let&amp;rsquo;s give it a try and build a new ASP.NET Web Application:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;From the Visual Studio 2019 menu, select &lt;strong&gt;File / New / Project&amp;hellip;&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;From the list of templates, select &lt;strong&gt;&amp;ldquo;ASP.NET Core Web Application&amp;rdquo;&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2020-11-10_02.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="ASP.NET Web App Template"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="3"&gt;
+&lt;li&gt;&lt;strong&gt;Press Create&lt;/strong&gt;; in the next step, from the top, select &lt;strong&gt;.NET Core&lt;/strong&gt; and &lt;strong&gt;ASP.NET Core 5.0&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2020-11-10_03.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="ASP.NET Web App Template"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="4"&gt;
+&lt;li&gt;
+&lt;p&gt;Choose &lt;strong&gt;ASP.NET Core Web App&lt;/strong&gt; as template + confirm by pressing the &lt;strong&gt;Create&lt;/strong&gt; button. Wait for the project to load.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;From &lt;strong&gt;Solution Explorer&lt;/strong&gt;, select the Project you just created (the bold title), and open its &lt;strong&gt;Properties&lt;/strong&gt;; this will also confirm the &lt;strong&gt;.NET 5.0&lt;/strong&gt; Framework&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2020-11-10_04.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="ASP.NET Web App Template"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;h2 id="publishing-your-web-app-to-azure-app-services"&gt;Publishing your Web App to Azure App Services
+&lt;/h2&gt;&lt;p&gt;Developing an app is one thing, but what&amp;rsquo;s giving more joy than seeing it running in Azure? Here we go:&lt;/p&gt;
+&lt;p&gt;(Assumptions: you have an active Azure subscription, and the necessary RBAC permissions to create and deploy App Services&amp;hellip;)&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;From Solution Explorer / select your Project (the bold title), &lt;strong&gt;right click&lt;/strong&gt; to open the context menu, and select &lt;strong&gt;publish&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2020-11-10_05.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="ASP.NET Web App Template"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;From the &lt;strong&gt;Publish&lt;/strong&gt; wizard Target step, select &lt;strong&gt;Azure&lt;/strong&gt;; click Next&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2020-11-10_06.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="ASP.NET Web App Template"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="3"&gt;
+&lt;li&gt;From the wizard&amp;rsquo;s Specific Target step, select &lt;strong&gt;Azure App Service (Linux)&lt;/strong&gt;; click Next&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2020-11-10_07.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="ASP.NET Web App Template"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="4"&gt;
+&lt;li&gt;From the wizard&amp;rsquo;s App Service step, Click the &lt;strong&gt;+&lt;/strong&gt; sign to **create a new &lt;strong&gt;Azure App Service&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2020-11-10_08.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="ASP.NET Web App Template"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- provide a **unique** name for the webapp, using lowercase characters
+- specify a new for a **new Resource Group**
+- specify a new **App Service Plan** for example S1 - 1.75Gb Memory
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src="../images/2020-11-10_09.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="ASP.NET Web App Template"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="5"&gt;
+&lt;li&gt;Validate all the settings, and confirm by pressing &lt;strong&gt;Finish&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2020-11-10_10.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="ASP.NET Web App Template"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="6"&gt;
+&lt;li&gt;From the summary page, press &lt;strong&gt;Publish&lt;/strong&gt;; This starts the publishing process.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2020-11-10_11.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="ASP.NET Web App Template"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="7"&gt;
+&lt;li&gt;Wait for it to complete successfully. The process can be viewed from the &lt;strong&gt;Output window&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2020-11-10_12.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="ASP.NET Web App Template"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="8"&gt;
+&lt;li&gt;
+&lt;p&gt;After waiting another few seconds, your &lt;strong&gt;default browser&lt;/strong&gt; opens the Web App URL, and shows the web app running&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Let&amp;rsquo;s validate the App Service Configuration settings from within the Azure Portal:&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;Log on to &lt;a class="link" href="https://portal.azure.com" target="_blank" rel="noopener"
+ &gt;https://portal.azure.com&lt;/a&gt; using your Azure Admin Credentials&lt;/li&gt;
+&lt;li&gt;Browse to App Services&lt;/li&gt;
+&lt;li&gt;Notice the App Service you just created&lt;/li&gt;
+&lt;li&gt;Browse to this App Service&amp;rsquo;s &lt;strong&gt;Configuration&lt;/strong&gt; (under Settings)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="../images/2020-11-10_13.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="ASP.NET Web App Template"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="10"&gt;
+&lt;li&gt;Notice the correct &lt;strong&gt;.NET 5.0&lt;/strong&gt; version&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="summary"&gt;Summary
+&lt;/h2&gt;&lt;p&gt;In this article, you got introduced to the new .NET 5.0 Framework. I walked you through the Project setup in VIsual Studio 2019 for an ASP.NET Core 5.0 based web application, followed by publishing this to a new Azure App Service resource.&lt;/p&gt;
+&lt;p&gt;As always, I hope you learned from this article; ping me whenever you got any (Azure) questions.&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
+ &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="BuyMeACoffee"
+ 
+ 
+ 
+ &gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Take care, Peter&lt;/p&gt;</description></item></channel></rss>

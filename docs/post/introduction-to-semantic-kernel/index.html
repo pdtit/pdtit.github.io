@@ -1,614 +1,107 @@
-<!DOCTYPE html>
-<html lang="en-us" dir="ltr">
-    <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Introduction to Developing Azure AI Solutions\rIn today&rsquo;s rapidly evolving tech landscape, Artificial Intelligence (AI) has become a cornerstone for innovation. Azure AI offers a robust suite of tools and services that empower developers to build intelligent applications. From natural language processing (NLP) to computer vision, Azure AI provides the building blocks to create solutions that can understand, interpret, and respond to human inputs in a meaningful way. While Microsoft has several Copilot offerings for different use cases, ranging from an AI assistant in Azure, Copilot in M365 or web and mobile, there are still valid use cases for developing your own custom Copilot. One of the key components in this ecosystem is the Semantic Kernel, a powerful tool that enhances the capabilities of AI models by providing semantic understanding.\n">
-<title>Introduction to Semantic Kernel</title>
-
-
-<link rel="canonical" href="https://www.007ffflearning.com/post/introduction-to-semantic-kernel/">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
-
-
-<link rel="stylesheet" href="/scss/style.min.cf9653eecaea3cf14f5747895c3ac9b505bea7f8f3f40c16dac6b0e82fafddc4.css"><meta property='og:title' content="Introduction to Semantic Kernel">
-<meta property='og:description' content="Introduction to Developing Azure AI Solutions\rIn today&rsquo;s rapidly evolving tech landscape, Artificial Intelligence (AI) has become a cornerstone for innovation. Azure AI offers a robust suite of tools and services that empower developers to build intelligent applications. From natural language processing (NLP) to computer vision, Azure AI provides the building blocks to create solutions that can understand, interpret, and respond to human inputs in a meaningful way. While Microsoft has several Copilot offerings for different use cases, ranging from an AI assistant in Azure, Copilot in M365 or web and mobile, there are still valid use cases for developing your own custom Copilot. One of the key components in this ecosystem is the Semantic Kernel, a powerful tool that enhances the capabilities of AI models by providing semantic understanding.\n">
-<meta property='og:url' content='https://www.007ffflearning.com/post/introduction-to-semantic-kernel/'>
-<meta property='og:site_name' content='Azure Readiness starts here...'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Azure' /><meta property='article:tag' content='AI' /><meta property='article:tag' content='Semantic Kernel' /><meta property='article:tag' content='AI Studio' /><meta property='article:published_time' content='2024-09-15T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-09-15T00:00:00&#43;00:00'/>
-<meta name="twitter:title" content="Introduction to Semantic Kernel">
-<meta name="twitter:description" content="Introduction to Developing Azure AI Solutions\rIn today&rsquo;s rapidly evolving tech landscape, Artificial Intelligence (AI) has become a cornerstone for innovation. Azure AI offers a robust suite of tools and services that empower developers to build intelligent applications. From natural language processing (NLP) to computer vision, Azure AI provides the building blocks to create solutions that can understand, interpret, and respond to human inputs in a meaningful way. While Microsoft has several Copilot offerings for different use cases, ranging from an AI assistant in Azure, Copilot in M365 or web and mobile, there are still valid use cases for developing your own custom Copilot. One of the key components in this ecosystem is the Semantic Kernel, a powerful tool that enhances the capabilities of AI models by providing semantic understanding.\n">
-    <link rel="shortcut icon" href="/img/007ffflearning-ape.png" />
-
-    </head>
-    <body class="
-    article-page
-    ">
-    <script>
-        (function() {
-            const colorSchemeKey = 'StackColorScheme';
-            if(!localStorage.getItem(colorSchemeKey)){
-                localStorage.setItem(colorSchemeKey, "auto");
-            }
-        })();
-    </script><script>
-    (function() {
-        const colorSchemeKey = 'StackColorScheme';
-        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
-        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
-
-        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
-            
-
-            document.documentElement.dataset.scheme = 'dark';
-        } else {
-            document.documentElement.dataset.scheme = 'light';
-        }
-    })();
-</script>
-<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-
-    <header>
-        <figure class="site-avatar">
-                <a href="/">
-                    <img src="/img/007ffflearning-ape.png" 
-                        width="596"
-                        height="842"
-                        class="site-logo"
-                        loading="lazy"
-                        alt="Avatar">
-                </a>
-                
-                    <span class="emoji">🎓</span>
-                
-            </figure>
-        
-        
-        <div class="site-meta">
-            <h1 class="site-name"><a href="/">Azure Readiness starts here...</a></h1>
-            <h2 class="site-description">Bring me an audience, I&#39;ll give them Azure knowledge in return</h2>
-        </div>
-    </header><ol class="menu-social">
-            
-                <li>
-                    <a 
-                        href='https://pdtit.bsky.social'
-                        
-                        title="Bluesky"
-                        rel="me"
-                    >
-                        
-                        
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 530" fill="currentColor">
-  <path d="m135.72 44.03c66.496 49.921 138.02 151.14 164.28 205.46 26.262-54.316 97.782-155.54 164.28-205.46 47.98-36.021 125.72-63.892 125.72 24.795 0 17.712-10.155 148.79-16.111 170.07-20.703 73.984-96.144 92.854-163.25 81.433 117.3 19.964 147.14 86.092 82.697 152.22-122.39 125.59-175.91-31.511-189.63-71.766-2.514-7.3797-3.6904-10.832-3.7077-7.8964-0.0174-2.9357-1.1937 0.51669-3.7077 7.8964-13.714 40.255-67.233 197.36-189.63 71.766-64.444-66.128-34.605-132.26 82.697-152.22-67.108 11.421-142.55-7.4491-163.25-81.433-5.9562-21.282-16.111-152.36-16.111-170.07 0-88.687 77.742-60.816 125.72-24.795z"/>
-</svg>
-
-                        
-                    </a>
-                </li>
-            
-                <li>
-                    <a 
-                        href='https://github.com/petender'
-                        
-                        title="GitHub"
-                        rel="me"
-                    >
-                        
-                        
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
-</svg>
-
-
-
-                        
-                    </a>
-                </li>
-            
-                <li>
-                    <a 
-                        href='https://www.linkedin.com/in/pdtit/'
-                        
-                        title="LinkedIn"
-                        rel="me"
-                    >
-                        
-                        
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
-  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
-</svg>
-
-
-
-                        
-                    </a>
-                </li>
-            
-        </ol><ol class="menu" id="main-menu">
-        
-        
-        
-        <li >
-            <a href='/' >
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <polyline points="5 12 3 12 12 3 21 12 19 12" />
-  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
-  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
-</svg>
-
-
-
-                
-                <span>Home</span>
-            </a>
-        </li>
-        
-        
-        <li >
-            <a href='/post/' >
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <rect x="3" y="4" width="18" height="4" rx="2" />
-  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
-  <line x1="10" y1="12" x2="14" y2="12" />
-</svg>
-
-
-
-                
-                <span>Posts</span>
-            </a>
-        </li>
-        
-        
-        <li >
-            <a href='/books/' >
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-</svg>
-
-                
-                <span>Books</span>
-            </a>
-        </li>
-        
-        
-        <li >
-            <a href='/speaking/' >
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-microphone" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M9 5a3 3 0 0 1 6 0v7a3 3 0 0 1 -6 0z"/>
-  <path d="M5 10a7 7 0 0 0 14 0"/>
-  <path d="M8 21l8 0"/>
-  <path d="M12 17l0 4"/>
-</svg>
-
-                
-                <span>Speaking</span>
-            </a>
-        </li>
-        
-        
-        <li >
-            <a href='/about/' >
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-</svg>
-
-
-
-                
-                <span>About Me</span>
-            </a>
-        </li>
-        
-        
-        <li >
-            <a href='/search/' >
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-                
-                <span>Search</span>
-            </a>
-        </li>
-        
-        
-        <li >
-            <a href='/tags/' >
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
-  <circle cx="9" cy="9" r="2" />
-</svg>
-
-
-
-                
-                <span>Tags</span>
-            </a>
-        </li>
-        
-        <li class="menu-bottom-section">
-            <ol class="menu">
-
-                
-                    <li id="dark-mode-toggle">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="8" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="16" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                        <span>Dark Mode</span>
-                    </li>
-                
-            </ol>
-        </li>
-    </ol>
-</aside>
-
-    
-
-            <main class="main full-width">
-    <article class="main-article">
-    <header class="article-header">
-
-    <div class="article-details">
-    
-
-    <div class="article-title-wrapper">
-        <h2 class="article-title">
-            <a href="/post/introduction-to-semantic-kernel/">Introduction to Semantic Kernel</a>
-        </h2>
-    
-        
-    </div>
-
-    
-    
-    
-    
-    <footer class="article-time">
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-  <circle cx="18" cy="18" r="4" />
-  <path d="M15 3v4" />
-  <path d="M7 3v4" />
-  <path d="M3 11h16" />
-  <path d="M18 16.496v1.504l1 1" />
-</svg>
-                <time class="article-time--published" datetime='2024-09-15T00:00:00Z'>Sep 15, 2024</time>
-            </div>
-        
-
-        
-    </footer>
-    
-
-    
-
-    
-</div>
-
-</header>
-
-    
-
-    <section class="article-content">
-    
-    
-    <h2 id="introduction-to-developing-azure-ai-solutions">Introduction to Developing Azure AI Solutions
-</h2><p>In today&rsquo;s rapidly evolving tech landscape, Artificial Intelligence (AI) has become a cornerstone for innovation. Azure AI offers a robust suite of tools and services that empower developers to build intelligent applications. From natural language processing (NLP) to computer vision, <a class="link" href="https://azure.microsoft.com/en-us/solutions/ai"  target="_blank" rel="noopener"
-    >Azure AI</a> provides the building blocks to create solutions that can understand, interpret, and respond to human inputs in a meaningful way. While Microsoft has several Copilot offerings for different use cases, ranging from an <a class="link" href="https://azure.microsoft.com/en-us/products/copilot"  target="_blank" rel="noopener"
-    >AI assistant in Azure</a>, <a class="link" href="https://www.microsoft.com/en-us/microsoft-365/copilot"  target="_blank" rel="noopener"
-    >Copilot in M365</a> or <a class="link" href="https://copilot.microsoft.com"  target="_blank" rel="noopener"
-    >web and mobile</a>, there are still valid use cases for developing your own custom Copilot. One of the key components in this ecosystem is the <strong>Semantic Kernel</strong>, a powerful tool that enhances the capabilities of AI models by providing semantic understanding.</p>
-<p>The Kernel is the central component of Semantic Kernel. In its easiest format, the Kernel is a Dependency Injection objects, which manages all of the services and plugins necessary to run your AI application. If you provide all of your services and plugins to the kernel, they will then be seamlessly used by the AI as needed.</p>
-<h2 id="what-is-semantic-kernel">What is Semantic Kernel?
-</h2><p>Semantic Kernel is a framework designed to bridge the gap between raw data and meaningful insights. It leverages advanced machine learning algorithms to understand the context and semantics of the data, enabling more accurate and relevant responses. Unlike traditional keyword-based approaches, Semantic Kernel focuses on the meaning behind the words, making it a valuable asset for applications that require a deep understanding of language.</p>
-<h2 id="difference-between-using-semantic-kernel-and-other-solutions-such-as-promptflow">Difference Between Using Semantic Kernel and Other Solutions Such as PromptFlow
-</h2><p>While both <a class="link" href="https://learn.microsoft.com/en-us/semantic-kernel/"  target="_blank" rel="noopener"
-    >Semantic Kernel</a> and <a class="link" href="https://github.com/microsoft/promptflow"  target="_blank" rel="noopener"
-    >PromptFlow</a> are designed to enhance AI capabilities, they serve different purposes and offer unique advantages. <strong>PromptFlow</strong> is a tool that helps in designing and managing prompts for AI models, ensuring that the inputs are structured in a way that maximizes the model&rsquo;s performance. On the other hand, <strong>Semantic Kernel</strong> goes a step further by interpreting the meaning behind the inputs, providing a more nuanced and context-aware response.</p>
-<h3 id="key-differences">Key Differences:
-</h3><ul>
-<li><strong>Focus</strong>: PromptFlow is primarily concerned with the structure and format of prompts, while Semantic Kernel focuses on understanding the semantics and context.</li>
-<li><strong>Use Cases</strong>: PromptFlow is ideal for scenarios where the input needs to be carefully crafted to elicit the desired response from the AI model. Semantic Kernel is better suited for applications that require a deep understanding of language and context.</li>
-<li><strong>Complexity</strong>: Semantic Kernel involves more complex algorithms and models to interpret the data, whereas PromptFlow is more straightforward in its approach.</li>
-</ul>
-<h2 id="sample-code-scenarios-of-using-semantic-kernel-using-c-net-code">Sample Code Scenarios of Using Semantic Kernel, Using C# .NET Code
-</h2><h3 id="scenario-1-text-classification">Scenario 1: Text Classification
-</h3><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">Microsoft.SemanticKernel</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">Microsoft.SemanticKernel.Models</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">kernel</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SemanticKernel</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">model</span> <span class="p">=</span> <span class="n">kernel</span><span class="p">.</span><span class="n">LoadModel</span><span class="p">(</span><span class="s">&#34;text-classification-model&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">inputText</span> <span class="p">=</span> <span class="s">&#34;Azure AI is transforming the tech industry.&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">classification</span> <span class="p">=</span> <span class="n">model</span><span class="p">.</span><span class="n">Classify</span><span class="p">(</span><span class="n">inputText</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Classification: {classification}&#34;</span><span class="p">);</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="scenario-2-sentiment-analysis">Scenario 2: Sentiment Analysis
-</h3><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">Microsoft.SemanticKernel</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">Microsoft.SemanticKernel.Models</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">kernel</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SemanticKernel</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">model</span> <span class="p">=</span> <span class="n">kernel</span><span class="p">.</span><span class="n">LoadModel</span><span class="p">(</span><span class="s">&#34;sentiment-analysis-model&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">inputText</span> <span class="p">=</span> <span class="s">&#34;I love using Azure AI services!&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">sentiment</span> <span class="p">=</span> <span class="n">model</span><span class="p">.</span><span class="n">AnalyzeSentiment</span><span class="p">(</span><span class="n">inputText</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Sentiment: {sentiment}&#34;</span><span class="p">);</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="scenario-3-named-entity-recognition-ner">Scenario 3: Named Entity Recognition (NER)
-</h3><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">Microsoft.SemanticKernel</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">Microsoft.SemanticKernel.Models</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">kernel</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SemanticKernel</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">model</span> <span class="p">=</span> <span class="n">kernel</span><span class="p">.</span><span class="n">LoadModel</span><span class="p">(</span><span class="s">&#34;ner-model&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">inputText</span> <span class="p">=</span> <span class="s">&#34;Microsoft was founded by Bill Gates and Paul Allen.&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">entities</span> <span class="p">=</span> <span class="n">model</span><span class="p">.</span><span class="n">RecognizeEntities</span><span class="p">(</span><span class="n">inputText</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">entity</span> <span class="k">in</span> <span class="n">entities</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Entity: {entity.Name}, Type: {entity.Type}&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="scenario-4-question-answering">Scenario 4: Question Answering
-</h3><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">Microsoft.SemanticKernel</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">Microsoft.SemanticKernel.Models</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">kernel</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SemanticKernel</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">model</span> <span class="p">=</span> <span class="n">kernel</span><span class="p">.</span><span class="n">LoadModel</span><span class="p">(</span><span class="s">&#34;question-answering-model&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">question</span> <span class="p">=</span> <span class="s">&#34;What is Azure AI?&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">answer</span> <span class="p">=</span> <span class="n">model</span><span class="p">.</span><span class="n">AnswerQuestion</span><span class="p">(</span><span class="n">question</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Answer: {answer}&#34;</span><span class="p">);</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="conclusion">Conclusion
-</h2><p>Semantic Kernel is a powerful tool that enhances the capabilities of AI models by providing a deeper understanding of language and context. By leveraging Semantic Kernel, developers can build more intelligent and responsive applications that go beyond simple keyword matching. Whether you&rsquo;re working on text classification, sentiment analysis, named entity recognition, or question answering, Semantic Kernel offers the tools and frameworks needed to create sophisticated AI solutions. As AI continues to evolve, tools like Semantic Kernel will play a crucial role in shaping the future of intelligent applications.</p>
-<hr>
-<p>I hope this article provides you with a comprehensive overview of Semantic Kernel and its applications. If you have any questions or need further details, feel free to ask! In a next blog post, we&rsquo;ll go over several use cases with many more code snippets, to give you enough examples to start building/developing your own Copilots. Stay tuned!</p>
-<p><a class="link" href="https://www.buymeacoffee.com/pdtit"  target="_blank" rel="noopener"
-    ><img src="../images/buy_me_a_coffee.png"
-    
-    
-    loading="lazy"
-    
-      alt="BuyMeACoffee"
-    
-    
-    
-  ></a></p>
-<p>Cheers!!</p>
-<p>/Peter</p>
-
-</section>
-
-
-    <footer class="article-footer">
-    
-    <section class="article-tags">
-        
-            <a href="/tags/azure/">Azure</a>
-        
-            <a href="/tags/ai/">AI</a>
-        
-            <a href="/tags/semantic-kernel/">Semantic Kernel</a>
-        
-            <a href="/tags/ai-studio/">AI Studio</a>
-        
-    </section>
-
-
-    </footer>
-
-
-    
-</article>
-
-    
-
-    
-
-<aside class="related-content--wrapper">
-    <h2 class="section-title">Related content</h2>
-    <div class="related-content">
-        <div class="flex article-list--tile">
-            
-                
-<article class="">
-    <a href="/post/festive-2023-ocr-on-steroids/">
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Festive Tech Calendar - Azure AI - OCR on Steroids</h2>
-        </div>
-    </a>
-</article>
-            
-                
-<article class="">
-    <a href="/post/build-an-azure-ai-chatbot-using-your-own-data-in-blob-storage/">
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Build an Azure AI chatbot using your own data from blob storage </h2>
-        </div>
-    </a>
-</article>
-            
-                
-<article class="">
-    <a href="/post/building-your-first-blazor-.net8-app---msts-summit-companion/">
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Building your first Blazor .NET8 app - MSTS Summit </h2>
-        </div>
-    </a>
-</article>
-            
-                
-<article class="">
-    <a href="/post/building-a-marvel-hero-app-with-blazor-.net8/">
-        
-
-        <div class="article-details">
-            <h2 class="article-title">ScifiDevCon 2024 : Building a Marvel Hero App using Blazor and .NET8 </h2>
-        </div>
-    </a>
-</article>
-            
-                
-<article class="">
-    <a href="/post/packt-book-review---azure-architecture-explained/">
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Packt Book Review - Azure Architecture Explained</h2>
-        </div>
-    </a>
-</article>
-            
-        </div>
-    </div>
-</aside>
-
-     
-    
-        
-    
-
-    <footer class="site-footer">
-    <section class="copyright">
-        &copy; 
-        
-            2021 - 
-        
-        2026 Azure Readiness starts here...
-    </section>
-    
-    <section class="powerby">
-        
-            The best way to know the future, is to learn it <br/>
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="4.0.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
-    </section>
-</footer>
-
-
-    
-
-
-
-<script type="module">
+<!doctype html><html lang=en-us dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content="Introduction to Developing Azure AI Solutions\rIn today&rsquo;s rapidly evolving tech landscape, Artificial Intelligence (AI) has become a cornerstone for innovation. Azure AI offers a robust suite of tools and services that empower developers to build intelligent applications. From natural language processing (NLP) to computer vision, Azure AI provides the building blocks to create solutions that can understand, interpret, and respond to human inputs in a meaningful way. While Microsoft has several Copilot offerings for different use cases, ranging from an AI assistant in Azure, Copilot in M365 or web and mobile, there are still valid use cases for developing your own custom Copilot. One of the key components in this ecosystem is the Semantic Kernel, a powerful tool that enhances the capabilities of AI models by providing semantic understanding.\n"><title>Introduction to Semantic Kernel</title><link rel=canonical href=https://www.007ffflearning.com/post/introduction-to-semantic-kernel/><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=preload as=style href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"><link rel=stylesheet href=/scss/style.min.cf9653eecaea3cf14f5747895c3ac9b505bea7f8f3f40c16dac6b0e82fafddc4.css><meta property='og:title' content="Introduction to Semantic Kernel"><meta property='og:description' content="Introduction to Developing Azure AI Solutions\rIn today&rsquo;s rapidly evolving tech landscape, Artificial Intelligence (AI) has become a cornerstone for innovation. Azure AI offers a robust suite of tools and services that empower developers to build intelligent applications. From natural language processing (NLP) to computer vision, Azure AI provides the building blocks to create solutions that can understand, interpret, and respond to human inputs in a meaningful way. While Microsoft has several Copilot offerings for different use cases, ranging from an AI assistant in Azure, Copilot in M365 or web and mobile, there are still valid use cases for developing your own custom Copilot. One of the key components in this ecosystem is the Semantic Kernel, a powerful tool that enhances the capabilities of AI models by providing semantic understanding.\n"><meta property='og:url' content='https://www.007ffflearning.com/post/introduction-to-semantic-kernel/'><meta property='og:site_name' content='Azure Readiness starts here...'><meta property='og:type' content='article'><meta property='article:section' content='Post'><meta property='article:tag' content='Azure'><meta property='article:tag' content='AI'><meta property='article:tag' content='Semantic Kernel'><meta property='article:tag' content='AI Studio'><meta property='article:published_time' content='2024-09-15T00:00:00+00:00'><meta property='article:modified_time' content='2024-09-15T00:00:00+00:00'><meta name=twitter:title content="Introduction to Semantic Kernel"><meta name=twitter:description content="Introduction to Developing Azure AI Solutions\rIn today&rsquo;s rapidly evolving tech landscape, Artificial Intelligence (AI) has become a cornerstone for innovation. Azure AI offers a robust suite of tools and services that empower developers to build intelligent applications. From natural language processing (NLP) to computer vision, Azure AI provides the building blocks to create solutions that can understand, interpret, and respond to human inputs in a meaningful way. While Microsoft has several Copilot offerings for different use cases, ranging from an AI assistant in Azure, Copilot in M365 or web and mobile, there are still valid use cases for developing your own custom Copilot. One of the key components in this ecosystem is the Semantic Kernel, a powerful tool that enhances the capabilities of AI models by providing semantic understanding.\n"><link rel="shortcut icon" href=/img/007ffflearning-ape.png></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label="Toggle Menu">
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/><img src=/img/007ffflearning-ape.png width=596 height=842 class=site-logo loading=lazy alt=Avatar>
+</a><span class=emoji>🎓</span></figure><div class=site-meta><h1 class=site-name><a href=/>Azure Readiness starts here...</a></h1><h2 class=site-description>Bring me an audience, I'll give them Azure knowledge in return</h2></div></header><ol class=menu-social><li><a href=https://pdtit.bsky.social title=Bluesky rel=me><svg viewBox="0 0 600 530" fill="currentColor"><path d="m135.72 44.03C202.216 93.951 273.74 195.17 3e2 249.49c26.262-54.316 97.782-155.54 164.28-205.46C512.26 8.009 590-19.862 590 68.825c0 17.712-10.155 148.79-16.111 170.07-20.703 73.984-96.144 92.854-163.25 81.433 117.3 19.964 147.14 86.092 82.697 152.22-122.39 125.59-175.91-31.511-189.63-71.766-2.514-7.3797-3.6904-10.832-3.7077-7.8964-.0174-2.9357-1.1937.51669-3.7077 7.8964-13.714 40.255-67.233 197.36-189.63 71.766-64.444-66.128-34.605-132.26 82.697-152.22-67.108 11.421-142.55-7.4491-163.25-81.433-5.9562-21.282-16.111-152.36-16.111-170.07.0-88.687 77.742-60.816 125.72-24.795z"/></svg></a></li><li><a href=https://github.com/petender title=GitHub rel=me><svg class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li><li><a href=https://www.linkedin.com/in/pdtit/ title=LinkedIn rel=me><svg class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M10 14a3.5 3.5.0 005 0l4-4a3.5 3.5.0 00-5-5l-.5.5"/><path d="M14 10a3.5 3.5.0 00-5 0l-4 4a3.5 3.5.0 005 5l.5-.5"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
+<span>Home</span></a></li><li><a href=/post/><svg class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+<span>Posts</span></a></li><li><a href=/books/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+<span>Books</span></a></li><li><a href=/speaking/><svg class="icon icon-tabler icon-tabler-microphone" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 5a3 3 0 016 0v7a3 3 0 01-6 0z"/><path d="M5 10a7 7 0 0014 0"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+<span>Speaking</span></a></li><li><a href=/about/><svg class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
+<span>About Me</span></a></li><li><a href=/search/><svg class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg>
+<span>Search</span></a></li><li><a href=/tags/><svg class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11 3l9 9a1.5 1.5.0 010 2l-6 6a1.5 1.5.0 01-2 0L3 11V7a4 4 0 014-4h4"/><circle cx="9" cy="9" r="2"/></svg>
+<span>Tags</span></a></li><li class=menu-bottom-section><ol class=menu><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<span>Dark Mode</span></li></ol></li></ol></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><div class=article-title-wrapper><h2 class=article-title><a href=/post/introduction-to-semantic-kernel/>Introduction to Semantic Kernel</a></h2></div><footer class=article-time><div><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published datetime=2024-09-15T00:00:00Z>Sep 15, 2024</time></div></footer></div></header><section class=article-content><h2 id=introduction-to-developing-azure-ai-solutions>Introduction to Developing Azure AI Solutions</h2><p>In today&rsquo;s rapidly evolving tech landscape, Artificial Intelligence (AI) has become a cornerstone for innovation. Azure AI offers a robust suite of tools and services that empower developers to build intelligent applications. From natural language processing (NLP) to computer vision, <a class=link href=https://azure.microsoft.com/en-us/solutions/ai target=_blank rel=noopener>Azure AI</a> provides the building blocks to create solutions that can understand, interpret, and respond to human inputs in a meaningful way. While Microsoft has several Copilot offerings for different use cases, ranging from an <a class=link href=https://azure.microsoft.com/en-us/products/copilot target=_blank rel=noopener>AI assistant in Azure</a>, <a class=link href=https://www.microsoft.com/en-us/microsoft-365/copilot target=_blank rel=noopener>Copilot in M365</a> or <a class=link href=https://copilot.microsoft.com target=_blank rel=noopener>web and mobile</a>, there are still valid use cases for developing your own custom Copilot. One of the key components in this ecosystem is the <strong>Semantic Kernel</strong>, a powerful tool that enhances the capabilities of AI models by providing semantic understanding.</p><p>The Kernel is the central component of Semantic Kernel. In its easiest format, the Kernel is a Dependency Injection objects, which manages all of the services and plugins necessary to run your AI application. If you provide all of your services and plugins to the kernel, they will then be seamlessly used by the AI as needed.</p><h2 id=what-is-semantic-kernel>What is Semantic Kernel?</h2><p>Semantic Kernel is a framework designed to bridge the gap between raw data and meaningful insights. It leverages advanced machine learning algorithms to understand the context and semantics of the data, enabling more accurate and relevant responses. Unlike traditional keyword-based approaches, Semantic Kernel focuses on the meaning behind the words, making it a valuable asset for applications that require a deep understanding of language.</p><h2 id=difference-between-using-semantic-kernel-and-other-solutions-such-as-promptflow>Difference Between Using Semantic Kernel and Other Solutions Such as PromptFlow</h2><p>While both <a class=link href=https://learn.microsoft.com/en-us/semantic-kernel/ target=_blank rel=noopener>Semantic Kernel</a> and <a class=link href=https://github.com/microsoft/promptflow target=_blank rel=noopener>PromptFlow</a> are designed to enhance AI capabilities, they serve different purposes and offer unique advantages. <strong>PromptFlow</strong> is a tool that helps in designing and managing prompts for AI models, ensuring that the inputs are structured in a way that maximizes the model&rsquo;s performance. On the other hand, <strong>Semantic Kernel</strong> goes a step further by interpreting the meaning behind the inputs, providing a more nuanced and context-aware response.</p><h3 id=key-differences>Key Differences:</h3><ul><li><strong>Focus</strong>: PromptFlow is primarily concerned with the structure and format of prompts, while Semantic Kernel focuses on understanding the semantics and context.</li><li><strong>Use Cases</strong>: PromptFlow is ideal for scenarios where the input needs to be carefully crafted to elicit the desired response from the AI model. Semantic Kernel is better suited for applications that require a deep understanding of language and context.</li><li><strong>Complexity</strong>: Semantic Kernel involves more complex algorithms and models to interpret the data, whereas PromptFlow is more straightforward in its approach.</li></ul><h2 id=sample-code-scenarios-of-using-semantic-kernel-using-c-net-code>Sample Code Scenarios of Using Semantic Kernel, Using C# .NET Code</h2><h3 id=scenario-1-text-classification>Scenario 1: Text Classification</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-csharp data-lang=csharp><span class=line><span class=cl><span class=k>using</span> <span class=nn>Microsoft.SemanticKernel</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>using</span> <span class=nn>Microsoft.SemanticKernel.Models</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>var</span> <span class=n>kernel</span> <span class=p>=</span> <span class=k>new</span> <span class=n>SemanticKernel</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=kt>var</span> <span class=n>model</span> <span class=p>=</span> <span class=n>kernel</span><span class=p>.</span><span class=n>LoadModel</span><span class=p>(</span><span class=s>&#34;text-classification-model&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>var</span> <span class=n>inputText</span> <span class=p>=</span> <span class=s>&#34;Azure AI is transforming the tech industry.&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kt>var</span> <span class=n>classification</span> <span class=p>=</span> <span class=n>model</span><span class=p>.</span><span class=n>Classify</span><span class=p>(</span><span class=n>inputText</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>Console</span><span class=p>.</span><span class=n>WriteLine</span><span class=p>(</span><span class=s>$&#34;Classification: {classification}&#34;</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=scenario-2-sentiment-analysis>Scenario 2: Sentiment Analysis</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-csharp data-lang=csharp><span class=line><span class=cl><span class=k>using</span> <span class=nn>Microsoft.SemanticKernel</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>using</span> <span class=nn>Microsoft.SemanticKernel.Models</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>var</span> <span class=n>kernel</span> <span class=p>=</span> <span class=k>new</span> <span class=n>SemanticKernel</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=kt>var</span> <span class=n>model</span> <span class=p>=</span> <span class=n>kernel</span><span class=p>.</span><span class=n>LoadModel</span><span class=p>(</span><span class=s>&#34;sentiment-analysis-model&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>var</span> <span class=n>inputText</span> <span class=p>=</span> <span class=s>&#34;I love using Azure AI services!&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kt>var</span> <span class=n>sentiment</span> <span class=p>=</span> <span class=n>model</span><span class=p>.</span><span class=n>AnalyzeSentiment</span><span class=p>(</span><span class=n>inputText</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>Console</span><span class=p>.</span><span class=n>WriteLine</span><span class=p>(</span><span class=s>$&#34;Sentiment: {sentiment}&#34;</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=scenario-3-named-entity-recognition-ner>Scenario 3: Named Entity Recognition (NER)</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-csharp data-lang=csharp><span class=line><span class=cl><span class=k>using</span> <span class=nn>Microsoft.SemanticKernel</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>using</span> <span class=nn>Microsoft.SemanticKernel.Models</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>var</span> <span class=n>kernel</span> <span class=p>=</span> <span class=k>new</span> <span class=n>SemanticKernel</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=kt>var</span> <span class=n>model</span> <span class=p>=</span> <span class=n>kernel</span><span class=p>.</span><span class=n>LoadModel</span><span class=p>(</span><span class=s>&#34;ner-model&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>var</span> <span class=n>inputText</span> <span class=p>=</span> <span class=s>&#34;Microsoft was founded by Bill Gates and Paul Allen.&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kt>var</span> <span class=n>entities</span> <span class=p>=</span> <span class=n>model</span><span class=p>.</span><span class=n>RecognizeEntities</span><span class=p>(</span><span class=n>inputText</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>foreach</span> <span class=p>(</span><span class=kt>var</span> <span class=n>entity</span> <span class=k>in</span> <span class=n>entities</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>Console</span><span class=p>.</span><span class=n>WriteLine</span><span class=p>(</span><span class=s>$&#34;Entity: {entity.Name}, Type: {entity.Type}&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=scenario-4-question-answering>Scenario 4: Question Answering</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-csharp data-lang=csharp><span class=line><span class=cl><span class=k>using</span> <span class=nn>Microsoft.SemanticKernel</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>using</span> <span class=nn>Microsoft.SemanticKernel.Models</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>var</span> <span class=n>kernel</span> <span class=p>=</span> <span class=k>new</span> <span class=n>SemanticKernel</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=kt>var</span> <span class=n>model</span> <span class=p>=</span> <span class=n>kernel</span><span class=p>.</span><span class=n>LoadModel</span><span class=p>(</span><span class=s>&#34;question-answering-model&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>var</span> <span class=n>question</span> <span class=p>=</span> <span class=s>&#34;What is Azure AI?&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kt>var</span> <span class=n>answer</span> <span class=p>=</span> <span class=n>model</span><span class=p>.</span><span class=n>AnswerQuestion</span><span class=p>(</span><span class=n>question</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>Console</span><span class=p>.</span><span class=n>WriteLine</span><span class=p>(</span><span class=s>$&#34;Answer: {answer}&#34;</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div><h2 id=conclusion>Conclusion</h2><p>Semantic Kernel is a powerful tool that enhances the capabilities of AI models by providing a deeper understanding of language and context. By leveraging Semantic Kernel, developers can build more intelligent and responsive applications that go beyond simple keyword matching. Whether you&rsquo;re working on text classification, sentiment analysis, named entity recognition, or question answering, Semantic Kernel offers the tools and frameworks needed to create sophisticated AI solutions. As AI continues to evolve, tools like Semantic Kernel will play a crucial role in shaping the future of intelligent applications.</p><hr><p>I hope this article provides you with a comprehensive overview of Semantic Kernel and its applications. If you have any questions or need further details, feel free to ask! In a next blog post, we&rsquo;ll go over several use cases with many more code snippets, to give you enough examples to start building/developing your own Copilots. Stay tuned!</p><p><a class=link href=https://www.buymeacoffee.com/pdtit target=_blank rel=noopener><img src=../images/buy_me_a_coffee.png loading=lazy alt=BuyMeACoffee></a></p><p>Cheers!!</p><p>/Peter</p></section><footer class=article-footer><section class=article-tags><a href=/tags/azure/>Azure</a>
+<a href=/tags/ai/>AI</a>
+<a href=/tags/semantic-kernel/>Semantic Kernel</a>
+<a href=/tags/ai-studio/>AI Studio</a></section></footer></article><aside class=related-content--wrapper><h2 class=section-title>Related content</h2><div class=related-content><div class="flex article-list--tile"><article><a href=/post/festive-2023-ocr-on-steroids/><div class=article-details><h2 class=article-title>Festive Tech Calendar - Azure AI - OCR on Steroids</h2></div></a></article><article><a href=/post/build-an-azure-ai-chatbot-using-your-own-data-in-blob-storage/><div class=article-details><h2 class=article-title>Build an Azure AI chatbot using your own data from blob storage</h2></div></a></article><article><a href=/post/building-your-first-blazor-.net8-app---msts-summit-companion/><div class=article-details><h2 class=article-title>Building your first Blazor .NET8 app - MSTS Summit</h2></div></a></article><article><a href=/post/building-a-marvel-hero-app-with-blazor-.net8/><div class=article-details><h2 class=article-title>ScifiDevCon 2024 : Building a Marvel Hero App using Blazor and .NET8</h2></div></a></article><article><a href=/post/packt-book-review---azure-architecture-explained/><div class=article-details><h2 class=article-title>Packt Book Review - Azure Architecture Explained</h2></div></a></article></div></div></aside><footer class=site-footer><section class=copyright>&copy;
+2021 -
+2026 Azure Readiness starts here...</section><section class=powerby>The best way to know the future, is to learn it<br>Built with <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a><br>Theme <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=4.0.0>Stack</a></b> designed by <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a></section></footer><script type=module>
     import gallery from '\/ts\/gallery.js';
 
     const articleContent = document.querySelector('.article-content');
@@ -632,70 +125,16 @@
         });
         lightbox.init();
     }
-</script>
-
-    
-
-            </main>
-        </div>
-        
-    <div id="cookie-consent-banner" class="cookie-banner" aria-hidden="true" role="dialog" aria-labelledby="cookie-banner-title">
-    <div class="cookie-banner__content">
-        <div class="cookie-banner__text">
-            <strong id="cookie-banner-title">Cookie Consent</strong>
-            <p>We use cookies to enhance your browsing experience and analyze site traffic.</p>
-        </div>
-
-        <div class="cookie-banner__actions">
-            <button class="cookie-btn cookie-btn--secondary" data-cookie-action="deny">
-                Deny
-            </button>
-            <button class="cookie-btn cookie-btn--primary" data-cookie-action="accept">
-                Accept All
-            </button>
-        </div>
-        <button class="cookie-banner__settings-link" data-cookie-action="settings">
-            Manage preferences
-        </button>
-
-        
-        <div id="cookie-settings-panel" class="cookie-settings" aria-hidden="true">
-            <h3>Cookie Preferences</h3>
-
-            <div class="cookie-category">
-                <label>
-                    <input type="checkbox" name="necessary" checked disabled />
-                    <strong>Necessary</strong>
-                </label>
-                <p>These cookies are required for the website to function and cannot be disabled.</p>
-            </div><div class="cookie-category">
-                <label>
-                    <input type="checkbox" name="analytics" data-cookie-category="analytics" />
-                    <strong>Analytics</strong>
-                </label>
-                <p>These cookies help us understand how visitors interact with our website.</p>
-            </div><div class="cookie-category">
-                <label>
-                    <input type="checkbox" name="functional" data-cookie-category="functional" />
-                    <strong>Functional</strong>
-                </label>
-                <p>These cookies enable features like comments and embedded content.</p>
-            </div><div class="cookie-settings__actions">
-                <button class="cookie-btn cookie-btn--secondary" data-cookie-action="cancel">
-                    Cancel
-                </button>
-                <button class="cookie-btn cookie-btn--primary" data-cookie-action="save">
-                    Save preferences
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-    <script type="text/javascript" src="/ts/cookies.6d3577f211db9f4f1997385d4b417cf90130b050bc9e787bb1bb5346d337e998.js" defer></script>
-<script type="text/javascript" src="/ts/main.acaf849f2b273f6a8368a58b001f336738d0c948d92e79b116467d0c7515f932.js" defer></script>
-
-
-    </body>
-</html>
+</script></main></div><div id=cookie-consent-banner class=cookie-banner aria-hidden=true role=dialog aria-labelledby=cookie-banner-title><div class=cookie-banner__content><div class=cookie-banner__text><strong id=cookie-banner-title>Cookie Consent</strong><p>We use cookies to enhance your browsing experience and analyze site traffic.</p></div><div class=cookie-banner__actions><button class="cookie-btn cookie-btn--secondary" data-cookie-action=deny>
+Deny
+</button>
+<button class="cookie-btn cookie-btn--primary" data-cookie-action=accept>
+Accept All</button></div><button class=cookie-banner__settings-link data-cookie-action=settings>
+Manage preferences</button><div id=cookie-settings-panel class=cookie-settings aria-hidden=true><h3>Cookie Preferences</h3><div class=cookie-category><label><input type=checkbox name=necessary checked disabled>
+<strong>Necessary</strong></label><p>These cookies are required for the website to function and cannot be disabled.</p></div><div class=cookie-category><label><input type=checkbox name=analytics data-cookie-category=analytics>
+<strong>Analytics</strong></label><p>These cookies help us understand how visitors interact with our website.</p></div><div class=cookie-category><label><input type=checkbox name=functional data-cookie-category=functional>
+<strong>Functional</strong></label><p>These cookies enable features like comments and embedded content.</p></div><div class=cookie-settings__actions><button class="cookie-btn cookie-btn--secondary" data-cookie-action=cancel>
+Cancel
+</button>
+<button class="cookie-btn cookie-btn--primary" data-cookie-action=save>
+Save preferences</button></div></div></div></div><script type=text/javascript src=/ts/cookies.6d3577f211db9f4f1997385d4b417cf90130b050bc9e787bb1bb5346d337e998.js defer></script><script type=text/javascript src=/ts/main.acaf849f2b273f6a8368a58b001f336738d0c948d92e79b116467d0c7515f932.js defer></script></body></html>
