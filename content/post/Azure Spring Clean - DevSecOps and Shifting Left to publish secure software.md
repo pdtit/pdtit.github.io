@@ -19,7 +19,7 @@ I hope you learn from it, enjoy reading through and got inspired to check back t
 
 Microsoft’s Definition: The Union of People, Processes and Products, to enable continuous delivery of value to our end users
 
-![DevOps](./images/2022-03-17-01.png)
+![DevOps](../images/2022-03-17-01.png)
 
 What DevOps teams are doing is providing an automated deployment process, starting from: 
 

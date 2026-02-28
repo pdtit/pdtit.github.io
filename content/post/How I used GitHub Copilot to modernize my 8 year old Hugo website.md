@@ -173,7 +173,7 @@ If you have an older Hugo site (or any long-running static site), this is absolu
 
 By the way, this whole process took less than 2 hours, and about 20 prompts in a continuous conversational approach. Are you a fan of GitHub Copilot? Let me know what your coolest use case has been so far!
 
-[![BuyMeACoffee](./images/buy_me_a_coffee.png)](https://www.buymeacoffee.com/pdtit)
+[![BuyMeACoffee](../images/buy_me_a_coffee.png)](https://www.buymeacoffee.com/pdtit)
 
 Cheers!!
 
