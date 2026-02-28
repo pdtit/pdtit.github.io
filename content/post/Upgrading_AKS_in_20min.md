@@ -1,7 +1,7 @@
 ---
 title: "Upgrading an AKS cluster in 20 min"
 date: 2021-06-18
-tags: ["Azure", "AKS", "Kubernetes"]
+tags: ["Azure", "Containers"]
 draft: false
 ---
 

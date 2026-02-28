@@ -1,7 +1,7 @@
 ---
 title: "Use Docker Edge to Deploy Azure Container Instance - ACI"
 date: 2020-07-05
-tags: ["Azure", "Docker", "Containers", "ACI"]
+tags: ["Azure", "Containers"]
 draft: false
 ---
 

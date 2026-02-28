@@ -1,7 +1,7 @@
 ---
 title: "The weird case of the Visual Studio 2019 Dockerfile"
 date: 2020-11-22
-tags: ["Azure", "Docker", "Containers"]
+tags: ["Azure", "Containers"]
 draft: false
 ---
 

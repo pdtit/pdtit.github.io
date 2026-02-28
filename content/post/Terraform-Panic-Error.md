@@ -1,7 +1,7 @@
 ---
 title: "Terraform showing an error Panic not a collection type" 
 date: 2020-09-06
-tags: ["Azure", "TerraForm"]
+tags: ["Azure", "Infrastructure as Code"]
 draft: false
 ---
 

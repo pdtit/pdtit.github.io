@@ -1,7 +1,7 @@
 ---
 title: "Dotnet tool install dotnet-ef failing with unauthorized" 
 date: 2020-12-27
-tags: ["DotNet", "Blazor"]
+tags: ["DotNet", ".NET Development"]
 draft: false
 ---
 

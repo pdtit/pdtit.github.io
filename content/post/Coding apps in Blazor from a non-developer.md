@@ -1,7 +1,7 @@
 ---
 title: "Coding Apps in Blazor from a non-developer standpoint"
 date: 2021-09-06
-tags: ["Blazor", "DotNet"]
+tags: [".NET Development", "DotNet"]
 draft: false
 ---
 

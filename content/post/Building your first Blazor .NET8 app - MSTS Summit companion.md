@@ -2,7 +2,7 @@
 title: "Building your first Blazor .NET8 app - MSTS Summit "
 date: 2024-05-30
 publishdate: 2024-05-30
-tags: ["Blazor", "Azure", .NET8]
+tags: [".NET Development", "Azure"]
 draft: false
 ---
 

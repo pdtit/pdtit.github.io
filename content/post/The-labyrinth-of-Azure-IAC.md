@@ -1,7 +1,7 @@
 ---
 title: "The labyrinth of Azure Infrastructure as Code Tools - Azure Spring Clean"
 date: 2021-03-24
-tags: ["Azure", "IAC", "TerraForm", "Pulumi", "ARM"]
+tags: ["Azure", "Infrastructure as Code"]
 draft: false
 ---
 

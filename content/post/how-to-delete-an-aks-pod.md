@@ -1,7 +1,7 @@
 ---
 title: "How to delete a POD from Azure Kubernetes Services (AKS)"
 date: 2020-06-06
-tags: ["Azure", "Docker", "Containers", "Kubernetes", "AKS"]
+tags: ["Azure", "Containers"]
 draft: false
 ---
 

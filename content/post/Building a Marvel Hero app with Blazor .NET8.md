@@ -2,7 +2,7 @@
 title: "ScifiDevCon 2024 : Building a Marvel Hero App using Blazor and .NET8 "
 date: 2024-05-18
 publishdate: 2024-05-18
-tags: ["Blazor", "Azure", .NET8]
+tags: [".NET Development", "Azure"]
 draft: false
 ---
 

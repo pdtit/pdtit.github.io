@@ -1,7 +1,7 @@
 ---
 title: "AKS ErrImagePull and ImagePullBackOff on AKS after a year" 
 date: 2021-03-23
-tags: ["Azure", "AKS", "Kubernetes"]
+tags: ["Azure", "Containers"]
 draft: false
 ---
 

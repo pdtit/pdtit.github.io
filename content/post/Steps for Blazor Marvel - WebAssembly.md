@@ -2,7 +2,7 @@
 title: "Festive Tech Calendar 2022 - Building a Marvel Hero app using Blazor Web Assembly and Azure Static Web Apps"
 date: 2022-12-28
 publishdate: 2022-12-28
-tags: ["Blazor", "Azure"]
+tags: [".NET Development", "Azure"]
 draft: false
 ---
 

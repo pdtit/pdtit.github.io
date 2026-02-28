@@ -2,7 +2,7 @@
 title: "Azure Spring Clean - DCK, ACR, ACI, AKS, ACA, the Azure Container Alphabet Soup"
 date: 2023-03-15
 publishdate: 2023-03-15
-tags: ["Azure", "AKS", "Docker", "ACA", "Containers"]
+tags: ["Azure", "Containers"]
 draft: false
 ---
 

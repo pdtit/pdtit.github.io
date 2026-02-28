@@ -1,7 +1,7 @@
 ---
 title: "I'm recognized as a HashiCorp Ambassador"
 date: 2021-04-17
-tags: ["HashiCorp"]
+tags: ["Infrastructure as Code"]
 draft: false
 ---
 

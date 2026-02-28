@@ -1,7 +1,7 @@
 ---
 title: "Migrating Docker Desktop to WSL2"
 date: 2020-05-30
-tags: ["Azure", "Docker", "Containers"]
+tags: ["Azure", "Containers"]
 draft: false
 ---
 

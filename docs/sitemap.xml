@@ -7,12 +7,6 @@
     <loc>https://www.007ffflearning.com/</loc>
     <lastmod>2026-02-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.007ffflearning.com/tags/azure-static-web-apps/</loc>
-    <lastmod>2026-02-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.007ffflearning.com/tags/devops/</loc>
-    <lastmod>2026-02-28T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.007ffflearning.com/tags/github-copilot/</loc>
     <lastmod>2026-02-28T00:00:00+00:00</lastmod>
   </url><url>
@@ -26,9 +20,6 @@
     <lastmod>2026-02-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.007ffflearning.com/tags/</loc>
-    <lastmod>2026-02-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.007ffflearning.com/tags/website-modernization/</loc>
     <lastmod>2026-02-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.007ffflearning.com/post/keeping-mcp-config-in-sync-between-vscode-and-cli/</loc>
@@ -67,10 +58,7 @@
     <loc>https://www.007ffflearning.com/post/generate-azure-jwt-token-in-copilot-studio/</loc>
     <lastmod>2025-08-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.007ffflearning.com/tags/arm/</loc>
-    <lastmod>2025-07-12T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.007ffflearning.com/tags/bicep/</loc>
+    <loc>https://www.007ffflearning.com/tags/infrastructure-as-code/</loc>
     <lastmod>2025-07-12T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.007ffflearning.com/post/using-github-copilot-agent-mode-to-transform-arm-templates-to-bicep/</loc>
@@ -88,13 +76,16 @@
     <loc>https://www.007ffflearning.com/post/azure-spring-clean---application-insights---inside-out/</loc>
     <lastmod>2025-03-06T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://www.007ffflearning.com/tags/devops/</loc>
+    <lastmod>2025-03-06T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://www.007ffflearning.com/tags/monitoring/</loc>
     <lastmod>2025-03-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.007ffflearning.com/post/book-review---azure-cookbook/</loc>
     <lastmod>2024-12-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.007ffflearning.com/tags/.net/</loc>
+    <loc>https://www.007ffflearning.com/tags/.net-development/</loc>
     <lastmod>2024-12-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.007ffflearning.com/post/packt-book-review---data-science-in-.net-with-polyglot-notebooks/</loc>
@@ -108,12 +99,6 @@
   </url><url>
     <loc>https://www.007ffflearning.com/post/introduction-to-semantic-kernel/</loc>
     <lastmod>2024-09-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.007ffflearning.com/tags/.net8/</loc>
-    <lastmod>2024-05-30T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.007ffflearning.com/tags/blazor/</loc>
-    <lastmod>2024-05-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.007ffflearning.com/post/building-your-first-blazor-.net8-app---msts-summit-companion/</loc>
     <lastmod>2024-05-30T00:00:00+00:00</lastmod>
@@ -169,19 +154,10 @@
     <loc>https://www.007ffflearning.com/tags/office-forms/</loc>
     <lastmod>2023-03-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.007ffflearning.com/tags/aca/</loc>
-    <lastmod>2023-03-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.007ffflearning.com/tags/aks/</loc>
-    <lastmod>2023-03-15T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.007ffflearning.com/post/dck-acr-aci-aks-aca-the-azure-container-alphabet-soup/</loc>
     <lastmod>2023-03-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.007ffflearning.com/tags/containers/</loc>
-    <lastmod>2023-03-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.007ffflearning.com/tags/docker/</loc>
     <lastmod>2023-03-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.007ffflearning.com/post/steps-for-blazor-marvel---webassembly/</loc>
@@ -256,26 +232,11 @@
     <loc>https://www.007ffflearning.com/tags/ebooks/</loc>
     <lastmod>2021-06-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.007ffflearning.com/tags/kubernetes/</loc>
-    <lastmod>2021-06-18T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.007ffflearning.com/post/upgrading_aks_in_20min/</loc>
     <lastmod>2021-06-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.007ffflearning.com/tags/hashicorp/</loc>
-    <lastmod>2021-04-17T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.007ffflearning.com/post/hashicorp-ambassador/</loc>
     <lastmod>2021-04-17T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.007ffflearning.com/tags/iac/</loc>
-    <lastmod>2021-03-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.007ffflearning.com/tags/pulumi/</loc>
-    <lastmod>2021-03-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.007ffflearning.com/tags/terraform/</loc>
-    <lastmod>2021-03-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.007ffflearning.com/post/the-labyrinth-of-azure-iac/</loc>
     <lastmod>2021-03-24T00:00:00+00:00</lastmod>
@@ -315,9 +276,6 @@
   </url><url>
     <loc>https://www.007ffflearning.com/post/azure-for-architects---reviewing-done/</loc>
     <lastmod>2020-08-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.007ffflearning.com/tags/aci/</loc>
-    <lastmod>2020-07-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.007ffflearning.com/post/use_docker_edge_to_deploy_aci/</loc>
     <lastmod>2020-07-05T00:00:00+00:00</lastmod>
