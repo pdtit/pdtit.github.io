@@ -7,7 +7,7 @@ draft: false
 
 As most of you know, I enjoy writing technical (Azure related) **[books](https://www.007ffflearning.com/books)**, but every now and then I am not writing myself, but rather do technical reviewing. A few weeks ago, I was approached by **[Packt](http://www.packt.com)**, asking me to review their **[Azure for Architects - third edition](https://www.packtpub.com/cloud-networking/azure-for-architects-third-edition)**
 
-![Azure_for_Architects_cover](../images/azure_for_architects.jpeg)
+![Azure_for_Architects_cover](./images/azure_for_architects.jpeg)
 
 Don't let the reference to "third edition" fool you, there has been a massive rewrite of several chapters, with fresh new content, more technical information and new chapters were added as well. 
 

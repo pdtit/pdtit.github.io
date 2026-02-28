@@ -1,0 +1,1601 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Hugo on Azure Readiness starts here...</title><link>https://www.007ffflearning.com/tags/hugo/</link><description>Recent content in Hugo on Azure Readiness starts here...</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 30 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/hugo/index.xml" rel="self" type="application/rss+xml"/><item><title>How I migrated my Hugo site from Azure Storage Site to Azure Static Web Apps</title><link>https://www.007ffflearning.com/post/deploying-or-migrating-a-hugo-blog-on-azure-static-web-apps/</link><pubDate>Sun, 30 Oct 2022 00:00:00 +0000</pubDate><guid>https://www.007ffflearning.com/post/deploying-or-migrating-a-hugo-blog-on-azure-static-web-apps/</guid><description>&lt;p&gt;For about 3 years now, I&amp;rsquo;ve been running this personal blog site using &lt;strong&gt;&lt;a class="link" href="https://www.gohugo.io" target="_blank" rel="noopener"
+ &gt;Hugo&lt;/a&gt;&lt;/strong&gt;, running on &lt;a class="link" href="https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-static-website-how-to?tabs=azure-portal" target="_blank" rel="noopener"
+ &gt;Azure Static Storage Sites&lt;/a&gt; and &lt;a class="link" href="https://learn.microsoft.com/en-us/azure/frontdoor/front-door-overview" target="_blank" rel="noopener"
+ &gt;Azure Front Door&lt;/a&gt; as load balancer/TLS protection service.&lt;/p&gt;
+&lt;p&gt;About 18 months back, Microsoft released &lt;strong&gt;&lt;a class="link" href="https://learn.microsoft.com/en-us/azure/static-web-apps/overview" target="_blank" rel="noopener"
+ &gt;Azure Static Web Apps&lt;/a&gt;&lt;/strong&gt;, a platform built for exactly that, hosting Static Web sites, such as Vue, React, Angular, Svelte, .NET Blazor, and also&amp;hellip; Hugo :).&lt;/p&gt;
+&lt;p&gt;As I had to migrate my resources to a new Azure subscription and tenant, I thought this was a perfect moment to migrate to SWA. While the process was surprisingly smooth, I wanted to blog about it, to help and convince others who are in the same situation as myself, giving confidence how easy it actually is.&lt;/p&gt;
+&lt;p&gt;In short, the process involves the following:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;have a backup (copy) of the Site files in Azure Storage Account. If you don&amp;rsquo;t have them in a GitHub or Azure DevOps repository already, look into the free &lt;a class="link" href="https://azure.microsoft.com/en-us/products/storage/storage-explorer/" target="_blank" rel="noopener"
+ &gt;Azure Storage Explorer tool&lt;/a&gt; to copy the data aside to your local machine.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Depending on your DevOps platform of choice (both GitHub and Azure DevOps are supported), you need to have a repository available already to be used for Azure Static Web Apps.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Deploy a new Azure Static Web Apps resource from the &lt;a class="link" href="https://portal.azure.com" target="_blank" rel="noopener"
+ &gt;Azure Portal&lt;/a&gt;, as follows:&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;a) Create new Resource / Static Web Apps&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/2022-10-29_16-00-12.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Create Static Web Apps"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;b) Complete the necessary project details:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Subscription&lt;/li&gt;
+&lt;li&gt;Azure Resource Group&lt;/li&gt;
+&lt;li&gt;Unique name for the Static Site App&lt;/li&gt;
+&lt;li&gt;Hosting Plan - &lt;strong&gt;Free&lt;/strong&gt; which gives all you need for running Hugo with a public SSL/TLS certificate and hostname&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="../images/2022-10-29_16-00-52.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Create Static Web Apps"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;c) Next, provide the necessary deployment details. Notice SWA relies on a DevOps pipeline process, which can be GitHub or Azure DevOps. The pipeline basically gets triggered to compile the Hugo Markdown files (your blog article) into HTML-files, and gets triggered every time something is changed in the repository (like when you write a new blog post, delete a post or update a post&amp;hellip;)&lt;/p&gt;
+&lt;p&gt;In my setup, I chose Azure DevOps, but the flow is the same in GitHub.&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/2022-10-29_16-01-35.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Deploy Static Web Apps"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;d) Confirm the creation of the resource, and give it a few minutes. Once created, navigate to the new Static Web App resource blade:&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/2022-10-29_16-02-07.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Create SWA Resource"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;e) From here, notice the &lt;strong&gt;edit workflow&lt;/strong&gt; section, which points to a CI/CD Pipeline Yml file. This is the actual &amp;ldquo;engine&amp;rdquo; doing all the work. Open this link.&lt;/p&gt;
+&lt;p&gt;this is what it looks like in my scenario:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt; 1
+&lt;/span&gt;&lt;span class="lnt"&gt; 2
+&lt;/span&gt;&lt;span class="lnt"&gt; 3
+&lt;/span&gt;&lt;span class="lnt"&gt; 4
+&lt;/span&gt;&lt;span class="lnt"&gt; 5
+&lt;/span&gt;&lt;span class="lnt"&gt; 6
+&lt;/span&gt;&lt;span class="lnt"&gt; 7
+&lt;/span&gt;&lt;span class="lnt"&gt; 8
+&lt;/span&gt;&lt;span class="lnt"&gt; 9
+&lt;/span&gt;&lt;span class="lnt"&gt;10
+&lt;/span&gt;&lt;span class="lnt"&gt;11
+&lt;/span&gt;&lt;span class="lnt"&gt;12
+&lt;/span&gt;&lt;span class="lnt"&gt;13
+&lt;/span&gt;&lt;span class="lnt"&gt;14
+&lt;/span&gt;&lt;span class="lnt"&gt;15
+&lt;/span&gt;&lt;span class="lnt"&gt;16
+&lt;/span&gt;&lt;span class="lnt"&gt;17
+&lt;/span&gt;&lt;span class="lnt"&gt;18
+&lt;/span&gt;&lt;span class="lnt"&gt;19
+&lt;/span&gt;&lt;span class="lnt"&gt;20
+&lt;/span&gt;&lt;span class="lnt"&gt;21
+&lt;/span&gt;&lt;span class="lnt"&gt;22
+&lt;/span&gt;&lt;span class="lnt"&gt;23
+&lt;/span&gt;&lt;span class="lnt"&gt;24
+&lt;/span&gt;&lt;span class="lnt"&gt;25
+&lt;/span&gt;&lt;span class="lnt"&gt;26
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;Azure Static Web Apps CI/CD&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;pr&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;branches&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;include&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;- &lt;span class="l"&gt;main&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;trigger&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;branches&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;include&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;- &lt;span class="l"&gt;main&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;jobs&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;- &lt;span class="nt"&gt;job&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;build_and_deploy_job&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;displayName&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;Build and Deploy Job&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;condition&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;or(eq(variables[&amp;#39;Build.Reason&amp;#39;], &amp;#39;Manual&amp;#39;),or(eq(variables[&amp;#39;Build.Reason&amp;#39;], &amp;#39;PullRequest&amp;#39;),eq(variables[&amp;#39;Build.Reason&amp;#39;], &amp;#39;IndividualCI&amp;#39;)))&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;pool&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;vmImage&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;ubuntu-latest&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;variables&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;- &lt;span class="nt"&gt;group&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;Azure-Static-Web-Apps-gentle-desert-046399d10-variable-group&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;steps&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;- &lt;span class="nt"&gt;checkout&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;self&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;submodules&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;- &lt;span class="nt"&gt;task&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;AzureStaticWebApp@0&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;inputs&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;azure_static_web_apps_api_token&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;$(AZURE_STATIC_WEB_APPS_API_TOKEN_GENTLE_DESERT_046399D10)&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;###### Repository/Build Configurations - These values can be configured to match your app requirements. ######&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Normally, you shouldn&amp;rsquo;t have to change anything on this Yml pipeline file, unless your Hugo theme tells you to make alterations. In short, whenever there is a change (&lt;em&gt;&amp;ldquo;a trigger&amp;rdquo;&lt;/em&gt;) in the content (&lt;em&gt;&amp;ldquo;include main&amp;rdquo;&lt;/em&gt;), it runs the job and relate task (&lt;em&gt;&amp;ldquo;AzureStaticWebApp@0&amp;rdquo;&lt;/em&gt;). This is run on an Azure DevOps build agent, an Azure-running Ubuntu Virtual Machine, with all necessary software and tools needed to compile the website updates.&lt;/p&gt;
+&lt;ol start="4"&gt;
+&lt;li&gt;Wait for your pipeline to complete, and run successful.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;When it&amp;rsquo;s the first time, it will most probably fail, since there is no data to compile yet. Let&amp;rsquo;s fix this!!&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/2022-10-29_16-16-03.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Failed Pipeline"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="5"&gt;
+&lt;li&gt;From the DevOps environment, go to Repos (Github or Azure DevOps), and clone this repo to your local machine. I&amp;rsquo;m using Visual Studio Code, as it&amp;rsquo;s a brilliant MarkDown editor with Git integration out-of-the-box.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2022-10-29_16-19-10.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Clone Repo"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="6"&gt;
+&lt;li&gt;Once the repo got cloned, copy all the folders and files from your backup, into this new repo folder. This will be recognized as a &amp;ldquo;folder change&amp;rdquo; by the Git source control process, and asking you to &lt;em&gt;commit&lt;/em&gt; the changes and &lt;em&gt;synchronize&lt;/em&gt; back to your repository. Perform both steps in sequence.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2022-10-29_16-21-54.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Commit and Sync"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;followed by the Sync Changes process - which uploads all changed files from your local machine to the DevOps repo.
+&lt;img src="../images/2022-10-29_16-23-49.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Commit and Sync"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="7"&gt;
+&lt;li&gt;From the DevOps environment, validate the Hugo folders and files are present in the repository.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2022-10-29_16-25-07.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Synced Repo"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="8"&gt;
+&lt;li&gt;Given the automatic trigger, the Pipeline will be picking up the change and executing a new run. Wait for this to complete successfully.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2022-10-29_16-29-24.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="New pipeline trigger"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="9"&gt;
+&lt;li&gt;Connect to the Azure Web App resource URL (something like &lt;a class="link" href="https://gentle-desert-123456789.2.azurestaticapps.net/" target="_blank" rel="noopener"
+ &gt;https://gentle-desert-123456789.2.azurestaticapps.net/&lt;/a&gt;) as in my case, and behold your blog website is live!!&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2022-10-29_16-49-47.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="SWA is live"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;While this completes the successful migration of the Hugo blog site, we are not 100% done yet. As for now, it is only listening on the internal SWA web address, which we should update to a public domain name like &lt;a class="link" href="https://www.007FFFLearning.com" target="_blank" rel="noopener"
+ &gt;www.007FFFLearning.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Luckily, this is a nifty feature from Static Web Apps, where it allows you to add a custom domain, together with a public SSL/TLS certificate for encryption - all included in the FREE plan! Sweetly done Microsoft!&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;From the Static Web Apps blade, navigate to &lt;strong&gt;custom domains&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2022-10-29_16-52-54.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="SWA is live"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;Click &amp;lsquo;Add Domain&amp;rsquo;, and select the options that&amp;rsquo;s relevant to you. I have my public domain in &lt;a class="link" href="https://www.godaddy.com" target="_blank" rel="noopener"
+ &gt;GoDaddy&lt;/a&gt;, but other options, including Azure DNS itself, is also available.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2022-10-29_16-53-41.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Custom Domain DNS"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="3"&gt;
+&lt;li&gt;Add the custom domain name, and copy the CName record details over into your actual DNS hosting solution management portal. Once this is done, head back over to this Azure Custom Domain blade and confirm the domain validation. Note - depending on the DNS provider of use, this might take up to several hours. Mostly, this will only be a few minutes though.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2022-10-29_16-56-32.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Custom Domain Validation"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="4"&gt;
+&lt;li&gt;That&amp;rsquo;s it! from now on, your Static Web Site will listen to both the internal SWA domain, as well as the public domain you have configured here.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2022-10-29_16-59-05.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Public URL is live"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;This is all it took to migrate my Hugo blog site from Azure Storage Account Static Site to the newer, Azure Static Web Apps. I&amp;rsquo;m now going to delete my old Resource Group, since I don&amp;rsquo;t need that Azure Storage Account nor the Azure Front Door anymore. saving me about $45 /month.&lt;/p&gt;
+&lt;p&gt;In the next post, I&amp;rsquo;ll describe how to add &lt;a class="link" href="https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview?tabs=net" target="_blank" rel="noopener"
+ &gt;Azure Application Insights&lt;/a&gt; to it, to continue getting visitor statistics.&lt;/p&gt;
+&lt;p&gt;Holler me on &lt;a class="link" href="https://twitter.com/pdtit" target="_blank" rel="noopener"
+ &gt;Twitter&lt;/a&gt; if you should have any questions.&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
+ &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="BuyMeACoffee"
+ 
+ 
+ 
+ &gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Cheers!!&lt;/p&gt;
+&lt;p&gt;/Peter&lt;/p&gt;</description></item><item><title>Integrating Azure App Insights for Hugo on Static Web Apps</title><link>https://www.007ffflearning.com/post/integrating-azure-app-insights-for-hugo-on-static-web-apps/</link><pubDate>Sun, 30 Oct 2022 00:00:00 +0000</pubDate><guid>https://www.007ffflearning.com/post/integrating-azure-app-insights-for-hugo-on-static-web-apps/</guid><description>&lt;p&gt;Hey folks,&lt;/p&gt;
+&lt;p&gt;Earlier this week, I &lt;a class="link" href="https://www.007ffflearning.com/post/deploying-or-migrating-a-hugo-blog-on-azure-static-web-apps/" target="_blank" rel="noopener"
+ &gt;wrote&lt;/a&gt; about how I migrated my Hugo blog site from Azure Storage Account-based site to the newer Azure Static Web Apps with Hugo.&lt;/p&gt;
+&lt;p&gt;While this was a smooth process, both migrating the actual site content, as well as transferring the public domain name, the piece missing was the statistics. I always used &lt;a class="link" href="https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview?tabs=net" target="_blank" rel="noopener"
+ &gt;Azure Application Insights&lt;/a&gt; for this, but specifically for Azure Static Web Apps, App Insights is only supported when using Functions (as per &lt;a class="link" href="https://learn.microsoft.com/en-us/azure/static-web-apps/monitor" target="_blank" rel="noopener"
+ &gt;this article&lt;/a&gt; on the Microsoft docs). Which I don&amp;rsquo;t have with Hugo.&lt;/p&gt;
+&lt;p&gt;However, App Insights also supports a JavaScript-based approach, and this works fine with Hugo static website.&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s get this going&amp;hellip;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The first step involves deploying an Azure Application Insights resource from the portal.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2022-10-29_17-25-17.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Create App Insights"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;Enter the necessary details to get your App Insights resource deployed:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;Subscription&lt;/li&gt;
+&lt;li&gt;Resource Group&lt;/li&gt;
+&lt;li&gt;App Insights Instance Name&lt;/li&gt;
+&lt;li&gt;Region&lt;/li&gt;
+&lt;li&gt;Resource-Mode &lt;strong&gt;Workspace-based&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Log Analytics WorkSpace: &lt;strong&gt;accept the suggested one&lt;/strong&gt; (or select an existing one if you already have one and want to consolidate the logging information)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="../images/2022-10-29_17-26-14.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Deploy App Insights"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="3"&gt;
+&lt;li&gt;After a few minutes, the resource got created successfully. Navigate to the blade&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2022-10-29_17-28-31.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="App Insights"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="4"&gt;
+&lt;li&gt;From the blade, notice the Instrumentation Key in the top right corner. Copy this key aside, as you need to add it into the Hugo config file.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;With App Insights up-and-running, let&amp;rsquo;s head over to our Hugo site source files. Look for a file &lt;strong&gt;&amp;ldquo;config.toml&amp;rdquo;&lt;/strong&gt; in the root of your Hugo folder structure. Open the file in an editor, and add the following snippet into the &amp;ldquo;[param]&amp;rdquo; section of the config file:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;azureAppInsightsKey = &amp;#34;4ecca3df-ab58-4882-aaaa-123456789&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;replacing the sample key with the Instrumentation Key of your Azure Application Insights resource you copied earlier.&lt;/p&gt;
+&lt;ol start="5"&gt;
+&lt;li&gt;Next, to make sure your App Insights statistics get captured for every visit of every page of the site, add a little snippet of code for &lt;em&gt;appinsights&lt;/em&gt; to the top section of the baseof.html file, which should be in the \themes&amp;lt;theme&amp;gt;\layouts_default\ folder of the Hugo Theme you are using.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;span class="lnt"&gt;3
+&lt;/span&gt;&lt;span class="lnt"&gt;4
+&lt;/span&gt;&lt;span class="lnt"&gt;5
+&lt;/span&gt;&lt;span class="lnt"&gt;6
+&lt;/span&gt;&lt;span class="lnt"&gt;7
+&lt;/span&gt;&lt;span class="lnt"&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&amp;lt;html lang=&amp;#34;{{ .Site.LanguageCode }}&amp;#34;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;{{ partial &amp;#34;appinsights.html&amp;#34; . }} &amp;lt;========= add this line
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;{{ partial &amp;#34;head.html&amp;#34; . }}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;{{ partial &amp;#34;nav.html&amp;#34; . }}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&amp;lt;!-- Page Header --&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;{{ block &amp;#34;header&amp;#34; .}}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;...
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start="6"&gt;
+&lt;li&gt;Next, create a new file called &lt;strong&gt;appinsights.html&lt;/strong&gt; in the \themes&amp;lt;theme&amp;gt;\layouts\partials\ folder of the Hugo Theme you are using, having the following code in it:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt; 1
+&lt;/span&gt;&lt;span class="lnt"&gt; 2
+&lt;/span&gt;&lt;span class="lnt"&gt; 3
+&lt;/span&gt;&lt;span class="lnt"&gt; 4
+&lt;/span&gt;&lt;span class="lnt"&gt; 5
+&lt;/span&gt;&lt;span class="lnt"&gt; 6
+&lt;/span&gt;&lt;span class="lnt"&gt; 7
+&lt;/span&gt;&lt;span class="lnt"&gt; 8
+&lt;/span&gt;&lt;span class="lnt"&gt; 9
+&lt;/span&gt;&lt;span class="lnt"&gt;10
+&lt;/span&gt;&lt;span class="lnt"&gt;11
+&lt;/span&gt;&lt;span class="lnt"&gt;12
+&lt;/span&gt;&lt;span class="lnt"&gt;13
+&lt;/span&gt;&lt;span class="lnt"&gt;14
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-gdscript3" data-lang="gdscript3"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;{{&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Site&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Params&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;azureAppInsightsKey&lt;/span&gt; &lt;span class="p"&gt;}}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;script&lt;/span&gt; &lt;span class="n"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;text/javascript&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="n"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;l&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt; &lt;span class="n"&gt;S&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;location&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;u&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;script&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;instrumentationKey&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;D&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;ingestionendpoint&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;disableExceptionTracking&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;E&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;ai.device.&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;I&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;toLowerCase&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;crossOrigin&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;w&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;POST&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;appInsightsSDK&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;||&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;appInsights&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;(&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;||&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;||&lt;/span&gt;&lt;span class="n"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt; &lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="o"&gt;=!&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;=!&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;initialize&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;queue&lt;/span&gt;&lt;span class="p"&gt;:[],&lt;/span&gt;&lt;span class="n"&gt;sv&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;4&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;version&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;};&lt;/span&gt;&lt;span class="n"&gt;function&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;{},&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;Browser&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;E&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;id&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;I&lt;/span&gt;&lt;span class="p"&gt;](),&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;E&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;ai.operation.name&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;S&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;S&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pathname&lt;/span&gt;&lt;span class="o"&gt;||&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;_unknown_&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;ai.internal.sdkVersion&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;javascript:snippet_&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sv&lt;/span&gt;&lt;span class="o"&gt;||&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;version&lt;/span&gt;&lt;span class="p"&gt;),{&lt;/span&gt;&lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt; &lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;Date&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="n"&gt;function&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;===&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;0&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getUTCFullYear&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;-&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getUTCMonth&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;-&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getUTCDate&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;T&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getUTCHours&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;:&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getUTCMinutes&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;:&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getUTCSeconds&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;.&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getUTCMilliseconds&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mf"&gt;1e3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;toFixed&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;slice&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;Z&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;}(),&lt;/span&gt;&lt;span class="n"&gt;iKey&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;Microsoft.ApplicationInsights.&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;replace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;/-/&lt;/span&gt;&lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;.&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;sampleRate&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;tags&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;:{&lt;/span&gt;&lt;span class="n"&gt;baseData&lt;/span&gt;&lt;span class="p"&gt;:{&lt;/span&gt;&lt;span class="n"&gt;ver&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;}}}}&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt; &lt;span class="n"&gt;h&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="o"&gt;||&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;src&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;h&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;&lt;span class="n"&gt;function&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;l&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;u&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="o"&gt;=!&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;queue&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[],&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;||&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;=!&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;h&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt; &lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;{},&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;connectionString&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;;&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;=&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;===&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="n"&gt;I&lt;/span&gt;&lt;span class="p"&gt;]()]&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;])}&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;D&lt;/span&gt;&lt;span class="p"&gt;]){&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt; &lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;endpointsuffix&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="err"&gt;?&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;location&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;null&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;D&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;https://&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="err"&gt;?&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;.&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;dc.&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;||&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;services.visualstudio.com&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;)}&lt;/span&gt;&lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;}(),&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;||&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;||&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;D&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;&lt;span class="n"&gt;l&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="err"&gt;?&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;/v2/track&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;endpointUrl&lt;/span&gt;&lt;span class="p"&gt;,(&lt;/span&gt;&lt;span class="n"&gt;u&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[])&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;push&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details)&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;l&lt;/span&gt;&lt;span class="p"&gt;,(&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;Exception&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;baseType&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;ExceptionData&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;baseData&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exceptions&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[{&lt;/span&gt;&lt;span class="n"&gt;typeName&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;SDKLoadFailed&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;message&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;replace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;\&lt;span class="o"&gt;./&lt;/span&gt;&lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;-&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="n"&gt;hasFullStack&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;stack&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s2"&gt;Snippet failed to load [&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;] -- Telemetry is disabled&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s2"&gt;Help Link: https://go.microsoft.com/fwlink/?linkid=2128109&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s2"&gt;Host: &amp;#34;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;S&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;S&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pathname&lt;/span&gt;&lt;span class="o"&gt;||&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;_unknown_&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s2"&gt;Endpoint: &amp;#34;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;parsedStack&lt;/span&gt;&lt;span class="p"&gt;:[]}],&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;&lt;span class="n"&gt;u&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;push&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;Message&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;baseType&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;MessageData&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt; &lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;baseData&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;message&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;AI (Internal): 99 message:&amp;#34;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details) (&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;)&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;replace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;\&lt;span class="s2"&gt;&amp;#34;/g,&amp;#34;&amp;#34;)+&amp;#39;&amp;#34;&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;,o.properties={endpoint:a},i}(0,0,t,l)),function(e,t){if(JSON){var n=T.fetch;if(n&amp;amp;&amp;amp;!y.useXhr)n(t,{method:w,body:JSON.stringify(e),mode:&amp;#34;cors&amp;#34;});else if(XMLHttpRequest){var a=new XMLHttpRequest;a.open(w,t),a.setRequestHeader(&amp;#34;Content-type&amp;#34;,&amp;#34;application/json&amp;#34;),a.send(JSON.stringify(e))}}}(u,l))}function i(e,t){f||setTimeout(function(){!t&amp;amp;&amp;amp;m.core||a()},500)}var e=function(){var n=l.createElement(u);n.src=h;var e=y[b];return!e&amp;amp;&amp;amp;&amp;#34;&amp;#34;!==e||&amp;#34;undefined&amp;#34;==n[b]||(n[b]=e),n.onload=i,n.onerror=a,n.onreadystatechange=function(e,t){&amp;#34;loaded&amp;#34;!==n.readyState&amp;amp;&amp;amp;&amp;#34;complete&amp;#34;!==n.readyState||i(0,t)},n}();y.ld&amp;lt;0?l.getElementsByTagName(&amp;#34;head&amp;#34;)[0].appendChild(e):setTimeout(function(){l.getElementsByTagName(u)[0].parentNode.appendChild(e)},y.ld||0)}try{m.cookie=l.cookie}catch(p){}function t(e){for(;e.length;)!function(t){m[t]=function(){var e=arguments;g||m.queue.push(function(){m[t].apply(m,e)})}}(e.pop())}var n=&amp;#34;track&amp;#34;,r=&amp;#34;TrackPage&amp;#34;,o=&amp;#34;TrackEvent&amp;#34;;t([n+&amp;#34;Event&amp;#34;,n+&amp;#34;PageView&amp;#34;,n+&amp;#34;Exception&amp;#34;,n+&amp;#34;Trace&amp;#34;,n+&amp;#34;DependencyData&amp;#34;,n+&amp;#34;Metric&amp;#34;,n+&amp;#34;PageViewPerformance&amp;#34;,&amp;#34;start&amp;#34;+r,&amp;#34;stop&amp;#34;+r,&amp;#34;start&amp;#34;+o,&amp;#34;stop&amp;#34;+o,&amp;#34;addTelemetryInitializer&amp;#34;,&amp;#34;setAuthenticatedUserContext&amp;#34;,&amp;#34;clearAuthenticatedUserContext&amp;#34;,&amp;#34;flush&amp;#34;]),m.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4};var s=(d.extensionConfig||{}).ApplicationInsightsAnalytics||{};if(!0!==d[C]&amp;amp;&amp;amp;!0!==s[C]){method=&amp;#34;onerror&amp;#34;,t([&amp;#34;_&amp;#34;+method]);var c=T[method];T[method]=function(e,t,n,a,i){var r=c&amp;amp;&amp;amp;c(e,t,n,a,i);return!0!==r&amp;amp;&amp;amp;m[&amp;#34;_&amp;#34;+method]({message:e,url:t,lineNumber:n,columnNumber:a,error:i}),r},d.autoExceptionInstrumented=!0}return m}(y.cfg);(T[t]=n).queue&amp;amp;&amp;amp;0===n.queue.length&amp;amp;&amp;amp;n.trackPageView({})}(window,document,{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;src&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;//&lt;/span&gt; &lt;span class="n"&gt;The&lt;/span&gt; &lt;span class="n"&gt;SDK&lt;/span&gt; &lt;span class="n"&gt;URL&lt;/span&gt; &lt;span class="n"&gt;Source&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;appInsights&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;//&lt;/span&gt; &lt;span class="n"&gt;Global&lt;/span&gt; &lt;span class="n"&gt;SDK&lt;/span&gt; &lt;span class="n"&gt;Instance&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="n"&gt;defaults&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;appInsights&amp;#34;&lt;/span&gt; &lt;span class="n"&gt;when&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;supplied&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;ld&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;//&lt;/span&gt; &lt;span class="n"&gt;Defines&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="nb"&gt;load&lt;/span&gt; &lt;span class="n"&gt;delay&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;ms&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;before&lt;/span&gt; &lt;span class="n"&gt;attempting&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="nb"&gt;load&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;sdk&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;block&lt;/span&gt; &lt;span class="n"&gt;page&lt;/span&gt; &lt;span class="nb"&gt;load&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;head&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;default&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="n"&gt;ms&lt;/span&gt; &lt;span class="nb"&gt;load&lt;/span&gt; &lt;span class="n"&gt;after&lt;/span&gt; &lt;span class="n"&gt;timeout&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;useXhr&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;//&lt;/span&gt; &lt;span class="n"&gt;Use&lt;/span&gt; &lt;span class="n"&gt;XHR&lt;/span&gt; &lt;span class="n"&gt;instead&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;fetch&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;report&lt;/span&gt; &lt;span class="n"&gt;failures&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;available&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;crossOrigin&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;anonymous&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;//&lt;/span&gt; &lt;span class="n"&gt;When&lt;/span&gt; &lt;span class="n"&gt;supplied&lt;/span&gt; &lt;span class="n"&gt;this&lt;/span&gt; &lt;span class="n"&gt;will&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;provided&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="n"&gt;as&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;cross&lt;/span&gt; &lt;span class="n"&gt;origin&lt;/span&gt; &lt;span class="n"&gt;attribute&lt;/span&gt; &lt;span class="n"&gt;on&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;script&lt;/span&gt; &lt;span class="n"&gt;tag&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;cfg&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="o"&gt;//&lt;/span&gt; &lt;span class="n"&gt;Application&lt;/span&gt; &lt;span class="n"&gt;Insights&lt;/span&gt; &lt;span class="n"&gt;Configuration&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;instrumentationKey&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;{{- .Site.Params.azureAppInsightsKey -}}&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="o"&gt;/*&lt;/span&gt; &lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="n"&gt;Other&lt;/span&gt; &lt;span class="n"&gt;Configuration&lt;/span&gt; &lt;span class="n"&gt;Options&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt; &lt;span class="o"&gt;*/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}});&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;script&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;{{&lt;/span&gt; &lt;span class="n"&gt;end&lt;/span&gt; &lt;span class="p"&gt;}}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start="7"&gt;
+&lt;li&gt;
+&lt;p&gt;Save the files and wait for the Static Web Apps pipeline to complete the update successfully.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Navigate to your blog website, and open a few different articles, shortlinks to other parts in the web site or navigate back-and-forth to the home page. This to generate some statistics information.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;After only a few minutes, your App Insights data will get loaded, which can be retrieved from App Insights / Usage / section, using different views:&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2022-10-29_17-47-14.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="App Insights Statistics"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;For example, select &lt;strong&gt;Users&lt;/strong&gt;, which shows the number of unique visitors over the last 24 hours (note you can drill down to the last 30min, up to any custom period in time).&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/2022-10-29_17-48-13.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="App Insights Statistics"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;Click on the &lt;strong&gt;View More Insights&lt;/strong&gt; button below the chart, which will expose even more granular information regarding the visits. For example the location, time frame, client, browser version, etc&amp;hellip; all the way to the full sequence of blog articles visited.&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/2022-10-29_17-51-05.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="App Insights Detailed Statistics"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;In this article, I explained how to integrate Azure App Insights into a Hugo-based Azure Static Web Apps, using some JavaScript and HTML code.&lt;/p&gt;
+&lt;p&gt;If you are running Hugo on Azure SWA as well, let me know!&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
+ &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="BuyMeACoffee"
+ 
+ 
+ 
+ &gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Cheers!!&lt;/p&gt;
+&lt;p&gt;/Peter&lt;/p&gt;</description></item><item><title>Running your Hugo site on Azure Static WebApps (Preview)</title><link>https://www.007ffflearning.com/post/running-your-hugo-site-on-azure-static-webapps/</link><pubDate>Thu, 21 May 2020 00:00:00 +0000</pubDate><guid>https://www.007ffflearning.com/post/running-your-hugo-site-on-azure-static-webapps/</guid><description>&lt;p&gt;Only about a month ago, I decided to move my former website (running on Wix) to the Open Source &lt;strong&gt;&lt;a class="link" href="http://www.gohugo.io" target="_blank" rel="noopener"
+ &gt;Hugo&lt;/a&gt;&lt;/strong&gt; platform, running it as a static website with MarkDown, using &lt;strong&gt;&lt;a class="link" href="https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-static-website" target="_blank" rel="noopener"
+ &gt;Azure Storage Static Website&lt;/a&gt;&lt;/strong&gt;. For more details on how to do this, have a look at my blog post &lt;strong&gt;&lt;a class="link" href="https://www.007ffflearning.com/post/static_site_frontdoor/" target="_blank" rel="noopener"
+ &gt;here&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I have to say, it runs fine, is cheap, fast, reliable,&amp;hellip;&lt;/p&gt;
+&lt;p&gt;But then I discovered the new &lt;strong&gt;&lt;a class="link" href="https://docs.microsoft.com/en-us/azure/static-web-apps/" target="_blank" rel="noopener"
+ &gt;Azure Static Web App&lt;/a&gt;&lt;/strong&gt; capability, as announced during &lt;strong&gt;&lt;a class="link" href="https://mybuild.microsoft.com/" target="_blank" rel="noopener"
+ &gt;//Build&lt;/a&gt;&lt;/strong&gt; conference earlier this week, so I wanted to give it a try.&lt;/p&gt;
+&lt;p&gt;And instead of starting from scratch, why not reusing the Hugo content I already have?&lt;/p&gt;
+&lt;p&gt;**&lt;a class="link" href="https://azure.microsoft.com/en-us/services/app-service/static/" target="_blank" rel="noopener"
+ &gt;Azure Static Web Site&lt;/a&gt; allows you to run JavaScript-based static web apps; Technically, Hugo does the same thing; by creating your blog post in MarkDown, and running &amp;ldquo;Hugo&amp;rdquo;, it somehow compiles your new blog post, images,&amp;hellip; into a static HTML page. It&amp;rsquo;s this page and corresponding images (if any) that get uploaded to a &amp;ldquo;/public&amp;rdquo; folder. (Same thing happens on Azure Storage Static Site btw). So this was the mechanism I wanted to try.&lt;/p&gt;
+&lt;p&gt;One major difference between Azure Storage Static Site and the new Azure Static Web Site, is its dependency on &lt;strong&gt;&lt;a class="link" href="http://www.github.com" target="_blank" rel="noopener"
+ &gt;GitHub&lt;/a&gt;&lt;/strong&gt;. Yes, publishing your static site content is possible from a GitHub Actions CI Pipeline. While this also worked for the Azure Storage approach, you could actually just copy the compiled HTML files using AzCopy or Azure Storage Explorer.&lt;/p&gt;
+&lt;h2 id="create-a-github-repo"&gt;Create a GitHub Repo
+&lt;/h2&gt;&lt;p&gt;The starting point is having a GitHub Repo available, which contains our content. Again, since I already had all this, this process was quickly done. Make sure you remember your GitHub credentials giving access to the repo you want to use, as this will be asked for during the Static Web Site deployment.&lt;/p&gt;
+&lt;h2 id="deploy-azure-static-web-site"&gt;Deploy Azure Static Web Site
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;From the Azure Portal, select &lt;strong&gt;New Resource&lt;/strong&gt; and search for &lt;strong&gt;Static Web Site (Preview)&lt;/strong&gt;; Click &lt;strong&gt;Create&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/20200521_1.jpg"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Static Web Site Creation"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;&lt;strong&gt;Complete&lt;/strong&gt; the different parameters, required for the resource deployment:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;Subscription = Your Azure Subscription&lt;/li&gt;
+&lt;li&gt;Resource Group = New or existing Resource Group where you want to create the resource&lt;/li&gt;
+&lt;li&gt;Name = Provide a name for the static web site (Note this doesn&amp;rsquo;t need to be a unique name like with a regular Azure App Service)&lt;/li&gt;
+&lt;li&gt;Region = Close-by region where you want to host the site (note only a handful of Azure Regions are supported for now, but will probably grow)&lt;/li&gt;
+&lt;li&gt;SKU = Free is the only option for now&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="../images/20200521_2.jpg"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Static Web Site Parameters"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="3"&gt;
+&lt;li&gt;Next, you are asked for your &lt;strong&gt;GitHub Credentials&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Provide your GitHub credentials, and accept the application authorization; this will allow for the integration with GitHub Actions CI Pipeline later.&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20200521_3.jpg"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Static Web Site GitHub Authorization"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="4"&gt;
+&lt;li&gt;Once the GitHub authorization is confirmed, you can &lt;strong&gt;complete the Source Control&lt;/strong&gt; parameters:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;Organization = your GitHub account organization&lt;/li&gt;
+&lt;li&gt;Repository = select the GitHub Repo containing the sample Hugo website (in my example, this is github.com/pdtit/hugotest1 - feel free to &lt;a class="link" href="https://github.com/pdtit/hugotest1" target="_blank" rel="noopener"
+ &gt;Fork&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Branch = the Repo branch (typically master, but could be different)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="../images/20200521_4.jpg"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Static Web Site GitHub"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="5"&gt;
+&lt;li&gt;Click the &amp;ldquo;Next:Build&amp;rdquo; button, to move on to the next step in the resource creation process; here, you point to the actual site folder containing the site content. In case of Hugo, this is typically the &lt;strong&gt;&amp;quot;/public&amp;quot;&lt;/strong&gt; folder from your local Hugo development location&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Note you only have to complete the &lt;strong&gt;App Location&lt;/strong&gt; parameter, and leave the other 2 empty&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20200521_5.jpg"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Static Web Site Build"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="6"&gt;
+&lt;li&gt;Complete the process by clicking the &lt;strong&gt;&amp;ldquo;Review &amp;amp; Create&amp;rdquo;&lt;/strong&gt; button. When all looks OK, confirm by pressing the &lt;strong&gt;&amp;ldquo;Create&amp;rdquo;&lt;/strong&gt; button. Wait for the Azure resource to get created; this shouldn&amp;rsquo;t take that long.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/20200521_6.jpg"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Static Web Site Create"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="7"&gt;
+&lt;li&gt;Once the resource is created, select &amp;ldquo;Go to Resource&amp;rdquo; from the notification popup appearing; this will redirect you to the actual Static Site resource that just got created. Notice the &lt;strong&gt;unique URL&lt;/strong&gt; that got created for this specific site.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/20200521_7.jpg"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Static Web Site Created"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="8"&gt;
+&lt;li&gt;Notice the &lt;strong&gt;blue ribbon&lt;/strong&gt; informing you about not having any content of the site yet, and pointing to GitHub Actions. &lt;strong&gt;Click&lt;/strong&gt; on the blue ribbon to get redirected to the GitHub Actions. &lt;strong&gt;Notice&lt;/strong&gt; an &lt;strong&gt;&amp;ldquo;Azure Static Web Apps CI/CD&amp;rdquo;&lt;/strong&gt; Action is automatically created, and running (orange color); Give it a few minutes to complete (green color).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/20200521_8.jpg"
+ 
+ 
+ loading="lazy"
+ 
+ alt="GitHub Action CICD"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="10"&gt;
+&lt;li&gt;If you want to see more details about the CI/CD pipeline itself, select the pipeline; this will show the &lt;strong&gt;Build and Deploy Job&lt;/strong&gt; status, exposing details for each and every step in the build process&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/20200521_9.jpg"
+ 
+ 
+ loading="lazy"
+ 
+ alt="GitHub Action Build Deploy Job"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;h2 id="verify-the-static-site-is-running"&gt;Verify the Static Site is running
+&lt;/h2&gt;&lt;p&gt;Only thing left to do is validating if the website is actually running. TO do this, go back to the &lt;strong&gt;Azure Portal&lt;/strong&gt;, and click on the &lt;strong&gt;URL&lt;/strong&gt; of the Static Site&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20200521_10.jpg"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Static Web Site Running"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;This brings up your browser and nicely shows the Hugo website. Notice this is an Azure Namespace URL for now, but feel free to continue the configuration by checking on the &lt;strong&gt;Custom Domains&lt;/strong&gt; option.&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20200521_11.jpg"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Static Web Site Running"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;While this is still in preview, I&amp;rsquo;m pretty convinced this will soon become a very popular service. I know I&amp;rsquo;ll keep using it already!&lt;/p&gt;
+&lt;p&gt;As always, reach out when having any questions, or feel free to share feedback using my social media links.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Found this article useful? Consider supporting my blog&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.buymeacoffee.com/pdtit" target="_blank"&gt;&lt;img src="https://cdn.buymeacoffee.com/buttons/default-yellow.png" alt="Buy Me A Coffee" height="41" width="174"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
+ &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="BuyMeACoffee"
+ 
+ 
+ 
+ &gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;/Peter&lt;/p&gt;</description></item><item><title>Collecting Hugo static site statistics using Azure Application Insights</title><link>https://www.007ffflearning.com/post/hugo_site_statistics_app_insights/</link><pubDate>Sun, 26 Apr 2020 00:00:00 +0000</pubDate><guid>https://www.007ffflearning.com/post/hugo_site_statistics_app_insights/</guid><description>&lt;p&gt;Welcome back!&lt;/p&gt;
+&lt;p&gt;About a month ago, I decided to move my former 007FFFLearning website from Wix.com to something &amp;ldquo;easier&amp;rdquo; to use for blog writing. While Wix is an excellent platform, offering an easy way to build a graphical website, besides a ton of plug-ins, it also comes with a cost. And since I didn&amp;rsquo;t have a need for a lot of the built-in features I was using out of my own business before I joined Microsoft, I wanted to try something new.&lt;/p&gt;
+&lt;p&gt;That &amp;ldquo;something new&amp;rdquo; eventually was &lt;a class="link" href="http://gohugo.io" target="_blank" rel="noopener"
+ &gt;Hugo&lt;/a&gt;, an Open Source web platform, supporting HTML and MarkDown. After a quick test, I found it also worked fine on Azure Storage Static Site, which to me was the motivation to give it a try.&lt;/p&gt;
+&lt;p&gt;(FYI, have a look &lt;a class="link" href="https://www.007ffflearning.com/post/static_site_frontdoor/" target="_blank" rel="noopener"
+ &gt;here&lt;/a&gt; about how to get your own Hugo website started, and hosting it on Azure including Azure CDN or Azure Front Door services&amp;hellip;)&lt;/p&gt;
+&lt;p&gt;Having a platform for blog posts is one thing, getting your hands on statistics around popular posts and overall web site visits is maybe even more crucial if you want to take blogging serious. Since the core backend of my &lt;a class="link" href="http://gohugo.io" target="_blank" rel="noopener"
+ &gt;Hugo&lt;/a&gt; site is running on Azure, I wanted to integrate &lt;a class="link" href="https://docs.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview" target="_blank" rel="noopener"
+ &gt;Azure Application Insights&lt;/a&gt;, since I knew how powerful it was for monitoring web application workloads, running in Azure or elsewhere.&lt;/p&gt;
+&lt;h2 id="1-deploying-application-insights"&gt;1. Deploying Application Insights
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;The first step is straight forward if you already have Azure experience. From the &lt;a class="link" href="http://portal.azure.com" target="_blank" rel="noopener"
+ &gt;Azure Portal&lt;/a&gt;, &lt;strong&gt;create&lt;/strong&gt; a new resource, and search for &lt;strong&gt;&amp;ldquo;Application Insights&amp;rdquo;&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="../images/AppInsights_new.jpg"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Create Application Insights"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Complete the necessary parameters to get this resource created:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Subscription&lt;/li&gt;
+&lt;li&gt;Resource Group&lt;/li&gt;
+&lt;li&gt;Name&lt;/li&gt;
+&lt;li&gt;Azure Region&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="../images/AppInsights_create.jpg"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Create Application Insights"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Wait for the resource to get created. Once created, open the Application Insight blade:&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="../images/AppInsights_initial.jpg"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Create Application Insights"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;h2 id="2-integrating-instrumentation-key-script-into-the-hugo-website"&gt;2. Integrating Instrumentation Key script into the Hugo website
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;From the top right corner, it will show you the &lt;strong&gt;&amp;ldquo;Instrumentation Key&amp;rdquo;&lt;/strong&gt;, which is the &lt;em&gt;unique identifier&lt;/em&gt; for this Application Insights instance. This must be linked to &lt;em&gt;each and every web page&lt;/em&gt; we publish on our website, to transfer telemetry information back to the App Insights back-end. The way to do this is &lt;strong&gt;adding a little JavaScript script&lt;/strong&gt; into the header of the &lt;strong&gt;index.html&lt;/strong&gt;, and is described more in detail &lt;a class="link" href="https://docs.microsoft.com/en-us/azure/azure-monitor/app/website-monitoring" target="_blank" rel="noopener"
+ &gt;at the following Azure docs link&lt;/a&gt;:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;While this sounds like a tremendous job, Hugo actually makes this &lt;strong&gt;rather easy&lt;/strong&gt;. Although you create each standalone post (or other item) as a single MarkDown file, during the &amp;ldquo;rendering process&amp;rdquo;, Hugo &lt;em&gt;compiles this into a static index.html&lt;/em&gt; for each post (or other item). This is based on gluing different snippets of the layout together.&lt;/p&gt;
+&lt;p&gt;In my Hugo theme, I found out that using the &lt;strong&gt;&amp;ldquo;head.html&amp;rdquo;&lt;/strong&gt; file in the &lt;strong&gt;root of my layout folder&lt;/strong&gt; &amp;ldquo;(&amp;lt;Hugo_source_folder\themes&amp;lt;themename&amp;gt;\layouts\partials)&amp;rdquo; would to the trick.&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/AppInsights_head.jpg"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Create Application Insights"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Open this file in a text editor like VS Code, and browse all the way to the end of the &lt;head&gt; section. Paste in the following lines (as shown on the Azure Docs page), &lt;strong&gt;replacing the INSTRUMENTATION_KEY&lt;/strong&gt; with the one you find in the Application Insights Overview section:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;span class="lnt"&gt;3
+&lt;/span&gt;&lt;span class="lnt"&gt;4
+&lt;/span&gt;&lt;span class="lnt"&gt;5
+&lt;/span&gt;&lt;span class="lnt"&gt;6
+&lt;/span&gt;&lt;span class="lnt"&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-gdscript3" data-lang="gdscript3"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;script&lt;/span&gt; &lt;span class="n"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;text/javascript&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;var&lt;/span&gt; &lt;span class="n"&gt;sdkInstance&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;appInsightsSDK&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="n"&gt;window&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;sdkInstance&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;appInsights&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt; &lt;span class="n"&gt;aiName&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;window&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;sdkInstance&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;&lt;span class="n"&gt;aisdk&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;window&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;aiName&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;||&lt;/span&gt;&lt;span class="n"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;&lt;span class="n"&gt;function&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;arguments&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;queue&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;push&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;apply&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)})}}&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;};&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;initialize&lt;/span&gt;&lt;span class="o"&gt;=!&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;document&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;window&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="n"&gt;setTimeout&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;createElement&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;script&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="o"&gt;||&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getElementsByTagName&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;script&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;parentNode&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;appendChild&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)});&lt;/span&gt;&lt;span class="n"&gt;try&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cookie&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cookie&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="n"&gt;catch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;){}&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;queue&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[],&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;version&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt; &lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;Event&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;PageView&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;Exception&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;Trace&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;DependencyData&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;Metric&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;PageViewPerformance&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="p"&gt;;)&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;track&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pop&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;startTrackPage&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;stopTrackPage&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;Track&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;start&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;stop&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;setAuthenticatedUserContext&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;clearAuthenticatedUserContext&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;flush&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;===&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;disableExceptionTracking&lt;/span&gt;&lt;span class="o"&gt;||&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;extensionConfig&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;extensionConfig&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ApplicationInsightsAnalytics&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&amp;amp;!&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;===&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;extensionConfig&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ApplicationInsightsAnalytics&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;disableExceptionTracking&lt;/span&gt;&lt;span class="p"&gt;)){&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;_&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;onerror&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt; &lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="k"&gt;return&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;!==&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;_&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="p"&gt;]({&lt;/span&gt;&lt;span class="n"&gt;message&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;lineNumber&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;columnNumber&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;error&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;}),&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;autoExceptionInstrumented&lt;/span&gt;&lt;span class="o"&gt;=!&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;}(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;instrumentationKey&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;INSTRUMENTATION_KEY&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="n"&gt;window&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;aiName&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;aisdk&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;aisdk&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;queue&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;===&lt;/span&gt;&lt;span class="n"&gt;aisdk&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;queue&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;aisdk&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;trackPageView&lt;/span&gt;&lt;span class="p"&gt;({});&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;script&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;The code within the head.html file should look similar to this now:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="../images/AppInsights_head_code.jpg"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Create Application Insights"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;h2 id="3-rendercompile-your-hugo-website"&gt;3. Render/Compile your Hugo Website
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;From the root folder of the Hugo Website, run &lt;strong&gt;hugo&lt;/strong&gt; to recompile all your content pages (posts and other) into their final index.html files.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Publish&lt;/strong&gt; the source code of the website to your Azure Static Site&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Browse&lt;/strong&gt; to a few posts on your website, to &lt;strong&gt;generate traffic&lt;/strong&gt;; we will validate this in the next step from within Application Insights&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="4-get-statistics-from-within-application-insights"&gt;4. Get statistics from within Application Insights
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Back in &lt;strong&gt;Application Insights&lt;/strong&gt; in the Azure Portal, browse to &lt;strong&gt;Usage&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="../images/AppInsights_usagemenu.jpg"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Application Insights Usage"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;and select &lt;strong&gt;Users&lt;/strong&gt;; this will show you a diagram of the user visits for the last 24 hours. You can change the time window if needed by selecting other filters.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="../images/AppInsights_userstatistics.jpg"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Application Insights Users"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;For example, changing the time window to &lt;strong&gt;7 days&lt;/strong&gt;, changes the view to this in my example:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="../images/AppInsights_userstatistics_7days.jpg"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Application Insights Users_7days"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;If you &lt;strong&gt;click&lt;/strong&gt; the &lt;strong&gt;&amp;ldquo;View More Insights&amp;rdquo;&lt;/strong&gt; button, you can see additional statistical details about the site visitors, this time nicely structured &lt;strong&gt;by country&lt;/strong&gt;:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="../images/AppInsights_userstatistics_7days_bycountry.jpg"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Application Insights Users by country"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Scrolling more down&lt;/strong&gt; shows yet another summary view, summarized &lt;strong&gt;by (active) session&lt;/strong&gt;:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="../images/AppInsights_userstatistics_7days_bysession.jpg"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Application Insights Users by session"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Click&lt;/strong&gt; on any of the active session details; this opens a sidebar view, exposing more granular information about that session:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="../images/AppInsights_session_timeline.jpg"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Application Insights session timeline"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Back from the &lt;strong&gt;Usage&lt;/strong&gt; menu of Application Insights, &lt;strong&gt;select&lt;/strong&gt; &lt;strong&gt;Events&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="../images/AppInsights_events.jpg"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Application Insights Events"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;This will again show you detailed views on the actual past events for the last 24 hours, 7 days or any other time window you select. You can again &lt;strong&gt;click&lt;/strong&gt; the &lt;strong&gt;&amp;ldquo;View More Insights&amp;rdquo;&lt;/strong&gt; button, to find specific &lt;strong&gt;event statistics&lt;/strong&gt;, which refer to page views of each and every blog post on our website.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="../images/AppInsights_eventstatistics.jpg"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Application Insights Event Statistics"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Click&lt;/strong&gt; on any of the &lt;strong&gt;event statistics items&lt;/strong&gt;; this redirects you to another section in Application Insights, the &lt;strong&gt;&amp;ldquo;End-to-end transaction details&amp;rdquo;&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="../images/AppInsights_endtoend.jpg"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Application Insights End To End Transaction Details"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;From this view, select &lt;strong&gt;All available telemetry information for this session&lt;/strong&gt;, under the &lt;strong&gt;Related items&lt;/strong&gt; section:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="../images/AppInsights_relateditems.jpg"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Application Insights Related Items"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Which in turn exposes additional details about each and every item viewed during that specific session&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="../images/AppInsights_telemetry_search.jpg"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Application Insights Telemetry Search"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;h2 id="4-summary"&gt;4. Summary
+&lt;/h2&gt;&lt;p&gt;Application Insights is a powerful (web) application monitoring and troubleshooting tool within Azure, coming with impressive dashboards. This allows for very detailed analytics of web sessions, users, telemetry information and more. While App Insights has a lot more features than what I covered here, it helps in getting a clear view on your Hugo website view statistics.&lt;/p&gt;
+&lt;p&gt;And that was the core objective of this post.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m learning more about Hugo in combination with Azure services, and love it more each and every day. Expect more posts around these subjects in the near future.&lt;/p&gt;
+&lt;p&gt;For now, stay safe and healthy! as always, reach out to share your feedback or ask questions.&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
+ &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="BuyMeACoffee"
+ 
+ 
+ 
+ &gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;/Peter&lt;/p&gt;</description></item><item><title>Running an Azure Storage Static Site, protected by Azure Front Door</title><link>https://www.007ffflearning.com/post/static_site_frontdoor/</link><pubDate>Sat, 25 Apr 2020 00:00:00 +0000</pubDate><guid>https://www.007ffflearning.com/post/static_site_frontdoor/</guid><description>&lt;p&gt;Earlier this week, I had the honor to present a session for the Belgian
+&lt;strong&gt;&lt;a class="link" href="http://www.mc2mc.be" target="_blank" rel="noopener"
+ &gt;MC2MC&lt;/a&gt;&lt;/strong&gt; Microsoft community, as part of a broader online event
+week with other Belgian community User Groups
+(&lt;a class="link" href="https://www.mc2mc.be/events/be-community-week-mc2mc-evening%29" target="_blank" rel="noopener"
+ &gt;https://www.mc2mc.be/events/be-community-week-mc2mc-evening)&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;My session topic was based on a little real-life project I worked on myself only
+a few weeks ago, deploying a “Hugo” based static website on Azure Storage
+Account Static Site (Yes, this site you are reading right now&amp;hellip;).&lt;/p&gt;
+&lt;p&gt;As there were quite some steps to go through, I decided to write a full blog
+post about it. And that’s exactly what brings you here&amp;hellip;&lt;/p&gt;
+&lt;p&gt;If you are new to Hugo, have a look at the official website for more
+information: &lt;a class="link" href="http://gohugo.io" target="_blank" rel="noopener"
+ &gt;http://gohugo.io&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/hugo-logo-wide.svg"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;Although Hugo supports both HTML and MarkDown, I decided to go for MarkDown; if
+this is unknown to you, think of it is a web page markup language, with a
+specific syntax. While it might feel difficult in the beginning, it is actually
+rather straight forward to use once you get the hang of it. I could also
+recommend MarkDown Monster as an editor, if you are not into using Visual Studio
+Code.&lt;/p&gt;
+&lt;p&gt;-&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;-&lt;/p&gt;
+&lt;h2 id="1-getting-started"&gt;&lt;strong&gt;1. Getting started&lt;/strong&gt;
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Install Hugo on your local machine, from &lt;a class="link" href="http://gohugo.io" target="_blank" rel="noopener"
+ &gt;http://gohugo.io&lt;/a&gt; (I&amp;rsquo;m running this on Windows 10, but it also supports Linux and MacOS)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Next, grab a copy of VS Code (&lt;a class="link" href="http://code.visualstudio.com" target="_blank" rel="noopener"
+ &gt;http://code.visualstudio.com&lt;/a&gt;); this is my favorite for both terminal and MarkDown editing&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;From within VS Code, Choose &amp;ldquo;Open Folder&amp;rdquo;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Run Terminal&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Run &lt;strong&gt;&amp;ldquo;Hugo version&amp;rdquo;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/bcc174bb593b0f381d8151603b7aa80c.png"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="2-create-new-site"&gt;&lt;strong&gt;2. Create new site&lt;/strong&gt;
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Run &lt;strong&gt;&amp;ldquo;Hugo new site &amp;lt;sitename&amp;gt;&amp;rdquo;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/a54714b64e47fe120a93e7c9816820ef.png"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Hugo default folder structure is created automatically&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/af6560448b8aedfd88cc90a09c578e0b.png"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Download (or Clone GitHub)&lt;/strong&gt; a theme from &lt;a class="link" href="http://themes.gohugo.io" target="_blank" rel="noopener"
+ &gt;http://themes.gohugo.io&lt;/a&gt;, and extract
+the folders in the \themes folder + &lt;strong&gt;copy the config.toml&lt;/strong&gt; from the
+\themes folder into the root of the site directory that got created in the
+previous step.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;(Minimal is what I’m using for this blog site&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Open browser http://localhost:1313&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;This opens the sample Theme-based website.&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/d3aba47e0c41fc62ce610dcc1432c662.png"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Base site is working fine;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Stop&lt;/strong&gt; the running “Hugo Server” Process by pressing Ctrl-C in the terminal window.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;to update or add new content, open the &lt;strong&gt;Content\post&lt;/strong&gt; subfolder&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/05bb2f48f1c1bee0ae764d49091af439.png"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Create a new MarkDown document, or copy an existing one as a starting point;
+I personally use &lt;a class="link" href="http://www.markdownmonster.west-wind.com" target="_blank" rel="noopener"
+ &gt;MarkdownMonster&lt;/a&gt; or &lt;a class="link" href="[http://code.visualstudio.com" &gt;Visual Studio Code&lt;/a&gt; as my MarkDown Editor, but any advanced text editor should work out fine.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;For a cheat sheet of MarkDown code syntax, have a look here:
+&lt;a class="link" href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank" rel="noopener"
+ &gt;https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;edit some content in the page&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Once your new post has been created, open your terminal again, and run “Hugo Server”. This will start a new web session. Validate from the browser on http://localhost:1313 if the new page is visible&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/cbdf079922dc9d6d3da53edf49fff4e6.png"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Works!!&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;However, this is “only local” on our dev station; to prepare the site to get published to Azure, &lt;strong&gt;compile&lt;/strong&gt; it by running “&lt;strong&gt;hugo&lt;/strong&gt;” from the command prompt (instead of hugo server)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;![](../images/743118c78771c96ab4a3f4a789657b0a.png)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;This compile process creates the actual “web content” in a /public/
+subfolder in the same directory as the hugo site itself.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="3-publish-to-azure-storage-account"&gt;&lt;strong&gt;3. Publish to Azure Storage Account&lt;/strong&gt;
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Deploy an Azure Storage Account v2 as a starter&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;From &lt;strong&gt;Settings&lt;/strong&gt;, select &lt;strong&gt;Static website&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Enter information for the default page and error page&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/71edd780841d608544d3b134324169f1.png"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Save&lt;/strong&gt; the settings; Your static website URL gets generated and presented&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/15c5386d0f516f7d962190ab03ef0f33.png"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+ &lt;blockquote&gt;
+ &lt;p&gt;As we now have the storage account static site service up-and-running, we
+can deploy our content. I am using (and recommending!) Visual Studio Code to
+do this, but you could also copy the content in a manual way by using FTP or
+&lt;a class="link" href="https://azure.microsoft.com/en-us/features/storage-explorer" target="_blank" rel="noopener"
+ &gt;Azure Storage Explorer&lt;/a&gt; to do this.&lt;/p&gt;
+
+ &lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;From VSCode, &lt;strong&gt;add Storage Account Extension&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/15348e19823d218073622c2ad1d33a85.png"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;From Command Palette : &lt;strong&gt;Azure Storage / Deploy to Static Website&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/f01559119805d70472c83f81a614e686.png"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Complete the prompts with answers from your Azure subscription and setup,
+and select your Hugo folder as a source. This will copy all files from the
+/public/ subfolder into the Storage Account $web folder&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/1d16b85ebc152aa6151b80d32f20f8fc.png"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Wait&lt;/strong&gt; for the process to complete successfully&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Browse&lt;/strong&gt; to the URL of the storage account&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/d532da99e266f79d5ee2d9138b7a7a90.png"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;DONT PANIC!! THIS IS EXPECTED&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The reason this &lt;strong&gt;FAILS&lt;/strong&gt; is because Hugo is using the /public/ subfolder to
+publish all content; If you are just using flat HTML files in the Static
+Site, it will work right away.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;try connecting to the URL path where our blog posts are stored, e.g.
+&lt;strong&gt;../public/post/&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/fc7a9f15ac268781c1506e8a597d201a.png"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;The site page itself loads&lt;/strong&gt;, but it’s not 100% OK ; we need to find a
+solution for that /public/ URL update. Good news is, Azure has such a
+solution built-in, which is called &lt;strong&gt;Azure Content Delivery Network – CDN.&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Let’s deploy one.&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id="4-deploy--publish-with-azure-cdn"&gt;&lt;strong&gt;4. Deploy &amp;amp; Publish with Azure CDN&lt;/strong&gt;
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;New Resource / CDN /&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Provide a Name + Resource Group and Subscription details&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Pricing = Standard Microsoft&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Select Create a CDN endpoint now&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Provide a unique name for the URL&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Origin type = &lt;strong&gt;Custom&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Origin hostname = paste in the URL address of the Static Website
+&lt;strong&gt;without the https:// and without the trailing /&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/1596f2f6245b11f77e1f015ccee25132.png"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Once created, open the CDN Profile resource&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="../images/cab37ce38896f5a9b23e70937b3f22bb.png"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Select the &lt;strong&gt;Endpoint&lt;/strong&gt; you defined under the Endpoints section&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Under &lt;strong&gt;Settings&lt;/strong&gt; / select &lt;strong&gt;Rules engine&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/29b3bf76e5985c924a4d34b8bce99534.png"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;In the &lt;strong&gt;Rules engine&lt;/strong&gt; / select &lt;strong&gt;Add Action&lt;/strong&gt; / Choose &lt;strong&gt;URL Rewrite&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/bbbe6b0b6c9b1705b42a8828fdd6c92a.png"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Create the following rule settings:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Source Pattern: &lt;strong&gt;/&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Destionation: &lt;strong&gt;/public/&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Preserve unmatched path: &lt;strong&gt;Yes&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Save the changes, and wait for the prompt the configuration has been updated
+successfully. &lt;strong&gt;NOTE: it could take up to 10min before the changes are
+actually applied and working. So be patient&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Once received, test the &lt;strong&gt;Azure CDN URL&lt;/strong&gt; from the browser, and click
+through to a site subsection like Posts or Publications (if you have content
+in there&amp;hellip;)&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/69dd6f63be627b49c4025e65391e576f.png"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;THIS WORKS!!&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;From here, you could add a custom domain option, together with integrating
+HTTPS using CDN Profile settings itself. I’m sure you will find out now by
+yourself how to do that.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;However, allow me to continue on the scenario, and extending our setup with
+&lt;strong&gt;Azure Front Door&lt;/strong&gt;, a Global Azure load balancing service, which also
+performs SSL offloading, Session Affinity, URL rewrite/redirection and
+probably the most important feature &lt;strong&gt;Web Application Firewall&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;NOTE: from here, we won’t be able to stay within the &amp;lt;$5 /month
+consumption fee, as the required Azure Front Door rules will add an
+additional cost of +/- $20 /month, or +/-$50 /month if you enable the WAF
+option.&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="5-deploying-azure-front-door"&gt;&lt;strong&gt;5. Deploying Azure Front Door&lt;/strong&gt;
+&lt;/h2&gt;&lt;p&gt;Technically, for this web site scenario, Azure Front Door offers all
+capabilities we used before from Azure CDN. Meaning, if you decide to go for
+Azure Front Door, you do not need Azure CDN.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;New Resource / Front Door / Create&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/0d0288e06468bf95eef55d84319b4779.png"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Complete the basic settings around Subscription, Resource Group and location&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/adba042bcb3a432b0565977892192ef0.png"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Move on to the Configuration step next&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/9f5298aa673cca90e805a0d6f867bb04.png"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Click&lt;/strong&gt; the + sign to add the Front Door Frontends/domains settings, and
+provide a unique name for the Front Door URL you want to use&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/a88a69c694df0070def2e01955798c82.png"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Continue&lt;/strong&gt; with Step 2 where you define the backend pool settings. This is
+basically pointing Front Door to the Static Site Storage Account URL&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Click&lt;/strong&gt; “**Add BackEnd Pool”, and complete the requested parameters:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;BackEnd Host Type: &lt;strong&gt;custom&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Backend Host Name: &lt;strong&gt;the Static Web Site URL, without the https:// and
+trailing /&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Accept / leave all other values as default&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/d75ecb379ea92cafccb4c27849acd3c7.png"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Confirm the &lt;strong&gt;Backend Pool settings&lt;/strong&gt; ,which brings you back to the
+BackendPool settings tab. Here, &lt;strong&gt;leave the default values&lt;/strong&gt; for Health
+Probes and Load Balancing for now&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/565bab36676bd1051cbc8704739d411c.png"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Confirm&lt;/strong&gt; the BackendPool settings, and move on with &lt;strong&gt;Step 3&lt;/strong&gt;, where you
+will define the necessary &lt;strong&gt;routing rule&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/3adb6b6fe63c5d3b400002ec82fc57c0.png"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;In the &lt;strong&gt;Add Rule&lt;/strong&gt; parameter section, provide a name for the rule you are
+about to create. Accept the default values for &lt;strong&gt;Accepted Protocol,
+FrontEnd/domains and Patterns to Match&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/27d6a761b4d8f4eac5c3354396a012d9.png"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;In the &lt;strong&gt;Route details&lt;/strong&gt; section, scroll down and &lt;strong&gt;change the setting for
+Custom forwarding path&lt;/strong&gt;, adding the &lt;strong&gt;“/public/&lt;/strong&gt; path that is used by Hugo
+(&lt;strong&gt;Note: this path could be different, depending on the Hugo Theme; this
+path technically refers to the directory that Hugo uses to store the
+compiled site pages&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/42664ef200baaba643f1b2a2832f54d3.png"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Wait&lt;/strong&gt; for the Azure Front Door resource to get created; once this is
+complete, open your browser to the URL address of Front Door. This should
+open your web site in a nice looking way&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="../images/b7ce47a54f1e3c7dece7af37254e2801.png"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;h2 id="6-configure-public-custom-domain-name-to-azure-front-door"&gt;&lt;strong&gt;6. Configure Public Custom Domain Name to Azure Front Door&lt;/strong&gt;
+&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;In this last section, we will update our Azure Front Door configuration for
+a public custom domain name. This is built-in, and integrates a Let’s
+Encrypt (FREE) SSL/TLS certificate to your web service. How cool is that!
+
+**Note: you need to have a public DNS domain name already available, in
+which you need to create a C-name alias record for the Azure Front Door
+frontend/domain name you configured. E.g. my 007FFFLearning domain has a
+“www” C-Name alias pointing to “hugofd.azurefd.net”**
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;From the Azure Front Door blade, select &lt;strong&gt;Front Door Designer&lt;/strong&gt;; next,
+select &lt;strong&gt;Frontends/domains&lt;/strong&gt;, and add a new custom domain&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/6aa9ef304612ae212993e78b6b13c3be.png"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If you also want to add the &lt;strong&gt;Domain HTTPS&lt;/strong&gt; option to the configuration,
+select this setting a bit more down in the blade. If you don’t have a PFX
+certificate file already for the public domain name space, have one
+generated by Front Door, by choosing &lt;strong&gt;Front Door managed&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/c81aaa41313e8c591ea97ed212d9f84e.png"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Confirm the settings by clicking &lt;strong&gt;Add&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Wait&lt;/strong&gt; about 10 minutes to complete the &lt;strong&gt;SSL request status&lt;/strong&gt;, resulting
+in the below view:&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/b974c9bcf68e1038dd47d28f18f7e3b3.png"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Once the custom domain is configured&lt;/strong&gt;, we need to make one last change in
+our &lt;strong&gt;routing rules&lt;/strong&gt;, adding the custom domain to the configuration.
+Therefore, select the routing rule you created earlier, and update its
+settings:&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/83de2dac4629565e87046375967a4083.png"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Save the changes&lt;/strong&gt;, and wait for the update to get applied.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;After only a few minutes, everything should be running smooth, allowing you
+to connect to your website custom domain url:&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/14f88a3b7039829707d8554123c90446.png"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Selecting any of the subsections from the header menu, e.g. &lt;strong&gt;Posts&lt;/strong&gt; will
+be nicely redirected to all posts, and allowing your readers to easily go
+from one blog article to the other.&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/9caad132a444ecffe99993db19408b6f.png"
+ 
+ 
+ loading="lazy"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;Congrats!! You made it all the way to the end!&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I hope you enjoyed this exercise, and are ready for fully working on your
+blog website now. Get back into your Visual Studio Code, and start hammering
+some MarkDown posts!&lt;/p&gt;
+&lt;p&gt;As always, I’m here for you if you are stuck somewhere, or want to let me
+know once your site is up-and-running.&lt;/p&gt;
+&lt;p&gt;Happy Hugo-ing!&lt;/p&gt;
+&lt;p&gt;Take care, Peter&lt;/p&gt;</description></item></channel></rss>

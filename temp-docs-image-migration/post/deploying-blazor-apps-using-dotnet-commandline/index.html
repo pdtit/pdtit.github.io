@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Hello readers,\nAbout 2 months ago, I promised I would start writing down my adventures in the DotNet Blazor development world, which you can read about in my first and second post.\nWelcome to &ldquo;Coding Apps in Blazor from a non-developer standpoint - Part 3&rdquo;\nThis next article will cover about the same as the previous one, deploying the Blazor Server app template, but instead of using Visual Studio GUI for this, I&rsquo;ll use the dotnet commandline tool this time. As it comes with some cool enhancements and options. And, next to that, it&rsquo;s always nice to rely on command shell to speed up certain tasks.\n">
+<title>Deploying .NET6.0 Blazor App using dotnet commandline</title>
+
+
+<link rel="canonical" href="https://www.007ffflearning.com/post/deploying-blazor-apps-using-dotnet-commandline/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+
+
+<link rel="stylesheet" href="/scss/style.min.cf9653eecaea3cf14f5747895c3ac9b505bea7f8f3f40c16dac6b0e82fafddc4.css"><meta property='og:title' content="Deploying .NET6.0 Blazor App using dotnet commandline">
+<meta property='og:description' content="Hello readers,\nAbout 2 months ago, I promised I would start writing down my adventures in the DotNet Blazor development world, which you can read about in my first and second post.\nWelcome to &ldquo;Coding Apps in Blazor from a non-developer standpoint - Part 3&rdquo;\nThis next article will cover about the same as the previous one, deploying the Blazor Server app template, but instead of using Visual Studio GUI for this, I&rsquo;ll use the dotnet commandline tool this time. As it comes with some cool enhancements and options. And, next to that, it&rsquo;s always nice to rely on command shell to speed up certain tasks.\n">
+<meta property='og:url' content='https://www.007ffflearning.com/post/deploying-blazor-apps-using-dotnet-commandline/'>
+<meta property='og:site_name' content='Azure Readiness starts here...'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Blazor' /><meta property='article:tag' content='DotNet' /><meta property='article:published_time' content='2021-11-08T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-11-08T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Deploying .NET6.0 Blazor App using dotnet commandline">
+<meta name="twitter:description" content="Hello readers,\nAbout 2 months ago, I promised I would start writing down my adventures in the DotNet Blazor development world, which you can read about in my first and second post.\nWelcome to &ldquo;Coding Apps in Blazor from a non-developer standpoint - Part 3&rdquo;\nThis next article will cover about the same as the previous one, deploying the Blazor Server app template, but instead of using Visual Studio GUI for this, I&rsquo;ll use the dotnet commandline tool this time. As it comes with some cool enhancements and options. And, next to that, it&rsquo;s always nice to rely on command shell to speed up certain tasks.\n">
+    <link rel="shortcut icon" href="/img/007ffflearning-ape.png" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        <figure class="site-avatar">
+                <a href="/">
+                    <img src="/img/007ffflearning-ape.png" 
+                        width="596"
+                        height="842"
+                        class="site-logo"
+                        loading="lazy"
+                        alt="Avatar">
+                </a>
+                
+                    <span class="emoji">🎓</span>
+                
+            </figure>
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Azure Readiness starts here...</a></h1>
+            <h2 class="site-description">Bring me an audience, I&#39;ll give them Azure knowledge in return</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://pdtit.bsky.social'
+                        
+                        title="Bluesky"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 530" fill="currentColor">
+  <path d="m135.72 44.03c66.496 49.921 138.02 151.14 164.28 205.46 26.262-54.316 97.782-155.54 164.28-205.46 47.98-36.021 125.72-63.892 125.72 24.795 0 17.712-10.155 148.79-16.111 170.07-20.703 73.984-96.144 92.854-163.25 81.433 117.3 19.964 147.14 86.092 82.697 152.22-122.39 125.59-175.91-31.511-189.63-71.766-2.514-7.3797-3.6904-10.832-3.7077-7.8964-0.0174-2.9357-1.1937 0.51669-3.7077 7.8964-13.714 40.255-67.233 197.36-189.63 71.766-64.444-66.128-34.605-132.26 82.697-152.22-67.108 11.421-142.55-7.4491-163.25-81.433-5.9562-21.282-16.111-152.36-16.111-170.07 0-88.687 77.742-60.816 125.72-24.795z"/>
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/petender'
+                        
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pdtit/'
+                        
+                        title="LinkedIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/post/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Posts</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/books/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+</svg>
+
+                
+                <span>Books</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/speaking/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-microphone" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 5a3 3 0 0 1 6 0v7a3 3 0 0 1 -6 0z"/>
+  <path d="M5 10a7 7 0 0 0 14 0"/>
+  <path d="M8 21l8 0"/>
+  <path d="M12 17l0 4"/>
+</svg>
+
+                
+                <span>Speaking</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About Me</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>Tags</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/deploying-blazor-apps-using-dotnet-commandline/">Deploying .NET6.0 Blazor App using dotnet commandline</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime='2021-11-08T00:00:00Z'>Nov 08, 2021</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+
+    
+</div>
+
+</header>
+
+    
+
+    <section class="article-content">
+    
+    
+    <p>Hello readers,</p>
+<p>About 2 months ago, I promised I would start writing down my adventures in the DotNet Blazor development world, which you can read about in my <a class="link" href="https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer/"  target="_blank" rel="noopener"
+    >first</a> and <a class="link" href="https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer-part-2/"  target="_blank" rel="noopener"
+    >second</a> post.</p>
+<p>Welcome to &ldquo;Coding Apps in Blazor from a non-developer standpoint - Part 3&rdquo;</p>
+<p>This next article will cover about the same as the previous one, deploying the Blazor Server app template, but instead of using Visual Studio GUI for this, I&rsquo;ll use the <strong>dotnet commandline</strong> tool this time. As it comes with some cool enhancements and options. And, next to that, it&rsquo;s always nice to rely on command shell to speed up certain tasks.</p>
+<h1 id="prerequisites">Prerequisites
+</h1><p>To make sure you are ready to go and follow-along, let me list up some prereqs:</p>
+<p>The only prereq for the actual creation part, would be the .NET RunTime:</p>
+<ul>
+<li><a class="link" href="https://dotnet.microsoft.com/download/visual-studio-sdks"  target="_blank" rel="noopener"
+    >.NET RunTime</a>
+In order to run C# and .NET applications, one needs to have the necessary .NET RunTime installed on the development workstation. In a later article, I&rsquo;ll describe how you can publish Blazor apps to Azure App Services or Containerized workloads, where you will notice the .NET RunTime is required as well. If you are running <strong>Visual Studio 2019</strong>, install the
+<strong>.NET 5.0</strong> RunTime; if, like me, you are running <strong>Visual Studio 2022 Preview</strong>, you can directly go for <strong>.NET 6.0</strong></li>
+</ul>
+<p>(I&rsquo;m running Windows 11, Visual Studio 2022 Preview 7.0, which means it could look a bit different on your machine, although most steps will be identical&hellip;)</p>
+<p>However, what&rsquo;s the point in creating an application placeholder folder, if you are not customizing and developing, right? Which means you still need a Developer Interface for the actual coding. Nice thing is, that you are not limited to Visual Studio, but could also use Visual Studio Code, JetBrains Rider, or basically any other IDE you prefer.</p>
+<ul>
+<li>
+<p><a class="link" href="https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community&amp;rel=16"  target="_blank" rel="noopener"
+    >Visual Studio IDE</a>
+Any flavor of Visual Studio 2019 or later should work (know that 2022 is getting launched Nov 8th&hellip;), and depending on your situation, you might already have access to a licensed edition of Standard, Professional or Enterprise from your employer. If not, totally fine, as there is also a <strong>free Community Edition</strong> available from the link I shared</p>
+</li>
+<li>
+<p><a class="link" href="https://code.visualstudio.com/"  target="_blank" rel="noopener"
+    >Visual Studio Code</a>
+VS Code is a &ldquo;lightweight&rdquo;, yet superpowerful source code editor which runs on your desktop and is available for Windows, macOS and Linux. It comes with built-in support for JavaScript, TypeScript and Node.js and has a rich ecosystem of extensions for other languages (such as C++, C#, Java, Python, PHP, Go) and runtimes (such as .NET and Unity). Common extensions I&rsquo;ve been using since day 1 are Azure App Services, ARM Template tools, Docker Containers and  Kubernetes. And because of the built-in support for C# and .NET overall, it&rsquo;s a perfect target for developing Blazor applications.</p>
+</li>
+</ul>
+<h1 id="using-net-commandline-to-create-a-blazor-web-assembly-app">Using .NET commandline to Create a Blazor Web Assembly App
+</h1><p>Assuming you have all the prereqs covered, you can create your first Blazor Web Assembly App by going through the following steps:</p>
+<ol>
+<li>Open your preferred commandline Shell (Command Prompt, <a class="link" href="https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701?activetab=pivot:overviewtab"  target="_blank" rel="noopener"
+    >Windows Terminal</a> or <a class="link" href="https://docs.microsoft.com/en-us/powershell/scripting/overview?view=powershell-7.1"  target="_blank" rel="noopener"
+    >PowerShell</a>) <strong>and validate the dotnet version</strong> by initiating the following command:</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">dotnet --version
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="../images/2021-11-08_01.png"
+    
+    
+    loading="lazy"
+    
+      alt="DotnetVersion"
+    
+    
+    
+  ></p>
+<p>In my case, I&rsquo;m running the .NET 6.0 RC2 Preview, which should shift to a Release version later today :)</p>
+<ol start="2">
+<li>Next, <strong>create a subfolder</strong> for your Blazor Application, by initating the &ldquo;MD&rdquo; (Make Directory on a Windows Machine) command, and &ldquo;CD&rdquo; (Change Directory) to <strong>navigate to the subfolder</strong></li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">md dotnetblazordemo
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>followed by</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">cd dotnetblazordemo
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="../images/2021-11-08_02.png"
+    
+    
+    loading="lazy"
+    
+      alt="CreateSubfolder"
+    
+    
+    
+  ></p>
+<ol start="3">
+<li>Next, pull up the <strong>Blazor templates</strong> by initiating the following command:</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">dotnet new --list Blazor
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="../images/2021-11-08_03.png"
+    
+    
+    loading="lazy"
+    
+      alt="ListBlazor"
+    
+    
+    
+  ></p>
+<ol start="4">
+<li>As you can see, there is <strong>both a template for Blazor Server and Blazor Web Assembly</strong>; As I showed you how to deploy a Blazor Server App in the Visual Studio GUI <a class="link" href="https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer-part-2/"  target="_blank" rel="noopener"
+    >post</a>, let&rsquo;s deploy a Blazor Web Assembly alternative this time. Remember, Web Assembly is a browser capability, allowing you to run full .NET code directly in the browser, without requiring a server-backend. For more details, check back on my <a class="link" href="%28https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer/%29" >Blazor introductory</a> article in which I positioned the different Blazor versions and their characteristics.</li>
+</ol>
+<p>Inititate the following command:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">dotnet new blazorwasm --hosted
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Which nicely creates all necessary components for our Blazor App, containing the Client (Front-End), Server (Back-End) and Shared components.</p>
+<p><img src="../images/2021-11-08_04.png"
+    
+    
+    loading="lazy"
+    
+      alt="NewBlazorWasm"
+    
+    
+    
+  ></p>
+<ol start="5">
+<li>To actually <strong>run the Blazor Web Assembly app</strong>, move into the &ldquo;Server&rdquo; folder (cd Server&hellip;) and kick off the &ldquo;dotnet run&rdquo; command:</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">dotnet run
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>This starts with compiling (Building&hellip;) the app, and showing a successful run, exposing the different ports the app is listening on (https and http)</p>
+<p><img src="../images/2021-11-08_05.png"
+    
+    
+    loading="lazy"
+    
+      alt="DotNetRun"
+    
+    
+    
+  ></p>
+<ol start="6">
+<li>Open your favorite browser, and connect to the https://localhost:<port> address; easiest (on Windows) is Ctrl+click and selecting the URL.</li>
+</ol>
+<p><img src="../images/2021-11-08_06.png"
+    
+    
+    loading="lazy"
+    
+      alt="BrowserApp"
+    
+    
+    
+  ></p>
+<p>You now have a fully functional Blazor App running in the browser. Congratulations. (for details on what the app is about, feel free to check my notes in my <a class="link" href="https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer-part-2/"  target="_blank" rel="noopener"
+    >previous article</a>)</p>
+<h1 id="more-dotnet-blazor-command-line-options">More dotnet Blazor command line options
+</h1><p>While I could have stopped the article here and thanking you for following along, I wanted to emphasize some other capabilities from the dotnet commandline, and covering some of the additional parameters to choose from. Note: I will only touch on the Blazor-specific options, not all the overall dotnet commandline options available.</p>
+<ol>
+<li>To get an idea about all different options available, run the following command:</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">dotnet new blazorwasm --help
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="../images/2021-11-08_07.png"
+    
+    
+    loading="lazy"
+    
+      alt="BlazorWasmHelp"
+    
+    
+    
+  ></p>
+<h2 id="deploy-a-specific-framework-version">deploy a specific Framework version
+</h2><p>With different .NET Framework versions available on the same developer station, it might be necessary to specify a specific version of .NET to use; this is possible by adding the <strong>-f or &ndash;framework</strong> parameter to the dotnet new blazorwasm syntax, followed by the version identifier <strong>net5.0</strong>, <strong>net6.0</strong> or <strong>netcoreapp3.1</strong></p>
+<h2 id="include-aspnet-core-host">include ASP.NET Core host
+</h2><p>We used this parameter in the previous steps, but I didn&rsquo;t really explain what it did. If you want to build a &ldquo;client&rdquo; Web Assembly version, which runs with an ASP.NET Server-backend, you need to specify the <strong>-ho or &ndash;hosted</strong> parameter</p>
+<p>Let&rsquo;s run a similar command as before to create a Blazor Web Assembly app, without specifying the &ndash;hosted parameter, to see the difference:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">dotnet new blazorwasm 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Once created, check the file structure of this new application folder:</p>
+<p><img src="../images/2021-11-08_08.png"
+    
+    
+    loading="lazy"
+    
+      alt="BlazorWasmNoHosted"
+    
+    
+    
+  ></p>
+<p>As you can see, there is no separation for the Client and Server code files, but we only have the Pages and Shared folder.</p>
+<h2 id="integrate-azure-ad-authentication">Integrate Azure AD authentication
+</h2><p>It might be required to integrate authentication into your Blazor Web Assembly app, and why not considering Azure Active Directory for this, right? While there is a bit more required than what the commandline parameters give you, it&rsquo;s a great starting point, deploying a new Blazor app which is pre-authentication ready. To do this, specify the <strong>-au or &ndash;auth</strong> parameter</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">dotnet new blazorwasm -au individual
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="../images/2021-11-08_09.png"
+    
+    
+    loading="lazy"
+    
+      alt="BlazorWasmAuth"
+    
+    
+    
+  ></p>
+<p>The creation process is about the same as before; so let&rsquo;s trigger another <strong>dotnet run</strong> action and connect to the app from the browser:</p>
+<p><img src="../images/2021-11-08_10.png"
+    
+    
+    loading="lazy"
+    
+      alt="BlazorWasmAuth"
+    
+    
+    
+  ></p>
+<p>Nice! There is a prompt here, informing us to customize the Program.cs file, and provide the necessary Azure AD Authentication for our application identity</p>
+<p>Let&rsquo;s have a look at the Program.cs file, which also contains a little snippet and pointer where to add the necessary Azure AD Authentication settings and where to find additional info in the docs.</p>
+<p><img src="../images/2021-11-08_11.png"
+    
+    
+    loading="lazy"
+    
+      alt="BlazorWasmAuth"
+    
+    
+    
+  ></p>
+<h2 id="running-blazor-app-as-progressive-web-app">Running Blazor App as Progressive Web App
+</h2><p>I won&rsquo;t drill down on all the details on what a Progressive Web App is about, but in short, it allows you to turn your Web Assembly browser-based app into a &ldquo;desktop&rdquo;-mode application, or even using it &ldquo;offline&rdquo; (depending on app specifics). This is done by defining the <strong>-p or &ndash;pwa</strong> parameter.</p>
+<p>Let&rsquo;s try it out:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">dotnet new blazorwasm -p 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">dotnet run
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="../images/2021-11-08_12.png"
+    
+    
+    loading="lazy"
+    
+      alt="BlazorWasmAuth"
+    
+    
+    
+  ></p>
+<p>and testing it again from the browser by connecting to https://localhost:<port></p>
+<p>From the browser properties, navigate to <strong>Apps</strong> and select <strong>Install this app</strong></p>
+<p><img src="../images/2021-11-08_13.png"
+    
+    
+    loading="lazy"
+    
+      alt="BlazorWasmAuth"
+    
+    
+    
+  ></p>
+<p>and confirming the popup prompt <strong>Install</strong> once more.</p>
+<p><img src="../images/2021-11-08_14.png"
+    
+    
+    loading="lazy"
+    
+      alt="BlazorWasmAuth"
+    
+    
+    
+  ></p>
+<p>Once installed, you can set some additional settings by clicking the <strong>Allow</strong> button.</p>
+<p>From here, your app will run in a separate docked window, just like any other Windows Application. You could also add a shortcut to the desktop, taskbar or start Menu.</p>
+<p><img src="../images/2021-11-08_15.png"
+    
+    
+    loading="lazy"
+    
+      alt="BlazorWasmAuth"
+    
+    
+    
+  ></p>
+<h1 id="summary">Summary
+</h1><p>In this post, I introduced you to creating your First Blazor Web Assembly App, using the dotnet commandline syntax. Starting from the base Blazorwasm template creation, I also covered several interesting creation parameters that could come in handy when creating Blazor Web Assembly apps, directly from the commandline.</p>
+<p>In a next Blazor-related post, I&rsquo;ll walk you through some fundamental layout customization options, changing the look and feel of the navigation bar, the top bar and the actual web app pages themselves by introducing HTML and CSS primarily.</p>
+<p>For now, take care of yourself and your family, see you again soon with more Blazor-news.</p>
+<p><a class="link" href="https://www.buymeacoffee.com/pdtit"  target="_blank" rel="noopener"
+    ><img src="../images/buy_me_a_coffee.png"
+    
+    
+    loading="lazy"
+    
+      alt="BuyMeACoffee"
+    
+    
+    
+  ></a></p>
+<p>Cheers, Peter</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/blazor/">Blazor</a>
+        
+            <a href="/tags/dotnet/">DotNet</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/post/coding-apps-in-blazor-from-a-non-developer---part-2/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Coding Apps in Blazor from a non-developer standpoint - Part 2</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/post/coding-apps-in-blazor-from-a-non-developer/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Coding Apps in Blazor from a non-developer standpoint</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/post/dotnet-tool-install-dotnet-ef-failing-with-unauthorized/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Dotnet tool install dotnet-ef failing with unauthorized</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/post/publish-your-first-dotnet5-app-to-azure-app-services/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">publish your first dotnet5 app to Azure App Services</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2021 - 
+        
+        2026 Azure Readiness starts here...
+    </section>
+    
+    <section class="powerby">
+        
+            The best way to know the future, is to learn it <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="4.0.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+
+
+
+<script type="module">
+    import gallery from '\/ts\/gallery.js';
+
+    const articleContent = document.querySelector('.article-content');
+    const shouldLoad = articleContent && (articleContent.querySelectorAll('figure').length > 0 || articleContent.querySelectorAll('img.gallery-image').length > 0);
+    
+    if (shouldLoad) {
+        gallery(articleContent);
+
+        const PhotoSwipeLightbox = (await import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js")).default;
+        const styleHref = "https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.css";
+
+        const styleTag = document.createElement('link');
+        styleTag.rel = 'stylesheet';
+        styleTag.href = styleHref;
+        document.head.appendChild(styleTag);
+
+        const lightbox = new PhotoSwipeLightbox({
+            gallerySelector: '.article-content',
+            childSelector: 'figure a.image-link',
+            pswpModule: () => import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js")
+        });
+        lightbox.init();
+    }
+</script>
+
+    
+
+            </main>
+        </div>
+        
+    <div id="cookie-consent-banner" class="cookie-banner" aria-hidden="true" role="dialog" aria-labelledby="cookie-banner-title">
+    <div class="cookie-banner__content">
+        <div class="cookie-banner__text">
+            <strong id="cookie-banner-title">Cookie Consent</strong>
+            <p>We use cookies to enhance your browsing experience and analyze site traffic.</p>
+        </div>
+
+        <div class="cookie-banner__actions">
+            <button class="cookie-btn cookie-btn--secondary" data-cookie-action="deny">
+                Deny
+            </button>
+            <button class="cookie-btn cookie-btn--primary" data-cookie-action="accept">
+                Accept All
+            </button>
+        </div>
+        <button class="cookie-banner__settings-link" data-cookie-action="settings">
+            Manage preferences
+        </button>
+
+        
+        <div id="cookie-settings-panel" class="cookie-settings" aria-hidden="true">
+            <h3>Cookie Preferences</h3>
+
+            <div class="cookie-category">
+                <label>
+                    <input type="checkbox" name="necessary" checked disabled />
+                    <strong>Necessary</strong>
+                </label>
+                <p>These cookies are required for the website to function and cannot be disabled.</p>
+            </div><div class="cookie-category">
+                <label>
+                    <input type="checkbox" name="analytics" data-cookie-category="analytics" />
+                    <strong>Analytics</strong>
+                </label>
+                <p>These cookies help us understand how visitors interact with our website.</p>
+            </div><div class="cookie-category">
+                <label>
+                    <input type="checkbox" name="functional" data-cookie-category="functional" />
+                    <strong>Functional</strong>
+                </label>
+                <p>These cookies enable features like comments and embedded content.</p>
+            </div><div class="cookie-settings__actions">
+                <button class="cookie-btn cookie-btn--secondary" data-cookie-action="cancel">
+                    Cancel
+                </button>
+                <button class="cookie-btn cookie-btn--primary" data-cookie-action="save">
+                    Save preferences
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <script type="text/javascript" src="/ts/cookies.6d3577f211db9f4f1997385d4b417cf90130b050bc9e787bb1bb5346d337e998.js" defer></script>
+<script type="text/javascript" src="/ts/main.acaf849f2b273f6a8368a58b001f336738d0c948d92e79b116467d0c7515f932.js" defer></script>
+
+
+    </body>
+</html>

@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>DevOps on Azure Readiness starts here...</title><link>https://www.007ffflearning.com/tags/devops/</link><description>Recent content in DevOps on Azure Readiness starts here...</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 06 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/devops/index.xml" rel="self" type="application/rss+xml"/><item><title>Azure Spring Clean - Application Insights - Inside Out</title><link>https://www.007ffflearning.com/post/azure-spring-clean---application-insights---inside-out/</link><pubDate>Thu, 06 Mar 2025 00:00:00 +0000</pubDate><guid>https://www.007ffflearning.com/post/azure-spring-clean---application-insights---inside-out/</guid><description>&lt;p&gt;&lt;img src="../images/AzureSpringClean2025-logo.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Azure Spring Clean"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;Hey folks,&lt;/p&gt;
+&lt;p&gt;Welcome to #AzureSpringClean, an initiative from &lt;strong&gt;&lt;a class="link" href="https://twitter.com/wedoazure" target="_blank" rel="noopener"
+ &gt;Joe Carlyle&lt;/a&gt; and &lt;a class="link" href="https://twitter.com/tamstar1234" target="_blank" rel="noopener"
+ &gt;Thomas Thornton&lt;/a&gt;&lt;/strong&gt; which celebrates its 4th edition this year. I&amp;rsquo;m thrilled to be part of this again for the 3nd time this year. My &lt;a class="link" href="https://www.007ffflearning.com/post/azure-spring-clean-demystifying-service-principal-and-managed-identities/" target="_blank" rel="noopener"
+ &gt;first article&lt;/a&gt; had &lt;strong&gt;security in mind, explaining the difference between Azure Service Principals and Managed Identity&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;My 2nd article focused on &lt;strong&gt;understand DevSecOps, and how you can optimize security in your application deployment lifecycle, by &amp;ldquo;shifting left&amp;rdquo;&lt;/strong&gt;.
+(&lt;a class="link" href="https://www.007ffflearning.com/post/azure-spring-clean---devsecops-and-shifting-left-to-publish-secure-software/" target="_blank" rel="noopener"
+ &gt;https://www.007ffflearning.com/post/azure-spring-clean---devsecops-and-shifting-left-to-publish-secure-software/&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;Where now for this 3rd article, where moving more towards the &amp;rsquo;end&amp;rsquo; of the traditional DevOps cycle, discussing &lt;strong&gt;Operations and Monitoring, by using Azure Application Insights&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2 id="introduction"&gt;Introduction
+&lt;/h2&gt;&lt;p&gt;In today&amp;rsquo;s digital age, monitoring and maintaining the health of applications is crucial for ensuring optimal performance and user satisfaction. &lt;strong&gt;Azure Monitor&lt;/strong&gt;, a comprehensive monitoring solution from Microsoft, offers a suite of tools to help developers and IT professionals keep their applications running smoothly. One of the key components of Azure Monitor is Application Insights, which provides deep insights into application performance and user behavior. In this article, we&amp;rsquo;ll explore &lt;strong&gt;Application Insights&lt;/strong&gt;, its features, and how it integrates with Azure Monitor to deliver a robust monitoring solution.&lt;/p&gt;
+&lt;h2 id="overview-of-azure-monitor"&gt;Overview of Azure Monitor
+&lt;/h2&gt;&lt;p&gt;Azure Monitor is a powerful platform that provides end-to-end monitoring for your applications and infrastructure. It collects and analyzes telemetry data from various sources, including Azure resources, applications, and on-premises environments. Azure Monitor helps you understand how your applications are performing and proactively identifies issues affecting them. It encompasses several services, including Log Analytics, Application Insights, and Azure Monitor for VMs, among others.&lt;/p&gt;
+&lt;h2 id="application-insights-overview"&gt;Application Insights Overview
+&lt;/h2&gt;&lt;p&gt;Application Insights is an application performance management (APM) service within Azure Monitor. It is designed to monitor live applications, providing real-time insights into their performance and usage. By integrating with OpenTelemetry, Application Insights offers a vendor-neutral approach to collecting and analyzing telemetry data, enabling comprehensive observability of your applications. It supports various programming languages and frameworks, including .NET, Java, Node.js, and client-side JavaScript.&lt;/p&gt;
+&lt;h2 id="key-features-of-application-insights"&gt;Key Features of Application Insights
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;End-to-End Transactions&lt;/strong&gt;: Application Insights provides a detailed view of end-to-end transactions, allowing you to trace and diagnose issues across different components of your application4. This feature supports time scrubbing, enabling you to filter and analyze specific time periods in more detail.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Performance and Failures&lt;/strong&gt;: The service offers tools to monitor performance and identify failures. It includes features like the Roles tab, which preserves role selection while navigating from the application map, and the availability tool, which helps you monitor the availability and responsiveness of your application endpoints.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Application Map&lt;/strong&gt;: The application map provides a visual overview of your application&amp;rsquo;s architecture and the interactions between its components. It includes features like &amp;ldquo;Zoom to fit&amp;rdquo; and grouped nodes to make the map easier to read and navigate4.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Live Metrics&lt;/strong&gt;: With Live Metrics Stream, you can monitor your application&amp;rsquo;s health metrics in real-time, even while deploying changes. This feature helps you quickly identify and address issues as they arise.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Smart Detection&lt;/strong&gt;: Application Insights uses machine learning to detect anomalies in your application&amp;rsquo;s performance and sends alerts with embedded diagnostics. This proactive approach helps you address potential issues before they impact users.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Integration with Azure Services&lt;/strong&gt;: Application Insights integrates seamlessly with other Azure services, such as Azure DevOps, Azure Kubernetes Service (AKS), and Azure Functions. This integration allows you to monitor and manage your applications using a unified platform.&lt;/p&gt;
+&lt;h2 id="integration-with-azure-monitor"&gt;Integration with Azure Monitor
+&lt;/h2&gt;&lt;p&gt;Application Insights is a core component of Azure Monitor, and its integration with other Azure Monitor services enhances its capabilities. For example, you can use Log Analytics to query and analyze telemetry data collected by Application Insights. This integration provides a comprehensive view of your application&amp;rsquo;s performance and helps you identify trends and patterns.&lt;/p&gt;
+&lt;p&gt;Azure Monitor also offers out-of-the-box insights for various Azure resources, such as virtual machines, containers, and storage accounts. These insights are built on workbooks, which are interactive reports that you can customize to meet your specific needs. By leveraging these insights, you can gain a deeper understanding of your application&amp;rsquo;s performance and make data-driven decisions to optimize it.&lt;/p&gt;
+&lt;h2 id="use-cases-and-benefits"&gt;Use Cases and Benefits
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Proactive Monitoring&lt;/strong&gt;: Application Insights enables proactive monitoring of your applications, helping you identify and address issues before they impact users. This proactive approach improves the overall user experience and reduces downtime.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Performance Optimization&lt;/strong&gt;: By providing detailed insights into your application&amp;rsquo;s performance, Application Insights helps you identify bottlenecks and optimize your code. This optimization leads to faster and more efficient applications.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;User Behavior Analysis&lt;/strong&gt;: Application Insights offers tools to analyze user behavior, such as usage patterns, session durations, and user flows. This analysis helps you understand how users interact with your application and identify areas for improvement.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Cost Management&lt;/strong&gt;: By monitoring resource usage and performance, Application Insights helps you manage costs more effectively. You can identify underutilized resources and optimize their usage to reduce costs.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Enhanced Security&lt;/strong&gt;: Application Insights provides insights into potential security issues, such as failed login attempts and suspicious activities. By monitoring these activities, you can enhance the security of your applications and protect sensitive data.&lt;/p&gt;
+&lt;h2 id="seeing-it-in-action"&gt;Seeing it in action
+&lt;/h2&gt;&lt;p&gt;Now that we covered the theoretical part, let&amp;rsquo;s have a look at what all this looks like from a sample application workload perspective.&lt;/p&gt;
+&lt;p&gt;I am using a sample app which I have been using in all my Azure Architecture (AZ-305) and Developing Azure Solutions (AZ-204) classes over the years, when talking about Application Insights. It recently got moved to a new &amp;rsquo;trainer&amp;rsquo; platform out of a project I&amp;rsquo;m leading within Microsoft, based on Azure Developer CLI deployments for trainer demo scenarios. (If you&amp;rsquo;re new to AZD, you should definitely check it out!)&lt;/p&gt;
+&lt;p&gt;Head over to &lt;a class="link" href="https://aka.ms/trainer-demo-deploy" target="_blank" rel="noopener"
+ &gt;Trainer-Demo-Deploy&lt;/a&gt; and search for &lt;strong&gt;tollbooth&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;![Trainer Demo Deploy - Tollbooth](../images/Screenshot 2025-03-07 060247.png)&lt;/p&gt;
+&lt;p&gt;Select the Tollbooth Serverless Architecture with Azure Functions card, and follow the &lt;strong&gt;Template Details&lt;/strong&gt; instructions to get it deployed. Most important is having the Scenario-specific prereqs running on your local machine, as well as having Azure Developer CLI as well.&lt;/p&gt;
+&lt;p&gt;from &lt;strong&gt;azd up&lt;/strong&gt;, it will ask you for your Azure subscription and the region where you want to deploy the scenario. Give it about 12-15min, and the fun can start&amp;hellip;&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/tollbooth.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Tollbooth Architecture"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;As you can see from the architecture, it is using several different services in Azure, to replicate a Tollbooth / Automated Parking Lot management application. This will generate &amp;rsquo;traffic&amp;rsquo; to be monitored through Application Insights.&lt;/p&gt;
+&lt;p&gt;Using this demo scenario, you showcase a solution for processing vehicle photos as they are uploaded to a storage account, using serverless technologies on Azure. The license plate data gets extracted using Azure Cognitive Service, and stored in a highly available NoSQL data store on Azure CosmosDB for exporting. The data export process will be orchestrated by a serverless Azure Functions and EventGrid-based component architecture, that coordinates exporting new license plate data to file storage using the Blob Trigger Function. Each aspect of the architecture provides live dashboard views, and more detailed information can be viewed real-time from Azure Application Insights.&lt;/p&gt;
+&lt;h4 id="azure-app-service---upload-images"&gt;Azure App Service - Upload Images
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;The &lt;strong&gt;starting point&lt;/strong&gt; of the demo scenario, is the &lt;strong&gt;imageupload&lt;/strong&gt; web application. This simulates car traffic for 500 vehicles, which should be enough to see live data dashboard views across all architecture components. Now there is a 1-2 minute delay before the metrics actually show up in the dashboards.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Navigate to the imageupload website URL (&lt;a class="link" href="https://%25youralias%25tbimageuploadapp.azurewebsites.net/" target="_blank" rel="noopener"
+ &gt;https://%youralias%tbimageuploadapp.azurewebsites.net/&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img src="https://raw.githubusercontent.com/rob-foulkrod/TollBooth/main/Demoguide/TOLLBOOTH/generate_traffic.png" alt="Generate Car Traffic WebApp" style="width:70%;"&gt;
+&lt;br&gt;&lt;/br&gt;
+&lt;ol&gt;
+&lt;li&gt;Click the &lt;strong&gt;Upload Images&lt;/strong&gt; button - this loops to 500&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id="azure-storage-account"&gt;Azure Storage Account
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Once the upload process is complete, navigate to the &lt;strong&gt;%youralias%datalake&lt;/strong&gt; Azure Storage Account.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Navigate to the &lt;strong&gt;Images&lt;/strong&gt; Container; notice the different image files, generated from the web application. Feel free to select a file and download it, to show it contains a car image with a license plate. You might open different images, to showcase there are different cars (Note: in reality, we used 10 different images, looping 50 times, to generate 500 images in total)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img src="https://raw.githubusercontent.com/rob-foulkrod/TollBooth/main/Demoguide/TOLLBOOTH/datalake-images.png" alt="Storage Account Container with car images" style="width:70%;"&gt;
+&lt;br&gt;&lt;/br&gt;
+&lt;h4 id="azure-functions"&gt;Azure Functions
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;Once the images are available in Azure Storage Account, an Azure Function &lt;strong&gt;ProcessImage&lt;/strong&gt;, which sends image files to &lt;strong&gt;Azure Cognitive Service&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img src="https://raw.githubusercontent.com/rob-foulkrod/TollBooth/main/Demoguide/TOLLBOOTH/processimage.png" alt="Azure Function with Blob Trigger" style="width:70%;"&gt;
+&lt;br&gt;&lt;/br&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Use this Azure Function to explain the concept of triggers (HTTP, Blob Trigger,&amp;hellip;) and how the starting point is &amp;lsquo;something happens in Blob&amp;rsquo;, which kicks off the Function.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Once the data comes back from &lt;strong&gt;Cognitive Service&lt;/strong&gt;, it triggers the next Azure Function &lt;strong&gt;SavePlateData&lt;/strong&gt;, which stores text values in Azure CosmosDB.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img src="https://raw.githubusercontent.com/rob-foulkrod/TollBooth/main/Demoguide/TOLLBOOTH/saveplatedata.png" alt="SavePlateData Function" style="width:70%;"&gt;
+&lt;br&gt;&lt;/br&gt;
+&lt;h4 id="event-grid--topics--subscriptions"&gt;Event Grid / Topics &amp;amp; Subscriptions
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;Notice that this Function is based on an Event Trigger, coming from Event Grid (%youralias%eventgridtopic). From the Azure Portal, navigate to &lt;strong&gt;Event Grid&lt;/strong&gt;, and select &lt;strong&gt;Topics&lt;/strong&gt;. Open the EventGridTopic resource**.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img src="https://raw.githubusercontent.com/rob-foulkrod/TollBooth/main/Demoguide/TOLLBOOTH/eventgridtopic.png" alt="Event Grid Topic with data" style="width:70%;"&gt;
+&lt;br&gt;&lt;/br&gt;
+&lt;ol&gt;
+&lt;li&gt;Highlight the Event Grid Topic is related to the &lt;strong&gt;Event Grid Subscription&lt;/strong&gt; called &lt;strong&gt;SavePlate&lt;/strong&gt;, which triggers the actual Azure Function &lt;strong&gt;SavePlateData&lt;/strong&gt;. This also clarifies the use case, where Event Grid acts as the orchestrator, watching over certain events to occur, and based on the settings of the subscription, it triggers an Azure Function process.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img src="https://raw.githubusercontent.com/rob-foulkrod/TollBooth/main/Demoguide/TOLLBOOTH/eventgridtopic.png" alt="Event Grid Subscription" style="width:70%;"&gt;
+&lt;br&gt;&lt;/br&gt;
+&lt;ol&gt;
+&lt;li&gt;Select the &lt;strong&gt;SavePlate&lt;/strong&gt; Event Grid Subscription from the dashboard view. This opens a new dashboard, showing the hierarchy of the event:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;Event Grid Topic : %youralias%eventgridtopic&lt;/li&gt;
+&lt;li&gt;Metrics - showing the 500 events&lt;/li&gt;
+&lt;li&gt;Azure Function - SavePlateData&lt;/li&gt;
+&lt;/ul&gt;
+&lt;img src="https://raw.githubusercontent.com/rob-foulkrod/TollBooth/main/Demoguide/TOLLBOOTH/eventsubscription_hierarchy.png" alt="Event Grid Subscription" style="width:70%;"&gt;
+&lt;br&gt;&lt;/br&gt;
+&lt;ol&gt;
+&lt;li&gt;While talking about Event Grid Subscriptions, there is actually a 2nd subscription in place, which watches over the Azure Blob Storage events. Navigate back to the Azure Storage Account &lt;strong&gt;%youralias%tbdatalake&lt;/strong&gt;, and navigate to &lt;strong&gt;Events&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img src="https://raw.githubusercontent.com/rob-foulkrod/TollBooth/main/Demoguide/TOLLBOOTH/datalake-events.png" alt="Datalake Events" style="width:70%;"&gt;
+&lt;br&gt;&lt;/br&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Notice the Event Grid Subscription &lt;strong&gt;blobtopicsubscription&lt;/strong&gt;, which is a &lt;strong&gt;Web Hook&lt;/strong&gt;, meaning, it gets triggered based on HTTP requests.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;From within the Event Subscription detailed dashboard, showing &lt;strong&gt;Metrics&lt;/strong&gt; initially, navigate to &lt;strong&gt;Filters&lt;/strong&gt;. Highlight the subscription is based on filter &lt;strong&gt;Create Blob&lt;/strong&gt;. This is what triggers the Azure Function, based on &amp;ldquo;a new blob is getting created&amp;rdquo;. All other events in the Storage Account are getting bypassed/neglected.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img src="https://raw.githubusercontent.com/rob-foulkrod/TollBooth/main/Demoguide/TOLLBOOTH/eventsubscription_blobcreated.png" alt="Blob Created Event Subscription Filter" style="width:70%;"&gt;
+&lt;br&gt;&lt;/br&gt;
+&lt;h4 id="cosmos-db"&gt;Cosmos DB
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;Open the %youralias%cosmosdb. Navigate to &lt;strong&gt;Data Explorer&lt;/strong&gt;. Show the LicensePlates Database, which has 2 different Containers &lt;strong&gt;NeedsManualReview&lt;/strong&gt; (not used in this demo scenario), and &lt;strong&gt;Processed&lt;/strong&gt;. The Processed Container is where the actual text information returned from Azure Cognitive Service is getting stored.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img src="https://raw.githubusercontent.com/rob-foulkrod/TollBooth/main/Demoguide/TOLLBOOTH/cosmosdb_licenseplates.png" alt="CosmosDB database" style="width:70%;"&gt;
+&lt;br&gt;&lt;/br&gt;
+&lt;ol&gt;
+&lt;li&gt;Under Processed, open the &lt;strong&gt;Items&lt;/strong&gt; view. This shows the different document items in the container, each document having the license plate, image file name and timestamp in a JSON document format.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img src="https://raw.githubusercontent.com/rob-foulkrod/TollBooth/main/Demoguide/TOLLBOOTH/cosmosdb_items.png" alt="CosmosDB database" style="width:70%;"&gt;
+&lt;br&gt;&lt;/br&gt;
+&lt;h4 id="application-insights"&gt;Application Insights
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;Navigate to Application Insights, opening the &lt;strong&gt;%youralias%tbappinsights&lt;/strong&gt; resource. Go to &lt;strong&gt;Live Metrics&lt;/strong&gt;. This will show a lot of different views about the ongoing processing of Functions, Events, Storage activity and more.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img src="https://raw.githubusercontent.com/rob-foulkrod/TollBooth/main/Demoguide/TOLLBOOTH/appinsights_livemetrics.png" alt="App Insights - Live Metrics" style="width:70%;"&gt;
+&lt;br&gt;&lt;/br&gt;
+&lt;p&gt;Note: If you see the &amp;ldquo;Demo&amp;rdquo; page, it means you don&amp;rsquo;t have live metrics (anymore), and the processing of the car images is completed already. To generate (new) live data, go back to the imageupload web app, and generate new images by pressing the &amp;ldquo;Upload images&amp;rdquo; button.&lt;/p&gt;
+&lt;img src="https://raw.githubusercontent.com/rob-foulkrod/TollBooth/main/Demoguide/TOLLBOOTH/appinsights_livemetrics_notavailable.png" alt="App Insights - No Live Metrics Data" style="width:70%;"&gt;
+&lt;br&gt;&lt;/br&gt;
+&lt;ol&gt;
+&lt;li&gt;From within the base charts, scroll down to &lt;strong&gt;Servers&lt;/strong&gt; section. There should be anywhere between 2-10 visible. Explain that these &amp;ldquo;servers&amp;rdquo; reflect the different Azure Functions instances getting triggered, and handling the image processing from blob to CosmosDB.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img src="https://raw.githubusercontent.com/rob-foulkrod/TollBooth/main/Demoguide/TOLLBOOTH/appinsights_servers.png" alt="App Insights - Servers" style="width:70%;"&gt;
+&lt;br&gt;&lt;/br&gt;
+&lt;ol&gt;
+&lt;li&gt;Zoom in on the &lt;strong&gt;sample telemetry&lt;/strong&gt; to the right hand side. Explain how the different API-streams of the application topology are visible here. Notice how it shows the Azure Function call &amp;ldquo;SavePlateData&amp;rdquo;, as well as interaction with &amp;ldquo;Azure Computer Vision&amp;rdquo;, etc&amp;hellip;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img src="https://raw.githubusercontent.com/rob-foulkrod/TollBooth/main/Demoguide/TOLLBOOTH/appinsights_sampletelemetry.png" alt="App Insights - Sample Telemetry" style="width:70%;"&gt;
+&lt;br&gt;&lt;/br&gt;
+&lt;ol&gt;
+&lt;li&gt;Depending when you opened the Live Metrics view, the sample telemetry should have a &lt;strong&gt;red&lt;/strong&gt; item &lt;strong&gt;Dependency&lt;/strong&gt;, which simulates an issue from the Azure Function to Cognitive Service, showing you the details of the &lt;strong&gt;API POST Action call&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img src="https://raw.githubusercontent.com/rob-foulkrod/TollBooth/main/Demoguide/TOLLBOOTH/appinsights_dependency_error.png" alt="App Insights - Dependency Error" style="width:70%;"&gt;
+&lt;br&gt;&lt;/br&gt;
+&lt;ol&gt;
+&lt;li&gt;Next, select &lt;strong&gt;Application Map&lt;/strong&gt; within Application Insights.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img src="https://raw.githubusercontent.com/rob-foulkrod/TollBooth/main/Demoguide/TOLLBOOTH/appinsights_application_map.png" alt="App Insights - Application Map" style="width:70%;"&gt;
+&lt;br&gt;&lt;/br&gt;
+&lt;ol&gt;
+&lt;li&gt;Explain the usage of Application Map, describing the 2 different views here. The first view &lt;strong&gt;%youralias%events&lt;/strong&gt;, shows the number of running (Azure Functions) instances, with different metrics (performance details). The Events are representing communication with Azure CosmosDB. It shows the &lt;strong&gt;number of database calls&lt;/strong&gt;, as well as the &lt;strong&gt;average performance&lt;/strong&gt; between the Event Functions and CosmosDB.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img src="https://raw.githubusercontent.com/rob-foulkrod/TollBooth/main/Demoguide/TOLLBOOTH/appinsights_application_map_events.png" alt="App Insights - Events" style="width:70%;"&gt;
+&lt;br&gt;&lt;/br&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Select the &lt;strong&gt;value&lt;/strong&gt; metric in the middle between Events and CosmosDB, to open the more detailed view. This opens a blade to the right-hand side of the Azure Portal, exposing many more details about the processing of events. It shows details about the CosmosDB instance, as well as performance details of each CosmosDB action (GET, Create Document, Get Collection, etc&amp;hellip;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Click on &lt;strong&gt;Investigate Performance&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img src="https://raw.githubusercontent.comrob-foulkrod/TollBooth/main/Demoguide/TOLLBOOTH/appinsights_performance.png" alt="App Insights - Performance Details" style="width:70%;"&gt;
+&lt;br&gt;&lt;/br&gt;
+&lt;ol&gt;
+&lt;li&gt;Use this detailed dashboard to explain the different sections, reflecting chart representations of actual &lt;strong&gt;Log Analytics Queries&lt;/strong&gt;. This can be demoed by selecting &lt;strong&gt;View Logs&lt;/strong&gt; from the top menu, selecting a section, and opening it in Log Analytics.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img src="https://raw.githubusercontent.com/rob-foulkrod/TollBooth/main/Demoguide/TOLLBOOTH/appinsights_performance_loganalytics.png" alt="App Insights - Log Analytics KQL" style="width:70%;"&gt;
+&lt;br&gt;&lt;/br&gt;
+&lt;h2 id="conclusion"&gt;Conclusion
+&lt;/h2&gt;&lt;p&gt;Application Insights, as part of Azure Monitor, is a powerful tool for monitoring and optimizing the performance of your applications. Its comprehensive features, seamless integration with other Azure services, and real-time insights make it an essential component of any modern monitoring strategy. By leveraging Application Insights, you can ensure that your applications run smoothly, deliver a great user experience, and achieve your business goals.&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
+ &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="BuyMeACoffee"
+ 
+ 
+ 
+ &gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Cheers!!&lt;/p&gt;
+&lt;p&gt;/Peter&lt;/p&gt;</description></item><item><title>DevOps Workflow Generator</title><link>https://www.007ffflearning.com/post/devops-workflow-generator/</link><pubDate>Sun, 03 Apr 2022 00:00:00 +0000</pubDate><guid>https://www.007ffflearning.com/post/devops-workflow-generator/</guid><description>&lt;p&gt;&lt;img src="../images/2022-03-26_16-07-28.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="DevOps Workflow Generator"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;Hey awesome people,&lt;/p&gt;
+&lt;p&gt;For the ones who know me, it shouldn&amp;rsquo;t be a surprise I&amp;rsquo;m interested in DevOps, mainly using Azure DevOps and GitHub as core technologies, as well as several side-solutions that integrate with them. So when I heard about the &lt;strong&gt;DevOps Workflow Generator&lt;/strong&gt;, a new free tool from the Microsoft Research Lab division, I wanted to give it a spin.&lt;/p&gt;
+&lt;h2 id="the-concepts-of-devops"&gt;The Concepts of DevOps
+&lt;/h2&gt;&lt;p&gt;DevOps according to Microsoft’s Definition: The Union of People, Processes and Products, to enable continuous delivery of value to the business&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/2022-03-17-01.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="DevOps"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;The tricky part with DevOps is that it&amp;rsquo;s not just about 1 team using a single tool, but potentially a complex group of people (the DevOps engineering team), using a multitude of tools and solutions to perform their role. Obviously the main DevOps pipeline engine (Azure Pipelines, GitHub Actions, Octopus Deploy, Jenkins, GitLab, etc&amp;hellip;), but most probably, it also involves Infrastructure as Code tools such as Terraform, Azure Bicep or ARM Templates, Configuration as Code tools like PowerShell DSC, Ansible, Chef or Puppet, as well as DevSecOps tools where Snyk, Aqua, SonarQube, WhiteSource bolt and Veracode are just some of the popular ones. (Btw, if you missed my recent post on integrating DevSecOps by Shifting Left, which I wrote for Azure Spring Clean, you can find it &lt;a class="link" href="https://www.007ffflearning.com/post/azure-spring-clean-devsecops-and-shifting-left-to-publish-secure-software/" target="_blank" rel="noopener"
+ &gt;here&lt;/a&gt;)&lt;/p&gt;
+&lt;h2 id="when-to-use-what"&gt;When to use what
+&lt;/h2&gt;&lt;p&gt;If you went to the Azure Spring Clean post I referred to earlier, you now know that DevOps is relying on a lot of tools. I&amp;rsquo;m not saying it&amp;rsquo;s the most important aspect, but without tools, there is no DevOps. Period.&lt;/p&gt;
+&lt;p&gt;So coming back to the &lt;strong&gt;DevOps Workflow Generator&lt;/strong&gt;, it literally helps organizations, and their DevOps teams, to get a clearer view on what the DevOps process is about, as well as what different tools are being used in each and every phase. You might ask, what&amp;rsquo;s the point in that.&lt;/p&gt;
+&lt;p&gt;Well, let me tell you. Since DevOps is more about the culture than the tools, the better view your team has on what tools are being used, the better the team will operate. Apart from bringing - what&amp;rsquo;s traditionally 2 separate worlds - Developers and Operations teams together, there might actually be a sub-project as part of the DevOps adoption, to try and unify the tooling that is being used. Let&amp;rsquo;s say Developers are OK with using Visual Studio, or maybe Visual Studio Code. Where Operations folks are probably also using Visual Studio Code, in favor of Visual Studio. This might lead to an agreement that from now on, Visual Studio Code is a standard tool across the DevOps team. Maybe even sharing extensions (ARM Templates, Docker, Kubernetes, Bicep, Azure,&amp;hellip;) are just some of my favorites.&lt;/p&gt;
+&lt;h2 id="how-to-use-the-devops-workflow-generator"&gt;How to use the DevOps Workflow Generator
+&lt;/h2&gt;&lt;p&gt;You most probably don&amp;rsquo;t need my help from this blog post to find out how the Workflow Generator is working, it&amp;rsquo;s really that easy to use. However, after a first quick look, I went back (in preparation to write this article) and actually discovered some new things. So hopefully there is still something useful for you to discover:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Browse to &lt;a class="link" href="https://devopsworkflowgenerator.research.microsoft.com/" target="_blank" rel="noopener"
+ &gt;https://devopsworkflowgenerator.research.microsoft.com/&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2022-03-26_16-07-28.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="DevOps Workflow Generator"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;From the top menu, select &lt;strong&gt;Map Workflow&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This presents you with a rather generic/standard DevOps workflow process; which at first, was what I used. Until I discovered you can actually make customizations to it. Following my own best practices - Shifting Left - I added some of the process steps as outlined in the referred article earlier. The updated workflow looks like this now:&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/2022-03-26_15-58-28.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="DevOps Workflow Generator"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="3"&gt;
+&lt;li&gt;Next, move over the &lt;strong&gt;Select Tools&lt;/strong&gt; step in the top menu. This allows you to select DevOps solutions and tools (single or multiple) for each cycle in your DevOps Workflow. And the list is extensive&amp;hellip;!&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2022-03-26_15-58-55.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="DevOps Workflow Generator Tools"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="4"&gt;
+&lt;li&gt;Once all tools have been mapped with each phase, it&amp;rsquo;s time to compile a report, by navigating to the &lt;strong&gt;Download Report&lt;/strong&gt; menu option.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The outcome presents a nice-looking PDF document, which looks like this:&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/2022-03-26_15-59-53.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="DevOps Workflow Generator Report"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/2022-03-26_16-00-07.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="DevOps Workflow Generator Report Detailed Step"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;Pretty cool, right?&lt;/p&gt;
+&lt;h2 id="summary"&gt;Summary
+&lt;/h2&gt;&lt;p&gt;In this article, I wanted to introduce you to &lt;strong&gt;DevOps Workflow Generator&lt;/strong&gt; , a free tool by Microsoft Research Labs, allowing DevOps teams to get a better view on their DevOps process(es), as well as highlighting the different solutions and tools used for each phase of the DevOps process.&lt;/p&gt;
+&lt;p&gt;Have a look at it, and let me know your thoughts!&lt;/p&gt;
+&lt;p&gt;If you liked this article, consider giving back a small token of appreciation:
+&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
+ &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="BuyMeACoffee"
+ 
+ 
+ 
+ &gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Peter&lt;/p&gt;</description></item><item><title>Azure Spring Clean - DevSecOps and Shifting Left</title><link>https://www.007ffflearning.com/post/azure-spring-clean---devsecops-and-shifting-left-to-publish-secure-software/</link><pubDate>Thu, 17 Mar 2022 00:00:00 +0000</pubDate><guid>https://www.007ffflearning.com/post/azure-spring-clean---devsecops-and-shifting-left-to-publish-secure-software/</guid><description>&lt;p&gt;&lt;img src="../images/AzureSpringClean-logo.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Azure Spring Clean"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;Hey folks,&lt;/p&gt;
+&lt;p&gt;Welcome to #AzureSpringClean, an initiative from &lt;strong&gt;&lt;a class="link" href="https://twitter.com/wedoazure" target="_blank" rel="noopener"
+ &gt;Joe Carlyle&lt;/a&gt; and &lt;a class="link" href="https://twitter.com/tamstar1234" target="_blank" rel="noopener"
+ &gt;Thomas Thornton&lt;/a&gt;&lt;/strong&gt; which celebrates its 3rd edition this year. I&amp;rsquo;m thrilled to be part of this again for the 2nd time this year. My &lt;a class="link" href="https://www.007ffflearning.com/post/azure-spring-clean-demystifying-service-principal-and-managed-identities/" target="_blank" rel="noopener"
+ &gt;first article&lt;/a&gt; had security in mind, explaining the difference between Azure Service Principals and Managed Identity.&lt;/p&gt;
+&lt;p&gt;For this second article, I&amp;rsquo;m staying in the security focus, helping you &lt;strong&gt;understand DevSecOps, and how you can optimize security in your application deployment lifecycle, by &amp;ldquo;shifting left&amp;rdquo;&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;I hope you learn from it, enjoy reading through and got inspired to check back the whole week here at Azure Spring Clean, as there are A TON of great topics that will be covered.&lt;/p&gt;
+&lt;h2 id="the-concepts-of-devops"&gt;The Concepts of DevOps
+&lt;/h2&gt;&lt;p&gt;Microsoft’s Definition: The Union of People, Processes and Products, to enable continuous delivery of value to our end users&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/2022-03-17-01.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="DevOps"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;What DevOps teams are doing is providing an automated deployment process, starting from:&lt;/p&gt;
+&lt;p&gt;a) checking in their application source code into a source control system, such as &lt;a class="link" href="https://azure.microsoft.com/en-us/services/devops/repos/" target="_blank" rel="noopener"
+ &gt;Azure DevOps Repos&lt;/a&gt;, &lt;a class="link" href="https://docs.github.com/en/repositories" target="_blank" rel="noopener"
+ &gt;GitHub Repositories&lt;/a&gt; or similar;
+b) Once the code has been checked in, it loops through a functional testing process;
+c) This forms the starting point of Continuous Integration (CI), where the code gets compiled into an artifact or deployable package;
+d) From here, the package typically gets deployed into a running state, known as Continuous Deployment (CD); this could be to a dev/test, staging or production environment;
+e) Once the application workload is published, there&amp;rsquo;s a handover to the Operations team, who integrate monitoring, watch over incidents and fix the problem.&lt;/p&gt;
+&lt;p&gt;This (somewhat simplified) process gets repeated over and over (CI/CD pipeline automation), and should lead to faster deployments, less bug fixes needed and reliable workloads.&lt;/p&gt;
+&lt;p&gt;If we look at this process from a linear perspective, it would look like this:&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/2022-03-17-02.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Linear DevOps"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;So now you know what DevOps stands for, let’s zoom in more on the DevSecOps extension&lt;/p&gt;
+&lt;h2 id="shifting-left"&gt;Shifting Left
+&lt;/h2&gt;&lt;p&gt;When you look at this application lifecycle overview, most of the security handling, but also vulnerabiltiies, are getting detected and handled &lt;strong&gt;during the running phase&lt;/strong&gt;. That’s where we have DDOS attacks, identity or credential theft, networking attacks, crypto and similar malware etc…&lt;/p&gt;
+&lt;p&gt;While there’s nothing wrong in handling security all the way at the end, it should not be &lt;strong&gt;ONLY&lt;/strong&gt; all the way at the end, but rather be moved &lt;strong&gt;all the way to the beginning&lt;/strong&gt;; and becoming part of each and every stage in our DevOps process&lt;/p&gt;
+&lt;p&gt;That’s what the industry calls &lt;strong&gt;“shifting left”&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;So what are some of the security best practices DevOps teams can (easily) integrate into their DevSecOps process you ask? Actually there&amp;rsquo;s a lot of different options and possibilities. Good news is, you can apply different security features in the different DevOps stages:&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/2022-03-17-03.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Security"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;I’ll drill down a bit more on these obviously, but let’s look at some examples:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;DEV&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Threat Modeling&lt;/strong&gt; - Microsoft provides a &lt;a class="link" href="https://docs.microsoft.com/en-us/azure/security/develop/threat-modeling-tool" target="_blank" rel="noopener"
+ &gt;free Threat Modeling Tool&lt;/a&gt;, which helps you outlining the potential threats and vulnerabilities for a generic application architecture;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Credentials &amp;amp; Secrets Management&lt;/strong&gt; - NEVER store your secrets and credentials hard-coded into your source control system. That&amp;rsquo;s just a NO GO!! Rather, look into &lt;a class="link" href="https://docs.microsoft.com/en-us/azure/devops/pipelines/process/variables?view=azure-devops&amp;amp;tabs=yaml%2Cbatch" target="_blank" rel="noopener"
+ &gt;secret variables&lt;/a&gt;, &lt;a class="link" href="https://docs.microsoft.com/en-us/azure/devops/pipelines/library/variable-groups?view=azure-devops&amp;amp;tabs=yaml" target="_blank" rel="noopener"
+ &gt;variable groups&lt;/a&gt; or even better, a secret store such as &lt;a class="link" href="https://docs.microsoft.com/azure/key-vault/" target="_blank" rel="noopener"
+ &gt;Azure Key Vault&lt;/a&gt; or &lt;a class="link" href="https://docs.github.com/en/actions/learn-github-actions/environment-variables" target="_blank" rel="noopener"
+ &gt;GitHub Secrets&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Peer Review&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;VALIDATE&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Code Analysis&lt;/strong&gt; - this is where you integrate source control code scanning tools such as Snyk, Sonar, WhiteSource Bolt and many others. The easiest way is going through them in your own DevOps pipelines. If you are using Azure DevOps, have a look at the &lt;a class="link" href="" &gt;Azure DevOps Marketplace&lt;/a&gt;, and search for &lt;strong&gt;security&lt;/strong&gt;
+At present, there are &lt;strong&gt;91&lt;/strong&gt; different extensions available to integrate security into your DevOps Organization and Projects.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="../images/2022-03-17-04.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Security"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;PACKAGE&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Secured Containers&lt;/strong&gt; - Containers are becoming more and more popular to speed up the development process, simplifying the dependency on a platform and overall allowing for standardization thanks to Docker images. While containers are bringing in a lot of good things into a developer&amp;rsquo;s scenario, they also might bring in vulnerabiities and security risks, as you don&amp;rsquo;t always know where the image comes from, what&amp;rsquo;s running inside the container or who built it. That&amp;rsquo;s where I can definitely recommend a vulnerability scanner for containers. Tools such as Aqua or Twistlock are popular reference here. If you are using Azure as your container runtime environment, know that you can enable &lt;a class="link" href="https://docs.microsoft.com/en-us/azure/defender-for-cloud/defender-for-containers-introduction" target="_blank" rel="noopener"
+ &gt;Microsoft Defender for COntainers&lt;/a&gt;, which provides a built-in security vulnerabilty for your containers stored in Azure Container Registry.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Quality Gates&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Cloud Configuration&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Security &amp;amp; Pen-testing&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="../images/2022-03-17-05.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Security"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;RUN&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Cloud Platform Security&lt;/strong&gt; - Any cloud vendor provides robust security features as part of the platform. Azure comes with Azure Security Center for years, which recently got rebranded to &lt;strong&gt;[Microsoft Defender for Cloud]&lt;/strong&gt;(&lt;a class="link" href="https://docs.microsoft.com/en-us/azure/defender-for-cloud/defender-for-cloud-introduction%29" target="_blank" rel="noopener"
+ &gt;https://docs.microsoft.com/en-us/azure/defender-for-cloud/defender-for-cloud-introduction)&lt;/a&gt;. Core characteristics are detecting your Secure Score, a value for your security posture, together with an extensive list of recommendations, on how to optimize your security.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;RBAC permissions&lt;/strong&gt; model - This corresponds to the concept of &amp;ldquo;least set of privileges&amp;rdquo;, which means your DevOps teams should only get the administrative permissions they really need to do there job, but no more. Or even better, only give them administrative permissions when they need to perform admin tasks. Services such as &lt;a class="link" href="https://docs.microsoft.com/en-us/azure/active-directory/identity-protection/overview-identity-protection" target="_blank" rel="noopener"
+ &gt;Azure Identity Protection&lt;/a&gt; and &lt;a class="link" href="https://docs.microsoft.com/en-us/azure/active-directory/privileged-identity-management/pim-configure" target="_blank" rel="noopener"
+ &gt;Privileged Identity Management&lt;/a&gt; are no luxury in any organization. Keep in mind these require an Azure AD Premium P2 license. Which - if you ask me - is more than worth the extra cost!&lt;/li&gt;
+&lt;li&gt;Credentials &amp;amp; Secret Management&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="../images/2022-03-17-06.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Security"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;OPERATE&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Security Monitoring&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Threat Detection&lt;/strong&gt; - This brings us back to the &amp;ldquo;original&amp;rdquo; approach, having the necessary security guardrails in place to protect our runtime environments. SIEM solutions such as &lt;a class="link" href="https://azure.microsoft.com/en-us/services/microsoft-sentinel" target="_blank" rel="noopener"
+ &gt;Azure Sentinel&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Mitigation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="summary"&gt;Summary
+&lt;/h2&gt;&lt;p&gt;In this post, I gave you an overview of the typical DevOps process, and what challenges exist around security. Often coming in all the way at the end (during the operations cycle), security should be part of each and every step of the DevOps concept, preferably as early in the process as possible. This is what the industry calls &lt;strong&gt;shifting left&lt;/strong&gt;. I tried to share some &amp;ldquo;easy to implement solutions&amp;rdquo; to optimize security, by sharing several tools and services available today in Azure, Azure DevOps and GitHub. If you should have any questions on this, or you want to see a demo on what the tools can do, I&amp;rsquo;m only a nudge away ;)&lt;/p&gt;
+&lt;p&gt;Once more, I very appreciated thank you for reading, and for &lt;strong&gt;&lt;a class="link" href="https://twitter.com/wedoazure" target="_blank" rel="noopener"
+ &gt;Joe Carlyle&lt;/a&gt; and &lt;a class="link" href="https://twitter.com/tamstar1234" target="_blank" rel="noopener"
+ &gt;Thomas Thornton&lt;/a&gt;&lt;/strong&gt; for having accepted my submission for this 2022 #AzureSpringClean edition. Enjoy your Spring Clean week, stay safe and healthy!&lt;/p&gt;
+&lt;p&gt;Peter&lt;/p&gt;</description></item><item><title>DevOps for Dummies - Emily Freeman - Review</title><link>https://www.007ffflearning.com/post/devops-for-dummies-review/</link><pubDate>Sat, 22 Aug 2020 00:00:00 +0000</pubDate><guid>https://www.007ffflearning.com/post/devops-for-dummies-review/</guid><description>&lt;p&gt;Hey,&lt;/p&gt;
+&lt;p&gt;As some of you know me for years already, you also know I’m rather bad in coding (although I&amp;rsquo;m learning &lt;a class="link" href="https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor" target="_blank" rel="noopener"
+ &gt;Blazor&lt;/a&gt; since a few weeks, but more on that journey in future posts&amp;hellip;), and always “got scared” about DevOps. Especially the Dev part in the word 😊. I still remember being in Bangalore, India early 2016 to deliver an Azure workshop to Microsoft GSI Partners (Wipro, Tech Mahindra, Accenture,&amp;hellip;) as a freelance trainer together with Microsoft AzureCAT engineers. While my sessions were totally in my Azure comfort zone (Networking, Storage, Azure Active Directory), I also learned a lot from the Azure App sessions my colleagues delivered. But then all of a sudden, I had to jump in on Wednesday afternoon, taking over the “DevOps practices” session due to some urgent facts. Oh man, down went my comfort level. Me, the guy they saw earlier in the week, delivering Azure Infra sessions with ease, now needing to talk about DevOps, something I didn’t know at all? I hardly used Visual Studio at that time, let alone I could talk about this process.&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/2020-08-22_01.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="DevOps Eco System"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;So instead of delivering the foreseen session (DevOps processes, Visual Studio integration with source control, CI/CD Pipelines,&amp;hellip;), I just talked about my personal perspective of DevOps, how ARM templates and Azure Automation was “the DEV part” in my world, helped me combining my +15 years background in building Microsoft datacenters at customers “the OPS guy”, and do amazing things with it. All in all, the talk got very much appreciated, as it was personal.&lt;/p&gt;
+&lt;h2 id="i-already-know-azure-devops-so-why-bother"&gt;I already know Azure DevOps, so why bother?
+&lt;/h2&gt;&lt;p&gt;Jumping 5 years further in time, I have been using Azure DevOps as a tooling myself for about 2 years now, and also delivered several successful Azure AZ-400 (&lt;a class="link" href="https://docs.microsoft.com/en-us/learn/certifications/exams/az-400" target="_blank" rel="noopener"
+ &gt;https://docs.microsoft.com/en-us/learn/certifications/exams/az-400&lt;/a&gt;) workshops out of my Microsoft role as Azure Technical Trainer. And then I stumbled into &lt;strong&gt;Emily Freeman’s (&lt;a class="link" href="https://twitter.com/editingemily" target="_blank" rel="noopener"
+ &gt;https://twitter.com/editingemily&lt;/a&gt;)&lt;/strong&gt; Devops for Dummies book (&lt;a class="link" href="https://www.amazon.com/DevOps-Dummies-Computer-Tech/dp/1119552222%29" target="_blank" rel="noopener"
+ &gt;https://www.amazon.com/DevOps-Dummies-Computer-Tech/dp/1119552222)&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/2020-08-22_02.jpg"
+ 
+ 
+ loading="lazy"
+ 
+ alt="DevOps Eco System"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;At first, I wasn’t really interested in getting me a copy, given it was &lt;strong&gt;“for Dummies”&lt;/strong&gt;. And remembering what other “for Dummies” I read in the past, it was always on something I didn’t know at all, yet learned a lot from it. So I gave it a chance – also because the Kindle edition is only $15,99 USD – that’s like 3 Starbucks coffees 😊. &lt;strong&gt;And wow, I was hooked to it from the first chapter&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2 id="what-got-me-hooked"&gt;What got me hooked?
+&lt;/h2&gt;&lt;p&gt;First of all, Emily is a subject matter expert, period. I’ve seen her presenting both in-person and at virtual conferences, and I enjoy learning from her stories. She manages to combine technical expertise with understandable explanations, calm presentation style, funny twists,&amp;hellip; everything you look for in a presenter. And next to that, passion for the topic. It is clear Emily can look back to a huge amount of in-the-field experience on helping customers implementing (or transforming for that matter) DevOps best practices into their IT lifecycle management.&lt;/p&gt;
+&lt;p&gt;It was this natural flow of words, the logic of chapters, how the whole book is getting build up from basics to more complex scenarios and everything in between, that makes it worthwhile for anyone in IT to read it. This book is not about Azure DevOps just to be clear. It focuses on the processes, the challenges, how to get from where you are today to where you can be in the (near) future as an organization, and also nicely describes the real-life challenges that comes with it.&lt;/p&gt;
+&lt;p&gt;Next, every couple of pages, she makes a nice annotation to an interesting quote, additional side-reference material, a funny story around DevOps,&amp;hellip; that makes it still “light to digest”, yet still hugely informational.&lt;/p&gt;
+&lt;h2 id="about-the-book-structure"&gt;About the book structure
+&lt;/h2&gt;&lt;p&gt;The book is about 300 pages long, split up in 6 chapters:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Demystifying Devops&lt;/strong&gt; – this is one of the best 50 pages I know describing what DevOps REALLY is. What’s good about, where are the challenges, why/how around colleagues not liking it and how to convince them,&amp;hellip;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Establishing a Pipeline&lt;/strong&gt; – From planning to software lifecycle management, and how to get there, also explaining how your development code itself should take DevOps into account&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Connecting the circuit&lt;/strong&gt; – this section covers how to handle and get feedback, manage iterations, success and failure of the process&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Kaizen&lt;/strong&gt; – Not about a Japanese Hero, but how to continuously improve your processes, learn from mistakes and optimize the business overall&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;DevOps Tools&lt;/strong&gt; – A nice overview of different devops tools, useful for private and public cloud platforms&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Top 20&lt;/strong&gt; – 10 reasons where DevOps is crucial, and another 10 reasons where it can fail&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="what-i-remember-from-it"&gt;What I remember from it
+&lt;/h2&gt;&lt;h3 id="devops-is-approachable-and-real-is-one-of-the-best-quotes"&gt;“DevOps is approachable and real”, is one of the best quotes
+&lt;/h3&gt;&lt;p&gt;Aside from that, I took a lot of notes around processes, how to inspire people to start embracing DevOps practices, the challenges that comes with it, but mainly how it can help any organization to transform their current mode of operations and software lifecycle into an optimized, well-oiled flow, where IT is becoming a business driver, no longer a cost center or cost generator.&lt;/p&gt;
+&lt;p&gt;I honestly wish I had this book 5 years ago, showing me there is nothing scary or anything to be afraid of when considering DevOps. &lt;strong&gt;It’s about people, processes and products&lt;/strong&gt;. It’s not about being a full-stack developer or being the expert datacenter specialist. It’s how both worlds can nicely work together. (Which in these difficult times of COVID-19 and racial disturbance could actually be baby-steps in the positive direction)&lt;/p&gt;
+&lt;p&gt;Ping me if you got any questions on the book, DevOps or Azure DevOps in general.&lt;/p&gt;
+&lt;p&gt;Cheers, Peter&lt;/p&gt;</description></item></channel></rss>

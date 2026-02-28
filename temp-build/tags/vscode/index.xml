@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>VSCode on Azure Readiness starts here...</title><link>https://www.007ffflearning.com/tags/vscode/</link><description>Recent content in VSCode on Azure Readiness starts here...</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 26 Feb 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/vscode/index.xml" rel="self" type="application/rss+xml"/><item><title>Keeping MCP Server config in sync between VS Code and GitHub Copilot CLI</title><link>https://www.007ffflearning.com/post/keeping-mcp-config-in-sync-between-vscode-and-cli/</link><pubDate>Thu, 26 Feb 2026 00:00:00 +0000</pubDate><guid>https://www.007ffflearning.com/post/keeping-mcp-config-in-sync-between-vscode-and-cli/</guid><description>&lt;p&gt;&lt;img src="../images/sync-mcp-vscode-copilot.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Keeping MCP config in sync between VS Code and Copilot CLI"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Syncing MCP config from VS Code to Copilot CLI in a few simple steps.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Hey awesome people,&lt;/p&gt;
+&lt;p&gt;Over the last weeks, I’ve been jumping between VS Code and Copilot CLI a lot more than usual. One thing kept annoying me: my MCP setup was perfect in VS Code, but I had to keep tweaking pieces again in CLI.&lt;/p&gt;
+&lt;p&gt;If that sounds familiar, good news: if you already have MCP servers working in VS Code, you can reuse most of that setup in GitHub Copilot CLI.&lt;/p&gt;
+&lt;p&gt;In this post, I’ll show you the fastest way to &amp;lsquo;keep both in sync&amp;rsquo; from VS Code &lt;code&gt;mcp.json&lt;/code&gt; to Copilot CLI &lt;code&gt;mcp-config.json&lt;/code&gt;, with the necessary commands for both PowerShell and Bash.&lt;/p&gt;
+&lt;h2 id="why-this-matters"&gt;Why this matters
+&lt;/h2&gt;&lt;p&gt;When you move between VS Code and terminal workflows, you really don’t want to rebuild MCP config from scratch every time.&lt;/p&gt;
+&lt;p&gt;I made that mistake once (probably multiple times, but didn&amp;rsquo;t want to exagerate too much&amp;hellip;), and it was exactly as fun as it sounds: tiny syntax differences, one invalid server name, one missing env var, and suddenly you’re troubleshooting config instead of actually building. (Although I can tell you that this would be a perfect use case for GenAI GitHub Copilot, lol)&lt;/p&gt;
+&lt;p&gt;This guide helps you:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;keep one consistent MCP setup style (VSCode MCP Config as the &amp;lsquo;main&amp;rsquo; source)&lt;/li&gt;
+&lt;li&gt;avoid common config parsing errors in Copilot CLI&lt;/li&gt;
+&lt;li&gt;&amp;lsquo;keep-in-sync&amp;rsquo; in a few minutes, even if you’re new to MCP&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="mcp-in-plain-english"&gt;MCP in plain English
+&lt;/h2&gt;&lt;p&gt;MCP (Model Context Protocol) lets AI tools connect to external capabilities.&lt;/p&gt;
+&lt;p&gt;Think of MCP servers as “skill plugins” for your assistant, like:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;documentation search&lt;/li&gt;
+&lt;li&gt;GitHub actions (issues, PRs, code search)&lt;/li&gt;
+&lt;li&gt;browser automation&lt;/li&gt;
+&lt;li&gt;Azure DevOps operations&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="file-locations-you-should-know"&gt;File locations you should know
+&lt;/h2&gt;&lt;p&gt;VS Code MCP config is typically found at:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Workspace: &lt;code&gt;./mcp.json&lt;/code&gt; or &lt;code&gt;./.vscode/mcp.json&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;User-level:
+&lt;ul&gt;
+&lt;li&gt;Windows: &lt;code&gt;%APPDATA%\\Code\\User\\mcp.json&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;macOS: &lt;code&gt;~/Library/Application Support/Code/User/mcp.json&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Linux: &lt;code&gt;~/.config/Code/User/mcp.json&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Copilot CLI MCP config lives here on all platforms:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;~/.copilot/mcp-config.json&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="vs-code-vs-copilot-cli-the-important-differences"&gt;VS Code vs Copilot CLI: the important differences
+&lt;/h2&gt;&lt;p&gt;The two formats are very close, but not identical:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Top-level key&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;VS Code: &lt;code&gt;servers&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Copilot CLI: &lt;code&gt;mcpServers&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Server ID naming rules in Copilot CLI&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;allowed: letters, numbers, &lt;code&gt;_&lt;/code&gt;, &lt;code&gt;-&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;server keys with &lt;code&gt;/&lt;/code&gt; must be renamed&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;VS Code &lt;code&gt;inputs&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;supported in VS Code flow&lt;/li&gt;
+&lt;li&gt;not used in Copilot CLI config&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Placeholder syntax&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;VS Code often uses &lt;code&gt;${env:VAR}&lt;/code&gt; and &lt;code&gt;${input:name}&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Copilot CLI expects &lt;code&gt;$VAR&lt;/code&gt; and supports explicit &lt;code&gt;env&lt;/code&gt; mappings&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;None of this is hard, but it’s just different enough to break things when done manually in a hurry.&lt;/p&gt;
+&lt;h2 id="fast-path-recommended-automate-conversion"&gt;Fast path (recommended): automate conversion
+&lt;/h2&gt;&lt;p&gt;You can grab both scripts directly from my GitHub repo:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class="link" href="https://github.com/petender/MCP-Clone_VSCode2CLI" target="_blank" rel="noopener"
+ &gt;https://github.com/petender/MCP-Clone_VSCode2CLI&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Quick clone commands (PowerShell, bash, zsh):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git clone https://github.com/petender/MCP-Clone_VSCode2CLI.git
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; MCP-Clone_VSCode2CLI
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Use one of these scripts:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;convert-mcp-config.ps1&lt;/code&gt; (Windows/macOS/Linux with &lt;code&gt;pwsh&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;convert-mcp-config.sh&lt;/code&gt; (macOS/Linux with &lt;code&gt;bash&lt;/code&gt; + &lt;code&gt;python3&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I personally use the PowerShell version most of the time, no surprise I&amp;rsquo;m primarily a Windows-guy, but didn&amp;rsquo;t want to assume everyone is using PowerShell nowadays. (You should though ;)&lt;/p&gt;
+&lt;h3 id="what-the-script-converts-automatically"&gt;What the script converts automatically
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;servers&lt;/code&gt; -&amp;gt; &lt;code&gt;mcpServers&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;removes VS Code-only &lt;code&gt;inputs&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;converts &lt;code&gt;${input:name}&lt;/code&gt; -&amp;gt; &lt;code&gt;$NAME&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;converts &lt;code&gt;${env:VAR}&lt;/code&gt; -&amp;gt; &lt;code&gt;$VAR&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;adds/merges &lt;code&gt;env&lt;/code&gt; mappings like &lt;code&gt;&amp;quot;VAR&amp;quot;: &amp;quot;$VAR&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;renames invalid server IDs (for example containing &lt;code&gt;/&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This is exactly the part that saves the most time (and avoids the most headaches).&lt;/p&gt;
+&lt;h2 id="powershell-usage-convert-mcp-configps1"&gt;PowerShell usage (&lt;code&gt;convert-mcp-config.ps1&lt;/code&gt;)
+&lt;/h2&gt;&lt;p&gt;The script supports cross-platform defaults using your home path.&lt;/p&gt;
+&lt;h3 id="easiest-mode"&gt;Easiest mode
+&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-powershell" data-lang="powershell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;pwsh&lt;/span&gt; &lt;span class="n"&gt;-ExecutionPolicy&lt;/span&gt; &lt;span class="n"&gt;Bypass&lt;/span&gt; &lt;span class="o"&gt;-File&lt;/span&gt; &lt;span class="p"&gt;./&lt;/span&gt;&lt;span class="nb"&gt;convert-mcp&lt;/span&gt;&lt;span class="n"&gt;-config&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="py"&gt;ps1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;This auto-discovers common input locations and writes to &lt;code&gt;~/.copilot/mcp-config.json&lt;/code&gt;.&lt;/p&gt;
+&lt;h3 id="explicit-input-default-output"&gt;Explicit input, default output
+&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-powershell" data-lang="powershell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;pwsh&lt;/span&gt; &lt;span class="n"&gt;-ExecutionPolicy&lt;/span&gt; &lt;span class="n"&gt;Bypass&lt;/span&gt; &lt;span class="o"&gt;-File&lt;/span&gt; &lt;span class="p"&gt;./&lt;/span&gt;&lt;span class="nb"&gt;convert-mcp&lt;/span&gt;&lt;span class="n"&gt;-config&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="py"&gt;ps1&lt;/span&gt; &lt;span class="p"&gt;\&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;-InputPath&lt;/span&gt; &lt;span class="p"&gt;./&lt;/span&gt;&lt;span class="n"&gt;mcp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="py"&gt;json&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="explicit-input-and-output"&gt;Explicit input and output
+&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;span class="lnt"&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-powershell" data-lang="powershell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;pwsh&lt;/span&gt; &lt;span class="n"&gt;-ExecutionPolicy&lt;/span&gt; &lt;span class="n"&gt;Bypass&lt;/span&gt; &lt;span class="o"&gt;-File&lt;/span&gt; &lt;span class="p"&gt;./&lt;/span&gt;&lt;span class="nb"&gt;convert-mcp&lt;/span&gt;&lt;span class="n"&gt;-config&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="py"&gt;ps1&lt;/span&gt; &lt;span class="p"&gt;\&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;-InputPath&lt;/span&gt; &lt;span class="p"&gt;./&lt;/span&gt;&lt;span class="n"&gt;mcp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="py"&gt;json&lt;/span&gt; &lt;span class="p"&gt;\&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;-OutputPath&lt;/span&gt; &lt;span class="p"&gt;~/.&lt;/span&gt;&lt;span class="n"&gt;copilot&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="nb"&gt;mcp-config&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="py"&gt;json&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="custom-home-path"&gt;Custom home path
+&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;span class="lnt"&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-powershell" data-lang="powershell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;pwsh&lt;/span&gt; &lt;span class="n"&gt;-ExecutionPolicy&lt;/span&gt; &lt;span class="n"&gt;Bypass&lt;/span&gt; &lt;span class="o"&gt;-File&lt;/span&gt; &lt;span class="p"&gt;./&lt;/span&gt;&lt;span class="nb"&gt;convert-mcp&lt;/span&gt;&lt;span class="n"&gt;-config&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="py"&gt;ps1&lt;/span&gt; &lt;span class="p"&gt;\&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;-InputPath&lt;/span&gt; &lt;span class="p"&gt;./&lt;/span&gt;&lt;span class="n"&gt;mcp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="py"&gt;json&lt;/span&gt; &lt;span class="p"&gt;\&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;-UserHome&lt;/span&gt; &lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="p"&gt;/&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id="bash-usage-convert-mcp-configsh"&gt;Bash usage (&lt;code&gt;convert-mcp-config.sh&lt;/code&gt;)
+&lt;/h2&gt;&lt;p&gt;First run:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;chmod +x ./convert-mcp-config.sh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="easiest-mode-1"&gt;Easiest mode
+&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;./convert-mcp-config.sh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="explicit-input-default-output-1"&gt;Explicit input, default output
+&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;./convert-mcp-config.sh --input ./mcp.json
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="explicit-input-and-output-1"&gt;Explicit input and output
+&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;./convert-mcp-config.sh --input ./mcp.json --output ~/.copilot/mcp-config.json
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="custom-home-path-1"&gt;Custom home path
+&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;./convert-mcp-config.sh --input ./mcp.json --user-home /home/&amp;lt;user&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="bash-prerequisites"&gt;Bash prerequisites
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;bash&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;python3&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="verify-in-copilot-cli"&gt;Verify in Copilot CLI
+&lt;/h2&gt;&lt;p&gt;After conversion, open Copilot CLI and run:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;/mcp reload&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/mcp show&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;If your config is valid, your servers should load without parsing errors.&lt;/p&gt;
+&lt;p&gt;If they don’t show up right away, don’t panic. In most cases it’s either naming rules or env vars (both covered below).&lt;/p&gt;
+&lt;h2 id="required-environment-variables-for-the-sample-config"&gt;Required environment variables (for the sample config)
+&lt;/h2&gt;&lt;p&gt;Set these before launching Copilot CLI:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;GITHUB_PERSONAL_ACCESS_TOKEN&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ADO_ORG&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ADO_DOMAIN&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;PowerShell session example:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;span class="lnt"&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-powershell" data-lang="powershell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;$env:GITHUB_PERSONAL_ACCESS_TOKEN&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;&amp;lt;your_token&amp;gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;$env:ADO_ORG&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;&amp;lt;your_ado_org&amp;gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;$env:ADO_DOMAIN&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;core&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;bash/zsh example:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;span class="lnt"&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;GITHUB_PERSONAL_ACCESS_TOKEN&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&amp;lt;your_token&amp;gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;ADO_ORG&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&amp;lt;your_ado_org&amp;gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;ADO_DOMAIN&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;core&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id="manual-conversion-checklist"&gt;Manual conversion checklist
+&lt;/h2&gt;&lt;p&gt;If you want to edit by hand, follow this sequence:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;rename &lt;code&gt;servers&lt;/code&gt; to &lt;code&gt;mcpServers&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;remove &lt;code&gt;inputs&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;replace &lt;code&gt;${input:name}&lt;/code&gt; with &lt;code&gt;$NAME&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;replace &lt;code&gt;${env:VAR}&lt;/code&gt; with &lt;code&gt;$VAR&lt;/code&gt; and add/update &lt;code&gt;env&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;rename server IDs that contain unsupported characters&lt;/li&gt;
+&lt;li&gt;keep operational properties unchanged (&lt;code&gt;type&lt;/code&gt;, &lt;code&gt;command&lt;/code&gt;, &lt;code&gt;args&lt;/code&gt;, &lt;code&gt;url&lt;/code&gt;, &lt;code&gt;version&lt;/code&gt;, &lt;code&gt;gallery&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This checklist is also useful as a review checklist in PRs.&lt;/p&gt;
+&lt;h2 id="common-errors-and-quick-fixes"&gt;Common errors and quick fixes
+&lt;/h2&gt;&lt;h3 id="mcp-server-name-must-only-contain-alphanumeric-characters-underscores-and-hyphens"&gt;&lt;code&gt;MCP server name must only contain alphanumeric characters, underscores, and hyphens&lt;/code&gt;
+&lt;/h3&gt;&lt;p&gt;Cause: a server key still contains &lt;code&gt;/&lt;/code&gt; (or another invalid character).&lt;/p&gt;
+&lt;p&gt;Fix example:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;microsoft/playwright-mcp&lt;/code&gt; -&amp;gt; &lt;code&gt;microsoft_playwright_mcp&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="server-starts-but-fails-with-authruntime-errors"&gt;Server starts but fails with auth/runtime errors
+&lt;/h3&gt;&lt;p&gt;Cause: missing or wrong environment variable values.&lt;/p&gt;
+&lt;p&gt;Fix:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;validate variable names exactly&lt;/li&gt;
+&lt;li&gt;confirm values exist in the active shell session&lt;/li&gt;
+&lt;li&gt;run &lt;code&gt;/mcp reload&lt;/code&gt; again&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Also make sure you start Copilot CLI from the same shell/session where variables are set.&lt;/p&gt;
+&lt;h3 id="command-not-found"&gt;&lt;code&gt;command not found&lt;/code&gt;
+&lt;/h3&gt;&lt;p&gt;Cause: one of the required tools is missing.&lt;/p&gt;
+&lt;p&gt;Fix:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;install dependencies used by your config (&lt;code&gt;docker&lt;/code&gt;, &lt;code&gt;npx&lt;/code&gt;, &lt;code&gt;uvx&lt;/code&gt;, etc.)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="summary"&gt;Summary
+&lt;/h2&gt;&lt;p&gt;Most VS Code MCP config can be reused in Copilot CLI. The key differences are server ID naming, top-level key name, and placeholder handling.&lt;/p&gt;
+&lt;p&gt;While one could assume that the MCP Configuration should be standardized across platforms, once I figured out the key syntax differences (GitHub Copilot for the win!), it ended up being much easier than I expected once I stopped doing it manually and automated the boring parts (GitHub Copilot for the win x2!).&lt;/p&gt;
+&lt;p&gt;If this helped you, feel free to share it with your team so everyone can standardize MCP config faster. And maybe give a little GitHub Star on the repo, so I know you like it ;).&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
+ &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="BuyMeACoffee"
+ 
+ 
+ 
+ &gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Cheers!!&lt;/p&gt;
+&lt;p&gt;/Peter&lt;/p&gt;</description></item></channel></rss>

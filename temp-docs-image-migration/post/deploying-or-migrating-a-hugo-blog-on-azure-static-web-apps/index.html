@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="For about 3 years now, I&rsquo;ve been running this personal blog site using Hugo, running on Azure Static Storage Sites and Azure Front Door as load balancer/TLS protection service.\nAbout 18 months back, Microsoft released Azure Static Web Apps, a platform built for exactly that, hosting Static Web sites, such as Vue, React, Angular, Svelte, .NET Blazor, and also&hellip; Hugo :).\nAs I had to migrate my resources to a new Azure subscription and tenant, I thought this was a perfect moment to migrate to SWA. While the process was surprisingly smooth, I wanted to blog about it, to help and convince others who are in the same situation as myself, giving confidence how easy it actually is.\n">
+<title>How I migrated my Hugo site from Azure Storage Site to Azure Static Web Apps</title>
+
+
+<link rel="canonical" href="https://www.007ffflearning.com/post/deploying-or-migrating-a-hugo-blog-on-azure-static-web-apps/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+
+
+<link rel="stylesheet" href="/scss/style.min.cf9653eecaea3cf14f5747895c3ac9b505bea7f8f3f40c16dac6b0e82fafddc4.css"><meta property='og:title' content="How I migrated my Hugo site from Azure Storage Site to Azure Static Web Apps">
+<meta property='og:description' content="For about 3 years now, I&rsquo;ve been running this personal blog site using Hugo, running on Azure Static Storage Sites and Azure Front Door as load balancer/TLS protection service.\nAbout 18 months back, Microsoft released Azure Static Web Apps, a platform built for exactly that, hosting Static Web sites, such as Vue, React, Angular, Svelte, .NET Blazor, and also&hellip; Hugo :).\nAs I had to migrate my resources to a new Azure subscription and tenant, I thought this was a perfect moment to migrate to SWA. While the process was surprisingly smooth, I wanted to blog about it, to help and convince others who are in the same situation as myself, giving confidence how easy it actually is.\n">
+<meta property='og:url' content='https://www.007ffflearning.com/post/deploying-or-migrating-a-hugo-blog-on-azure-static-web-apps/'>
+<meta property='og:site_name' content='Azure Readiness starts here...'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Azure' /><meta property='article:tag' content='Hugo' /><meta property='article:published_time' content='2022-10-30T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-10-30T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="How I migrated my Hugo site from Azure Storage Site to Azure Static Web Apps">
+<meta name="twitter:description" content="For about 3 years now, I&rsquo;ve been running this personal blog site using Hugo, running on Azure Static Storage Sites and Azure Front Door as load balancer/TLS protection service.\nAbout 18 months back, Microsoft released Azure Static Web Apps, a platform built for exactly that, hosting Static Web sites, such as Vue, React, Angular, Svelte, .NET Blazor, and also&hellip; Hugo :).\nAs I had to migrate my resources to a new Azure subscription and tenant, I thought this was a perfect moment to migrate to SWA. While the process was surprisingly smooth, I wanted to blog about it, to help and convince others who are in the same situation as myself, giving confidence how easy it actually is.\n">
+    <link rel="shortcut icon" href="/img/007ffflearning-ape.png" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        <figure class="site-avatar">
+                <a href="/">
+                    <img src="/img/007ffflearning-ape.png" 
+                        width="596"
+                        height="842"
+                        class="site-logo"
+                        loading="lazy"
+                        alt="Avatar">
+                </a>
+                
+                    <span class="emoji">🎓</span>
+                
+            </figure>
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Azure Readiness starts here...</a></h1>
+            <h2 class="site-description">Bring me an audience, I&#39;ll give them Azure knowledge in return</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://pdtit.bsky.social'
+                        
+                        title="Bluesky"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 530" fill="currentColor">
+  <path d="m135.72 44.03c66.496 49.921 138.02 151.14 164.28 205.46 26.262-54.316 97.782-155.54 164.28-205.46 47.98-36.021 125.72-63.892 125.72 24.795 0 17.712-10.155 148.79-16.111 170.07-20.703 73.984-96.144 92.854-163.25 81.433 117.3 19.964 147.14 86.092 82.697 152.22-122.39 125.59-175.91-31.511-189.63-71.766-2.514-7.3797-3.6904-10.832-3.7077-7.8964-0.0174-2.9357-1.1937 0.51669-3.7077 7.8964-13.714 40.255-67.233 197.36-189.63 71.766-64.444-66.128-34.605-132.26 82.697-152.22-67.108 11.421-142.55-7.4491-163.25-81.433-5.9562-21.282-16.111-152.36-16.111-170.07 0-88.687 77.742-60.816 125.72-24.795z"/>
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/petender'
+                        
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pdtit/'
+                        
+                        title="LinkedIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/post/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Posts</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/books/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+</svg>
+
+                
+                <span>Books</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/speaking/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-microphone" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 5a3 3 0 0 1 6 0v7a3 3 0 0 1 -6 0z"/>
+  <path d="M5 10a7 7 0 0 0 14 0"/>
+  <path d="M8 21l8 0"/>
+  <path d="M12 17l0 4"/>
+</svg>
+
+                
+                <span>Speaking</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About Me</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>Tags</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/deploying-or-migrating-a-hugo-blog-on-azure-static-web-apps/">How I migrated my Hugo site from Azure Storage Site to Azure Static Web Apps</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime='2022-10-30T00:00:00Z'>Oct 30, 2022</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+
+    
+</div>
+
+</header>
+
+    
+
+    <section class="article-content">
+    
+    
+    <p>For about 3 years now, I&rsquo;ve been running this personal blog site using <strong><a class="link" href="https://www.gohugo.io"  target="_blank" rel="noopener"
+    >Hugo</a></strong>, running on <a class="link" href="https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-static-website-how-to?tabs=azure-portal"  target="_blank" rel="noopener"
+    >Azure Static Storage Sites</a> and <a class="link" href="https://learn.microsoft.com/en-us/azure/frontdoor/front-door-overview"  target="_blank" rel="noopener"
+    >Azure Front Door</a> as load balancer/TLS protection service.</p>
+<p>About 18 months back, Microsoft released <strong><a class="link" href="https://learn.microsoft.com/en-us/azure/static-web-apps/overview"  target="_blank" rel="noopener"
+    >Azure Static Web Apps</a></strong>, a platform built for exactly that, hosting Static Web sites, such as Vue, React, Angular, Svelte, .NET Blazor, and also&hellip; Hugo :).</p>
+<p>As I had to migrate my resources to a new Azure subscription and tenant, I thought this was a perfect moment to migrate to SWA. While the process was surprisingly smooth, I wanted to blog about it, to help and convince others who are in the same situation as myself, giving confidence how easy it actually is.</p>
+<p>In short, the process involves the following:</p>
+<ol>
+<li>
+<p>have a backup (copy) of the Site files in Azure Storage Account. If you don&rsquo;t have them in a GitHub or Azure DevOps repository already, look into the free <a class="link" href="https://azure.microsoft.com/en-us/products/storage/storage-explorer/"  target="_blank" rel="noopener"
+    >Azure Storage Explorer tool</a> to copy the data aside to your local machine.</p>
+</li>
+<li>
+<p>Depending on your DevOps platform of choice (both GitHub and Azure DevOps are supported), you need to have a repository available already to be used for Azure Static Web Apps.</p>
+</li>
+<li>
+<p>Deploy a new Azure Static Web Apps resource from the <a class="link" href="https://portal.azure.com"  target="_blank" rel="noopener"
+    >Azure Portal</a>, as follows:</p>
+</li>
+</ol>
+<p>a) Create new Resource / Static Web Apps</p>
+<p><img src="../images/2022-10-29_16-00-12.png"
+    
+    
+    loading="lazy"
+    
+      alt="Create Static Web Apps"
+    
+    
+    
+  ></p>
+<p>b) Complete the necessary project details:</p>
+<ul>
+<li>Subscription</li>
+<li>Azure Resource Group</li>
+<li>Unique name for the Static Site App</li>
+<li>Hosting Plan - <strong>Free</strong> which gives all you need for running Hugo with a public SSL/TLS certificate and hostname</li>
+</ul>
+<p><img src="../images/2022-10-29_16-00-52.png"
+    
+    
+    loading="lazy"
+    
+      alt="Create Static Web Apps"
+    
+    
+    
+  ></p>
+<p>c) Next, provide the necessary deployment details. Notice SWA relies on a DevOps pipeline process, which can be GitHub or Azure DevOps. The pipeline basically gets triggered to compile the Hugo Markdown files (your blog article) into HTML-files, and gets triggered every time something is changed in the repository (like when you write a new blog post, delete a post or update a post&hellip;)</p>
+<p>In my setup, I chose Azure DevOps, but the flow is the same in GitHub.</p>
+<p><img src="../images/2022-10-29_16-01-35.png"
+    
+    
+    loading="lazy"
+    
+      alt="Deploy Static Web Apps"
+    
+    
+    
+  ></p>
+<p>d) Confirm the creation of the resource, and give it a few minutes. Once created, navigate to the new Static Web App resource blade:</p>
+<p><img src="../images/2022-10-29_16-02-07.png"
+    
+    
+    loading="lazy"
+    
+      alt="Create SWA Resource"
+    
+    
+    
+  ></p>
+<p>e) From here, notice the <strong>edit workflow</strong> section, which points to a CI/CD Pipeline Yml file. This is the actual &ldquo;engine&rdquo; doing all the work. Open this link.</p>
+<p>this is what it looks like in my scenario:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Azure Static Web Apps CI/CD</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">pr</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">branches</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">include</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">main</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">trigger</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">branches</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">include</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">main</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">jobs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl">- <span class="nt">job</span><span class="p">:</span><span class="w"> </span><span class="l">build_and_deploy_job</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="l">Build and Deploy Job</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">condition</span><span class="p">:</span><span class="w"> </span><span class="l">or(eq(variables[&#39;Build.Reason&#39;], &#39;Manual&#39;),or(eq(variables[&#39;Build.Reason&#39;], &#39;PullRequest&#39;),eq(variables[&#39;Build.Reason&#39;], &#39;IndividualCI&#39;)))</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">pool</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">vmImage</span><span class="p">:</span><span class="w"> </span><span class="l">ubuntu-latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">variables</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l">Azure-Static-Web-Apps-gentle-desert-046399d10-variable-group</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">steps</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">checkout</span><span class="p">:</span><span class="w"> </span><span class="l">self</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">submodules</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">task</span><span class="p">:</span><span class="w"> </span><span class="l">AzureStaticWebApp@0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">inputs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">azure_static_web_apps_api_token</span><span class="p">:</span><span class="w"> </span><span class="l">$(AZURE_STATIC_WEB_APPS_API_TOKEN_GENTLE_DESERT_046399D10)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c">###### Repository/Build Configurations - These values can be configured to match your app requirements. ######</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>Normally, you shouldn&rsquo;t have to change anything on this Yml pipeline file, unless your Hugo theme tells you to make alterations. In short, whenever there is a change (<em>&ldquo;a trigger&rdquo;</em>) in the content (<em>&ldquo;include main&rdquo;</em>), it runs the job and relate task (<em>&ldquo;AzureStaticWebApp@0&rdquo;</em>). This is run on an Azure DevOps build agent, an Azure-running Ubuntu Virtual Machine, with all necessary software and tools needed to compile the website updates.</p>
+<ol start="4">
+<li>Wait for your pipeline to complete, and run successful.</li>
+</ol>
+<p>When it&rsquo;s the first time, it will most probably fail, since there is no data to compile yet. Let&rsquo;s fix this!!</p>
+<p><img src="../images/2022-10-29_16-16-03.png"
+    
+    
+    loading="lazy"
+    
+      alt="Failed Pipeline"
+    
+    
+    
+  ></p>
+<ol start="5">
+<li>From the DevOps environment, go to Repos (Github or Azure DevOps), and clone this repo to your local machine. I&rsquo;m using Visual Studio Code, as it&rsquo;s a brilliant MarkDown editor with Git integration out-of-the-box.</li>
+</ol>
+<p><img src="../images/2022-10-29_16-19-10.png"
+    
+    
+    loading="lazy"
+    
+      alt="Clone Repo"
+    
+    
+    
+  ></p>
+<ol start="6">
+<li>Once the repo got cloned, copy all the folders and files from your backup, into this new repo folder. This will be recognized as a &ldquo;folder change&rdquo; by the Git source control process, and asking you to <em>commit</em> the changes and <em>synchronize</em> back to your repository. Perform both steps in sequence.</li>
+</ol>
+<p><img src="../images/2022-10-29_16-21-54.png"
+    
+    
+    loading="lazy"
+    
+      alt="Commit and Sync"
+    
+    
+    
+  ></p>
+<p>followed by the Sync Changes process - which uploads all changed files from your local machine to the DevOps repo.
+<img src="../images/2022-10-29_16-23-49.png"
+    
+    
+    loading="lazy"
+    
+      alt="Commit and Sync"
+    
+    
+    
+  ></p>
+<ol start="7">
+<li>From the DevOps environment, validate the Hugo folders and files are present in the repository.</li>
+</ol>
+<p><img src="../images/2022-10-29_16-25-07.png"
+    
+    
+    loading="lazy"
+    
+      alt="Synced Repo"
+    
+    
+    
+  ></p>
+<ol start="8">
+<li>Given the automatic trigger, the Pipeline will be picking up the change and executing a new run. Wait for this to complete successfully.</li>
+</ol>
+<p><img src="../images/2022-10-29_16-29-24.png"
+    
+    
+    loading="lazy"
+    
+      alt="New pipeline trigger"
+    
+    
+    
+  ></p>
+<ol start="9">
+<li>Connect to the Azure Web App resource URL (something like <a class="link" href="https://gentle-desert-123456789.2.azurestaticapps.net/"  target="_blank" rel="noopener"
+    >https://gentle-desert-123456789.2.azurestaticapps.net/</a>) as in my case, and behold your blog website is live!!</li>
+</ol>
+<p><img src="../images/2022-10-29_16-49-47.png"
+    
+    
+    loading="lazy"
+    
+      alt="SWA is live"
+    
+    
+    
+  ></p>
+<p>While this completes the successful migration of the Hugo blog site, we are not 100% done yet. As for now, it is only listening on the internal SWA web address, which we should update to a public domain name like <a class="link" href="https://www.007FFFLearning.com"  target="_blank" rel="noopener"
+    >www.007FFFLearning.com</a></p>
+<p>Luckily, this is a nifty feature from Static Web Apps, where it allows you to add a custom domain, together with a public SSL/TLS certificate for encryption - all included in the FREE plan! Sweetly done Microsoft!</p>
+<ol>
+<li>From the Static Web Apps blade, navigate to <strong>custom domains</strong>.</li>
+</ol>
+<p><img src="../images/2022-10-29_16-52-54.png"
+    
+    
+    loading="lazy"
+    
+      alt="SWA is live"
+    
+    
+    
+  ></p>
+<ol start="2">
+<li>Click &lsquo;Add Domain&rsquo;, and select the options that&rsquo;s relevant to you. I have my public domain in <a class="link" href="https://www.godaddy.com"  target="_blank" rel="noopener"
+    >GoDaddy</a>, but other options, including Azure DNS itself, is also available.</li>
+</ol>
+<p><img src="../images/2022-10-29_16-53-41.png"
+    
+    
+    loading="lazy"
+    
+      alt="Custom Domain DNS"
+    
+    
+    
+  ></p>
+<ol start="3">
+<li>Add the custom domain name, and copy the CName record details over into your actual DNS hosting solution management portal. Once this is done, head back over to this Azure Custom Domain blade and confirm the domain validation. Note - depending on the DNS provider of use, this might take up to several hours. Mostly, this will only be a few minutes though.</li>
+</ol>
+<p><img src="../images/2022-10-29_16-56-32.png"
+    
+    
+    loading="lazy"
+    
+      alt="Custom Domain Validation"
+    
+    
+    
+  ></p>
+<ol start="4">
+<li>That&rsquo;s it! from now on, your Static Web Site will listen to both the internal SWA domain, as well as the public domain you have configured here.</li>
+</ol>
+<p><img src="../images/2022-10-29_16-59-05.png"
+    
+    
+    loading="lazy"
+    
+      alt="Public URL is live"
+    
+    
+    
+  ></p>
+<p>This is all it took to migrate my Hugo blog site from Azure Storage Account Static Site to the newer, Azure Static Web Apps. I&rsquo;m now going to delete my old Resource Group, since I don&rsquo;t need that Azure Storage Account nor the Azure Front Door anymore. saving me about $45 /month.</p>
+<p>In the next post, I&rsquo;ll describe how to add <a class="link" href="https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview?tabs=net"  target="_blank" rel="noopener"
+    >Azure Application Insights</a> to it, to continue getting visitor statistics.</p>
+<p>Holler me on <a class="link" href="https://twitter.com/pdtit"  target="_blank" rel="noopener"
+    >Twitter</a> if you should have any questions.</p>
+<p><a class="link" href="https://www.buymeacoffee.com/pdtit"  target="_blank" rel="noopener"
+    ><img src="../images/buy_me_a_coffee.png"
+    
+    
+    loading="lazy"
+    
+      alt="BuyMeACoffee"
+    
+    
+    
+  ></a></p>
+<p>Cheers!!</p>
+<p>/Peter</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/azure/">Azure</a>
+        
+            <a href="/tags/hugo/">Hugo</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/post/integrating-azure-app-insights-for-hugo-on-static-web-apps/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Integrating Azure App Insights for Hugo on Static Web Apps</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/post/running-your-hugo-site-on-azure-static-webapps/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Running your Hugo site on Azure Static WebApps (Preview)</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/post/hugo_site_statistics_app_insights/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Collecting Hugo static site statistics using Azure Application Insights</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/post/static_site_frontdoor/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Running an Azure Storage Static Site, protected by Azure Front Door</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/post/the-art-of-realizing-sre-on-azure/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">The Art of Realizing SRE on Azure - Book Review</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2021 - 
+        
+        2026 Azure Readiness starts here...
+    </section>
+    
+    <section class="powerby">
+        
+            The best way to know the future, is to learn it <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="4.0.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+
+
+
+<script type="module">
+    import gallery from '\/ts\/gallery.js';
+
+    const articleContent = document.querySelector('.article-content');
+    const shouldLoad = articleContent && (articleContent.querySelectorAll('figure').length > 0 || articleContent.querySelectorAll('img.gallery-image').length > 0);
+    
+    if (shouldLoad) {
+        gallery(articleContent);
+
+        const PhotoSwipeLightbox = (await import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js")).default;
+        const styleHref = "https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.css";
+
+        const styleTag = document.createElement('link');
+        styleTag.rel = 'stylesheet';
+        styleTag.href = styleHref;
+        document.head.appendChild(styleTag);
+
+        const lightbox = new PhotoSwipeLightbox({
+            gallerySelector: '.article-content',
+            childSelector: 'figure a.image-link',
+            pswpModule: () => import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js")
+        });
+        lightbox.init();
+    }
+</script>
+
+    
+
+            </main>
+        </div>
+        
+    <div id="cookie-consent-banner" class="cookie-banner" aria-hidden="true" role="dialog" aria-labelledby="cookie-banner-title">
+    <div class="cookie-banner__content">
+        <div class="cookie-banner__text">
+            <strong id="cookie-banner-title">Cookie Consent</strong>
+            <p>We use cookies to enhance your browsing experience and analyze site traffic.</p>
+        </div>
+
+        <div class="cookie-banner__actions">
+            <button class="cookie-btn cookie-btn--secondary" data-cookie-action="deny">
+                Deny
+            </button>
+            <button class="cookie-btn cookie-btn--primary" data-cookie-action="accept">
+                Accept All
+            </button>
+        </div>
+        <button class="cookie-banner__settings-link" data-cookie-action="settings">
+            Manage preferences
+        </button>
+
+        
+        <div id="cookie-settings-panel" class="cookie-settings" aria-hidden="true">
+            <h3>Cookie Preferences</h3>
+
+            <div class="cookie-category">
+                <label>
+                    <input type="checkbox" name="necessary" checked disabled />
+                    <strong>Necessary</strong>
+                </label>
+                <p>These cookies are required for the website to function and cannot be disabled.</p>
+            </div><div class="cookie-category">
+                <label>
+                    <input type="checkbox" name="analytics" data-cookie-category="analytics" />
+                    <strong>Analytics</strong>
+                </label>
+                <p>These cookies help us understand how visitors interact with our website.</p>
+            </div><div class="cookie-category">
+                <label>
+                    <input type="checkbox" name="functional" data-cookie-category="functional" />
+                    <strong>Functional</strong>
+                </label>
+                <p>These cookies enable features like comments and embedded content.</p>
+            </div><div class="cookie-settings__actions">
+                <button class="cookie-btn cookie-btn--secondary" data-cookie-action="cancel">
+                    Cancel
+                </button>
+                <button class="cookie-btn cookie-btn--primary" data-cookie-action="save">
+                    Save preferences
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <script type="text/javascript" src="/ts/cookies.6d3577f211db9f4f1997385d4b417cf90130b050bc9e787bb1bb5346d337e998.js" defer></script>
+<script type="text/javascript" src="/ts/main.acaf849f2b273f6a8368a58b001f336738d0c948d92e79b116467d0c7515f932.js" defer></script>
+
+
+    </body>
+</html>

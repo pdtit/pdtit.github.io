@@ -15,7 +15,7 @@ For the ones who know me, it shouldn't be a surprise I'm interested in DevOps, m
 
 DevOps according to Microsoft’s Definition: The Union of People, Processes and Products, to enable continuous delivery of value to the business
 
-![DevOps](../images/2022-03-17-01.png)
+![DevOps](./images/2022-03-17-01.png)
 
 The tricky part with DevOps is that it's not just about 1 team using a single tool, but potentially a complex group of people (the DevOps engineering team), using a multitude of tools and solutions to perform their role. Obviously the main DevOps pipeline engine (Azure Pipelines, GitHub Actions, Octopus Deploy, Jenkins, GitLab, etc...), but most probably, it also involves Infrastructure as Code tools such as Terraform, Azure Bicep or ARM Templates, Configuration as Code tools like PowerShell DSC, Ansible, Chef or Puppet, as well as DevSecOps tools where Snyk, Aqua, SonarQube, WhiteSource bolt and Veracode are just some of the popular ones. (Btw, if you missed my recent post on integrating DevSecOps by Shifting Left, which I wrote for Azure Spring Clean, you can find it [here](https://www.007ffflearning.com/post/azure-spring-clean-devsecops-and-shifting-left-to-publish-secure-software/))  
 

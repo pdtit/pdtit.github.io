@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Certification on Azure Readiness starts here...</title><link>https://www.007ffflearning.com/tags/certification/</link><description>Recent content in Certification on Azure Readiness starts here...</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 25 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/certification/index.xml" rel="self" type="application/rss+xml"/><item><title>Updated Azure Exams Announced</title><link>https://www.007ffflearning.com/post/updated-azure-exams/</link><pubDate>Sat, 25 Jan 2020 00:00:00 +0000</pubDate><guid>https://www.007ffflearning.com/post/updated-azure-exams/</guid><description>&lt;p&gt;Things are going fast in the Azure world, and apparently exams are more and more following that pace. Before you start screaming and worrying, as you might be preparing for a current exam, let me share a bit about several steps happening before an exam becomes available.&lt;/p&gt;
+&lt;h3 id="exam-objectives-od"&gt;Exam Objectives (OD)
+&lt;/h3&gt;&lt;p&gt;For a long time, Microsoft Learning has based exams on &amp;ldquo;exam objectives&amp;rdquo;, which is typically a list of &amp;ldquo;services, features, activities&amp;rdquo; anyone taking the exam, should master. An easy example from the Exchange Server 2007 time frame could have been:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Understanding that Exchange Server relies on several Windows OS components like Internet Information Server, .NET Framework,&amp;hellip; (services examples);&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Knowing the different Exchange Server Roles, and how they relate to each other;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;How to enable Unified Messaging;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;What PowerShell command to use to repair an Exchange database;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;hellip;&lt;/p&gt;
+&lt;p&gt;so basically more like a &amp;ldquo;stand-alone&amp;rdquo; approach of testing your knowledge, but less focused on testing your skill set.&lt;/p&gt;
+&lt;p&gt;The same approach was about valid for the initial Azure exams (70-532, 70-533, 70-534/535); each exam tested you on a lot of services in the platform, how to deploy them, manage them,&amp;hellip; but not always related to how they are being used &amp;ldquo;in the field&amp;rdquo;.&lt;/p&gt;
+&lt;h3 id="job-task-analysis-jta"&gt;Job Task Analysis (JTA)
+&lt;/h3&gt;&lt;p&gt;All of that got changed with the new Azure exams, as announced during Ignite conference 2018. A few months before the announcement, I was invited by Microsoft Learning to participate in &amp;ldquo;JTA - Job Task Analysis&amp;rdquo; workshops, together with several other SMEs (Subject Matter Experts), to brainstorm about how Azure components relate to a certain job role.&lt;/p&gt;
+&lt;p&gt;Easy said, taking the &amp;ldquo;Azure Administrator AZ-103&amp;rdquo; exam, we discussed on what are the core services in Azure, and what would you need to know about them, in order to relate to your job. Because in the end, there are quite a lot of services in Azure, which you probably hardly (or never) touch on as a typical Azure Administrator. The same goes for all the other job roles we identified (Administrator, Data Scientist, Developer, DevOps Engineer, Security Engineer, Solutions Architect,&amp;hellip;). Based on the outcome of these JTA discussions, new exam questions were created, most of them being more relevant (and harder) to - again - a job role, instead of just testing you on the service or feature. Several Azure exams also got updated with &amp;ldquo;Performance based testing&amp;rdquo;, which means you need to perform a series of actual tasks, in a live Azure Portal. (e.g. deploy a Virtual Network, configure an Azure Backup job based on certain criteria, configure diagnostics logs,&amp;hellip;), so - once more - testing your skill set, in relation to what you are assumed to know, when having that specific job role.&lt;/p&gt;
+&lt;p&gt;I personally liked this approach much better than the old system, where now the credential actually proves you have both knowledgeable (theoretical questions) and skill set (practical tasks) experience.&lt;/p&gt;
+&lt;h3 id="what-will-change-and-why-changing-again"&gt;What will change, and why changing again?
+&lt;/h3&gt;&lt;p&gt;As already touched on in the first paragraph, the Azure world in all its glory and capabilities, is changing dramatically. New features are coming out on a regular basis, existing services are getting better, more complete, and overall, the different services are easier to get integrated with each other. To keep up with the ever-changing demand in job role on top, it makes total sense the exams are getting updated on a regular basis as well.&lt;/p&gt;
+&lt;p&gt;The following list of Azure exams will get an update, but the old ones will remain for another 90 days after the new ones are getting released, as a transition period:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class="link" href="https://www.microsoft.com/en-us/learning/azure-exams.aspx#exam-az-103-section" target="_blank" rel="noopener"
+ &gt;AZ-103&lt;/a&gt; becomes AZ-104 (this update will be published in March)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class="link" href="https://www.microsoft.com/en-us/learning/azure-exams.aspx#exam-az-203-section" target="_blank" rel="noopener"
+ &gt;AZ-203&lt;/a&gt; becomes AZ-204 (this update will be published in late February)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class="link" href="https://www.microsoft.com/en-us/learning/azure-exams.aspx#exam-az-300-section" target="_blank" rel="noopener"
+ &gt;AZ-300&lt;/a&gt; becomes AZ-303 (this update will be published in March)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class="link" href="https://www.microsoft.com/en-us/learning/azure-exams.aspx#exam-az-301-section" target="_blank" rel="noopener"
+ &gt;AZ-301&lt;/a&gt; becomes AZ-304 (this update will be published in March)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Important to mention is that the exam (certification) title will not change, nor will anyone having the current credential, loose this credential. If you have the &lt;a class="link" href="https://www.microsoft.com/en-us/learning/azure-exams.aspx#exam-az-300-section" target="_blank" rel="noopener"
+ &gt;AZ-300&lt;/a&gt; certification for example, it will remain valid until its expiration date, even with the AZ-303 being available.&lt;/p&gt;
+&lt;h3 id="does-this-mean-i-can-forget-about-everything-i-already-studied-on-and-need-to-start-all-over"&gt;Does this mean I can forget about everything I already studied on, and need to start all over?
+&lt;/h3&gt;&lt;p&gt;Technically, the newly announced exams, will test you on &amp;ldquo;newer&amp;rdquo; updates out of the Job Task Analysis. This doesn&amp;rsquo;t mean that you will be tested on &amp;ldquo;newer&amp;rdquo; services or features only. One example I could think of, is Azure Containers and Kubernetes Services; these were not part of the exam objective domains in the &lt;a class="link" href="https://www.microsoft.com/en-us/learning/azure-exams.aspx#exam-az-103-section" target="_blank" rel="noopener"
+ &gt;AZ-103&lt;/a&gt; today, but given the growth and popularity of these services, they might get included in the objective domain for the AZ-104. Although the services and capabilities have been in Azure for a longer time already.&lt;/p&gt;
+&lt;p&gt;Where can we find additional information related to these announced updates?&lt;/p&gt;
+&lt;p&gt;As always, the &lt;a class="link" href="http://www.microsoft.com/learn" target="_blank" rel="noopener"
+ &gt;Microsoft Learn&lt;/a&gt; website is the best resource related to Microsoft exams, certification, Microsoft Official Courseware content and more. When all details are ready, they will be exposed on that learn portal immediately.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a class="link" href="http://www.microsoft.com/learn" target="_blank" rel="noopener"
+ &gt;http://www.microsoft.com/learn&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/learn-website.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Learn_Website"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;These new announced exams will also require some updates to several of the trainings I am delivering out of my current role as &lt;strong&gt;Azure Technical Trainer (ATT)&lt;/strong&gt; within Microsoft. Time to go check on some updates, work on my updated stories, and fine-tune some cool demos and lab guide steps for my attendees. The changes will arrive fast if you ask me!&lt;/p&gt;
+&lt;p&gt;As always, don&amp;rsquo;t hesitate reaching out when having any questions on this topic or another.&lt;/p&gt;
+&lt;p&gt;Kind regards, Peter&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://azure.microsoft.com/en-us/resources/azure-strategy-and-implementation-guide-third-edition/" target="_blank" rel="noopener"
+ &gt;https://azure.microsoft.com/en-us/resources/azure-strategy-and-implementation-guide-third-edition/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;summarized as follows:&lt;/p&gt;
+&lt;p&gt;Get a step by step introduction to using Azure for your cloud infrastructure with this Packt e-book. Read the latest edition of the Azure Strategy and Implementation Guide for detailed information on how to start taking advantage of Azure cloud capabilities.
+Download this e-book to:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Get an overview of Azure benefits and best practices for planning your migration.&lt;/li&gt;
+&lt;li&gt;Make cloud architecture and design choices that best fit your organization.&lt;/li&gt;
+&lt;li&gt;Learn how to manage and optimize your new cloud environment.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As always, I hope this book maps with your interests and helps in your journey to Azure. Do not hesitate reaching out or sharing your feedback,&lt;/p&gt;
+&lt;p&gt;/Peter&lt;/p&gt;</description></item><item><title>Azure Learning Resources</title><link>https://www.007ffflearning.com/post/azure-learning-resources/</link><pubDate>Sun, 22 Dec 2019 00:00:00 +0000</pubDate><guid>https://www.007ffflearning.com/post/azure-learning-resources/</guid><description>&lt;p&gt;As I got asked so many times what Azure learning resources are available, I thought this could make up an excellent blog post :) - This is actually based on a summary slide I have added to my in-person and online Azure training workshops closing deck, but updated where needed. Below order is a random listing of resources, not forcing any priority or preference:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Microsoft Learn&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Microsoft Hands-on Labs&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Azure Docs&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;3rd party learning resources&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Let me guide you through each and one of them:&lt;/p&gt;
+&lt;h2 id="1-microsoft-learn"&gt;1. Microsoft Learn
+&lt;/h2&gt;&lt;p&gt;(&lt;a class="link" href="http://www.microsoft.com/learn" target="_blank" rel="noopener"
+ &gt;http://www.microsoft.com/learn&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;Microsoft Learn is &amp;ldquo;the&amp;rdquo; landing page for all learning resources Microsoft has to offer, not just Azure. Here, you find a listing of all current learning paths, pointers to hands-on lab exercises in a sand-boxed setup, an overview of Microsoft certifications and exams, and much more. It also points you to the official Microsoft Docs website (see below).&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/learn-website.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Microsoft Learn"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;By selecting Browse all paths or Browse all learning options, you are redirected to the actual Learning Paths. A Learning Path is a collection of learning material, which can be documentation, a training video and/or an exercise. Most of the time, it is really a combination of all 3 flavors. This reflects to the different learning styles people have. Some learn better from reading (docs), some other like to hear and see (video), where other - including myself - mainly learn by doing (hands-on labs).&lt;/p&gt;
+&lt;p&gt;Using the filters on the side, you can find the specific Azure material, or even drill down on specific Azure services or features you want to focus on. (About 30% of all learning path material is related to Azure&amp;hellip;)&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/learn-learningpath.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Microsoft Learn"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;Next, you can choose from the full Learning Path, giving you several hours of content to go through, or pick stand-alone modules, typically shorter (30-90 mins) and more focused.&lt;/p&gt;
+&lt;p&gt;In this example, I filtered on Azure / Functions, which brings up a list of 2 Learning Paths and 15 Modules (at the time of writing, it might change over time :)). Let me select the Create Serverless Applications Learning Path; this opens a list of stand-alone content, again nicely structured per topic. Each topic is again a collection of shorter snippets.&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/learn-serverless.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Microsoft Learn"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;I hope this gets you going in your Azure-learning journey. But wait, there is more ;)&lt;/p&gt;
+&lt;h2 id="2-microsoft-hands-on-labs"&gt;2. Microsoft Hands-on Labs
+&lt;/h2&gt;&lt;p&gt;(&lt;a class="link" href="http://www.microsoft.com/handsonlabs/selfpacedlabs" target="_blank" rel="noopener"
+ &gt;http://www.microsoft.com/handsonlabs/selfpacedlabs&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;Compared to the &amp;ldquo;watch or read&amp;rdquo; approach from the Microsoft Learn Learning Paths, the Microsoft Hands-on Labs offer you self-paced labs, focusing on a &amp;ldquo;learn by doing&amp;rdquo; concept.&lt;/p&gt;
+&lt;p&gt;Again, this source is not just offering Azure material, but covers most of the Microsoft product stack (Office 365, .NET development, Windows Server, Windows Client,&amp;hellip;).&lt;/p&gt;
+&lt;p&gt;If you filter again on Azure content, it currently shows 30 different labs, from beginners to advanced learner level.&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/learn-hol.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Microsoft Learn"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;The most interesting aspect - besides learning by doing of course - is you don&amp;rsquo;t need an Azure subscription to perform the lab steps. While there is still a separate URL to get here, it actually redirects you back to the overall Microsoft Learn website. However, there is no easy way to retrieve the hands-on labs only (Microsoft, make this available as a learning type option please). So it requires some wondering around the website, browsing Learning Paths and Modules, to find any resource having &amp;ldquo;exercise&amp;rdquo; in the title.&lt;/p&gt;
+&lt;p&gt;As an example, I selected the &amp;ldquo;Create a Windows Virtual Machine&amp;rdquo;; as you can see from below screenshot, it offers you to activate sandbox. This creates a temporary Azure subscription, dedicated to this specific lab scenario. One can activate 10 such sandbox environments per day, which should be more than enough for most learners.&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/learn-windows-vm.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Microsoft Learn"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;After giving consent using a Microsoft account (Outlook, Hotmail,&amp;hellip;) (Office 365 doesn&amp;rsquo;t seem to work here?), it will add a temporary subscription to your Microsoft account credentials, in a dedicated Microsoft Learn Sandbox Azure Tenant.&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/learn-subscriptions.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Microsoft Learn"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;From here, you can literally follow the instructions from the exercise description pages. Pretty sweet in my opinion!&lt;/p&gt;
+&lt;h2 id="3-azure-docs"&gt;3. Azure Docs
+&lt;/h2&gt;&lt;p&gt;(&lt;a class="link" href="https://docs.microsoft.com/en-us/azure" target="_blank" rel="noopener"
+ &gt;https://docs.microsoft.com/en-us/azure&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;No better resource to learn about Azure than the official Azure Documentation! While it is obviously not built as a learning to per sé, it actually does the job really well! Starting from a high-level overview of Azure services, one can easily drill down to the specific topic you want to learn about. For most services, this will list up a &amp;ldquo;tutorial&amp;rdquo; section. That&amp;rsquo;s where you find most useful &amp;ldquo;how-to&amp;rdquo; documentation and guides. If that&amp;rsquo;s what you are looking for.&lt;/p&gt;
+&lt;p&gt;Using a similar example as before, I made the following selections:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Get started with Azure / Deploy Infrastructure&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Windows Virtual Machines&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="../images/learn-getstarted.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Microsoft Learn"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;(Notice the link to the previously discussed self-paced training also shows up here)&lt;/p&gt;
+&lt;p&gt;Which brings me to the actual Azure doc pages, describing how to create an Windows Virtual Machine in Azure. From here, I can scroll down to the specific deployment approach I want to learn, being PowerShell, Azure CLI or using the Portal.&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/learn-tutorial.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Microsoft Learn"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;Besides reading through the different steps, you can also try them out live, assuming you have an Azure Free or Paid subscription already (in contrast to the sandbox scenario described earlier).&lt;/p&gt;
+&lt;h1 id="4-third-party-learning-resources"&gt;4. Third party learning resources
+&lt;/h1&gt;&lt;p&gt;Aside from the above 3 Microsoft-owned resources, there is a huge amount of (free and paid) Azure learning material available on the internet. My recommendation is to try and filter on content which is less than 6 months old, as otherwise it might probably be too outdated (depending a bit on the Azure service).&lt;/p&gt;
+&lt;p&gt;Without trying to be complete, below is a list of learning partners offering some very good and up-to-date content on Azure. I have authored several videos for the first 3 listed here, but don&amp;rsquo;t exclusively check those. Several also provide a multi-day trial subscription, which could be just enough to learn about that one specific Azure service.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class="link" href="http://www.opsgility.com/" target="_blank" rel="noopener"
+ &gt;Opsgility&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class="link" href="http://www.packtpub.com/" target="_blank" rel="noopener"
+ &gt;Packt&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class="link" href="http://www.apress.com/" target="_blank" rel="noopener"
+ &gt;Apress&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class="link" href="http://www.pluralsight.com/" target="_blank" rel="noopener"
+ &gt;Pluralsight&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class="link" href="http://www.acloudguru.com/" target="_blank" rel="noopener"
+ &gt;A Cloud Guru&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class="link" href="http://www.udemy.com/" target="_blank" rel="noopener"
+ &gt;Udemy&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class="link" href="http://www.youtube.com" target="_blank" rel="noopener"
+ &gt;Youtube&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I hope this article gives you enough insights on different Microsoft and 3rd party Azure learning resources available today.&lt;/p&gt;
+&lt;p&gt;Don&amp;rsquo;t hesitate reaching out if you have any questions on the discussed content.&lt;/p&gt;
+&lt;p&gt;/Peter&lt;/p&gt;</description></item></channel></rss>

@@ -1,123 +1,15 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>App Service on Azure Readiness starts here...</title><link>https://www.007ffflearning.com/tags/app-service/</link><description>Recent content in App Service on Azure Readiness starts here...</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 30 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/app-service/index.xml" rel="self" type="application/rss+xml"/><item><title>You do not have permissions to view this directory or page after publishing to Azure App Service</title><link>https://www.007ffflearning.com/post/you-do-not-have-permissions-error-after-publishing-to-azure-app-services/</link><pubDate>Sun, 30 Apr 2023 00:00:00 +0000</pubDate><guid>https://www.007ffflearning.com/post/you-do-not-have-permissions-error-after-publishing-to-azure-app-services/</guid><description>&lt;p&gt;Earlier this week, I got an interesting phenomenon when publishing a code update to an existing Azure App Service. As this was a small project, I&amp;rsquo;ve always been deploying updates in a manual way from &lt;strong&gt;right-click / publish&lt;/strong&gt; in Visual Studio. But than I said to myself, Peter, as a passionate DevOps engineer and trainer, just go out and create a pipeline for this.&lt;/p&gt;
-&lt;p&gt;And that&amp;rsquo;s what happened.&lt;/p&gt;
-&lt;p&gt;Running the release pipeline came back successful, but the site threw an error:&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2023-04-30_11-25-45.png"
- 
- 
- loading="lazy"
- 
- alt="App Service Error"
- 
- 
- 
- &gt;&lt;/p&gt;
-&lt;p&gt;I was like well, OK, no worries, let&amp;rsquo;s go back to the &lt;strong&gt;manual deployment&lt;/strong&gt; from Visual Studio for now. Only to find out that one didn&amp;rsquo;t succeed either anymore, just giving me a &lt;strong&gt;spinning&lt;/strong&gt; publishing task.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2023-04-30_11-30-12.png"
- 
- 
- loading="lazy"
- 
- alt="Publish task hang"
- 
- 
- 
- &gt;&lt;/p&gt;
-&lt;p&gt;So this was not really helping me further. Time to open up the &lt;strong&gt;App Service Logs&lt;/strong&gt; settings on the App Service to dig in.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2023-04-30_11-32-06.png"
- 
- 
- loading="lazy"
- 
- alt="App Service Logs"
- 
- 
- 
- &gt;&lt;/p&gt;
-&lt;p&gt;After which I could check the live logs using &lt;strong&gt;App Service Log Stream&lt;/strong&gt; (notice the &lt;strong&gt;verbose&lt;/strong&gt; option to get immediate and full feedback&amp;hellip;)&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2023-04-30_11-33-49.png"
- 
- 
- loading="lazy"
- 
- alt="Verbose Logs"
- 
- 
- 
- &gt;&lt;/p&gt;
-&lt;p&gt;2 things here got my attention:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;HTTP Error 403.13 Forbidden&lt;/li&gt;
-&lt;li&gt;A default document is not configured for the requested URL&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;So it seems like the index.html I use in my app, couldn&amp;rsquo;t be found on the Web Server. Let&amp;rsquo;s validate with &lt;strong&gt;App Service Editor&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2023-04-30_11-37-59.png"
- 
- 
- loading="lazy"
- 
- alt="Verbose Logs"
- 
- 
- 
- &gt;&lt;/p&gt;
-&lt;p&gt;Interesting&amp;hellip; so I have my drop folder with the application zip package and some other deployment artifacts, but not the actual application files in an extracted format. The &lt;strong&gt;drop&lt;/strong&gt; folder was also something that made me curious&amp;hellip; As that is what Azure DevOps is using to publish the package&amp;hellip; Let&amp;rsquo;s go back to my Azure DevOps Release pipeline and check something&amp;hellip;&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2023-04-30_11-41-07.png"
- 
- 
- loading="lazy"
- 
- alt="App Service Release settings"
- 
- 
- 
- &gt;&lt;/p&gt;
-&lt;p&gt;EUREKA!!! Looks like Peter made a mistake here, by not setting the &lt;strong&gt;package file&lt;/strong&gt; to use. So what the ADO Pipeline does here, is just copying the /drop folder with the artifact into the Azure App Service, but not extracting it.&lt;/p&gt;
-&lt;p&gt;This is what this setting should look like:&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2023-04-30_11-43-46.png"
- 
- 
- loading="lazy"
- 
- alt="Select ZIP package"
- 
- 
- 
- &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2023-04-30_11-44-43.png"
- 
- 
- loading="lazy"
- 
- alt="Zip Package Selected"
- 
- 
- 
- &gt;&lt;/p&gt;
-&lt;p&gt;With these new changes, let&amp;rsquo;s run the release deployment again and see what happens&amp;hellip;&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2023-04-30_12-21-49.png"
- 
- 
- loading="lazy"
- 
- alt="Actual files got deployed"
- 
- 
- 
- &gt;&lt;/p&gt;
-&lt;p&gt;and the website is running as expected!&lt;/p&gt;
-&lt;p&gt;Last check, validating if a new deployment from Visual Studio is running as expected again&amp;hellip; and that runs successful again too!&lt;/p&gt;
-&lt;h2 id="summary"&gt;Summary
-&lt;/h2&gt;&lt;p&gt;In this post, I wanted to help you sharing some troubleshooting steps for Azure App Services. And also admitting I made a minor mistake in my ADO pipeline setup. So additional lesson learned: always doublecheck your setting when something doesn&amp;rsquo;t work anymore as it should be :)&lt;/p&gt;
-&lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
- &gt;&lt;img src="../images/buy_me_a_coffee.png"
- 
- 
- loading="lazy"
- 
- alt="BuyMeACoffee"
- 
- 
- 
- &gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Cheers!!&lt;/p&gt;
-&lt;p&gt;/Peter&lt;/p&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>App Service on Azure Readiness starts here...</title>
+        <link>http://localhost:1313/tags/app-service/</link>
+        <description>Recent content in App Service on Azure Readiness starts here...</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Sun, 30 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/app-service/index.xml" rel="self" type="application/rss+xml" /><item>
+            <title>You do not have permissions to view this directory or page after publishing to Azure App Service</title>
+            <link>http://localhost:1313/post/you-do-not-have-permissions-error-after-publishing-to-azure-app-services/</link>
+            <pubDate>Sun, 30 Apr 2023 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/post/you-do-not-have-permissions-error-after-publishing-to-azure-app-services/</guid>
+            <description>&lt;p&gt;Earlier this week, I got an interesting phenomenon when publishing a code update to an existing Azure App Service. As this was a small project, I&amp;rsquo;ve always been deploying updates in a manual way from &lt;strong&gt;right-click / publish&lt;/strong&gt; in Visual Studio. But than I said to myself, Peter, as a passionate DevOps engineer and trainer, just go out and create a pipeline for this.&lt;/p&gt;&#xA;&lt;p&gt;And that&amp;rsquo;s what happened.&lt;/p&gt;&#xA;&lt;p&gt;Running the release pipeline came back successful, but the site threw an error:&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2023-04-30_11-25-45.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;App Service Error&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;p&gt;I was like well, OK, no worries, let&amp;rsquo;s go back to the &lt;strong&gt;manual deployment&lt;/strong&gt; from Visual Studio for now. Only to find out that one didn&amp;rsquo;t succeed either anymore, just giving me a &lt;strong&gt;spinning&lt;/strong&gt; publishing task.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2023-04-30_11-30-12.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;Publish task hang&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;p&gt;So this was not really helping me further. Time to open up the &lt;strong&gt;App Service Logs&lt;/strong&gt; settings on the App Service to dig in.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2023-04-30_11-32-06.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;App Service Logs&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;p&gt;After which I could check the live logs using &lt;strong&gt;App Service Log Stream&lt;/strong&gt; (notice the &lt;strong&gt;verbose&lt;/strong&gt; option to get immediate and full feedback&amp;hellip;)&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2023-04-30_11-33-49.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;Verbose Logs&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;p&gt;2 things here got my attention:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;HTTP Error 403.13 Forbidden&lt;/li&gt;&#xA;&lt;li&gt;A default document is not configured for the requested URL&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;So it seems like the index.html I use in my app, couldn&amp;rsquo;t be found on the Web Server. Let&amp;rsquo;s validate with &lt;strong&gt;App Service Editor&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2023-04-30_11-37-59.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;Verbose Logs&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;p&gt;Interesting&amp;hellip; so I have my drop folder with the application zip package and some other deployment artifacts, but not the actual application files in an extracted format. The &lt;strong&gt;drop&lt;/strong&gt; folder was also something that made me curious&amp;hellip; As that is what Azure DevOps is using to publish the package&amp;hellip; Let&amp;rsquo;s go back to my Azure DevOps Release pipeline and check something&amp;hellip;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2023-04-30_11-41-07.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;App Service Release settings&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;p&gt;EUREKA!!! Looks like Peter made a mistake here, by not setting the &lt;strong&gt;package file&lt;/strong&gt; to use. So what the ADO Pipeline does here, is just copying the /drop folder with the artifact into the Azure App Service, but not extracting it.&lt;/p&gt;&#xA;&lt;p&gt;This is what this setting should look like:&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2023-04-30_11-43-46.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;Select ZIP package&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2023-04-30_11-44-43.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;Zip Package Selected&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;p&gt;With these new changes, let&amp;rsquo;s run the release deployment again and see what happens&amp;hellip;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/2023-04-30_12-21-49.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;Actual files got deployed&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/p&gt;&#xA;&lt;p&gt;and the website is running as expected!&lt;/p&gt;&#xA;&lt;p&gt;Last check, validating if a new deployment from Visual Studio is running as expected again&amp;hellip; and that runs successful again too!&lt;/p&gt;&#xA;&lt;h2 id=&#34;summary&#34;&gt;Summary&#xD;&#xA;&lt;/h2&gt;&lt;p&gt;In this post, I wanted to help you sharing some troubleshooting steps for Azure App Services. And also admitting I made a minor mistake in my ADO pipeline setup. So additional lesson learned: always doublecheck your setting when something doesn&amp;rsquo;t work anymore as it should be :)&lt;/p&gt;&#xA;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.buymeacoffee.com/pdtit&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xD;&#xA;    &gt;&lt;img src=&#34;../images/buy_me_a_coffee.png&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    &#xD;&#xA;      alt=&#34;BuyMeACoffee&#34;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;  &gt;&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Cheers!!&lt;/p&gt;&#xA;&lt;p&gt;/Peter&lt;/p&gt;&#xA;</description>
+        </item></channel>
+</rss>

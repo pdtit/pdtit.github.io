@@ -1,6 +1,8 @@
 ---
 title: "My Published Azure Videos"
 description: "An overview of my Azure-related video-based training content"
+aliases:
+  - /publications/videos/
 
 
 weight: 1

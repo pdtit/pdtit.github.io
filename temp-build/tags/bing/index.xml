@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bing on Azure Readiness starts here...</title><link>https://www.007ffflearning.com/tags/bing/</link><description>Recent content in Bing on Azure Readiness starts here...</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 10 May 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/bing/index.xml" rel="self" type="application/rss+xml"/><item><title>Use Bing Desktop Wallpapers as background images in Teams calls</title><link>https://www.007ffflearning.com/post/use-bing-wallpaper-as-background-in-teams/</link><pubDate>Sun, 10 May 2020 00:00:00 +0000</pubDate><guid>https://www.007ffflearning.com/post/use-bing-wallpaper-as-background-in-teams/</guid><description>&lt;p&gt;A few days ago, I blogged about &lt;strong&gt;&lt;a class="link" href="https://www.007ffflearning.com/post/bing-wallpaper/" target="_blank" rel="noopener"
+ &gt;Bing Desktop Wallpapers&lt;/a&gt;&lt;/strong&gt;, a nice little tool you can install on your Windows Machine to enjoy some of the amazing views of the world.&lt;/p&gt;
+&lt;p&gt;Knowing these got stored on your local machine as JPEGs (C:\Users&amp;lt;user&amp;gt;\AppData\Local\Microsoft\BingWallpaperApp\WPImages), got me the idea to reuse these as &amp;ldquo;Teams Backgrounds&amp;rdquo; during video calls.&lt;/p&gt;
+&lt;p&gt;As the Bing Wallpaper gets updated every day, it would be nice to have a different image in Teams&amp;hellip; every day. So instead of trying to remember to copy a Bing Wallpaper image, why not using a Windows Scheduled Task for this, based on a little PowerShell script?&lt;/p&gt;
+&lt;p&gt;The script could look like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt; $today = get-date -format &amp;quot;yyyyMMdd&amp;quot;
+&amp;gt;
+&amp;gt;$source = &amp;quot;C:\Users\petender\AppData\Local\Microsoft\BingWallpaperApp\WPImages&amp;quot; 
+&amp;gt;
+&amp;gt;$target = &amp;quot;C:\Users\petender\AppData\Roaming\Microsoft\Teams\Backgrounds\Uploads&amp;quot;
+&amp;gt;
+&amp;gt;$targetfile = $today+&amp;quot;.jpg&amp;quot; 
+&amp;gt;
+&amp;gt;copy-item -path &amp;quot;$source\$targetfile&amp;quot; -Destination $target -Force
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Save this file with a &lt;strong&gt;PS1&lt;/strong&gt; (PowerShell Script) extension, e.g. &lt;strong&gt;&amp;ldquo;copybingtoteams.ps1&amp;rdquo;&lt;/strong&gt;, and store it on your local machine (I used my &lt;strong&gt;Documents&lt;/strong&gt; folder for this).&lt;/p&gt;
+&lt;p&gt;You could try and run this script manually to try it out, and see how nicely the &amp;ldquo;today&amp;rsquo;s&amp;rdquo; Bing Wallpaper gets copied to the Teams folder&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20200510B_01.jpg"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Bing Wallpaper image copied"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;So that works!&lt;/p&gt;
+&lt;p&gt;Next, to make this an automated step every morning when logging on to our machine, let&amp;rsquo;s use the Windows Task Scheduler as follows:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;From the Start Menu, search for &lt;strong&gt;Task Scheduler&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/20200510B_02.jpg"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Task Scheduler"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;Once the console is open, &lt;strong&gt;Right click&lt;/strong&gt; &lt;em&gt;Task Scheduler Library&lt;/em&gt;, and select &lt;strong&gt;&amp;ldquo;Create Task&amp;rdquo;&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/20200510B_03.jpg"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Create Task"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="3"&gt;
+&lt;li&gt;From the &lt;strong&gt;&amp;ldquo;General&amp;rdquo;&lt;/strong&gt; tab, provide a descriptive name for your task e.g. &lt;em&gt;&amp;ldquo;Copy Bing Wallpaper to Teams&amp;rdquo;&lt;/em&gt;, and keep the default setting to only use this when user is logged on.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/20200510B_04.jpg"
+ 
+ 
+ loading="lazy"
+ 
+ alt="General tab"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="4"&gt;
+&lt;li&gt;From the &lt;strong&gt;Triggers&lt;/strong&gt; tab, create a new trigger, and specify the time you want to launch this script (e.g. 7am in the morning), and specify to run this &lt;strong&gt;every 1 day&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/20200510B_05.jpg"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Triggers"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="5"&gt;
+&lt;li&gt;Under the &lt;strong&gt;Actions&lt;/strong&gt; tab, is where we define the actual script to run.Set &lt;strong&gt;&amp;ldquo;Run a Program&amp;rdquo;&lt;/strong&gt; as Action, and browse to the location where you saved the PS1-file.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/20200510B_06.jpg"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Actions"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="6"&gt;
+&lt;li&gt;Nothing special to configure in the &lt;strong&gt;Conditions&lt;/strong&gt; tab settings, although I did turn off the dependency to start this task only when connected to AC Power.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/20200510B_07.jpg"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Conditions"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="7"&gt;
+&lt;li&gt;I didn&amp;rsquo;t make any changes to the &lt;strong&gt;Settings&lt;/strong&gt; tab, so we are good to go to &lt;strong&gt;Save&lt;/strong&gt; our settings.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;If you want to validate the task is going to run fine, you can manually launch it from the Task Scheduler console.&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20200510B_08.jpg"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Manual Run"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;That&amp;rsquo;s it. Enjoy your new daily Bing Wallpaper in your Teams video calls!&lt;/p&gt;
+&lt;p&gt;Have a great day you all! and stay healhty!&lt;/p&gt;
+&lt;p&gt;/Peter&lt;/p&gt;</description></item><item><title>Bing Desktop Wallpapers take you on a trip around the world</title><link>https://www.007ffflearning.com/post/bing-wallpaper/</link><pubDate>Sun, 19 Apr 2020 00:00:00 +0000</pubDate><guid>https://www.007ffflearning.com/post/bing-wallpaper/</guid><description>&lt;p&gt;Due to COVID19, my traveling rhythm went down from an avg 90% the last six years, to 0%. I have never been that much at home without travel than in these last 5 weeks (and a few more to come).&lt;/p&gt;
+&lt;p&gt;While the primary reason for my travel is business related, every now and then, I have the opportunity to enjoy the area, if even only for a short moment, or in-between delivering sessions. Some locations immediately coming to mind:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Johannesburg, South Africa (Lion &amp;amp; Rhino Park)&lt;/li&gt;
+&lt;li&gt;Kathmandu, Nepal (overall scenery and the top of the mountains)&lt;/li&gt;
+&lt;li&gt;Seattle, WA, USA (Harbor area, boat trip, Snoqualmie Falls)&lt;/li&gt;
+&lt;li&gt;Ischl, Austria (Closing of skiing season, hiking at the top of the mountains)&lt;/li&gt;
+&lt;li&gt;Bangalore, India (Shivoham Shiva Temple)&lt;/li&gt;
+&lt;li&gt;Bay St Louis, MI, USA (Airbnb stay for 80 days, loved everything)&lt;/li&gt;
+&lt;li&gt;&amp;hellip;
+and probably another +100 locations at least.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;What should be clear about those locations, is they are all beautiful, especially the scenery of nature, sometimes it&amp;rsquo;s extraordinary buildings and most often it&amp;rsquo;s both (outside of the great and awesome training experiences)&lt;/p&gt;
+&lt;p&gt;So no doubt about it, I&amp;rsquo;m missing traveling. Missing the walks, the drive-by&amp;rsquo;s, the &amp;ldquo;enjoying my trip&amp;rdquo; feeling.&lt;/p&gt;
+&lt;p&gt;And that&amp;rsquo;s where I discovered an interesting but yet little gem to install on my laptop: &lt;strong&gt;&lt;a class="link" href="https://www.microsoft.com/en-us/bing/bing-wallpaper" target="_blank" rel="noopener"
+ &gt;Bing Desktop Wallpaper&lt;/a&gt;&lt;/strong&gt; &amp;ldquo;Exploring the world, one photo at the time&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20200419.jpg"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Bing Wallpaper 20200419"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;p&gt;If you have been using &lt;strong&gt;&lt;a class="link" href="http://www.bing.com" target="_blank" rel="noopener"
+ &gt;Bing&lt;/a&gt;&lt;/strong&gt; as your search engine, or you had the joys of owning a Windows Phone in the past, you pretty well know what I&amp;rsquo;m talking about: Beautiful, stunning pictures from anywhere in the world, changing every day.&lt;/p&gt;
+&lt;p&gt;By installing this tool on your Windows machine, it will show a different image on your desktop wallpaper every morning when starting your laptop. It also stores these images on your machine (C:\Users&amp;lt;user&amp;gt;\AppData\Local\Microsoft\BingWallpaperApp\WPImages), so you can reuse them later on, if you don&amp;rsquo;t like the one from a given day :).&lt;/p&gt;
+&lt;p&gt;While it is no substitute for the real-life experiences out there, it takes me away every now and then, dreaming for a few seconds about so many unexplored destinations that still need Azure training workshops to be delivered there.&lt;/p&gt;
+&lt;p&gt;Stay safe and healthy you all!&lt;/p&gt;
+&lt;p&gt;/Peter&lt;/p&gt;</description></item></channel></rss>

@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="In this post, I want to share my review of Azure for Developers (Third Edition) by Kamil Mrzygłód, published by Packt Publishing and available on Amazon as well as other e-book subscription platforms.\nThis definitive guide focuses on creating secure, scalable Azure apps with GenAI, serverless, and DevOps pipelines, making it an essential resource for developers looking to build modern cloud-native applications on Azure with the latest technologies.\n">
+<title>Packt Book Review - Azure for Developers</title>
+
+
+<link rel="canonical" href="https://www.007ffflearning.com/post/packt-book-review---azure-for-developers/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+
+
+<link rel="stylesheet" href="/scss/style.min.cf9653eecaea3cf14f5747895c3ac9b505bea7f8f3f40c16dac6b0e82fafddc4.css"><meta property='og:title' content="Packt Book Review - Azure for Developers">
+<meta property='og:description' content="In this post, I want to share my review of Azure for Developers (Third Edition) by Kamil Mrzygłód, published by Packt Publishing and available on Amazon as well as other e-book subscription platforms.\nThis definitive guide focuses on creating secure, scalable Azure apps with GenAI, serverless, and DevOps pipelines, making it an essential resource for developers looking to build modern cloud-native applications on Azure with the latest technologies.\n">
+<meta property='og:url' content='https://www.007ffflearning.com/post/packt-book-review---azure-for-developers/'>
+<meta property='og:site_name' content='Azure Readiness starts here...'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Azure' /><meta property='article:tag' content='Packt' /><meta property='article:published_time' content='2025-12-25T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-12-25T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Packt Book Review - Azure for Developers">
+<meta name="twitter:description" content="In this post, I want to share my review of Azure for Developers (Third Edition) by Kamil Mrzygłód, published by Packt Publishing and available on Amazon as well as other e-book subscription platforms.\nThis definitive guide focuses on creating secure, scalable Azure apps with GenAI, serverless, and DevOps pipelines, making it an essential resource for developers looking to build modern cloud-native applications on Azure with the latest technologies.\n">
+    <link rel="shortcut icon" href="/img/007ffflearning-ape.png" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        <figure class="site-avatar">
+                <a href="/">
+                    <img src="/img/007ffflearning-ape.png" 
+                        width="596"
+                        height="842"
+                        class="site-logo"
+                        loading="lazy"
+                        alt="Avatar">
+                </a>
+                
+                    <span class="emoji">🎓</span>
+                
+            </figure>
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Azure Readiness starts here...</a></h1>
+            <h2 class="site-description">Bring me an audience, I&#39;ll give them Azure knowledge in return</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://pdtit.bsky.social'
+                        
+                        title="Bluesky"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 530" fill="currentColor">
+  <path d="m135.72 44.03c66.496 49.921 138.02 151.14 164.28 205.46 26.262-54.316 97.782-155.54 164.28-205.46 47.98-36.021 125.72-63.892 125.72 24.795 0 17.712-10.155 148.79-16.111 170.07-20.703 73.984-96.144 92.854-163.25 81.433 117.3 19.964 147.14 86.092 82.697 152.22-122.39 125.59-175.91-31.511-189.63-71.766-2.514-7.3797-3.6904-10.832-3.7077-7.8964-0.0174-2.9357-1.1937 0.51669-3.7077 7.8964-13.714 40.255-67.233 197.36-189.63 71.766-64.444-66.128-34.605-132.26 82.697-152.22-67.108 11.421-142.55-7.4491-163.25-81.433-5.9562-21.282-16.111-152.36-16.111-170.07 0-88.687 77.742-60.816 125.72-24.795z"/>
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/petender'
+                        
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pdtit/'
+                        
+                        title="LinkedIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/post/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Posts</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/books/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+</svg>
+
+                
+                <span>Books</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/speaking/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-microphone" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 5a3 3 0 0 1 6 0v7a3 3 0 0 1 -6 0z"/>
+  <path d="M5 10a7 7 0 0 0 14 0"/>
+  <path d="M8 21l8 0"/>
+  <path d="M12 17l0 4"/>
+</svg>
+
+                
+                <span>Speaking</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About Me</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>Tags</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/packt-book-review---azure-for-developers/">Packt Book Review - Azure for Developers</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime='2025-12-25T00:00:00Z'>Dec 25, 2025</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+
+    
+</div>
+
+</header>
+
+    
+
+    <section class="article-content">
+    
+    
+    <p>In this post, I want to share my review of <strong>Azure for Developers</strong> (Third Edition) by <a class="link" href="https://www.linkedin.com/in/kamil-mrzyg%C5%82%C3%B3d-31470376/"  target="_blank" rel="noopener"
+    >Kamil Mrzygłód</a>, published by <a class="link" href="https://www.packtpub.com/en-us/product/azure-for-developers-9781836203506"  target="_blank" rel="noopener"
+    >Packt Publishing</a> and available on <a class="link" href="https://www.amazon.com/dp/1836203508"  target="_blank" rel="noopener"
+    >Amazon</a> as well as other e-book subscription platforms.</p>
+<p>This definitive guide focuses on creating secure, scalable Azure apps with GenAI, serverless, and DevOps pipelines, making it an essential resource for developers looking to build modern cloud-native applications on Azure with the latest technologies.</p>
+<p><img src="../images/azure_for_developers.png"
+    
+    
+    loading="lazy"
+    
+      alt="Book Cover"
+    
+    
+    
+  ></p>
+<h2 id="about-the-book-from-the-cover">About the book (from the cover)
+</h2><p>Supercharge your development career by mastering Azure&rsquo;s evolving GenAI, container, and serverless capabilities to build scalable, secure applications with confidence. This third edition of Azure for Developers transforms complex cloud concepts into practical skills, guiding you through the design, deployment, and management of cloud-native solutions while eliminating infrastructure headaches.</p>
+<p>Fully updated with Azure&rsquo;s latest features, this hands-on guide helps you automate DevOps pipelines with GitHub Actions, deploy microservices using containers, and integrate generative AI via Azure OpenAI to modernize your development workflows. You will learn how to set up your environment, streamline app deployment, and implement robust service integrations using real-world best practices.</p>
+<p>The final section is a game-changer for developers who want to stay ahead of the curve. It shows you how to leverage Azure&rsquo;s AI and machine learning services to automate tasks, fine-tune models, and build intelligent assistants and next-generation workflows. By the end, you will have the confidence and capabilities to deliver production-grade cloud solutions that meet real-world demands and position yourself at the forefront of modern cloud development.</p>
+<h2 id="what-this-book-covers">What this book covers
+</h2><p>The book has <strong>20 chapters</strong>, about <strong>584 pages</strong> in total, organized in <strong>5 different Parts</strong>:</p>
+<p><strong>Part I - Setting Up Your Environment</strong>
+This opening section gets you started with Azure. It covers <strong>creating an Azure account</strong> and selecting the right IDE for your development needs. The section then dives into <strong>Azure CLI and Azure PowerShell</strong>, helping you choose between these powerful command-line tools and understand how to enable plugins and extensions for enhanced productivity.</p>
+<p><strong>Part II - Web Applications and Workflows in Microsoft Azure</strong>
+This part focuses on hosting and building web solutions. It starts with <strong>Azure App Service</strong> for hosting applications, followed by <strong>Static Web Applications</strong> for developing and deploying modern web apps. The section then covers <strong>Azure Functions</strong> for serverless computing, <strong>Azure Key Vault</strong> for managing secrets and configuration securely, <strong>Logic Apps</strong> for integrating services with low-code workflows, and <strong>Durable Functions</strong> for building complex, stateful workflows.</p>
+<p><strong>Part III - Containers in Microsoft Azure</strong>
+This section is dedicated to containerization strategies. It begins with <strong>Azure Container Registry</strong> for storing and managing container images, followed by <strong>Azure Container Instances</strong> for ad hoc workloads. The section then explores <strong>Azure Container Apps</strong> for developing microservices and concludes with <strong>hosting containers using Azure App Service</strong>, providing multiple deployment options for containerized applications.</p>
+<p><strong>Part IV - Storage, Messaging, and Monitoring</strong>
+This comprehensive section covers the data and observability layers. It starts with <strong>Azure Storage</strong> (Tables, Queues, Files, and Blobs), followed by a deep dive into <strong>queuing mechanisms</strong> across Azure services. The section covers <strong>relational databases</strong> in Azure, and wraps up with <strong>Application Insights</strong> for monitoring your applications with embedded SDK telemetry and diagnostics.</p>
+<p><strong>Part V - AI, ML, and DevOps</strong>
+The game-changing final section covers the cutting-edge technologies. It begins with <strong>integrating Azure OpenAI Service</strong> to add generative AI capabilities to your applications. The section then covers <strong>Azure Machine Learning</strong> for automating ML tasks and model training. The DevOps portion includes <strong>GitHub Actions</strong> for building and deploying applications to Azure with CI/CD automation, and concludes with <strong>developing, testing, and deploying Azure Logic Apps</strong> in a production environment.</p>
+<h2 id="my-personal-feedback-and-observations">My Personal Feedback and observations
+</h2><p>This book is exceptionally well-suited for its target audience: <strong>developers</strong> who want to build applications on Azure. Unlike most architecture-focused books, this one takes a very hands-on, <strong>practical approach</strong> with code samples, step-by-step instructions, and real-world scenarios.</p>
+<p>What impressed me most is the <strong>developer-centric perspective</strong>. Kamil doesn&rsquo;t just explain what services do – he shows you <strong>how to implement them</strong>, with practical code examples in the context of building actual applications. The book includes numerous <strong>code samples</strong> available on <a class="link" href="https://github.com/PacktPublishing/Azure-for-Developers-Third-Edition"  target="_blank" rel="noopener"
+    >GitHub</a>, making it easy to follow along and experiment.</p>
+<p>The <strong>third edition</strong> aspect is crucial here – Azure evolves rapidly, and this latest edition reflects the most current best practices and cutting-edge service offerings. The addition of <strong>GenAI integration with Azure OpenAI Service</strong> is particularly timely, showing developers how to build intelligent applications with generative AI. The coverage of <strong>serverless, container, and DevOps patterns</strong> with GitHub Actions is particularly strong, which aligns perfectly with modern cloud-native development approaches.</p>
+<p>I appreciate that the book covers the <strong>full development lifecycle</strong> – from setting up your environment and local development tools, through building with Azure Functions and container services, to implementing CI/CD with GitHub Actions, monitoring with Application Insights, and integrating AI capabilities. This holistic view helps developers understand not just how to build features, but how to build <strong>production-ready, intelligent applications</strong>.</p>
+<p>The section on <strong>Azure OpenAI Service and Machine Learning</strong> deserves special mention – it&rsquo;s incredibly timely and practical, showing developers how to integrate generative AI and automated ML into their applications. The coverage of <strong>container deployment options</strong> (Container Apps, Container Instances, and App Service for containers) helps clarify which service to use for different scenarios – a common point of confusion. The <strong>DevOps automation with GitHub Actions</strong> chapter is also excellent, providing practical CI/CD patterns for Azure deployments.</p>
+<p>If I were to identify the <strong>target personas</strong>, this book is perfect for:</p>
+<ul>
+<li><strong>Developers preparing for the AZ-204 (Azure Developer Associate)</strong> certification – though not explicitly an exam prep book, it covers most exam topics with practical depth</li>
+<li><strong>Full-stack developers</strong> moving to Azure who want to understand PaaS services</li>
+<li><strong>DevOps engineers</strong> who need to understand how applications use Azure services</li>
+<li>Anyone building <strong>cloud-native applications</strong> on Azure</li>
+</ul>
+<p>The <strong>review questions</strong> at the end of chapters and <strong>further reading links</strong> add significant value, allowing readers to self-assess and dive deeper into topics of interest.</p>
+<h2 id="summary">Summary
+</h2><p>&ldquo;Azure for Developers&rdquo; (Third Edition) is an excellent <strong>practical guide</strong> for developers who want to leverage Azure&rsquo;s latest services effectively. With its focused coverage of <strong>584 pages</strong>, hands-on approach, and developer-focused perspective, it serves both as a learning resource and a desk reference.</p>
+<p>The book strikes a great balance between breadth and depth – covering essential Azure services while providing enough detail to actually implement them. The emphasis on <strong>cutting-edge technologies</strong> (GenAI, serverless, containers, DevOps automation) makes it particularly relevant for building contemporary cloud applications that leverage AI and modern deployment practices.</p>
+<p>Whether you&rsquo;re preparing for the <strong>AZ-204 certification</strong>, migrating applications to Azure, or starting a new cloud-native project, this book provides the practical knowledge you need. The code samples, step-by-step guides, and real-world scenarios make it much more than just a reference – it&rsquo;s a <strong>hands-on learning experience</strong>.</p>
+<p>Highly recommended for developers at all levels who want to build robust, scalable applications on Azure!</p>
+<p>Ping me if you should have any additional questions.</p>
+<p><a class="link" href="https://www.buymeacoffee.com/pdtit"  target="_blank" rel="noopener"
+    ><img src="../images/buy_me_a_coffee.png"
+    
+    
+    loading="lazy"
+    
+      alt="BuyMeACoffee"
+    
+    
+    
+  ></a></p>
+<p>Cheers!!</p>
+<p>/Peter</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/azure/">Azure</a>
+        
+            <a href="/tags/packt/">Packt</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/post/packt-book-review---azure-architecture-explained/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Packt Book Review - Azure Architecture Explained</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/post/packt-book-review---azure-for-business-decision-makers/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Packt Book Review - Azure for Business Decision Makers</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/post/packt-book-review---blazor-wasm-with-grpc/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Book review - Building Blazor WebAssembly Applications with gRPC</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/post/azure-strategy---reviewing-done/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Another Tech Reviewing done: Azure Strategy and Implementation Guide - 4th edition</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/post/azure-for-architects---reviewing-done/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Another Tech Reviewing done: Azure For Architects - 3rd edition</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2021 - 
+        
+        2026 Azure Readiness starts here...
+    </section>
+    
+    <section class="powerby">
+        
+            The best way to know the future, is to learn it <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="4.0.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+
+
+
+<script type="module">
+    import gallery from '\/ts\/gallery.js';
+
+    const articleContent = document.querySelector('.article-content');
+    const shouldLoad = articleContent && (articleContent.querySelectorAll('figure').length > 0 || articleContent.querySelectorAll('img.gallery-image').length > 0);
+    
+    if (shouldLoad) {
+        gallery(articleContent);
+
+        const PhotoSwipeLightbox = (await import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js")).default;
+        const styleHref = "https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.css";
+
+        const styleTag = document.createElement('link');
+        styleTag.rel = 'stylesheet';
+        styleTag.href = styleHref;
+        document.head.appendChild(styleTag);
+
+        const lightbox = new PhotoSwipeLightbox({
+            gallerySelector: '.article-content',
+            childSelector: 'figure a.image-link',
+            pswpModule: () => import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js")
+        });
+        lightbox.init();
+    }
+</script>
+
+    
+
+            </main>
+        </div>
+        
+    <div id="cookie-consent-banner" class="cookie-banner" aria-hidden="true" role="dialog" aria-labelledby="cookie-banner-title">
+    <div class="cookie-banner__content">
+        <div class="cookie-banner__text">
+            <strong id="cookie-banner-title">Cookie Consent</strong>
+            <p>We use cookies to enhance your browsing experience and analyze site traffic.</p>
+        </div>
+
+        <div class="cookie-banner__actions">
+            <button class="cookie-btn cookie-btn--secondary" data-cookie-action="deny">
+                Deny
+            </button>
+            <button class="cookie-btn cookie-btn--primary" data-cookie-action="accept">
+                Accept All
+            </button>
+        </div>
+        <button class="cookie-banner__settings-link" data-cookie-action="settings">
+            Manage preferences
+        </button>
+
+        
+        <div id="cookie-settings-panel" class="cookie-settings" aria-hidden="true">
+            <h3>Cookie Preferences</h3>
+
+            <div class="cookie-category">
+                <label>
+                    <input type="checkbox" name="necessary" checked disabled />
+                    <strong>Necessary</strong>
+                </label>
+                <p>These cookies are required for the website to function and cannot be disabled.</p>
+            </div><div class="cookie-category">
+                <label>
+                    <input type="checkbox" name="analytics" data-cookie-category="analytics" />
+                    <strong>Analytics</strong>
+                </label>
+                <p>These cookies help us understand how visitors interact with our website.</p>
+            </div><div class="cookie-category">
+                <label>
+                    <input type="checkbox" name="functional" data-cookie-category="functional" />
+                    <strong>Functional</strong>
+                </label>
+                <p>These cookies enable features like comments and embedded content.</p>
+            </div><div class="cookie-settings__actions">
+                <button class="cookie-btn cookie-btn--secondary" data-cookie-action="cancel">
+                    Cancel
+                </button>
+                <button class="cookie-btn cookie-btn--primary" data-cookie-action="save">
+                    Save preferences
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <script type="text/javascript" src="/ts/cookies.6d3577f211db9f4f1997385d4b417cf90130b050bc9e787bb1bb5346d337e998.js" defer></script>
+<script type="text/javascript" src="/ts/main.acaf849f2b273f6a8368a58b001f336738d0c948d92e79b116467d0c7515f932.js" defer></script>
+
+
+    </body>
+</html>

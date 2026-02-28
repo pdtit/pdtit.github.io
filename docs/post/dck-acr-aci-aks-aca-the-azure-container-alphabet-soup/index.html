@@ -1,168 +1,908 @@
-<!doctype html><html lang=en-us dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content="\nHey friends,\nWelcome to #AzureSpringClean, an initiative from Joe Carlyle and Thomas Thornton where I&rsquo;m honored to be able to participate in again for the 4th year already. Thanks guys for trusting me once more for sharing some Azure knowledge&mldr;\nThis time, I wanted to try and guide you through the buzzword of the last couple of years, containers&mldr; and more specifically, what different options you have in Azure to run your containerized workloads.\n"><title>Azure Spring Clean - DCK, ACR, ACI, AKS, ACA, the Azure Container Alphabet Soup</title><link rel=canonical href=https://www.007ffflearning.com/post/dck-acr-aci-aks-aca-the-azure-container-alphabet-soup/><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=preload as=style href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"><link rel=stylesheet href=/scss/style.min.cf9653eecaea3cf14f5747895c3ac9b505bea7f8f3f40c16dac6b0e82fafddc4.css><meta property='og:title' content="Azure Spring Clean - DCK, ACR, ACI, AKS, ACA, the Azure Container Alphabet Soup"><meta property='og:description' content="\nHey friends,\nWelcome to #AzureSpringClean, an initiative from Joe Carlyle and Thomas Thornton where I&rsquo;m honored to be able to participate in again for the 4th year already. Thanks guys for trusting me once more for sharing some Azure knowledge&mldr;\nThis time, I wanted to try and guide you through the buzzword of the last couple of years, containers&mldr; and more specifically, what different options you have in Azure to run your containerized workloads.\n"><meta property='og:url' content='https://www.007ffflearning.com/post/dck-acr-aci-aks-aca-the-azure-container-alphabet-soup/'><meta property='og:site_name' content='Azure Readiness starts here...'><meta property='og:type' content='article'><meta property='article:section' content='Post'><meta property='article:tag' content='Azure'><meta property='article:tag' content='AKS'><meta property='article:tag' content='Docker'><meta property='article:tag' content='ACA'><meta property='article:tag' content='Containers'><meta property='article:published_time' content='2023-03-15T00:00:00+00:00'><meta property='article:modified_time' content='2023-03-15T00:00:00+00:00'><meta name=twitter:title content="Azure Spring Clean - DCK, ACR, ACI, AKS, ACA, the Azure Container Alphabet Soup"><meta name=twitter:description content="\nHey friends,\nWelcome to #AzureSpringClean, an initiative from Joe Carlyle and Thomas Thornton where I&rsquo;m honored to be able to participate in again for the 4th year already. Thanks guys for trusting me once more for sharing some Azure knowledge&mldr;\nThis time, I wanted to try and guide you through the buzzword of the last couple of years, containers&mldr; and more specifically, what different options you have in Azure to run your containerized workloads.\n"><link rel="shortcut icon" href=/img/007ffflearning-ape.png></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label="Toggle Menu">
-<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/><img src=/img/007ffflearning-ape.png width=596 height=842 class=site-logo loading=lazy alt=Avatar>
-</a><span class=emoji>🎓</span></figure><div class=site-meta><h1 class=site-name><a href=/>Azure Readiness starts here...</a></h1><h2 class=site-description>Bring me an audience, I'll give them Azure knowledge in return</h2></div></header><ol class=menu-social><li><a href=https://pdtit.bsky.social title=Bluesky rel=me><svg viewBox="0 0 600 530" fill="currentColor"><path d="m135.72 44.03C202.216 93.951 273.74 195.17 3e2 249.49c26.262-54.316 97.782-155.54 164.28-205.46C512.26 8.009 590-19.862 590 68.825c0 17.712-10.155 148.79-16.111 170.07-20.703 73.984-96.144 92.854-163.25 81.433 117.3 19.964 147.14 86.092 82.697 152.22-122.39 125.59-175.91-31.511-189.63-71.766-2.514-7.3797-3.6904-10.832-3.7077-7.8964-.0174-2.9357-1.1937.51669-3.7077 7.8964-13.714 40.255-67.233 197.36-189.63 71.766-64.444-66.128-34.605-132.26 82.697-152.22-67.108 11.421-142.55-7.4491-163.25-81.433-5.9562-21.282-16.111-152.36-16.111-170.07.0-88.687 77.742-60.816 125.72-24.795z"/></svg></a></li><li><a href=https://github.com/petender title=GitHub rel=me><svg class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li><li><a href=https://www.linkedin.com/in/pdtit/ title=LinkedIn rel=me><svg class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M10 14a3.5 3.5.0 005 0l4-4a3.5 3.5.0 00-5-5l-.5.5"/><path d="M14 10a3.5 3.5.0 00-5 0l-4 4a3.5 3.5.0 005 5l.5-.5"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
-<span>Home</span></a></li><li><a href=/post/><svg class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
-<span>Posts</span></a></li><li><a href=/books/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
-<span>Books</span></a></li><li><a href=/speaking/><svg class="icon icon-tabler icon-tabler-microphone" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 5a3 3 0 016 0v7a3 3 0 01-6 0z"/><path d="M5 10a7 7 0 0014 0"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
-<span>Speaking</span></a></li><li><a href=/about/><svg class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
-<span>About Me</span></a></li><li><a href=/search/><svg class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg>
-<span>Search</span></a></li><li><a href=/tags/><svg class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11 3l9 9a1.5 1.5.0 010 2l-6 6a1.5 1.5.0 01-2 0L3 11V7a4 4 0 014-4h4"/><circle cx="9" cy="9" r="2"/></svg>
-<span>Tags</span></a></li><li class=menu-bottom-section><ol class=menu><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
-<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
-<span>Dark Mode</span></li></ol></li></ol></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><div class=article-title-wrapper><h2 class=article-title><a href=/post/dck-acr-aci-aks-aca-the-azure-container-alphabet-soup/>Azure Spring Clean - DCK, ACR, ACI, AKS, ACA, the Azure Container Alphabet Soup</a></h2></div><footer class=article-time><div><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
-<time class=article-time--published datetime=2023-03-15T00:00:00Z>Mar 15, 2023</time></div></footer></div></header><section class=article-content><p><img src=../images/AzureSpringClean2023-logo.png loading=lazy alt="Azure Spring Clean"></p><p>Hey friends,</p><p>Welcome to #AzureSpringClean, an initiative from <strong><a class=link href=https://twitter.com/wedoazure target=_blank rel=noopener>Joe Carlyle</a> and <a class=link href=https://twitter.com/tamstar1234 target=_blank rel=noopener>Thomas Thornton</a></strong>
-where I&rsquo;m honored to be able to participate in again for the 4th year already. Thanks guys for trusting me once more for sharing some Azure knowledge&mldr;</p><p>This time, I wanted to try and guide you through the buzzword of the last couple of years, <strong>containers</strong>&mldr; and more specifically, what different options you have in Azure to run your containerized workloads.</p><p>Containerization has become a popular way to deploy applications in the cloud, offering benefits such as scalability, portability, and reliability. Azure, Microsoft&rsquo;s cloud platform, offers several services that allow running containerized workloads, each with its own strengths and limitations. In this article, we will explore the different Azure services for container orchestration and management, including Azure Container Instance, Azure Kubernetes Services, Azure App Services, and Azure Container Apps.</p><p>The starting point of a containerized workload, is having, or building a <strong><a class=link href=https://www.docker.com target=_blank rel=noopener>Docker</a></strong> container image.</p><h2 id=docker--docker-desktop>Docker & Docker Desktop</h2><p>Docker is a popular platform for building, shipping, and running containerized applications. It provides a consistent environment for developers and operators to develop and deploy applications across different platforms and infrastructures. Docker makes it easy to package applications and their dependencies into portable container images, which can be run on any machine that supports Docker.</p><p>Docker containers are lightweight, standalone, and executable packages of software that include everything needed to run an application. They contain the application code, runtime, system tools, libraries, and settings, making them highly portable and efficient. Docker containers run in isolation from the host operating system, providing consistent behavior and preventing conflicts with other applications.</p><p><img src=../images/2023-03-15_20-27-44.png loading=lazy alt="Containers vs Virtual Machines"></p><p>Docker Desktop is a desktop application for Windows and macOS that provides a complete development environment for building and testing Docker applications. It includes the Docker Engine, Docker CLI, and a GUI-based interface for managing containers, images, and networks. With Docker Desktop, developers can easily build, test, and run Docker applications on their local machines, without having to set up a separate environment.</p><p>Docker Desktop provides a simple and intuitive user interface for managing Docker images and containers. It allows developers to create, edit, and run Docker containers with just a few clicks. Developers can also use Docker Desktop to deploy applications to remote Docker hosts, such as cloud-based container orchestration platforms like Kubernetes.</p><p>One of the major benefits of Docker Desktop is its ability to provide a consistent development environment across different platforms and operating systems. It eliminates the need for developers to set up and maintain complex development environments on their own machines, which can be time-consuming and error-prone. Docker Desktop also supports popular programming languages and frameworks, such as Java, Node.js, Python, and Ruby, making it a versatile tool for building modern applications.</p><p><img src=../images/2023-03-15_20-29-53.png loading=lazy alt="Docker Desktop"></p><p>Overall, Docker and Docker Desktop provide a powerful platform for building, shipping, and running containerized applications. They simplify the development and deployment of applications, provide a consistent environment across different platforms, and offer a flexible and scalable way to build modern applications. With the continued growth of containerization, Docker and Docker Desktop are essential tools for any developer or operator looking to stay ahead in the rapidly evolving world of software development.</p><p>For more information on Docker and Docker Desktop, head over to the <a class=link href=https://www.docker.com/products/docker-desktop/ target=_blank rel=noopener>Docker Downloads</a>.</p><p>If you want a sample container to test your Docker / Docker Desktop, feel free to use <a class=link href=https://hub.docker.com/r/pdetender/eshopwebmvc target=_blank rel=noopener>my sample e-commerce workload container</a>, which runs a sample .NET6 web app</p><p>Now you have your Docker environment ready to use, let&rsquo;s take the next step, moving the container image into Azure.</p><h2 id=azure-container-registry-acr->Azure Container Registry (ACR) (<a class=link href=https://learn.microsoft.com/en-us/azure/container-registry/ target=_blank rel=noopener>https://learn.microsoft.com/en-us/azure/container-registry/</a>)</h2><p>ACR is a managed private registry for storing and managing container images in the cloud. With ACR, you can store and manage Docker images for all of your containerized applications, making it easy to deploy and manage them in the cloud.</p><p>The purpose of ACR is to provide a secure and reliable way to store, manage, and deploy container images. By using ACR, you can ensure that your container images are stored securely in the cloud, and that only authorized users have access to them. ACR also provides built-in integration with all other Azure Container Services (see below), making it easy to deploy your container images across the different services.</p><p><img src=../images/2023-03-15_20-34-12.png loading=lazy alt="Azure Container Registry"></p><p>ACR supports Docker Hub as well as DevOps environments as sources for container images, and it provides a seamless experience for pushing and pulling images from the registry. ACR also supports advanced features, such as geo-replication and image security vulnerability scanning, which allows you to replicate your images to multiple regions for high availability and scan your images for security vulnerabilities (Backed by Defender for Containers and Defender for Cloud).</p><p>In summary, ACR serves as a central repository for storing and managing your container images, making it easy to deploy and manage your containerized applications in the cloud. It provides a secure and reliable way to store your images, with built-in integration with other Azure container services for easy deployment.</p><p>Some sample Azure CLI code to get you started:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>az acr create --resource-group myresourcegroup --name myacr --sku Basic
-</span></span></code></pre></td></tr></table></div></div><p>Once you run this command, Azure will create a new ACR with the specified name and SKU in the specified resource group. You can then use the ACR to store and manage your container images.</p><p>With the ACR being ready, it&rsquo;s time to upload (<strong>push</strong>) the Docker image into the registry. Here are a few steps to get you started:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>az login
-</span></span><span class=line><span class=cl>az acr login --name myacr
-</span></span></code></pre></td></tr></table></div></div><p>Before you can push a Docker image to the Azure Container Registry, it needs to be updated with the name of the registry. You can use <strong>Docker tag</strong> command to help with this:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>docker tag pdetender/eshopwebmvc myacr.azurecr.io/eshopwebmvc
-</span></span></code></pre></td></tr></table></div></div><p>followed by:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>docker push myacr.azurecr.io/eshopwebmvc
-</span></span></code></pre></td></tr></table></div></div><p>wait for the upload to complete.</p><h2 id=azure-container-instance-aci->Azure Container Instance (ACI) (<a class=link href=https://learn.microsoft.com/en-us/azure/container-instances/ target=_blank rel=noopener>https://learn.microsoft.com/en-us/azure/container-instances/</a>)</h2><p>Azure Container Instance (ACI) is a serverless solution for running containers in the cloud. With ACI, you can deploy and manage containers without worrying about the underlying infrastructure. ACI is an excellent choice for running short-lived containerized tasks that don&rsquo;t require orchestration, such as batch processing, job scheduling, or testing.</p><p>ACI is easy to use, as it doesn&rsquo;t require any knowledge of container orchestration tools such as Kubernetes or Docker Swarm. Instead, you can use the Azure portal, Azure CLI, or Azure PowerShell to deploy and manage your containers.</p><p>One of the strengths of ACI is its cost-effectiveness. With ACI, you only pay for the exact amount of compute and memory resources that your containerized tasks require, measured in seconds. This makes ACI an ideal solution for running sporadic, bursty workloads.</p><p>However, ACI has some limitations. First, ACI only supports running single containers or multi-container groups, not entire applications. Second, ACI doesn&rsquo;t provide advanced features such as automatic scaling, self-healing, or load balancing. Finally, ACI has limited networking capabilities, as it doesn&rsquo;t support virtual networks or custom IP addresses.</p><p>with the EshopOnWeb Docker image uploaded to the Azure Container Registry, use the following Az CLI command to deploy an Azure Container Instance:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>az container create --resource-group myResourceGroup --name aci-springclean-app --image myacr.azurecr.io/eshopwebmvc --cpu 1 --memory 1 --registry-login-server myacr.azurecr.io --ip-address Public --dns-name-label aci-springclean-app --ports 80
-</span></span></code></pre></td></tr></table></div></div><p><img src=../images/2023-03-15_20-45-44.png loading=lazy alt="Azure Container Instance"></p><h2 id=azure-kubernetes-services-aks->Azure Kubernetes Services (AKS) (<a class=link href=https://learn.microsoft.com/en-us/azure/aks/intro-kubernetes target=_blank rel=noopener>https://learn.microsoft.com/en-us/azure/aks/intro-kubernetes</a>)</h2><p>Azure Kubernetes Services (AKS) is a managed Kubernetes service that allows you to deploy and manage containerized applications in the cloud. Kubernetes is a powerful open-source container orchestration tool that automates the deployment, scaling, and management of containerized workloads.</p><p>AKS is an excellent choice for running complex, production-grade applications that require orchestration, such as microservices architectures or stateful applications. With AKS, you can take advantage of Kubernetes&rsquo; advanced features, such as automatic scaling, self-healing, and rolling updates.</p><p>AKS is easy to use, as it abstracts away the complexity of Kubernetes and provides an easy-to-use management interface. With AKS, you can deploy your Kubernetes clusters in minutes, using the Azure portal, Azure CLI, or Azure PowerShell.</p><p><img src=../images/2023-03-15_20-47-20.png loading=lazy alt="Azure Kubernetes Services - AKS"></p><p>One of the strengths of AKS is its scalability. With AKS, you can scale your clusters up or down based on demand, without worrying about the underlying infrastructure. AKS also provides advanced networking capabilities, such as virtual networks, load balancers, and custom IP addresses.</p><p>However, AKS has some limitations. First, AKS is more expensive than ACI, as it requires more resources and management overhead. Second, AKS requires some knowledge of Kubernetes, which can be challenging for beginners. Finally, AKS may have some limitations in terms of customization, as it is a managed service that abstracts away some of the lower-level details of Kubernetes.</p><p>Here are a few steps to get you started in deploying an AKS cluster:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span><span class=lnt>4
-</span><span class=lnt>5
-</span><span class=lnt>6
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>az aks create \
-</span></span><span class=line><span class=cl>    --resource-group myResourceGroup \
-</span></span><span class=line><span class=cl>    --name myAKSCluster \
-</span></span><span class=line><span class=cl>    --node-count 2 \
-</span></span><span class=line><span class=cl>    --generate-ssh-keys \
-</span></span><span class=line><span class=cl>    --attach-acr &lt;acrName&gt;
-</span></span></code></pre></td></tr></table></div></div><p>Deployment should take about 10-15 minutes, depending on the Azure region.</p><p>Once the AKS service is up-and-running, you can manage it using <strong>kubectl</strong>, the Kubernetes Command Line interface.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>az aks install-cli
-</span></span></code></pre></td></tr></table></div></div><p>Next, connect to the cluster from Kubectl</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
-</span></span></code></pre></td></tr></table></div></div><p>From here, you can validate the Kubernetes cluster nodes:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>kubectl get nodes
-</span></span></code></pre></td></tr></table></div></div><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span><span class=lnt>4
-</span><span class=lnt>5
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>$ kubectl get nodes
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>NAME                                STATUS   ROLES   AGE     VERSION
-</span></span><span class=line><span class=cl>aks-nodepool1-37463671-vmss000000   Ready    agent   2m37s   v1.18.10
-</span></span><span class=line><span class=cl>aks-nodepool1-37463671-vmss000001   Ready    agent   2m28s   v1.18.10
-</span></span></code></pre></td></tr></table></div></div><p>In order to get a containerized application runnig as a pod (=Kubernetes&rsquo; terminology for a running container&mldr;), you need to create a <strong>Kubernetes Manifest file</strong>, which uses a YAML syntax format.</p><p>There are a lot of options and configuration parameters possible, but below example should get you started:
-<strong>replace the image name pdtacr&mldr; with the name of your ACR image</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span><span class=lnt>11
-</span><span class=lnt>12
-</span><span class=lnt>13
-</span><span class=lnt>14
-</span><span class=lnt>15
-</span><span class=lnt>16
-</span><span class=lnt>17
-</span><span class=lnt>18
-</span><span class=lnt>19
-</span><span class=lnt>20
-</span><span class=lnt>21
-</span><span class=lnt>22
-</span><span class=lnt>23
-</span><span class=lnt>24
-</span><span class=lnt>25
-</span><span class=lnt>26
-</span><span class=lnt>27
-</span><span class=lnt>28
-</span><span class=lnt>29
-</span><span class=lnt>30
-</span><span class=lnt>31
-</span><span class=lnt>32
-</span><span class=lnt>33
-</span><span class=lnt>34
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>apiVersion: apps/v1
-</span></span><span class=line><span class=cl>kind: Deployment
-</span></span><span class=line><span class=cl>metadata:
-</span></span><span class=line><span class=cl>  name: secsample
-</span></span><span class=line><span class=cl>spec:
-</span></span><span class=line><span class=cl>  replicas: 3
-</span></span><span class=line><span class=cl>  selector: 
-</span></span><span class=line><span class=cl>    matchLabels:
-</span></span><span class=line><span class=cl>      app: secsample
-</span></span><span class=line><span class=cl>  template:
-</span></span><span class=line><span class=cl>    metadata:
-</span></span><span class=line><span class=cl>      labels:
-</span></span><span class=line><span class=cl>        app: secsample
-</span></span><span class=line><span class=cl>    spec:
-</span></span><span class=line><span class=cl>      containers:
-</span></span><span class=line><span class=cl>      - name: secsample
-</span></span><span class=line><span class=cl>        image: pdtacr.azurecr.io/simplcdotnet31:latest
-</span></span><span class=line><span class=cl>        ports:
-</span></span><span class=line><span class=cl>        - containerPort: 80
-</span></span><span class=line><span class=cl>      imagePullSecrets:
-</span></span><span class=line><span class=cl>        - name: acr-auth
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>---
-</span></span><span class=line><span class=cl>apiVersion: v1
-</span></span><span class=line><span class=cl>kind: Service
-</span></span><span class=line><span class=cl>metadata:
-</span></span><span class=line><span class=cl>  name: secsample
-</span></span><span class=line><span class=cl>spec:
-</span></span><span class=line><span class=cl>  type: LoadBalancer
-</span></span><span class=line><span class=cl>  ports:
-</span></span><span class=line><span class=cl>  - port: 80
-</span></span><span class=line><span class=cl>  selector:
-</span></span><span class=line><span class=cl>    app: secsample
-</span></span></code></pre></td></tr></table></div></div><p>This deploys 3 pods (replicas parameter) of the same container, across the 2 nodes in the cluster. The service will get published behind the default Azure Load Balancer, running on port 80. You can verify this later on using the public IP address of the service.</p><p>Save the above file to your local machine, for example <strong>springcleanaks.yaml</strong></p><p>use kubectl to import/inject the YAML configuration into the AKS cluster:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>kubectl apply -f springcleanaks.yaml
-</span></span></code></pre></td></tr></table></div></div><p>After a few minutes, validate the running service by running the following kubectl command:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>kubectl get service secsample --watch
-</span></span></code></pre></td></tr></table></div></div><p>If the IP-address mentions &ldquo;pending&rdquo;, give it a bit more time to load. Run the above command once more.</p><p>The outcome should know show both the internal pod IP, as well as the public IP. Open the browser to connect to the web application.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>secsample   LoadBalancer   10.0.33.125   24.17.23.13   80:30676/TCP   67s
-</span></span></code></pre></td></tr></table></div></div><p>If you want to play with the AKS Autoscaling features, I can recommend the following <strong><a class=link href="https://learn.microsoft.com/en-us/azure/aks/tutorial-kubernetes-scale?tabs=azure-cli" target=_blank rel=noopener>Microsoft Learn tutorial</a></strong></p><p>Awesome, you are making good progress&mldr;</p><p>One could think you won&rsquo;t need anything more than AKS, as it provides better high-availability, scalability as well as several other features, compared to the more standard Azure Container Instance. But you are wrong. While AKS is probably one of the more popular (if not the most popular&mldr;) ways to run containerized workloads in Azure, it is sometimes complex, overwhelming, and just &ldquo;too much&rdquo; for what you need.</p><p>Let&rsquo;s have a look at 2 more services&mldr;</p><h2 id=azure-app-services->Azure App Services (<a class=link href=https://learn.microsoft.com/en-us/training/modules/deploy-run-container-app-service/ target=_blank rel=noopener>https://learn.microsoft.com/en-us/training/modules/deploy-run-container-app-service/</a>)</h2><p>Azure App Service is a platform-as-a-service (PaaS) offering that allows developers to build, deploy, and scale web applications and APIs quickly and easily. With App Service, developers can deploy web apps and APIs written in various programming languages, including .NET, Java, Node.js, Python, and PHP, among others. App Service provides built-in DevOps capabilities and integration with other Azure services, such as Azure SQL Database, Azure Redis Cache, and Azure Storage.</p><p>One of the features of Azure App Service is the ability to run Docker containers. Developers can package their application and its dependencies into a Docker image and deploy it to Azure App Service. Azure App Service can then run the Docker image as a container, providing all the benefits of containerization, such as portability, scalability, and isolation.</p><p>Some of the benefits of running Docker containers in Azure App Service include:</p><ol><li><p>Easy deployment: With App Service, developers can deploy their Docker containers quickly and easily using various deployment options, such as Git, GitHub, Azure DevOps, or the Azure Portal.</p></li><li><p>High availability: App Service provides built-in high availability, scaling, and load balancing capabilities, ensuring that containers are always available and responsive to incoming traffic.</p></li><li><p>Platform integration: App Service integrates with other Azure services, such as Azure SQL Database, Azure Redis Cache, and Azure Storage, making it easy to build end-to-end solutions with minimal effort.</p></li><li><p>Security: App Service provides a secure and isolated environment for running Docker containers, with features such as network isolation, private networking, and Azure Active Directory authentication.</p></li></ol><p>However, Azure App Service is not the same as the previously discussed Azure Kubernetes Service (AKS), which is a container orchestration platform. AKS is designed for running and managing containerized applications at scale, with features such as automatic scaling, rolling updates, and self-healing. AKS is typically used for more complex applications that require multiple containers and need to be deployed across multiple nodes.</p><p>In summary, Azure App Service provides an easy and convenient way to run Docker containers in a PaaS environment, with built-in high availability, scalability, and integration with other Azure services. AKS, on the other hand, is a container orchestration platform designed for running and managing containerized applications at scale, with features such as automatic scaling, rolling updates, and self-healing.</p><p>The following Azure CLI code is what you need to get started with running a Docker image as an App Service:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span><span class=lnt>11
-</span><span class=lnt>12
-</span><span class=lnt>13
-</span><span class=lnt>14
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl># Create a resource group
-</span></span><span class=line><span class=cl>az group create --name myResourceGroup --location eastus
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl># Create an App Service plan
-</span></span><span class=line><span class=cl>az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku B1 --is-linux
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl># Create an App Service
-</span></span><span class=line><span class=cl>az webapp create --name myAppService --plan myAppServicePlan --resource-group myResourceGroup --deployment-container-image-name &lt;acr-name&gt;.azurecr.io/&lt;container-image-name&gt;:&lt;tag&gt; --docker-registry-server-url https://&lt;acr-name&gt;.azurecr.io --docker-registry-server-user &lt;acr-name&gt; --docker-registry-server-password &lt;acr-access-token&gt;
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl># Configure the App Service
-</span></span><span class=line><span class=cl>az webapp config appsettings set --name myAppService --resource-group myResourceGroup --settings DOCKER_CUSTOM_IMAGE_NAME=&lt;acr-name&gt;.azurecr.io/&lt;container-image-name&gt;:&lt;tag&gt; WEBSITES_PORT=80
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl># Set up continuous deployment
-</span></span><span class=line><span class=cl>az webapp deployment container config --name myAppService --resource-group myResourceGroup --enable-cd true --docker-registry-server-url https://&lt;acr-name&gt;.azurecr.io --docker-registry-server-user &lt;acr-name&gt; --docker-registry-server-password &lt;acr-access-token&gt;
-</span></span></code></pre></td></tr></table></div></div><p><img src=../images/2023-03-16_21-02-24.png loading=lazy alt="Azure App Service - Docker Settings"></p><h2 id=azure-container-apps->Azure Container Apps (<a class=link href=https://learn.microsoft.com/en-us/azure/container-apps/overview target=_blank rel=noopener>https://learn.microsoft.com/en-us/azure/container-apps/overview</a>)</h2><p>Azure Container Apps is a serverless platform for deploying and managing containerized applications. It is designed to simplify the deployment and management of microservices-based applications by providing a seamless experience for developers and operators.</p><p>With Azure Container Apps, you can deploy and manage multiple containers as part of a single application, without worrying about the underlying infrastructure. This makes it an excellent choice for running complex, multi-container applications that require orchestration.</p><p>One of the strengths of Azure Container Apps is its flexibility. With Azure Container Apps, you can use any container image from any registry, including Docker Hub, Azure Container Registry, or your own private registry. You can also define your application&rsquo;s infrastructure as code using YAML or JSON files, which allows you to version control and automate the deployment process.</p><p><img src=../images/2023-03-16_21-06-01.png loading=lazy alt="Azure Container Apps - Docker Settings"></p><p>Azure Container Apps also provides advanced features, such as automatic scaling, self-healing, and application-level load balancing. With Azure Container Apps, you can scale your application automatically based on demand, and Azure will handle the underlying infrastructure for you.</p><p>However, Azure Container Apps has some limitations. First, Azure Container Apps is still in preview, so it may not be suitable for production-grade applications. Second, Azure Container Apps has some limitations in terms of customization, as it abstracts away some of the lower-level details of container orchestration. Finally, Azure Container Apps has a pricing model that may be more expensive than other Azure container services, as it charges based on the number of requests processed by your application.</p><p><img src=../images/2023-03-16_21-14-20.png loading=lazy alt="Azure Container Apps - Scale Settings"></p><p>Use the following code example to get started with deploying an Azure Container Apps scenario:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>az containerapp create -n MyContainerapp -g MyResourceGroup --image myregistry.azurecr.io/myimage:latest --environment MyContainerappEnv --cpu 0.5 --memory 1.0Gi --min-replicas 4 --max-replicas 8
-</span></span></code></pre></td></tr></table></div></div><h2 id=summary>Summary</h2><p>As you can see, Azure offers several services that allow running containerized workloads, each with its own strengths and limitations. In this article, I walked you through different Azure services for container orchestration and management, including Azure Container Instance, Azure Kubernetes Services, Azure App Services, and Azure Container Apps. I tried to give you a few Azure CLI commands to get started and deploy baseline examples. This should allow you to validate your own opinions around which container service scenario to use for your specific business-critical or testing workloads.</p><p>I hope you learned something from reading the article, enjoy the rest of the <a class=link href=https://www.azurespringclean.com target=_blank rel=noopener>Azure Spring Clean</a> topics!!</p><p><a class=link href=https://www.buymeacoffee.com/pdtit target=_blank rel=noopener><img src=../images/buy_me_a_coffee.png loading=lazy alt=BuyMeACoffee></a></p><p>Cheers!!</p><p>/Peter</p></section><footer class=article-footer><section class=article-tags><a href=/tags/azure/>Azure</a>
-<a href=/tags/aks/>AKS</a>
-<a href=/tags/docker/>Docker</a>
-<a href=/tags/aca/>ACA</a>
-<a href=/tags/containers/>Containers</a></section></footer></article><aside class=related-content--wrapper><h2 class=section-title>Related content</h2><div class=related-content><div class="flex article-list--tile"><article><a href=/post/how-to-delete-an-aks-pod/><div class=article-details><h2 class=article-title>How to delete a POD from Azure Kubernetes Services (AKS)</h2></div></a></article><article><a href=/post/the-weird-case-of-visualstudio2019-dockerfile/><div class=article-details><h2 class=article-title>The weird case of the Visual Studio 2019 Dockerfile</h2></div></a></article><article><a href=/post/use_docker_edge_to_deploy_aci/><div class=article-details><h2 class=article-title>Use Docker Edge to Deploy Azure Container Instance - ACI</h2></div></a></article><article><a href=/post/migrate-docker-desktop-to-wsl2/><div class=article-details><h2 class=article-title>Migrating Docker Desktop to WSL2</h2></div></a></article><article><a href=/post/new-azure-book-selfpublish/><div class=article-details><h2 class=article-title>Happy to announce my newest Azure book got (self) published</h2></div></a></article></div></div></aside><footer class=site-footer><section class=copyright>&copy;
-2021 -
-2026 Azure Readiness starts here...</section><section class=powerby>The best way to know the future, is to learn it<br>Built with <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a><br>Theme <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=4.0.0>Stack</a></b> designed by <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a></section></footer><script type=module>
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="\nHey friends,\nWelcome to #AzureSpringClean, an initiative from Joe Carlyle and Thomas Thornton where I&rsquo;m honored to be able to participate in again for the 4th year already. Thanks guys for trusting me once more for sharing some Azure knowledge&hellip;\nThis time, I wanted to try and guide you through the buzzword of the last couple of years, containers&hellip; and more specifically, what different options you have in Azure to run your containerized workloads.\n">
+<title>Azure Spring Clean - DCK, ACR, ACI, AKS, ACA, the Azure Container Alphabet Soup</title>
+
+
+<link rel="canonical" href="http://localhost:1313/post/dck-acr-aci-aks-aca-the-azure-container-alphabet-soup/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+
+
+<link rel="stylesheet" href="/scss/style.min.cf9653eecaea3cf14f5747895c3ac9b505bea7f8f3f40c16dac6b0e82fafddc4.css"><meta property='og:title' content="Azure Spring Clean - DCK, ACR, ACI, AKS, ACA, the Azure Container Alphabet Soup">
+<meta property='og:description' content="\nHey friends,\nWelcome to #AzureSpringClean, an initiative from Joe Carlyle and Thomas Thornton where I&rsquo;m honored to be able to participate in again for the 4th year already. Thanks guys for trusting me once more for sharing some Azure knowledge&hellip;\nThis time, I wanted to try and guide you through the buzzword of the last couple of years, containers&hellip; and more specifically, what different options you have in Azure to run your containerized workloads.\n">
+<meta property='og:url' content='http://localhost:1313/post/dck-acr-aci-aks-aca-the-azure-container-alphabet-soup/'>
+<meta property='og:site_name' content='Azure Readiness starts here...'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Azure' /><meta property='article:tag' content='AKS' /><meta property='article:tag' content='Docker' /><meta property='article:tag' content='ACA' /><meta property='article:tag' content='Containers' /><meta property='article:published_time' content='2023-03-15T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-03-15T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Azure Spring Clean - DCK, ACR, ACI, AKS, ACA, the Azure Container Alphabet Soup">
+<meta name="twitter:description" content="\nHey friends,\nWelcome to #AzureSpringClean, an initiative from Joe Carlyle and Thomas Thornton where I&rsquo;m honored to be able to participate in again for the 4th year already. Thanks guys for trusting me once more for sharing some Azure knowledge&hellip;\nThis time, I wanted to try and guide you through the buzzword of the last couple of years, containers&hellip; and more specifically, what different options you have in Azure to run your containerized workloads.\n">
+    <link rel="shortcut icon" href="/img/007ffflearning-ape.png" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        <figure class="site-avatar">
+                <a href="/">
+                    <img src="/img/007ffflearning-ape.png" 
+                        width="596"
+                        height="842"
+                        class="site-logo"
+                        loading="lazy"
+                        alt="Avatar">
+                </a>
+                
+                    <span class="emoji">🎓</span>
+                
+            </figure>
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Azure Readiness starts here...</a></h1>
+            <h2 class="site-description">Bring me an audience, I&#39;ll give them Azure knowledge in return</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://pdtit.bsky.social'
+                        
+                        title="Bluesky"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 530" fill="currentColor">
+  <path d="m135.72 44.03c66.496 49.921 138.02 151.14 164.28 205.46 26.262-54.316 97.782-155.54 164.28-205.46 47.98-36.021 125.72-63.892 125.72 24.795 0 17.712-10.155 148.79-16.111 170.07-20.703 73.984-96.144 92.854-163.25 81.433 117.3 19.964 147.14 86.092 82.697 152.22-122.39 125.59-175.91-31.511-189.63-71.766-2.514-7.3797-3.6904-10.832-3.7077-7.8964-0.0174-2.9357-1.1937 0.51669-3.7077 7.8964-13.714 40.255-67.233 197.36-189.63 71.766-64.444-66.128-34.605-132.26 82.697-152.22-67.108 11.421-142.55-7.4491-163.25-81.433-5.9562-21.282-16.111-152.36-16.111-170.07 0-88.687 77.742-60.816 125.72-24.795z"/>
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/petender'
+                        
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pdtit/'
+                        
+                        title="LinkedIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/post/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Posts</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/books/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+</svg>
+
+                
+                <span>Books</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/speaking/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-microphone" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 5a3 3 0 0 1 6 0v7a3 3 0 0 1 -6 0z"/>
+  <path d="M5 10a7 7 0 0 0 14 0"/>
+  <path d="M8 21l8 0"/>
+  <path d="M12 17l0 4"/>
+</svg>
+
+                
+                <span>Speaking</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About Me</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>Tags</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/dck-acr-aci-aks-aca-the-azure-container-alphabet-soup/">Azure Spring Clean - DCK, ACR, ACI, AKS, ACA, the Azure Container Alphabet Soup</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime='2023-03-15T00:00:00Z'>Mar 15, 2023</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+
+    
+</div>
+
+</header>
+
+    
+
+    <section class="article-content">
+    
+    
+    <p><img src="../images/AzureSpringClean2023-logo.png"
+    
+    
+    loading="lazy"
+    
+      alt="Azure Spring Clean"
+    
+    
+    
+  ></p>
+<p>Hey friends,</p>
+<p>Welcome to #AzureSpringClean, an initiative from <strong><a class="link" href="https://twitter.com/wedoazure"  target="_blank" rel="noopener"
+    >Joe Carlyle</a> and <a class="link" href="https://twitter.com/tamstar1234"  target="_blank" rel="noopener"
+    >Thomas Thornton</a></strong>
+where I&rsquo;m honored to be able to participate in again for the 4th year already. Thanks guys for trusting me once more for sharing some Azure knowledge&hellip;</p>
+<p>This time, I wanted to try and guide you through the buzzword of the last couple of years, <strong>containers</strong>&hellip; and more specifically, what different options you have in Azure to run your containerized workloads.</p>
+<p>Containerization has become a popular way to deploy applications in the cloud, offering benefits such as scalability, portability, and reliability. Azure, Microsoft&rsquo;s cloud platform, offers several services that allow running containerized workloads, each with its own strengths and limitations. In this article, we will explore the different Azure services for container orchestration and management, including Azure Container Instance, Azure Kubernetes Services, Azure App Services, and Azure Container Apps.</p>
+<p>The starting point of a containerized workload, is having, or building a <strong><a class="link" href="https://www.docker.com"  target="_blank" rel="noopener"
+    >Docker</a></strong> container image.</p>
+<h2 id="docker--docker-desktop">Docker &amp; Docker Desktop
+</h2><p>Docker is a popular platform for building, shipping, and running containerized applications. It provides a consistent environment for developers and operators to develop and deploy applications across different platforms and infrastructures. Docker makes it easy to package applications and their dependencies into portable container images, which can be run on any machine that supports Docker.</p>
+<p>Docker containers are lightweight, standalone, and executable packages of software that include everything needed to run an application. They contain the application code, runtime, system tools, libraries, and settings, making them highly portable and efficient. Docker containers run in isolation from the host operating system, providing consistent behavior and preventing conflicts with other applications.</p>
+<p><img src="../images/2023-03-15_20-27-44.png"
+    
+    
+    loading="lazy"
+    
+      alt="Containers vs Virtual Machines"
+    
+    
+    
+  ></p>
+<p>Docker Desktop is a desktop application for Windows and macOS that provides a complete development environment for building and testing Docker applications. It includes the Docker Engine, Docker CLI, and a GUI-based interface for managing containers, images, and networks. With Docker Desktop, developers can easily build, test, and run Docker applications on their local machines, without having to set up a separate environment.</p>
+<p>Docker Desktop provides a simple and intuitive user interface for managing Docker images and containers. It allows developers to create, edit, and run Docker containers with just a few clicks. Developers can also use Docker Desktop to deploy applications to remote Docker hosts, such as cloud-based container orchestration platforms like Kubernetes.</p>
+<p>One of the major benefits of Docker Desktop is its ability to provide a consistent development environment across different platforms and operating systems. It eliminates the need for developers to set up and maintain complex development environments on their own machines, which can be time-consuming and error-prone. Docker Desktop also supports popular programming languages and frameworks, such as Java, Node.js, Python, and Ruby, making it a versatile tool for building modern applications.</p>
+<p><img src="../images/2023-03-15_20-29-53.png"
+    
+    
+    loading="lazy"
+    
+      alt="Docker Desktop"
+    
+    
+    
+  ></p>
+<p>Overall, Docker and Docker Desktop provide a powerful platform for building, shipping, and running containerized applications. They simplify the development and deployment of applications, provide a consistent environment across different platforms, and offer a flexible and scalable way to build modern applications. With the continued growth of containerization, Docker and Docker Desktop are essential tools for any developer or operator looking to stay ahead in the rapidly evolving world of software development.</p>
+<p>For more information on Docker and Docker Desktop, head over to the <a class="link" href="https://www.docker.com/products/docker-desktop/"  target="_blank" rel="noopener"
+    >Docker Downloads</a>.</p>
+<p>If you want a sample container to test your Docker / Docker Desktop, feel free to use <a class="link" href="https://hub.docker.com/r/pdetender/eshopwebmvc"  target="_blank" rel="noopener"
+    >my sample e-commerce workload container</a>, which runs a sample .NET6 web app</p>
+<p>Now you have your Docker environment ready to use, let&rsquo;s take the next step, moving the container image into Azure.</p>
+<h2 id="azure-container-registry-acr-">Azure Container Registry (ACR) (<a class="link" href="https://learn.microsoft.com/en-us/azure/container-registry/"  target="_blank" rel="noopener"
+    >https://learn.microsoft.com/en-us/azure/container-registry/</a>)
+</h2><p>ACR is a managed private registry for storing and managing container images in the cloud. With ACR, you can store and manage Docker images for all of your containerized applications, making it easy to deploy and manage them in the cloud.</p>
+<p>The purpose of ACR is to provide a secure and reliable way to store, manage, and deploy container images. By using ACR, you can ensure that your container images are stored securely in the cloud, and that only authorized users have access to them. ACR also provides built-in integration with all other Azure Container Services (see below), making it easy to deploy your container images across the different services.</p>
+<p><img src="../images/2023-03-15_20-34-12.png"
+    
+    
+    loading="lazy"
+    
+      alt="Azure Container Registry"
+    
+    
+    
+  ></p>
+<p>ACR supports Docker Hub as well as DevOps environments as sources for container images, and it provides a seamless experience for pushing and pulling images from the registry. ACR also supports advanced features, such as geo-replication and image security vulnerability scanning, which allows you to replicate your images to multiple regions for high availability and scan your images for security vulnerabilities (Backed by Defender for Containers and Defender for Cloud).</p>
+<p>In summary, ACR serves as a central repository for storing and managing your container images, making it easy to deploy and manage your containerized applications in the cloud. It provides a secure and reliable way to store your images, with built-in integration with other Azure container services for easy deployment.</p>
+<p>Some sample Azure CLI code to get you started:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">az acr create --resource-group myresourcegroup --name myacr --sku Basic
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Once you run this command, Azure will create a new ACR with the specified name and SKU in the specified resource group. You can then use the ACR to store and manage your container images.</p>
+<p>With the ACR being ready, it&rsquo;s time to upload (<strong>push</strong>) the Docker image into the registry. Here are a few steps to get you started:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">az login
+</span></span><span class="line"><span class="cl">az acr login --name myacr
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Before you can push a Docker image to the Azure Container Registry, it needs to be updated with the name of the registry. You can use <strong>Docker tag</strong> command to help with this:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">docker tag pdetender/eshopwebmvc myacr.azurecr.io/eshopwebmvc
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>followed by:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">docker push myacr.azurecr.io/eshopwebmvc
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>wait for the upload to complete.</p>
+<h2 id="azure-container-instance-aci-">Azure Container Instance (ACI) (<a class="link" href="https://learn.microsoft.com/en-us/azure/container-instances/"  target="_blank" rel="noopener"
+    >https://learn.microsoft.com/en-us/azure/container-instances/</a>)
+</h2><p>Azure Container Instance (ACI) is a serverless solution for running containers in the cloud. With ACI, you can deploy and manage containers without worrying about the underlying infrastructure. ACI is an excellent choice for running short-lived containerized tasks that don&rsquo;t require orchestration, such as batch processing, job scheduling, or testing.</p>
+<p>ACI is easy to use, as it doesn&rsquo;t require any knowledge of container orchestration tools such as Kubernetes or Docker Swarm. Instead, you can use the Azure portal, Azure CLI, or Azure PowerShell to deploy and manage your containers.</p>
+<p>One of the strengths of ACI is its cost-effectiveness. With ACI, you only pay for the exact amount of compute and memory resources that your containerized tasks require, measured in seconds. This makes ACI an ideal solution for running sporadic, bursty workloads.</p>
+<p>However, ACI has some limitations. First, ACI only supports running single containers or multi-container groups, not entire applications. Second, ACI doesn&rsquo;t provide advanced features such as automatic scaling, self-healing, or load balancing. Finally, ACI has limited networking capabilities, as it doesn&rsquo;t support virtual networks or custom IP addresses.</p>
+<p>with the EshopOnWeb Docker image uploaded to the Azure Container Registry, use the following Az CLI command to deploy an Azure Container Instance:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">az container create --resource-group myResourceGroup --name aci-springclean-app --image myacr.azurecr.io/eshopwebmvc --cpu 1 --memory 1 --registry-login-server myacr.azurecr.io --ip-address Public --dns-name-label aci-springclean-app --ports 80
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="../images/2023-03-15_20-45-44.png"
+    
+    
+    loading="lazy"
+    
+      alt="Azure Container Instance"
+    
+    
+    
+  ></p>
+<h2 id="azure-kubernetes-services-aks-">Azure Kubernetes Services (AKS) (<a class="link" href="https://learn.microsoft.com/en-us/azure/aks/intro-kubernetes"  target="_blank" rel="noopener"
+    >https://learn.microsoft.com/en-us/azure/aks/intro-kubernetes</a>)
+</h2><p>Azure Kubernetes Services (AKS) is a managed Kubernetes service that allows you to deploy and manage containerized applications in the cloud. Kubernetes is a powerful open-source container orchestration tool that automates the deployment, scaling, and management of containerized workloads.</p>
+<p>AKS is an excellent choice for running complex, production-grade applications that require orchestration, such as microservices architectures or stateful applications. With AKS, you can take advantage of Kubernetes&rsquo; advanced features, such as automatic scaling, self-healing, and rolling updates.</p>
+<p>AKS is easy to use, as it abstracts away the complexity of Kubernetes and provides an easy-to-use management interface. With AKS, you can deploy your Kubernetes clusters in minutes, using the Azure portal, Azure CLI, or Azure PowerShell.</p>
+<p><img src="../images/2023-03-15_20-47-20.png"
+    
+    
+    loading="lazy"
+    
+      alt="Azure Kubernetes Services - AKS"
+    
+    
+    
+  ></p>
+<p>One of the strengths of AKS is its scalability. With AKS, you can scale your clusters up or down based on demand, without worrying about the underlying infrastructure. AKS also provides advanced networking capabilities, such as virtual networks, load balancers, and custom IP addresses.</p>
+<p>However, AKS has some limitations. First, AKS is more expensive than ACI, as it requires more resources and management overhead. Second, AKS requires some knowledge of Kubernetes, which can be challenging for beginners. Finally, AKS may have some limitations in terms of customization, as it is a managed service that abstracts away some of the lower-level details of Kubernetes.</p>
+<p>Here are a few steps to get you started in deploying an AKS cluster:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">az aks create \
+</span></span><span class="line"><span class="cl">    --resource-group myResourceGroup \
+</span></span><span class="line"><span class="cl">    --name myAKSCluster \
+</span></span><span class="line"><span class="cl">    --node-count 2 \
+</span></span><span class="line"><span class="cl">    --generate-ssh-keys \
+</span></span><span class="line"><span class="cl">    --attach-acr &lt;acrName&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Deployment should take about 10-15 minutes, depending on the Azure region.</p>
+<p>Once the AKS service is up-and-running, you can manage it using <strong>kubectl</strong>, the Kubernetes Command Line interface.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">az aks install-cli
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Next, connect to the cluster from Kubectl</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>From here, you can validate the Kubernetes cluster nodes:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">kubectl get nodes
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ kubectl get nodes
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">NAME                                STATUS   ROLES   AGE     VERSION
+</span></span><span class="line"><span class="cl">aks-nodepool1-37463671-vmss000000   Ready    agent   2m37s   v1.18.10
+</span></span><span class="line"><span class="cl">aks-nodepool1-37463671-vmss000001   Ready    agent   2m28s   v1.18.10
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>In order to get a containerized application runnig as a pod (=Kubernetes&rsquo; terminology for a running container&hellip;), you need to create a <strong>Kubernetes Manifest file</strong>, which uses a YAML syntax format.</p>
+<p>There are a lot of options and configuration parameters possible, but below example should get you started:
+<strong>replace the image name pdtacr&hellip; with the name of your ACR image</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">apiVersion: apps/v1
+</span></span><span class="line"><span class="cl">kind: Deployment
+</span></span><span class="line"><span class="cl">metadata:
+</span></span><span class="line"><span class="cl">  name: secsample
+</span></span><span class="line"><span class="cl">spec:
+</span></span><span class="line"><span class="cl">  replicas: 3
+</span></span><span class="line"><span class="cl">  selector: 
+</span></span><span class="line"><span class="cl">    matchLabels:
+</span></span><span class="line"><span class="cl">      app: secsample
+</span></span><span class="line"><span class="cl">  template:
+</span></span><span class="line"><span class="cl">    metadata:
+</span></span><span class="line"><span class="cl">      labels:
+</span></span><span class="line"><span class="cl">        app: secsample
+</span></span><span class="line"><span class="cl">    spec:
+</span></span><span class="line"><span class="cl">      containers:
+</span></span><span class="line"><span class="cl">      - name: secsample
+</span></span><span class="line"><span class="cl">        image: pdtacr.azurecr.io/simplcdotnet31:latest
+</span></span><span class="line"><span class="cl">        ports:
+</span></span><span class="line"><span class="cl">        - containerPort: 80
+</span></span><span class="line"><span class="cl">      imagePullSecrets:
+</span></span><span class="line"><span class="cl">        - name: acr-auth
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">---
+</span></span><span class="line"><span class="cl">apiVersion: v1
+</span></span><span class="line"><span class="cl">kind: Service
+</span></span><span class="line"><span class="cl">metadata:
+</span></span><span class="line"><span class="cl">  name: secsample
+</span></span><span class="line"><span class="cl">spec:
+</span></span><span class="line"><span class="cl">  type: LoadBalancer
+</span></span><span class="line"><span class="cl">  ports:
+</span></span><span class="line"><span class="cl">  - port: 80
+</span></span><span class="line"><span class="cl">  selector:
+</span></span><span class="line"><span class="cl">    app: secsample
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>This deploys 3 pods (replicas parameter) of the same container, across the 2 nodes in the cluster. The service will get published behind the default Azure Load Balancer, running on port 80. You can verify this later on using the public IP address of the service.</p>
+<p>Save the above file to your local machine, for example <strong>springcleanaks.yaml</strong></p>
+<p>use kubectl to import/inject the YAML configuration into the AKS cluster:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">kubectl apply -f springcleanaks.yaml
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>After a few minutes, validate the running service by running the following kubectl command:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">kubectl get service secsample --watch
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>If the IP-address mentions &ldquo;pending&rdquo;, give it a bit more time to load. Run the above command once more.</p>
+<p>The outcome should know show both the internal pod IP, as well as the public IP. Open the browser to connect to the web application.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">secsample   LoadBalancer   10.0.33.125   24.17.23.13   80:30676/TCP   67s
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>If you want to play with the AKS Autoscaling features, I can recommend the following <strong><a class="link" href="https://learn.microsoft.com/en-us/azure/aks/tutorial-kubernetes-scale?tabs=azure-cli"  target="_blank" rel="noopener"
+    >Microsoft Learn tutorial</a></strong></p>
+<p>Awesome, you are making good progress&hellip;</p>
+<p>One could think you won&rsquo;t need anything more than AKS, as it provides better high-availability, scalability as well as several other features, compared to the more standard Azure Container Instance. But you are wrong. While AKS is probably one of the more popular (if not the most popular&hellip;) ways to run containerized workloads in Azure, it is sometimes complex, overwhelming, and just &ldquo;too much&rdquo; for what you need.</p>
+<p>Let&rsquo;s have a look at 2 more services&hellip;</p>
+<h2 id="azure-app-services-">Azure App Services (<a class="link" href="https://learn.microsoft.com/en-us/training/modules/deploy-run-container-app-service/"  target="_blank" rel="noopener"
+    >https://learn.microsoft.com/en-us/training/modules/deploy-run-container-app-service/</a>)
+</h2><p>Azure App Service is a platform-as-a-service (PaaS) offering that allows developers to build, deploy, and scale web applications and APIs quickly and easily. With App Service, developers can deploy web apps and APIs written in various programming languages, including .NET, Java, Node.js, Python, and PHP, among others. App Service provides built-in DevOps capabilities and integration with other Azure services, such as Azure SQL Database, Azure Redis Cache, and Azure Storage.</p>
+<p>One of the features of Azure App Service is the ability to run Docker containers. Developers can package their application and its dependencies into a Docker image and deploy it to Azure App Service. Azure App Service can then run the Docker image as a container, providing all the benefits of containerization, such as portability, scalability, and isolation.</p>
+<p>Some of the benefits of running Docker containers in Azure App Service include:</p>
+<ol>
+<li>
+<p>Easy deployment: With App Service, developers can deploy their Docker containers quickly and easily using various deployment options, such as Git, GitHub, Azure DevOps, or the Azure Portal.</p>
+</li>
+<li>
+<p>High availability: App Service provides built-in high availability, scaling, and load balancing capabilities, ensuring that containers are always available and responsive to incoming traffic.</p>
+</li>
+<li>
+<p>Platform integration: App Service integrates with other Azure services, such as Azure SQL Database, Azure Redis Cache, and Azure Storage, making it easy to build end-to-end solutions with minimal effort.</p>
+</li>
+<li>
+<p>Security: App Service provides a secure and isolated environment for running Docker containers, with features such as network isolation, private networking, and Azure Active Directory authentication.</p>
+</li>
+</ol>
+<p>However, Azure App Service is not the same as the previously discussed Azure Kubernetes Service (AKS), which is a container orchestration platform. AKS is designed for running and managing containerized applications at scale, with features such as automatic scaling, rolling updates, and self-healing. AKS is typically used for more complex applications that require multiple containers and need to be deployed across multiple nodes.</p>
+<p>In summary, Azure App Service provides an easy and convenient way to run Docker containers in a PaaS environment, with built-in high availability, scalability, and integration with other Azure services. AKS, on the other hand, is a container orchestration platform designed for running and managing containerized applications at scale, with features such as automatic scaling, rolling updates, and self-healing.</p>
+<p>The following Azure CLI code is what you need to get started with running a Docker image as an App Service:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># Create a resource group
+</span></span><span class="line"><span class="cl">az group create --name myResourceGroup --location eastus
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># Create an App Service plan
+</span></span><span class="line"><span class="cl">az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku B1 --is-linux
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># Create an App Service
+</span></span><span class="line"><span class="cl">az webapp create --name myAppService --plan myAppServicePlan --resource-group myResourceGroup --deployment-container-image-name &lt;acr-name&gt;.azurecr.io/&lt;container-image-name&gt;:&lt;tag&gt; --docker-registry-server-url https://&lt;acr-name&gt;.azurecr.io --docker-registry-server-user &lt;acr-name&gt; --docker-registry-server-password &lt;acr-access-token&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># Configure the App Service
+</span></span><span class="line"><span class="cl">az webapp config appsettings set --name myAppService --resource-group myResourceGroup --settings DOCKER_CUSTOM_IMAGE_NAME=&lt;acr-name&gt;.azurecr.io/&lt;container-image-name&gt;:&lt;tag&gt; WEBSITES_PORT=80
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># Set up continuous deployment
+</span></span><span class="line"><span class="cl">az webapp deployment container config --name myAppService --resource-group myResourceGroup --enable-cd true --docker-registry-server-url https://&lt;acr-name&gt;.azurecr.io --docker-registry-server-user &lt;acr-name&gt; --docker-registry-server-password &lt;acr-access-token&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="../images/2023-03-16_21-02-24.png"
+    
+    
+    loading="lazy"
+    
+      alt="Azure App Service - Docker Settings"
+    
+    
+    
+  ></p>
+<h2 id="azure-container-apps-">Azure Container Apps (<a class="link" href="https://learn.microsoft.com/en-us/azure/container-apps/overview"  target="_blank" rel="noopener"
+    >https://learn.microsoft.com/en-us/azure/container-apps/overview</a>)
+</h2><p>Azure Container Apps is a serverless platform for deploying and managing containerized applications. It is designed to simplify the deployment and management of microservices-based applications by providing a seamless experience for developers and operators.</p>
+<p>With Azure Container Apps, you can deploy and manage multiple containers as part of a single application, without worrying about the underlying infrastructure. This makes it an excellent choice for running complex, multi-container applications that require orchestration.</p>
+<p>One of the strengths of Azure Container Apps is its flexibility. With Azure Container Apps, you can use any container image from any registry, including Docker Hub, Azure Container Registry, or your own private registry. You can also define your application&rsquo;s infrastructure as code using YAML or JSON files, which allows you to version control and automate the deployment process.</p>
+<p><img src="../images/2023-03-16_21-06-01.png"
+    
+    
+    loading="lazy"
+    
+      alt="Azure Container Apps - Docker Settings"
+    
+    
+    
+  ></p>
+<p>Azure Container Apps also provides advanced features, such as automatic scaling, self-healing, and application-level load balancing. With Azure Container Apps, you can scale your application automatically based on demand, and Azure will handle the underlying infrastructure for you.</p>
+<p>However, Azure Container Apps has some limitations. First, Azure Container Apps is still in preview, so it may not be suitable for production-grade applications. Second, Azure Container Apps has some limitations in terms of customization, as it abstracts away some of the lower-level details of container orchestration. Finally, Azure Container Apps has a pricing model that may be more expensive than other Azure container services, as it charges based on the number of requests processed by your application.</p>
+<p><img src="../images/2023-03-16_21-14-20.png"
+    
+    
+    loading="lazy"
+    
+      alt="Azure Container Apps - Scale Settings"
+    
+    
+    
+  ></p>
+<p>Use the following code example to get started with deploying an Azure Container Apps scenario:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">az containerapp create -n MyContainerapp -g MyResourceGroup --image myregistry.azurecr.io/myimage:latest --environment MyContainerappEnv --cpu 0.5 --memory 1.0Gi --min-replicas 4 --max-replicas 8
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="summary">Summary
+</h2><p>As you can see, Azure offers several services that allow running containerized workloads, each with its own strengths and limitations. In this article, I walked you through different Azure services for container orchestration and management, including Azure Container Instance, Azure Kubernetes Services, Azure App Services, and Azure Container Apps. I tried to give you a few Azure CLI commands to get started and deploy baseline examples. This should allow you to validate your own opinions around which container service scenario to use for your specific business-critical or testing workloads.</p>
+<p>I hope you learned something from reading the article, enjoy the rest of the <a class="link" href="https://www.azurespringclean.com"  target="_blank" rel="noopener"
+    >Azure Spring Clean</a> topics!!</p>
+<p><a class="link" href="https://www.buymeacoffee.com/pdtit"  target="_blank" rel="noopener"
+    ><img src="../images/buy_me_a_coffee.png"
+    
+    
+    loading="lazy"
+    
+      alt="BuyMeACoffee"
+    
+    
+    
+  ></a></p>
+<p>Cheers!!</p>
+<p>/Peter</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/azure/">Azure</a>
+        
+            <a href="/tags/aks/">AKS</a>
+        
+            <a href="/tags/docker/">Docker</a>
+        
+            <a href="/tags/aca/">ACA</a>
+        
+            <a href="/tags/containers/">Containers</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/post/how-to-delete-an-aks-pod/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">How to delete a POD from Azure Kubernetes Services (AKS)</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/post/the-weird-case-of-visualstudio2019-dockerfile/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">The weird case of the Visual Studio 2019 Dockerfile</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/post/use_docker_edge_to_deploy_aci/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Use Docker Edge to Deploy Azure Container Instance - ACI</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/post/migrate-docker-desktop-to-wsl2/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Migrating Docker Desktop to WSL2</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/post/new-azure-book-selfpublish/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Happy to announce my newest Azure book got (self) published</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2021 - 
+        
+        2026 Azure Readiness starts here...
+    </section>
+    
+    <section class="powerby">
+        
+            The best way to know the future, is to learn it <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="4.0.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+
+
+
+<script type="module">
     import gallery from '\/ts\/gallery.js';
 
     const articleContent = document.querySelector('.article-content');
@@ -186,16 +926,70 @@ where I&rsquo;m honored to be able to participate in again for the 4th year alre
         });
         lightbox.init();
     }
-</script></main></div><div id=cookie-consent-banner class=cookie-banner aria-hidden=true role=dialog aria-labelledby=cookie-banner-title><div class=cookie-banner__content><div class=cookie-banner__text><strong id=cookie-banner-title>Cookie Consent</strong><p>We use cookies to enhance your browsing experience and analyze site traffic.</p></div><div class=cookie-banner__actions><button class="cookie-btn cookie-btn--secondary" data-cookie-action=deny>
-Deny
-</button>
-<button class="cookie-btn cookie-btn--primary" data-cookie-action=accept>
-Accept All</button></div><button class=cookie-banner__settings-link data-cookie-action=settings>
-Manage preferences</button><div id=cookie-settings-panel class=cookie-settings aria-hidden=true><h3>Cookie Preferences</h3><div class=cookie-category><label><input type=checkbox name=necessary checked disabled>
-<strong>Necessary</strong></label><p>These cookies are required for the website to function and cannot be disabled.</p></div><div class=cookie-category><label><input type=checkbox name=analytics data-cookie-category=analytics>
-<strong>Analytics</strong></label><p>These cookies help us understand how visitors interact with our website.</p></div><div class=cookie-category><label><input type=checkbox name=functional data-cookie-category=functional>
-<strong>Functional</strong></label><p>These cookies enable features like comments and embedded content.</p></div><div class=cookie-settings__actions><button class="cookie-btn cookie-btn--secondary" data-cookie-action=cancel>
-Cancel
-</button>
-<button class="cookie-btn cookie-btn--primary" data-cookie-action=save>
-Save preferences</button></div></div></div></div><script type=text/javascript src=/ts/cookies.6d3577f211db9f4f1997385d4b417cf90130b050bc9e787bb1bb5346d337e998.js defer></script><script type=text/javascript src=/ts/main.acaf849f2b273f6a8368a58b001f336738d0c948d92e79b116467d0c7515f932.js defer></script></body></html>
+</script>
+
+    
+
+            </main>
+        </div>
+        
+    <div id="cookie-consent-banner" class="cookie-banner" aria-hidden="true" role="dialog" aria-labelledby="cookie-banner-title">
+    <div class="cookie-banner__content">
+        <div class="cookie-banner__text">
+            <strong id="cookie-banner-title">Cookie Consent</strong>
+            <p>We use cookies to enhance your browsing experience and analyze site traffic.</p>
+        </div>
+
+        <div class="cookie-banner__actions">
+            <button class="cookie-btn cookie-btn--secondary" data-cookie-action="deny">
+                Deny
+            </button>
+            <button class="cookie-btn cookie-btn--primary" data-cookie-action="accept">
+                Accept All
+            </button>
+        </div>
+        <button class="cookie-banner__settings-link" data-cookie-action="settings">
+            Manage preferences
+        </button>
+
+        
+        <div id="cookie-settings-panel" class="cookie-settings" aria-hidden="true">
+            <h3>Cookie Preferences</h3>
+
+            <div class="cookie-category">
+                <label>
+                    <input type="checkbox" name="necessary" checked disabled />
+                    <strong>Necessary</strong>
+                </label>
+                <p>These cookies are required for the website to function and cannot be disabled.</p>
+            </div><div class="cookie-category">
+                <label>
+                    <input type="checkbox" name="analytics" data-cookie-category="analytics" />
+                    <strong>Analytics</strong>
+                </label>
+                <p>These cookies help us understand how visitors interact with our website.</p>
+            </div><div class="cookie-category">
+                <label>
+                    <input type="checkbox" name="functional" data-cookie-category="functional" />
+                    <strong>Functional</strong>
+                </label>
+                <p>These cookies enable features like comments and embedded content.</p>
+            </div><div class="cookie-settings__actions">
+                <button class="cookie-btn cookie-btn--secondary" data-cookie-action="cancel">
+                    Cancel
+                </button>
+                <button class="cookie-btn cookie-btn--primary" data-cookie-action="save">
+                    Save preferences
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <script type="text/javascript" src="/ts/cookies.fb6e3f54ec5cefc5dd04ebdb731fbb630fe36104d843ad1ef773c6462b788568.js" defer></script>
+<script type="text/javascript" src="/ts/main.7aaef5b0228fe199f3d764416965e34f5bf182cbe0650a0f3ea1a716021ba381.js" defer></script>
+
+
+    </body>
+</html>

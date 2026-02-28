@@ -24,21 +24,21 @@ Let me guide you through each and one of them:
 
 Microsoft Learn is "the" landing page for all learning resources Microsoft has to offer, not just Azure. Here, you find a listing of all current learning paths, pointers to hands-on lab exercises in a sand-boxed setup, an overview of Microsoft certifications and exams, and much more. It also points you to the official Microsoft Docs website (see below).
 
-![Microsoft Learn](../images/learn-website.png)
+![Microsoft Learn](./images/learn-website.png)
 
 By selecting Browse all paths or Browse all learning options, you are redirected to the actual Learning Paths. A Learning Path is a collection of learning material, which can be documentation, a training video and/or an exercise. Most of the time, it is really a combination of all 3 flavors. This reflects to the different learning styles people have. Some learn better from reading (docs), some other like to hear and see (video), where other - including myself - mainly learn by doing (hands-on labs). 
 
 
 Using the filters on the side, you can find the specific Azure material, or even drill down on specific Azure services or features you want to focus on. (About 30% of all learning path material is related to Azure...)
 
-![Microsoft Learn](../images/learn-learningpath.png)
+![Microsoft Learn](./images/learn-learningpath.png)
 
 Next, you can choose from the full Learning Path, giving you several hours of content to go through, or pick stand-alone modules, typically shorter (30-90 mins) and more focused.
 
 
 In this example, I filtered on Azure / Functions, which brings up a list of 2 Learning Paths and 15 Modules (at the time of writing, it might change over time :)). Let me select the Create Serverless Applications Learning Path; this opens a list of stand-alone content, again nicely structured per topic. Each topic is again a collection of shorter snippets. 
 
-![Microsoft Learn](../images/learn-serverless.png)
+![Microsoft Learn](./images/learn-serverless.png)
 
 I hope this gets you going in your Azure-learning journey. But wait, there is more ;)
 
@@ -53,17 +53,17 @@ Again, this source is not just offering Azure material, but covers most of the M
 
 If you filter again on Azure content, it currently shows 30 different labs, from beginners to advanced learner level.
 
-![Microsoft Learn](../images/learn-hol.png)
+![Microsoft Learn](./images/learn-hol.png)
 
 The most interesting aspect - besides learning by doing of course - is you don't need an Azure subscription to perform the lab steps. While there is still a separate URL to get here, it actually redirects you back to the overall Microsoft Learn website. However, there is no easy way to retrieve the hands-on labs only (Microsoft, make this available as a learning type option please). So it requires some wondering around the website, browsing Learning Paths and Modules, to find any resource having "exercise" in the title. 
 
 As an example, I selected the "Create a Windows Virtual Machine"; as you can see from below screenshot, it offers you to activate sandbox. This creates a temporary Azure subscription, dedicated to this specific lab scenario. One can activate 10 such sandbox environments per day, which should be more than enough for most learners. 
 
-![Microsoft Learn](../images/learn-windows-vm.png)
+![Microsoft Learn](./images/learn-windows-vm.png)
 
 After giving consent using a Microsoft account (Outlook, Hotmail,...) (Office 365 doesn't seem to work here?), it will add a temporary subscription to your Microsoft account credentials, in a dedicated Microsoft Learn Sandbox Azure Tenant. 
 
-![Microsoft Learn](../images/learn-subscriptions.png)
+![Microsoft Learn](./images/learn-subscriptions.png)
 
 From here, you can literally follow the instructions from the exercise description pages. Pretty sweet in my opinion!
 
@@ -79,14 +79,14 @@ Using a similar example as before, I made the following selections:
 
 - Windows Virtual Machines
 
-![Microsoft Learn](../images/learn-getstarted.png)
+![Microsoft Learn](./images/learn-getstarted.png)
 
 (Notice the link to the previously discussed self-paced training also shows up here)
 
 
 Which brings me to the actual Azure doc pages, describing how to create an Windows Virtual Machine in Azure. From here, I can scroll down to the specific deployment approach I want to learn, being PowerShell, Azure CLI or using the Portal. 
 
-![Microsoft Learn](../images/learn-tutorial.png)
+![Microsoft Learn](./images/learn-tutorial.png)
 
  Besides reading through the different steps, you can also try them out live, assuming you have an Azure Free or Paid subscription already (in contrast to the sandbox scenario described earlier).
 

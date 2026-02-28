@@ -1,73 +1,999 @@
-<!doctype html><html lang=en-us dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content="Introduction\rI got invited to present on Blazor .NET8 as part of the [https://mstechsummit.pl/en/](MS Tech Summit Poland (MSTS Summit)), for which I&rsquo;m very excited and honored. For most of my public speaking engagements, I try to focus on live demos, with only a minimum amount of slides, and this session is no different.\nTo help my audience in reproducing the demos in their own time, I decided to write out the steps.\n"><title>Building your first Blazor .NET8 app - MSTS Summit</title><link rel=canonical href=https://www.007ffflearning.com/post/building-your-first-blazor-.net8-app---msts-summit-companion/><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=preload as=style href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"><link rel=stylesheet href=/scss/style.min.cf9653eecaea3cf14f5747895c3ac9b505bea7f8f3f40c16dac6b0e82fafddc4.css><meta property='og:title' content="Building your first Blazor .NET8 app - MSTS Summit "><meta property='og:description' content="Introduction\rI got invited to present on Blazor .NET8 as part of the [https://mstechsummit.pl/en/](MS Tech Summit Poland (MSTS Summit)), for which I&rsquo;m very excited and honored. For most of my public speaking engagements, I try to focus on live demos, with only a minimum amount of slides, and this session is no different.\nTo help my audience in reproducing the demos in their own time, I decided to write out the steps.\n"><meta property='og:url' content='https://www.007ffflearning.com/post/building-your-first-blazor-.net8-app---msts-summit-companion/'><meta property='og:site_name' content='Azure Readiness starts here...'><meta property='og:type' content='article'><meta property='article:section' content='Post'><meta property='article:tag' content='Blazor'><meta property='article:tag' content='Azure'><meta property='article:tag' content='.NET8'><meta property='article:published_time' content='2024-05-30T00:00:00+00:00'><meta property='article:modified_time' content='2024-05-30T00:00:00+00:00'><meta name=twitter:title content="Building your first Blazor .NET8 app - MSTS Summit "><meta name=twitter:description content="Introduction\rI got invited to present on Blazor .NET8 as part of the [https://mstechsummit.pl/en/](MS Tech Summit Poland (MSTS Summit)), for which I&rsquo;m very excited and honored. For most of my public speaking engagements, I try to focus on live demos, with only a minimum amount of slides, and this session is no different.\nTo help my audience in reproducing the demos in their own time, I decided to write out the steps.\n"><link rel="shortcut icon" href=/img/007ffflearning-ape.png></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label="Toggle Menu">
-<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/><img src=/img/007ffflearning-ape.png width=596 height=842 class=site-logo loading=lazy alt=Avatar>
-</a><span class=emoji>🎓</span></figure><div class=site-meta><h1 class=site-name><a href=/>Azure Readiness starts here...</a></h1><h2 class=site-description>Bring me an audience, I'll give them Azure knowledge in return</h2></div></header><ol class=menu-social><li><a href=https://pdtit.bsky.social title=Bluesky rel=me><svg viewBox="0 0 600 530" fill="currentColor"><path d="m135.72 44.03C202.216 93.951 273.74 195.17 3e2 249.49c26.262-54.316 97.782-155.54 164.28-205.46C512.26 8.009 590-19.862 590 68.825c0 17.712-10.155 148.79-16.111 170.07-20.703 73.984-96.144 92.854-163.25 81.433 117.3 19.964 147.14 86.092 82.697 152.22-122.39 125.59-175.91-31.511-189.63-71.766-2.514-7.3797-3.6904-10.832-3.7077-7.8964-.0174-2.9357-1.1937.51669-3.7077 7.8964-13.714 40.255-67.233 197.36-189.63 71.766-64.444-66.128-34.605-132.26 82.697-152.22-67.108 11.421-142.55-7.4491-163.25-81.433-5.9562-21.282-16.111-152.36-16.111-170.07.0-88.687 77.742-60.816 125.72-24.795z"/></svg></a></li><li><a href=https://github.com/petender title=GitHub rel=me><svg class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li><li><a href=https://www.linkedin.com/in/pdtit/ title=LinkedIn rel=me><svg class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M10 14a3.5 3.5.0 005 0l4-4a3.5 3.5.0 00-5-5l-.5.5"/><path d="M14 10a3.5 3.5.0 00-5 0l-4 4a3.5 3.5.0 005 5l.5-.5"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
-<span>Home</span></a></li><li><a href=/post/><svg class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
-<span>Posts</span></a></li><li><a href=/books/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
-<span>Books</span></a></li><li><a href=/speaking/><svg class="icon icon-tabler icon-tabler-microphone" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 5a3 3 0 016 0v7a3 3 0 01-6 0z"/><path d="M5 10a7 7 0 0014 0"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
-<span>Speaking</span></a></li><li><a href=/about/><svg class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
-<span>About Me</span></a></li><li><a href=/search/><svg class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg>
-<span>Search</span></a></li><li><a href=/tags/><svg class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11 3l9 9a1.5 1.5.0 010 2l-6 6a1.5 1.5.0 01-2 0L3 11V7a4 4 0 014-4h4"/><circle cx="9" cy="9" r="2"/></svg>
-<span>Tags</span></a></li><li class=menu-bottom-section><ol class=menu><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
-<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
-<span>Dark Mode</span></li></ol></li></ol></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><div class=article-title-wrapper><h2 class=article-title><a href=/post/building-your-first-blazor-.net8-app---msts-summit-companion/>Building your first Blazor .NET8 app - MSTS Summit</a></h2></div><footer class=article-time><div><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
-<time class=article-time--published datetime=2024-05-30T00:00:00Z>May 30, 2024</time></div></footer></div></header><section class=article-content><h2 id=introduction>Introduction</h2><p>I got invited to present on Blazor .NET8 as part of the [https://mstechsummit.pl/en/](MS Tech Summit Poland (MSTS Summit)), for which I&rsquo;m very excited and honored. For most of my public speaking engagements, I try to focus on live demos, with only a minimum amount of slides, and this session is no different.</p><p>To help my audience in reproducing the demos in their own time, I decided to write out the steps.</p><p>This app introduces Blazor .NET8 development, and more specifically how to easily create a Single Page App using HTML, CSS and a bit of C# code. Once the app is live, I expand with data integration features, using Entity Framework and making API calls to an external API Service.</p><p>While I&rsquo;ve been using Blazor .NET for about 3 years now as a hobby project, I feel like I am still learning development with .NET for the first time at age 48. Having succeeded in getting an actual app up-and-running, I wanted to continue sharing my experience, inspiring other readers (and viewers of the MSTS session) to learn coding as well. And maybe becoming a passionate Blazor developer as myself.</p><h2 id=prerequisites>Prerequisites</h2><p>If you want to follow along and building this sample app from scratch, you need a few tools to get started:</p><ul><li>Visual Studio 2022 version 17.9.7 or newer, to develop the application (VSCode or other dev tools will work as well, but I&rsquo;m not that familiar with those&mldr;)<ul><li>Community Edition can be downloaded for free here (<a class=link href=https://visualstudio.microsoft.com/vs/community/ target=_blank rel=noopener>Visual Studio 2022 Community Edition – Download Latest Free Version (microsoft.com)</a>)</li></ul></li><li>GitHub Account to store the application code in source control<ul><li>Sign Up for free here (<a class=link href=https://github.com/join target=_blank rel=noopener>https://github.com/join</a>)</li></ul></li><li>Azure Subscription to run Azure App Service web application<ul><li>Get a Free Azure Subscription here (<a class=link href=https://azure.microsoft.com/en-us/free/ target=_blank rel=noopener>https://azure.microsoft.com/en-us/free/</a>)</li></ul></li></ul><h2 id=deploying-your-first-blazor-web-assembly-app-from-a-template>Deploying your first Blazor Web Assembly app from a template</h2><p>Visual Studio (and .NET) provide different Blazor templates, both as an “empty template”, as well as one with a functional “sample weather app”, and both options are available for Server and Web Assembly.</p><p>With the release of .NET8 last November, the Product Group decided to simplify getting started with Blazor, using the <strong>Blazor Web App</strong> template. Actually allowing you to decide wether to use WebAssembly, Server or both, in the same project.</p><ol><li>Launch <strong>Visual Studio 2022</strong>, and select <strong>Create New Project</strong></li><li>From the list of templates, select <strong>Blazor Web App</strong></li></ol><p><img src=../images/2024-05-17-215846.png loading=lazy alt="Graphical user interface, text, application Description automatically generated"></p><ol start=3><li><p>Provide a name for the project, e.g. <strong>BlazorMSTS</strong>, and store it to your local machine&rsquo;s folder of choice</p></li><li><p>Click <strong>Next</strong> to continue the project creation wizard</p></li><li><p>Select <strong>.NET 8.0</strong> (Long Term Support) as Framework version</p></li><li><p>Select <strong>None</strong> for authentication type</p></li><li><p>Select <strong>Server</strong> for Interactive Render Mode</p></li><li><p>Select <strong>Per Page/component</strong> for Interactivity location</p></li><li><p>Click <strong>Create</strong> to complete the project creation wizard and wait for the template to get deployed in the Visual Studio development environment. The Solution Explorer looks like below:</p></li></ol><p><img src=../images/2024-05-17-220528.png loading=lazy alt="Graphical user interface, Create Project"></p><ol start=10><li>Run the app by pressing <strong>Ctrl-F5</strong> or select <strong>Run</strong> from the upper menu (the green arrow) and wait for the compile and build phase to complete. The web app should load successfully in a new browser window.</li></ol><p><img src=../images/2024-05-17-220807.png loading=lazy alt="Blazor default web app in browser"></p><ol start=11><li><p>Wander around the different parts of the web app to get a bit familiar with the features. With the Blazor Server hosting model, components are executed on the server from within an ASP.NET Core app. UI updates, event handling, and JavaScript calls are handled over a SignalR connection using the WebSockets protocol. The state on the server associated with each connected client is called a circuit. Circuits aren&rsquo;t tied to a specific network connection and can tolerate temporary network interruptions and attempts by the client to reconnect to the server when the connection is lost.</p></li><li><p>Close the browser, which brings you back into the Visual Studio development environment.</p></li><li><p>This confirms the Blazor Server app is running as expected.</p></li></ol><p>In the next section, you learn how to update the Home.razor page and add your own custom HTML-layout, CSS structure and actual runtime code.</p><h2 id=using-the-sample-app-to-understand-the-core-of-blazor>Using the sample app to understand the core of Blazor</h2><p>In the Blazor running app, navigate to the <strong>Counter</strong> page by clicking the Counter option in the navigation sidebar to your left. Selecting the <strong>Click me</strong> button will perform an increment of the current count without a page refresh. Having this kind of interactivity, used to require JavaScript, but with Blazor you can use C# now.</p><p><img src=../images/2024-05-30-144007.png loading=lazy alt="Counter Page">
-You can find the implementation of the Counter component at <strong>Counter.razor</strong> file located inside the Components/Pages directory.</p><p>We talked about Components in our presentation as well. Every razor page, can be a component. Let&rsquo;s use that in the next example:</p><p><strong>Open the Home.razor</strong> file in Visual Studio. The Home.razor file already exists, and it could be seen as the replacement for the former <strong>index.html</strong> or <strong>default.asp</strong> in previous web applications. It&rsquo;s located in the Components/Pages folder inside the BlazorApp directory that was created earlier.</p><p>Adding the Counter component - coming from the Counter page - to the app&rsquo;s homepage is possible by adding a <counter>element at the end of the Home.razor file. That&rsquo;s it!!</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span><span class=lnt>4
-</span><span class=lnt>5
-</span><span class=lnt>6
-</span><span class=lnt>7
-</span><span class=lnt>8
-</span><span class=lnt>9
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>@page &#34;/&#34;
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>&lt;PageTitle&gt;Home&lt;/PageTitle&gt;
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>&lt;h1&gt;Hello, world!&lt;/h1&gt;
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>Welcome to your new app.
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>&lt;Counter /&gt;
-</span></span></code></pre></td></tr></table></div></div><p>Running the app again, will now show the <strong>Counter</strong> component, nicely on the Home Page. How easy, yet cool is that? DevOps engineers would call this <em>minimizing technical debt</em>, as instead of reusing and duplicating code, you can now just reuse full components.</p><p><img src=../images/2024-05-30-144054.png loading=lazy alt="Counter Component embedded in Home Page"></p><h2 id=updating-the-template-with-your-custom-code>Updating the template with your custom code</h2><p>Blazor allows you to combine web page layout code (Razor pages), basically HTML and CSS, together with actual application source code (C# DotNet), in the same razor files. I can’t compare it with previous development environments, but it seems to be one of the great things about Blazor – and I really like it, since it’s somewhat simplifying the structure of your application source code itself.</p><p>Traditionally, this means creating the necessary HTML and CSS layout, followed by writing the Code-piece. Little bit what we talked about with the Counter.Razor page.</p><p>Most Web Apps rely or provide some sort of Data back-end, to allow users to pull up information, or maybe creating and editing new information into a database. in .NET, this usually gets done by Entity Framework, allowing interaction with different kinds of databases, such as SQL Server, but also Azure SQL, Azure Cosmos DB as well as non-Microsoft scenarios such as Oracle or Postgresql and others.</p><p>The cool thing is, Visual Studio provides a <strong>Scaffolding Wizard</strong> for Entity Framework, which automates a big part of the process of creating web page entry form, as well as the different CRUD (Create, Read, Update, Delete) operations - both the layout, as well as the logical coding piece behind the different action buttons, is getting created.</p><p>Let&rsquo;s check out what that looks like.</p><h2 id=using-dotnet-entity-framework-scaffolding-for-razorblazor>Using DotNet Entity Framework Scaffolding for Razor/Blazor</h2><ol><li>The starting point for any data content interaction in a web app, starts with <strong>a data model</strong>. This is a C#-class, which contains the structure of the actual data you want to use. In this example, let&rsquo;s consider working with <em>Conference Data</em>, such as a Conference Session Title, a Speaker, Session abstract, Technical Domain, Session duration, etc&mldr;</li></ol><p>A basic model class could look like this:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>public class ConferenceSession
-</span></span><span class=line><span class=cl>{
-</span></span><span class=line><span class=cl>public int Id { get; set; }
-</span></span><span class=line><span class=cl>public string? Title { get; set; }
-</span></span><span class=line><span class=cl>public string? Speaker { get; set; }
-</span></span><span class=line><span class=cl>public string? Abstract { get; set; }
-</span></span><span class=line><span class=cl>public string? TechnicalDomain { get; set; }
-</span></span><span class=line><span class=cl>public int Duration { get; set; }
-</span></span><span class=line><span class=cl>public bool IsPublished { get; set; }
-</span></span><span class=line><span class=cl>}
-</span></span></code></pre></td></tr></table></div></div><ol start=2><li>In the Blazor Project folder Components, create a new subfolder &ldquo;Data&rdquo;, and create a file ConferenceSession.cs, in which you copy the above sample content.</li></ol><p><img src=../images/2024-05-31-104800.png loading=lazy alt="CConferenceSession Class"></p><ol start=3><li>With the Class Model in place, you can now make use of the Scaffolding wizard. From the <strong>Project</strong>, right-click, and select <strong>Add New Scaffolded Item</strong></li></ol><p><img src=../images/2024-05-31-134607.png loading=lazy alt="Add New Scaffolded Item"></p><ol start=4><li>From the list of options, select <strong>Razor Component</strong> and <strong>Razor Components Using Entity Framework (CRUD)</strong></li></ol><p><img src=../images/2024-05-31-134900.png loading=lazy alt="Add New Scaffolded Item"></p><ol start=5><li>From the popup window, complete the necessary settings:</li></ol><ul><li>Template: <strong>CRUD</strong> (this provides Create, Read, Update and Delete functionality; in a real-world application, you might select only one or more options)</li><li>Model Class: <strong>ConferenceSession</strong>, which refers to the Model Class created earlier</li><li>DbContext Class: <strong>New/Add</strong> - <strong>accept the default name</strong>, or any other name of choice</li><li>Database Provider: <strong>SQL Server</strong></li></ul><p>This will install the necessary Microsoft.EntityFrameworkCore Nuget Packages, creates the DBContext to interact with SQL Server, but - and this is rather cool - it will also create the necessary Razor Pages for the data model, including the CRUD action links.</p><p><img src=../images/2024-05-31-140107.png loading=lazy alt="Add New Scaffolded Item"></p><ol start=6><li>Below the /ConferenceSessionPages subfolder, notice the different <strong>Create, Delete, Edit, Details and Index</strong> pages. Open the <strong>Create.razor</strong> page in the Visual Studio editor:</li></ol><p><img src=../images/2024-05-31-140601.png loading=lazy alt="Scaffolded create page">, and check the first couple of lines:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span><span class=lnt>4
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>@page &#34;/conferencesessions/create&#34;
-</span></span><span class=line><span class=cl>@inject BlazorApp1.Data.BlazorApp1Context DB
-</span></span><span class=line><span class=cl>@using BlazorApp1.Components.Data
-</span></span><span class=line><span class=cl>@inject NavigationManager NavigationManager
-</span></span></code></pre></td></tr></table></div></div><p>the @page directive, points to the URL address to use to connect to this page;
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Introduction\rI got invited to present on Blazor .NET8 as part of the [https://mstechsummit.pl/en/](MS Tech Summit Poland (MSTS Summit)), for which I&rsquo;m very excited and honored. For most of my public speaking engagements, I try to focus on live demos, with only a minimum amount of slides, and this session is no different.\nTo help my audience in reproducing the demos in their own time, I decided to write out the steps.\n">
+<title>Building your first Blazor .NET8 app - MSTS Summit </title>
+
+
+<link rel="canonical" href="http://localhost:1313/post/building-your-first-blazor-.net8-app---msts-summit-companion/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+
+
+<link rel="stylesheet" href="/scss/style.min.cf9653eecaea3cf14f5747895c3ac9b505bea7f8f3f40c16dac6b0e82fafddc4.css"><meta property='og:title' content="Building your first Blazor .NET8 app - MSTS Summit ">
+<meta property='og:description' content="Introduction\rI got invited to present on Blazor .NET8 as part of the [https://mstechsummit.pl/en/](MS Tech Summit Poland (MSTS Summit)), for which I&rsquo;m very excited and honored. For most of my public speaking engagements, I try to focus on live demos, with only a minimum amount of slides, and this session is no different.\nTo help my audience in reproducing the demos in their own time, I decided to write out the steps.\n">
+<meta property='og:url' content='http://localhost:1313/post/building-your-first-blazor-.net8-app---msts-summit-companion/'>
+<meta property='og:site_name' content='Azure Readiness starts here...'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Blazor' /><meta property='article:tag' content='Azure' /><meta property='article:tag' content='.NET8' /><meta property='article:published_time' content='2024-05-30T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-05-30T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Building your first Blazor .NET8 app - MSTS Summit ">
+<meta name="twitter:description" content="Introduction\rI got invited to present on Blazor .NET8 as part of the [https://mstechsummit.pl/en/](MS Tech Summit Poland (MSTS Summit)), for which I&rsquo;m very excited and honored. For most of my public speaking engagements, I try to focus on live demos, with only a minimum amount of slides, and this session is no different.\nTo help my audience in reproducing the demos in their own time, I decided to write out the steps.\n">
+    <link rel="shortcut icon" href="/img/007ffflearning-ape.png" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        <figure class="site-avatar">
+                <a href="/">
+                    <img src="/img/007ffflearning-ape.png" 
+                        width="596"
+                        height="842"
+                        class="site-logo"
+                        loading="lazy"
+                        alt="Avatar">
+                </a>
+                
+                    <span class="emoji">🎓</span>
+                
+            </figure>
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Azure Readiness starts here...</a></h1>
+            <h2 class="site-description">Bring me an audience, I&#39;ll give them Azure knowledge in return</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://pdtit.bsky.social'
+                        
+                        title="Bluesky"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 530" fill="currentColor">
+  <path d="m135.72 44.03c66.496 49.921 138.02 151.14 164.28 205.46 26.262-54.316 97.782-155.54 164.28-205.46 47.98-36.021 125.72-63.892 125.72 24.795 0 17.712-10.155 148.79-16.111 170.07-20.703 73.984-96.144 92.854-163.25 81.433 117.3 19.964 147.14 86.092 82.697 152.22-122.39 125.59-175.91-31.511-189.63-71.766-2.514-7.3797-3.6904-10.832-3.7077-7.8964-0.0174-2.9357-1.1937 0.51669-3.7077 7.8964-13.714 40.255-67.233 197.36-189.63 71.766-64.444-66.128-34.605-132.26 82.697-152.22-67.108 11.421-142.55-7.4491-163.25-81.433-5.9562-21.282-16.111-152.36-16.111-170.07 0-88.687 77.742-60.816 125.72-24.795z"/>
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/petender'
+                        
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pdtit/'
+                        
+                        title="LinkedIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/post/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Posts</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/books/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+</svg>
+
+                
+                <span>Books</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/speaking/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-microphone" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 5a3 3 0 0 1 6 0v7a3 3 0 0 1 -6 0z"/>
+  <path d="M5 10a7 7 0 0 0 14 0"/>
+  <path d="M8 21l8 0"/>
+  <path d="M12 17l0 4"/>
+</svg>
+
+                
+                <span>Speaking</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About Me</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>Tags</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/building-your-first-blazor-.net8-app---msts-summit-companion/">Building your first Blazor .NET8 app - MSTS Summit </a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime='2024-05-30T00:00:00Z'>May 30, 2024</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+
+    
+</div>
+
+</header>
+
+    
+
+    <section class="article-content">
+    
+    
+    <h2 id="introduction">Introduction
+</h2><p>I got invited to present on Blazor .NET8 as part of the [https://mstechsummit.pl/en/](MS Tech Summit Poland (MSTS Summit)), for which I&rsquo;m very excited and honored. For most of my public speaking engagements, I try to focus on live demos, with only a minimum amount of slides, and this session is no different.</p>
+<p>To help my audience in reproducing the demos in their own time, I decided to write out the steps.</p>
+<p>This app introduces Blazor .NET8 development, and more specifically how to easily create a Single Page App using HTML, CSS and a bit of C# code. Once the app is live, I expand with data integration features, using Entity Framework and making API calls to an external API Service.</p>
+<p>While I&rsquo;ve been using Blazor .NET for about 3 years now as a hobby project, I feel like I am still learning development with .NET for the first time at age 48. Having succeeded in getting an actual app up-and-running, I wanted to continue sharing my experience, inspiring other readers (and viewers of the MSTS session) to learn coding as well. And maybe becoming a passionate Blazor developer as myself.</p>
+<h2 id="prerequisites">Prerequisites
+</h2><p>If you want to follow along and building this sample app from scratch, you need a few tools to get started:</p>
+<ul>
+<li>Visual Studio 2022 version 17.9.7 or newer, to develop the application (VSCode or other dev tools will work as well, but I&rsquo;m not that familiar with those&hellip;)
+<ul>
+<li>Community Edition can be downloaded for free here (<a class="link" href="https://visualstudio.microsoft.com/vs/community/"  target="_blank" rel="noopener"
+    >Visual Studio 2022 Community Edition – Download Latest Free Version (microsoft.com)</a>)</li>
+</ul>
+</li>
+<li>GitHub Account to store the application code in source control
+<ul>
+<li>Sign Up for free here (<a class="link" href="https://github.com/join"  target="_blank" rel="noopener"
+    >https://github.com/join</a>)</li>
+</ul>
+</li>
+<li>Azure Subscription to run Azure App Service web application
+<ul>
+<li>Get a Free Azure Subscription here (<a class="link" href="https://azure.microsoft.com/en-us/free/"  target="_blank" rel="noopener"
+    >https://azure.microsoft.com/en-us/free/</a>)</li>
+</ul>
+</li>
+</ul>
+<h2 id="deploying-your-first-blazor-web-assembly-app-from-a-template">Deploying your first Blazor Web Assembly app from a template
+</h2><p>Visual Studio (and .NET) provide different Blazor templates, both as an “empty template”, as well as one with a functional “sample weather app”, and both options are available for Server and Web Assembly.</p>
+<p>With the release of .NET8 last November, the Product Group decided to simplify getting started with Blazor, using the <strong>Blazor Web App</strong> template. Actually allowing you to decide wether to use WebAssembly, Server or both, in the same project.</p>
+<ol>
+<li>Launch <strong>Visual Studio 2022</strong>, and select <strong>Create New Project</strong></li>
+<li>From the list of templates, select <strong>Blazor Web App</strong></li>
+</ol>
+<p><img src="../images/2024-05-17-215846.png"
+    
+    
+    loading="lazy"
+    
+      alt="Graphical user interface, text, application Description automatically generated"
+    
+    
+    
+  ></p>
+<ol start="3">
+<li>
+<p>Provide a name for the project, e.g. <strong>BlazorMSTS</strong>, and store it to your local machine&rsquo;s folder of choice</p>
+</li>
+<li>
+<p>Click <strong>Next</strong> to continue the project creation wizard</p>
+</li>
+<li>
+<p>Select <strong>.NET 8.0</strong> (Long Term Support) as Framework version</p>
+</li>
+<li>
+<p>Select <strong>None</strong> for authentication type</p>
+</li>
+<li>
+<p>Select <strong>Server</strong> for Interactive Render Mode</p>
+</li>
+<li>
+<p>Select <strong>Per Page/component</strong> for Interactivity location</p>
+</li>
+<li>
+<p>Click <strong>Create</strong> to complete the project creation wizard and wait for the template to get deployed in the Visual Studio development environment. The Solution Explorer looks like below:</p>
+</li>
+</ol>
+<p><img src="../images/2024-05-17-220528.png"
+    
+    
+    loading="lazy"
+    
+      alt="Graphical user interface, Create Project"
+    
+    
+    
+  ></p>
+<ol start="10">
+<li>Run the app by pressing <strong>Ctrl-F5</strong> or select <strong>Run</strong> from the upper menu (the green arrow) and wait for the compile and build phase to complete. The web app should load successfully in a new browser window.</li>
+</ol>
+<p><img src="../images/2024-05-17-220807.png"
+    
+    
+    loading="lazy"
+    
+      alt="Blazor default web app in browser"
+    
+    
+    
+  ></p>
+<ol start="11">
+<li>
+<p>Wander around the different parts of the web app to get a bit familiar with the features. With the Blazor Server hosting model, components are executed on the server from within an ASP.NET Core app. UI updates, event handling, and JavaScript calls are handled over a SignalR connection using the WebSockets protocol. The state on the server associated with each connected client is called a circuit. Circuits aren&rsquo;t tied to a specific network connection and can tolerate temporary network interruptions and attempts by the client to reconnect to the server when the connection is lost.</p>
+</li>
+<li>
+<p>Close the browser, which brings you back into the Visual Studio development environment.</p>
+</li>
+<li>
+<p>This confirms the Blazor Server app is running as expected.</p>
+</li>
+</ol>
+<p>In the next section, you learn how to update the Home.razor page and add your own custom HTML-layout, CSS structure and actual runtime code.</p>
+<h2 id="using-the-sample-app-to-understand-the-core-of-blazor">Using the sample app to understand the core of Blazor
+</h2><p>In the Blazor running app, navigate to the <strong>Counter</strong> page by clicking the Counter option in the navigation sidebar to your left. Selecting the <strong>Click me</strong> button will perform an increment of the current count without a page refresh. Having this kind of interactivity, used to require JavaScript, but with Blazor you can use C# now.</p>
+<p><img src="../images/2024-05-30-144007.png"
+    
+    
+    loading="lazy"
+    
+      alt="Counter Page"
+    
+    
+    
+  >
+You can find the implementation of the Counter component at <strong>Counter.razor</strong> file located inside the Components/Pages directory.</p>
+<p>We talked about Components in our presentation as well. Every razor page, can be a component. Let&rsquo;s use that in the next example:</p>
+<p><strong>Open the Home.razor</strong> file in Visual Studio. The Home.razor file already exists, and it could be seen as the replacement for the former <strong>index.html</strong> or <strong>default.asp</strong> in previous web applications. It&rsquo;s located in the Components/Pages folder inside the BlazorApp directory that was created earlier.</p>
+<p>Adding the Counter component - coming from the Counter page - to the app&rsquo;s homepage is possible by adding a <Counter /> element at the end of the Home.razor file. That&rsquo;s it!!</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">@page &#34;/&#34;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&lt;PageTitle&gt;Home&lt;/PageTitle&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&lt;h1&gt;Hello, world!&lt;/h1&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Welcome to your new app.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&lt;Counter /&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Running the app again, will now show the <strong>Counter</strong> component, nicely on the Home Page. How easy, yet cool is that? DevOps engineers would call this <em>minimizing technical debt</em>, as instead of reusing and duplicating code, you can now just reuse full components.</p>
+<p><img src="../images/2024-05-30-144054.png"
+    
+    
+    loading="lazy"
+    
+      alt="Counter Component embedded in Home Page"
+    
+    
+    
+  ></p>
+<h2 id="updating-the-template-with-your-custom-code">Updating the template with your custom code
+</h2><p>Blazor allows you to combine web page layout code (Razor pages), basically HTML and CSS, together with actual application source code (C# DotNet), in the same razor files. I can’t compare it with previous development environments, but it seems to be one of the great things about Blazor – and I really like it, since it’s somewhat simplifying the structure of your application source code itself.</p>
+<p>Traditionally, this means creating the necessary HTML and CSS layout, followed by writing the Code-piece. Little bit what we talked about with the Counter.Razor page.</p>
+<p>Most Web Apps rely or provide some sort of Data back-end, to allow users to pull up information, or maybe creating and editing new information into a database. in .NET, this usually gets done by Entity Framework, allowing interaction with different kinds of databases, such as SQL Server, but also Azure SQL, Azure Cosmos DB as well as non-Microsoft scenarios such as Oracle or Postgresql and others.</p>
+<p>The cool thing is, Visual Studio provides a <strong>Scaffolding Wizard</strong> for Entity Framework, which automates a big part of the process of creating web page entry form, as well as the different CRUD (Create, Read, Update, Delete) operations - both the layout, as well as the logical coding piece behind the different action buttons, is getting created.</p>
+<p>Let&rsquo;s check out what that looks like.</p>
+<h2 id="using-dotnet-entity-framework-scaffolding-for-razorblazor">Using DotNet Entity Framework Scaffolding for Razor/Blazor
+</h2><ol>
+<li>The starting point for any data content interaction in a web app, starts with <strong>a data model</strong>. This is a C#-class, which contains the structure of the actual data you want to use. In this example, let&rsquo;s consider working with <em>Conference Data</em>, such as a Conference Session Title, a Speaker, Session abstract, Technical Domain, Session duration, etc&hellip;</li>
+</ol>
+<p>A basic model class could look like this:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">public class ConferenceSession
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">public int Id { get; set; }
+</span></span><span class="line"><span class="cl">public string? Title { get; set; }
+</span></span><span class="line"><span class="cl">public string? Speaker { get; set; }
+</span></span><span class="line"><span class="cl">public string? Abstract { get; set; }
+</span></span><span class="line"><span class="cl">public string? TechnicalDomain { get; set; }
+</span></span><span class="line"><span class="cl">public int Duration { get; set; }
+</span></span><span class="line"><span class="cl">public bool IsPublished { get; set; }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>In the Blazor Project folder Components, create a new subfolder &ldquo;Data&rdquo;, and create a file ConferenceSession.cs, in which you copy the above sample content.</li>
+</ol>
+<p><img src="../images/2024-05-31-104800.png"
+    
+    
+    loading="lazy"
+    
+      alt="CConferenceSession Class"
+    
+    
+    
+  ></p>
+<ol start="3">
+<li>With the Class Model in place, you can now make use of the Scaffolding wizard. From the <strong>Project</strong>, right-click, and select <strong>Add New Scaffolded Item</strong></li>
+</ol>
+<p><img src="../images/2024-05-31-134607.png"
+    
+    
+    loading="lazy"
+    
+      alt="Add New Scaffolded Item"
+    
+    
+    
+  ></p>
+<ol start="4">
+<li>From the list of options, select <strong>Razor Component</strong> and <strong>Razor Components Using Entity Framework (CRUD)</strong></li>
+</ol>
+<p><img src="../images/2024-05-31-134900.png"
+    
+    
+    loading="lazy"
+    
+      alt="Add New Scaffolded Item"
+    
+    
+    
+  ></p>
+<ol start="5">
+<li>From the popup window, complete the necessary settings:</li>
+</ol>
+<ul>
+<li>Template: <strong>CRUD</strong> (this provides Create, Read, Update and Delete functionality; in a real-world application, you might select only one or more options)</li>
+<li>Model Class: <strong>ConferenceSession</strong>, which refers to the Model Class created earlier</li>
+<li>DbContext Class: <strong>New/Add</strong> - <strong>accept the default name</strong>, or any other name of choice</li>
+<li>Database Provider: <strong>SQL Server</strong></li>
+</ul>
+<p>This will install the necessary Microsoft.EntityFrameworkCore Nuget Packages, creates the DBContext to interact with SQL Server, but - and this is rather cool - it will also create the necessary Razor Pages for the data model, including the CRUD action links.</p>
+<p><img src="../images/2024-05-31-140107.png"
+    
+    
+    loading="lazy"
+    
+      alt="Add New Scaffolded Item"
+    
+    
+    
+  ></p>
+<ol start="6">
+<li>Below the /ConferenceSessionPages subfolder, notice the different <strong>Create, Delete, Edit, Details and Index</strong> pages. Open the <strong>Create.razor</strong> page in the Visual Studio editor:</li>
+</ol>
+<p><img src="../images/2024-05-31-140601.png"
+    
+    
+    loading="lazy"
+    
+      alt="Scaffolded create page"
+    
+    
+    
+  >, and check the first couple of lines:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">@page &#34;/conferencesessions/create&#34;
+</span></span><span class="line"><span class="cl">@inject BlazorApp1.Data.BlazorApp1Context DB
+</span></span><span class="line"><span class="cl">@using BlazorApp1.Components.Data
+</span></span><span class="line"><span class="cl">@inject NavigationManager NavigationManager
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>the @page directive, points to the URL address to use to connect to this page;
 the @inject refers at Dependency Injection, a capability of .NET to recognize &lsquo;services&rsquo; such as Database interaction, Navigation Menu Manager, etc.
-the @using directive tells this page, to recognize the content of the Data folder within the project (where the ConferenceSession class model is created)</p><p>The next code block contains the HTML layout of the actual Conference Session items.</p><p>The last code block, in between the @code {} section, is the C# code allowing us to create new items, and interact with the SQL Server DB Context.</p><ol start=7><li><p>Open the <strong>Program.cs</strong> file; notice the <strong>builder.Services.AddDbContext</strong> lines of code, which refers at the SQL Server Database integration service. Also created as part of the Scaffolded Item wizard.</p></li><li><p>Before you can run the actual app, we need to <strong>initialize the actual database and Database context</strong>, for which we need to run some commandline actions. From the Visual Studio menu, select <strong>Tools / Nuget Package Manager Console</strong>.</p></li></ol><p>run:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>Add-Migration ConferenceSessions
-</span></span></code></pre></td></tr></table></div></div><p><img src=../images/2024-05-31-142001.png loading=lazy alt="Create Entity Framework Migration"></p><p>next, run:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>Update-Database
-</span></span></code></pre></td></tr></table></div></div><p><img src=../images/2024-05-31-142205.png loading=lazy alt="Update Entity Framework Database"></p><p>which recognizes our ConferenceSession.cs Model Class, and transforms it into SQL Query language.</p><ol start=9><li>Let&rsquo;s run the app again, and validate our ConferenceSession CRUD Pages. If you remember from the set of Pages created for us, one of them is the <strong>Index.razor</strong>, which has a @page directive of /conferencesessions. This means, if we browse to our app default URL, and add /conferencesessions, it will provide us with the &lsquo;home page&rsquo; of the Conference Sessions. Let&rsquo;s try that.</li></ol><p><img src=../images/2024-05-31-142604.png loading=lazy alt="Editing Page for Conference Session items"></p><ol start=10><li>Click the <strong>Create New</strong> link, which redirects you to the /conferencesessions/<strong>create</strong> page. Complete the fields and click &lsquo;Create&rsquo; to save the record</li></ol><p><img src=../images/2024-05-31-144809.png loading=lazy alt="Create new DB Record"></p><ol start=11><li>With the new record saved, you get redirected back to the <strong>Index</strong> page; notice the line item is there, together with a few additional CRUD links to the side for Editing, Deleting and opening the Details of the item.</li></ol><p><img src=../images/2024-05-31-143104.png loading=lazy alt="Delete DB Record"></p><p>Wasn&rsquo;t that cool? Think for a minute how powerful this is&mldr; from scratch to having a somewhat workable app ready in less than 20 minutes!</p><p>With the main parts of the app &lsquo;ready&rsquo; (trust me, there is a lot more we can continue working on, which I might actually do in later continuing blog posts&mldr;), you might finish this process - which is not part of the MSTS Summit session because of time limits - and publish this to Azure Static Web Apps. the below steps should guide you through the process.</p><h2 id=publish-blazor-web-assembly-app-to-azure-static-web-apps>Publish Blazor Web Assembly app to Azure Static Web Apps</h2><p>In this last section, I will show you how to publish this webapp to Azure Static Web Apps, a web hosting service in Azure for static web frameworks like Blazor, React, Vue and several other.</p><ol><li><p>From the Azure Portal, create new resource / static web app</p><p><img src=../images//756a5b2424f865b6cf86eefab8492d2e.png loading=lazy alt="Graphical user interface, text, application Description automatically generated"></p></li><li><p>Provide base information for this deployment:</p></li></ol><ul><li><p>Resource group – any name of choice</p></li><li><p>Name of the app – any unique name for the app</p></li><li><p>Source = GitHub</p></li><li><p>Plan = Free</p></li><li><p>Region = any region of your choice</p><p><img src=../images//3910c87d613034cbd0c9ed1392dfda7b.png loading=lazy alt="Graphical user interface, text, application Description automatically generated"></p></li></ul><ol><li><p>Scroll down and authenticate to GitHub; Next, select your source repo in Github where the code is stored (the one we just created)</p><p><img src=../images//1bd1ddddd3602c3ba2d84b540da393aa.png loading=lazy alt="Graphical user interface, text, application Description automatically generated"></p></li><li><p>Click Build Details to provide more parameters regarding the Blazor app itself. Note you need to change the default App location from /Client to /, since our source code is in the root of the Blazor Web Assembly, without using ASP.Net hosted back-end.</p><p><img src=../images//420cbce0770a41dc39ddf2184948363e.png loading=lazy alt="Graphical user interface, application, email Description automatically generated"></p></li><li><p>Once published, it will trigger a GitHub Actions pipeline to publish the actual content</p><p><img src=../images//ba208857aa01b6d744c79606a7a76b53.png loading=lazy></p></li><li><p>The YAML pipeline code is stored in the .github/workflows/ subfolder within the GitHub repository. You shouldn’t need to update this file though. It just works out-of-the-box.</p><p><img src=../images//7d89901490cd8ae277355c130085551f.png loading=lazy alt="Graphical user interface, text, application, email Description automatically generated"></p></li><li><p>Check in Actions what’s happening:</p><p><img src=../images//97f08b3e40277869ee85a42fa0d2a343.png loading=lazy alt="Graphical user interface, text, application, email Description automatically generated"></p></li><li><p>Open the details for the Build & Deploy workflow</p><p><img src=../images//da5cda0e73ed46fcc4274becc2f4a30e.png loading=lazy alt="Text Description automatically generated"></p></li><li><p>Selecting any step in the Action workflow will show more details:</p><p><img src=../images//765fda402ec958a1267c45c8d15592df.png loading=lazy alt="Graphical user interface, text Description automatically generated"></p></li><li><p>Wait for the workflow to complete successfully.</p><p><img src=../images//291538dda0fbb66c1ccc93f67b3ed263.png loading=lazy alt="Text Description automatically generated"></p></li><li><p>Navigate back to the Azure Static Web app, click it’s URL and see the Blazor Web App is running as expected.</p></li></ol><h1 id=summary>Summary</h1><p>In this article, I provided all the necessary steps to build a Blazor .NET 8 Web Server application. Started from the default template, you updated snippets of code to inject Components, and we also used the Scaffolded Item wizard to provide CRUD operations to a data model.</p><p>I would like to thank the organizing team of MS Tech Summit Poland 2024 for having accepted my session submission for the 3rd year in a row. Especially since this was my first attempt to do some (semi)live coding, to share my excitement of how I learned to write and build code at age 48. I’m already brainstorming on what Blazor app I can share in next year’s edition&mldr;</p><p>/Peter</p><p><a class=link href=https://www.buymeacoffee.com/pdtit target=_blank rel=noopener><img src=../images/buy_me_a_coffee.png loading=lazy alt=BuyMeACoffee></a></p></section><footer class=article-footer><section class=article-tags><a href=/tags/blazor/>Blazor</a>
-<a href=/tags/azure/>Azure</a>
-<a href=/tags/.net8/>.NET8</a></section></footer></article><aside class=related-content--wrapper><h2 class=section-title>Related content</h2><div class=related-content><div class="flex article-list--tile"><article><a href=/post/building-a-marvel-hero-app-with-blazor-.net8/><div class=article-details><h2 class=article-title>ScifiDevCon 2024 : Building a Marvel Hero App using Blazor and .NET8</h2></div></a></article><article><a href=/post/steps-for-blazor-marvel---webassembly/><div class=article-details><h2 class=article-title>Festive Tech Calendar 2022 - Building a Marvel Hero app using Blazor Web Assembly and Azure Static Web Apps</h2></div></a></article><article><a href=/post/packt-book-review---blazor-wasm-with-grpc/><div class=article-details><h2 class=article-title>Book review - Building Blazor WebAssembly Applications with gRPC</h2></div></a></article><article><a href=/post/festive-2023-ocr-on-steroids/><div class=article-details><h2 class=article-title>Festive Tech Calendar - Azure AI - OCR on Steroids</h2></div></a></article><article><a href=/post/packt-book-review---azure-architecture-explained/><div class=article-details><h2 class=article-title>Packt Book Review - Azure Architecture Explained</h2></div></a></article></div></div></aside><footer class=site-footer><section class=copyright>&copy;
-2021 -
-2026 Azure Readiness starts here...</section><section class=powerby>The best way to know the future, is to learn it<br>Built with <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a><br>Theme <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=4.0.0>Stack</a></b> designed by <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a></section></footer><script type=module>
+the @using directive tells this page, to recognize the content of the Data folder within the project (where the ConferenceSession class model is created)</p>
+<p>The next code block contains the HTML layout of the actual Conference Session items.</p>
+<p>The last code block, in between the @code {} section, is the C# code allowing us to create new items, and interact with the SQL Server DB Context.</p>
+<ol start="7">
+<li>
+<p>Open the <strong>Program.cs</strong> file; notice the <strong>builder.Services.AddDbContext</strong> lines of code, which refers at the SQL Server Database integration service. Also created as part of the Scaffolded Item wizard.</p>
+</li>
+<li>
+<p>Before you can run the actual app, we need to <strong>initialize the actual database and Database context</strong>, for which we need to run some commandline actions. From the Visual Studio menu, select <strong>Tools / Nuget Package Manager Console</strong>.</p>
+</li>
+</ol>
+<p>run:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Add-Migration ConferenceSessions
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="../images/2024-05-31-142001.png"
+    
+    
+    loading="lazy"
+    
+      alt="Create Entity Framework Migration"
+    
+    
+    
+  ></p>
+<p>next, run:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Update-Database
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="../images/2024-05-31-142205.png"
+    
+    
+    loading="lazy"
+    
+      alt="Update Entity Framework Database"
+    
+    
+    
+  ></p>
+<p>which recognizes our ConferenceSession.cs Model Class, and transforms it into SQL Query language.</p>
+<ol start="9">
+<li>Let&rsquo;s run the app again, and validate our ConferenceSession CRUD Pages. If you remember from the set of Pages created for us, one of them is the <strong>Index.razor</strong>, which has a @page directive of /conferencesessions. This means, if we browse to our app default URL, and add /conferencesessions, it will provide us with the &lsquo;home page&rsquo; of the Conference Sessions. Let&rsquo;s try that.</li>
+</ol>
+<p><img src="../images/2024-05-31-142604.png"
+    
+    
+    loading="lazy"
+    
+      alt="Editing Page for Conference Session items"
+    
+    
+    
+  ></p>
+<ol start="10">
+<li>Click the <strong>Create New</strong> link, which redirects you to the /conferencesessions/<strong>create</strong> page. Complete the fields and click &lsquo;Create&rsquo; to save the record</li>
+</ol>
+<p><img src="../images/2024-05-31-144809.png"
+    
+    
+    loading="lazy"
+    
+      alt="Create new DB Record"
+    
+    
+    
+  ></p>
+<ol start="11">
+<li>With the new record saved, you get redirected back to the <strong>Index</strong> page; notice the line item is there, together with a few additional CRUD links to the side for Editing, Deleting and opening the Details of the item.</li>
+</ol>
+<p><img src="../images/2024-05-31-143104.png"
+    
+    
+    loading="lazy"
+    
+      alt="Delete DB Record"
+    
+    
+    
+  ></p>
+<p>Wasn&rsquo;t that cool? Think for a minute how powerful this is&hellip; from scratch to having a somewhat workable app ready in less than 20 minutes!</p>
+<p>With the main parts of the app &lsquo;ready&rsquo; (trust me, there is a lot more we can continue working on, which I might actually do in later continuing blog posts&hellip;), you might finish this process - which is not part of the MSTS Summit session because of time limits - and publish this to Azure Static Web Apps. the below steps should guide you through the process.</p>
+<h2 id="publish-blazor-web-assembly-app-to-azure-static-web-apps">Publish Blazor Web Assembly app to Azure Static Web Apps
+</h2><p>In this last section, I will show you how to publish this webapp to Azure Static Web Apps, a web hosting service in Azure for static web frameworks like Blazor, React, Vue and several other.</p>
+<ol>
+<li>
+<p>From the Azure Portal, create new resource / static web app</p>
+<p><img src="../images//756a5b2424f865b6cf86eefab8492d2e.png"
+    
+    
+    loading="lazy"
+    
+      alt="Graphical user interface, text, application Description automatically generated"
+    
+    
+    
+  ></p>
+</li>
+<li>
+<p>Provide base information for this deployment:</p>
+</li>
+</ol>
+<ul>
+<li>
+<p>Resource group – any name of choice</p>
+</li>
+<li>
+<p>Name of the app – any unique name for the app</p>
+</li>
+<li>
+<p>Source = GitHub</p>
+</li>
+<li>
+<p>Plan = Free</p>
+</li>
+<li>
+<p>Region = any region of your choice</p>
+<p><img src="../images//3910c87d613034cbd0c9ed1392dfda7b.png"
+    
+    
+    loading="lazy"
+    
+      alt="Graphical user interface, text, application Description automatically generated"
+    
+    
+    
+  ></p>
+</li>
+</ul>
+<ol>
+<li>
+<p>Scroll down and authenticate to GitHub; Next, select your source repo in Github where the code is stored (the one we just created)</p>
+<p><img src="../images//1bd1ddddd3602c3ba2d84b540da393aa.png"
+    
+    
+    loading="lazy"
+    
+      alt="Graphical user interface, text, application Description automatically generated"
+    
+    
+    
+  ></p>
+</li>
+<li>
+<p>Click Build Details to provide more parameters regarding the Blazor app itself. Note you need to change the default App location from /Client to /, since our source code is in the root of the Blazor Web Assembly, without using ASP.Net hosted back-end.</p>
+<p><img src="../images//420cbce0770a41dc39ddf2184948363e.png"
+    
+    
+    loading="lazy"
+    
+      alt="Graphical user interface, application, email Description automatically generated"
+    
+    
+    
+  ></p>
+</li>
+<li>
+<p>Once published, it will trigger a GitHub Actions pipeline to publish the actual content</p>
+<p><img src="../images//ba208857aa01b6d744c79606a7a76b53.png"
+    
+    
+    loading="lazy"
+    
+    
+    
+  ></p>
+</li>
+<li>
+<p>The YAML pipeline code is stored in the .github/workflows/ subfolder within the GitHub repository. You shouldn’t need to update this file though. It just works out-of-the-box.</p>
+<p><img src="../images//7d89901490cd8ae277355c130085551f.png"
+    
+    
+    loading="lazy"
+    
+      alt="Graphical user interface, text, application, email Description automatically generated"
+    
+    
+    
+  ></p>
+</li>
+<li>
+<p>Check in Actions what’s happening:</p>
+<p><img src="../images//97f08b3e40277869ee85a42fa0d2a343.png"
+    
+    
+    loading="lazy"
+    
+      alt="Graphical user interface, text, application, email Description automatically generated"
+    
+    
+    
+  ></p>
+</li>
+<li>
+<p>Open the details for the Build &amp; Deploy workflow</p>
+<p><img src="../images//da5cda0e73ed46fcc4274becc2f4a30e.png"
+    
+    
+    loading="lazy"
+    
+      alt="Text Description automatically generated"
+    
+    
+    
+  ></p>
+</li>
+<li>
+<p>Selecting any step in the Action workflow will show more details:</p>
+<p><img src="../images//765fda402ec958a1267c45c8d15592df.png"
+    
+    
+    loading="lazy"
+    
+      alt="Graphical user interface, text Description automatically generated"
+    
+    
+    
+  ></p>
+</li>
+<li>
+<p>Wait for the workflow to complete successfully.</p>
+<p><img src="../images//291538dda0fbb66c1ccc93f67b3ed263.png"
+    
+    
+    loading="lazy"
+    
+      alt="Text Description automatically generated"
+    
+    
+    
+  ></p>
+</li>
+<li>
+<p>Navigate back to the Azure Static Web app, click it’s URL and see the Blazor Web App is running as expected.</p>
+</li>
+</ol>
+<h1 id="summary">Summary
+</h1><p>In this article, I provided all the necessary steps to build a Blazor .NET 8 Web Server application. Started from the default template, you updated snippets of code to inject Components, and we also used the Scaffolded Item wizard to provide CRUD operations to a data model.</p>
+<p>I would like to thank the organizing team of MS Tech Summit Poland 2024 for having accepted my session submission for the 3rd year in a row. Especially since this was my first attempt to do some (semi)live coding, to share my excitement of how I learned to write and build code at age 48. I’m already brainstorming on what Blazor app I can share in next year’s edition&hellip;</p>
+<p>/Peter</p>
+<p><a class="link" href="https://www.buymeacoffee.com/pdtit"  target="_blank" rel="noopener"
+    ><img src="../images/buy_me_a_coffee.png"
+    
+    
+    loading="lazy"
+    
+      alt="BuyMeACoffee"
+    
+    
+    
+  ></a></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/blazor/">Blazor</a>
+        
+            <a href="/tags/azure/">Azure</a>
+        
+            <a href="/tags/.net8/">.NET8</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/post/building-a-marvel-hero-app-with-blazor-.net8/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">ScifiDevCon 2024 : Building a Marvel Hero App using Blazor and .NET8 </h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/post/steps-for-blazor-marvel---webassembly/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Festive Tech Calendar 2022 - Building a Marvel Hero app using Blazor Web Assembly and Azure Static Web Apps</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/post/packt-book-review---blazor-wasm-with-grpc/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Book review - Building Blazor WebAssembly Applications with gRPC</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/post/festive-2023-ocr-on-steroids/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Festive Tech Calendar - Azure AI - OCR on Steroids</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/post/packt-book-review---azure-architecture-explained/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Packt Book Review - Azure Architecture Explained</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2021 - 
+        
+        2026 Azure Readiness starts here...
+    </section>
+    
+    <section class="powerby">
+        
+            The best way to know the future, is to learn it <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="4.0.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+
+
+
+<script type="module">
     import gallery from '\/ts\/gallery.js';
 
     const articleContent = document.querySelector('.article-content');
@@ -91,16 +1017,70 @@ the @using directive tells this page, to recognize the content of the Data folde
         });
         lightbox.init();
     }
-</script></main></div><div id=cookie-consent-banner class=cookie-banner aria-hidden=true role=dialog aria-labelledby=cookie-banner-title><div class=cookie-banner__content><div class=cookie-banner__text><strong id=cookie-banner-title>Cookie Consent</strong><p>We use cookies to enhance your browsing experience and analyze site traffic.</p></div><div class=cookie-banner__actions><button class="cookie-btn cookie-btn--secondary" data-cookie-action=deny>
-Deny
-</button>
-<button class="cookie-btn cookie-btn--primary" data-cookie-action=accept>
-Accept All</button></div><button class=cookie-banner__settings-link data-cookie-action=settings>
-Manage preferences</button><div id=cookie-settings-panel class=cookie-settings aria-hidden=true><h3>Cookie Preferences</h3><div class=cookie-category><label><input type=checkbox name=necessary checked disabled>
-<strong>Necessary</strong></label><p>These cookies are required for the website to function and cannot be disabled.</p></div><div class=cookie-category><label><input type=checkbox name=analytics data-cookie-category=analytics>
-<strong>Analytics</strong></label><p>These cookies help us understand how visitors interact with our website.</p></div><div class=cookie-category><label><input type=checkbox name=functional data-cookie-category=functional>
-<strong>Functional</strong></label><p>These cookies enable features like comments and embedded content.</p></div><div class=cookie-settings__actions><button class="cookie-btn cookie-btn--secondary" data-cookie-action=cancel>
-Cancel
-</button>
-<button class="cookie-btn cookie-btn--primary" data-cookie-action=save>
-Save preferences</button></div></div></div></div><script type=text/javascript src=/ts/cookies.6d3577f211db9f4f1997385d4b417cf90130b050bc9e787bb1bb5346d337e998.js defer></script><script type=text/javascript src=/ts/main.acaf849f2b273f6a8368a58b001f336738d0c948d92e79b116467d0c7515f932.js defer></script></body></html>
+</script>
+
+    
+
+            </main>
+        </div>
+        
+    <div id="cookie-consent-banner" class="cookie-banner" aria-hidden="true" role="dialog" aria-labelledby="cookie-banner-title">
+    <div class="cookie-banner__content">
+        <div class="cookie-banner__text">
+            <strong id="cookie-banner-title">Cookie Consent</strong>
+            <p>We use cookies to enhance your browsing experience and analyze site traffic.</p>
+        </div>
+
+        <div class="cookie-banner__actions">
+            <button class="cookie-btn cookie-btn--secondary" data-cookie-action="deny">
+                Deny
+            </button>
+            <button class="cookie-btn cookie-btn--primary" data-cookie-action="accept">
+                Accept All
+            </button>
+        </div>
+        <button class="cookie-banner__settings-link" data-cookie-action="settings">
+            Manage preferences
+        </button>
+
+        
+        <div id="cookie-settings-panel" class="cookie-settings" aria-hidden="true">
+            <h3>Cookie Preferences</h3>
+
+            <div class="cookie-category">
+                <label>
+                    <input type="checkbox" name="necessary" checked disabled />
+                    <strong>Necessary</strong>
+                </label>
+                <p>These cookies are required for the website to function and cannot be disabled.</p>
+            </div><div class="cookie-category">
+                <label>
+                    <input type="checkbox" name="analytics" data-cookie-category="analytics" />
+                    <strong>Analytics</strong>
+                </label>
+                <p>These cookies help us understand how visitors interact with our website.</p>
+            </div><div class="cookie-category">
+                <label>
+                    <input type="checkbox" name="functional" data-cookie-category="functional" />
+                    <strong>Functional</strong>
+                </label>
+                <p>These cookies enable features like comments and embedded content.</p>
+            </div><div class="cookie-settings__actions">
+                <button class="cookie-btn cookie-btn--secondary" data-cookie-action="cancel">
+                    Cancel
+                </button>
+                <button class="cookie-btn cookie-btn--primary" data-cookie-action="save">
+                    Save preferences
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <script type="text/javascript" src="/ts/cookies.fb6e3f54ec5cefc5dd04ebdb731fbb630fe36104d843ad1ef773c6462b788568.js" defer></script>
+<script type="text/javascript" src="/ts/main.7aaef5b0228fe199f3d764416965e34f5bf182cbe0650a0f3ea1a716021ba381.js" defer></script>
+
+
+    </body>
+</html>

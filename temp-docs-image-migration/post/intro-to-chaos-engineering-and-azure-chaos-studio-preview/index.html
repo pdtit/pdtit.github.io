@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Hey folks,\nFor the ones who have been following me here for a while, know I&rsquo;m passionate about Azure and DevOps (and yes, also Azure DevOps, lol). But to be honest, I&rsquo;ve been eyeing to another Azure Service for a while, Azure Chaos Studio, available in public preview.\nThis article shares an introduction to Chaos Engineering, as well as walks you through the first steps it takes to set up Azure Chaos Studio, create experiments and validate the outcome.\n">
+<title>Intro to Chaos Engineering and Azure Chaos Studio (Preview)</title>
+
+
+<link rel="canonical" href="https://www.007ffflearning.com/post/intro-to-chaos-engineering-and-azure-chaos-studio-preview/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+
+
+<link rel="stylesheet" href="/scss/style.min.cf9653eecaea3cf14f5747895c3ac9b505bea7f8f3f40c16dac6b0e82fafddc4.css"><meta property='og:title' content="Intro to Chaos Engineering and Azure Chaos Studio (Preview)">
+<meta property='og:description' content="Hey folks,\nFor the ones who have been following me here for a while, know I&rsquo;m passionate about Azure and DevOps (and yes, also Azure DevOps, lol). But to be honest, I&rsquo;ve been eyeing to another Azure Service for a while, Azure Chaos Studio, available in public preview.\nThis article shares an introduction to Chaos Engineering, as well as walks you through the first steps it takes to set up Azure Chaos Studio, create experiments and validate the outcome.\n">
+<meta property='og:url' content='https://www.007ffflearning.com/post/intro-to-chaos-engineering-and-azure-chaos-studio-preview/'>
+<meta property='og:site_name' content='Azure Readiness starts here...'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Azure' /><meta property='article:tag' content='SRE' /><meta property='article:tag' content='Chaos Studio' /><meta property='article:published_time' content='2023-08-27T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-08-27T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Intro to Chaos Engineering and Azure Chaos Studio (Preview)">
+<meta name="twitter:description" content="Hey folks,\nFor the ones who have been following me here for a while, know I&rsquo;m passionate about Azure and DevOps (and yes, also Azure DevOps, lol). But to be honest, I&rsquo;ve been eyeing to another Azure Service for a while, Azure Chaos Studio, available in public preview.\nThis article shares an introduction to Chaos Engineering, as well as walks you through the first steps it takes to set up Azure Chaos Studio, create experiments and validate the outcome.\n">
+    <link rel="shortcut icon" href="/img/007ffflearning-ape.png" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        <figure class="site-avatar">
+                <a href="/">
+                    <img src="/img/007ffflearning-ape.png" 
+                        width="596"
+                        height="842"
+                        class="site-logo"
+                        loading="lazy"
+                        alt="Avatar">
+                </a>
+                
+                    <span class="emoji">🎓</span>
+                
+            </figure>
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Azure Readiness starts here...</a></h1>
+            <h2 class="site-description">Bring me an audience, I&#39;ll give them Azure knowledge in return</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://pdtit.bsky.social'
+                        
+                        title="Bluesky"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 530" fill="currentColor">
+  <path d="m135.72 44.03c66.496 49.921 138.02 151.14 164.28 205.46 26.262-54.316 97.782-155.54 164.28-205.46 47.98-36.021 125.72-63.892 125.72 24.795 0 17.712-10.155 148.79-16.111 170.07-20.703 73.984-96.144 92.854-163.25 81.433 117.3 19.964 147.14 86.092 82.697 152.22-122.39 125.59-175.91-31.511-189.63-71.766-2.514-7.3797-3.6904-10.832-3.7077-7.8964-0.0174-2.9357-1.1937 0.51669-3.7077 7.8964-13.714 40.255-67.233 197.36-189.63 71.766-64.444-66.128-34.605-132.26 82.697-152.22-67.108 11.421-142.55-7.4491-163.25-81.433-5.9562-21.282-16.111-152.36-16.111-170.07 0-88.687 77.742-60.816 125.72-24.795z"/>
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/petender'
+                        
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pdtit/'
+                        
+                        title="LinkedIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/post/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Posts</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/books/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+</svg>
+
+                
+                <span>Books</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/speaking/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-microphone" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 5a3 3 0 0 1 6 0v7a3 3 0 0 1 -6 0z"/>
+  <path d="M5 10a7 7 0 0 0 14 0"/>
+  <path d="M8 21l8 0"/>
+  <path d="M12 17l0 4"/>
+</svg>
+
+                
+                <span>Speaking</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About Me</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>Tags</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/intro-to-chaos-engineering-and-azure-chaos-studio-preview/">Intro to Chaos Engineering and Azure Chaos Studio (Preview)</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime='2023-08-27T00:00:00Z'>Aug 27, 2023</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+
+    
+</div>
+
+</header>
+
+    
+
+    <section class="article-content">
+    
+    
+    <p>Hey folks,</p>
+<p>For the ones who have been following me here for a while, know I&rsquo;m passionate about Azure and DevOps (and yes, also Azure DevOps, lol). But to be honest, I&rsquo;ve been eyeing to another Azure Service for a while, <strong>Azure Chaos Studio</strong>, available in public preview.</p>
+<p>This article shares an introduction to Chaos Engineering, as well as walks you through the first steps it takes to set up <strong>Azure Chaos Studio</strong>, create experiments and validate the outcome.</p>
+<p>Let&rsquo;s have a look.</p>
+<h1 id="introduction-to-chaos-engineering">Introduction to Chaos Engineering
+</h1><p>Chaos Engineering is:</p>
+<h2 id="the-discipline-of-experimenting-on-a-system-in-order-to-build-confidence-in-the-systems-capability-to-withstand-turbulent-conditions-in-production"><em>the discipline of experimenting on a system in order to build confidence in the system’s capability to withstand turbulent conditions in production</em>.##
+</h2><p>Source: <a class="link" href="https://principlesofchaos.org/"  target="_blank" rel="noopener"
+    >https://principlesofchaos.org/</a></p>
+<p>Chaos Engineering is all about experimenting <em>– typically against production-running systems–</em> to identify and find loopholes, pitfalls if you want, in the way the system is running, which makes the system less reliable.
+The more loopholes we can identify upfront, the more confidence we can have in the system’s reliability. By introducing a series of event simulations, whether based on real incidents happened earlier or based on simulated outages that could happen, we target our workloads and learn from its impact.</p>
+<h2 id="the-curious-case-of-cpu-pressure---part-i">The curious case of CPU Pressure - Part I
+</h2><p>Let&rsquo;s take CPU pressure as an easy use case.</p>
+<p>Imagine a workload is running fine for months, with an average CPU load that’s keeping the system running healthy. Suddenly, a CPU spike occurs and crashes the application. Apart from troubleshooting the root cause of the CPU spike, probably a task for engineering or development teams, it might be equally relevant to find out why the system reacted with a crash of the application. Even more so, if we could have simulated a CPU spike happening, our engineering and development teams could have focused on mitigating the problem by releasing a fix, updating the architecture to an even more fault-tolerant setup.</p>
+<p>Don’t get me wrong though, as <strong>Chaos Engineering</strong> is a lot more than injecting outage triggers (faults) to bring production environments to their knees. There’s a lot more complexity involved, especially since an outage is typically not caused by one single failure, but more of a series of incidents.</p>
+<h2 id="the-curious-case-of-cpu-pressure---part-ii">The curious case of CPU Pressure - Part II
+</h2><p>Reusing the CPU pressure example, one could consider a scenario where CPU is spiking, because of a latency in database operations, putting a calculation or database update on hold. Or maybe there is a network connectivity issue, by which an operation cannot be written to the database back end, causing so many retry operations, which spikes CPU. So instead of just “simulating” the CPU spike, it is also important to capture all possible side effects that could cause a CPU pressure.</p>
+<p>Which – to me – also explains why it’s called an engineering discipline, as there is quite some engineering involved in all the interactions across different systems, components, and workloads.</p>
+<p>Now, you might think that Chaos Engineering is the next big thing (maybe even coming after SRE and DevOps?), but yet too revolutionary for your cloud environments. But nothing is more wrong.</p>
+<h2 id="netflixs-chaos-monkey">Netflix&rsquo;s Chaos Monkey
+</h2><p>In fact, Chaos Engineering has been around for <strong>more than ten years</strong> already, initiated by software engineers from Netflix around 2008, when they started migrating from on-premises data centers to public cloud data centers. While there are a lot of similarities between managing your own data center and using public cloud, there are also big differences. It was mainly those differences that forced Netflix’s engineers to create services architectures with higher resiliency.</p>
+<p>Going through the testing related to this cloud migration resulted in the creation of an <strong>internally developed Chaos Orchestration tool around 2010, branded Chaos Monkey</strong>, which was publicized as an open source product in 2012. More information on the tool and how to use it is available <a class="link" href="https://github.com/netflix/chaosmonkey"  target="_blank" rel="noopener"
+    >on GitHub</a>.</p>
+<p><img src="../images/chaos_monkey_logo.png"
+    
+    
+    loading="lazy"
+    
+      alt="Chaos Monkey Logo"
+    
+    
+    
+  ></p>
+<p>Netflix designed Chaos Monkey to allow them to validate the stability of their production-running workloads (the Streaming Service we all use), which was running on Amazon Web Services (EC2 VM Instances). The main purpose of Chaos Monkey was detecting how their systems would respond to critical components being taken down. By intentionally shutting down workloads, it would become clear what weaknesses are present in the total topology and allow the engineering teams to work toward mitigation.</p>
+<h1 id="introduction-to-azure-chaos-studio">Introduction to Azure Chaos Studio
+</h1><p>Azure Chaos Studio is provided <em>as a service</em>, which means you don’t have to deploy your own infrastructure first to get it up and running. <strong>Azure Chaos Studio Preview</strong> is a fully managed chaos engineering experimentation platform for accelerating discovery of hard-to-find problems, from late-stage development through production. Disrupt your apps and its corresponding Azure resources (Virtual Machines, Network Security Groups, App Services, Cosmos DB, Azure Kubernetes Service, Azure KeyVault and more&hellip;) intentionally to identify gaps and plan mitigations before your users or customers are impacted by a problem.</p>
+<p>Experiment by subjecting your Azure apps to real or simulated faults in a controlled manner to better understand application resiliency. Observe how your apps will respond to real-world disruptions such as network latency, an unexpected storage outage, expiring secrets, or even a full datacenter outage.</p>
+<p>Thanks to Azure Chaos Studio, one can validate product quality where and when it makes sense for your organization. Use the continuously expanding library of faults, which includes CPU pressure, network latency, blocked resource access, and even infrastructure outages. Drive application resilience by performing ad-hoc drills, integrate with your CI/CD pipeline, or do both to monitor production quality through continuous validation.</p>
+<p>Avoid the need to manage tools and scripts while spending more time learning about your application&rsquo;s resilience. Get started quickly with experiment templates and an expanding library of faults—including agent-based faults that disrupt within resources and service-based faults that disrupt resources at the control plane.</p>
+<h2 id="deploying-azure-chaos-studio">Deploying Azure Chaos Studio
+</h2><ol>
+<li>
+<p>The first thing you need to check is to make sure the <strong>“Microsoft.Chaos” Azure Resource Provider</strong> is enabled (registered) in your subscription. To do that, open your Azure portal, and search for Subscriptions.</p>
+</li>
+<li>
+<p>Select the subscription in which you want to enable Azure Chaos Studio. From within the detailed blade, select “Resource Providers” under the Settings pane, and search for “Chaos”. Select “Microsoft.Chaos” and click “Register” in the top menu; give it a few minutes, until the Status column shows “Registered”.</p>
+</li>
+</ol>
+<p><img src="../images/2023-08-27_17-30-26.png"
+    
+    
+    loading="lazy"
+    
+      alt="Microsoft Chaos Resource Provider"
+    
+    
+    
+  ></p>
+<ol start="3">
+<li>
+<p>Following the Zero Trust concept of least privileges, Chaos Studio requires a <strong>User-Managed Identity</strong> as Identity security object, to interact with the Azure Resource Targets. To create this, click <strong>Create New Resource</strong>, and search for <strong>User Managed Identity</strong>.</p>
+</li>
+<li>
+<p>Complete the necessary parameters in the setup blade:</p>
+</li>
+</ol>
+<ul>
+<li>Azure Subscription</li>
+<li>Azure Resource Group</li>
+<li>Region</li>
+<li>Name for the Chaos MI object</li>
+</ul>
+<p><img src="../images/2023-08-25_7-46-53.png"
+    
+    
+    loading="lazy"
+    
+      alt="Chaos Studio MI"
+    
+    
+    
+  ></p>
+<ol start="5">
+<li>Chaos Studio relies on <strong>Application Insights</strong> and underlying Log Analytics WorkSpace to store metadata of the service (my assumption is, that in a later stage, this will be used to store the actual logging of the executed experiments and Target resources&rsquo; behavior). From the Azure Portal, select <strong>Create New Resource</strong> and search for <strong>Application Insights</strong>.</li>
+</ol>
+<p>Specify the necessary parameters for the deployment:</p>
+<ul>
+<li>Azure Subscription</li>
+<li>Azure Resource Group</li>
+<li>Name for the Application Insights resource, e.g. <strong>ChaosAppInsights</strong></li>
+<li>Resource Mode: <strong>Workspace-based</strong></li>
+</ul>
+<p><img src="../images/2023-08-25_8-00-29.png"
+    
+    
+    loading="lazy"
+    
+      alt="Chaos App Insights"
+    
+    
+    
+  ></p>
+<ol start="6">
+<li>From the Azure Portal, search for <strong>Azure Chaos Studio</strong>.</li>
+</ol>
+<p><img src="../images/2023-08-27_17-33-17.png"
+    
+    
+    loading="lazy"
+    
+      alt="Welcome to Chaos Studio"
+    
+    
+    
+  ></p>
+<ol start="7">
+<li>Select <strong>Onboard Resources</strong>. This brings you to the <strong>Targets</strong> section of the blade.</li>
+</ol>
+<p><img src="../images/2023-08-25_7-59-03.png"
+    
+    
+    loading="lazy"
+    
+      alt="Chaos Studio Targets"
+    
+    
+    
+  ></p>
+<ol start="8">
+<li>Here, you can filter for specific subscriptions or specific Resource Groups (or both), where next, you need to select the <strong>Azure Resource(s)</strong> you want to use as a target. A target can be a Virtual Machine, both Windows and Linux OS are supported, as well as Virtual Machine Scale Sets (VMSS). This approach requires the installation of the <strong>Chaos Studio Agent</strong> on the VMs as part of the Target setup.</li>
+</ol>
+<p>Non-Azure VM services such as App Services, Azure Key Vault, Network Security Groups, Cosmos DB and Azure Kubernetes Service (AKS) rely on the <strong>Service-Direct</strong> scenario, without the agent dependency.</p>
+<h2 id="onboarding-an-azure-vm-to-chaos-studio">Onboarding an Azure VM to Chaos Studio
+</h2><ol>
+<li>In this example, I’m going to target a Windows Server Virtual machine, selecting it, which unlocks the “Enable Targets” menu option. From here, select <strong>Enable agent-based targets (VM, VMSS)</strong> from the menu.</li>
+</ol>
+<p><img src="../images/2023-08-25_7-59-24.png"
+    
+    
+    loading="lazy"
+    
+      alt="Chaos Studio VM Target"
+    
+    
+    
+  ></p>
+<ol start="2">
+<li>This will open the <strong>Enable agent targets</strong> blade. Provide the necessary parameters for the deployment:</li>
+</ol>
+<ul>
+<li>Subscription</li>
+<li>Azure Managed Identity you created in the previous steps</li>
+<li>Application Insights account you created for Chaos Studio</li>
+</ul>
+<p><img src="../images/2023-08-25_8-03-07.png"
+    
+    
+    loading="lazy"
+    
+      alt="Chaos Studio VM Agent Target"
+    
+    
+    
+  ></p>
+<ol start="3">
+<li>Wait for the deployment to complete.</li>
+</ol>
+<h2 id="onboarding-a-non-azure-vm-to-chaos-studio">Onboarding a non-Azure VM to Chaos Studio
+</h2><ol>
+<li>In this next example, I&rsquo;m going to target several other Azure Resources as Chaos Target. Starting with a <strong>Network Security Group</strong>.</li>
+</ol>
+<p><img src="../images/2023-08-25_8-04-34.png"
+    
+    
+    loading="lazy"
+    
+      alt="Chaos Studio non-VM Agent Target"
+    
+    
+    
+  ></p>
+<p>This opens the Enable service direct targets blade. Click <strong>Review and Enable</strong> to complete the step.</p>
+<p><img src="../images/2023-08-25_8-04-49.png"
+    
+    
+    loading="lazy"
+    
+      alt="Chaos Studio non-VM Agent Target"
+    
+    
+    
+  ></p>
+<p>If you want, you can add additional non-Azure VM Resources in this scenario. For example, I included my Azure Kubernetes Service (AKS) resource, as well as Azure Key Vault.</p>
+<h2 id="creating-the-vm-target-experiment">Creating the VM Target Experiment
+</h2><p>In this next section, you will learn how to create an Azure VM Experiment and simulating <strong>CPU Pressure</strong>.</p>
+<ol>
+<li>With the VM Chaos Agent installed, it can now be used as a proper target for a Chaos Experiment. From the <strong>Chaos Studio Blade</strong>, select <strong>Experiments</strong>, select <strong>New Experiment</strong>.</li>
+</ol>
+<p><img src="../images/2023-08-25_8-05-53.png"
+    
+    
+    loading="lazy"
+    
+      alt="Chaos Studio Experiment"
+    
+    
+    
+  ></p>
+<ol start="2">
+<li>Under the <strong>Basics</strong> tab, complete the necessary base information:</li>
+</ol>
+<ul>
+<li>Subscription</li>
+<li>Resource Group</li>
+<li>Name: Unique descriptive name for the experiment, e.g. <strong>CPUSpike</strong></li>
+<li>Region of choice</li>
+</ul>
+<p><img src="../images/2023-08-25_8-06-17.png"
+    
+    
+    loading="lazy"
+    
+      alt="Chaos Studio Experiment Basics"
+    
+    
+    
+  ></p>
+<ol start="3">
+<li>Click <strong>Next</strong> to define the <strong>Permissions</strong>. Here, you allocate a new <strong>Managed Identity</strong> Identity security object to the experiment itself. Later on, you need to provide the necessary IAM/RBAC (Role Based Access Control) permissions for this Experiment to the Azure Target Resource.</li>
+</ol>
+<p><img src="../images/2023-08-25_8-06-34.png"
+    
+    
+    loading="lazy"
+    
+      alt="Chaos Studio Experiment Basics"
+    
+    
+    
+  ></p>
+<ol start="4">
+<li>Click <strong>Next</strong> to open the <strong>Experiment Designer</strong></li>
+</ol>
+<p><img src="../images/2023-08-25_8-06-50.png"
+    
+    
+    loading="lazy"
+    
+      alt="Chaos Studio Experiment Basics"
+    
+    
+    
+  ></p>
+<p>The logical structure is based on <strong>Steps</strong>, containing <strong>Branches</strong>. Within a Branch, you specify the actual <strong>Fault Action</strong> or <strong>Delay</strong>.</p>
+<p>Steps are running in <strong>parallel</strong>, where Actions are executed <strong>Sequential</strong>.</p>
+<p>Click <strong>+ Action</strong>, and select <strong>Add Fault</strong>. This opens a list of possible fault injections for all resources.</p>
+<p><img src="../images/2023-08-25_8-07-07.png"
+    
+    
+    loading="lazy"
+    
+      alt="Chaos Studio Faults"
+    
+    
+    
+  ></p>
+<ol start="5">
+<li>From the list of faults, select <strong>CPU Pressure</strong>. Next, specify the <strong>Duration</strong> parameter (10 minutes seems a fair test) and set <strong>pressureLevel</strong> to 95, meaning a CPU Pressure of 95% during 10 minutes.</li>
+</ol>
+<p><img src="../images/2023-08-25_8-07-19.png"
+    
+    
+    loading="lazy"
+    
+      alt="Chaos Studio Experiment Basics"
+    
+    
+    
+  ></p>
+<ol start="6">
+<li>Next, allocate the Azure Target Resource. In our example, select the VM you deployed earlier as sample target.</li>
+</ol>
+<p><img src="../images/2023-08-25_8-07-30.png"
+    
+    
+    loading="lazy"
+    
+      alt="Chaos Studio Experiment Basics"
+    
+    
+    
+  ></p>
+<ol start="7">
+<li>A new Experiment Resource got created.</li>
+</ol>
+<p><img src="../images/2023-08-25_8-08-56.png"
+    
+    
+    loading="lazy"
+    
+      alt="Chaos Studio Experiment Basics"
+    
+    
+    
+  ></p>
+<ol start="8">
+<li>Before the experiment can run successful, its corresponding Managed Identity needs to have the correct <strong>RBAC/IAM permissions</strong> on the target resource. <strong>Navigate to the Azure VM</strong> from the Azure Portal, and select Access Control/IAM.</li>
+</ol>
+<p><img src="../images/2023-08-25_8-09-28.png"
+    
+    
+    loading="lazy"
+    
+      alt="Chaos Studio Experiment Basics"
+    
+    
+    
+  ></p>
+<ol start="9">
+<li>Different Azure Target Resources require different Chaos Experiment RBAC permissions. For an Azure VM, <strong>Reader</strong> permissions is sufficient.</li>
+</ol>
+<p><strong>Note: for an overview of what RBAC permission is required for each Azure Resource, check <a class="link" href="https://learn.microsoft.com/en-us/azure/chaos-studio/chaos-studio-fault-providers"  target="_blank" rel="noopener"
+    >this link</a> in the Azure Docs.</strong></p>
+<p>From <strong>Add Role Assignment</strong>, select <strong>Reader</strong> as <strong>Selected Role</strong>. In the <strong>Assign Access to</strong> step, select <strong>Managed Identity</strong> and open the Chaos Experiment section under the Managed Identity section. Select the <strong>CPUSpike</strong> Experiment Resource.</p>
+<p><img src="../images/2023-08-25_8-09-56.png"
+    
+    
+    loading="lazy"
+    
+      alt="Chaos Studio Experiment Basics"
+    
+    
+    
+  ></p>
+<ol start="10">
+<li>With the permissions allocated, navigate back to the <strong>CPUSpike</strong> Experiment in the Chaos Studio blade, and click <strong>Run</strong>.</li>
+</ol>
+<p>The Experiment Task will start, and run for 10 minutes.</p>
+<p><img src="../images/2023-08-25_8-10-35.png"
+    
+    
+    loading="lazy"
+    
+      alt="Chaos Studio Experiment Basics"
+    
+    
+    
+  ></p>
+<ol start="11">
+<li>Wait for the Experiment to change to <strong>Running</strong> state.</li>
+</ol>
+<p><img src="../images/2023-08-25_8-12-55.png"
+    
+    
+    loading="lazy"
+    
+      alt="Chaos Studio Experiment Basics"
+    
+    
+    
+  ></p>
+<ol start="12">
+<li>With the experiment running, navigate to the <strong>Azure VM</strong> your testing against, and open its <strong>Metrics</strong>. From the Metrics blade, select <strong>Percent CPU</strong> under Metric in the graph, and watch the real-time CPU load.</li>
+</ol>
+<p><img src="../images/2023-08-25_8-13-51.png"
+    
+    
+    loading="lazy"
+    
+      alt="Chaos Studio Experiment Basics"
+    
+    
+    
+  ></p>
+<ol start="13">
+<li>Repeat this process every couple of minutes, and see how the CPU load is gradually spiking, eventually reaching 95% for a certain amount of time.</li>
+</ol>
+<p><img src="../images/2023-08-25_8-14-23.png"
+    
+    
+    loading="lazy"
+    
+      alt="Chaos Studio Experiment Basics"
+    
+    
+    
+  ></p>
+<ol start="14">
+<li>Wait for the <strong>CPUSpike</strong> Experiment to complete successfully.</li>
+</ol>
+<h1 id="summary">Summary
+</h1><p>In this article, you learned about Chaos Engineering, how Netflix created Chaos Monkey as the foundation of Chaos Engineering, and how Azure Chaos Studio allows for Chaos-testing of your Azure Resources.</p>
+<p>For now, you learned how to deploy Chaos Studio, and how to enable an Azure VM as a Chaos Target, followed by how to create and run a Virtual Machine CPUSpike experiment.</p>
+<p>In a later follow-up article, I will show you how to use Chaos Studio Experiments against an <strong>Azure Kubernetes Cluster</strong>, as well as a <strong>Network Security Group</strong>.</p>
+<p>I hope this article spiced your interest for Azure Chaos Studio. Go out and <em>experiment</em> with it, and let me know how it goes!</p>
+<p><a class="link" href="https://www.buymeacoffee.com/pdtit"  target="_blank" rel="noopener"
+    ><img src="../images/buy_me_a_coffee.png"
+    
+    
+    loading="lazy"
+    
+      alt="BuyMeACoffee"
+    
+    
+    
+  ></a></p>
+<p>Cheers!!</p>
+<p>/Peter</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/azure/">Azure</a>
+        
+            <a href="/tags/sre/">SRE</a>
+        
+            <a href="/tags/chaos-studio/">Chaos Studio</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/post/build-an-azure-ai-chatbot-using-your-own-data-in-blob-storage/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Build an Azure AI chatbot using your own data from blob storage </h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/post/you-do-not-have-permissions-error-after-publishing-to-azure-app-services/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">You do not have permissions to view this directory or page after publishing to Azure App Service</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/post/dck-acr-aci-aks-aca-the-azure-container-alphabet-soup/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Azure Spring Clean - DCK, ACR, ACI, AKS, ACA, the Azure Container Alphabet Soup</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/post/steps-for-blazor-marvel---webassembly/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Festive Tech Calendar 2022 - Building a Marvel Hero app using Blazor Web Assembly and Azure Static Web Apps</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/post/how-to-clear-the-azure-portal-recent-resources-list/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">How to clear the Azure Portal Recent Resources list</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2021 - 
+        
+        2026 Azure Readiness starts here...
+    </section>
+    
+    <section class="powerby">
+        
+            The best way to know the future, is to learn it <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="4.0.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+
+
+
+<script type="module">
+    import gallery from '\/ts\/gallery.js';
+
+    const articleContent = document.querySelector('.article-content');
+    const shouldLoad = articleContent && (articleContent.querySelectorAll('figure').length > 0 || articleContent.querySelectorAll('img.gallery-image').length > 0);
+    
+    if (shouldLoad) {
+        gallery(articleContent);
+
+        const PhotoSwipeLightbox = (await import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js")).default;
+        const styleHref = "https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.css";
+
+        const styleTag = document.createElement('link');
+        styleTag.rel = 'stylesheet';
+        styleTag.href = styleHref;
+        document.head.appendChild(styleTag);
+
+        const lightbox = new PhotoSwipeLightbox({
+            gallerySelector: '.article-content',
+            childSelector: 'figure a.image-link',
+            pswpModule: () => import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js")
+        });
+        lightbox.init();
+    }
+</script>
+
+    
+
+            </main>
+        </div>
+        
+    <div id="cookie-consent-banner" class="cookie-banner" aria-hidden="true" role="dialog" aria-labelledby="cookie-banner-title">
+    <div class="cookie-banner__content">
+        <div class="cookie-banner__text">
+            <strong id="cookie-banner-title">Cookie Consent</strong>
+            <p>We use cookies to enhance your browsing experience and analyze site traffic.</p>
+        </div>
+
+        <div class="cookie-banner__actions">
+            <button class="cookie-btn cookie-btn--secondary" data-cookie-action="deny">
+                Deny
+            </button>
+            <button class="cookie-btn cookie-btn--primary" data-cookie-action="accept">
+                Accept All
+            </button>
+        </div>
+        <button class="cookie-banner__settings-link" data-cookie-action="settings">
+            Manage preferences
+        </button>
+
+        
+        <div id="cookie-settings-panel" class="cookie-settings" aria-hidden="true">
+            <h3>Cookie Preferences</h3>
+
+            <div class="cookie-category">
+                <label>
+                    <input type="checkbox" name="necessary" checked disabled />
+                    <strong>Necessary</strong>
+                </label>
+                <p>These cookies are required for the website to function and cannot be disabled.</p>
+            </div><div class="cookie-category">
+                <label>
+                    <input type="checkbox" name="analytics" data-cookie-category="analytics" />
+                    <strong>Analytics</strong>
+                </label>
+                <p>These cookies help us understand how visitors interact with our website.</p>
+            </div><div class="cookie-category">
+                <label>
+                    <input type="checkbox" name="functional" data-cookie-category="functional" />
+                    <strong>Functional</strong>
+                </label>
+                <p>These cookies enable features like comments and embedded content.</p>
+            </div><div class="cookie-settings__actions">
+                <button class="cookie-btn cookie-btn--secondary" data-cookie-action="cancel">
+                    Cancel
+                </button>
+                <button class="cookie-btn cookie-btn--primary" data-cookie-action="save">
+                    Save preferences
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <script type="text/javascript" src="/ts/cookies.6d3577f211db9f4f1997385d4b417cf90130b050bc9e787bb1bb5346d337e998.js" defer></script>
+<script type="text/javascript" src="/ts/main.acaf849f2b273f6a8368a58b001f336738d0c948d92e79b116467d0c7515f932.js" defer></script>
+
+
+    </body>
+</html>

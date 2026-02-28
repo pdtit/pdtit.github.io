@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="\nHey folks,\nWelcome to #AzureSpringClean, an initiative from Joe Carlyle and Thomas Thornton which celebrates its 4th edition this year. I&rsquo;m thrilled to be part of this again for the 3nd time this year. My first article had security in mind, explaining the difference between Azure Service Principals and Managed Identity.\nMy 2nd article focused on understand DevSecOps, and how you can optimize security in your application deployment lifecycle, by &ldquo;shifting left&rdquo;. (https://www.007ffflearning.com/post/azure-spring-clean---devsecops-and-shifting-left-to-publish-secure-software/)\n">
+<title>Azure Spring Clean - Application Insights - Inside Out</title>
+
+
+<link rel="canonical" href="https://www.007ffflearning.com/post/azure-spring-clean---application-insights---inside-out/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+
+
+<link rel="stylesheet" href="/scss/style.min.cf9653eecaea3cf14f5747895c3ac9b505bea7f8f3f40c16dac6b0e82fafddc4.css"><meta property='og:title' content="Azure Spring Clean - Application Insights - Inside Out">
+<meta property='og:description' content="\nHey folks,\nWelcome to #AzureSpringClean, an initiative from Joe Carlyle and Thomas Thornton which celebrates its 4th edition this year. I&rsquo;m thrilled to be part of this again for the 3nd time this year. My first article had security in mind, explaining the difference between Azure Service Principals and Managed Identity.\nMy 2nd article focused on understand DevSecOps, and how you can optimize security in your application deployment lifecycle, by &ldquo;shifting left&rdquo;. (https://www.007ffflearning.com/post/azure-spring-clean---devsecops-and-shifting-left-to-publish-secure-software/)\n">
+<meta property='og:url' content='https://www.007ffflearning.com/post/azure-spring-clean---application-insights---inside-out/'>
+<meta property='og:site_name' content='Azure Readiness starts here...'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Azure' /><meta property='article:tag' content='Monitoring' /><meta property='article:tag' content='DevOps' /><meta property='article:published_time' content='2025-03-06T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-03-06T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Azure Spring Clean - Application Insights - Inside Out">
+<meta name="twitter:description" content="\nHey folks,\nWelcome to #AzureSpringClean, an initiative from Joe Carlyle and Thomas Thornton which celebrates its 4th edition this year. I&rsquo;m thrilled to be part of this again for the 3nd time this year. My first article had security in mind, explaining the difference between Azure Service Principals and Managed Identity.\nMy 2nd article focused on understand DevSecOps, and how you can optimize security in your application deployment lifecycle, by &ldquo;shifting left&rdquo;. (https://www.007ffflearning.com/post/azure-spring-clean---devsecops-and-shifting-left-to-publish-secure-software/)\n">
+    <link rel="shortcut icon" href="/img/007ffflearning-ape.png" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        <figure class="site-avatar">
+                <a href="/">
+                    <img src="/img/007ffflearning-ape.png" 
+                        width="596"
+                        height="842"
+                        class="site-logo"
+                        loading="lazy"
+                        alt="Avatar">
+                </a>
+                
+                    <span class="emoji">🎓</span>
+                
+            </figure>
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Azure Readiness starts here...</a></h1>
+            <h2 class="site-description">Bring me an audience, I&#39;ll give them Azure knowledge in return</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://pdtit.bsky.social'
+                        
+                        title="Bluesky"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 530" fill="currentColor">
+  <path d="m135.72 44.03c66.496 49.921 138.02 151.14 164.28 205.46 26.262-54.316 97.782-155.54 164.28-205.46 47.98-36.021 125.72-63.892 125.72 24.795 0 17.712-10.155 148.79-16.111 170.07-20.703 73.984-96.144 92.854-163.25 81.433 117.3 19.964 147.14 86.092 82.697 152.22-122.39 125.59-175.91-31.511-189.63-71.766-2.514-7.3797-3.6904-10.832-3.7077-7.8964-0.0174-2.9357-1.1937 0.51669-3.7077 7.8964-13.714 40.255-67.233 197.36-189.63 71.766-64.444-66.128-34.605-132.26 82.697-152.22-67.108 11.421-142.55-7.4491-163.25-81.433-5.9562-21.282-16.111-152.36-16.111-170.07 0-88.687 77.742-60.816 125.72-24.795z"/>
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/petender'
+                        
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pdtit/'
+                        
+                        title="LinkedIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/post/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Posts</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/books/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+</svg>
+
+                
+                <span>Books</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/speaking/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-microphone" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 5a3 3 0 0 1 6 0v7a3 3 0 0 1 -6 0z"/>
+  <path d="M5 10a7 7 0 0 0 14 0"/>
+  <path d="M8 21l8 0"/>
+  <path d="M12 17l0 4"/>
+</svg>
+
+                
+                <span>Speaking</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About Me</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>Tags</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/azure-spring-clean---application-insights---inside-out/">Azure Spring Clean - Application Insights - Inside Out</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime='2025-03-06T00:00:00Z'>Mar 06, 2025</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+
+    
+</div>
+
+</header>
+
+    
+
+    <section class="article-content">
+    
+    
+    <p><img src="../images/AzureSpringClean2025-logo.png"
+    
+    
+    loading="lazy"
+    
+      alt="Azure Spring Clean"
+    
+    
+    
+  ></p>
+<p>Hey folks,</p>
+<p>Welcome to #AzureSpringClean, an initiative from <strong><a class="link" href="https://twitter.com/wedoazure"  target="_blank" rel="noopener"
+    >Joe Carlyle</a> and <a class="link" href="https://twitter.com/tamstar1234"  target="_blank" rel="noopener"
+    >Thomas Thornton</a></strong> which celebrates its 4th edition this year. I&rsquo;m thrilled to be part of this again for the 3nd time this year. My <a class="link" href="https://www.007ffflearning.com/post/azure-spring-clean-demystifying-service-principal-and-managed-identities/"  target="_blank" rel="noopener"
+    >first article</a> had <strong>security in mind, explaining the difference between Azure Service Principals and Managed Identity</strong>.</p>
+<p>My 2nd article focused on <strong>understand DevSecOps, and how you can optimize security in your application deployment lifecycle, by &ldquo;shifting left&rdquo;</strong>.
+(<a class="link" href="https://www.007ffflearning.com/post/azure-spring-clean---devsecops-and-shifting-left-to-publish-secure-software/"  target="_blank" rel="noopener"
+    >https://www.007ffflearning.com/post/azure-spring-clean---devsecops-and-shifting-left-to-publish-secure-software/</a>)</p>
+<p>Where now for this 3rd article, where moving more towards the &rsquo;end&rsquo; of the traditional DevOps cycle, discussing <strong>Operations and Monitoring, by using Azure Application Insights</strong>.</p>
+<h2 id="introduction">Introduction
+</h2><p>In today&rsquo;s digital age, monitoring and maintaining the health of applications is crucial for ensuring optimal performance and user satisfaction. <strong>Azure Monitor</strong>, a comprehensive monitoring solution from Microsoft, offers a suite of tools to help developers and IT professionals keep their applications running smoothly. One of the key components of Azure Monitor is Application Insights, which provides deep insights into application performance and user behavior. In this article, we&rsquo;ll explore <strong>Application Insights</strong>, its features, and how it integrates with Azure Monitor to deliver a robust monitoring solution.</p>
+<h2 id="overview-of-azure-monitor">Overview of Azure Monitor
+</h2><p>Azure Monitor is a powerful platform that provides end-to-end monitoring for your applications and infrastructure. It collects and analyzes telemetry data from various sources, including Azure resources, applications, and on-premises environments. Azure Monitor helps you understand how your applications are performing and proactively identifies issues affecting them. It encompasses several services, including Log Analytics, Application Insights, and Azure Monitor for VMs, among others.</p>
+<h2 id="application-insights-overview">Application Insights Overview
+</h2><p>Application Insights is an application performance management (APM) service within Azure Monitor. It is designed to monitor live applications, providing real-time insights into their performance and usage. By integrating with OpenTelemetry, Application Insights offers a vendor-neutral approach to collecting and analyzing telemetry data, enabling comprehensive observability of your applications. It supports various programming languages and frameworks, including .NET, Java, Node.js, and client-side JavaScript.</p>
+<h2 id="key-features-of-application-insights">Key Features of Application Insights
+</h2><p><strong>End-to-End Transactions</strong>: Application Insights provides a detailed view of end-to-end transactions, allowing you to trace and diagnose issues across different components of your application4. This feature supports time scrubbing, enabling you to filter and analyze specific time periods in more detail.</p>
+<p><strong>Performance and Failures</strong>: The service offers tools to monitor performance and identify failures. It includes features like the Roles tab, which preserves role selection while navigating from the application map, and the availability tool, which helps you monitor the availability and responsiveness of your application endpoints.</p>
+<p><strong>Application Map</strong>: The application map provides a visual overview of your application&rsquo;s architecture and the interactions between its components. It includes features like &ldquo;Zoom to fit&rdquo; and grouped nodes to make the map easier to read and navigate4.</p>
+<p><strong>Live Metrics</strong>: With Live Metrics Stream, you can monitor your application&rsquo;s health metrics in real-time, even while deploying changes. This feature helps you quickly identify and address issues as they arise.</p>
+<p><strong>Smart Detection</strong>: Application Insights uses machine learning to detect anomalies in your application&rsquo;s performance and sends alerts with embedded diagnostics. This proactive approach helps you address potential issues before they impact users.</p>
+<p><strong>Integration with Azure Services</strong>: Application Insights integrates seamlessly with other Azure services, such as Azure DevOps, Azure Kubernetes Service (AKS), and Azure Functions. This integration allows you to monitor and manage your applications using a unified platform.</p>
+<h2 id="integration-with-azure-monitor">Integration with Azure Monitor
+</h2><p>Application Insights is a core component of Azure Monitor, and its integration with other Azure Monitor services enhances its capabilities. For example, you can use Log Analytics to query and analyze telemetry data collected by Application Insights. This integration provides a comprehensive view of your application&rsquo;s performance and helps you identify trends and patterns.</p>
+<p>Azure Monitor also offers out-of-the-box insights for various Azure resources, such as virtual machines, containers, and storage accounts. These insights are built on workbooks, which are interactive reports that you can customize to meet your specific needs. By leveraging these insights, you can gain a deeper understanding of your application&rsquo;s performance and make data-driven decisions to optimize it.</p>
+<h2 id="use-cases-and-benefits">Use Cases and Benefits
+</h2><p><strong>Proactive Monitoring</strong>: Application Insights enables proactive monitoring of your applications, helping you identify and address issues before they impact users. This proactive approach improves the overall user experience and reduces downtime.</p>
+<p><strong>Performance Optimization</strong>: By providing detailed insights into your application&rsquo;s performance, Application Insights helps you identify bottlenecks and optimize your code. This optimization leads to faster and more efficient applications.</p>
+<p><strong>User Behavior Analysis</strong>: Application Insights offers tools to analyze user behavior, such as usage patterns, session durations, and user flows. This analysis helps you understand how users interact with your application and identify areas for improvement.</p>
+<p><strong>Cost Management</strong>: By monitoring resource usage and performance, Application Insights helps you manage costs more effectively. You can identify underutilized resources and optimize their usage to reduce costs.</p>
+<p><strong>Enhanced Security</strong>: Application Insights provides insights into potential security issues, such as failed login attempts and suspicious activities. By monitoring these activities, you can enhance the security of your applications and protect sensitive data.</p>
+<h2 id="seeing-it-in-action">Seeing it in action
+</h2><p>Now that we covered the theoretical part, let&rsquo;s have a look at what all this looks like from a sample application workload perspective.</p>
+<p>I am using a sample app which I have been using in all my Azure Architecture (AZ-305) and Developing Azure Solutions (AZ-204) classes over the years, when talking about Application Insights. It recently got moved to a new &rsquo;trainer&rsquo; platform out of a project I&rsquo;m leading within Microsoft, based on Azure Developer CLI deployments for trainer demo scenarios. (If you&rsquo;re new to AZD, you should definitely check it out!)</p>
+<p>Head over to <a class="link" href="https://aka.ms/trainer-demo-deploy"  target="_blank" rel="noopener"
+    >Trainer-Demo-Deploy</a> and search for <strong>tollbooth</strong></p>
+<p>![Trainer Demo Deploy - Tollbooth](../images/Screenshot 2025-03-07 060247.png)</p>
+<p>Select the Tollbooth Serverless Architecture with Azure Functions card, and follow the <strong>Template Details</strong> instructions to get it deployed. Most important is having the Scenario-specific prereqs running on your local machine, as well as having Azure Developer CLI as well.</p>
+<p>from <strong>azd up</strong>, it will ask you for your Azure subscription and the region where you want to deploy the scenario. Give it about 12-15min, and the fun can start&hellip;</p>
+<p><img src="../images/tollbooth.png"
+    
+    
+    loading="lazy"
+    
+      alt="Tollbooth Architecture"
+    
+    
+    
+  ></p>
+<p>As you can see from the architecture, it is using several different services in Azure, to replicate a Tollbooth / Automated Parking Lot management application. This will generate &rsquo;traffic&rsquo; to be monitored through Application Insights.</p>
+<p>Using this demo scenario, you showcase a solution for processing vehicle photos as they are uploaded to a storage account, using serverless technologies on Azure. The license plate data gets extracted using Azure Cognitive Service, and stored in a highly available NoSQL data store on Azure CosmosDB for exporting. The data export process will be orchestrated by a serverless Azure Functions and EventGrid-based component architecture, that coordinates exporting new license plate data to file storage using the Blob Trigger Function. Each aspect of the architecture provides live dashboard views, and more detailed information can be viewed real-time from Azure Application Insights.</p>
+<h4 id="azure-app-service---upload-images">Azure App Service - Upload Images
+</h4><ol>
+<li>
+<p>The <strong>starting point</strong> of the demo scenario, is the <strong>imageupload</strong> web application. This simulates car traffic for 500 vehicles, which should be enough to see live data dashboard views across all architecture components. Now there is a 1-2 minute delay before the metrics actually show up in the dashboards.</p>
+</li>
+<li>
+<p>Navigate to the imageupload website URL (<a class="link" href="https://%25youralias%25tbimageuploadapp.azurewebsites.net/"  target="_blank" rel="noopener"
+    >https://%youralias%tbimageuploadapp.azurewebsites.net/</a>)</p>
+</li>
+</ol>
+<img src="https://raw.githubusercontent.com/rob-foulkrod/TollBooth/main/Demoguide/TOLLBOOTH/generate_traffic.png" alt="Generate Car Traffic WebApp" style="width:70%;">
+<br></br>
+<ol>
+<li>Click the <strong>Upload Images</strong> button - this loops to 500</li>
+</ol>
+<h4 id="azure-storage-account">Azure Storage Account
+</h4><ol>
+<li>
+<p>Once the upload process is complete, navigate to the <strong>%youralias%datalake</strong> Azure Storage Account.</p>
+</li>
+<li>
+<p>Navigate to the <strong>Images</strong> Container; notice the different image files, generated from the web application. Feel free to select a file and download it, to show it contains a car image with a license plate. You might open different images, to showcase there are different cars (Note: in reality, we used 10 different images, looping 50 times, to generate 500 images in total)</p>
+</li>
+</ol>
+<img src="https://raw.githubusercontent.com/rob-foulkrod/TollBooth/main/Demoguide/TOLLBOOTH/datalake-images.png" alt="Storage Account Container with car images" style="width:70%;">
+<br></br>
+<h4 id="azure-functions">Azure Functions
+</h4><ol>
+<li>Once the images are available in Azure Storage Account, an Azure Function <strong>ProcessImage</strong>, which sends image files to <strong>Azure Cognitive Service</strong></li>
+</ol>
+<img src="https://raw.githubusercontent.com/rob-foulkrod/TollBooth/main/Demoguide/TOLLBOOTH/processimage.png" alt="Azure Function with Blob Trigger" style="width:70%;">
+<br></br>
+<ol>
+<li>
+<p>Use this Azure Function to explain the concept of triggers (HTTP, Blob Trigger,&hellip;) and how the starting point is &lsquo;something happens in Blob&rsquo;, which kicks off the Function.</p>
+</li>
+<li>
+<p>Once the data comes back from <strong>Cognitive Service</strong>, it triggers the next Azure Function <strong>SavePlateData</strong>, which stores text values in Azure CosmosDB.</p>
+</li>
+</ol>
+<img src="https://raw.githubusercontent.com/rob-foulkrod/TollBooth/main/Demoguide/TOLLBOOTH/saveplatedata.png" alt="SavePlateData Function" style="width:70%;">
+<br></br>
+<h4 id="event-grid--topics--subscriptions">Event Grid / Topics &amp; Subscriptions
+</h4><ol>
+<li>Notice that this Function is based on an Event Trigger, coming from Event Grid (%youralias%eventgridtopic). From the Azure Portal, navigate to <strong>Event Grid</strong>, and select <strong>Topics</strong>. Open the EventGridTopic resource**.</li>
+</ol>
+<img src="https://raw.githubusercontent.com/rob-foulkrod/TollBooth/main/Demoguide/TOLLBOOTH/eventgridtopic.png" alt="Event Grid Topic with data" style="width:70%;">
+<br></br>
+<ol>
+<li>Highlight the Event Grid Topic is related to the <strong>Event Grid Subscription</strong> called <strong>SavePlate</strong>, which triggers the actual Azure Function <strong>SavePlateData</strong>. This also clarifies the use case, where Event Grid acts as the orchestrator, watching over certain events to occur, and based on the settings of the subscription, it triggers an Azure Function process.</li>
+</ol>
+<img src="https://raw.githubusercontent.com/rob-foulkrod/TollBooth/main/Demoguide/TOLLBOOTH/eventgridtopic.png" alt="Event Grid Subscription" style="width:70%;">
+<br></br>
+<ol>
+<li>Select the <strong>SavePlate</strong> Event Grid Subscription from the dashboard view. This opens a new dashboard, showing the hierarchy of the event:</li>
+</ol>
+<ul>
+<li>Event Grid Topic : %youralias%eventgridtopic</li>
+<li>Metrics - showing the 500 events</li>
+<li>Azure Function - SavePlateData</li>
+</ul>
+<img src="https://raw.githubusercontent.com/rob-foulkrod/TollBooth/main/Demoguide/TOLLBOOTH/eventsubscription_hierarchy.png" alt="Event Grid Subscription" style="width:70%;">
+<br></br>
+<ol>
+<li>While talking about Event Grid Subscriptions, there is actually a 2nd subscription in place, which watches over the Azure Blob Storage events. Navigate back to the Azure Storage Account <strong>%youralias%tbdatalake</strong>, and navigate to <strong>Events</strong>.</li>
+</ol>
+<img src="https://raw.githubusercontent.com/rob-foulkrod/TollBooth/main/Demoguide/TOLLBOOTH/datalake-events.png" alt="Datalake Events" style="width:70%;">
+<br></br>
+<ol>
+<li>
+<p>Notice the Event Grid Subscription <strong>blobtopicsubscription</strong>, which is a <strong>Web Hook</strong>, meaning, it gets triggered based on HTTP requests.</p>
+</li>
+<li>
+<p>From within the Event Subscription detailed dashboard, showing <strong>Metrics</strong> initially, navigate to <strong>Filters</strong>. Highlight the subscription is based on filter <strong>Create Blob</strong>. This is what triggers the Azure Function, based on &ldquo;a new blob is getting created&rdquo;. All other events in the Storage Account are getting bypassed/neglected.</p>
+</li>
+</ol>
+<img src="https://raw.githubusercontent.com/rob-foulkrod/TollBooth/main/Demoguide/TOLLBOOTH/eventsubscription_blobcreated.png" alt="Blob Created Event Subscription Filter" style="width:70%;">
+<br></br>
+<h4 id="cosmos-db">Cosmos DB
+</h4><ol>
+<li>Open the %youralias%cosmosdb. Navigate to <strong>Data Explorer</strong>. Show the LicensePlates Database, which has 2 different Containers <strong>NeedsManualReview</strong> (not used in this demo scenario), and <strong>Processed</strong>. The Processed Container is where the actual text information returned from Azure Cognitive Service is getting stored.</li>
+</ol>
+<img src="https://raw.githubusercontent.com/rob-foulkrod/TollBooth/main/Demoguide/TOLLBOOTH/cosmosdb_licenseplates.png" alt="CosmosDB database" style="width:70%;">
+<br></br>
+<ol>
+<li>Under Processed, open the <strong>Items</strong> view. This shows the different document items in the container, each document having the license plate, image file name and timestamp in a JSON document format.</li>
+</ol>
+<img src="https://raw.githubusercontent.com/rob-foulkrod/TollBooth/main/Demoguide/TOLLBOOTH/cosmosdb_items.png" alt="CosmosDB database" style="width:70%;">
+<br></br>
+<h4 id="application-insights">Application Insights
+</h4><ol>
+<li>Navigate to Application Insights, opening the <strong>%youralias%tbappinsights</strong> resource. Go to <strong>Live Metrics</strong>. This will show a lot of different views about the ongoing processing of Functions, Events, Storage activity and more.</li>
+</ol>
+<img src="https://raw.githubusercontent.com/rob-foulkrod/TollBooth/main/Demoguide/TOLLBOOTH/appinsights_livemetrics.png" alt="App Insights - Live Metrics" style="width:70%;">
+<br></br>
+<p>Note: If you see the &ldquo;Demo&rdquo; page, it means you don&rsquo;t have live metrics (anymore), and the processing of the car images is completed already. To generate (new) live data, go back to the imageupload web app, and generate new images by pressing the &ldquo;Upload images&rdquo; button.</p>
+<img src="https://raw.githubusercontent.com/rob-foulkrod/TollBooth/main/Demoguide/TOLLBOOTH/appinsights_livemetrics_notavailable.png" alt="App Insights - No Live Metrics Data" style="width:70%;">
+<br></br>
+<ol>
+<li>From within the base charts, scroll down to <strong>Servers</strong> section. There should be anywhere between 2-10 visible. Explain that these &ldquo;servers&rdquo; reflect the different Azure Functions instances getting triggered, and handling the image processing from blob to CosmosDB.</li>
+</ol>
+<img src="https://raw.githubusercontent.com/rob-foulkrod/TollBooth/main/Demoguide/TOLLBOOTH/appinsights_servers.png" alt="App Insights - Servers" style="width:70%;">
+<br></br>
+<ol>
+<li>Zoom in on the <strong>sample telemetry</strong> to the right hand side. Explain how the different API-streams of the application topology are visible here. Notice how it shows the Azure Function call &ldquo;SavePlateData&rdquo;, as well as interaction with &ldquo;Azure Computer Vision&rdquo;, etc&hellip;</li>
+</ol>
+<img src="https://raw.githubusercontent.com/rob-foulkrod/TollBooth/main/Demoguide/TOLLBOOTH/appinsights_sampletelemetry.png" alt="App Insights - Sample Telemetry" style="width:70%;">
+<br></br>
+<ol>
+<li>Depending when you opened the Live Metrics view, the sample telemetry should have a <strong>red</strong> item <strong>Dependency</strong>, which simulates an issue from the Azure Function to Cognitive Service, showing you the details of the <strong>API POST Action call</strong>.</li>
+</ol>
+<img src="https://raw.githubusercontent.com/rob-foulkrod/TollBooth/main/Demoguide/TOLLBOOTH/appinsights_dependency_error.png" alt="App Insights - Dependency Error" style="width:70%;">
+<br></br>
+<ol>
+<li>Next, select <strong>Application Map</strong> within Application Insights.</li>
+</ol>
+<img src="https://raw.githubusercontent.com/rob-foulkrod/TollBooth/main/Demoguide/TOLLBOOTH/appinsights_application_map.png" alt="App Insights - Application Map" style="width:70%;">
+<br></br>
+<ol>
+<li>Explain the usage of Application Map, describing the 2 different views here. The first view <strong>%youralias%events</strong>, shows the number of running (Azure Functions) instances, with different metrics (performance details). The Events are representing communication with Azure CosmosDB. It shows the <strong>number of database calls</strong>, as well as the <strong>average performance</strong> between the Event Functions and CosmosDB.</li>
+</ol>
+<img src="https://raw.githubusercontent.com/rob-foulkrod/TollBooth/main/Demoguide/TOLLBOOTH/appinsights_application_map_events.png" alt="App Insights - Events" style="width:70%;">
+<br></br>
+<ol>
+<li>
+<p>Select the <strong>value</strong> metric in the middle between Events and CosmosDB, to open the more detailed view. This opens a blade to the right-hand side of the Azure Portal, exposing many more details about the processing of events. It shows details about the CosmosDB instance, as well as performance details of each CosmosDB action (GET, Create Document, Get Collection, etc&hellip;)</p>
+</li>
+<li>
+<p>Click on <strong>Investigate Performance</strong></p>
+</li>
+</ol>
+<img src="https://raw.githubusercontent.comrob-foulkrod/TollBooth/main/Demoguide/TOLLBOOTH/appinsights_performance.png" alt="App Insights - Performance Details" style="width:70%;">
+<br></br>
+<ol>
+<li>Use this detailed dashboard to explain the different sections, reflecting chart representations of actual <strong>Log Analytics Queries</strong>. This can be demoed by selecting <strong>View Logs</strong> from the top menu, selecting a section, and opening it in Log Analytics.</li>
+</ol>
+<img src="https://raw.githubusercontent.com/rob-foulkrod/TollBooth/main/Demoguide/TOLLBOOTH/appinsights_performance_loganalytics.png" alt="App Insights - Log Analytics KQL" style="width:70%;">
+<br></br>
+<h2 id="conclusion">Conclusion
+</h2><p>Application Insights, as part of Azure Monitor, is a powerful tool for monitoring and optimizing the performance of your applications. Its comprehensive features, seamless integration with other Azure services, and real-time insights make it an essential component of any modern monitoring strategy. By leveraging Application Insights, you can ensure that your applications run smoothly, deliver a great user experience, and achieve your business goals.</p>
+<p><a class="link" href="https://www.buymeacoffee.com/pdtit"  target="_blank" rel="noopener"
+    ><img src="../images/buy_me_a_coffee.png"
+    
+    
+    loading="lazy"
+    
+      alt="BuyMeACoffee"
+    
+    
+    
+  ></a></p>
+<p>Cheers!!</p>
+<p>/Peter</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/azure/">Azure</a>
+        
+            <a href="/tags/monitoring/">Monitoring</a>
+        
+            <a href="/tags/devops/">DevOps</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/post/devops-workflow-generator/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">DevOps Workflow Generator</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/post/azure-spring-clean---devsecops-and-shifting-left-to-publish-secure-software/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Azure Spring Clean - DevSecOps and Shifting Left</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/post/devops-for-dummies-review/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">DevOps for Dummies - Emily Freeman - Review</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/post/book-review---azure-cookbook/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Book Review - Azure Cookbook</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/post/introduction-to-semantic-kernel/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Introduction to Semantic Kernel</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2021 - 
+        
+        2026 Azure Readiness starts here...
+    </section>
+    
+    <section class="powerby">
+        
+            The best way to know the future, is to learn it <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="4.0.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+
+
+
+<script type="module">
+    import gallery from '\/ts\/gallery.js';
+
+    const articleContent = document.querySelector('.article-content');
+    const shouldLoad = articleContent && (articleContent.querySelectorAll('figure').length > 0 || articleContent.querySelectorAll('img.gallery-image').length > 0);
+    
+    if (shouldLoad) {
+        gallery(articleContent);
+
+        const PhotoSwipeLightbox = (await import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js")).default;
+        const styleHref = "https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.css";
+
+        const styleTag = document.createElement('link');
+        styleTag.rel = 'stylesheet';
+        styleTag.href = styleHref;
+        document.head.appendChild(styleTag);
+
+        const lightbox = new PhotoSwipeLightbox({
+            gallerySelector: '.article-content',
+            childSelector: 'figure a.image-link',
+            pswpModule: () => import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js")
+        });
+        lightbox.init();
+    }
+</script>
+
+    
+
+            </main>
+        </div>
+        
+    <div id="cookie-consent-banner" class="cookie-banner" aria-hidden="true" role="dialog" aria-labelledby="cookie-banner-title">
+    <div class="cookie-banner__content">
+        <div class="cookie-banner__text">
+            <strong id="cookie-banner-title">Cookie Consent</strong>
+            <p>We use cookies to enhance your browsing experience and analyze site traffic.</p>
+        </div>
+
+        <div class="cookie-banner__actions">
+            <button class="cookie-btn cookie-btn--secondary" data-cookie-action="deny">
+                Deny
+            </button>
+            <button class="cookie-btn cookie-btn--primary" data-cookie-action="accept">
+                Accept All
+            </button>
+        </div>
+        <button class="cookie-banner__settings-link" data-cookie-action="settings">
+            Manage preferences
+        </button>
+
+        
+        <div id="cookie-settings-panel" class="cookie-settings" aria-hidden="true">
+            <h3>Cookie Preferences</h3>
+
+            <div class="cookie-category">
+                <label>
+                    <input type="checkbox" name="necessary" checked disabled />
+                    <strong>Necessary</strong>
+                </label>
+                <p>These cookies are required for the website to function and cannot be disabled.</p>
+            </div><div class="cookie-category">
+                <label>
+                    <input type="checkbox" name="analytics" data-cookie-category="analytics" />
+                    <strong>Analytics</strong>
+                </label>
+                <p>These cookies help us understand how visitors interact with our website.</p>
+            </div><div class="cookie-category">
+                <label>
+                    <input type="checkbox" name="functional" data-cookie-category="functional" />
+                    <strong>Functional</strong>
+                </label>
+                <p>These cookies enable features like comments and embedded content.</p>
+            </div><div class="cookie-settings__actions">
+                <button class="cookie-btn cookie-btn--secondary" data-cookie-action="cancel">
+                    Cancel
+                </button>
+                <button class="cookie-btn cookie-btn--primary" data-cookie-action="save">
+                    Save preferences
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <script type="text/javascript" src="/ts/cookies.6d3577f211db9f4f1997385d4b417cf90130b050bc9e787bb1bb5346d337e998.js" defer></script>
+<script type="text/javascript" src="/ts/main.acaf849f2b273f6a8368a58b001f336738d0c948d92e79b116467d0c7515f932.js" defer></script>
+
+
+    </body>
+</html>

@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Hi y&rsquo;all!\nOver the last 18 months, I&rsquo;ve been developing a tool for our internal Microsoft Trainer team, allowing them to deploy trainer demo scenarios in Azure using a Blazor Front-End web app, connecting to Azure DevOps pipelines using REST API calls.\nAt the start of the project, Classic Release pipelines were still common, since YAML was too new, and rather unknown. However, over the last few months, more and more I was thinking of shifting from Classic to YAML Pipelines. But - although the app isn&rsquo;t that big or complex - it means connecting to different API endpoints for YAML, reading out the status of ongoing pipelines would be different, and getting a listing of all deployed pipelines for a given trainer, would also be different.\n">
+<title>Trigger a YAML Pipeline from a Classic Release Pipeline in Azure DevOps</title>
+
+
+<link rel="canonical" href="https://www.007ffflearning.com/post/trigger-yaml-pipeline-from-classic-release-in-ado/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+
+
+<link rel="stylesheet" href="/scss/style.min.cf9653eecaea3cf14f5747895c3ac9b505bea7f8f3f40c16dac6b0e82fafddc4.css"><meta property='og:title' content="Trigger a YAML Pipeline from a Classic Release Pipeline in Azure DevOps">
+<meta property='og:description' content="Hi y&rsquo;all!\nOver the last 18 months, I&rsquo;ve been developing a tool for our internal Microsoft Trainer team, allowing them to deploy trainer demo scenarios in Azure using a Blazor Front-End web app, connecting to Azure DevOps pipelines using REST API calls.\nAt the start of the project, Classic Release pipelines were still common, since YAML was too new, and rather unknown. However, over the last few months, more and more I was thinking of shifting from Classic to YAML Pipelines. But - although the app isn&rsquo;t that big or complex - it means connecting to different API endpoints for YAML, reading out the status of ongoing pipelines would be different, and getting a listing of all deployed pipelines for a given trainer, would also be different.\n">
+<meta property='og:url' content='https://www.007ffflearning.com/post/trigger-yaml-pipeline-from-classic-release-in-ado/'>
+<meta property='og:site_name' content='Azure Readiness starts here...'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Azure DevOps' /><meta property='article:tag' content='Azure' /><meta property='article:published_time' content='2023-09-30T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-09-30T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Trigger a YAML Pipeline from a Classic Release Pipeline in Azure DevOps">
+<meta name="twitter:description" content="Hi y&rsquo;all!\nOver the last 18 months, I&rsquo;ve been developing a tool for our internal Microsoft Trainer team, allowing them to deploy trainer demo scenarios in Azure using a Blazor Front-End web app, connecting to Azure DevOps pipelines using REST API calls.\nAt the start of the project, Classic Release pipelines were still common, since YAML was too new, and rather unknown. However, over the last few months, more and more I was thinking of shifting from Classic to YAML Pipelines. But - although the app isn&rsquo;t that big or complex - it means connecting to different API endpoints for YAML, reading out the status of ongoing pipelines would be different, and getting a listing of all deployed pipelines for a given trainer, would also be different.\n">
+    <link rel="shortcut icon" href="/img/007ffflearning-ape.png" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        <figure class="site-avatar">
+                <a href="/">
+                    <img src="/img/007ffflearning-ape.png" 
+                        width="596"
+                        height="842"
+                        class="site-logo"
+                        loading="lazy"
+                        alt="Avatar">
+                </a>
+                
+                    <span class="emoji">🎓</span>
+                
+            </figure>
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Azure Readiness starts here...</a></h1>
+            <h2 class="site-description">Bring me an audience, I&#39;ll give them Azure knowledge in return</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://pdtit.bsky.social'
+                        
+                        title="Bluesky"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 530" fill="currentColor">
+  <path d="m135.72 44.03c66.496 49.921 138.02 151.14 164.28 205.46 26.262-54.316 97.782-155.54 164.28-205.46 47.98-36.021 125.72-63.892 125.72 24.795 0 17.712-10.155 148.79-16.111 170.07-20.703 73.984-96.144 92.854-163.25 81.433 117.3 19.964 147.14 86.092 82.697 152.22-122.39 125.59-175.91-31.511-189.63-71.766-2.514-7.3797-3.6904-10.832-3.7077-7.8964-0.0174-2.9357-1.1937 0.51669-3.7077 7.8964-13.714 40.255-67.233 197.36-189.63 71.766-64.444-66.128-34.605-132.26 82.697-152.22-67.108 11.421-142.55-7.4491-163.25-81.433-5.9562-21.282-16.111-152.36-16.111-170.07 0-88.687 77.742-60.816 125.72-24.795z"/>
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/petender'
+                        
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pdtit/'
+                        
+                        title="LinkedIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/post/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Posts</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/books/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+</svg>
+
+                
+                <span>Books</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/speaking/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-microphone" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 5a3 3 0 0 1 6 0v7a3 3 0 0 1 -6 0z"/>
+  <path d="M5 10a7 7 0 0 0 14 0"/>
+  <path d="M8 21l8 0"/>
+  <path d="M12 17l0 4"/>
+</svg>
+
+                
+                <span>Speaking</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About Me</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>Tags</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/trigger-yaml-pipeline-from-classic-release-in-ado/">Trigger a YAML Pipeline from a Classic Release Pipeline in Azure DevOps</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime='2023-09-30T00:00:00Z'>Sep 30, 2023</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+
+    
+</div>
+
+</header>
+
+    
+
+    <section class="article-content">
+    
+    
+    <p>Hi y&rsquo;all!</p>
+<p>Over the last 18 months, I&rsquo;ve been developing a tool for our internal Microsoft Trainer team, allowing them to deploy trainer demo scenarios in Azure using a Blazor Front-End web app, connecting to Azure DevOps pipelines using REST API calls.</p>
+<p>At the start of the project, Classic Release pipelines were still common, since YAML was too new, and rather unknown. However, over the last few months, more and more I was thinking of shifting from Classic to YAML Pipelines. But - although the app isn&rsquo;t that big or complex - it means connecting to different API endpoints for YAML, reading out the status of ongoing pipelines would be different, and getting a listing of all deployed pipelines for a given trainer, would also be different.</p>
+<p>So you hear me coming&hellip; I don&rsquo;t want to rewrite the whole app, as it also means rewriting all Classic Pipelines to YAML syntax. While I know the export to YAML is available, I didn&rsquo;t want to minimize the effort, nor like the time-pressure. As in the end, what is the added value to the end-user? (If that is not spoken like a true developer, I have no idea&hellip;)</p>
+<p>Being more and more familiar with triggering DevOps Pipelines from REST API calls, I thought about the following&hellip; <strong>what if I could create a Classic Release Pipeline, which triggers a YAML Pipeline?</strong></p>
+<p>After searching around a little bit on how curl would help here, it seemed possible, since there is a Classic Pipeline Task for #BASH.</p>
+<h2 id="the-yaml-pipeline-components">The YAML Pipeline components?
+</h2><p>In order to trigger the YAML Pipeline from the Classic Release, you need to capture the YAML Pipeline Id, as well as capturing any parameter values you need to provide.</p>
+<ol>
+<li>The YAML Pipeline Id; this is also known as the <em>definitionId</em>, and can be found by going to the YAML Pipeline under the ADO Pipelines section, and checking the URL in the address bar - it will be something like <strong><a class="link" href="https://dev.azure.com/"  target="_blank" rel="noopener"
+    >https://dev.azure.com/</a><ORGANIZATION>/<PROJECT>/_build?definitionId=101</strong></li>
+<li>Take note of the definitionId number, as you need it in the Bash script later.</li>
+<li>In my example, the YAML Pipeline has a section with parameters, where I&rsquo;m using the trainer alias, the Service Connection/Azure Subscription info and the selected Azure Region for the deployment, like this:</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">parameters:
+</span></span><span class="line"><span class="cl">- name: MTTAlias
+</span></span><span class="line"><span class="cl">  type: string
+</span></span><span class="line"><span class="cl">  default: petender
+</span></span><span class="line"><span class="cl">- name: azureSubscription
+</span></span><span class="line"><span class="cl">  type: string
+</span></span><span class="line"><span class="cl">  default: MTTAliasServiceConnection
+</span></span><span class="line"><span class="cl">- name: Location
+</span></span><span class="line"><span class="cl">  type: string
+</span></span><span class="line"><span class="cl">  default: westus
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Everything else in the YAML Pipeline is rather standard, triggering an <strong>Azure Bicep template deployment</strong>, using an <strong>Azure CLI Task</strong> and pointing to the <strong>Bicep file (/.azure/main.bicep)</strong>, like this:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">variables</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">  <span class="n">RunName</span><span class="p">:</span> <span class="s2">&#34;${{parameters.MTTAlias}}&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">RGName</span><span class="p">:</span> <span class="s2">&#34;MTTDemoDeployRG${{parameters.MTTAlias}}TBOOTH&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">dotnetFunctionZipPath</span><span class="p">:</span> <span class="o">$</span><span class="p">(</span><span class="n">Build</span><span class="o">.</span><span class="n">ArtifactStagingDirectory</span><span class="p">)</span><span class="o">/</span><span class="n">dotnet</span>
+</span></span><span class="line"><span class="cl">  <span class="n">nodeFunctionZipPath</span><span class="p">:</span> <span class="o">$</span><span class="p">(</span><span class="n">Build</span><span class="o">.</span><span class="n">ArtifactStagingDirectory</span><span class="p">)</span><span class="o">/</span><span class="n">node</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">stages</span> <span class="p">:</span>        
+</span></span><span class="line"><span class="cl">  <span class="o">-</span> <span class="n">stage</span><span class="p">:</span> <span class="n">Infra</span>
+</span></span><span class="line"><span class="cl">    <span class="n">jobs</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="o">-</span> <span class="n">job</span><span class="p">:</span> <span class="n">Bicep</span>
+</span></span><span class="line"><span class="cl">      <span class="n">steps</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">      <span class="o">-</span> <span class="n">checkout</span><span class="p">:</span> <span class="bp">self</span>
+</span></span><span class="line"><span class="cl">      <span class="o">-</span> <span class="n">task</span><span class="p">:</span> <span class="n">AzureCLI</span><span class="err">@</span><span class="mi">2</span>
+</span></span><span class="line"><span class="cl">        <span class="n">name</span><span class="p">:</span> <span class="n">deployBicep</span>
+</span></span><span class="line"><span class="cl">        <span class="n">inputs</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">          <span class="n">azureSubscription</span><span class="p">:</span> <span class="o">$</span><span class="p">{{</span> <span class="n">parameters</span><span class="o">.</span><span class="n">azureSubscription</span> <span class="p">}}</span>
+</span></span><span class="line"><span class="cl">          <span class="n">scriptType</span><span class="p">:</span> <span class="s1">&#39;pscore&#39;</span>
+</span></span><span class="line"><span class="cl">          <span class="n">scriptLocation</span><span class="p">:</span> <span class="s1">&#39;inlineScript&#39;</span>
+</span></span><span class="line"><span class="cl">          <span class="n">inlineScript</span><span class="p">:</span> <span class="o">|</span>
+</span></span><span class="line"><span class="cl">            <span class="n">az</span> <span class="n">group</span> <span class="n">create</span> <span class="o">--</span><span class="n">location</span> <span class="o">$</span><span class="p">{{</span><span class="n">parameters</span><span class="o">.</span><span class="n">Location</span><span class="p">}}</span> <span class="o">--</span><span class="n">name</span> <span class="o">$</span><span class="p">(</span><span class="n">RGName</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="o">$</span><span class="n">out</span> <span class="o">=</span> <span class="o">$</span><span class="p">(</span><span class="n">az</span> <span class="n">deployment</span> <span class="n">group</span> <span class="n">create</span> <span class="o">-</span><span class="n">f</span> <span class="o">./</span><span class="n">FastCar</span><span class="o">-</span><span class="n">TollBooth</span><span class="o">/.</span><span class="n">azure</span><span class="o">/</span><span class="n">main</span><span class="o">.</span><span class="n">bicep</span> <span class="o">-</span><span class="n">g</span> <span class="o">$</span><span class="p">(</span><span class="n">RGName</span><span class="p">)</span> <span class="o">--</span><span class="n">parameters</span> <span class="n">namingConvention</span><span class="o">=</span><span class="s2">&#34;${{parameters.MTTAlias}}&#34;</span> <span class="n">location</span><span class="o">=$</span><span class="p">{{</span><span class="n">parameters</span><span class="o">.</span><span class="n">Location</span><span class="p">}}</span> <span class="o">-</span><span class="n">o</span> <span class="n">json</span> <span class="o">--</span><span class="n">query</span> <span class="n">properties</span><span class="o">.</span><span class="n">outputs</span><span class="p">)</span> <span class="o">|</span> <span class="n">ConvertFrom</span><span class="o">-</span><span class="n">Json</span>
+</span></span><span class="line"><span class="cl">            <span class="o">$</span><span class="n">out</span><span class="o">.</span><span class="n">PSObject</span><span class="o">.</span><span class="n">Properties</span> <span class="o">|</span> <span class="n">ForEach</span><span class="o">-</span><span class="ne">Object</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">              <span class="o">$</span><span class="n">keyname</span> <span class="o">=</span> <span class="o">$</span><span class="n">_</span><span class="o">.</span><span class="n">Name</span>
+</span></span><span class="line"><span class="cl">              <span class="o">$</span><span class="n">value</span> <span class="o">=</span> <span class="o">$</span><span class="n">_</span><span class="o">.</span><span class="n">Value</span><span class="o">.</span><span class="n">value</span>
+</span></span><span class="line"><span class="cl">              <span class="n">echo</span> <span class="s2">&#34;##vso[task.setvariable variable=$keyname;isOutput=true]$value&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>           
+</span></span><span class="line"><span class="cl">           
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="../images/2023-09-30_18-38-32.png"
+    
+    
+    loading="lazy"
+    
+      alt="YAML Pipeline Example"
+    
+    
+    
+  ></p>
+<h2 id="composing-the-classic-release-pipeline">Composing The Classic Release Pipeline
+</h2><ol>
+<li>Create a new Classic Release Pipeline, with a single Stage &ldquo;Azure Infra&rdquo;, and add the <strong>#Bash Script</strong> as Task</li>
+</ol>
+<p><img src="../images/2023-09-30_18-43-12.png"
+    
+    
+    loading="lazy"
+    
+      alt="Classic Release Pipeline Example"
+    
+    
+    
+  ></p>
+<ol start="2">
+<li>Select <strong>Inline</strong> as Type, and in the Script box, copy the following script, which does the following:</li>
+</ol>
+<ul>
+<li>PIPELINE_ID = the number of the YAML PipelineId</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">PIPELINE_ID=&#34;101&#34;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>URL = the URL of the actual DevOps YAML Pipeline REST API to use</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">URL=&#34;$(SYSTEM.TEAMFOUNDATIONCOLLECTIONURI)$(SYSTEM.TEAMPROJECTID)/_apis/pipelines/$PIPELINE_ID/runs?api-version=6.0-preview.1&#34;
+</span></span><span class="line"><span class="cl">echo $URL
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>Next, I specify 3 variables, for which the values (the $() notation) refer to Classic Release Pipeline Variables (These are passed on from the Blazor Web App to the Classic Pipeline).</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">MTTAliasValue=$(MTTAlias)
+</span></span><span class="line"><span class="cl">ServiceConnectionValue=$(ServiceConnection)
+</span></span><span class="line"><span class="cl">LocationVarValue=$(LocationVar)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>Next, I specify the actual <strong>curl</strong> command to use, where I use the System.AccessToken Variable to allow OAuth authentication by the system account, followed by specifying we&rsquo;re sending a JSON header, and the actual JSON snippet which holds the data to pass along to the YAML pipeline - finding the correct syntax to capture the variable values from earlier, was the biggest challenge here, taking a few failed attempts when triggering the pipeline :)&hellip;</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">curl -s --request POST \
+</span></span><span class="line"><span class="cl"> -u &#34;:$(System.AccessToken)&#34; \
+</span></span><span class="line"><span class="cl"> --header &#34;Content-Type: application/json&#34; \
+</span></span><span class="line"><span class="cl"> --data &#39;{
+</span></span><span class="line"><span class="cl">   &#34;resources&#34;: {
+</span></span><span class="line"><span class="cl">       &#34;repositories&#34;: {
+</span></span><span class="line"><span class="cl">           &#34;self&#34;: {
+</span></span><span class="line"><span class="cl">               &#34;refName&#34;: &#34;refs/heads/main&#34;
+</span></span><span class="line"><span class="cl">           }
+</span></span><span class="line"><span class="cl">       }
+</span></span><span class="line"><span class="cl">   },
+</span></span><span class="line"><span class="cl">   &#34;templateParameters&#34;: {
+</span></span><span class="line"><span class="cl">       &#34;MTTAlias&#34;: &#34;&#39;&#34;${MTTAliasValue}&#34;&#39;&#34;,
+</span></span><span class="line"><span class="cl">       &#34;azureSubscription&#34;: &#34;&#39;&#34;${ServiceConnectionValue}&#34;&#39;&#34;,
+</span></span><span class="line"><span class="cl">       &#34;Location&#34;: &#34;&#39;&#34;${LocationVarValue}&#34;&#39;&#34;
+</span></span><span class="line"><span class="cl">   }
+</span></span><span class="line"><span class="cl">}&#39; \
+</span></span><span class="line"><span class="cl"> $URL
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>The full #Bash script looks as follows:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">PIPELINE_ID=&#34;101&#34;
+</span></span><span class="line"><span class="cl">URL=&#34;$(SYSTEM.TEAMFOUNDATIONCOLLECTIONURI)$(SYSTEM.TEAMPROJECTID)/_apis/pipelines/$PIPELINE_ID/runs?api-version=6.0-preview.1&#34;
+</span></span><span class="line"><span class="cl">echo $URL
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">MTTAliasValue=$(MTTAlias)
+</span></span><span class="line"><span class="cl">ServiceConnectionValue=$(ServiceConnection)
+</span></span><span class="line"><span class="cl">LocationVarValue=$(LocationVar)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">curl -s --request POST \
+</span></span><span class="line"><span class="cl"> -u &#34;:$(System.AccessToken)&#34; \
+</span></span><span class="line"><span class="cl"> --header &#34;Content-Type: application/json&#34; \
+</span></span><span class="line"><span class="cl"> --data &#39;{
+</span></span><span class="line"><span class="cl">   &#34;resources&#34;: {
+</span></span><span class="line"><span class="cl">       &#34;repositories&#34;: {
+</span></span><span class="line"><span class="cl">           &#34;self&#34;: {
+</span></span><span class="line"><span class="cl">               &#34;refName&#34;: &#34;refs/heads/main&#34;
+</span></span><span class="line"><span class="cl">           }
+</span></span><span class="line"><span class="cl">       }
+</span></span><span class="line"><span class="cl">   },
+</span></span><span class="line"><span class="cl">   &#34;templateParameters&#34;: {
+</span></span><span class="line"><span class="cl">       &#34;MTTAlias&#34;: &#34;&#39;&#34;${MTTAliasValue}&#34;&#39;&#34;,
+</span></span><span class="line"><span class="cl">       &#34;azureSubscription&#34;: &#34;&#39;&#34;${ServiceConnectionValue}&#34;&#39;&#34;,
+</span></span><span class="line"><span class="cl">       &#34;Location&#34;: &#34;&#39;&#34;${LocationVarValue}&#34;&#39;&#34;
+</span></span><span class="line"><span class="cl">   }
+</span></span><span class="line"><span class="cl">}&#39; \
+</span></span><span class="line"><span class="cl"> $URL
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="../images/2023-09-30_18-44-00.png"
+    
+    
+    loading="lazy"
+    
+      alt="Classic Release Pipeline Bash Task"
+    
+    
+    
+  ></p>
+<h2 id="specify-the-correct-permissions-on-the-yaml-pipeline">Specify the Correct Permissions on the YAML Pipeline
+</h2><p>Remember we used the System.AccessToken variable, which refers to the Build-In DevOps System Process. In order to make this Classic Release Pipeline trigger work, the Build-In account must have <strong>Queue Build</strong> permissions on the YAML Pipeline.</p>
+<ol>
+<li>Navigate to the YAML Pipeline</li>
+<li>Click the elipsis (the 3 dots) at the end of the Pipeline line, and from the context menu, select <strong>Manage Security</strong></li>
+</ol>
+<p><img src="../images/2023-09-30_18-46-45.png"
+    
+    
+    loading="lazy"
+    
+      alt="Manage Security"
+    
+    
+    
+  ></p>
+<ol start="3">
+<li>Select the <strong><ADOProjectName> Build Service</strong> Group, and set <strong>Allow</strong> for the <strong>Queue Builds</strong> permission</li>
+</ol>
+<p><img src="../images/2023-09-30_18-48-09.png"
+    
+    
+    loading="lazy"
+    
+      alt="Allow Queue Build"
+    
+    
+    
+  ></p>
+<h2 id="running-the-pipeline">Running the Pipeline
+</h2><ol>
+<li>Trigger the Classic Release Pipeline, wait for it to complete</li>
+</ol>
+<p><img src="../images/2023-09-30_18-50-53.png"
+    
+    
+    loading="lazy"
+    
+      alt="Trigger Classic Release"
+    
+    
+    
+  ></p>
+<ol start="2">
+<li>With the Classic Release completed, navigate to the YAML Pipeline, and see this one is getting triggered / already running</li>
+</ol>
+<p><img src="../images/2023-09-30_18-51-56.png"
+    
+    
+    loading="lazy"
+    
+      alt="Trigger YAML Pipeline"
+    
+    
+    
+  ></p>
+<h2 id="summary">Summary
+</h2><p>In this post, I walked you through a use case within Azure DevOps, where it might be useful to build an integration between both Pipeline worlds, Classic Releases and YAML Pipeline Releases. By using a #Bash script with Curl to call the YAML Pipeline REST API endpoint, as well as passing some parameters in a JSON structure, it is possible to trigger YAML Pipelines from a Classic Release Pipeline.</p>
+<p>I am using this scenario to give myself some time to continue updating the development work on the Blazor Front-end, pointing to YAML Pipelines only at some point, but for now, it gives me the flexibility to keep the same Classic URL Endpoints for my REST APIs, why gradually setting up new YAML Pipelines, migrating Classic to YAML etc&hellip;</p>
+<p><a class="link" href="https://www.buymeacoffee.com/pdtit"  target="_blank" rel="noopener"
+    ><img src="../images/buy_me_a_coffee.png"
+    
+    
+    loading="lazy"
+    
+      alt="BuyMeACoffee"
+    
+    
+    
+  ></a></p>
+<p>Cheers!!</p>
+<p>/Peter</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/azure-devops/">Azure DevOps</a>
+        
+            <a href="/tags/azure/">Azure</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/post/you-do-not-have-permissions-error-after-publishing-to-azure-app-services/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">You do not have permissions to view this directory or page after publishing to Azure App Service</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/post/azcopy-failing-in-azure-devops/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">AzCopy failing in Azure Devops with error ServiceCode=AuthorizationPermissionMismatch</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/post/azure-back-to-school/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Azure Back To School (with Azure DevOps)</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/post/azure_devops-pipelines-yaml_or_classic_designer/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Azure DevOps Pipelines - YAML or Classic Designer</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/post/achieving-sre-on-azure/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Azure Back to School - Achieving SRE on Azure</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2021 - 
+        
+        2026 Azure Readiness starts here...
+    </section>
+    
+    <section class="powerby">
+        
+            The best way to know the future, is to learn it <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="4.0.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+
+
+
+<script type="module">
+    import gallery from '\/ts\/gallery.js';
+
+    const articleContent = document.querySelector('.article-content');
+    const shouldLoad = articleContent && (articleContent.querySelectorAll('figure').length > 0 || articleContent.querySelectorAll('img.gallery-image').length > 0);
+    
+    if (shouldLoad) {
+        gallery(articleContent);
+
+        const PhotoSwipeLightbox = (await import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js")).default;
+        const styleHref = "https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.css";
+
+        const styleTag = document.createElement('link');
+        styleTag.rel = 'stylesheet';
+        styleTag.href = styleHref;
+        document.head.appendChild(styleTag);
+
+        const lightbox = new PhotoSwipeLightbox({
+            gallerySelector: '.article-content',
+            childSelector: 'figure a.image-link',
+            pswpModule: () => import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js")
+        });
+        lightbox.init();
+    }
+</script>
+
+    
+
+            </main>
+        </div>
+        
+    <div id="cookie-consent-banner" class="cookie-banner" aria-hidden="true" role="dialog" aria-labelledby="cookie-banner-title">
+    <div class="cookie-banner__content">
+        <div class="cookie-banner__text">
+            <strong id="cookie-banner-title">Cookie Consent</strong>
+            <p>We use cookies to enhance your browsing experience and analyze site traffic.</p>
+        </div>
+
+        <div class="cookie-banner__actions">
+            <button class="cookie-btn cookie-btn--secondary" data-cookie-action="deny">
+                Deny
+            </button>
+            <button class="cookie-btn cookie-btn--primary" data-cookie-action="accept">
+                Accept All
+            </button>
+        </div>
+        <button class="cookie-banner__settings-link" data-cookie-action="settings">
+            Manage preferences
+        </button>
+
+        
+        <div id="cookie-settings-panel" class="cookie-settings" aria-hidden="true">
+            <h3>Cookie Preferences</h3>
+
+            <div class="cookie-category">
+                <label>
+                    <input type="checkbox" name="necessary" checked disabled />
+                    <strong>Necessary</strong>
+                </label>
+                <p>These cookies are required for the website to function and cannot be disabled.</p>
+            </div><div class="cookie-category">
+                <label>
+                    <input type="checkbox" name="analytics" data-cookie-category="analytics" />
+                    <strong>Analytics</strong>
+                </label>
+                <p>These cookies help us understand how visitors interact with our website.</p>
+            </div><div class="cookie-category">
+                <label>
+                    <input type="checkbox" name="functional" data-cookie-category="functional" />
+                    <strong>Functional</strong>
+                </label>
+                <p>These cookies enable features like comments and embedded content.</p>
+            </div><div class="cookie-settings__actions">
+                <button class="cookie-btn cookie-btn--secondary" data-cookie-action="cancel">
+                    Cancel
+                </button>
+                <button class="cookie-btn cookie-btn--primary" data-cookie-action="save">
+                    Save preferences
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <script type="text/javascript" src="/ts/cookies.6d3577f211db9f4f1997385d4b417cf90130b050bc9e787bb1bb5346d337e998.js" defer></script>
+<script type="text/javascript" src="/ts/main.acaf849f2b273f6a8368a58b001f336738d0c948d92e79b116467d0c7515f932.js" defer></script>
+
+
+    </body>
+</html>

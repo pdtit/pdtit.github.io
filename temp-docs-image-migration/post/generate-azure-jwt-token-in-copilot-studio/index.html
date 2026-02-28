@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Out of my role as a Lead Technical Trainer at Microsoft, the portfolio of trainings I&rsquo;m covering has heavily shifted to Azure AI and Copilot over the last few months. Still doing Azure Architecture and Developing courses as well, but not as frequent anymore. This confirms the interest we see at customers in adopting Generative AI solutions. Apart from Copilot in M365, or using Azure AI Foundry, I also started digging into Copilot Studio a lot more. Having a good background in Azure LogicApps and a bit of PowerPlatform, Copilot Studio feels quite comfortable to me.\n">
+<title>Generate Azure JWT Token in Copilot Studio</title>
+
+
+<link rel="canonical" href="https://www.007ffflearning.com/post/generate-azure-jwt-token-in-copilot-studio/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+
+
+<link rel="stylesheet" href="/scss/style.min.cf9653eecaea3cf14f5747895c3ac9b505bea7f8f3f40c16dac6b0e82fafddc4.css"><meta property='og:title' content="Generate Azure JWT Token in Copilot Studio">
+<meta property='og:description' content="Out of my role as a Lead Technical Trainer at Microsoft, the portfolio of trainings I&rsquo;m covering has heavily shifted to Azure AI and Copilot over the last few months. Still doing Azure Architecture and Developing courses as well, but not as frequent anymore. This confirms the interest we see at customers in adopting Generative AI solutions. Apart from Copilot in M365, or using Azure AI Foundry, I also started digging into Copilot Studio a lot more. Having a good background in Azure LogicApps and a bit of PowerPlatform, Copilot Studio feels quite comfortable to me.\n">
+<meta property='og:url' content='https://www.007ffflearning.com/post/generate-azure-jwt-token-in-copilot-studio/'>
+<meta property='og:site_name' content='Azure Readiness starts here...'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Azure' /><meta property='article:tag' content='Copilot Studio' /><meta property='article:published_time' content='2025-08-09T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-08-09T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Generate Azure JWT Token in Copilot Studio">
+<meta name="twitter:description" content="Out of my role as a Lead Technical Trainer at Microsoft, the portfolio of trainings I&rsquo;m covering has heavily shifted to Azure AI and Copilot over the last few months. Still doing Azure Architecture and Developing courses as well, but not as frequent anymore. This confirms the interest we see at customers in adopting Generative AI solutions. Apart from Copilot in M365, or using Azure AI Foundry, I also started digging into Copilot Studio a lot more. Having a good background in Azure LogicApps and a bit of PowerPlatform, Copilot Studio feels quite comfortable to me.\n">
+    <link rel="shortcut icon" href="/img/007ffflearning-ape.png" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        <figure class="site-avatar">
+                <a href="/">
+                    <img src="/img/007ffflearning-ape.png" 
+                        width="596"
+                        height="842"
+                        class="site-logo"
+                        loading="lazy"
+                        alt="Avatar">
+                </a>
+                
+                    <span class="emoji">🎓</span>
+                
+            </figure>
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Azure Readiness starts here...</a></h1>
+            <h2 class="site-description">Bring me an audience, I&#39;ll give them Azure knowledge in return</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://pdtit.bsky.social'
+                        
+                        title="Bluesky"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 530" fill="currentColor">
+  <path d="m135.72 44.03c66.496 49.921 138.02 151.14 164.28 205.46 26.262-54.316 97.782-155.54 164.28-205.46 47.98-36.021 125.72-63.892 125.72 24.795 0 17.712-10.155 148.79-16.111 170.07-20.703 73.984-96.144 92.854-163.25 81.433 117.3 19.964 147.14 86.092 82.697 152.22-122.39 125.59-175.91-31.511-189.63-71.766-2.514-7.3797-3.6904-10.832-3.7077-7.8964-0.0174-2.9357-1.1937 0.51669-3.7077 7.8964-13.714 40.255-67.233 197.36-189.63 71.766-64.444-66.128-34.605-132.26 82.697-152.22-67.108 11.421-142.55-7.4491-163.25-81.433-5.9562-21.282-16.111-152.36-16.111-170.07 0-88.687 77.742-60.816 125.72-24.795z"/>
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/petender'
+                        
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/pdtit/'
+                        
+                        title="LinkedIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/post/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Posts</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/books/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+</svg>
+
+                
+                <span>Books</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/speaking/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-microphone" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 5a3 3 0 0 1 6 0v7a3 3 0 0 1 -6 0z"/>
+  <path d="M5 10a7 7 0 0 0 14 0"/>
+  <path d="M8 21l8 0"/>
+  <path d="M12 17l0 4"/>
+</svg>
+
+                
+                <span>Speaking</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About Me</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>Tags</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/generate-azure-jwt-token-in-copilot-studio/">Generate Azure JWT Token in Copilot Studio</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime='2025-08-09T00:00:00Z'>Aug 09, 2025</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+
+    
+</div>
+
+</header>
+
+    
+
+    <section class="article-content">
+    
+    
+    <p>Out of my role as a Lead Technical Trainer at Microsoft, the portfolio of trainings I&rsquo;m covering has heavily shifted to Azure AI and Copilot over the last few months. Still doing Azure Architecture and Developing courses as well, but not as frequent anymore. This confirms the interest we see at customers in adopting Generative AI solutions. Apart from <a class="link" href="https://www.microsoft.com/microsoft-365/copilot"  target="_blank" rel="noopener"
+    >Copilot in M365</a>, or using <a class="link" href="https://azure.microsoft.com/en-us/products/ai-foundry"  target="_blank" rel="noopener"
+    >Azure AI Foundry</a>, I also started digging into <a class="link" href="https://azure.microsoft.com/en-us/products/copilot-studio"  target="_blank" rel="noopener"
+    >Copilot Studio</a> a lot more. Having a good background in Azure LogicApps and a bit of PowerPlatform, Copilot Studio feels quite comfortable to me.</p>
+<p>I&rsquo;ve been working on a few Agent scenarios in Copilot Studio, which I will blog more about in the near future. One of the newer features that got my attention, is the <strong>advanced feature</strong> of HTTP Requests, which opens the door to using <strong>REST API calls</strong> to other platforms, for example <strong>Azure</strong>.</p>
+<p>As you probably know, any action against Azure requires authentication, whether an interactive admin user logon, or a Service Principal application logon. Which means that - before I can trigger any actions against Azure, I first need to get the Copilot Studio Agent authenticating to Azure, using a JWT Bearer token (Azure Entra ID OAuth 2.0 Token).</p>
+<p>This article walks you through the different steps and setup of the Copilot Studio Agent, to allow it to authenticate to Azure, and from there taking a possible next step against the platform.</p>
+<h2 id="what-this-article-covers">What this article covers
+</h2><p>✅ How to create App Registration for Copilot Studio Agent in Entra ID
+✅ How to generate JWT Bearer token in Copilot Studio for API authentication
+✅ How to set up Microsoft Graph API authentication with Azure Entra ID OAuth 2.0 token</p>
+<h2 id="create-entra-id-app-registration-for-copilot-studio-agent">Create Entra ID App Registration for Copilot Studio Agent
+</h2><p>Any Service / Application level interaction with Azure, starts from an App Registration. This generates a Service Principal, think of it as a Service Account, which then gets linked/reused by a 3rd party application, as like in our case, Copilot Studio.</p>
+<p>Apart from creating the Service Principal entity object, it also needs corresponding API permissions to interact with Microsoft Graph.</p>
+<p>These are the steps to set all this up:</p>
+<ol>
+<li>From Entra ID, navigate to <strong>App Registration</strong>, and select <strong>New Registration</strong></li>
+</ol>
+<p><img src="../images/08-10-2025-01.png"
+    
+    
+    loading="lazy"
+    
+      alt="App Registration"
+    
+    
+    
+  ></p>
+<ol start="2">
+<li>Provide a name for the App Registration <strong>e.g. Copilot Studio Agent Demo</strong>, and leave all other default settings as-is. Click <strong>Register</strong></li>
+</ol>
+<p><img src="../images/08-10-2025-02.png"
+    
+    
+    loading="lazy"
+    
+      alt="App Registration"
+    
+    
+    
+  ></p>
+<ol start="3">
+<li>This generates the Service Principal, with some specific IDs you need to copy aside. The Client ID, reflecting the unique GUID of the Service Principal as well as the Tenant ID which corresponds to your Entra ID Tenant GUID.</li>
+</ol>
+<p><img src="../images/08-10-2025-03.png"
+    
+    
+    loading="lazy"
+    
+      alt="Client Credentials"
+    
+    
+    
+  ></p>
+<ol start="4">
+<li>Next, the Service Principal also needs the necessary credential to authenticate, which can be set up from the <strong>Subscription or Resource Group Access Control IAM (RBAC)</strong> permissions. For my example, I specify &ldquo;Read&rdquo; permissions on Subscription level, as I only want to run that as a validation of my workflow actually running successfully. You could alter to any permissions your scenario requires.</li>
+</ol>
+<p><img src="../images/08-10-2025-04.png"
+    
+    
+    loading="lazy"
+    
+      alt="RBAC Permissions"
+    
+    
+    
+  ></p>
+<ol start="5">
+<li>And to request an authentication JWT Token, we also need to pass the Client ID password, which can be generated from the Entra ID App Registration page for the newly created App Registration. Copy this secret aside, as you will need it in a later step.</li>
+</ol>
+<p><img src="../images/08-10-2025-05.png"
+    
+    
+    loading="lazy"
+    
+      alt="App Registration Client Secret"
+    
+    
+    
+  ></p>
+<ol start="6">
+<li>With all this out of the way, we have all ID information, credentials and RBAC permissions to bring into Copilot Studio. But there are a few other pieces of information we are gathering first, the <strong>Authentication API Endpoint</strong>, which is the Microsoft Login URL for our Tenant. this should look like this:</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">https://login.microsoftonline.com/&lt;yourtenantID&gt;/oauth2/v.2.0/token
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>and we also need a REST API Header and Body, which are the additional parameters Copilot Studio Agent REST API action requires:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">- Header: Content-Type: application/x-www-form-urlencoded
+</span></span><span class="line"><span class="cl">- Body: client-id=&lt;yourclientid&gt;&amp;client_secret=&lt;clientsecret&gt;&amp;grant_type=client_credentials&amp;scope=https://graph.microsoft.com/.default
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>where you insert the actual value of the clientid and clientsecret you copied earlier for the placeholders.</p>
+<h2 id="configure-the-http-request-action-in-copilot-studio">Configure the HTTP Request Action in Copilot Studio
+</h2><ol>
+<li>
+<p>Navigate to <a class="link" href="https://copilotstudio.microsoft.com"  target="_blank" rel="noopener"
+    >Copilot Studio</a> and open the workflow setup of your Agent.</p>
+</li>
+<li>
+<p>Navigate to <strong>Topics</strong> and <strong>Add a new topic</strong>. Select &ldquo;From Blank&rdquo;</p>
+</li>
+</ol>
+<p><img src="../images/08-10-2025-06.png"
+    
+    
+    loading="lazy"
+    
+      alt="New Copilot Studio Agent"
+    
+    
+    
+  ></p>
+<ol start="3">
+<li>Click the <strong>+ Sign</strong> below the Trigger step, and select <strong>Advanced / HTTP Request</strong> from the option menu.</li>
+</ol>
+<p><img src="../images/08-10-2025-07.png"
+    
+    
+    loading="lazy"
+    
+      alt="HTTP Request"
+    
+    
+    
+  ></p>
+<ol start="4">
+<li>Complete the following fields of the HTTP Request per below overview:</li>
+</ol>
+<ul>
+<li><strong>URL</strong>: the login-URL specified earlier: <a class="link" href="https://login.microsoftonline.com/"  target="_blank" rel="noopener"
+    >https://login.microsoftonline.com/</a><tenantID>/oauth2/v.2.0/token, where the <tenantid> placeholder gets replaced with the actual GUID of your tenant, something like this (redacted)</li>
+</ul>
+<p><img src="../images/08-10-2025-08.png"
+    
+    
+    loading="lazy"
+    
+      alt="HTTP Request URL"
+    
+    
+    
+  ></p>
+<p><a class="link" href="https://login.microsoftonline.com/1c5e3b03-f225-4622-b785-abcdefghi/oauth2/token"  target="_blank" rel="noopener"
+    >https://login.microsoftonline.com/1c5e3b03-f225-4622-b785-abcdefghi/oauth2/token</a></p>
+<ul>
+<li>
+<p><strong>Method</strong>: POST</p>
+</li>
+<li>
+<p><strong>Headers and Body</strong>:</p>
+<ul>
+<li><em>Headers / Key</em>: Content-Type</li>
+<li><em>Headers / Value</em>: application/x-www-form-urlencoded</li>
+<li><em>Body</em>: Raw Content</li>
+<li><em>Content Type</em>: application/x-www-form-urlencoded</li>
+<li><em>Content</em>: client-id=c92c3f9f-7ba3-4e5b-1234-abcdefghi&amp;client_secret=nzE8Q~q-tDIrvlLkBGe2IwWH.abcdefghij_&amp;grant_type=client_credentials&amp;scope=https://graph.microsoft.com/.default</li>
+<li><em>Response headers</em>: Create new <strong>Global</strong> variable to store the value in, e.g. HTTPResponseVar</li>
+<li><em>Response data type</em>: Record + select Edit Schema, and add the following schema structure:
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">kind: Record
+</span></span><span class="line"><span class="cl">properties: 
+</span></span><span class="line"><span class="cl">    access_token: String
+</span></span><span class="line"><span class="cl">    expires_in: Number
+</span></span><span class="line"><span class="cl">    token_type: String
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li><em>Save Response as</em>: select the Global.HTTPResponseVar again</li>
+</ul>
+</li>
+</ul>
+<ol start="5">
+<li><strong>Save</strong> the changes.</li>
+</ol>
+<p><img src="../images/08-10-2025-09.png"
+    
+    
+    loading="lazy"
+    
+      alt="HTTP Request Headers"
+    
+    
+    
+  >
+Request Header details</p>
+<p><img src="../images/08-10-2025-10.png"
+    
+    
+    loading="lazy"
+    
+      alt="HTTP Request Body Content"
+    
+    
+    
+  >
+Request Body details</p>
+<p><img src="../images/08-10-2025-11.png"
+    
+    
+    loading="lazy"
+    
+      alt="Global Variable details"
+    
+    
+    
+  >
+Global Variable details</p>
+<p><img src="../images/08-10-2025-12.png"
+    
+    
+    loading="lazy"
+    
+      alt="Record Schema details"
+    
+    
+    
+  >
+Record Schema details</p>
+<ol start="6">
+<li>
+<p>While this flow should work fine now, you won&rsquo;t get any output from it. We need to update the flow with a follow-up message, in which we read/present the output from the HTTPResponseVar variable. <strong>Click</strong> the <strong>+</strong> sign below the HTTP Request step in the workflow, and select <strong>Send a Message</strong> from the context menu.</p>
+</li>
+<li>
+<p>Enter an informative text, e.g. &ldquo;Here is the Azure Token String&rdquo;, and add the HTTPResponseVar variable into the text box, by selecting the <em>insert variable {X}</em> option and selecting the variable from the list.</p>
+</li>
+</ol>
+<p><img src="../images/08-10-2025-13.png"
+    
+    
+    loading="lazy"
+    
+      alt="Response Message"
+    
+    
+    
+  ></p>
+<ol start="8">
+<li><strong>Save</strong> the changes. Next, from the <strong>Test your Agent</strong> pane, trigger the Agent flow by sending a short chat message, like &ldquo;get my token&rdquo;. This should result in the chat response, showing your message &ldquo;Here is the Azure Token String&rdquo;, and the actual JWT token with all necessary information in it.</li>
+</ol>
+<p><img src="../images/08-10-2025-14.png"
+    
+    
+    loading="lazy"
+    
+      alt="Response JWT Token"
+    
+    
+    
+  ></p>
+<ol start="9">
+<li>
+<p>Cool, this works as expected! While we&rsquo;re close, we&rsquo;re not 100% done yet, as the value of this variable is not immediately reusable as an authentication token, as not all information in the response is part of the actually authentication token (e.g. String{&ldquo;access_token&rdquo;}, &ldquo;expires_in&rdquo;, &ldquo;token_type&rdquo;). We can fix this by running a <strong>concatenate</strong> formula, and splitting the received information in a new variable which only stores the actual Token information we need to authenticate. After the last message step in the flow, <strong>click the + sign</strong> again, and once more, select <em>Send a Message</em>. Provide a new informative message, something like &ldquo;And this is the cleaned up version of the Bearer token, just what you need&hellip;&rdquo;, and add a new <strong>PowerFx Expression</strong> by clicking the <strong>{fX}</strong> button. Enter the following formula:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Concatenate(Topic.HTTPResponseVar.token_type,&#34; &#34;,Topic.HTTPResponseVar.access_token)
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<p><img src="../images/08-10-2025-15.png"
+    
+    
+    loading="lazy"
+    
+      alt="Concat Response JWT Token"
+    
+    
+    
+  ></p>
+<ol start="10">
+<li>Which would transform the response into a valid Bearer token text string &ldquo;Bearer ey&hellip;&rdquo; which you can use for any Azure HTTP REST API in a different Topic. To do that, it&rsquo;s best to save the concat result in a new Global Variable.</li>
+</ol>
+<h2 id="reuse-the-jwt-authenticator-topic-in-copilot-studio-agent">Reuse the JWT Authenticator Topic in Copilot Studio Agent
+</h2><p>While I want to keep this article on the actual JWT Token authentication process, I wanted to add a little teaser for a follow-up article, in which I create a Copilot Studio Agent to interact with Azure, relying on the Bearer Token from this Topic we just created. In any Copilot Studio flow you have, you can now refer to the Auth2Azure Authentication request Topic like this:</p>
+<p><img src="../images/08-10-2025-16.png"
+    
+    
+    loading="lazy"
+    
+      alt="Reuse Bearer Token Topic"
+    
+    
+    
+  ></p>
+<h2 id="summary">Summary
+</h2><p>In this article, I wanted to document the necessary steps on how to use the Copilot Studio Agent - HTTP Request task, to get a Bearer Token to authenticate to Azure (or any similar HTTP REST API for that matter).</p>
+<p><a class="link" href="https://www.buymeacoffee.com/pdtit"  target="_blank" rel="noopener"
+    ><img src="../images/buy_me_a_coffee.png"
+    
+    
+    loading="lazy"
+    
+      alt="BuyMeACoffee"
+    
+    
+    
+  ></a></p>
+<p>Cheers!!</p>
+<p>/Peter</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/azure/">Azure</a>
+        
+            <a href="/tags/copilot-studio/">Copilot Studio</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/post/azure-spring-clean---application-insights---inside-out/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Azure Spring Clean - Application Insights - Inside Out</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/post/book-review---azure-cookbook/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Book Review - Azure Cookbook</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/post/introduction-to-semantic-kernel/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Introduction to Semantic Kernel</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/post/building-your-first-blazor-.net8-app---msts-summit-companion/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Building your first Blazor .NET8 app - MSTS Summit </h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/post/building-a-marvel-hero-app-with-blazor-.net8/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">ScifiDevCon 2024 : Building a Marvel Hero App using Blazor and .NET8 </h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2021 - 
+        
+        2026 Azure Readiness starts here...
+    </section>
+    
+    <section class="powerby">
+        
+            The best way to know the future, is to learn it <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="4.0.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+
+
+
+<script type="module">
+    import gallery from '\/ts\/gallery.js';
+
+    const articleContent = document.querySelector('.article-content');
+    const shouldLoad = articleContent && (articleContent.querySelectorAll('figure').length > 0 || articleContent.querySelectorAll('img.gallery-image').length > 0);
+    
+    if (shouldLoad) {
+        gallery(articleContent);
+
+        const PhotoSwipeLightbox = (await import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js")).default;
+        const styleHref = "https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.css";
+
+        const styleTag = document.createElement('link');
+        styleTag.rel = 'stylesheet';
+        styleTag.href = styleHref;
+        document.head.appendChild(styleTag);
+
+        const lightbox = new PhotoSwipeLightbox({
+            gallerySelector: '.article-content',
+            childSelector: 'figure a.image-link',
+            pswpModule: () => import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js")
+        });
+        lightbox.init();
+    }
+</script>
+
+    
+
+            </main>
+        </div>
+        
+    <div id="cookie-consent-banner" class="cookie-banner" aria-hidden="true" role="dialog" aria-labelledby="cookie-banner-title">
+    <div class="cookie-banner__content">
+        <div class="cookie-banner__text">
+            <strong id="cookie-banner-title">Cookie Consent</strong>
+            <p>We use cookies to enhance your browsing experience and analyze site traffic.</p>
+        </div>
+
+        <div class="cookie-banner__actions">
+            <button class="cookie-btn cookie-btn--secondary" data-cookie-action="deny">
+                Deny
+            </button>
+            <button class="cookie-btn cookie-btn--primary" data-cookie-action="accept">
+                Accept All
+            </button>
+        </div>
+        <button class="cookie-banner__settings-link" data-cookie-action="settings">
+            Manage preferences
+        </button>
+
+        
+        <div id="cookie-settings-panel" class="cookie-settings" aria-hidden="true">
+            <h3>Cookie Preferences</h3>
+
+            <div class="cookie-category">
+                <label>
+                    <input type="checkbox" name="necessary" checked disabled />
+                    <strong>Necessary</strong>
+                </label>
+                <p>These cookies are required for the website to function and cannot be disabled.</p>
+            </div><div class="cookie-category">
+                <label>
+                    <input type="checkbox" name="analytics" data-cookie-category="analytics" />
+                    <strong>Analytics</strong>
+                </label>
+                <p>These cookies help us understand how visitors interact with our website.</p>
+            </div><div class="cookie-category">
+                <label>
+                    <input type="checkbox" name="functional" data-cookie-category="functional" />
+                    <strong>Functional</strong>
+                </label>
+                <p>These cookies enable features like comments and embedded content.</p>
+            </div><div class="cookie-settings__actions">
+                <button class="cookie-btn cookie-btn--secondary" data-cookie-action="cancel">
+                    Cancel
+                </button>
+                <button class="cookie-btn cookie-btn--primary" data-cookie-action="save">
+                    Save preferences
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <script type="text/javascript" src="/ts/cookies.6d3577f211db9f4f1997385d4b417cf90130b050bc9e787bb1bb5346d337e998.js" defer></script>
+<script type="text/javascript" src="/ts/main.acaf849f2b273f6a8368a58b001f336738d0c948d92e79b116467d0c7515f932.js" defer></script>
+
+
+    </body>
+</html>

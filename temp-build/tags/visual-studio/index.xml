@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Visual Studio on Azure Readiness starts here...</title><link>https://www.007ffflearning.com/tags/visual-studio/</link><description>Recent content in Visual Studio on Azure Readiness starts here...</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 10 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/visual-studio/index.xml" rel="self" type="application/rss+xml"/><item><title>publish your first dotnet5 app to Azure App Services</title><link>https://www.007ffflearning.com/post/publish-your-first-dotnet5-app-to-azure-app-services/</link><pubDate>Tue, 10 Nov 2020 00:00:00 +0000</pubDate><guid>https://www.007ffflearning.com/post/publish-your-first-dotnet5-app-to-azure-app-services/</guid><description>&lt;p&gt;Today, Nov 10th, was the official date of the long-announced &lt;a class="link" href="https://dotnet.microsoft.com/download/dotnet/5.0" target="_blank" rel="noopener"
+ &gt;&amp;ldquo;dotnet5 Framework&amp;rdquo;&lt;/a&gt;, and it is described as a major release. Still being new in the developer world myself, I know the basics of ASP.NET 3.7 and 4.5, so I can imagine jumping to a 5.0 release is indeed a big thing.&lt;/p&gt;
+&lt;h2 id="net-50-improvements"&gt;.NET 5.0 improvements
+&lt;/h2&gt;&lt;p&gt;The biggest improvements announced by the Product Team are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Migration-friendly for older .NET versions&lt;/li&gt;
+&lt;li&gt;Production-ready from day 1 of release (thorough-tested for &lt;a class="link" href="http://www.dot.net" target="_blank" rel="noopener"
+ &gt;http://www.dot.net&lt;/a&gt; and &lt;a class="link" href="http://www.bing.com" target="_blank" rel="noopener"
+ &gt;http://www.bing.com&lt;/a&gt; websites)&lt;/li&gt;
+&lt;li&gt;Enhanced performance&lt;/li&gt;
+&lt;li&gt;ClickOnce client app publishing&lt;/li&gt;
+&lt;li&gt;Smaller container image footprint&lt;/li&gt;
+&lt;li&gt;Supportability for Windows Arm64 and WebAssembly (Blazor)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Support will go into Feb 2022, which seems the release date for DotNet 6.0 LTS&lt;/p&gt;
+&lt;p&gt;Another big deal is the &lt;strong&gt;Unification&lt;/strong&gt; of the DotNet platform; what this means is that the .NET standard and characteristics will be available across different scenarios (mobile apps, web apps, webassembly, desktop apps, IOT,&amp;hellip;) relying on the same set of APIs, tools and languages. While not all has been integrated and unified yet, it&amp;rsquo;s still on the roadmap to become fully unified by version 6.0 in about 18 months from now.&lt;/p&gt;
+&lt;p&gt;More details about the dotnet 5.0 release can be read in the &lt;a class="link" href="https://devblogs.microsoft.com/dotnet/announcing-net-5-0/?utm_source=dotnet-website&amp;amp;utm_medium=banner&amp;amp;utm_campaign=blog-banner" target="_blank" rel="noopener"
+ &gt;&amp;ldquo;announcement blog:&amp;rdquo;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="developer-environment-dependencies"&gt;Developer Environment dependencies
+&lt;/h2&gt;&lt;h3 id="visual-studio-2019"&gt;Visual Studio 2019
+&lt;/h3&gt;&lt;p&gt;In order to use the .NET 5.0 Framework, an update of &lt;strong&gt;Visual Studio 2019&lt;/strong&gt; is required. More specifically, it needs to be version &lt;strong&gt;16.8.0&lt;/strong&gt;; if all is set as default in your IDE, you should get this prompt to upgrade automatically; if this has been disabled, you could launch the upgrade yourself by starting the Visual Studio Installer from within the Visual Studio menu option &lt;strong&gt;Tools / Get Tools and Features&amp;hellip;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/2020-11-10_01.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Visual Studio Installer"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;h3 id="visual-studio-for-mac"&gt;Visual Studio for MAC
+&lt;/h3&gt;&lt;p&gt;Updating to the &lt;a class="link" href="https://visualstudio.microsoft.com/vs/mac/" target="_blank" rel="noopener"
+ &gt;&amp;ldquo;latest version&amp;rdquo;&lt;/a&gt; of Visual Studio for MAC should bring in support for .NET 5.0;&lt;/p&gt;
+&lt;h3 id="visual-studio-code"&gt;Visual Studio Code
+&lt;/h3&gt;&lt;p&gt;Integration of .NET 5.0 into VIsual Studio Code is managed out of the &lt;a class="link" href="https://code.visualstudio.com/docs/languages/dotnet" target="_blank" rel="noopener"
+ &gt;&amp;ldquo;C# Extension&amp;rdquo;&lt;/a&gt;, so if you update this one to the latest version, you are good to go too.&lt;/p&gt;
+&lt;h2 id="creating-your-first-net-50-project-in-visual-studio"&gt;Creating your first .NET 5.0 Project in Visual Studio
+&lt;/h2&gt;&lt;p&gt;Now the prerequirements have been covered, let&amp;rsquo;s give it a try and build a new ASP.NET Web Application:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;From the Visual Studio 2019 menu, select &lt;strong&gt;File / New / Project&amp;hellip;&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;From the list of templates, select &lt;strong&gt;&amp;ldquo;ASP.NET Core Web Application&amp;rdquo;&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2020-11-10_02.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="ASP.NET Web App Template"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="3"&gt;
+&lt;li&gt;&lt;strong&gt;Press Create&lt;/strong&gt;; in the next step, from the top, select &lt;strong&gt;.NET Core&lt;/strong&gt; and &lt;strong&gt;ASP.NET Core 5.0&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2020-11-10_03.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="ASP.NET Web App Template"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="4"&gt;
+&lt;li&gt;
+&lt;p&gt;Choose &lt;strong&gt;ASP.NET Core Web App&lt;/strong&gt; as template + confirm by pressing the &lt;strong&gt;Create&lt;/strong&gt; button. Wait for the project to load.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;From &lt;strong&gt;Solution Explorer&lt;/strong&gt;, select the Project you just created (the bold title), and open its &lt;strong&gt;Properties&lt;/strong&gt;; this will also confirm the &lt;strong&gt;.NET 5.0&lt;/strong&gt; Framework&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2020-11-10_04.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="ASP.NET Web App Template"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;h2 id="publishing-your-web-app-to-azure-app-services"&gt;Publishing your Web App to Azure App Services
+&lt;/h2&gt;&lt;p&gt;Developing an app is one thing, but what&amp;rsquo;s giving more joy than seeing it running in Azure? Here we go:&lt;/p&gt;
+&lt;p&gt;(Assumptions: you have an active Azure subscription, and the necessary RBAC permissions to create and deploy App Services&amp;hellip;)&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;From Solution Explorer / select your Project (the bold title), &lt;strong&gt;right click&lt;/strong&gt; to open the context menu, and select &lt;strong&gt;publish&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2020-11-10_05.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="ASP.NET Web App Template"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;From the &lt;strong&gt;Publish&lt;/strong&gt; wizard Target step, select &lt;strong&gt;Azure&lt;/strong&gt;; click Next&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2020-11-10_06.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="ASP.NET Web App Template"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="3"&gt;
+&lt;li&gt;From the wizard&amp;rsquo;s Specific Target step, select &lt;strong&gt;Azure App Service (Linux)&lt;/strong&gt;; click Next&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2020-11-10_07.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="ASP.NET Web App Template"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="4"&gt;
+&lt;li&gt;From the wizard&amp;rsquo;s App Service step, Click the &lt;strong&gt;+&lt;/strong&gt; sign to **create a new &lt;strong&gt;Azure App Service&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2020-11-10_08.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="ASP.NET Web App Template"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- provide a **unique** name for the webapp, using lowercase characters
+- specify a new for a **new Resource Group**
+- specify a new **App Service Plan** for example S1 - 1.75Gb Memory
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src="../images/2020-11-10_09.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="ASP.NET Web App Template"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="5"&gt;
+&lt;li&gt;Validate all the settings, and confirm by pressing &lt;strong&gt;Finish&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2020-11-10_10.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="ASP.NET Web App Template"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="6"&gt;
+&lt;li&gt;From the summary page, press &lt;strong&gt;Publish&lt;/strong&gt;; This starts the publishing process.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2020-11-10_11.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="ASP.NET Web App Template"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="7"&gt;
+&lt;li&gt;Wait for it to complete successfully. The process can be viewed from the &lt;strong&gt;Output window&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="../images/2020-11-10_12.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="ASP.NET Web App Template"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="8"&gt;
+&lt;li&gt;
+&lt;p&gt;After waiting another few seconds, your &lt;strong&gt;default browser&lt;/strong&gt; opens the Web App URL, and shows the web app running&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Let&amp;rsquo;s validate the App Service Configuration settings from within the Azure Portal:&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;Log on to &lt;a class="link" href="https://portal.azure.com" target="_blank" rel="noopener"
+ &gt;https://portal.azure.com&lt;/a&gt; using your Azure Admin Credentials&lt;/li&gt;
+&lt;li&gt;Browse to App Services&lt;/li&gt;
+&lt;li&gt;Notice the App Service you just created&lt;/li&gt;
+&lt;li&gt;Browse to this App Service&amp;rsquo;s &lt;strong&gt;Configuration&lt;/strong&gt; (under Settings)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="../images/2020-11-10_13.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="ASP.NET Web App Template"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
+&lt;ol start="10"&gt;
+&lt;li&gt;Notice the correct &lt;strong&gt;.NET 5.0&lt;/strong&gt; version&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="summary"&gt;Summary
+&lt;/h2&gt;&lt;p&gt;In this article, you got introduced to the new .NET 5.0 Framework. I walked you through the Project setup in VIsual Studio 2019 for an ASP.NET Core 5.0 based web application, followed by publishing this to a new Azure App Service resource.&lt;/p&gt;
+&lt;p&gt;As always, I hope you learned from this article; ping me whenever you got any (Azure) questions.&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
+ &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="BuyMeACoffee"
+ 
+ 
+ 
+ &gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Take care, Peter&lt;/p&gt;</description></item></channel></rss>
