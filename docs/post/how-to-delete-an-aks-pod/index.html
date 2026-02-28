@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-    <head><meta charset='utf-8'>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Hi again,\nIn about every Azure training delivered the last few months, I am talking about Docker and Azure Kubernetes Services - AKS\nAlong these months, the amount of &ldquo;sample PODS&rdquo; I am running within the Kubernetes cluster was continuously growing, resulting in a less efficient demo scenario to show.\nSo cleaning up these running PODS was my 5 seconds action this Saturday morning. While not super hard, it actually took me a bit longer than 5 seconds (more like 10min :)), since I forgot a few &ldquo;basics&rdquo; on how Kubernetes is running PODS.\n">
 <title>How to delete a POD from Azure Kubernetes Services (AKS)</title>
 
 
-<link rel="canonical" href="https://www.007ffflearning.com/post/how-to-delete-an-aks-pod/">
+<link rel="canonical" href="http://localhost:1313/post/how-to-delete-an-aks-pod/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
 
 
-<link rel="stylesheet" href="/scss/style.min.3fe054e425b56de773b19f095f1e2017ce9a57c1bdf515298b0b20fbe7002c92.css"><meta property='og:title' content="How to delete a POD from Azure Kubernetes Services (AKS)">
+<link rel="stylesheet" href="/scss/style.min.cf9653eecaea3cf14f5747895c3ac9b505bea7f8f3f40c16dac6b0e82fafddc4.css"><meta property='og:title' content="How to delete a POD from Azure Kubernetes Services (AKS)">
 <meta property='og:description' content="Hi again,\nIn about every Azure training delivered the last few months, I am talking about Docker and Azure Kubernetes Services - AKS\nAlong these months, the amount of &ldquo;sample PODS&rdquo; I am running within the Kubernetes cluster was continuously growing, resulting in a less efficient demo scenario to show.\nSo cleaning up these running PODS was my 5 seconds action this Saturday morning. While not super hard, it actually took me a bit longer than 5 seconds (more like 10min :)), since I forgot a few &ldquo;basics&rdquo; on how Kubernetes is running PODS.\n">
-<meta property='og:url' content='https://www.007ffflearning.com/post/how-to-delete-an-aks-pod/'>
+<meta property='og:url' content='http://localhost:1313/post/how-to-delete-an-aks-pod/'>
 <meta property='og:site_name' content='Azure Readiness starts here...'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Azure' /><meta property='article:tag' content='Docker' /><meta property='article:tag' content='Containers' /><meta property='article:tag' content='Kubernetes' /><meta property='article:tag' content='AKS' /><meta property='article:published_time' content='2020-06-06T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-06-06T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="How to delete a POD from Azure Kubernetes Services (AKS)">
@@ -47,7 +47,7 @@
         }
     })();
 </script>
-<div class="container main-container flex on-phone--column compact"><aside class="sidebar left-sidebar sticky ">
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
     <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
         <span class="hamburger-box">
             <span class="hamburger-inner"></span>
@@ -189,6 +189,23 @@
         
         
         <li >
+            <a href='/speaking/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-microphone" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 5a3 3 0 0 1 6 0v7a3 3 0 0 1 -6 0z"/>
+  <path d="M5 10a7 7 0 0 0 14 0"/>
+  <path d="M8 21l8 0"/>
+  <path d="M12 17l0 4"/>
+</svg>
+
+                
+                <span>Speaking</span>
+            </a>
+        </li>
+        
+        
+        <li >
             <a href='/about/' >
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -200,7 +217,7 @@
 
 
                 
-                <span>About</span>
+                <span>About Me</span>
             </a>
         </li>
         
@@ -218,6 +235,23 @@
 
                 
                 <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>Tags</span>
             </a>
         </li>
         
@@ -322,11 +356,13 @@
 </li>
 </ul>
 <p>A sample such kubernetes.yml looks like this:</p>
-<p>
-  <img src="../images/2020-06-06_1.jpg"
+<p><img src="../images/2020-06-06_1.jpg"
+    
+    
     loading="lazy"
     
       alt="Sample Kubernetes.yml"
+    
     
     
   ></p>
@@ -356,11 +392,13 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>which looks similar to what I have in my environment:</p>
-<p>
-  <img src="../images/2020-06-06_2.jpg"
+<p><img src="../images/2020-06-06_2.jpg"
+    
+    
     loading="lazy"
     
       alt="kubectl get pods"
+    
     
     
   ></p>
@@ -374,31 +412,37 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>which nicely deletes the identified POD</p>
-<p>
-  <img src="../images/2020-06-06_3.jpg"
+<p><img src="../images/2020-06-06_3.jpg"
+    
+    
     loading="lazy"
     
       alt="kubectl delete pods"
     
     
+    
   ></p>
 <p>or did it?</p>
-<p>
-  <img src="../images/2020-06-06_4.jpg"
+<p><img src="../images/2020-06-06_4.jpg"
+    
+    
     loading="lazy"
     
       alt="kubectl get pods again"
+    
     
     
   ></p>
 <p>Apparently the PODS were not really getting deleted in the way I wanted them to be completely removed from the cluster. My &ldquo;active&rdquo; PODS turned to a state &ldquo;terminating&rdquo;, but at the same time, there were <strong>2 new PODS</strong> running the same application. What&rsquo;s going on?</p>
 <p>After a few seconds, it struck me what AKS was doing here&hellip; The built-in high availability of Kubernetes always tries to make sure it has container instances running, according to&hellip; what you defined in your <strong>deployment</strong> (=the kubernetes.yml file).</p>
 <p>Let&rsquo;s check that file again:</p>
-<p>
-  <img src="../images/2020-06-06_1.jpg"
+<p><img src="../images/2020-06-06_1.jpg"
+    
+    
     loading="lazy"
     
       alt="Sample Kubernetes.yml"
+    
     
     
   ></p>
@@ -425,11 +469,13 @@
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">kubectl delete deployment --all
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>
-  <img src="../images/2020-06-06_5.jpg"
+</div><p><img src="../images/2020-06-06_5.jpg"
+    
+    
     loading="lazy"
     
       alt="kubectl delete deployment"
+    
     
     
   ></p>
@@ -442,11 +488,13 @@
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">kubectl get pods
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>
-  <img src="../images/2020-06-06_6.jpg"
+</div><p><img src="../images/2020-06-06_6.jpg"
+    
+    
     loading="lazy"
     
       alt="kubectl delete deployment"
+    
     
     
   ></p>
@@ -454,11 +502,13 @@
 </h2><p>This post described how you can successfully delete running PODS from an AKS environment, using different scenarios.</p>
 <p>See you all soon, reach out when you have any questions on AKS or Azure in general,</p>
 <p><a class="link" href="https://www.buymeacoffee.com/pdtit"  target="_blank" rel="noopener"
-    >
-  <img src="../images/buy_me_a_coffee.png"
+    ><img src="../images/buy_me_a_coffee.png"
+    
+    
     loading="lazy"
     
       alt="BuyMeACoffee"
+    
     
     
   ></a></p>
@@ -610,6 +660,7 @@
         lightbox.init();
     }
 </script>
+
     
 
             </main>
@@ -669,8 +720,8 @@
 </div>
 
 
-    <script type="text/javascript" src="/ts/cookies.6d3577f211db9f4f1997385d4b417cf90130b050bc9e787bb1bb5346d337e998.js" defer></script>
-<script type="text/javascript" src="/ts/main.acaf849f2b273f6a8368a58b001f336738d0c948d92e79b116467d0c7515f932.js" defer></script>
+    <script type="text/javascript" src="/ts/cookies.fb6e3f54ec5cefc5dd04ebdb731fbb630fe36104d843ad1ef773c6462b788568.js" defer></script>
+<script type="text/javascript" src="/ts/main.7aaef5b0228fe199f3d764416965e34f5bf182cbe0650a0f3ea1a716021ba381.js" defer></script>
 
 
     </body>

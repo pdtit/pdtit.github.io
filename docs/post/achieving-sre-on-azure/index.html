@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-    <head><meta charset='utf-8'>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Disclaimer: this was supposed to be a recorded session for Azure Back To School 2023, but due to a too-busy-work-and-family-schedule over the last 2 weeks, I didn&rsquo;t find the time anymore. While I don&rsquo;t like to let down this amazing community, I hope the textual descriptions of what I was going to talk about is still appreciated.\nAchieving Site Reliability Engineering with Azure\rIn today&rsquo;s digitally driven landscape, ensuring the reliability of cloud-based applications and services is paramount. Site Reliability Engineering (SRE) has emerged as a crucial discipline for achieving this goal. In this technical article, we will explore how Azure, Microsoft&rsquo;s cloud platform, can be leveraged to implement and enhance Site Reliability Engineering practices. We&rsquo;ll delve into key topics such as the Azure Well Architected Framework, Azure Service Level Agreements (SLAs), best practices around DevOps, and the powerful toolset of Chaos Engineering, including Azure Chaos Studio.\n">
 <title>Azure Back to School - Achieving SRE on Azure</title>
 
 
-<link rel="canonical" href="https://www.007ffflearning.com/post/achieving-sre-on-azure/">
+<link rel="canonical" href="http://localhost:1313/post/achieving-sre-on-azure/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
 
 
-<link rel="stylesheet" href="/scss/style.min.3fe054e425b56de773b19f095f1e2017ce9a57c1bdf515298b0b20fbe7002c92.css"><meta property='og:title' content="Azure Back to School - Achieving SRE on Azure">
+<link rel="stylesheet" href="/scss/style.min.cf9653eecaea3cf14f5747895c3ac9b505bea7f8f3f40c16dac6b0e82fafddc4.css"><meta property='og:title' content="Azure Back to School - Achieving SRE on Azure">
 <meta property='og:description' content="Disclaimer: this was supposed to be a recorded session for Azure Back To School 2023, but due to a too-busy-work-and-family-schedule over the last 2 weeks, I didn&rsquo;t find the time anymore. While I don&rsquo;t like to let down this amazing community, I hope the textual descriptions of what I was going to talk about is still appreciated.\nAchieving Site Reliability Engineering with Azure\rIn today&rsquo;s digitally driven landscape, ensuring the reliability of cloud-based applications and services is paramount. Site Reliability Engineering (SRE) has emerged as a crucial discipline for achieving this goal. In this technical article, we will explore how Azure, Microsoft&rsquo;s cloud platform, can be leveraged to implement and enhance Site Reliability Engineering practices. We&rsquo;ll delve into key topics such as the Azure Well Architected Framework, Azure Service Level Agreements (SLAs), best practices around DevOps, and the powerful toolset of Chaos Engineering, including Azure Chaos Studio.\n">
-<meta property='og:url' content='https://www.007ffflearning.com/post/achieving-sre-on-azure/'>
+<meta property='og:url' content='http://localhost:1313/post/achieving-sre-on-azure/'>
 <meta property='og:site_name' content='Azure Readiness starts here...'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Azure' /><meta property='article:tag' content='SRE' /><meta property='article:published_time' content='2023-09-09T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-09-09T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Azure Back to School - Achieving SRE on Azure">
@@ -47,7 +47,7 @@
         }
     })();
 </script>
-<div class="container main-container flex on-phone--column compact"><aside class="sidebar left-sidebar sticky ">
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
     <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
         <span class="hamburger-box">
             <span class="hamburger-inner"></span>
@@ -189,6 +189,23 @@
         
         
         <li >
+            <a href='/speaking/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-microphone" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 5a3 3 0 0 1 6 0v7a3 3 0 0 1 -6 0z"/>
+  <path d="M5 10a7 7 0 0 0 14 0"/>
+  <path d="M8 21l8 0"/>
+  <path d="M12 17l0 4"/>
+</svg>
+
+                
+                <span>Speaking</span>
+            </a>
+        </li>
+        
+        
+        <li >
             <a href='/about/' >
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -200,7 +217,7 @@
 
 
                 
-                <span>About</span>
+                <span>About Me</span>
             </a>
         </li>
         
@@ -218,6 +235,23 @@
 
                 
                 <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>Tags</span>
             </a>
         </li>
         
@@ -305,21 +339,25 @@
     
     <p>Disclaimer: this was supposed to be a recorded session for <strong><a class="link" href="https://azurebacktoschool.github.io/edge%20case/azure-back-to-school-2023-session-schedule/"  target="_blank" rel="noopener"
     >Azure Back To School 2023</a></strong>, but due to a <strong>too-busy-work-and-family-schedule</strong> over the last 2 weeks, I didn&rsquo;t find the time anymore. While I don&rsquo;t like to let down this amazing community, I hope the textual descriptions of what I was going to talk about is still appreciated.</p>
-<p>
-  <img src="../images/Azure_rectangular_logo_without_background.png"
+<p><img src="../images/Azure_rectangular_logo_without_background.png"
+    
+    
     loading="lazy"
     
       alt="Azure Back To School"
     
     
+    
   ></p>
 <h1 id="achieving-site-reliability-engineering-with-azure">Achieving Site Reliability Engineering with Azure
 </h1><p>In today&rsquo;s digitally driven landscape, ensuring the <strong>reliability</strong> of cloud-based applications and services is paramount. <strong>Site Reliability Engineering (SRE)</strong> has emerged as a crucial discipline for achieving this goal. In this technical article, we will explore how <strong>Azure</strong>, Microsoft&rsquo;s cloud platform, can be leveraged to implement and enhance Site Reliability Engineering practices. We&rsquo;ll delve into key topics such as the <strong>Azure Well Architected Framework</strong>, <strong>Azure Service Level Agreements (SLAs)</strong>, best practices around <strong>DevOps</strong>, and the powerful toolset of <strong>Chaos Engineering</strong>, including <strong>Azure Chaos Studio</strong>.</p>
-<p>
-  <img src="../images/2023-09-09_20-48-40.png"
+<p><img src="../images/2023-09-09_20-48-40.png"
+    
+    
     loading="lazy"
     
       alt="Intro to SRE on Azure"
+    
     
     
   ></p>
@@ -349,11 +387,13 @@ This initially referred to <em>THE SITE</em>, yes, <a class="link" href="http://
 <li>Sometimes, you take responsibility for the side-pieces like backup, monitoring, load-balancing and alike, being the operations engineer if you want</li>
 <li>And sometimes, it’s figuring out how t apply existing solutions to new problems</li>
 </ul>
-<p>
-  <img src="../images/2023-09-09_20-50-35.png"
+<p><img src="../images/2023-09-09_20-50-35.png"
+    
+    
     loading="lazy"
     
       alt="Role of an SRE"
+    
     
     
   ></p>
@@ -375,22 +415,26 @@ This initially referred to <em>THE SITE</em>, yes, <a class="link" href="http://
 <h2 id="which-leads-me-to-the-next-question-is-sre-like-devops-20">Which leads me to the next question, is SRE like DevOps 2.0?
 </h2><p>In short, DevOps is mainly focused on integrating a culture of brining developer and operations teams together, to collaborate closer with each other, to deliver value to the business</p>
 <p>SRE relies on DevOps prpctices to optimize reliability – I’ll walk you through some demos on that later in this session with Azure DevOps; I always say there wouldn’t be SRE without DevOps; but SRE is not replacing DevOps, but is rather augmenting it.</p>
-<p>
-  <img src="../images/2023-09-09_20-51-22.png"
+<p><img src="../images/2023-09-09_20-51-22.png"
+    
+    
     loading="lazy"
     
       alt="Is SRE like DevOps 2.0"
+    
     
     
   ></p>
 <h2 id="how-to-measure-sre-success">How to measure SRE success?
 </h2><p>So now you know what SRE is, the next big question from your customers is probably, how can we measure its success?</p>
 <p>While not 100% complete because of time constraints, it boils down to 8 different terms that are crucial to know about:</p>
-<p>
-  <img src="../images/2023-09-09_20-51-38.png"
+<p><img src="../images/2023-09-09_20-51-38.png"
+    
+    
     loading="lazy"
     
       alt="Measure SRE success"
+    
     
     
   ></p>
@@ -400,11 +444,13 @@ This initially referred to <em>THE SITE</em>, yes, <a class="link" href="http://
 <li><strong>RTO</strong> – Recovery Time Objective – refers to the amount of time it takes to fix an issue and got a workload up-and-running again</li>
 <li><strong>RPO</strong> – Recovery Point Objective, which defines the point to where you could recover, meaning what is the foreseeable data loss</li>
 </ul>
-<p>
-  <img src="../images/2023-09-09_20-52-09.png"
+<p><img src="../images/2023-09-09_20-52-09.png"
+    
+    
     loading="lazy"
     
       alt="Measure SRE success"
+    
     
     
   ></p>
@@ -421,57 +467,69 @@ This initially referred to <em>THE SITE</em>, yes, <a class="link" href="http://
 <p><strong>Azure Cloud Services</strong>, is where the customer deploys workload infrastructure; this could be IAAS, PAAS, Containers and Serverless microservices</p>
 <p>On top, I position <strong>Apps</strong>, like the actual workloads that are running</p>
 <p>Important to emphasize is that using Azure is a shared responsibility; out of Microsoft, we need to provide a reliable Azure Foundation, think of the physical datacenters, allowing customers to build their level of reliability and resilience on the Cloud Services layer – think of Availability Sets and Zones for VMs, Global Load Balancers to redirect web traffic across Azure Regions or multi-region storage and database replication; which results in reliable App Runtimes</p>
-<p>
-  <img src="../images/2023-09-09_21-01-24.png"
+<p><img src="../images/2023-09-09_21-01-24.png"
+    
+    
     loading="lazy"
     
       alt="Azure Shared Responsibilities"
+    
     
     
   ></p>
 <p>So how do you get a view on Azure Foundation reliability?</p>
 <p>Right, checking Azure Service Health; this is actually a combination of 3 different tools in one:</p>
-<p>
-  <img src="../images/2023-09-09_21-01-43.png"
+<p><img src="../images/2023-09-09_21-01-43.png"
+    
+    
     loading="lazy"
     
       alt="Azure Shared Responsibilities"
     
     
+    
   ></p>
-<p>
-  <img src="../images/2023-09-09_19-52-47.png"
+<p><img src="../images/2023-09-09_19-52-47.png"
+    
+    
     loading="lazy"
     
       alt="Azure Status Health"
     
     
+    
   >
 <strong>Azure Status</strong>: overall Azure Status Health</p>
-<p>
-  <img src="../images/2023-09-09_19-54-09.png"
+<p><img src="../images/2023-09-09_19-54-09.png"
+    
+    
     loading="lazy"
     
       alt="Azure Service Health"
     
     
+    
   >
 <strong>Service Health</strong>: Personalized view of your Azure Services and Regions in use</p>
-<p>
-  <img src="../images/2023-09-09_19-55-13.png"
+<p><img src="../images/2023-09-09_19-55-13.png"
+    
+    
     loading="lazy"
     
       alt="Azure Resource Health"
     
     
+    
   >
 <strong>Resource Health</strong>: Shares status of your individual cloud resources e.g. VM, App Service</p>
 <p>The <strong>Azure Well Architected Framework</strong> is a comprehensive guide provided by Microsoft to help architects build secure, high-performing, resilient, and efficient infrastructure for their applications. It aligns closely with SRE principles, as it emphasizes best practices for reliability and scalability.</p>
-<p>
-  <img src="../images/2023-09-09_21-02-12.png"
+<p><img src="../images/2023-09-09_21-02-12.png"
+    
+    
     loading="lazy"
     
       alt="Azure Well-Architected Framework Overview"
+    
     
     
   ></p>
@@ -491,19 +549,23 @@ This initially referred to <em>THE SITE</em>, yes, <a class="link" href="http://
 </li>
 </ol>
 <p>Apart from these, I summarize a few other <em><strong>best practices</strong></em> if you want:</p>
-<p>
-  <img src="../images/2023-09-09_21-02-40.png"
+<p><img src="../images/2023-09-09_21-02-40.png"
+    
+    
     loading="lazy"
     
       alt="Azure Well-Architected Framework Overview"
+    
     
     
   ></p>
-<p>
-  <img src="../images/2023-09-09_21-02-51.png"
+<p><img src="../images/2023-09-09_21-02-51.png"
+    
+    
     loading="lazy"
     
       alt="Azure Well-Architected Framework Overview"
+    
     
     
   ></p>
@@ -546,11 +608,13 @@ This initially referred to <em>THE SITE</em>, yes, <a class="link" href="http://
 <p><strong>Incident Management</strong>: Define clear incident response procedures and automate incident detection and resolution where possible. Azure Service Health and Azure Logic Apps can be valuable here.</p>
 </li>
 </ol>
-<p>
-  <img src="../images/2023-09-09_21-03-33.png"
+<p><img src="../images/2023-09-09_21-03-33.png"
+    
+    
     loading="lazy"
     
       alt="Azure DevOps"
+    
     
     
   ></p>
@@ -578,11 +642,13 @@ This initially referred to <em>THE SITE</em>, yes, <a class="link" href="http://
 <p>As Azure continues to evolve, it offers an ever-expanding set of tools and services that align with SRE principles. By staying informed about the latest Azure offerings and incorporating them into your SRE practices, you can ensure that your applications and services meet their reliability objectives in the dynamic world of cloud computing.</p>
 <p>Thanks to the amazing <strong>Azure Back To School Team</strong> for having me for another year, and continuously supporting the Azure communities.</p>
 <p><a class="link" href="https://www.buymeacoffee.com/pdtit"  target="_blank" rel="noopener"
-    >
-  <img src="../images/buy_me_a_coffee.png"
+    ><img src="../images/buy_me_a_coffee.png"
+    
+    
     loading="lazy"
     
       alt="BuyMeACoffee"
+    
     
     
   ></a></p>
@@ -729,6 +795,7 @@ This initially referred to <em>THE SITE</em>, yes, <a class="link" href="http://
         lightbox.init();
     }
 </script>
+
     
 
             </main>
@@ -788,8 +855,8 @@ This initially referred to <em>THE SITE</em>, yes, <a class="link" href="http://
 </div>
 
 
-    <script type="text/javascript" src="/ts/cookies.6d3577f211db9f4f1997385d4b417cf90130b050bc9e787bb1bb5346d337e998.js" defer></script>
-<script type="text/javascript" src="/ts/main.acaf849f2b273f6a8368a58b001f336738d0c948d92e79b116467d0c7515f932.js" defer></script>
+    <script type="text/javascript" src="/ts/cookies.fb6e3f54ec5cefc5dd04ebdb731fbb630fe36104d843ad1ef773c6462b788568.js" defer></script>
+<script type="text/javascript" src="/ts/main.7aaef5b0228fe199f3d764416965e34f5bf182cbe0650a0f3ea1a716021ba381.js" defer></script>
 
 
     </body>

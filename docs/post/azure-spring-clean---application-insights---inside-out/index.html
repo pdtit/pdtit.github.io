@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-    <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="\rHey folks,\nWelcome to #AzureSpringClean, an initiative from Joe Carlyle and Thomas Thornton which celebrates its 4th edition this year. I&rsquo;m thrilled to be part of this again for the 3nd time this year. My first article had security in mind, explaining the difference between Azure Service Principals and Managed Identity.\nMy 2nd article focused on understand DevSecOps, and how you can optimize security in your application deployment lifecycle, by &ldquo;shifting left&rdquo;. (https://www.007ffflearning.com/post/azure-spring-clean---devsecops-and-shifting-left-to-publish-secure-software/)\n">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="\nHey folks,\nWelcome to #AzureSpringClean, an initiative from Joe Carlyle and Thomas Thornton which celebrates its 4th edition this year. I&rsquo;m thrilled to be part of this again for the 3nd time this year. My first article had security in mind, explaining the difference between Azure Service Principals and Managed Identity.\nMy 2nd article focused on understand DevSecOps, and how you can optimize security in your application deployment lifecycle, by &ldquo;shifting left&rdquo;. (https://www.007ffflearning.com/post/azure-spring-clean---devsecops-and-shifting-left-to-publish-secure-software/)\n">
 <title>Azure Spring Clean - Application Insights - Inside Out</title>
 
 
-<link rel="canonical" href="https://www.007ffflearning.com/post/azure-spring-clean---application-insights---inside-out/">
+<link rel="canonical" href="http://localhost:1313/post/azure-spring-clean---application-insights---inside-out/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
 
 
-<link rel="stylesheet" href="/scss/style.min.3fe054e425b56de773b19f095f1e2017ce9a57c1bdf515298b0b20fbe7002c92.css"><meta property='og:title' content="Azure Spring Clean - Application Insights - Inside Out">
-<meta property='og:description' content="\rHey folks,\nWelcome to #AzureSpringClean, an initiative from Joe Carlyle and Thomas Thornton which celebrates its 4th edition this year. I&rsquo;m thrilled to be part of this again for the 3nd time this year. My first article had security in mind, explaining the difference between Azure Service Principals and Managed Identity.\nMy 2nd article focused on understand DevSecOps, and how you can optimize security in your application deployment lifecycle, by &ldquo;shifting left&rdquo;. (https://www.007ffflearning.com/post/azure-spring-clean---devsecops-and-shifting-left-to-publish-secure-software/)\n">
-<meta property='og:url' content='https://www.007ffflearning.com/post/azure-spring-clean---application-insights---inside-out/'>
+<link rel="stylesheet" href="/scss/style.min.cf9653eecaea3cf14f5747895c3ac9b505bea7f8f3f40c16dac6b0e82fafddc4.css"><meta property='og:title' content="Azure Spring Clean - Application Insights - Inside Out">
+<meta property='og:description' content="\nHey folks,\nWelcome to #AzureSpringClean, an initiative from Joe Carlyle and Thomas Thornton which celebrates its 4th edition this year. I&rsquo;m thrilled to be part of this again for the 3nd time this year. My first article had security in mind, explaining the difference between Azure Service Principals and Managed Identity.\nMy 2nd article focused on understand DevSecOps, and how you can optimize security in your application deployment lifecycle, by &ldquo;shifting left&rdquo;. (https://www.007ffflearning.com/post/azure-spring-clean---devsecops-and-shifting-left-to-publish-secure-software/)\n">
+<meta property='og:url' content='http://localhost:1313/post/azure-spring-clean---application-insights---inside-out/'>
 <meta property='og:site_name' content='Azure Readiness starts here...'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Azure' /><meta property='article:tag' content='Monitoring' /><meta property='article:tag' content='DevOps' /><meta property='article:published_time' content='2025-03-06T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-03-06T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Azure Spring Clean - Application Insights - Inside Out">
-<meta name="twitter:description" content="\rHey folks,\nWelcome to #AzureSpringClean, an initiative from Joe Carlyle and Thomas Thornton which celebrates its 4th edition this year. I&rsquo;m thrilled to be part of this again for the 3nd time this year. My first article had security in mind, explaining the difference between Azure Service Principals and Managed Identity.\nMy 2nd article focused on understand DevSecOps, and how you can optimize security in your application deployment lifecycle, by &ldquo;shifting left&rdquo;. (https://www.007ffflearning.com/post/azure-spring-clean---devsecops-and-shifting-left-to-publish-secure-software/)\n">
+<meta name="twitter:description" content="\nHey folks,\nWelcome to #AzureSpringClean, an initiative from Joe Carlyle and Thomas Thornton which celebrates its 4th edition this year. I&rsquo;m thrilled to be part of this again for the 3nd time this year. My first article had security in mind, explaining the difference between Azure Service Principals and Managed Identity.\nMy 2nd article focused on understand DevSecOps, and how you can optimize security in your application deployment lifecycle, by &ldquo;shifting left&rdquo;. (https://www.007ffflearning.com/post/azure-spring-clean---devsecops-and-shifting-left-to-publish-secure-software/)\n">
     <link rel="shortcut icon" href="/img/007ffflearning-ape.png" />
 
     </head>
@@ -47,7 +47,7 @@
         }
     })();
 </script>
-<div class="container main-container flex on-phone--column compact"><aside class="sidebar left-sidebar sticky ">
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
     <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
         <span class="hamburger-box">
             <span class="hamburger-inner"></span>
@@ -189,6 +189,23 @@
         
         
         <li >
+            <a href='/speaking/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-microphone" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 5a3 3 0 0 1 6 0v7a3 3 0 0 1 -6 0z"/>
+  <path d="M5 10a7 7 0 0 0 14 0"/>
+  <path d="M8 21l8 0"/>
+  <path d="M12 17l0 4"/>
+</svg>
+
+                
+                <span>Speaking</span>
+            </a>
+        </li>
+        
+        
+        <li >
             <a href='/about/' >
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -200,7 +217,7 @@
 
 
                 
-                <span>About</span>
+                <span>About Me</span>
             </a>
         </li>
         
@@ -218,6 +235,23 @@
 
                 
                 <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>Tags</span>
             </a>
         </li>
         
@@ -303,11 +337,13 @@
     <section class="article-content">
     
     
-    <p>
-  <img src="../images/AzureSpringClean2025-logo.png"
+    <p><img src="../images/AzureSpringClean2025-logo.png"
+    
+    
     loading="lazy"
     
       alt="Azure Spring Clean"
+    
     
     
   ></p>
@@ -350,11 +386,13 @@
 <p>![Trainer Demo Deploy - Tollbooth](../images/Screenshot 2025-03-07 060247.png)</p>
 <p>Select the Tollbooth Serverless Architecture with Azure Functions card, and follow the <strong>Template Details</strong> instructions to get it deployed. Most important is having the Scenario-specific prereqs running on your local machine, as well as having Azure Developer CLI as well.</p>
 <p>from <strong>azd up</strong>, it will ask you for your Azure subscription and the region where you want to deploy the scenario. Give it about 12-15min, and the fun can start&hellip;</p>
-<p>
-  <img src="../images/tollbooth.png"
+<p><img src="../images/tollbooth.png"
+    
+    
     loading="lazy"
     
       alt="Tollbooth Architecture"
+    
     
     
   ></p>
@@ -501,11 +539,13 @@
 <h2 id="conclusion">Conclusion
 </h2><p>Application Insights, as part of Azure Monitor, is a powerful tool for monitoring and optimizing the performance of your applications. Its comprehensive features, seamless integration with other Azure services, and real-time insights make it an essential component of any modern monitoring strategy. By leveraging Application Insights, you can ensure that your applications run smoothly, deliver a great user experience, and achieve your business goals.</p>
 <p><a class="link" href="https://www.buymeacoffee.com/pdtit"  target="_blank" rel="noopener"
-    >
-  <img src="../images/buy_me_a_coffee.png"
+    ><img src="../images/buy_me_a_coffee.png"
+    
+    
     loading="lazy"
     
       alt="BuyMeACoffee"
+    
     
     
   ></a></p>
@@ -654,6 +694,7 @@
         lightbox.init();
     }
 </script>
+
     
 
             </main>
@@ -713,8 +754,8 @@
 </div>
 
 
-    <script type="text/javascript" src="/ts/cookies.6d3577f211db9f4f1997385d4b417cf90130b050bc9e787bb1bb5346d337e998.js" defer></script>
-<script type="text/javascript" src="/ts/main.acaf849f2b273f6a8368a58b001f336738d0c948d92e79b116467d0c7515f932.js" defer></script>
+    <script type="text/javascript" src="/ts/cookies.fb6e3f54ec5cefc5dd04ebdb731fbb630fe36104d843ad1ef773c6462b788568.js" defer></script>
+<script type="text/javascript" src="/ts/main.7aaef5b0228fe199f3d764416965e34f5bf182cbe0650a0f3ea1a716021ba381.js" defer></script>
 
 
     </body>

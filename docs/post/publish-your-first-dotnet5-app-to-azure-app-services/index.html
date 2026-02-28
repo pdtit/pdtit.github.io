@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-    <head><meta charset='utf-8'>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Today, Nov 10th, was the official date of the long-announced &ldquo;dotnet5 Framework&rdquo;, and it is described as a major release. Still being new in the developer world myself, I know the basics of ASP.NET 3.7 and 4.5, so I can imagine jumping to a 5.0 release is indeed a big thing.\n.NET 5.0 improvements\rThe biggest improvements announced by the Product Team are:\nMigration-friendly for older .NET versions Production-ready from day 1 of release (thorough-tested for http://www.dot.net and http://www.bing.com websites) Enhanced performance ClickOnce client app publishing Smaller container image footprint Supportability for Windows Arm64 and WebAssembly (Blazor) Support will go into Feb 2022, which seems the release date for DotNet 6.0 LTS\n">
 <title>publish your first dotnet5 app to Azure App Services</title>
 
 
-<link rel="canonical" href="https://www.007ffflearning.com/post/publish-your-first-dotnet5-app-to-azure-app-services/">
+<link rel="canonical" href="http://localhost:1313/post/publish-your-first-dotnet5-app-to-azure-app-services/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
 
 
-<link rel="stylesheet" href="/scss/style.min.3fe054e425b56de773b19f095f1e2017ce9a57c1bdf515298b0b20fbe7002c92.css"><meta property='og:title' content="publish your first dotnet5 app to Azure App Services">
+<link rel="stylesheet" href="/scss/style.min.cf9653eecaea3cf14f5747895c3ac9b505bea7f8f3f40c16dac6b0e82fafddc4.css"><meta property='og:title' content="publish your first dotnet5 app to Azure App Services">
 <meta property='og:description' content="Today, Nov 10th, was the official date of the long-announced &ldquo;dotnet5 Framework&rdquo;, and it is described as a major release. Still being new in the developer world myself, I know the basics of ASP.NET 3.7 and 4.5, so I can imagine jumping to a 5.0 release is indeed a big thing.\n.NET 5.0 improvements\rThe biggest improvements announced by the Product Team are:\nMigration-friendly for older .NET versions Production-ready from day 1 of release (thorough-tested for http://www.dot.net and http://www.bing.com websites) Enhanced performance ClickOnce client app publishing Smaller container image footprint Supportability for Windows Arm64 and WebAssembly (Blazor) Support will go into Feb 2022, which seems the release date for DotNet 6.0 LTS\n">
-<meta property='og:url' content='https://www.007ffflearning.com/post/publish-your-first-dotnet5-app-to-azure-app-services/'>
+<meta property='og:url' content='http://localhost:1313/post/publish-your-first-dotnet5-app-to-azure-app-services/'>
 <meta property='og:site_name' content='Azure Readiness starts here...'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Azure' /><meta property='article:tag' content='Visual Studio' /><meta property='article:tag' content='DotNet' /><meta property='article:published_time' content='2020-11-10T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-11-10T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="publish your first dotnet5 app to Azure App Services">
@@ -47,7 +47,7 @@
         }
     })();
 </script>
-<div class="container main-container flex on-phone--column compact"><aside class="sidebar left-sidebar sticky ">
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
     <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
         <span class="hamburger-box">
             <span class="hamburger-inner"></span>
@@ -189,6 +189,23 @@
         
         
         <li >
+            <a href='/speaking/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-microphone" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 5a3 3 0 0 1 6 0v7a3 3 0 0 1 -6 0z"/>
+  <path d="M5 10a7 7 0 0 0 14 0"/>
+  <path d="M8 21l8 0"/>
+  <path d="M12 17l0 4"/>
+</svg>
+
+                
+                <span>Speaking</span>
+            </a>
+        </li>
+        
+        
+        <li >
             <a href='/about/' >
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -200,7 +217,7 @@
 
 
                 
-                <span>About</span>
+                <span>About Me</span>
             </a>
         </li>
         
@@ -218,6 +235,23 @@
 
                 
                 <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>Tags</span>
             </a>
         </li>
         
@@ -324,11 +358,13 @@
 <h2 id="developer-environment-dependencies">Developer Environment dependencies
 </h2><h3 id="visual-studio-2019">Visual Studio 2019
 </h3><p>In order to use the .NET 5.0 Framework, an update of <strong>Visual Studio 2019</strong> is required. More specifically, it needs to be version <strong>16.8.0</strong>; if all is set as default in your IDE, you should get this prompt to upgrade automatically; if this has been disabled, you could launch the upgrade yourself by starting the Visual Studio Installer from within the Visual Studio menu option <strong>Tools / Get Tools and Features&hellip;</strong></p>
-<p>
-  <img src="../images/2020-11-10_01.png"
+<p><img src="../images/2020-11-10_01.png"
+    
+    
     loading="lazy"
     
       alt="Visual Studio Installer"
+    
     
     
   ></p>
@@ -348,22 +384,26 @@
 <p>From the list of templates, select <strong>&ldquo;ASP.NET Core Web Application&rdquo;</strong></p>
 </li>
 </ol>
-<p>
-  <img src="../images/2020-11-10_02.png"
+<p><img src="../images/2020-11-10_02.png"
+    
+    
     loading="lazy"
     
       alt="ASP.NET Web App Template"
+    
     
     
   ></p>
 <ol start="3">
 <li><strong>Press Create</strong>; in the next step, from the top, select <strong>.NET Core</strong> and <strong>ASP.NET Core 5.0</strong></li>
 </ol>
-<p>
-  <img src="../images/2020-11-10_03.png"
+<p><img src="../images/2020-11-10_03.png"
+    
+    
     loading="lazy"
     
       alt="ASP.NET Web App Template"
+    
     
     
   ></p>
@@ -375,11 +415,13 @@
 <p>From <strong>Solution Explorer</strong>, select the Project you just created (the bold title), and open its <strong>Properties</strong>; this will also confirm the <strong>.NET 5.0</strong> Framework</p>
 </li>
 </ol>
-<p>
-  <img src="../images/2020-11-10_04.png"
+<p><img src="../images/2020-11-10_04.png"
+    
+    
     loading="lazy"
     
       alt="ASP.NET Web App Template"
+    
     
     
   ></p>
@@ -389,44 +431,52 @@
 <ol>
 <li>From Solution Explorer / select your Project (the bold title), <strong>right click</strong> to open the context menu, and select <strong>publish</strong></li>
 </ol>
-<p>
-  <img src="../images/2020-11-10_05.png"
+<p><img src="../images/2020-11-10_05.png"
+    
+    
     loading="lazy"
     
       alt="ASP.NET Web App Template"
+    
     
     
   ></p>
 <ol start="2">
 <li>From the <strong>Publish</strong> wizard Target step, select <strong>Azure</strong>; click Next</li>
 </ol>
-<p>
-  <img src="../images/2020-11-10_06.png"
+<p><img src="../images/2020-11-10_06.png"
+    
+    
     loading="lazy"
     
       alt="ASP.NET Web App Template"
+    
     
     
   ></p>
 <ol start="3">
 <li>From the wizard&rsquo;s Specific Target step, select <strong>Azure App Service (Linux)</strong>; click Next</li>
 </ol>
-<p>
-  <img src="../images/2020-11-10_07.png"
+<p><img src="../images/2020-11-10_07.png"
+    
+    
     loading="lazy"
     
       alt="ASP.NET Web App Template"
+    
     
     
   ></p>
 <ol start="4">
 <li>From the wizard&rsquo;s App Service step, Click the <strong>+</strong> sign to **create a new <strong>Azure App Service</strong></li>
 </ol>
-<p>
-  <img src="../images/2020-11-10_08.png"
+<p><img src="../images/2020-11-10_08.png"
+    
+    
     loading="lazy"
     
       alt="ASP.NET Web App Template"
+    
     
     
   ></p>
@@ -434,44 +484,52 @@
 - specify a new for a **new Resource Group**
 - specify a new **App Service Plan** for example S1 - 1.75Gb Memory
 </code></pre>
-<p>
-  <img src="../images/2020-11-10_09.png"
+<p><img src="../images/2020-11-10_09.png"
+    
+    
     loading="lazy"
     
       alt="ASP.NET Web App Template"
+    
     
     
   ></p>
 <ol start="5">
 <li>Validate all the settings, and confirm by pressing <strong>Finish</strong></li>
 </ol>
-<p>
-  <img src="../images/2020-11-10_10.png"
+<p><img src="../images/2020-11-10_10.png"
+    
+    
     loading="lazy"
     
       alt="ASP.NET Web App Template"
+    
     
     
   ></p>
 <ol start="6">
 <li>From the summary page, press <strong>Publish</strong>; This starts the publishing process.</li>
 </ol>
-<p>
-  <img src="../images/2020-11-10_11.png"
+<p><img src="../images/2020-11-10_11.png"
+    
+    
     loading="lazy"
     
       alt="ASP.NET Web App Template"
+    
     
     
   ></p>
 <ol start="7">
 <li>Wait for it to complete successfully. The process can be viewed from the <strong>Output window</strong></li>
 </ol>
-<p>
-  <img src="../images/2020-11-10_12.png"
+<p><img src="../images/2020-11-10_12.png"
+    
+    
     loading="lazy"
     
       alt="ASP.NET Web App Template"
+    
     
     
   ></p>
@@ -490,11 +548,13 @@
 <li>Notice the App Service you just created</li>
 <li>Browse to this App Service&rsquo;s <strong>Configuration</strong> (under Settings)</li>
 </ul>
-<p>
-  <img src="../images/2020-11-10_13.png"
+<p><img src="../images/2020-11-10_13.png"
+    
+    
     loading="lazy"
     
       alt="ASP.NET Web App Template"
+    
     
     
   ></p>
@@ -505,11 +565,13 @@
 </h2><p>In this article, you got introduced to the new .NET 5.0 Framework. I walked you through the Project setup in VIsual Studio 2019 for an ASP.NET Core 5.0 based web application, followed by publishing this to a new Azure App Service resource.</p>
 <p>As always, I hope you learned from this article; ping me whenever you got any (Azure) questions.</p>
 <p><a class="link" href="https://www.buymeacoffee.com/pdtit"  target="_blank" rel="noopener"
-    >
-  <img src="../images/buy_me_a_coffee.png"
+    ><img src="../images/buy_me_a_coffee.png"
+    
+    
     loading="lazy"
     
       alt="BuyMeACoffee"
+    
     
     
   ></a></p>
@@ -657,6 +719,7 @@
         lightbox.init();
     }
 </script>
+
     
 
             </main>
@@ -716,8 +779,8 @@
 </div>
 
 
-    <script type="text/javascript" src="/ts/cookies.6d3577f211db9f4f1997385d4b417cf90130b050bc9e787bb1bb5346d337e998.js" defer></script>
-<script type="text/javascript" src="/ts/main.acaf849f2b273f6a8368a58b001f336738d0c948d92e79b116467d0c7515f932.js" defer></script>
+    <script type="text/javascript" src="/ts/cookies.fb6e3f54ec5cefc5dd04ebdb731fbb630fe36104d843ad1ef773c6462b788568.js" defer></script>
+<script type="text/javascript" src="/ts/main.7aaef5b0228fe199f3d764416965e34f5bf182cbe0650a0f3ea1a716021ba381.js" defer></script>
 
 
     </body>

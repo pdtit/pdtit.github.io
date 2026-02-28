@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-    <head><meta charset='utf-8'>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Hello readers,\nAbout 2 months ago, I promised I would start writing down my adventures in the DotNet Blazor development world, which you can read in my first Blazor-related post here.\nWhile that post was more of a &ldquo;setting the scene&rdquo; how I ended up in learning Blazor (and C# mainly) and what the differences are between Blazor Server and Blazor WebAssembly, it also listed up the TOP 8 objectives I want to get out of these articles.\n">
 <title>Coding Apps in Blazor from a non-developer standpoint - Part 2</title>
 
 
-<link rel="canonical" href="https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer---part-2/">
+<link rel="canonical" href="http://localhost:1313/post/coding-apps-in-blazor-from-a-non-developer---part-2/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
 
 
-<link rel="stylesheet" href="/scss/style.min.3fe054e425b56de773b19f095f1e2017ce9a57c1bdf515298b0b20fbe7002c92.css"><meta property='og:title' content="Coding Apps in Blazor from a non-developer standpoint - Part 2">
+<link rel="stylesheet" href="/scss/style.min.cf9653eecaea3cf14f5747895c3ac9b505bea7f8f3f40c16dac6b0e82fafddc4.css"><meta property='og:title' content="Coding Apps in Blazor from a non-developer standpoint - Part 2">
 <meta property='og:description' content="Hello readers,\nAbout 2 months ago, I promised I would start writing down my adventures in the DotNet Blazor development world, which you can read in my first Blazor-related post here.\nWhile that post was more of a &ldquo;setting the scene&rdquo; how I ended up in learning Blazor (and C# mainly) and what the differences are between Blazor Server and Blazor WebAssembly, it also listed up the TOP 8 objectives I want to get out of these articles.\n">
-<meta property='og:url' content='https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer---part-2/'>
+<meta property='og:url' content='http://localhost:1313/post/coding-apps-in-blazor-from-a-non-developer---part-2/'>
 <meta property='og:site_name' content='Azure Readiness starts here...'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Blazor' /><meta property='article:tag' content='DotNet' /><meta property='article:published_time' content='2021-11-07T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-11-07T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Coding Apps in Blazor from a non-developer standpoint - Part 2">
@@ -47,7 +47,7 @@
         }
     })();
 </script>
-<div class="container main-container flex on-phone--column compact"><aside class="sidebar left-sidebar sticky ">
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
     <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
         <span class="hamburger-box">
             <span class="hamburger-inner"></span>
@@ -189,6 +189,23 @@
         
         
         <li >
+            <a href='/speaking/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-microphone" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 5a3 3 0 0 1 6 0v7a3 3 0 0 1 -6 0z"/>
+  <path d="M5 10a7 7 0 0 0 14 0"/>
+  <path d="M8 21l8 0"/>
+  <path d="M12 17l0 4"/>
+</svg>
+
+                
+                <span>Speaking</span>
+            </a>
+        </li>
+        
+        
+        <li >
             <a href='/about/' >
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -200,7 +217,7 @@
 
 
                 
-                <span>About</span>
+                <span>About Me</span>
             </a>
         </li>
         
@@ -218,6 +235,23 @@
 
                 
                 <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>Tags</span>
             </a>
         </li>
         
@@ -329,22 +363,26 @@ In order to run C# and .NET applications, one needs to have the necessary .NET R
 <ol>
 <li>Launch Visual Studio on your machine, and select <strong>Create a new Project</strong></li>
 </ol>
-<p>
-  <img src="../images/2021-11-07_01.png"
+<p><img src="../images/2021-11-07_01.png"
+    
+    
     loading="lazy"
     
       alt="VisualStudioLaunch"
+    
     
     
   ></p>
 <ol start="2">
 <li>In the <strong>search box</strong>, type blazor</li>
 </ol>
-<p>
-  <img src="../images/2021-11-07_02.png"
+<p><img src="../images/2021-11-07_02.png"
+    
+    
     loading="lazy"
     
       alt="SearchBlazor"
+    
     
     
   ></p>
@@ -356,44 +394,52 @@ In order to run C# and .NET applications, one needs to have the necessary .NET R
 <p>In the <em>Configure Your New Project</em> step, set a <strong>name</strong> for your new project, for example <strong>MyFirstBlazorApp</strong>, and update the location if needed (Notice how VStudio is by default pointing to your user&rsquo;s profile directory, creating a sources and repos subfolder structure)</p>
 </li>
 </ol>
-<p>
-  <img src="../images/2021-11-07_03.png"
+<p><img src="../images/2021-11-07_03.png"
+    
+    
     loading="lazy"
     
       alt="ConfigureProject"
+    
     
     
   ></p>
 <ol start="5">
 <li>This brings us to the <em>Additional Information</em> step, where you specify the <strong>Framework</strong>, which (preferably, but not required&hellip;) is the latest <strong>.NET 6.0 (Long-Term Support)</strong></li>
 </ol>
-<p>
-  <img src="../images/2021-11-07_04.png"
+<p><img src="../images/2021-11-07_04.png"
+    
+    
     loading="lazy"
     
       alt="60Framework"
+    
     
     
   ></p>
 <ol start="6">
 <li>Confirm by clicking the <strong>Create</strong> button. After only a few minutes, the new Project got created and is available for &ldquo;customizing&rdquo;.</li>
 </ol>
-<p>
-  <img src="../images/2021-11-07_05.png"
+<p><img src="../images/2021-11-07_05.png"
+    
+    
     loading="lazy"
     
       alt="60Framework"
+    
     
     
   ></p>
 <ol start="7">
 <li>Before launching the app and see it in action, let&rsquo;s quickly describe the core application folder/file structure:</li>
 </ol>
-<p>
-  <img src="../images/2021-11-07_06.png"
+<p><img src="../images/2021-11-07_06.png"
+    
+    
     loading="lazy"
     
       alt="FolderFileStructure"
+    
     
     
   ></p>
@@ -413,11 +459,13 @@ In order to run C# and .NET applications, one needs to have the necessary .NET R
 </ul>
 </li>
 </ol>
-<p>
-  <img src="../images/2021-11-07_07.png"
+<p><img src="../images/2021-11-07_07.png"
+    
+    
     loading="lazy"
     
       alt="DebugView"
+    
     
     
   ></p>
@@ -431,22 +479,26 @@ In order to run C# and .NET applications, one needs to have the necessary .NET R
 </ul>
 </li>
 </ol>
-<p>
-  <img src="../images/2021-11-07_08.png"
+<p><img src="../images/2021-11-07_08.png"
+    
+    
     loading="lazy"
     
       alt="RunningApp"
+    
     
     
   ></p>
 <ol start="10">
 <li>From the Navigation Bar, select <strong>Counter</strong>; this opens the &ldquo;Counter&rdquo; page, which has a button, responding to each Click, and changing the value of the Current count field.</li>
 </ol>
-<p>
-  <img src="../images/2021-11-07_09.png"
+<p><img src="../images/2021-11-07_09.png"
+    
+    
     loading="lazy"
     
       alt="Counter"
+    
     
     
   ></p>
@@ -488,11 +540,13 @@ In order to run C# and .NET applications, one needs to have the necessary .NET R
 </li>
 </ul>
 <h1 id="debugging-a-blazor-app">Debugging a Blazor App
-</h1><p>
-  <img src="../images/2021-11-07_10.png"
+</h1><p><img src="../images/2021-11-07_10.png"
+    
+    
     loading="lazy"
     
       alt="Counter"
+    
     
     
   ></p>
@@ -500,11 +554,13 @@ In order to run C# and .NET applications, one needs to have the necessary .NET R
 <li>Since we are in &ldquo;Visual Studio Debug mode&rdquo; (I&rsquo;ll write much more on that in a later article&hellip;), let me briefly show you what it allows you to do. In short, it allows you to set a breakpoint, which gets prompted for during the run time of the application. To <strong>set a breakpoint</strong>, move your mouse pointer to the front of a line of code (or a code section) (the grey bar), and click. This adds a red dot, which reflects the breakpoint.</li>
 </ol>
 <p>From here, switch back to the application in the browser, and click the &ldquo;Click Me&rdquo; button again in the Counter page. Notice how you get brought back into Visual Studio, where the breakpoint got updated with a yellow arrow, identifying where you are in the debugging (we only have 1 breakpoint for now, but very convenient if you have several of those set&hellip;). It will also show the actual value of the CurrentCount in a little popup balloon message, as well as below in the Autos section</p>
-<p>
-  <img src="../images/2021-11-07_11.png"
+<p><img src="../images/2021-11-07_11.png"
+    
+    
     loading="lazy"
     
       alt="Counter"
+    
     
     
   ></p>
@@ -523,11 +579,13 @@ In order to run C# and .NET applications, one needs to have the necessary .NET R
     >hire a Blazor developer from Toptal</a>, a leading platform for connecting top-tier developers with clients.</p>
 <p>For now, take care of yourself and your family, see you again soon with more Blazor-news.</p>
 <p><a class="link" href="https://www.buymeacoffee.com/pdtit"  target="_blank" rel="noopener"
-    >
-  <img src="../images/buy_me_a_coffee.png"
+    ><img src="../images/buy_me_a_coffee.png"
+    
+    
     loading="lazy"
     
       alt="BuyMeACoffee"
+    
     
     
   ></a></p>
@@ -651,6 +709,7 @@ In order to run C# and .NET applications, one needs to have the necessary .NET R
         lightbox.init();
     }
 </script>
+
     
 
             </main>
@@ -710,8 +769,8 @@ In order to run C# and .NET applications, one needs to have the necessary .NET R
 </div>
 
 
-    <script type="text/javascript" src="/ts/cookies.6d3577f211db9f4f1997385d4b417cf90130b050bc9e787bb1bb5346d337e998.js" defer></script>
-<script type="text/javascript" src="/ts/main.acaf849f2b273f6a8368a58b001f336738d0c948d92e79b116467d0c7515f932.js" defer></script>
+    <script type="text/javascript" src="/ts/cookies.fb6e3f54ec5cefc5dd04ebdb731fbb630fe36104d843ad1ef773c6462b788568.js" defer></script>
+<script type="text/javascript" src="/ts/main.7aaef5b0228fe199f3d764416965e34f5bf182cbe0650a0f3ea1a716021ba381.js" defer></script>
 
 
     </body>

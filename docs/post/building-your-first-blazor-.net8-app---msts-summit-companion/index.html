@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-    <head><meta charset='utf-8'>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Introduction\rI got invited to present on Blazor .NET8 as part of the [https://mstechsummit.pl/en/](MS Tech Summit Poland (MSTS Summit)), for which I&rsquo;m very excited and honored. For most of my public speaking engagements, I try to focus on live demos, with only a minimum amount of slides, and this session is no different.\nTo help my audience in reproducing the demos in their own time, I decided to write out the steps.\n">
 <title>Building your first Blazor .NET8 app - MSTS Summit </title>
 
 
-<link rel="canonical" href="https://www.007ffflearning.com/post/building-your-first-blazor-.net8-app---msts-summit-companion/">
+<link rel="canonical" href="http://localhost:1313/post/building-your-first-blazor-.net8-app---msts-summit-companion/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
 
 
-<link rel="stylesheet" href="/scss/style.min.3fe054e425b56de773b19f095f1e2017ce9a57c1bdf515298b0b20fbe7002c92.css"><meta property='og:title' content="Building your first Blazor .NET8 app - MSTS Summit ">
+<link rel="stylesheet" href="/scss/style.min.cf9653eecaea3cf14f5747895c3ac9b505bea7f8f3f40c16dac6b0e82fafddc4.css"><meta property='og:title' content="Building your first Blazor .NET8 app - MSTS Summit ">
 <meta property='og:description' content="Introduction\rI got invited to present on Blazor .NET8 as part of the [https://mstechsummit.pl/en/](MS Tech Summit Poland (MSTS Summit)), for which I&rsquo;m very excited and honored. For most of my public speaking engagements, I try to focus on live demos, with only a minimum amount of slides, and this session is no different.\nTo help my audience in reproducing the demos in their own time, I decided to write out the steps.\n">
-<meta property='og:url' content='https://www.007ffflearning.com/post/building-your-first-blazor-.net8-app---msts-summit-companion/'>
+<meta property='og:url' content='http://localhost:1313/post/building-your-first-blazor-.net8-app---msts-summit-companion/'>
 <meta property='og:site_name' content='Azure Readiness starts here...'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Blazor' /><meta property='article:tag' content='Azure' /><meta property='article:tag' content='.NET8' /><meta property='article:published_time' content='2024-05-30T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-05-30T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Building your first Blazor .NET8 app - MSTS Summit ">
@@ -47,7 +47,7 @@
         }
     })();
 </script>
-<div class="container main-container flex on-phone--column compact"><aside class="sidebar left-sidebar sticky ">
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
     <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
         <span class="hamburger-box">
             <span class="hamburger-inner"></span>
@@ -189,6 +189,23 @@
         
         
         <li >
+            <a href='/speaking/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-microphone" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 5a3 3 0 0 1 6 0v7a3 3 0 0 1 -6 0z"/>
+  <path d="M5 10a7 7 0 0 0 14 0"/>
+  <path d="M8 21l8 0"/>
+  <path d="M12 17l0 4"/>
+</svg>
+
+                
+                <span>Speaking</span>
+            </a>
+        </li>
+        
+        
+        <li >
             <a href='/about/' >
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -200,7 +217,7 @@
 
 
                 
-                <span>About</span>
+                <span>About Me</span>
             </a>
         </li>
         
@@ -218,6 +235,23 @@
 
                 
                 <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>Tags</span>
             </a>
         </li>
         
@@ -337,11 +371,13 @@
 <li>Launch <strong>Visual Studio 2022</strong>, and select <strong>Create New Project</strong></li>
 <li>From the list of templates, select <strong>Blazor Web App</strong></li>
 </ol>
-<p>
-  <img src="../images/2024-05-17-215846.png"
+<p><img src="../images/2024-05-17-215846.png"
+    
+    
     loading="lazy"
     
       alt="Graphical user interface, text, application Description automatically generated"
+    
     
     
   ></p>
@@ -368,22 +404,26 @@
 <p>Click <strong>Create</strong> to complete the project creation wizard and wait for the template to get deployed in the Visual Studio development environment. The Solution Explorer looks like below:</p>
 </li>
 </ol>
-<p>
-  <img src="../images/2024-05-17-220528.png"
+<p><img src="../images/2024-05-17-220528.png"
+    
+    
     loading="lazy"
     
       alt="Graphical user interface, Create Project"
+    
     
     
   ></p>
 <ol start="10">
 <li>Run the app by pressing <strong>Ctrl-F5</strong> or select <strong>Run</strong> from the upper menu (the green arrow) and wait for the compile and build phase to complete. The web app should load successfully in a new browser window.</li>
 </ol>
-<p>
-  <img src="../images/2024-05-17-220807.png"
+<p><img src="../images/2024-05-17-220807.png"
+    
+    
     loading="lazy"
     
       alt="Blazor default web app in browser"
+    
     
     
   ></p>
@@ -401,11 +441,13 @@
 <p>In the next section, you learn how to update the Home.razor page and add your own custom HTML-layout, CSS structure and actual runtime code.</p>
 <h2 id="using-the-sample-app-to-understand-the-core-of-blazor">Using the sample app to understand the core of Blazor
 </h2><p>In the Blazor running app, navigate to the <strong>Counter</strong> page by clicking the Counter option in the navigation sidebar to your left. Selecting the <strong>Click me</strong> button will perform an increment of the current count without a page refresh. Having this kind of interactivity, used to require JavaScript, but with Blazor you can use C# now.</p>
-<p>
-  <img src="../images/2024-05-30-144007.png"
+<p><img src="../images/2024-05-30-144007.png"
+    
+    
     loading="lazy"
     
       alt="Counter Page"
+    
     
     
   >
@@ -438,11 +480,13 @@ You can find the implementation of the Counter component at <strong>Counter.razo
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Running the app again, will now show the <strong>Counter</strong> component, nicely on the Home Page. How easy, yet cool is that? DevOps engineers would call this <em>minimizing technical debt</em>, as instead of reusing and duplicating code, you can now just reuse full components.</p>
-<p>
-  <img src="../images/2024-05-30-144054.png"
+<p><img src="../images/2024-05-30-144054.png"
+    
+    
     loading="lazy"
     
       alt="Counter Component embedded in Home Page"
+    
     
     
   ></p>
@@ -486,33 +530,39 @@ You can find the implementation of the Counter component at <strong>Counter.razo
 </div><ol start="2">
 <li>In the Blazor Project folder Components, create a new subfolder &ldquo;Data&rdquo;, and create a file ConferenceSession.cs, in which you copy the above sample content.</li>
 </ol>
-<p>
-  <img src="../images/2024-05-31-104800.png"
+<p><img src="../images/2024-05-31-104800.png"
+    
+    
     loading="lazy"
     
       alt="CConferenceSession Class"
+    
     
     
   ></p>
 <ol start="3">
 <li>With the Class Model in place, you can now make use of the Scaffolding wizard. From the <strong>Project</strong>, right-click, and select <strong>Add New Scaffolded Item</strong></li>
 </ol>
-<p>
-  <img src="../images/2024-05-31-134607.png"
+<p><img src="../images/2024-05-31-134607.png"
+    
+    
     loading="lazy"
     
       alt="Add New Scaffolded Item"
+    
     
     
   ></p>
 <ol start="4">
 <li>From the list of options, select <strong>Razor Component</strong> and <strong>Razor Components Using Entity Framework (CRUD)</strong></li>
 </ol>
-<p>
-  <img src="../images/2024-05-31-134900.png"
+<p><img src="../images/2024-05-31-134900.png"
+    
+    
     loading="lazy"
     
       alt="Add New Scaffolded Item"
+    
     
     
   ></p>
@@ -526,22 +576,26 @@ You can find the implementation of the Counter component at <strong>Counter.razo
 <li>Database Provider: <strong>SQL Server</strong></li>
 </ul>
 <p>This will install the necessary Microsoft.EntityFrameworkCore Nuget Packages, creates the DBContext to interact with SQL Server, but - and this is rather cool - it will also create the necessary Razor Pages for the data model, including the CRUD action links.</p>
-<p>
-  <img src="../images/2024-05-31-140107.png"
+<p><img src="../images/2024-05-31-140107.png"
+    
+    
     loading="lazy"
     
       alt="Add New Scaffolded Item"
+    
     
     
   ></p>
 <ol start="6">
 <li>Below the /ConferenceSessionPages subfolder, notice the different <strong>Create, Delete, Edit, Details and Index</strong> pages. Open the <strong>Create.razor</strong> page in the Visual Studio editor:</li>
 </ol>
-<p>
-  <img src="../images/2024-05-31-140601.png"
+<p><img src="../images/2024-05-31-140601.png"
+    
+    
     loading="lazy"
     
       alt="Scaffolded create page"
+    
     
     
   >, and check the first couple of lines:</p>
@@ -581,11 +635,13 @@ the @using directive tells this page, to recognize the content of the Data folde
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Add-Migration ConferenceSessions
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>
-  <img src="../images/2024-05-31-142001.png"
+</div><p><img src="../images/2024-05-31-142001.png"
+    
+    
     loading="lazy"
     
       alt="Create Entity Framework Migration"
+    
     
     
   ></p>
@@ -598,11 +654,13 @@ the @using directive tells this page, to recognize the content of the Data folde
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Update-Database
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>
-  <img src="../images/2024-05-31-142205.png"
+</div><p><img src="../images/2024-05-31-142205.png"
+    
+    
     loading="lazy"
     
       alt="Update Entity Framework Database"
+    
     
     
   ></p>
@@ -610,33 +668,39 @@ the @using directive tells this page, to recognize the content of the Data folde
 <ol start="9">
 <li>Let&rsquo;s run the app again, and validate our ConferenceSession CRUD Pages. If you remember from the set of Pages created for us, one of them is the <strong>Index.razor</strong>, which has a @page directive of /conferencesessions. This means, if we browse to our app default URL, and add /conferencesessions, it will provide us with the &lsquo;home page&rsquo; of the Conference Sessions. Let&rsquo;s try that.</li>
 </ol>
-<p>
-  <img src="../images/2024-05-31-142604.png"
+<p><img src="../images/2024-05-31-142604.png"
+    
+    
     loading="lazy"
     
       alt="Editing Page for Conference Session items"
+    
     
     
   ></p>
 <ol start="10">
 <li>Click the <strong>Create New</strong> link, which redirects you to the /conferencesessions/<strong>create</strong> page. Complete the fields and click &lsquo;Create&rsquo; to save the record</li>
 </ol>
-<p>
-  <img src="../images/2024-05-31-144809.png"
+<p><img src="../images/2024-05-31-144809.png"
+    
+    
     loading="lazy"
     
       alt="Create new DB Record"
+    
     
     
   ></p>
 <ol start="11">
 <li>With the new record saved, you get redirected back to the <strong>Index</strong> page; notice the line item is there, together with a few additional CRUD links to the side for Editing, Deleting and opening the Details of the item.</li>
 </ol>
-<p>
-  <img src="../images/2024-05-31-143104.png"
+<p><img src="../images/2024-05-31-143104.png"
+    
+    
     loading="lazy"
     
       alt="Delete DB Record"
+    
     
     
   ></p>
@@ -647,11 +711,13 @@ the @using directive tells this page, to recognize the content of the Data folde
 <ol>
 <li>
 <p>From the Azure Portal, create new resource / static web app</p>
-<p>
-  <img src="../images//756a5b2424f865b6cf86eefab8492d2e.png"
+<p><img src="../images//756a5b2424f865b6cf86eefab8492d2e.png"
+    
+    
     loading="lazy"
     
       alt="Graphical user interface, text, application Description automatically generated"
+    
     
     
   ></p>
@@ -675,11 +741,13 @@ the @using directive tells this page, to recognize the content of the Data folde
 </li>
 <li>
 <p>Region = any region of your choice</p>
-<p>
-  <img src="../images//3910c87d613034cbd0c9ed1392dfda7b.png"
+<p><img src="../images//3910c87d613034cbd0c9ed1392dfda7b.png"
+    
+    
     loading="lazy"
     
       alt="Graphical user interface, text, application Description automatically generated"
+    
     
     
   ></p>
@@ -688,86 +756,102 @@ the @using directive tells this page, to recognize the content of the Data folde
 <ol>
 <li>
 <p>Scroll down and authenticate to GitHub; Next, select your source repo in Github where the code is stored (the one we just created)</p>
-<p>
-  <img src="../images//1bd1ddddd3602c3ba2d84b540da393aa.png"
+<p><img src="../images//1bd1ddddd3602c3ba2d84b540da393aa.png"
+    
+    
     loading="lazy"
     
       alt="Graphical user interface, text, application Description automatically generated"
+    
     
     
   ></p>
 </li>
 <li>
 <p>Click Build Details to provide more parameters regarding the Blazor app itself. Note you need to change the default App location from /Client to /, since our source code is in the root of the Blazor Web Assembly, without using ASP.Net hosted back-end.</p>
-<p>
-  <img src="../images//420cbce0770a41dc39ddf2184948363e.png"
+<p><img src="../images//420cbce0770a41dc39ddf2184948363e.png"
+    
+    
     loading="lazy"
     
       alt="Graphical user interface, application, email Description automatically generated"
+    
     
     
   ></p>
 </li>
 <li>
 <p>Once published, it will trigger a GitHub Actions pipeline to publish the actual content</p>
-<p>
-  <img src="../images//ba208857aa01b6d744c79606a7a76b53.png"
+<p><img src="../images//ba208857aa01b6d744c79606a7a76b53.png"
+    
+    
     loading="lazy"
+    
     
     
   ></p>
 </li>
 <li>
 <p>The YAML pipeline code is stored in the .github/workflows/ subfolder within the GitHub repository. You shouldn’t need to update this file though. It just works out-of-the-box.</p>
-<p>
-  <img src="../images//7d89901490cd8ae277355c130085551f.png"
+<p><img src="../images//7d89901490cd8ae277355c130085551f.png"
+    
+    
     loading="lazy"
     
       alt="Graphical user interface, text, application, email Description automatically generated"
+    
     
     
   ></p>
 </li>
 <li>
 <p>Check in Actions what’s happening:</p>
-<p>
-  <img src="../images//97f08b3e40277869ee85a42fa0d2a343.png"
+<p><img src="../images//97f08b3e40277869ee85a42fa0d2a343.png"
+    
+    
     loading="lazy"
     
       alt="Graphical user interface, text, application, email Description automatically generated"
+    
     
     
   ></p>
 </li>
 <li>
 <p>Open the details for the Build &amp; Deploy workflow</p>
-<p>
-  <img src="../images//da5cda0e73ed46fcc4274becc2f4a30e.png"
+<p><img src="../images//da5cda0e73ed46fcc4274becc2f4a30e.png"
+    
+    
     loading="lazy"
     
       alt="Text Description automatically generated"
+    
     
     
   ></p>
 </li>
 <li>
 <p>Selecting any step in the Action workflow will show more details:</p>
-<p>
-  <img src="../images//765fda402ec958a1267c45c8d15592df.png"
+<p><img src="../images//765fda402ec958a1267c45c8d15592df.png"
+    
+    
     loading="lazy"
     
       alt="Graphical user interface, text Description automatically generated"
+    
     
     
   ></p>
 </li>
 <li>
 <p>Wait for the workflow to complete successfully.</p>
-<p>
-  <img src="../images//291538dda0fbb66c1ccc93f67b3ed263.png"
+<p><img src="../images//291538dda0fbb66c1ccc93f67b3ed263.png"
+    
+    
     loading="lazy"
     
       alt="Text Description automatically generated"
+    
     
     
   ></p>
@@ -781,11 +865,13 @@ the @using directive tells this page, to recognize the content of the Data folde
 <p>I would like to thank the organizing team of MS Tech Summit Poland 2024 for having accepted my session submission for the 3rd year in a row. Especially since this was my first attempt to do some (semi)live coding, to share my excitement of how I learned to write and build code at age 48. I’m already brainstorming on what Blazor app I can share in next year’s edition&hellip;</p>
 <p>/Peter</p>
 <p><a class="link" href="https://www.buymeacoffee.com/pdtit"  target="_blank" rel="noopener"
-    >
-  <img src="../images/buy_me_a_coffee.png"
+    ><img src="../images/buy_me_a_coffee.png"
+    
+    
     loading="lazy"
     
       alt="BuyMeACoffee"
+    
     
     
   ></a></p>
@@ -932,6 +1018,7 @@ the @using directive tells this page, to recognize the content of the Data folde
         lightbox.init();
     }
 </script>
+
     
 
             </main>
@@ -991,8 +1078,8 @@ the @using directive tells this page, to recognize the content of the Data folde
 </div>
 
 
-    <script type="text/javascript" src="/ts/cookies.6d3577f211db9f4f1997385d4b417cf90130b050bc9e787bb1bb5346d337e998.js" defer></script>
-<script type="text/javascript" src="/ts/main.acaf849f2b273f6a8368a58b001f336738d0c948d92e79b116467d0c7515f932.js" defer></script>
+    <script type="text/javascript" src="/ts/cookies.fb6e3f54ec5cefc5dd04ebdb731fbb630fe36104d843ad1ef773c6462b788568.js" defer></script>
+<script type="text/javascript" src="/ts/main.7aaef5b0228fe199f3d764416965e34f5bf182cbe0650a0f3ea1a716021ba381.js" defer></script>
 
 
     </body>

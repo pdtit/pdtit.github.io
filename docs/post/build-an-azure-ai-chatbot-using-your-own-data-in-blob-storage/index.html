@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-    <head><meta charset='utf-8'>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="You must have lived under a rock if you didn&rsquo;t hear about how important Azure AI is for Microsoft and its partner and customer ecosystem. Thanks to Artificial Intelligence (AI), companies will be more innovative, employees will be more productive. While I honestly was a bit hesitant at first myself - knowing a big part of my job is providing training, and seeing what AI can do here in terms of content creation, video creation and alike, yes the trainer role will definitely (has to) change over the next coming months - once I started digging into its capabilities more, I started to see the AI engine potential.\n">
 <title>Build an Azure AI chatbot using your own data from blob storage </title>
 
 
-<link rel="canonical" href="https://www.007ffflearning.com/post/build-an-azure-ai-chatbot-using-your-own-data-in-blob-storage/">
+<link rel="canonical" href="http://localhost:1313/post/build-an-azure-ai-chatbot-using-your-own-data-in-blob-storage/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
 
 
-<link rel="stylesheet" href="/scss/style.min.3fe054e425b56de773b19f095f1e2017ce9a57c1bdf515298b0b20fbe7002c92.css"><meta property='og:title' content="Build an Azure AI chatbot using your own data from blob storage ">
+<link rel="stylesheet" href="/scss/style.min.cf9653eecaea3cf14f5747895c3ac9b505bea7f8f3f40c16dac6b0e82fafddc4.css"><meta property='og:title' content="Build an Azure AI chatbot using your own data from blob storage ">
 <meta property='og:description' content="You must have lived under a rock if you didn&rsquo;t hear about how important Azure AI is for Microsoft and its partner and customer ecosystem. Thanks to Artificial Intelligence (AI), companies will be more innovative, employees will be more productive. While I honestly was a bit hesitant at first myself - knowing a big part of my job is providing training, and seeing what AI can do here in terms of content creation, video creation and alike, yes the trainer role will definitely (has to) change over the next coming months - once I started digging into its capabilities more, I started to see the AI engine potential.\n">
-<meta property='og:url' content='https://www.007ffflearning.com/post/build-an-azure-ai-chatbot-using-your-own-data-in-blob-storage/'>
+<meta property='og:url' content='http://localhost:1313/post/build-an-azure-ai-chatbot-using-your-own-data-in-blob-storage/'>
 <meta property='og:site_name' content='Azure Readiness starts here...'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Azure' /><meta property='article:tag' content='AI' /><meta property='article:published_time' content='2023-07-17T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-07-17T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Build an Azure AI chatbot using your own data from blob storage ">
@@ -47,7 +47,7 @@
         }
     })();
 </script>
-<div class="container main-container flex on-phone--column compact"><aside class="sidebar left-sidebar sticky ">
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
     <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
         <span class="hamburger-box">
             <span class="hamburger-inner"></span>
@@ -189,6 +189,23 @@
         
         
         <li >
+            <a href='/speaking/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-microphone" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 5a3 3 0 0 1 6 0v7a3 3 0 0 1 -6 0z"/>
+  <path d="M5 10a7 7 0 0 0 14 0"/>
+  <path d="M8 21l8 0"/>
+  <path d="M12 17l0 4"/>
+</svg>
+
+                
+                <span>Speaking</span>
+            </a>
+        </li>
+        
+        
+        <li >
             <a href='/about/' >
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -200,7 +217,7 @@
 
 
                 
-                <span>About</span>
+                <span>About Me</span>
             </a>
         </li>
         
@@ -218,6 +235,23 @@
 
                 
                 <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>Tags</span>
             </a>
         </li>
         
@@ -335,11 +369,13 @@
 <li>Open <a class="link" href="https://oai.azure.com/"  target="_blank" rel="noopener"
     >Azure AI Studio</a> from your browser, using your Azure admin account credentials.</li>
 </ol>
-<p>
-  <img src="../images/2023-08-14_20-07-57.png"
+<p><img src="../images/2023-08-14_20-07-57.png"
+    
+    
     loading="lazy"
     
       alt="Azure OpenAI Studio"
+    
     
     
   ></p>
@@ -358,22 +394,26 @@
 <li>Unique Name for the Azure OpenAI Resource</li>
 <li>Pricing Tier: <strong>Select Standard S0</strong> (The Free Basic won&rsquo;t allow us to use the necessary Cognitive Search later on)</li>
 </ul>
-<p>
-  <img src="../images/2023-08-14_20-09-06.png"
+<p><img src="../images/2023-08-14_20-09-06.png"
+    
+    
     loading="lazy"
     
       alt="Azure OpenAI Resource"
+    
     
     
   ></p>
 <ol start="4">
 <li>Wait for the Azure OpenAI Resource to get deployed, and navigate to the resource once its ready.</li>
 </ol>
-<p>
-  <img src="../images/2023-08-14_20-12-14.png"
+<p><img src="../images/2023-08-14_20-12-14.png"
+    
+    
     loading="lazy"
     
       alt="Azure OpenAI Resource"
+    
     
     
   ></p>
@@ -381,33 +421,39 @@
 <li>Navigate back to <a class="link" href="https://oai.azure.com/"  target="_blank" rel="noopener"
     >Azure OpenAI Studio</a>, which will allow you to select your Azure AI Resource created earlier.</li>
 </ol>
-<p>
-  <img src="../images/2023-08-14_20-12-39.png"
+<p><img src="../images/2023-08-14_20-12-39.png"
+    
+    
     loading="lazy"
     
       alt="Azure OpenAI Studio"
+    
     
     
   ></p>
 <ol start="6">
 <li>From Azure OpenAI Studio, select <strong>Chat Playground</strong> from the <strong>Get Started</strong> options.</li>
 </ol>
-<p>
-  <img src="../images/2023-08-14_20-13-16.png"
+<p><img src="../images/2023-08-14_20-13-16.png"
+    
+    
     loading="lazy"
     
       alt="Azure OpenAI Chat Playground"
+    
     
     
   ></p>
 <ol start="7">
 <li>Within the <strong>Chat Playground</strong>, click the <strong>Create new deployment</strong> button to set up a new Chat Plaground.</li>
 </ol>
-<p>
-  <img src="../images/2023-08-14_20-13-36.png"
+<p><img src="../images/2023-08-14_20-13-36.png"
+    
+    
     loading="lazy"
     
       alt="Azure OpenAI Chat Playground"
+    
     
     
   ></p>
@@ -419,11 +465,13 @@
 <li>Model Version: <strong>Auto-update-to-default</strong></li>
 <li>Deployment Name: descriptive name of what the model is about</li>
 </ul>
-<p>
-  <img src="../images/2023-08-14_20-14-47.png"
+<p><img src="../images/2023-08-14_20-14-47.png"
+    
+    
     loading="lazy"
     
       alt="Deploy Model"
+    
     
     
   ></p>
@@ -432,11 +480,13 @@
 </h2><ol>
 <li>With the model created, we can move on to the next step, adding data. From the <strong>Chat Playground</strong>, select <strong>Add your data (preview)</strong></li>
 </ol>
-<p>
-  <img src="../images/2023-08-14_20-15-06.png"
+<p><img src="../images/2023-08-14_20-15-06.png"
+    
+    
     loading="lazy"
     
       alt="Chat Playground add your data"
+    
     
     
   ></p>
@@ -448,11 +498,13 @@
 <li>Azure Blob Storage Account</li>
 <li>Azure Blob Storage Account container</li>
 </ul>
-<p>
-  <img src="../images/2023-08-14_20-22-04.png"
+<p><img src="../images/2023-08-14_20-22-04.png"
+    
+    
     loading="lazy"
     
       alt="Chat Playground add your data"
+    
     
     
   ></p>
@@ -475,44 +527,52 @@
 <li>Pricing Tier: <strong>Basic</strong> (since the free service won&rsquo;t be recognized by Chat Playground)</li>
 <li>Scale / Replica: 1/1</li>
 </ul>
-<p>
-  <img src="../images/2023-08-14_20-28-37.png"
+<p><img src="../images/2023-08-14_20-28-37.png"
+    
+    
     loading="lazy"
     
       alt="Create Cognitive search resource"
+    
     
     
   ></p>
 <ol start="6">
 <li>Once the Search Service got created, navigate back to the Chat Playground, and repeat the steps to <strong>add your own data</strong>. This time, the Cognitive Search will be recognized as service in the <strong>Add Data Source</strong> step.</li>
 </ol>
-<p>
-  <img src="../images/2023-08-14_20-54-19.png"
+<p><img src="../images/2023-08-14_20-54-19.png"
+    
+    
     loading="lazy"
     
       alt="Chat Playground add your own data"
+    
     
     
   ></p>
 <ol start="7">
 <li>Click <strong>Next</strong>, and upload a few sample files in the <strong>Upload Files</strong> step.</li>
 </ol>
-<p>
-  <img src="../images/2023-08-14_20-55-34.png"
+<p><img src="../images/2023-08-14_20-55-34.png"
+    
+    
     loading="lazy"
     
       alt="Chat Playground upload files data"
+    
     
     
   ></p>
 <ol start="8">
 <li>Continue the <strong>add data source</strong> wizard steps, and completing with clicking <strong>Save and Close</strong>.</li>
 </ol>
-<p>
-  <img src="../images/2023-08-14_20-56-25.png"
+<p><img src="../images/2023-08-14_20-56-25.png"
+    
+    
     loading="lazy"
     
       alt="Chat Playground upload files data"
+    
     
     
   ></p>
@@ -526,11 +586,13 @@
 </ol>
 <p>Note: in my scenario, I was using demoguides, so wanted to check back if the chat bot could find a demo scenario containing Cosmos DB as resource.</p>
 <p>Based on the question, the chat bot responded with an <strong>accurate answer</strong>, providing a brief description of the actual demo steps from the guide, as well as a link to the actual source markdown-file in Blob Storage.</p>
-<p>
-  <img src="../images/2023-08-14_21-30-22.png"
+<p><img src="../images/2023-08-14_21-30-22.png"
+    
+    
     loading="lazy"
     
       alt="Chat Playground chat session"
+    
     
     
   ></p>
@@ -538,11 +600,13 @@
 <li>As I only have 1 single guide with CosmosDB, let&rsquo;s test how it handles the question, if there are more results possible. I asked a somewhat broader question, using <strong>retail application</strong> as keyword (Note: our demo scenarios involve a retail application as example, which exists in a Virtual Machine architecture, a Platform as a Service, Container Instance, Kubernetes Service and Azure Container Apps architecture). So based on that, the expectation is to get <strong>multiple results</strong> back.</li>
 </ol>
 <p>Woohoo!! The Chat bot found the <strong>different sources</strong> and provided a <strong>nice summary overview</strong>.</p>
-<p>
-  <img src="../images/2023-08-14_21-30-22.png"
+<p><img src="../images/2023-08-14_21-30-22.png"
+    
+    
     loading="lazy"
     
       alt="Chat Playground chat session"
+    
     
     
   ></p>
@@ -551,11 +615,13 @@
 <li>Next, <strong>optional though</strong>, you can publish the Chat Bot to an Azure App Service. This would allow a developer to integrate the bot in a broader web app scenario using iframe or similar HTML/CSS code.</li>
 </ol>
 <p>From the <strong>Chat Playground</strong> blade, navigate to <strong>Deploy to</strong> in the upper right corner. and select <strong>Azure App Service</strong>.</p>
-<p>
-  <img src="../images/2023-08-14_21-42-43.png"
+<p><img src="../images/2023-08-14_21-42-43.png"
+    
+    
     loading="lazy"
     
       alt="Deploy Chat Bot to Azure App Service"
+    
     
     
   ></p>
@@ -569,11 +635,13 @@
 <li>Location</li>
 <li>Pricing Plan (S0 or S1 would be OK)</li>
 </ul>
-<p>
-  <img src="../images/2023-08-14_21-43-28.png"
+<p><img src="../images/2023-08-14_21-43-28.png"
+    
+    
     loading="lazy"
     
       alt="Deploy Chat Bot to Azure App Service"
+    
     
     
   ></p>
@@ -585,22 +653,26 @@
 <p>After successful authentication, the Chat Bot is ready to be used:</p>
 </li>
 </ol>
-<p>
-  <img src="../images/2023-08-14_21-59-31.png"
+<p><img src="../images/2023-08-14_21-59-31.png"
+    
+    
     loading="lazy"
     
       alt="Deployed Chat Bot as Azure App Service"
+    
     
     
   ></p>
 <ol start="7">
 <li>As a final test, I wanted to see how the Chat Bot responded if it didn&rsquo;t find the correct answer. (This was partly to rule out the ChatGPT experience I had before, where the AI engine invents its own answers, but still explaining it in such a way it feels as the correct answer)</li>
 </ol>
-<p>
-  <img src="../images/2023-08-14_22-00-05.png"
+<p><img src="../images/2023-08-14_22-00-05.png"
+    
+    
     loading="lazy"
     
       alt="Deployed Chat Bot as Azure App Service"
+    
     
     
   ></p>
@@ -609,11 +681,13 @@
 </h1><p>Azure AI is an amazing cloud service, with unseen capabilities. With this article, I wanted to inform you as a reader on how easy it can be to set up Azure AI Cognitive Search, and using it with a Chat Bot functionality, based on your own data from Azure Blob Storage.</p>
 <p>I&rsquo;m confident Azure AI will become a big part of our day-to-day skillset. So expect more similar blog posts in the near future how I&rsquo;m continuing my journey of learning about AI and get ready for the future.</p>
 <p><a class="link" href="https://www.buymeacoffee.com/pdtit"  target="_blank" rel="noopener"
-    >
-  <img src="../images/buy_me_a_coffee.png"
+    ><img src="../images/buy_me_a_coffee.png"
+    
+    
     loading="lazy"
     
       alt="BuyMeACoffee"
+    
     
     
   ></a></p>
@@ -760,6 +834,7 @@
         lightbox.init();
     }
 </script>
+
     
 
             </main>
@@ -819,8 +894,8 @@
 </div>
 
 
-    <script type="text/javascript" src="/ts/cookies.6d3577f211db9f4f1997385d4b417cf90130b050bc9e787bb1bb5346d337e998.js" defer></script>
-<script type="text/javascript" src="/ts/main.acaf849f2b273f6a8368a58b001f336738d0c948d92e79b116467d0c7515f932.js" defer></script>
+    <script type="text/javascript" src="/ts/cookies.fb6e3f54ec5cefc5dd04ebdb731fbb630fe36104d843ad1ef773c6462b788568.js" defer></script>
+<script type="text/javascript" src="/ts/main.7aaef5b0228fe199f3d764416965e34f5bf182cbe0650a0f3ea1a716021ba381.js" defer></script>
 
 
     </body>

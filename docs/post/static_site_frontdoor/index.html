@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-    <head><meta charset='utf-8'>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Earlier this week, I had the honor to present a session for the Belgian MC2MC Microsoft community, as part of a broader online event week with other Belgian community User Groups (https://www.mc2mc.be/events/be-community-week-mc2mc-evening).\nMy session topic was based on a little real-life project I worked on myself only a few weeks ago, deploying a “Hugo” based static website on Azure Storage Account Static Site (Yes, this site you are reading right now&hellip;).\n">
 <title>Running an Azure Storage Static Site, protected by Azure Front Door</title>
 
 
-<link rel="canonical" href="https://www.007ffflearning.com/post/static_site_frontdoor/">
+<link rel="canonical" href="http://localhost:1313/post/static_site_frontdoor/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
 
 
-<link rel="stylesheet" href="/scss/style.min.3fe054e425b56de773b19f095f1e2017ce9a57c1bdf515298b0b20fbe7002c92.css"><meta property='og:title' content="Running an Azure Storage Static Site, protected by Azure Front Door">
+<link rel="stylesheet" href="/scss/style.min.cf9653eecaea3cf14f5747895c3ac9b505bea7f8f3f40c16dac6b0e82fafddc4.css"><meta property='og:title' content="Running an Azure Storage Static Site, protected by Azure Front Door">
 <meta property='og:description' content="Earlier this week, I had the honor to present a session for the Belgian MC2MC Microsoft community, as part of a broader online event week with other Belgian community User Groups (https://www.mc2mc.be/events/be-community-week-mc2mc-evening).\nMy session topic was based on a little real-life project I worked on myself only a few weeks ago, deploying a “Hugo” based static website on Azure Storage Account Static Site (Yes, this site you are reading right now&hellip;).\n">
-<meta property='og:url' content='https://www.007ffflearning.com/post/static_site_frontdoor/'>
+<meta property='og:url' content='http://localhost:1313/post/static_site_frontdoor/'>
 <meta property='og:site_name' content='Azure Readiness starts here...'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Azure' /><meta property='article:tag' content='Hugo' /><meta property='article:tag' content='Static Site' /><meta property='article:tag' content='Azure Front Door' /><meta property='article:published_time' content='2020-04-25T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-04-25T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Running an Azure Storage Static Site, protected by Azure Front Door">
@@ -47,7 +47,7 @@
         }
     })();
 </script>
-<div class="container main-container flex on-phone--column compact"><aside class="sidebar left-sidebar sticky ">
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
     <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
         <span class="hamburger-box">
             <span class="hamburger-inner"></span>
@@ -189,6 +189,23 @@
         
         
         <li >
+            <a href='/speaking/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-microphone" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 5a3 3 0 0 1 6 0v7a3 3 0 0 1 -6 0z"/>
+  <path d="M5 10a7 7 0 0 0 14 0"/>
+  <path d="M8 21l8 0"/>
+  <path d="M12 17l0 4"/>
+</svg>
+
+                
+                <span>Speaking</span>
+            </a>
+        </li>
+        
+        
+        <li >
             <a href='/about/' >
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -200,7 +217,7 @@
 
 
                 
-                <span>About</span>
+                <span>About Me</span>
             </a>
         </li>
         
@@ -218,6 +235,23 @@
 
                 
                 <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>Tags</span>
             </a>
         </li>
         
@@ -317,9 +351,11 @@ post about it. And that’s exactly what brings you here&hellip;</p>
 <p>If you are new to Hugo, have a look at the official website for more
 information: <a class="link" href="http://gohugo.io"  target="_blank" rel="noopener"
     >http://gohugo.io</a></p>
-<p>
-  <img src="../images/hugo-logo-wide.svg"
+<p><img src="../images/hugo-logo-wide.svg"
+    
+    
     loading="lazy"
+    
     
     
   ></p>
@@ -348,9 +384,11 @@ Code.</p>
 </li>
 <li>
 <p>Run <strong>&ldquo;Hugo version&rdquo;</strong></p>
-<p>
-  <img src="../images/bcc174bb593b0f381d8151603b7aa80c.png"
+<p><img src="../images/bcc174bb593b0f381d8151603b7aa80c.png"
+    
+    
     loading="lazy"
+    
     
     
   ></p>
@@ -360,18 +398,22 @@ Code.</p>
 </h2><ul>
 <li>
 <p>Run <strong>&ldquo;Hugo new site &lt;sitename&gt;&rdquo;</strong></p>
-<p>
-  <img src="../images/a54714b64e47fe120a93e7c9816820ef.png"
+<p><img src="../images/a54714b64e47fe120a93e7c9816820ef.png"
+    
+    
     loading="lazy"
+    
     
     
   ></p>
 </li>
 <li>
 <p>Hugo default folder structure is created automatically</p>
-<p>
-  <img src="../images/af6560448b8aedfd88cc90a09c578e0b.png"
+<p><img src="../images/af6560448b8aedfd88cc90a09c578e0b.png"
+    
+    
     loading="lazy"
+    
     
     
   ></p>
@@ -391,9 +433,11 @@ previous step.</p>
 </li>
 <li>
 <p>This opens the sample Theme-based website.</p>
-<p>
-  <img src="../images/d3aba47e0c41fc62ce610dcc1432c662.png"
+<p><img src="../images/d3aba47e0c41fc62ce610dcc1432c662.png"
+    
+    
     loading="lazy"
+    
     
     
   ></p>
@@ -406,9 +450,11 @@ previous step.</p>
 </li>
 <li>
 <p>to update or add new content, open the <strong>Content\post</strong> subfolder</p>
-<p>
-  <img src="../images/05bb2f48f1c1bee0ae764d49091af439.png"
+<p><img src="../images/05bb2f48f1c1bee0ae764d49091af439.png"
+    
+    
     loading="lazy"
+    
     
     
   ></p>
@@ -428,9 +474,11 @@ I personally use <a class="link" href="http://www.markdownmonster.west-wind.com"
 </li>
 <li>
 <p>Once your new post has been created, open your terminal again, and run “Hugo Server”. This will start a new web session. Validate from the browser on http://localhost:1313 if the new page is visible</p>
-<p>
-  <img src="../images/cbdf079922dc9d6d3da53edf49fff4e6.png"
+<p><img src="../images/cbdf079922dc9d6d3da53edf49fff4e6.png"
+    
+    
     loading="lazy"
+    
     
     
   ></p>
@@ -456,18 +504,22 @@ subfolder in the same directory as the hugo site itself.</li>
 </li>
 <li>
 <p><strong>Enter information for the default page and error page</strong></p>
-<p>
-  <img src="../images/71edd780841d608544d3b134324169f1.png"
+<p><img src="../images/71edd780841d608544d3b134324169f1.png"
+    
+    
     loading="lazy"
+    
     
     
   ></p>
 </li>
 <li>
 <p><strong>Save</strong> the settings; Your static website URL gets generated and presented</p>
-<p>
-  <img src="../images/15c5386d0f516f7d962190ab03ef0f33.png"
+<p><img src="../images/15c5386d0f516f7d962190ab03ef0f33.png"
+    
+    
     loading="lazy"
+    
     
     
   ></p>
@@ -485,18 +537,22 @@ do this, but you could also copy the content in a manual way by using FTP or
 <ul>
 <li>
 <p>From VSCode, <strong>add Storage Account Extension</strong></p>
-<p>
-  <img src="../images/15348e19823d218073622c2ad1d33a85.png"
+<p><img src="../images/15348e19823d218073622c2ad1d33a85.png"
+    
+    
     loading="lazy"
+    
     
     
   ></p>
 </li>
 <li>
 <p>From Command Palette : <strong>Azure Storage / Deploy to Static Website</strong></p>
-<p>
-  <img src="../images/f01559119805d70472c83f81a614e686.png"
+<p><img src="../images/f01559119805d70472c83f81a614e686.png"
+    
+    
     loading="lazy"
+    
     
     
   ></p>
@@ -505,9 +561,11 @@ do this, but you could also copy the content in a manual way by using FTP or
 <p>Complete the prompts with answers from your Azure subscription and setup,
 and select your Hugo folder as a source. This will copy all files from the
 /public/ subfolder into the Storage Account $web folder</p>
-<p>
-  <img src="../images/1d16b85ebc152aa6151b80d32f20f8fc.png"
+<p><img src="../images/1d16b85ebc152aa6151b80d32f20f8fc.png"
+    
+    
     loading="lazy"
+    
     
     
   ></p>
@@ -517,9 +575,11 @@ and select your Hugo folder as a source. This will copy all files from the
 </li>
 <li>
 <p><strong>Browse</strong> to the URL of the storage account</p>
-<p>
-  <img src="../images/d532da99e266f79d5ee2d9138b7a7a90.png"
+<p><img src="../images/d532da99e266f79d5ee2d9138b7a7a90.png"
+    
+    
     loading="lazy"
+    
     
     
   ></p>
@@ -535,9 +595,11 @@ Site, it will work right away.</p>
 <li>
 <p>try connecting to the URL path where our blog posts are stored, e.g.
 <strong>../public/post/</strong></p>
-<p>
-  <img src="../images/fc7a9f15ac268781c1506e8a597d201a.png"
+<p><img src="../images/fc7a9f15ac268781c1506e8a597d201a.png"
+    
+    
     loading="lazy"
+    
     
     
   ></p>
@@ -572,9 +634,11 @@ solution built-in, which is called <strong>Azure Content Delivery Network – CD
 <li>
 <p>Origin hostname = paste in the URL address of the Static Website
 <strong>without the https:// and without the trailing /</strong></p>
-<p>
-  <img src="../images/1596f2f6245b11f77e1f015ccee25132.png"
+<p><img src="../images/1596f2f6245b11f77e1f015ccee25132.png"
+    
+    
     loading="lazy"
+    
     
     
   ></p>
@@ -587,9 +651,11 @@ solution built-in, which is called <strong>Azure Content Delivery Network – CD
 <p>Once created, open the CDN Profile resource</p>
 </li>
 </ul>
-<p>
-  <img src="../images/cab37ce38896f5a9b23e70937b3f22bb.png"
+<p><img src="../images/cab37ce38896f5a9b23e70937b3f22bb.png"
+    
+    
     loading="lazy"
+    
     
     
   ></p>
@@ -599,18 +665,22 @@ solution built-in, which is called <strong>Azure Content Delivery Network – CD
 </li>
 <li>
 <p>Under <strong>Settings</strong> / select <strong>Rules engine</strong></p>
-<p>
-  <img src="../images/29b3bf76e5985c924a4d34b8bce99534.png"
+<p><img src="../images/29b3bf76e5985c924a4d34b8bce99534.png"
+    
+    
     loading="lazy"
+    
     
     
   ></p>
 </li>
 <li>
 <p>In the <strong>Rules engine</strong> / select <strong>Add Action</strong> / Choose <strong>URL Rewrite</strong></p>
-<p>
-  <img src="../images/bbbe6b0b6c9b1705b42a8828fdd6c92a.png"
+<p><img src="../images/bbbe6b0b6c9b1705b42a8828fdd6c92a.png"
+    
+    
     loading="lazy"
+    
     
     
   ></p>
@@ -638,9 +708,11 @@ actually applied and working. So be patient</strong></p>
 <p>Once received, test the <strong>Azure CDN URL</strong> from the browser, and click
 through to a site subsection like Posts or Publications (if you have content
 in there&hellip;)</p>
-<p>
-  <img src="../images/69dd6f63be627b49c4025e65391e576f.png"
+<p><img src="../images/69dd6f63be627b49c4025e65391e576f.png"
+    
+    
     loading="lazy"
+    
     
     
   ></p>
@@ -673,27 +745,33 @@ Azure Front Door, you do not need Azure CDN.</p>
 <ul>
 <li>
 <p>New Resource / Front Door / Create</p>
-<p>
-  <img src="../images/0d0288e06468bf95eef55d84319b4779.png"
+<p><img src="../images/0d0288e06468bf95eef55d84319b4779.png"
+    
+    
     loading="lazy"
+    
     
     
   ></p>
 </li>
 <li>
 <p>Complete the basic settings around Subscription, Resource Group and location</p>
-<p>
-  <img src="../images/adba042bcb3a432b0565977892192ef0.png"
+<p><img src="../images/adba042bcb3a432b0565977892192ef0.png"
+    
+    
     loading="lazy"
+    
     
     
   ></p>
 </li>
 <li>
 <p>Move on to the Configuration step next</p>
-<p>
-  <img src="../images/9f5298aa673cca90e805a0d6f867bb04.png"
+<p><img src="../images/9f5298aa673cca90e805a0d6f867bb04.png"
+    
+    
     loading="lazy"
+    
     
     
   ></p>
@@ -701,9 +779,11 @@ Azure Front Door, you do not need Azure CDN.</p>
 <li>
 <p><strong>Click</strong> the + sign to add the Front Door Frontends/domains settings, and
 provide a unique name for the Front Door URL you want to use</p>
-<p>
-  <img src="../images/a88a69c694df0070def2e01955798c82.png"
+<p><img src="../images/a88a69c694df0070def2e01955798c82.png"
+    
+    
     loading="lazy"
+    
     
     
   ></p>
@@ -726,9 +806,11 @@ trailing /</strong></p>
 </li>
 <li>
 <p>Accept / leave all other values as default</p>
-<p>
-  <img src="../images/d75ecb379ea92cafccb4c27849acd3c7.png"
+<p><img src="../images/d75ecb379ea92cafccb4c27849acd3c7.png"
+    
+    
     loading="lazy"
+    
     
     
   ></p>
@@ -737,9 +819,11 @@ trailing /</strong></p>
 <p>Confirm the <strong>Backend Pool settings</strong> ,which brings you back to the
 BackendPool settings tab. Here, <strong>leave the default values</strong> for Health
 Probes and Load Balancing for now</p>
-<p>
-  <img src="../images/565bab36676bd1051cbc8704739d411c.png"
+<p><img src="../images/565bab36676bd1051cbc8704739d411c.png"
+    
+    
     loading="lazy"
+    
     
     
   ></p>
@@ -747,9 +831,11 @@ Probes and Load Balancing for now</p>
 <li>
 <p><strong>Confirm</strong> the BackendPool settings, and move on with <strong>Step 3</strong>, where you
 will define the necessary <strong>routing rule</strong>.</p>
-<p>
-  <img src="../images/3adb6b6fe63c5d3b400002ec82fc57c0.png"
+<p><img src="../images/3adb6b6fe63c5d3b400002ec82fc57c0.png"
+    
+    
     loading="lazy"
+    
     
     
   ></p>
@@ -758,9 +844,11 @@ will define the necessary <strong>routing rule</strong>.</p>
 <p>In the <strong>Add Rule</strong> parameter section, provide a name for the rule you are
 about to create. Accept the default values for <strong>Accepted Protocol,
 FrontEnd/domains and Patterns to Match</strong>.</p>
-<p>
-  <img src="../images/27d6a761b4d8f4eac5c3354396a012d9.png"
+<p><img src="../images/27d6a761b4d8f4eac5c3354396a012d9.png"
+    
+    
     loading="lazy"
+    
     
     
   ></p>
@@ -771,9 +859,11 @@ Custom forwarding path</strong>, adding the <strong>“/public/</strong> path th
 (<strong>Note: this path could be different, depending on the Hugo Theme; this
 path technically refers to the directory that Hugo uses to store the
 compiled site pages</strong>.</p>
-<p>
-  <img src="../images/42664ef200baaba643f1b2a2832f54d3.png"
+<p><img src="../images/42664ef200baaba643f1b2a2832f54d3.png"
+    
+    
     loading="lazy"
+    
     
     
   ></p>
@@ -784,9 +874,11 @@ complete, open your browser to the URL address of Front Door. This should
 open your web site in a nice looking way</p>
 </li>
 </ul>
-<p>
-  <img src="../images/b7ce47a54f1e3c7dece7af37254e2801.png"
+<p><img src="../images/b7ce47a54f1e3c7dece7af37254e2801.png"
+    
+    
     loading="lazy"
+    
     
     
   ></p>
@@ -804,9 +896,11 @@ frontend/domain name you configured. E.g. my 007FFFLearning domain has a
 <li>
 <p>From the Azure Front Door blade, select <strong>Front Door Designer</strong>; next,
 select <strong>Frontends/domains</strong>, and add a new custom domain</p>
-<p>
-  <img src="../images/6aa9ef304612ae212993e78b6b13c3be.png"
+<p><img src="../images/6aa9ef304612ae212993e78b6b13c3be.png"
+    
+    
     loading="lazy"
+    
     
     
   ></p>
@@ -816,9 +910,11 @@ select <strong>Frontends/domains</strong>, and add a new custom domain</p>
 select this setting a bit more down in the blade. If you don’t have a PFX
 certificate file already for the public domain name space, have one
 generated by Front Door, by choosing <strong>Front Door managed</strong>.</p>
-<p>
-  <img src="../images/c81aaa41313e8c591ea97ed212d9f84e.png"
+<p><img src="../images/c81aaa41313e8c591ea97ed212d9f84e.png"
+    
+    
     loading="lazy"
+    
     
     
   ></p>
@@ -829,9 +925,11 @@ generated by Front Door, by choosing <strong>Front Door managed</strong>.</p>
 <li>
 <p><strong>Wait</strong> about 10 minutes to complete the <strong>SSL request status</strong>, resulting
 in the below view:</p>
-<p>
-  <img src="../images/b974c9bcf68e1038dd47d28f18f7e3b3.png"
+<p><img src="../images/b974c9bcf68e1038dd47d28f18f7e3b3.png"
+    
+    
     loading="lazy"
+    
     
     
   ></p>
@@ -841,9 +939,11 @@ in the below view:</p>
 our <strong>routing rules</strong>, adding the custom domain to the configuration.
 Therefore, select the routing rule you created earlier, and update its
 settings:</p>
-<p>
-  <img src="../images/83de2dac4629565e87046375967a4083.png"
+<p><img src="../images/83de2dac4629565e87046375967a4083.png"
+    
+    
     loading="lazy"
+    
     
     
   ></p>
@@ -854,9 +954,11 @@ settings:</p>
 <li>
 <p>After only a few minutes, everything should be running smooth, allowing you
 to connect to your website custom domain url:</p>
-<p>
-  <img src="../images/14f88a3b7039829707d8554123c90446.png"
+<p><img src="../images/14f88a3b7039829707d8554123c90446.png"
+    
+    
     loading="lazy"
+    
     
     
   ></p>
@@ -865,9 +967,11 @@ to connect to your website custom domain url:</p>
 <p>Selecting any of the subsections from the header menu, e.g. <strong>Posts</strong> will
 be nicely redirected to all posts, and allowing your readers to easily go
 from one blog article to the other.</p>
-<p>
-  <img src="../images/9caad132a444ecffe99993db19408b6f.png"
+<p><img src="../images/9caad132a444ecffe99993db19408b6f.png"
+    
+    
     loading="lazy"
+    
     
     
   ></p>
@@ -1026,6 +1130,7 @@ know once your site is up-and-running.</p>
         lightbox.init();
     }
 </script>
+
     
 
             </main>
@@ -1085,8 +1190,8 @@ know once your site is up-and-running.</p>
 </div>
 
 
-    <script type="text/javascript" src="/ts/cookies.6d3577f211db9f4f1997385d4b417cf90130b050bc9e787bb1bb5346d337e998.js" defer></script>
-<script type="text/javascript" src="/ts/main.acaf849f2b273f6a8368a58b001f336738d0c948d92e79b116467d0c7515f932.js" defer></script>
+    <script type="text/javascript" src="/ts/cookies.fb6e3f54ec5cefc5dd04ebdb731fbb630fe36104d843ad1ef773c6462b788568.js" defer></script>
+<script type="text/javascript" src="/ts/main.7aaef5b0228fe199f3d764416965e34f5bf182cbe0650a0f3ea1a716021ba381.js" defer></script>
 
 
     </body>

@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-    <head><meta charset='utf-8'>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Hey folks,\nFor the ones who have been following me here for a while, know I&rsquo;m passionate about Azure and DevOps (and yes, also Azure DevOps, lol). But to be honest, I&rsquo;ve been eyeing to another Azure Service for a while, Azure Chaos Studio, available in public preview.\nThis article shares an introduction to Chaos Engineering, as well as walks you through the first steps it takes to set up Azure Chaos Studio, create experiments and validate the outcome.\n">
 <title>Intro to Chaos Engineering and Azure Chaos Studio (Preview)</title>
 
 
-<link rel="canonical" href="https://www.007ffflearning.com/post/intro-to-chaos-engineering-and-azure-chaos-studio-preview/">
+<link rel="canonical" href="http://localhost:1313/post/intro-to-chaos-engineering-and-azure-chaos-studio-preview/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
 
 
-<link rel="stylesheet" href="/scss/style.min.3fe054e425b56de773b19f095f1e2017ce9a57c1bdf515298b0b20fbe7002c92.css"><meta property='og:title' content="Intro to Chaos Engineering and Azure Chaos Studio (Preview)">
+<link rel="stylesheet" href="/scss/style.min.cf9653eecaea3cf14f5747895c3ac9b505bea7f8f3f40c16dac6b0e82fafddc4.css"><meta property='og:title' content="Intro to Chaos Engineering and Azure Chaos Studio (Preview)">
 <meta property='og:description' content="Hey folks,\nFor the ones who have been following me here for a while, know I&rsquo;m passionate about Azure and DevOps (and yes, also Azure DevOps, lol). But to be honest, I&rsquo;ve been eyeing to another Azure Service for a while, Azure Chaos Studio, available in public preview.\nThis article shares an introduction to Chaos Engineering, as well as walks you through the first steps it takes to set up Azure Chaos Studio, create experiments and validate the outcome.\n">
-<meta property='og:url' content='https://www.007ffflearning.com/post/intro-to-chaos-engineering-and-azure-chaos-studio-preview/'>
+<meta property='og:url' content='http://localhost:1313/post/intro-to-chaos-engineering-and-azure-chaos-studio-preview/'>
 <meta property='og:site_name' content='Azure Readiness starts here...'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Azure' /><meta property='article:tag' content='SRE' /><meta property='article:tag' content='Chaos Studio' /><meta property='article:published_time' content='2023-08-27T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-08-27T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Intro to Chaos Engineering and Azure Chaos Studio (Preview)">
@@ -47,7 +47,7 @@
         }
     })();
 </script>
-<div class="container main-container flex on-phone--column compact"><aside class="sidebar left-sidebar sticky ">
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
     <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
         <span class="hamburger-box">
             <span class="hamburger-inner"></span>
@@ -189,6 +189,23 @@
         
         
         <li >
+            <a href='/speaking/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-microphone" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 5a3 3 0 0 1 6 0v7a3 3 0 0 1 -6 0z"/>
+  <path d="M5 10a7 7 0 0 0 14 0"/>
+  <path d="M8 21l8 0"/>
+  <path d="M12 17l0 4"/>
+</svg>
+
+                
+                <span>Speaking</span>
+            </a>
+        </li>
+        
+        
+        <li >
             <a href='/about/' >
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -200,7 +217,7 @@
 
 
                 
-                <span>About</span>
+                <span>About Me</span>
             </a>
         </li>
         
@@ -218,6 +235,23 @@
 
                 
                 <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>Tags</span>
             </a>
         </li>
         
@@ -326,11 +360,13 @@ The more loopholes we can identify upfront, the more confidence we can have in t
 </h2><p>In fact, Chaos Engineering has been around for <strong>more than ten years</strong> already, initiated by software engineers from Netflix around 2008, when they started migrating from on-premises data centers to public cloud data centers. While there are a lot of similarities between managing your own data center and using public cloud, there are also big differences. It was mainly those differences that forced Netflix’s engineers to create services architectures with higher resiliency.</p>
 <p>Going through the testing related to this cloud migration resulted in the creation of an <strong>internally developed Chaos Orchestration tool around 2010, branded Chaos Monkey</strong>, which was publicized as an open source product in 2012. More information on the tool and how to use it is available <a class="link" href="https://github.com/netflix/chaosmonkey"  target="_blank" rel="noopener"
     >on GitHub</a>.</p>
-<p>
-  <img src="../images/chaos_monkey_logo.png"
+<p><img src="../images/chaos_monkey_logo.png"
+    
+    
     loading="lazy"
     
       alt="Chaos Monkey Logo"
+    
     
     
   ></p>
@@ -349,11 +385,13 @@ The more loopholes we can identify upfront, the more confidence we can have in t
 <p>Select the subscription in which you want to enable Azure Chaos Studio. From within the detailed blade, select “Resource Providers” under the Settings pane, and search for “Chaos”. Select “Microsoft.Chaos” and click “Register” in the top menu; give it a few minutes, until the Status column shows “Registered”.</p>
 </li>
 </ol>
-<p>
-  <img src="../images/2023-08-27_17-30-26.png"
+<p><img src="../images/2023-08-27_17-30-26.png"
+    
+    
     loading="lazy"
     
       alt="Microsoft Chaos Resource Provider"
+    
     
     
   ></p>
@@ -371,11 +409,13 @@ The more loopholes we can identify upfront, the more confidence we can have in t
 <li>Region</li>
 <li>Name for the Chaos MI object</li>
 </ul>
-<p>
-  <img src="../images/2023-08-25_7-46-53.png"
+<p><img src="../images/2023-08-25_7-46-53.png"
+    
+    
     loading="lazy"
     
       alt="Chaos Studio MI"
+    
     
     
   ></p>
@@ -389,33 +429,39 @@ The more loopholes we can identify upfront, the more confidence we can have in t
 <li>Name for the Application Insights resource, e.g. <strong>ChaosAppInsights</strong></li>
 <li>Resource Mode: <strong>Workspace-based</strong></li>
 </ul>
-<p>
-  <img src="../images/2023-08-25_8-00-29.png"
+<p><img src="../images/2023-08-25_8-00-29.png"
+    
+    
     loading="lazy"
     
       alt="Chaos App Insights"
+    
     
     
   ></p>
 <ol start="6">
 <li>From the Azure Portal, search for <strong>Azure Chaos Studio</strong>.</li>
 </ol>
-<p>
-  <img src="../images/2023-08-27_17-33-17.png"
+<p><img src="../images/2023-08-27_17-33-17.png"
+    
+    
     loading="lazy"
     
       alt="Welcome to Chaos Studio"
+    
     
     
   ></p>
 <ol start="7">
 <li>Select <strong>Onboard Resources</strong>. This brings you to the <strong>Targets</strong> section of the blade.</li>
 </ol>
-<p>
-  <img src="../images/2023-08-25_7-59-03.png"
+<p><img src="../images/2023-08-25_7-59-03.png"
+    
+    
     loading="lazy"
     
       alt="Chaos Studio Targets"
+    
     
     
   ></p>
@@ -427,11 +473,13 @@ The more loopholes we can identify upfront, the more confidence we can have in t
 </h2><ol>
 <li>In this example, I’m going to target a Windows Server Virtual machine, selecting it, which unlocks the “Enable Targets” menu option. From here, select <strong>Enable agent-based targets (VM, VMSS)</strong> from the menu.</li>
 </ol>
-<p>
-  <img src="../images/2023-08-25_7-59-24.png"
+<p><img src="../images/2023-08-25_7-59-24.png"
+    
+    
     loading="lazy"
     
       alt="Chaos Studio VM Target"
+    
     
     
   ></p>
@@ -443,11 +491,13 @@ The more loopholes we can identify upfront, the more confidence we can have in t
 <li>Azure Managed Identity you created in the previous steps</li>
 <li>Application Insights account you created for Chaos Studio</li>
 </ul>
-<p>
-  <img src="../images/2023-08-25_8-03-07.png"
+<p><img src="../images/2023-08-25_8-03-07.png"
+    
+    
     loading="lazy"
     
       alt="Chaos Studio VM Agent Target"
+    
     
     
   ></p>
@@ -458,20 +508,24 @@ The more loopholes we can identify upfront, the more confidence we can have in t
 </h2><ol>
 <li>In this next example, I&rsquo;m going to target several other Azure Resources as Chaos Target. Starting with a <strong>Network Security Group</strong>.</li>
 </ol>
-<p>
-  <img src="../images/2023-08-25_8-04-34.png"
+<p><img src="../images/2023-08-25_8-04-34.png"
+    
+    
     loading="lazy"
     
       alt="Chaos Studio non-VM Agent Target"
+    
     
     
   ></p>
 <p>This opens the Enable service direct targets blade. Click <strong>Review and Enable</strong> to complete the step.</p>
-<p>
-  <img src="../images/2023-08-25_8-04-49.png"
+<p><img src="../images/2023-08-25_8-04-49.png"
+    
+    
     loading="lazy"
     
       alt="Chaos Studio non-VM Agent Target"
+    
     
     
   ></p>
@@ -481,11 +535,13 @@ The more loopholes we can identify upfront, the more confidence we can have in t
 <ol>
 <li>With the VM Chaos Agent installed, it can now be used as a proper target for a Chaos Experiment. From the <strong>Chaos Studio Blade</strong>, select <strong>Experiments</strong>, select <strong>New Experiment</strong>.</li>
 </ol>
-<p>
-  <img src="../images/2023-08-25_8-05-53.png"
+<p><img src="../images/2023-08-25_8-05-53.png"
+    
+    
     loading="lazy"
     
       alt="Chaos Studio Experiment"
+    
     
     
   ></p>
@@ -498,88 +554,104 @@ The more loopholes we can identify upfront, the more confidence we can have in t
 <li>Name: Unique descriptive name for the experiment, e.g. <strong>CPUSpike</strong></li>
 <li>Region of choice</li>
 </ul>
-<p>
-  <img src="../images/2023-08-25_8-06-17.png"
+<p><img src="../images/2023-08-25_8-06-17.png"
+    
+    
     loading="lazy"
     
       alt="Chaos Studio Experiment Basics"
+    
     
     
   ></p>
 <ol start="3">
 <li>Click <strong>Next</strong> to define the <strong>Permissions</strong>. Here, you allocate a new <strong>Managed Identity</strong> Identity security object to the experiment itself. Later on, you need to provide the necessary IAM/RBAC (Role Based Access Control) permissions for this Experiment to the Azure Target Resource.</li>
 </ol>
-<p>
-  <img src="../images/2023-08-25_8-06-34.png"
+<p><img src="../images/2023-08-25_8-06-34.png"
+    
+    
     loading="lazy"
     
       alt="Chaos Studio Experiment Basics"
+    
     
     
   ></p>
 <ol start="4">
 <li>Click <strong>Next</strong> to open the <strong>Experiment Designer</strong></li>
 </ol>
-<p>
-  <img src="../images/2023-08-25_8-06-50.png"
+<p><img src="../images/2023-08-25_8-06-50.png"
+    
+    
     loading="lazy"
     
       alt="Chaos Studio Experiment Basics"
+    
     
     
   ></p>
 <p>The logical structure is based on <strong>Steps</strong>, containing <strong>Branches</strong>. Within a Branch, you specify the actual <strong>Fault Action</strong> or <strong>Delay</strong>.</p>
 <p>Steps are running in <strong>parallel</strong>, where Actions are executed <strong>Sequential</strong>.</p>
 <p>Click <strong>+ Action</strong>, and select <strong>Add Fault</strong>. This opens a list of possible fault injections for all resources.</p>
-<p>
-  <img src="../images/2023-08-25_8-07-07.png"
+<p><img src="../images/2023-08-25_8-07-07.png"
+    
+    
     loading="lazy"
     
       alt="Chaos Studio Faults"
+    
     
     
   ></p>
 <ol start="5">
 <li>From the list of faults, select <strong>CPU Pressure</strong>. Next, specify the <strong>Duration</strong> parameter (10 minutes seems a fair test) and set <strong>pressureLevel</strong> to 95, meaning a CPU Pressure of 95% during 10 minutes.</li>
 </ol>
-<p>
-  <img src="../images/2023-08-25_8-07-19.png"
+<p><img src="../images/2023-08-25_8-07-19.png"
+    
+    
     loading="lazy"
     
       alt="Chaos Studio Experiment Basics"
+    
     
     
   ></p>
 <ol start="6">
 <li>Next, allocate the Azure Target Resource. In our example, select the VM you deployed earlier as sample target.</li>
 </ol>
-<p>
-  <img src="../images/2023-08-25_8-07-30.png"
+<p><img src="../images/2023-08-25_8-07-30.png"
+    
+    
     loading="lazy"
     
       alt="Chaos Studio Experiment Basics"
+    
     
     
   ></p>
 <ol start="7">
 <li>A new Experiment Resource got created.</li>
 </ol>
-<p>
-  <img src="../images/2023-08-25_8-08-56.png"
+<p><img src="../images/2023-08-25_8-08-56.png"
+    
+    
     loading="lazy"
     
       alt="Chaos Studio Experiment Basics"
+    
     
     
   ></p>
 <ol start="8">
 <li>Before the experiment can run successful, its corresponding Managed Identity needs to have the correct <strong>RBAC/IAM permissions</strong> on the target resource. <strong>Navigate to the Azure VM</strong> from the Azure Portal, and select Access Control/IAM.</li>
 </ol>
-<p>
-  <img src="../images/2023-08-25_8-09-28.png"
+<p><img src="../images/2023-08-25_8-09-28.png"
+    
+    
     loading="lazy"
     
       alt="Chaos Studio Experiment Basics"
+    
     
     
   ></p>
@@ -589,11 +661,13 @@ The more loopholes we can identify upfront, the more confidence we can have in t
 <p><strong>Note: for an overview of what RBAC permission is required for each Azure Resource, check <a class="link" href="https://learn.microsoft.com/en-us/azure/chaos-studio/chaos-studio-fault-providers"  target="_blank" rel="noopener"
     >this link</a> in the Azure Docs.</strong></p>
 <p>From <strong>Add Role Assignment</strong>, select <strong>Reader</strong> as <strong>Selected Role</strong>. In the <strong>Assign Access to</strong> step, select <strong>Managed Identity</strong> and open the Chaos Experiment section under the Managed Identity section. Select the <strong>CPUSpike</strong> Experiment Resource.</p>
-<p>
-  <img src="../images/2023-08-25_8-09-56.png"
+<p><img src="../images/2023-08-25_8-09-56.png"
+    
+    
     loading="lazy"
     
       alt="Chaos Studio Experiment Basics"
+    
     
     
   ></p>
@@ -601,44 +675,52 @@ The more loopholes we can identify upfront, the more confidence we can have in t
 <li>With the permissions allocated, navigate back to the <strong>CPUSpike</strong> Experiment in the Chaos Studio blade, and click <strong>Run</strong>.</li>
 </ol>
 <p>The Experiment Task will start, and run for 10 minutes.</p>
-<p>
-  <img src="../images/2023-08-25_8-10-35.png"
+<p><img src="../images/2023-08-25_8-10-35.png"
+    
+    
     loading="lazy"
     
       alt="Chaos Studio Experiment Basics"
+    
     
     
   ></p>
 <ol start="11">
 <li>Wait for the Experiment to change to <strong>Running</strong> state.</li>
 </ol>
-<p>
-  <img src="../images/2023-08-25_8-12-55.png"
+<p><img src="../images/2023-08-25_8-12-55.png"
+    
+    
     loading="lazy"
     
       alt="Chaos Studio Experiment Basics"
+    
     
     
   ></p>
 <ol start="12">
 <li>With the experiment running, navigate to the <strong>Azure VM</strong> your testing against, and open its <strong>Metrics</strong>. From the Metrics blade, select <strong>Percent CPU</strong> under Metric in the graph, and watch the real-time CPU load.</li>
 </ol>
-<p>
-  <img src="../images/2023-08-25_8-13-51.png"
+<p><img src="../images/2023-08-25_8-13-51.png"
+    
+    
     loading="lazy"
     
       alt="Chaos Studio Experiment Basics"
+    
     
     
   ></p>
 <ol start="13">
 <li>Repeat this process every couple of minutes, and see how the CPU load is gradually spiking, eventually reaching 95% for a certain amount of time.</li>
 </ol>
-<p>
-  <img src="../images/2023-08-25_8-14-23.png"
+<p><img src="../images/2023-08-25_8-14-23.png"
+    
+    
     loading="lazy"
     
       alt="Chaos Studio Experiment Basics"
+    
     
     
   ></p>
@@ -651,11 +733,13 @@ The more loopholes we can identify upfront, the more confidence we can have in t
 <p>In a later follow-up article, I will show you how to use Chaos Studio Experiments against an <strong>Azure Kubernetes Cluster</strong>, as well as a <strong>Network Security Group</strong>.</p>
 <p>I hope this article spiced your interest for Azure Chaos Studio. Go out and <em>experiment</em> with it, and let me know how it goes!</p>
 <p><a class="link" href="https://www.buymeacoffee.com/pdtit"  target="_blank" rel="noopener"
-    >
-  <img src="../images/buy_me_a_coffee.png"
+    ><img src="../images/buy_me_a_coffee.png"
+    
+    
     loading="lazy"
     
       alt="BuyMeACoffee"
+    
     
     
   ></a></p>
@@ -804,6 +888,7 @@ The more loopholes we can identify upfront, the more confidence we can have in t
         lightbox.init();
     }
 </script>
+
     
 
             </main>
@@ -863,8 +948,8 @@ The more loopholes we can identify upfront, the more confidence we can have in t
 </div>
 
 
-    <script type="text/javascript" src="/ts/cookies.6d3577f211db9f4f1997385d4b417cf90130b050bc9e787bb1bb5346d337e998.js" defer></script>
-<script type="text/javascript" src="/ts/main.acaf849f2b273f6a8368a58b001f336738d0c948d92e79b116467d0c7515f932.js" defer></script>
+    <script type="text/javascript" src="/ts/cookies.fb6e3f54ec5cefc5dd04ebdb731fbb630fe36104d843ad1ef773c6462b788568.js" defer></script>
+<script type="text/javascript" src="/ts/main.7aaef5b0228fe199f3d764416965e34f5bf182cbe0650a0f3ea1a716021ba381.js" defer></script>
 
 
     </body>

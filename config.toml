@@ -51,7 +51,9 @@ home = ["HTML", "RSS", "JSON"]
     enabled = true
 
   [params.widgets]
-    homepage = []
+    homepage = [
+      { type = "tag-cloud", params = { showLink = true } }
+    ]
     page = []
 
   [params.defaultImage.opengraph]
@@ -87,8 +89,16 @@ home = ["HTML", "RSS", "JSON"]
     icon = "book-open"
 
 [[menu.main]]
+  identifier = "speaking"
+  name = "Speaking"
+  url = "/speaking/"
+  weight = 25
+  [menu.main.params]
+    icon = "microphone"
+
+[[menu.main]]
   identifier = "about"
-  name = "About"
+  name = "About Me"
   url = "/about/"
   weight = 30
   [menu.main.params]
@@ -101,6 +111,14 @@ home = ["HTML", "RSS", "JSON"]
   weight = 40
   [menu.main.params]
     icon = "search"
+
+[[menu.main]]
+  identifier = "tags"
+  name = "Tags"
+  url = "/tags/"
+  weight = 45
+  [menu.main.params]
+    icon = "tag"
 
 # Social links
 [[menu.social]]

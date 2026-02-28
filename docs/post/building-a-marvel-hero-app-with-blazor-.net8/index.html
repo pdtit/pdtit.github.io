@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-    <head><meta charset='utf-8'>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Building a Marvel Hero catalog app using Blazor Server and .NET8\nIntroduction\rAt the end of 2022, as part of the Festive Tech Calendar community initiative, I provided a step-by-step instruction blog on how to build a Blazor Web Assembly app from scratch, using .NET7.\nAbout 18 months later, a lot of things have changed in the .NET8 world, which also impacted positively new features around the Blazor Web App Framework, on both Web Assembly (Client/Browser) and Server side.\n">
 <title>ScifiDevCon 2024 : Building a Marvel Hero App using Blazor and .NET8 </title>
 
 
-<link rel="canonical" href="https://www.007ffflearning.com/post/building-a-marvel-hero-app-with-blazor-.net8/">
+<link rel="canonical" href="http://localhost:1313/post/building-a-marvel-hero-app-with-blazor-.net8/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
 
 
-<link rel="stylesheet" href="/scss/style.min.3fe054e425b56de773b19f095f1e2017ce9a57c1bdf515298b0b20fbe7002c92.css"><meta property='og:title' content="ScifiDevCon 2024 : Building a Marvel Hero App using Blazor and .NET8 ">
+<link rel="stylesheet" href="/scss/style.min.cf9653eecaea3cf14f5747895c3ac9b505bea7f8f3f40c16dac6b0e82fafddc4.css"><meta property='og:title' content="ScifiDevCon 2024 : Building a Marvel Hero App using Blazor and .NET8 ">
 <meta property='og:description' content="Building a Marvel Hero catalog app using Blazor Server and .NET8\nIntroduction\rAt the end of 2022, as part of the Festive Tech Calendar community initiative, I provided a step-by-step instruction blog on how to build a Blazor Web Assembly app from scratch, using .NET7.\nAbout 18 months later, a lot of things have changed in the .NET8 world, which also impacted positively new features around the Blazor Web App Framework, on both Web Assembly (Client/Browser) and Server side.\n">
-<meta property='og:url' content='https://www.007ffflearning.com/post/building-a-marvel-hero-app-with-blazor-.net8/'>
+<meta property='og:url' content='http://localhost:1313/post/building-a-marvel-hero-app-with-blazor-.net8/'>
 <meta property='og:site_name' content='Azure Readiness starts here...'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Blazor' /><meta property='article:tag' content='Azure' /><meta property='article:tag' content='.NET8' /><meta property='article:published_time' content='2024-05-18T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-05-18T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="ScifiDevCon 2024 : Building a Marvel Hero App using Blazor and .NET8 ">
@@ -47,7 +47,7 @@
         }
     })();
 </script>
-<div class="container main-container flex on-phone--column compact"><aside class="sidebar left-sidebar sticky ">
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
     <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
         <span class="hamburger-box">
             <span class="hamburger-inner"></span>
@@ -189,6 +189,23 @@
         
         
         <li >
+            <a href='/speaking/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-microphone" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 5a3 3 0 0 1 6 0v7a3 3 0 0 1 -6 0z"/>
+  <path d="M5 10a7 7 0 0 0 14 0"/>
+  <path d="M8 21l8 0"/>
+  <path d="M12 17l0 4"/>
+</svg>
+
+                
+                <span>Speaking</span>
+            </a>
+        </li>
+        
+        
+        <li >
             <a href='/about/' >
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -200,7 +217,7 @@
 
 
                 
-                <span>About</span>
+                <span>About Me</span>
             </a>
         </li>
         
@@ -218,6 +235,23 @@
 
                 
                 <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>Tags</span>
             </a>
         </li>
         
@@ -347,11 +381,13 @@
 <li>Launch <strong>Visual Studio 2022</strong>, and select <strong>Create New Project</strong></li>
 <li>From the list of templates, select <strong>Blazor Web App</strong></li>
 </ol>
-<p>
-  <img src="../images/2024-05-17-215846.png"
+<p><img src="../images/2024-05-17-215846.png"
+    
+    
     loading="lazy"
     
       alt="Graphical user interface, text, application Description automatically generated"
+    
     
     
   ></p>
@@ -378,22 +414,26 @@
 <p>Click <strong>Create</strong> to complete the project creation wizard and wait for the template to get deployed in the Visual Studio development environment. The Solution Explorer looks like below:</p>
 </li>
 </ol>
-<p>
-  <img src="../images/2024-05-17-220528.png"
+<p><img src="../images/2024-05-17-220528.png"
+    
+    
     loading="lazy"
     
       alt="Graphical user interface, Create Project"
+    
     
     
   ></p>
 <ol start="10">
 <li>Run the app by pressing <strong>Ctrl-F5</strong> or select <strong>Run</strong> from the upper menu (the green arrow) and wait for the compile and build phase to complete. The web app should load successfully in a new browser window.</li>
 </ol>
-<p>
-  <img src="../images/2024-05-17-220807.png"
+<p><img src="../images/2024-05-17-220807.png"
+    
+    
     loading="lazy"
     
       alt="Blazor WebAssembly default app in browser"
+    
     
     
   ></p>
@@ -471,11 +511,13 @@
 <li>This adds the necessary objects on the web page.</li>
 <li>And let’s run this update to see what we have for now.</li>
 </ol>
-<p>
-  <img src="../images/2024-05-17-221303.png"
+<p><img src="../images/2024-05-17-221303.png"
+    
+    
     loading="lazy"
     
       alt="Web page layout is visible in the browser"
+    
     
     
   ></p>
@@ -561,11 +603,13 @@
 <ol start="7">
 <li>Let’s run the code again to test if everything works as expected.</li>
 </ol>
-<p>
-  <img src="../images/2024-05-17-221457.png"
+<p><img src="../images/2024-05-17-221457.png"
+    
+    
     loading="lazy"
     
       alt="Graphical user interface, text, application, chat or text message Description automatically generated"
+    
     
     
   ></p>
@@ -573,11 +617,13 @@
 <li>Now wait, we lose quite some time on stopping the app, updating code, starting it again – so what we can do is use the <strong>new VS2022 feature called Hot Reload</strong> / if I set this to “Hot Reload on Save”, it will dynamically update the runtime state of the app based on my edits. Let’s check it out.</li>
 <li>While in debugging mode, check the “flame” icon in the menu:</li>
 </ol>
-<p>
-  <img src="../images/2024-05-17-221614.png"
+<p><img src="../images/2024-05-17-221614.png"
+    
+    
     loading="lazy"
     
       alt="Hot Reload"
+    
     
     
   ></p>
@@ -585,11 +631,13 @@
 <li>Enable the setting “Hot Reload on File Save”.</li>
 <li>Edit the card-title “Marvel Hero Name” to “Marvel Character Name” and check how the app refreshes itself without needing to stop/start.</li>
 </ol>
-<p>
-  <img src="../images/2024-05-17-221738.png"
+<p><img src="../images/2024-05-17-221738.png"
+    
+    
     loading="lazy"
     
       alt="Update after Hot Reload"
+    
     
     
   ></p>
@@ -608,11 +656,13 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>add <strong>@bind-value=”whotofind”</strong> at the end of the line.</p>
-<p>
-  <img src="../images/2024-05-18-090106.png"
+<p><img src="../images/2024-05-18-090106.png"
+    
+    
     loading="lazy"
     
       alt="Add bind-value parameter to text field"
+    
     
     
   ></p>
@@ -622,11 +672,13 @@
 </ol>
 <pre><code>Add **@onclick=FindMarvel**
 </code></pre>
-<p>
-  <img src="../images/2024-05-18-090244.png"
+<p><img src="../images/2024-05-18-090244.png"
+    
+    
     loading="lazy"
     
       alt="AAdd onclick event for button"
+    
     
     
   ></p>
@@ -668,22 +720,26 @@
 <li>Followed by defining a method (task) for the FindMarvel onclick action – for now, let’s write something to the console to validate our search field is working as expected</li>
 </ol>
 <p>The string “whotofind” refers to the search field object, where the Task “FindMarvel” refers to the button click action. So easy said, whenever we click the button, it will pick up the string content from the search field, and send it to the Marvel API back-end. As we don’t have that yet, I’m just writing the data to the console, which is always a great test to validate the code is working as expected.</p>
-<p>
-  <img src="../images/2024-05-18-090439.png"
+<p><img src="../images/2024-05-18-090439.png"
+    
+    
     loading="lazy"
     
       alt="Code snippet for button action"
+    
     
     
   ></p>
 <ol start="19">
 <li>Save the file, which will throw a warning regarding the hot reload. Since we added new actual code snippets, hot reload can’t just go and recognize it. So a reload is needed…</li>
 </ol>
-<p>
-  <img src="../images/d0be33cb6858972b3c00724c40f485e3.png"
+<p><img src="../images/d0be33cb6858972b3c00724c40f485e3.png"
+    
+    
     loading="lazy"
     
       alt="Hot Reload can’t handle code changes"
+    
     
     
   ></p>
@@ -720,11 +776,13 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 <ol start="24">
 <li>Save the changes, and run the app; enter a Marvel character name in the search field, click the Find Button and notice the search field string is shown in the console now. This is what InteractiveWebAssembly Render Mode is doing&hellip;</li>
 </ol>
-<p>
-  <img src="../images/2024-05-18-091910.png"
+<p><img src="../images/2024-05-18-091910.png"
+    
+    
     loading="lazy"
     
       alt="Console.WriteLine is working as expected"
+    
     
     
   ></p>
@@ -736,11 +794,13 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 <li>Head over to the Marvel Developer website <a class="link" href="https://developer.marvel.com"  target="_blank" rel="noopener"
     >https://developer.marvel.com</a> and grab the necessary API information.</li>
 </ol>
-<p>
-  <img src="../images//fc2a542cfdbca3fb86519841f3f53999.png"
+<p><img src="../images//fc2a542cfdbca3fb86519841f3f53999.png"
+    
+    
     loading="lazy"
     
       alt="Marvel Developer Site Home Page"
+    
     
     
   ></p>
@@ -757,57 +817,69 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 <p>To allow requests to come into the Marvel API back-end, you need to specify the source URL domains where the requests are coming from. Add <strong>localhost</strong> here, which is the URL you use for all testing on your development workstation. Later on, once the app runs in Azure, you need to add the Azure Service URL here as well…</p>
 </li>
 </ol>
-<p>
-  <img src="../images//a7dd9d49c1402deb787b6ab792a0fb38.png"
+<p><img src="../images//a7dd9d49c1402deb787b6ab792a0fb38.png"
+    
+    
     loading="lazy"
     
       alt="API rate limits and domains"
+    
     
     
   ></p>
 <ol start="5">
 <li>Once set up, head over to “interactive documentation”, and walk through the different API placeholders and keywords one can use, to show the capabilities. For the app later on, we will use the “namestartswith”, as it is the most easy to use – names could work, but it requires knowing the explicit name of the character, and having it correctly spelled.</li>
 </ol>
-<p>
-  <img src="../images//d9552cc8c4ec1ff4e0f2e32a767a4f42.png"
+<p><img src="../images//d9552cc8c4ec1ff4e0f2e32a767a4f42.png"
+    
+    
     loading="lazy"
     
       alt="Marvel API documentation site"
     
     
+    
   ></p>
-<p>
-  <img src="../images//57bc3634f004877c8cff9942d9e6e8d3.png"
+<p><img src="../images//57bc3634f004877c8cff9942d9e6e8d3.png"
+    
+    
     loading="lazy"
     
       alt="nameStartsWith API Example"
     
     
+    
   ></p>
-<p>
-  <img src="../images//4f749b51a5d1bdf6d51e81f614c8d72a.png"
+<p><img src="../images//4f749b51a5d1bdf6d51e81f614c8d72a.png"
+    
+    
     loading="lazy"
     
       alt="Limit the result set parameter to 50"
     
     
+    
   ></p>
-<p>
-  <img src="../images//9883c08decac6bffde5cb763539b953f.png"
+<p><img src="../images//9883c08decac6bffde5cb763539b953f.png"
+    
+    
     loading="lazy"
     
       alt="API response codes and try-out button"
+    
     
     
   ></p>
 <ol start="6">
 <li>Click the “Try it out” button. The result shows the outcome + the exact URL that was used:</li>
 </ol>
-<p>
-  <img src="../images//b3aab53a282e9d00b58ba5c91e81afa0.png"
+<p><img src="../images//b3aab53a282e9d00b58ba5c91e81afa0.png"
+    
+    
     loading="lazy"
     
       alt="API Response Body in JSON"
+    
     
     
   ></p>
@@ -819,11 +891,13 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 <p>From the app.client project, select <strong>Manage Nuget Packages</strong>, and search for <strong>Microsoft.Extension.Http</strong> as package name.</p>
 </li>
 </ol>
-<p>
-  <img src="../images/2024-05-18-124041.png"
+<p><img src="../images/2024-05-18-124041.png"
+    
+    
     loading="lazy"
     
       alt="Http Nuget Package"
+    
     
     
   >.</p>
@@ -838,11 +912,13 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">builder.Services.AddScoped(sp =&gt; new HttpClient { BaseAddress = new Uri(&#34;https://gateway.marvel.com:443/v1/public&#34;) });
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>
-  <img src="../images/2024-05-18-093043.png"
+</div><p><img src="../images/2024-05-18-093043.png"
+    
+    
     loading="lazy"
     
       alt="Add Scoped Service for HTTPClient"
+    
     
     
   ></p>
@@ -857,11 +933,13 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">builder.Services.AddHttpClient();
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>
-  <img src="../images/2024-05-18-124637.png"
+</div><p><img src="../images/2024-05-18-124637.png"
+    
+    
     loading="lazy"
     
       alt="Add Service for HTTPClient"
+    
     
     
   ></p>
@@ -890,22 +968,26 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 </span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="p">=</span><span class="s">&#34;text-center&#34;</span><span class="p">&gt;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>
-  <img src="../images/2024-05-18-093311.png"
+</div><p><img src="../images/2024-05-18-093311.png"
+    
+    
     loading="lazy"
     
       alt="HttpClient Dependency Injection"
+    
     
     
   ></p>
 <ol start="10">
 <li>As you could see from the Marvel output, they are using JSON; this means, when calling the HttpClient, we also receive a JSON object back.</li>
 </ol>
-<p>
-  <img src="../images//6ace0a137db04fd541e730b90bf18a42.png"
+<p><img src="../images//6ace0a137db04fd541e730b90bf18a42.png"
+    
+    
     loading="lazy"
     
       alt="Marvel Characters JSON Response"
+    
     
     
   ></p>
@@ -918,22 +1000,26 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
     >https://www.jSON2CSharp.com</a></strong>, which allows for pasting in a JSON payload, which then gets converted to c# class structure</p>
 </li>
 </ol>
-<p>
-  <img src="../images//7840c5de3eda79f2d196079bc0081756.png"
+<p><img src="../images//7840c5de3eda79f2d196079bc0081756.png"
+    
+    
     loading="lazy"
     
       alt="Text Description automatically generated"
+    
     
     
   ></p>
 <ol start="13">
 <li>In the VStudio app.client project, create a new subfolder “Models”, and add a new Item in there, called MarvelResult.cs</li>
 </ol>
-<p>
-  <img src="../images//3bb34b057bc24ab07c3280a90a41e829.png"
+<p><img src="../images//3bb34b057bc24ab07c3280a90a41e829.png"
+    
+    
     loading="lazy"
     
       alt="Graphical user interface, application Description automatically generated"
+    
     
     
   ></p>
@@ -1015,11 +1101,13 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>
-  <img src="../images/2024-05-18-094323.png"
+</div><p><img src="../images/2024-05-18-094323.png"
+    
+    
     loading="lazy"
     
       alt="MarvelResult Class"
+    
     
     
   ></p>
@@ -1034,11 +1122,13 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 <pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">private</span> <span class="n">MarvelResult</span> <span class="n">_marvelResult</span><span class="p">;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>
-  <img src="../images/2024-05-18-094655.png"
+</div><p><img src="../images/2024-05-18-094655.png"
+    
+    
     loading="lazy"
     
       alt="Add Model data to Razor Page"
+    
     
     
   ></p>
@@ -1061,20 +1151,24 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 </span></span><span class="line"><span class="cl">@inject HttpClient HttpClient
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>
-  <img src="../images/2024-05-18-094850.png"
+</div><p><img src="../images/2024-05-18-094850.png"
+    
+    
     loading="lazy"
     
       alt="Adding using statement to point to Models subfolder"
     
     
+    
   ></p>
 <p>Where now the Class gets nicely recognized</p>
-<p>
-  <img src="../images/2024-05-18-095009.png"
+<p><img src="../images/2024-05-18-095009.png"
+    
+    
     loading="lazy"
     
       alt="MarvelResults recognized"
+    
     
     
   ></p>
@@ -1151,11 +1245,13 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>
-  <img src="../images/88a6f657a0adfca57021b3606066f8db.png"
+</div><p><img src="../images/88a6f657a0adfca57021b3606066f8db.png"
+    
+    
     loading="lazy"
     
       alt="API Call snippet to Marvel back-end"
+    
     
     
   ></p>
@@ -1163,11 +1259,13 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 <li>While all the code pieces are done, note that as of .NET6, it started checking for Nullable values. This is what the green squickly lines are identifying. What this means is that the value could be equal to null, which could potentially break your application, since it expects to have a real value in there.</li>
 <li>I wouldn’t recommend it to change, but for this little sample app, it would be totally OK to disable the nullable check. This can be done from the Properties of the Project</li>
 </ol>
-<p>
-  <img src="../images/2024-05-18-095912.png"
+<p><img src="../images/2024-05-18-095912.png"
+    
+    
     loading="lazy"
     
       alt="Disable Nullable Check for Project"
+    
     
     
   ></p>
@@ -1239,11 +1337,13 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 </div><ol>
 <li>Run the app and see the result in action</li>
 </ol>
-<p>
-  <img src="../images//44856923dff937c6cad7d953b046c1bd.png"
+<p><img src="../images//44856923dff937c6cad7d953b046c1bd.png"
+    
+    
     loading="lazy"
     
       alt="Graphical user interface, website Description automatically generated"
+    
     
     
   ></p>
@@ -1261,11 +1361,13 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 </li>
 <li>
 <p>Open FlipMarvel.razor page; First thing we need to change, is the Page Routing, pointing to the “/flip” routing directory instead of the “/”, as that one is linked to the index.razor page.</p>
-<p>
-  <img src="../images//46aac649d4ecfb4be03d1ce021141274.png"
+<p><img src="../images//46aac649d4ecfb4be03d1ce021141274.png"
+    
+    
     loading="lazy"
     
       alt="Graphical user interface, text, application Description automatically generated"
+    
     
     
   ></p>
@@ -1441,11 +1543,13 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 </div><ol>
 <li>and paste this under the @using section and the <PageTitle> section of the code you already have (Note: ignore the @using marveltake2.models in the screenshot, it’s the name of my test project)</li>
 </ol>
-<p>
-  <img src="../images//e28cd81c4d68ae3560000e3a047e15f9.png"
+<p><img src="../images//e28cd81c4d68ae3560000e3a047e15f9.png"
+    
+    
     loading="lazy"
     
       alt="Graphical user interface, application Description automatically generated"
+    
     
     
   ></p>
@@ -1529,11 +1633,13 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 <ol>
 <li>
 <p>Next, we add a class for the flip-card-back, where we will show the Marvel character name and description.</p>
-<p>
-  <img src="../images//4082873f68fc45f018526dcce23ec2b7.png"
+<p><img src="../images//4082873f68fc45f018526dcce23ec2b7.png"
+    
+    
     loading="lazy"
     
       alt="Graphical user interface, text, application, email Description automatically generated"
+    
     
     
   ></p>
@@ -1544,22 +1650,26 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 <li>Since the previous page was index.razor, it’s getting loaded by design (from the index.html). so we need to update the URL to pick up the /flip page, by adding it to the end of the URL, such as <a class="link" href="https://localhost:7110?flip"  target="_blank" rel="noopener"
     >https://localhost:7110?flip</a> (note, the port number will be different on your end)</li>
 </ol>
-<p>
-  <img src="../images//7ce7af6f54af8a7aee9535ff23b92e47.png"
+<p><img src="../images//7ce7af6f54af8a7aee9535ff23b92e47.png"
+    
+    
     loading="lazy"
     
       alt="Graphical user interface, application Description automatically generated"
+    
     
     
   ></p>
 <ol>
 <li>Search for a character, and see the outcome cards:</li>
 </ol>
-<p>
-  <img src="../images//b2a599d62eb62f38570ce2865d97a8a0.png"
+<p><img src="../images//b2a599d62eb62f38570ce2865d97a8a0.png"
+    
+    
     loading="lazy"
     
       alt="Graphical user interface Description automatically generated"
+    
     
     
   ></p>
@@ -1567,11 +1677,13 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 <li>About the same as before, but let’s hoover over a card:</li>
 <li>It flips and shows the character name and description (if provided by Marvel) to the back of the card</li>
 </ol>
-<p>
-  <img src="../images//445529556f9af96a20cecb08dee76707.png"
+<p><img src="../images//445529556f9af96a20cecb08dee76707.png"
+    
+    
     loading="lazy"
     
       alt="Text Description automatically generated"
+    
     
     
   ></p>
@@ -1583,11 +1695,13 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 <li>The icons are coming from the open iconic library, which is also referenced as part of Blazor bootstrap. Know you can change to MudBlazor, Telerik Progress or several other bootstrap frameworks to have layout-rich styles.</li>
 <li>Open https:://useiconic.com and find a suitable icon, for example loop-circular</li>
 </ol>
-<p>
-  <img src="../images//934083c32d1deed78048f9f953f85869.png"
+<p><img src="../images//934083c32d1deed78048f9f953f85869.png"
+    
+    
     loading="lazy"
     
       alt="Chart Description automatically generated with medium confidence"
+    
     
     
   ></p>
@@ -1621,11 +1735,13 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 <li>When you run the app again, the new Menu item will appear. Given the href=”flip”, it will redirect to the base URL (<a class="link" href="https://localhost:7110"  target="_blank" rel="noopener"
     >https://localhost:7110</a>) /flip route</li>
 </ol>
-<p>
-  <img src="../images//d9276771ac7e7f6fb7800724605797cc.png"
+<p><img src="../images//d9276771ac7e7f6fb7800724605797cc.png"
+    
+    
     loading="lazy"
     
       alt="Graphical user interface, application Description automatically generated"
+    
     
     
   ></p>
@@ -1646,11 +1762,13 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 </div><ol>
 <li>This changes the default purple color to darkred.</li>
 </ol>
-<p>
-  <img src="../images//33d3c7a7c6df44851c787ad147d4904e.png"
+<p><img src="../images//33d3c7a7c6df44851c787ad147d4904e.png"
+    
+    
     loading="lazy"
     
       alt="Graphical user interface, application Description automatically generated"
+    
     
     
   ></p>
@@ -1661,11 +1779,13 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 </h1><ol>
 <li>With that, let’s close this project and save it to GitHub; so you can grab it as a reference. From the explorer, click “Git changes” tab and select Create GitHub Repository</li>
 </ol>
-<p>
-  <img src="../images//51bf9482699dc85b868b603bab0406d8.png"
+<p><img src="../images//51bf9482699dc85b868b603bab0406d8.png"
+    
+    
     loading="lazy"
     
       alt="Graphical user interface, application Description automatically generated"
+    
     
     
   ></p>
@@ -1679,11 +1799,13 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
     >petender/FestiveBlazor2022live (github.com)</a></p>
 </li>
 </ol>
-<p>
-  <img src="../images//4d09932a92c0b020a566940e79741aeb.png"
+<p><img src="../images//4d09932a92c0b020a566940e79741aeb.png"
+    
+    
     loading="lazy"
     
       alt="A screenshot of a computer Description automatically generated with medium confidence"
+    
     
     
   ></p>
@@ -1695,11 +1817,13 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 <ol>
 <li>
 <p>From the Azure Portal, create new resource / static web app</p>
-<p>
-  <img src="../images//756a5b2424f865b6cf86eefab8492d2e.png"
+<p><img src="../images//756a5b2424f865b6cf86eefab8492d2e.png"
+    
+    
     loading="lazy"
     
       alt="Graphical user interface, text, application Description automatically generated"
+    
     
     
   ></p>
@@ -1723,11 +1847,13 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 </li>
 <li>
 <p>Region = any region of your choice</p>
-<p>
-  <img src="../images//3910c87d613034cbd0c9ed1392dfda7b.png"
+<p><img src="../images//3910c87d613034cbd0c9ed1392dfda7b.png"
+    
+    
     loading="lazy"
     
       alt="Graphical user interface, text, application Description automatically generated"
+    
     
     
   ></p>
@@ -1736,119 +1862,141 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 <ol>
 <li>
 <p>Scroll down and authenticate to GitHub; Next, select your source repo in Github where the code is stored (the one we just created)</p>
-<p>
-  <img src="../images//1bd1ddddd3602c3ba2d84b540da393aa.png"
+<p><img src="../images//1bd1ddddd3602c3ba2d84b540da393aa.png"
+    
+    
     loading="lazy"
     
       alt="Graphical user interface, text, application Description automatically generated"
+    
     
     
   ></p>
 </li>
 <li>
 <p>Click Build Details to provide more parameters regarding the Blazor app itself. Note you need to change the default App location from /Client to /, since our source code is in the root of the Blazor Web Assembly, without using ASP.Net hosted back-end.</p>
-<p>
-  <img src="../images//420cbce0770a41dc39ddf2184948363e.png"
+<p><img src="../images//420cbce0770a41dc39ddf2184948363e.png"
+    
+    
     loading="lazy"
     
       alt="Graphical user interface, application, email Description automatically generated"
+    
     
     
   ></p>
 </li>
 <li>
 <p>Once published, it will trigger a GitHub Actions pipeline to publish the actual content</p>
-<p>
-  <img src="../images//ba208857aa01b6d744c79606a7a76b53.png"
+<p><img src="../images//ba208857aa01b6d744c79606a7a76b53.png"
+    
+    
     loading="lazy"
+    
     
     
   ></p>
 </li>
 <li>
 <p>The YAML pipeline code is stored in the .github/workflows/ subfolder within the GitHub repository. You shouldn’t need to update this file though. It just works out-of-the-box.</p>
-<p>
-  <img src="../images//7d89901490cd8ae277355c130085551f.png"
+<p><img src="../images//7d89901490cd8ae277355c130085551f.png"
+    
+    
     loading="lazy"
     
       alt="Graphical user interface, text, application, email Description automatically generated"
+    
     
     
   ></p>
 </li>
 <li>
 <p>Check in Actions what’s happening:</p>
-<p>
-  <img src="../images//97f08b3e40277869ee85a42fa0d2a343.png"
+<p><img src="../images//97f08b3e40277869ee85a42fa0d2a343.png"
+    
+    
     loading="lazy"
     
       alt="Graphical user interface, text, application, email Description automatically generated"
+    
     
     
   ></p>
 </li>
 <li>
 <p>Open the details for the Build &amp; Deploy workflow</p>
-<p>
-  <img src="../images//da5cda0e73ed46fcc4274becc2f4a30e.png"
+<p><img src="../images//da5cda0e73ed46fcc4274becc2f4a30e.png"
+    
+    
     loading="lazy"
     
       alt="Text Description automatically generated"
+    
     
     
   ></p>
 </li>
 <li>
 <p>Selecting any step in the Action workflow will show more details:</p>
-<p>
-  <img src="../images//765fda402ec958a1267c45c8d15592df.png"
+<p><img src="../images//765fda402ec958a1267c45c8d15592df.png"
+    
+    
     loading="lazy"
     
       alt="Graphical user interface, text Description automatically generated"
+    
     
     
   ></p>
 </li>
 <li>
 <p>Wait for the workflow to complete successfully.</p>
-<p>
-  <img src="../images//291538dda0fbb66c1ccc93f67b3ed263.png"
+<p><img src="../images//291538dda0fbb66c1ccc93f67b3ed263.png"
+    
+    
     loading="lazy"
     
       alt="Text Description automatically generated"
+    
     
     
   ></p>
 </li>
 <li>
 <p>Navigate back to the Azure Static Web app, click it’s URL and see the Blazor Web App is running as expected.</p>
-<p>
-  <img src="../images//71e0fdcd38b8f4e3df22af93a6c04215.png"
+<p><img src="../images//71e0fdcd38b8f4e3df22af93a6c04215.png"
+    
+    
     loading="lazy"
     
       alt="Graphical user interface, text, application Description automatically generated"
+    
     
     
   ></p>
 </li>
 <li>
 <p>When searching for a Marvel Character, this throws an error though, which can be validated from the Inspect option of the browser:</p>
-<p>
-  <img src="../images//aebf1488e59ba401c5c69708ed8b2958.png"
+<p><img src="../images//aebf1488e59ba401c5c69708ed8b2958.png"
+    
+    
     loading="lazy"
     
       alt="A screenshot of a computer Description automatically generated"
+    
     
     
   ></p>
 </li>
 <li>
 <p>Remember at the start, where we configured the API calls at the Marvel Developer site, we needed to specify the source URLs from where the calls are allowed. This Azure Static Web App URL is not configured. (Hence why I didn’t worry too much about including my APIKey as hard-coded string in the source code).</p>
-<p>
-  <img src="../images//07a00ae95a0f1548ac84f149b11ccd34.png"
+<p><img src="../images//07a00ae95a0f1548ac84f149b11ccd34.png"
+    
+    
     loading="lazy"
     
       alt="Graphical user interface, text, application, email Description automatically generated"
+    
     
     
   ></p>
@@ -1864,11 +2012,13 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 <p>I would like to thank the organizing team of ScifiDevCon 2024 for having accepted my session submission for the 3rd year in a row. Especially since this was my first attempt to do some (semi)live coding, to share my excitement of how I learned to write and build code at age 48. I’m already brainstorming on what Blazor app I can share in next year’s edition&hellip;</p>
 <p>/Peter</p>
 <p><a class="link" href="https://www.buymeacoffee.com/pdtit"  target="_blank" rel="noopener"
-    >
-  <img src="../images/buy_me_a_coffee.png"
+    ><img src="../images/buy_me_a_coffee.png"
+    
+    
     loading="lazy"
     
       alt="BuyMeACoffee"
+    
     
     
   ></a></p>
@@ -2015,6 +2165,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
         lightbox.init();
     }
 </script>
+
     
 
             </main>
@@ -2074,8 +2225,8 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 </div>
 
 
-    <script type="text/javascript" src="/ts/cookies.6d3577f211db9f4f1997385d4b417cf90130b050bc9e787bb1bb5346d337e998.js" defer></script>
-<script type="text/javascript" src="/ts/main.acaf849f2b273f6a8368a58b001f336738d0c948d92e79b116467d0c7515f932.js" defer></script>
+    <script type="text/javascript" src="/ts/cookies.fb6e3f54ec5cefc5dd04ebdb731fbb630fe36104d843ad1ef773c6462b788568.js" defer></script>
+<script type="text/javascript" src="/ts/main.7aaef5b0228fe199f3d764416965e34f5bf182cbe0650a0f3ea1a716021ba381.js" defer></script>
 
 
     </body>
