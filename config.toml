@@ -20,7 +20,7 @@ home = ["HTML", "RSS", "JSON"]
   mainSections = ["post"]
   featuredImageField = "image"
   rssFullContent = true
-  favicon = "/img/007ffflearning-ape.png"
+  favicon = "/images/007ffflearning-ape.png"
 
   # App Insights
   azureAppInsightsKey = "100a91c6-40e4-4e8e-a4ee-57873dc4eee3"
@@ -36,7 +36,7 @@ home = ["HTML", "RSS", "JSON"]
   [params.sidebar]
     emoji = "🎓"
     subtitle = "Bring me an audience, I'll give them Azure knowledge in return"
-    avatar = "img/007ffflearning-ape.png"
+    avatar = "images/007ffflearning-ape.png"
 
   [params.article]
     math = false
