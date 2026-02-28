@@ -1,7 +1,7 @@
 ---
 title: "publish your first dotnet5 app to Azure App Services"
 date: 2020-11-10
-tags: ["Azure", "Visual Studio", "DotNet"]
+tags: ["Azure", "Visual Studio", ".NET Development"]
 draft: false
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Deploying .NET6.0 Blazor App using dotnet commandline"
 date: 2021-11-08
-tags: [".NET Development", "DotNet"]
+tags: [".NET Development"]
 draft: false
 ---
 

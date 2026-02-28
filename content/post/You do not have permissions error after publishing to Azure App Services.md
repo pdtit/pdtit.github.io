@@ -2,7 +2,7 @@
 title: "You do not have permissions to view this directory or page after publishing to Azure App Service"
 date: 2023-04-30
 publishdate: 2023-04-30
-tags: ["Azure", "App Service", "Azure DevOps"]
+tags: ["Azure", "Azure DevOps"]
 draft: false
 ---
 

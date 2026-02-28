@@ -2,7 +2,7 @@
 title: "Integrating Azure App Insights for Hugo on Static Web Apps"
 date: 2022-10-30
 publishdate: 2022-10-30
-tags: ["Azure", "Hugo", "Application Insights"]
+tags: ["Azure", "Hugo"]
 draft: false
 ---
 

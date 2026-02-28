@@ -1,7 +1,7 @@
 ﻿---
 title: "Happy to announce my newest Azure book got (self) published"
 date: 2020-01-03
-tags: ["Azure", "Books", "IAAS", "PAAS", "Containers"]
+tags: ["Azure", "Books", "Containers"]
 draft: false
 ---
 

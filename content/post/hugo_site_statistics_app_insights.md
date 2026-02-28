@@ -1,7 +1,7 @@
 ---
 title: "Collecting Hugo static site statistics using Azure Application Insights"
 date: 2020-04-26
-tags: ["Azure", "Application Insights", "Hugo"]
+tags: ["Azure", "Hugo"]
 draft: false
 ---
 

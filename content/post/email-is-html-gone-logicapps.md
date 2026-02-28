@@ -1,7 +1,7 @@
 ---
 title: "is HTML parameter gone from Logic Apps Send Email Connector"
 date: 2020-05-10
-tags: ["Azure", "LogicApps", "Office365"]
+tags: ["Azure", "Office365"]
 draft: false
 ---
 
