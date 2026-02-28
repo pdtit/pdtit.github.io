@@ -2,7 +2,7 @@
 title: "Using GitHub Copilot Agent Mode to transform ARM templates to BICEP"
 date: 2025-07-12
 publishdate: 2025-07-12
-tags: ["Infrastructure as Code", "GitHub", "GitHub Copilot", "AI"]
+tags: ["Infrastructure as Code", "DevOps", "GitHub Copilot", "AI"]
 draft: false
 ---
 

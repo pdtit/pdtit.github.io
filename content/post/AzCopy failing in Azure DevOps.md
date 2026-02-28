@@ -1,7 +1,7 @@
 ---
 title: "AzCopy failing in Azure Devops with error ServiceCode=AuthorizationPermissionMismatch" 
 date: 2020-12-14
-tags: ["Azure", "Azure DevOps"]
+tags: ["Azure", "DevOps"]
 draft: false
 ---
 

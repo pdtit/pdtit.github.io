@@ -1,0 +1,69 @@
+{{ define "main" }}
+    {{- $pages := partial "helper/pages.html" . -}}
+    {{- $latestPosts := first 10 $pages -}}
+
+    <form action="{{ .RelPermalink }}" class="search-form"{{ with .Site.Home.OutputFormats.Get "json" -}} data-json="{{ .RelPermalink }}"{{- end }}>
+        <p>
+            <label>{{ T "search.title" }}</label>
+            <input name="keyword" placeholder="{{ T `search.placeholder` }}" />
+        </p>
+
+        <button title="{{ T `search.title` }}">
+            {{ partial "helper/icon" "search" }}
+        </button>
+    </form>
+
+    <div class="search-result" style="display: none;">
+        <h3 class="search-result--title section-title"></h3>
+        <div class="search-result--list article-list--compact"></div>
+    </div>
+
+    <script>
+        window.searchResultTitleTemplate = "{{ T `search.resultTitle` }}"
+    </script>
+
+    <section class="search-default-content">
+
+    <section class="article-list">
+        {{ range $index, $element := $latestPosts }}
+            {{ partial "article-list/home-default" . }}
+        {{ end }}
+    </section>
+
+    <section class="home-all-posts">
+        <a class="home-all-posts-btn" href="{{ "post/" | relLangURL }}">All Posts</a>
+    </section>
+
+    </section>
+
+    <script>
+        (() => {
+            const form = document.querySelector('.search-form');
+            const input = form?.querySelector('input[name="keyword"]');
+            const defaultContent = document.querySelector('.search-default-content');
+            const result = document.querySelector('.search-result');
+
+            if (!form || !input || !defaultContent || !result) return;
+
+            const syncView = () => {
+                const hasKeyword = input.value.trim().length > 0;
+                defaultContent.style.display = hasKeyword ? 'none' : '';
+                result.style.display = hasKeyword ? 'block' : 'none';
+            };
+
+            syncView();
+            input.addEventListener('input', syncView);
+            window.addEventListener('popstate', () => setTimeout(syncView, 0));
+        })();
+    </script>
+
+    {{- $opts := dict "minify" hugo.IsProduction "JSXFactory" "createElement" -}}
+    {{- $searchScript := resources.Get "ts/search.tsx" | js.Build $opts -}}
+    <script type="text/javascript" src="{{ $searchScript.RelPermalink }}" defer></script>
+
+    {{- partial "footer/footer" . -}}
+{{ end }}
+
+{{ define "right-sidebar" }}
+    {{ partial "sidebar/right.html" (dict "Context" . "Scope" "homepage") }}
+{{ end }}

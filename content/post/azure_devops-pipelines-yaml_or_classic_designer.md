@@ -1,7 +1,7 @@
 ---
 title: "Azure DevOps Pipelines - YAML or Classic Designer"
 date: 2020-06-21
-tags: ["Azure", "Azure DevOps"]
+tags: ["Azure", "DevOps"]
 draft: false
 ---
 

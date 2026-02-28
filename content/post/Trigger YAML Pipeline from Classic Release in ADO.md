@@ -2,7 +2,7 @@
 title: "Trigger a YAML Pipeline from a Classic Release Pipeline in Azure DevOps"
 date: 2023-09-30
 publishdate: 2023-09-30
-tags: ["Azure DevOps", "Azure"]
+tags: ["DevOps", "Azure"]
 draft: false
 ---
 

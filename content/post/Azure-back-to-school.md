@@ -1,7 +1,7 @@
 ﻿---
 title: "Azure Back To School (with Azure DevOps)"
 date: 2020-09-13
-tags: ["Azure", "Azure DevOps"]
+tags: ["Azure", "DevOps"]
 draft: false
 ---
 

@@ -2,7 +2,7 @@
 title: "Sending Emails from Azure DevOps using PowerShell and Azure LogicApps"
 date: 2024-03-03
 publishdate: 2024-03-03
-tags: ["Azure DevOps", "Azure"]
+tags: ["DevOps", "Azure"]
 draft: false
 ---
 

@@ -2,7 +2,7 @@
 title: "Using GitHub Copilot Agent Mode to vibe code a Python shooting game"
 date: 2025-11-29
 publishdate: 2025-11-28
-tags: ["GitHub", "GitHub Copilot", "AI"]
+tags: ["DevOps", "GitHub Copilot", "AI"]
 draft: false
 ---
 

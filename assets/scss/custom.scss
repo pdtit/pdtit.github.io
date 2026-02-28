@@ -96,34 +96,68 @@
     stroke: #66B3FF;
 }
 
+/* Post title color across home/list/single views */
+.article-title a {
+    color: #004B99 !important;
+    transition: color 0.2s ease;
+}
+
+.article-title a:hover {
+    color: #003D80 !important;
+}
+
+.article-list--compact .article-title,
+.article-list--tile .article-title,
+.article-list article .article-title {
+    color: #004B99 !important;
+    transition: color 0.2s ease;
+}
+
+.article-list--compact article:hover .article-title,
+.article-list--tile article:hover .article-title,
+.article-list article:hover .article-title {
+    color: #003D80 !important;
+}
+
 /* Article date/time styling for cards and detail view */
 .article-time {
-    color: var(--accent-color) !important;
+    color: var(--card-text-color-secondary) !important;
 }
 
 .article-time svg {
-    stroke: var(--accent-color);
+    stroke: var(--card-text-color-secondary) !important;
 }
 
 .article-time time {
-    color: var(--accent-color) !important;
-}
-
-[data-scheme="dark"] .article-time {
-    color: #007FFF !important;
-}
-
-[data-scheme="dark"] .article-time svg {
-    stroke: #007FFF;
-}
-
-[data-scheme="dark"] .article-time time {
-    color: #007FFF !important;
+    color: var(--card-text-color-secondary) !important;
 }
 
 /* Compact, single-column tag cloud widget */
 .widget.tagCloud {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    align-items: center;
+    column-gap: 0.45rem;
+    row-gap: 0.5rem;
+
+    .widget-icon,
+    .widget-title {
+        margin: 0;
+    }
+
+    .widget-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .widget-title {
+        line-height: 1.2;
+    }
+
     .tagCloud-tags {
+        grid-column: 1 / -1;
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         justify-items: start;
@@ -136,6 +170,191 @@
             font-size: 1.2rem;
             line-height: 1.25;
         }
+    }
+}
+
+/* Homepage post preview: show first 5 lines */
+.article-list {
+    article {
+        .article-summary.home-excerpt {
+            margin: 0 1.5rem 0.4rem;
+            color: var(--card-text-color-secondary);
+            line-height: 1.55;
+            display: -webkit-box;
+            -webkit-line-clamp: 5;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .home-excerpt-more-wrap {
+            margin: 0 1.5rem 1.5rem;
+        }
+
+        .home-excerpt-more {
+            color: var(--accent-color);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .home-excerpt-more:hover {
+            color: var(--accent-color-darker);
+            text-decoration: underline;
+        }
+    }
+}
+
+/* Homepage CTA below latest 10 posts */
+.home-all-posts {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 1.75rem;
+
+    .home-all-posts-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.7rem 1.2rem;
+        border-radius: 0.6rem;
+        background: var(--accent-color);
+        color: var(--accent-color-text);
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.2s ease;
+    }
+
+    .home-all-posts-btn:hover {
+        background: var(--accent-color-darker);
+        text-decoration: none;
+    }
+}
+
+/* Tiny spacing between cards on /post page only */
+.article-list--compact.post-list-page {
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    display: grid;
+    gap: 0.45rem;
+
+    article {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        overflow: hidden;
+    }
+
+    article:not(:last-of-type) {
+        border-bottom: none;
+    }
+}
+
+/* Homepage GitHub repos widget */
+.widget.github-repos {
+    --github-magenta: #C026D3;
+    --github-magenta-darker: #A21CAF;
+    --github-magenta-soft: rgba(192, 38, 211, 0.14);
+
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    align-items: center;
+    column-gap: 0.45rem;
+    row-gap: 0.5rem;
+
+    .widget-icon,
+    .widget-title {
+        margin: 0;
+    }
+
+    .widget-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .widget-title {
+        color: var(--github-magenta);
+        line-height: 1.2;
+    }
+
+    .widget-icon svg {
+        color: var(--github-magenta);
+        stroke: var(--github-magenta);
+    }
+
+    .github-repo-list {
+        grid-column: 1 / -1;
+        display: grid;
+        gap: 0.65rem;
+    }
+
+    .github-repo-card {
+        display: block;
+        padding: 0.8rem 0.9rem;
+        border: 1px solid var(--github-magenta-soft);
+        border-radius: 0.6rem;
+        text-decoration: none;
+        background: var(--card-background);
+        transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+
+    .github-repo-card:hover {
+        transform: translateY(-1px);
+        box-shadow: var(--shadow-l1);
+        border-color: var(--github-magenta);
+    }
+
+    .github-repo-name {
+        color: var(--github-magenta);
+        font-weight: 700;
+        line-height: 1.3;
+        margin-bottom: 0.2rem;
+        word-break: break-word;
+    }
+
+    .github-repo-description {
+        color: var(--card-text-color-secondary);
+        font-size: 1.35rem;
+        line-height: 1.4;
+        margin-bottom: 0.45rem;
+    }
+
+    .github-repo-meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.45rem;
+        color: var(--card-text-color-tertiary);
+        font-size: 1.2rem;
+    }
+
+    .github-repo-language {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.1rem 0.5rem;
+        border-radius: 999px;
+        background: var(--github-magenta-soft);
+        color: var(--github-magenta-darker);
+        white-space: nowrap;
+    }
+
+    .github-repo-stats {
+        white-space: nowrap;
+    }
+
+    .github-repos-more {
+        grid-column: 1 / -1;
+        display: inline-block;
+        margin-top: 0.8rem;
+        color: var(--accent-color);
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+    .github-repos-more:hover {
+        color: var(--accent-color-darker);
+        text-decoration: underline;
     }
 }
 

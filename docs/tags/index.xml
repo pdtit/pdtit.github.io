@@ -1,87 +1,69 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Tags on Azure Readiness starts here...</title>
-        <link>https://www.007ffflearning.com/tags/</link>
+        <link>http://localhost:1313/tags/</link>
         <description>Recent content in Tags on Azure Readiness starts here...</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Sat, 28 Feb 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 28 Feb 2026 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" /><item>
             <title>GitHub Copilot</title>
-            <link>https://www.007ffflearning.com/tags/github-copilot/</link>
+            <link>http://localhost:1313/tags/github-copilot/</link>
             <pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/tags/github-copilot/</guid>
+            <guid>http://localhost:1313/tags/github-copilot/</guid>
             <description></description>
         </item><item>
             <title>Hugo</title>
-            <link>https://www.007ffflearning.com/tags/hugo/</link>
+            <link>http://localhost:1313/tags/hugo/</link>
             <pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/tags/hugo/</guid>
+            <guid>http://localhost:1313/tags/hugo/</guid>
             <description></description>
         </item><item>
             <title>.NET Development</title>
-            <link>https://www.007ffflearning.com/tags/.net-development/</link>
+            <link>http://localhost:1313/tags/.net-development/</link>
             <pubDate>Thu, 26 Feb 2026 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/tags/.net-development/</guid>
+            <guid>http://localhost:1313/tags/.net-development/</guid>
             <description></description>
         </item><item>
             <title>Azure</title>
-            <link>https://www.007ffflearning.com/tags/azure/</link>
+            <link>http://localhost:1313/tags/azure/</link>
             <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/tags/azure/</guid>
+            <guid>http://localhost:1313/tags/azure/</guid>
             <description></description>
         </item><item>
             <title>Books</title>
-            <link>https://www.007ffflearning.com/tags/books/</link>
+            <link>http://localhost:1313/tags/books/</link>
             <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/tags/books/</guid>
+            <guid>http://localhost:1313/tags/books/</guid>
             <description></description>
         </item><item>
             <title>AI</title>
-            <link>https://www.007ffflearning.com/tags/ai/</link>
+            <link>http://localhost:1313/tags/ai/</link>
             <pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/tags/ai/</guid>
-            <description></description>
-        </item><item>
-            <title>GitHub</title>
-            <link>https://www.007ffflearning.com/tags/github/</link>
-            <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/tags/github/</guid>
-            <description></description>
-        </item><item>
-            <title>Infrastructure as Code</title>
-            <link>https://www.007ffflearning.com/tags/infrastructure-as-code/</link>
-            <pubDate>Sat, 12 Jul 2025 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/tags/infrastructure-as-code/</guid>
-            <description></description>
-        </item><item>
-            <title>General</title>
-            <link>https://www.007ffflearning.com/tags/general/</link>
-            <pubDate>Sun, 09 Mar 2025 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/tags/general/</guid>
+            <guid>http://localhost:1313/tags/ai/</guid>
             <description></description>
         </item><item>
             <title>DevOps</title>
-            <link>https://www.007ffflearning.com/tags/devops/</link>
-            <pubDate>Thu, 06 Mar 2025 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/tags/devops/</guid>
+            <link>http://localhost:1313/tags/devops/</link>
+            <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/devops/</guid>
             <description></description>
         </item><item>
-            <title>Azure DevOps</title>
-            <link>https://www.007ffflearning.com/tags/azure-devops/</link>
-            <pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/tags/azure-devops/</guid>
+            <title>Infrastructure as Code</title>
+            <link>http://localhost:1313/tags/infrastructure-as-code/</link>
+            <pubDate>Sat, 12 Jul 2025 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/infrastructure-as-code/</guid>
+            <description></description>
+        </item><item>
+            <title>General</title>
+            <link>http://localhost:1313/tags/general/</link>
+            <pubDate>Sun, 09 Mar 2025 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/tags/general/</guid>
             <description></description>
         </item><item>
             <title>Containers</title>
-            <link>https://www.007ffflearning.com/tags/containers/</link>
+            <link>http://localhost:1313/tags/containers/</link>
             <pubDate>Wed, 15 Mar 2023 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/tags/containers/</guid>
-            <description></description>
-        </item><item>
-            <title>Bing</title>
-            <link>https://www.007ffflearning.com/tags/bing/</link>
-            <pubDate>Sun, 10 May 2020 00:00:00 +0000</pubDate>
-            <guid>https://www.007ffflearning.com/tags/bing/</guid>
+            <guid>http://localhost:1313/tags/containers/</guid>
             <description></description>
         </item></channel>
 </rss>

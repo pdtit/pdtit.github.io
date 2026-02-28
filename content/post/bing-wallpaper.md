@@ -1,7 +1,7 @@
 ---
 title: "Bing Desktop Wallpapers take you on a trip around the world"
 date: 2020-04-19
-tags: ["Bing"]
+tags: ["General"]
 draft: false
 ---
 

@@ -1,0 +1,35 @@
+items:
+  - name: geekready2024-semantickernel-demos
+    url: https://github.com/petender/geekready2024-semantickernel-demos
+    description: Semantic Kernel demos and notebooks from conference sessions.
+    language: Jupyter Notebook
+    stars: 13
+    forks: 3
+
+  - name: demo-mcp-productcatalog
+    url: https://github.com/petender/demo-mcp-productcatalog
+    description: MCP demo for product catalog scenarios.
+    language: C#
+    stars: 3
+    forks: 1
+
+  - name: MyRetailBizzNizz
+    url: https://github.com/petender/MyRetailBizzNizz
+    description: Retail demo application and API experimentation project.
+    language: C#
+    stars: 2
+    forks: 0
+
+  - name: ConferenceAPI
+    url: https://github.com/petender/ConferenceAPI
+    description: Conference API sample used in Microsoft Learn course content.
+    language: C#
+    stars: 2
+    forks: 5
+
+  - name: azd-fdcdn
+    url: https://github.com/petender/azd-fdcdn
+    description: Azure Developer CLI sample for Front Door/CDN with IaC.
+    language: Bicep
+    stars: 2
+    forks: 3

@@ -1,0 +1,38 @@
+{{- $repos := site.Data.github_repos.items -}}
+{{- if not $repos -}}
+    {{- warnf "No data found for github_repos.items" -}}
+{{- end -}}
+
+{{- $limit := default 5 .Params.limit -}}
+{{- $title := default "Top GitHub Repos" .Params.title -}}
+{{- $icon := default "brand-github" .Params.icon -}}
+{{- $profileUrl := default "https://github.com/petender" .Params.profileUrl -}}
+{{- $showProfileLink := default true .Params.showProfileLink -}}
+
+<section class="widget github-repos">
+    <div class="widget-icon">
+        {{ partial "helper/icon" $icon }}
+    </div>
+    <h2 class="widget-title section-title">{{ $title }}</h2>
+
+    <div class="github-repo-list">
+        {{ range first $limit $repos }}
+            <a class="github-repo-card" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+                <div class="github-repo-name">{{ .name }}</div>
+                {{ with .description }}
+                    <div class="github-repo-description">{{ . }}</div>
+                {{ end }}
+                <div class="github-repo-meta">
+                    {{ with .language }}
+                        <span class="github-repo-language">{{ . }}</span>
+                    {{ end }}
+                    <span class="github-repo-stats">★ {{ .stars }} · ⑂ {{ .forks }}</span>
+                </div>
+            </a>
+        {{ end }}
+    </div>
+
+    {{ if $showProfileLink }}
+        <a class="github-repos-more" href="{{ $profileUrl }}" target="_blank" rel="noopener noreferrer">view all my Github Repos</a>
+    {{ end }}
+</section>

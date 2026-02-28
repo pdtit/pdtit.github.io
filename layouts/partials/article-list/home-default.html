@@ -1,0 +1,16 @@
+{{ $image := partial "helper/image" (dict "Image" .Params.image "Resources" .Resources) }}
+{{ $summary := .Summary | plainify | htmlUnescape | strings.TrimSpace }}
+{{ if eq $summary "" }}
+    {{ $summary = .Plain | plainify | htmlUnescape | strings.TrimSpace }}
+{{ end }}
+<article class="{{ if $image }}has-image{{ end }}">
+    {{ partial "article/components/header" (dict "Page" . "IsList" true) }}
+    {{ if ne $summary "" }}
+        <section class="article-summary home-excerpt">
+            {{ $summary }}
+        </section>
+        <footer class="home-excerpt-more-wrap">
+            <a class="home-excerpt-more" href="{{ .RelPermalink }}">Read more…</a>
+        </footer>
+    {{ end }}
+</article>
