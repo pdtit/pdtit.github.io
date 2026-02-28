@@ -2,418 +2,422 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/books/</loc>
+    <loc>https://www.007ffflearning.com/books/</loc>
   </url><url>
-    <loc>http://localhost:1313/videos/</loc>
+    <loc>https://www.007ffflearning.com/</loc>
+    <lastmod>2026-02-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://www.007ffflearning.com/tags/azure-static-web-apps/</loc>
+    <lastmod>2026-02-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.007ffflearning.com/tags/devops/</loc>
+    <lastmod>2026-02-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.007ffflearning.com/tags/github-copilot/</loc>
+    <lastmod>2026-02-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.007ffflearning.com/post/how-i-used-github-copilot-to-modernize-my-8-year-old-hugo-website/</loc>
+    <lastmod>2026-02-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.007ffflearning.com/tags/hugo/</loc>
+    <lastmod>2026-02-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.007ffflearning.com/post/</loc>
+    <lastmod>2026-02-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.007ffflearning.com/tags/</loc>
+    <lastmod>2026-02-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.007ffflearning.com/tags/website-modernization/</loc>
+    <lastmod>2026-02-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.007ffflearning.com/post/keeping-mcp-config-in-sync-between-vscode-and-cli/</loc>
     <lastmod>2026-02-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/github-copilot/</loc>
+    <loc>https://www.007ffflearning.com/tags/mcp/</loc>
     <lastmod>2026-02-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/keeping-mcp-config-in-sync-between-vscode-and-cli/</loc>
+    <loc>https://www.007ffflearning.com/tags/vscode/</loc>
     <lastmod>2026-02-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/mcp/</loc>
-    <lastmod>2026-02-26T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/post/</loc>
-    <lastmod>2026-02-26T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2026-02-26T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/vscode/</loc>
-    <lastmod>2026-02-26T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/azure/</loc>
+    <loc>https://www.007ffflearning.com/tags/azure/</loc>
     <lastmod>2025-12-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/packt/</loc>
+    <loc>https://www.007ffflearning.com/tags/packt/</loc>
     <lastmod>2025-12-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/packt-book-review---azure-for-developers/</loc>
+    <loc>https://www.007ffflearning.com/post/packt-book-review---azure-for-developers/</loc>
     <lastmod>2025-12-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/ai/</loc>
+    <loc>https://www.007ffflearning.com/tags/ai/</loc>
     <lastmod>2025-11-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/github/</loc>
+    <loc>https://www.007ffflearning.com/tags/github/</loc>
     <lastmod>2025-11-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/spotify-disappointed-me-with-ai-artists/</loc>
+    <loc>https://www.007ffflearning.com/post/spotify-disappointed-me-with-ai-artists/</loc>
     <lastmod>2025-11-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/using-github-copilot-agent-mode-to-vibe-code-a-python-shooting-game/</loc>
+    <loc>https://www.007ffflearning.com/post/using-github-copilot-agent-mode-to-vibe-code-a-python-shooting-game/</loc>
     <lastmod>2025-11-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/copilot-studio/</loc>
+    <loc>https://www.007ffflearning.com/tags/copilot-studio/</loc>
     <lastmod>2025-08-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/generate-azure-jwt-token-in-copilot-studio/</loc>
+    <loc>https://www.007ffflearning.com/post/generate-azure-jwt-token-in-copilot-studio/</loc>
     <lastmod>2025-08-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/arm/</loc>
+    <loc>https://www.007ffflearning.com/tags/arm/</loc>
     <lastmod>2025-07-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/bicep/</loc>
+    <loc>https://www.007ffflearning.com/tags/bicep/</loc>
     <lastmod>2025-07-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/using-github-copilot-agent-mode-to-transform-arm-templates-to-bicep/</loc>
+    <loc>https://www.007ffflearning.com/post/using-github-copilot-agent-mode-to-transform-arm-templates-to-bicep/</loc>
     <lastmod>2025-07-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/books/</loc>
+    <loc>https://www.007ffflearning.com/tags/books/</loc>
     <lastmod>2025-03-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/innovation-at-microsoft---book-review/</loc>
+    <loc>https://www.007ffflearning.com/post/innovation-at-microsoft---book-review/</loc>
     <lastmod>2025-03-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/microsoft/</loc>
+    <loc>https://www.007ffflearning.com/tags/microsoft/</loc>
     <lastmod>2025-03-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/azure-spring-clean---application-insights---inside-out/</loc>
+    <loc>https://www.007ffflearning.com/post/azure-spring-clean---application-insights---inside-out/</loc>
     <lastmod>2025-03-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/devops/</loc>
+    <loc>https://www.007ffflearning.com/tags/monitoring/</loc>
     <lastmod>2025-03-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/monitoring/</loc>
-    <lastmod>2025-03-06T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/post/book-review---azure-cookbook/</loc>
+    <loc>https://www.007ffflearning.com/post/book-review---azure-cookbook/</loc>
     <lastmod>2024-12-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/.net/</loc>
+    <loc>https://www.007ffflearning.com/tags/.net/</loc>
     <lastmod>2024-12-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/packt-book-review---data-science-in-.net-with-polyglot-notebooks/</loc>
+    <loc>https://www.007ffflearning.com/post/packt-book-review---data-science-in-.net-with-polyglot-notebooks/</loc>
     <lastmod>2024-12-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/semantic-kernel/</loc>
+    <loc>https://www.007ffflearning.com/tags/semantic-kernel/</loc>
     <lastmod>2024-12-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/ai-studio/</loc>
+    <loc>https://www.007ffflearning.com/tags/ai-studio/</loc>
     <lastmod>2024-09-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/introduction-to-semantic-kernel/</loc>
+    <loc>https://www.007ffflearning.com/post/introduction-to-semantic-kernel/</loc>
     <lastmod>2024-09-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/.net8/</loc>
+    <loc>https://www.007ffflearning.com/tags/.net8/</loc>
     <lastmod>2024-05-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/blazor/</loc>
+    <loc>https://www.007ffflearning.com/tags/blazor/</loc>
     <lastmod>2024-05-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/building-your-first-blazor-.net8-app---msts-summit-companion/</loc>
+    <loc>https://www.007ffflearning.com/post/building-your-first-blazor-.net8-app---msts-summit-companion/</loc>
     <lastmod>2024-05-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/building-a-marvel-hero-app-with-blazor-.net8/</loc>
+    <loc>https://www.007ffflearning.com/post/building-a-marvel-hero-app-with-blazor-.net8/</loc>
     <lastmod>2024-05-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/azure-devops/</loc>
+    <loc>https://www.007ffflearning.com/tags/azure-devops/</loc>
     <lastmod>2024-03-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/logic-apps/</loc>
+    <loc>https://www.007ffflearning.com/tags/logic-apps/</loc>
     <lastmod>2024-03-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/sending-emails-from-ado-pipelines-using-powershell/</loc>
+    <loc>https://www.007ffflearning.com/post/sending-emails-from-ado-pipelines-using-powershell/</loc>
     <lastmod>2024-03-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/festive-2023-ocr-on-steroids/</loc>
+    <loc>https://www.007ffflearning.com/post/festive-2023-ocr-on-steroids/</loc>
     <lastmod>2023-12-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/packt-book-review---azure-architecture-explained/</loc>
+    <loc>https://www.007ffflearning.com/post/packt-book-review---azure-architecture-explained/</loc>
     <lastmod>2023-12-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/packt-book-review---azure-for-business-decision-makers/</loc>
+    <loc>https://www.007ffflearning.com/post/packt-book-review---azure-for-business-decision-makers/</loc>
     <lastmod>2023-10-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/trigger-yaml-pipeline-from-classic-release-in-ado/</loc>
+    <loc>https://www.007ffflearning.com/post/trigger-yaml-pipeline-from-classic-release-in-ado/</loc>
     <lastmod>2023-09-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/achieving-sre-on-azure/</loc>
+    <loc>https://www.007ffflearning.com/post/achieving-sre-on-azure/</loc>
     <lastmod>2023-09-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/sre/</loc>
+    <loc>https://www.007ffflearning.com/tags/sre/</loc>
     <lastmod>2023-09-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/chaos-studio/</loc>
+    <loc>https://www.007ffflearning.com/tags/chaos-studio/</loc>
     <lastmod>2023-08-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/intro-to-chaos-engineering-and-azure-chaos-studio-preview/</loc>
+    <loc>https://www.007ffflearning.com/post/intro-to-chaos-engineering-and-azure-chaos-studio-preview/</loc>
     <lastmod>2023-08-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/build-an-azure-ai-chatbot-using-your-own-data-in-blob-storage/</loc>
+    <loc>https://www.007ffflearning.com/post/build-an-azure-ai-chatbot-using-your-own-data-in-blob-storage/</loc>
     <lastmod>2023-07-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/app-service/</loc>
+    <loc>https://www.007ffflearning.com/tags/app-service/</loc>
     <lastmod>2023-04-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/you-do-not-have-permissions-error-after-publishing-to-azure-app-services/</loc>
+    <loc>https://www.007ffflearning.com/post/you-do-not-have-permissions-error-after-publishing-to-azure-app-services/</loc>
     <lastmod>2023-04-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/collecting-feedback-in-ado-work-items-from-office-forms/</loc>
+    <loc>https://www.007ffflearning.com/post/collecting-feedback-in-ado-work-items-from-office-forms/</loc>
     <lastmod>2023-03-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/office-forms/</loc>
+    <loc>https://www.007ffflearning.com/tags/office-forms/</loc>
     <lastmod>2023-03-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/aca/</loc>
+    <loc>https://www.007ffflearning.com/tags/aca/</loc>
     <lastmod>2023-03-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/aks/</loc>
+    <loc>https://www.007ffflearning.com/tags/aks/</loc>
     <lastmod>2023-03-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/dck-acr-aci-aks-aca-the-azure-container-alphabet-soup/</loc>
+    <loc>https://www.007ffflearning.com/post/dck-acr-aci-aks-aca-the-azure-container-alphabet-soup/</loc>
     <lastmod>2023-03-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/containers/</loc>
+    <loc>https://www.007ffflearning.com/tags/containers/</loc>
     <lastmod>2023-03-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/docker/</loc>
+    <loc>https://www.007ffflearning.com/tags/docker/</loc>
     <lastmod>2023-03-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/steps-for-blazor-marvel---webassembly/</loc>
+    <loc>https://www.007ffflearning.com/post/steps-for-blazor-marvel---webassembly/</loc>
     <lastmod>2022-12-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/how-boox-got-me-back-to-reading/</loc>
+    <loc>https://www.007ffflearning.com/post/how-boox-got-me-back-to-reading/</loc>
     <lastmod>2022-12-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/how-to-clear-the-azure-portal-recent-resources-list/</loc>
+    <loc>https://www.007ffflearning.com/post/how-to-clear-the-azure-portal-recent-resources-list/</loc>
     <lastmod>2022-12-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/random/</loc>
+    <loc>https://www.007ffflearning.com/tags/random/</loc>
     <lastmod>2022-12-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/packt-book-review---blazor-wasm-with-grpc/</loc>
+    <loc>https://www.007ffflearning.com/post/packt-book-review---blazor-wasm-with-grpc/</loc>
     <lastmod>2022-12-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/using-packt-credits-for-free-books/</loc>
+    <loc>https://www.007ffflearning.com/post/using-packt-credits-for-free-books/</loc>
     <lastmod>2022-11-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/application-insights/</loc>
+    <loc>https://www.007ffflearning.com/tags/application-insights/</loc>
     <lastmod>2022-10-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/deploying-or-migrating-a-hugo-blog-on-azure-static-web-apps/</loc>
+    <loc>https://www.007ffflearning.com/post/deploying-or-migrating-a-hugo-blog-on-azure-static-web-apps/</loc>
     <lastmod>2022-10-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/hugo/</loc>
+    <loc>https://www.007ffflearning.com/post/integrating-azure-app-insights-for-hugo-on-static-web-apps/</loc>
     <lastmod>2022-10-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/integrating-azure-app-insights-for-hugo-on-static-web-apps/</loc>
-    <lastmod>2022-10-30T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/apress/</loc>
+    <loc>https://www.007ffflearning.com/tags/apress/</loc>
     <lastmod>2022-10-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/the-art-of-realizing-sre-on-azure/</loc>
+    <loc>https://www.007ffflearning.com/post/the-art-of-realizing-sre-on-azure/</loc>
     <lastmod>2022-10-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/devops-workflow-generator/</loc>
+    <loc>https://www.007ffflearning.com/post/devops-workflow-generator/</loc>
     <lastmod>2022-04-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/devsecops/</loc>
+    <loc>https://www.007ffflearning.com/tags/devsecops/</loc>
     <lastmod>2022-04-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/azure-spring-clean---devsecops-and-shifting-left-to-publish-secure-software/</loc>
+    <loc>https://www.007ffflearning.com/post/azure-spring-clean---devsecops-and-shifting-left-to-publish-secure-software/</loc>
     <lastmod>2022-03-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/security/</loc>
+    <loc>https://www.007ffflearning.com/tags/security/</loc>
     <lastmod>2022-03-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/azure-spring-clean---demystifying-service-principal-and-managed-identities/</loc>
+    <loc>https://www.007ffflearning.com/post/azure-spring-clean---demystifying-service-principal-and-managed-identities/</loc>
     <lastmod>2022-03-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/deploying-blazor-apps-using-dotnet-commandline/</loc>
+    <loc>https://www.007ffflearning.com/post/deploying-blazor-apps-using-dotnet-commandline/</loc>
     <lastmod>2021-11-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/dotnet/</loc>
+    <loc>https://www.007ffflearning.com/tags/dotnet/</loc>
     <lastmod>2021-11-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/coding-apps-in-blazor-from-a-non-developer---part-2/</loc>
+    <loc>https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer---part-2/</loc>
     <lastmod>2021-11-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/general/</loc>
+    <loc>https://www.007ffflearning.com/tags/general/</loc>
     <lastmod>2021-09-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/my-first-2-years-as-att/</loc>
+    <loc>https://www.007ffflearning.com/post/my-first-2-years-as-att/</loc>
     <lastmod>2021-09-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/coding-apps-in-blazor-from-a-non-developer/</loc>
+    <loc>https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer/</loc>
     <lastmod>2021-09-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/azure-strategy---reviewing-done/</loc>
+    <loc>https://www.007ffflearning.com/post/azure-strategy---reviewing-done/</loc>
     <lastmod>2021-06-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/ebooks/</loc>
+    <loc>https://www.007ffflearning.com/tags/ebooks/</loc>
     <lastmod>2021-06-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/kubernetes/</loc>
+    <loc>https://www.007ffflearning.com/tags/kubernetes/</loc>
     <lastmod>2021-06-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/upgrading_aks_in_20min/</loc>
+    <loc>https://www.007ffflearning.com/post/upgrading_aks_in_20min/</loc>
     <lastmod>2021-06-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/hashicorp/</loc>
+    <loc>https://www.007ffflearning.com/tags/hashicorp/</loc>
     <lastmod>2021-04-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/hashicorp-ambassador/</loc>
+    <loc>https://www.007ffflearning.com/post/hashicorp-ambassador/</loc>
     <lastmod>2021-04-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/iac/</loc>
+    <loc>https://www.007ffflearning.com/tags/iac/</loc>
     <lastmod>2021-03-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/pulumi/</loc>
+    <loc>https://www.007ffflearning.com/tags/pulumi/</loc>
     <lastmod>2021-03-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/terraform/</loc>
+    <loc>https://www.007ffflearning.com/tags/terraform/</loc>
     <lastmod>2021-03-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/the-labyrinth-of-azure-iac/</loc>
+    <loc>https://www.007ffflearning.com/post/the-labyrinth-of-azure-iac/</loc>
     <lastmod>2021-03-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/renewing-expired-aks-service-principal/</loc>
+    <loc>https://www.007ffflearning.com/post/renewing-expired-aks-service-principal/</loc>
     <lastmod>2021-03-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/dotnet-tool-install-dotnet-ef-failing-with-unauthorized/</loc>
+    <loc>https://www.007ffflearning.com/post/dotnet-tool-install-dotnet-ef-failing-with-unauthorized/</loc>
     <lastmod>2020-12-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/azcopy-failing-in-azure-devops/</loc>
+    <loc>https://www.007ffflearning.com/post/azcopy-failing-in-azure-devops/</loc>
     <lastmod>2020-12-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/the-weird-case-of-visualstudio2019-dockerfile/</loc>
+    <loc>https://www.007ffflearning.com/post/the-weird-case-of-visualstudio2019-dockerfile/</loc>
     <lastmod>2020-11-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/publish-your-first-dotnet5-app-to-azure-app-services/</loc>
+    <loc>https://www.007ffflearning.com/post/publish-your-first-dotnet5-app-to-azure-app-services/</loc>
     <lastmod>2020-11-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/visual-studio/</loc>
+    <loc>https://www.007ffflearning.com/tags/visual-studio/</loc>
     <lastmod>2020-11-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/azure-back-to-school/</loc>
+    <loc>https://www.007ffflearning.com/post/azure-back-to-school/</loc>
     <lastmod>2020-09-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/terraform-panic-error/</loc>
+    <loc>https://www.007ffflearning.com/post/terraform-panic-error/</loc>
     <lastmod>2020-09-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/devops-for-dummies-review/</loc>
+    <loc>https://www.007ffflearning.com/post/devops-for-dummies-review/</loc>
     <lastmod>2020-08-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/i-found-me-another-challenge/</loc>
+    <loc>https://www.007ffflearning.com/post/i-found-me-another-challenge/</loc>
     <lastmod>2020-08-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/personal/</loc>
+    <loc>https://www.007ffflearning.com/tags/personal/</loc>
     <lastmod>2020-08-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/azure-for-architects---reviewing-done/</loc>
+    <loc>https://www.007ffflearning.com/post/azure-for-architects---reviewing-done/</loc>
     <lastmod>2020-08-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/aci/</loc>
+    <loc>https://www.007ffflearning.com/tags/aci/</loc>
     <lastmod>2020-07-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/use_docker_edge_to_deploy_aci/</loc>
+    <loc>https://www.007ffflearning.com/post/use_docker_edge_to_deploy_aci/</loc>
     <lastmod>2020-07-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/azure_devops-pipelines-yaml_or_classic_designer/</loc>
+    <loc>https://www.007ffflearning.com/post/azure_devops-pipelines-yaml_or_classic_designer/</loc>
     <lastmod>2020-06-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/azure_is_100_high_available/</loc>
+    <loc>https://www.007ffflearning.com/post/azure_is_100_high_available/</loc>
     <lastmod>2020-06-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/how-to-delete-an-aks-pod/</loc>
+    <loc>https://www.007ffflearning.com/post/how-to-delete-an-aks-pod/</loc>
     <lastmod>2020-06-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/migrate-docker-desktop-to-wsl2/</loc>
+    <loc>https://www.007ffflearning.com/post/migrate-docker-desktop-to-wsl2/</loc>
     <lastmod>2020-05-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/running-your-hugo-site-on-azure-static-webapps/</loc>
+    <loc>https://www.007ffflearning.com/post/running-your-hugo-site-on-azure-static-webapps/</loc>
     <lastmod>2020-05-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/bing/</loc>
+    <loc>https://www.007ffflearning.com/tags/bing/</loc>
     <lastmod>2020-05-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/email-is-html-gone-logicapps/</loc>
+    <loc>https://www.007ffflearning.com/post/email-is-html-gone-logicapps/</loc>
     <lastmod>2020-05-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/logicapps/</loc>
+    <loc>https://www.007ffflearning.com/tags/logicapps/</loc>
     <lastmod>2020-05-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/office365/</loc>
+    <loc>https://www.007ffflearning.com/tags/office365/</loc>
     <lastmod>2020-05-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/teams/</loc>
+    <loc>https://www.007ffflearning.com/tags/teams/</loc>
     <lastmod>2020-05-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/use-bing-wallpaper-as-background-in-teams/</loc>
+    <loc>https://www.007ffflearning.com/post/use-bing-wallpaper-as-background-in-teams/</loc>
     <lastmod>2020-05-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/hugo_site_statistics_app_insights/</loc>
+    <loc>https://www.007ffflearning.com/post/hugo_site_statistics_app_insights/</loc>
     <lastmod>2020-04-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/azure-front-door/</loc>
+    <loc>https://www.007ffflearning.com/tags/azure-front-door/</loc>
     <lastmod>2020-04-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/static_site_frontdoor/</loc>
+    <loc>https://www.007ffflearning.com/post/static_site_frontdoor/</loc>
     <lastmod>2020-04-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/static-site/</loc>
+    <loc>https://www.007ffflearning.com/tags/static-site/</loc>
     <lastmod>2020-04-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/bing-wallpaper/</loc>
+    <loc>https://www.007ffflearning.com/post/bing-wallpaper/</loc>
     <lastmod>2020-04-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/my-first-6-months-as-att/</loc>
+    <loc>https://www.007ffflearning.com/post/my-first-6-months-as-att/</loc>
     <lastmod>2020-04-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/architecting/</loc>
+    <loc>https://www.007ffflearning.com/tags/architecting/</loc>
     <lastmod>2020-02-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/new-book-published/</loc>
+    <loc>https://www.007ffflearning.com/post/new-book-published/</loc>
     <lastmod>2020-02-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/strategy/</loc>
+    <loc>https://www.007ffflearning.com/tags/strategy/</loc>
     <lastmod>2020-02-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/certification/</loc>
+    <loc>https://www.007ffflearning.com/tags/certification/</loc>
     <lastmod>2020-01-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/exams/</loc>
+    <loc>https://www.007ffflearning.com/tags/exams/</loc>
     <lastmod>2020-01-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/learning/</loc>
+    <loc>https://www.007ffflearning.com/tags/learning/</loc>
     <lastmod>2020-01-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/updated-azure-exams/</loc>
+    <loc>https://www.007ffflearning.com/post/updated-azure-exams/</loc>
     <lastmod>2020-01-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/new-azure-book-selfpublish/</loc>
+    <loc>https://www.007ffflearning.com/post/new-azure-book-selfpublish/</loc>
     <lastmod>2020-01-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/iaas/</loc>
+    <loc>https://www.007ffflearning.com/tags/iaas/</loc>
     <lastmod>2020-01-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/paas/</loc>
+    <loc>https://www.007ffflearning.com/tags/paas/</loc>
     <lastmod>2020-01-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/azure-mystery-mansion/</loc>
+    <loc>https://www.007ffflearning.com/post/azure-mystery-mansion/</loc>
     <lastmod>2019-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/azure-learning-resources/</loc>
+    <loc>https://www.007ffflearning.com/post/azure-learning-resources/</loc>
     <lastmod>2019-12-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/1st-quarter-as-att/</loc>
+    <loc>https://www.007ffflearning.com/post/1st-quarter-as-att/</loc>
     <lastmod>2019-12-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/live1218demo/</loc>
-    <lastmod>2000-01-01T00:00:00+00:00</lastmod>
+    <loc>https://www.007ffflearning.com/about/</loc>
   </url><url>
-    <loc>http://localhost:1313/about/</loc>
+    <loc>https://www.007ffflearning.com/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://www.007ffflearning.com/speaking/</loc>
   </url><url>
-    <loc>http://localhost:1313/speaking/</loc>
-  </url><url>
-    <loc>http://localhost:1313/search/</loc>
+    <loc>https://www.007ffflearning.com/search/</loc>
   </url>
 </urlset>
