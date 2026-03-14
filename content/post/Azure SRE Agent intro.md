@@ -84,31 +84,31 @@ I opened SRE Agent and asked:
 
 This is what it came back with:
 
-![Investigating_App_Service](../images/Screenshot 2026-03-14 090607.png)
+![Investigating_App_Service](../images/Screenshot%202026-03-14%20090607.png)
 
 Followed by **looking into the metrics**
 
-![Investigating_Metrics](../images/Screenshot 2026-03-14 090726.png)
+![Investigating_Metrics](../images/Screenshot%202026-03-14%20090726.png)
 
 To then provide **a summary** of the findings and observations, **INCLUDING CHART VIEWS**
 
-![Investigating_charts](../images/Screenshot 2026-03-14 090957.png)
+![Investigating_charts](../images/Screenshot%202026-03-14%20090957.png)
 
 Detailed Root Cause Analysis
 
-![Investigating_summary](../images/Screenshot 2026-03-14 091106.png)
+![Investigating_summary](../images/Screenshot%202026-03-14%20091106.png)
 
 and detailed description of **what happened** and **Recommended actions**
 
-![Investigating_summary](../images/Screenshot 2026-03-14 091159.png)
+![Investigating_summary](../images/Screenshot%202026-03-14%20091159.png)
 
 It identified the root cause being an **identity** problem, where the Web App could not connect to Cosmos DB. 
 
-![Investigating_summary](../images/Screenshot 2026-03-14 091431.png)
+![Investigating_summary](../images/Screenshot%202026-03-14%20091431.png)
 
 To wrap it up with a **Diagnosis Complete - Data Unreachable Root Cause** report (in table format), including **potential fix steps** (Isn't that amazing?? I think it's just brilliant...!!!)
 
-![Investigating_diagnose_complete](../images/Screenshot 2026-03-14 091606.png)
+![Investigating_diagnose_complete](../images/Screenshot%202026-03-14%20091606.png)
 
 From there, it asked me if it was OK to move on and assist with fixing the problem. Using the same response I would tell when talking to a colleague, I said
 
@@ -116,13 +116,13 @@ From there, it asked me if it was OK to move on and assist with fixing the probl
 
 (I'm pretty sure just saying "yes", or "sure" or "OK" or "YOUCANDOIT" might have worked too...)
 
-![acknowledge_fix](../images/Screenshot 2026-03-14 091835.png)
+![acknowledge_fix](../images/Screenshot%202026-03-14%20091835.png)
 
 The above screenshot was taken after the process completed, but remember the SRE Agent can only perform actions when you as the **human-in-the-loop** acknowledges the approval.
 
 Smoothly, it came back with **Issue resolved**. Including a summary of the steps taken
 
-![acknowledge_fix](../images/Screenshot 2026-03-14 092204.png)
+![acknowledge_fix](../images/Screenshot%202026-03-14%20092204.png)
 
 Well done SRE Agent!!
 

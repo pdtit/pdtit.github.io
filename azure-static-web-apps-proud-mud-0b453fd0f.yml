@@ -26,6 +26,32 @@ jobs:
       grep -q "search-form" docs/search/index.html
       test -s docs/search/index.json
       python3 -c "import json; json.load(open('docs/search/index.json', encoding='utf-8'))"
+
+      # Validate that changed blog posts in the latest commit are included in the generated index.
+      CHANGED_POSTS=$(git diff --name-only HEAD~1 HEAD | grep '^content/post/.*\.md$' || true)
+      if [ -n "$CHANGED_POSTS" ]; then
+        while IFS= read -r POST_FILE; do
+          [ -z "$POST_FILE" ] && continue
+          TITLE=$(sed -nE 's/^title:[[:space:]]*"?(.*)"?[[:space:]]*$/\1/p' "$POST_FILE" | head -n 1)
+          if [ -z "$TITLE" ]; then
+            echo "Could not parse title from $POST_FILE"
+            exit 1
+          fi
+
+          python3 -c "import json,sys; title=sys.argv[1]; items=json.load(open('docs/index.json', encoding='utf-8')); found=any((i.get('title')==title) for i in items); print(f'Missing generated post in docs/index.json: {title}') if not found else None; sys.exit(0 if found else 1)" "$TITLE"
+
+          POST_NAME=$(basename "$POST_FILE" .md)
+          POST_SLUG=$(echo "$POST_NAME" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9]+/-/g; s/^-+//; s/-+$//')
+          POST_OUTPUT="docs/post/$POST_SLUG/index.html"
+          if [ ! -f "$POST_OUTPUT" ]; then
+            echo "Missing generated page file: $POST_OUTPUT"
+            exit 1
+          fi
+          echo "Validated generated post: $TITLE"
+        done <<< "$CHANGED_POSTS"
+      else
+        echo "No changed posts in latest commit; skipping post inclusion validation."
+      fi
     displayName: Build and validate Hugo search artifacts
     env:
       HUGO_VERSION: '0.128.2'
