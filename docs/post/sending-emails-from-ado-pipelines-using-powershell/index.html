@@ -1,743 +1,131 @@
-<!DOCTYPE html>
-<html lang="en-us" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Hi Readers,\nThis post is merely for myself, documenting all the steps I needed to go through to be able to send emails from a PowerShell script, as part of an Azure DevOps YAML pipeline flow. And since I was documenting it for our internal application, I thought it would hopefully help someone out there looking for a similar solution.\nWhy not using the built-in Email Notification system\rAzure DevOps provides email notification features, but this comes with a few assumptions. The biggest one being the receiver(s) should be Project Members. Which was not the case in my scenario, since I want to send out deployment status emails, at the start of a pipeline and when completed successfully, to external recipients.\n">
-<title>Sending Emails from Azure DevOps using PowerShell and Azure LogicApps</title>
-
-
-<link rel="canonical" href="http://localhost:1313/post/sending-emails-from-ado-pipelines-using-powershell/">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
-
-
-<link rel="stylesheet" href="/scss/style.min.828c1e2100fa0b70e66159bf0732b0b5c32df4c5672d945c5ca4d1014763878e.css"><meta property='og:title' content="Sending Emails from Azure DevOps using PowerShell and Azure LogicApps">
-<meta property='og:description' content="Hi Readers,\nThis post is merely for myself, documenting all the steps I needed to go through to be able to send emails from a PowerShell script, as part of an Azure DevOps YAML pipeline flow. And since I was documenting it for our internal application, I thought it would hopefully help someone out there looking for a similar solution.\nWhy not using the built-in Email Notification system\rAzure DevOps provides email notification features, but this comes with a few assumptions. The biggest one being the receiver(s) should be Project Members. Which was not the case in my scenario, since I want to send out deployment status emails, at the start of a pipeline and when completed successfully, to external recipients.\n">
-<meta property='og:url' content='http://localhost:1313/post/sending-emails-from-ado-pipelines-using-powershell/'>
-<meta property='og:site_name' content='Azure Readiness starts here...'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='DevOps' /><meta property='article:tag' content='Azure' /><meta property='article:published_time' content='2024-03-03T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-03-03T00:00:00&#43;00:00'/>
-<meta name="twitter:title" content="Sending Emails from Azure DevOps using PowerShell and Azure LogicApps">
-<meta name="twitter:description" content="Hi Readers,\nThis post is merely for myself, documenting all the steps I needed to go through to be able to send emails from a PowerShell script, as part of an Azure DevOps YAML pipeline flow. And since I was documenting it for our internal application, I thought it would hopefully help someone out there looking for a similar solution.\nWhy not using the built-in Email Notification system\rAzure DevOps provides email notification features, but this comes with a few assumptions. The biggest one being the receiver(s) should be Project Members. Which was not the case in my scenario, since I want to send out deployment status emails, at the start of a pipeline and when completed successfully, to external recipients.\n">
-    <link rel="shortcut icon" href="/images/007ffflearning-ape.png" />
-
-    </head>
-    <body class="
-    article-page
-    ">
-    <script>
-        (function() {
-            const colorSchemeKey = 'StackColorScheme';
-            if(!localStorage.getItem(colorSchemeKey)){
-                localStorage.setItem(colorSchemeKey, "auto");
-            }
-        })();
-    </script><script>
-    (function() {
-        const colorSchemeKey = 'StackColorScheme';
-        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
-        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
-
-        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
-            
-
-            document.documentElement.dataset.scheme = 'dark';
-        } else {
-            document.documentElement.dataset.scheme = 'light';
-        }
-    })();
-</script>
-<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-
-    <header>
-        <figure class="site-avatar">
-                <a href="/">
-                    <img src="/images/007ffflearning-ape.png" 
-                        width=""
-                        height=""
-                        class="site-logo"
-                        loading="lazy"
-                        alt="Avatar">
-                </a>
-                
-                    <span class="emoji">🎓</span>
-                
-            </figure>
-        
-        
-        <div class="site-meta">
-            <h1 class="site-name"><a href="/">Azure Readiness starts here...</a></h1>
-            <h2 class="site-description">Bring me an audience, I&#39;ll give them Azure knowledge in return</h2>
-        </div>
-    </header><ol class="menu-social">
-            
-                <li>
-                    <a 
-                        href='https://pdtit.bsky.social'
-                        
-                        title="Bluesky"
-                        rel="me"
-                    >
-                        
-                        
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 530" fill="currentColor">
-  <path d="m135.72 44.03c66.496 49.921 138.02 151.14 164.28 205.46 26.262-54.316 97.782-155.54 164.28-205.46 47.98-36.021 125.72-63.892 125.72 24.795 0 17.712-10.155 148.79-16.111 170.07-20.703 73.984-96.144 92.854-163.25 81.433 117.3 19.964 147.14 86.092 82.697 152.22-122.39 125.59-175.91-31.511-189.63-71.766-2.514-7.3797-3.6904-10.832-3.7077-7.8964-0.0174-2.9357-1.1937 0.51669-3.7077 7.8964-13.714 40.255-67.233 197.36-189.63 71.766-64.444-66.128-34.605-132.26 82.697-152.22-67.108 11.421-142.55-7.4491-163.25-81.433-5.9562-21.282-16.111-152.36-16.111-170.07 0-88.687 77.742-60.816 125.72-24.795z"/>
-</svg>
-
-                        
-                    </a>
-                </li>
-            
-                <li>
-                    <a 
-                        href='https://github.com/petender'
-                        
-                        title="GitHub"
-                        rel="me"
-                    >
-                        
-                        
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
-</svg>
-
-
-
-                        
-                    </a>
-                </li>
-            
-                <li>
-                    <a 
-                        href='https://www.linkedin.com/in/pdtit/'
-                        
-                        title="LinkedIn"
-                        rel="me"
-                    >
-                        
-                        
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
-  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
-</svg>
-
-
-
-                        
-                    </a>
-                </li>
-            
-        </ol><ol class="menu" id="main-menu">
-        
-        
-        
-        <li >
-            <a href='/' >
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <polyline points="5 12 3 12 12 3 21 12 19 12" />
-  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
-  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
-</svg>
-
-
-
-                
-                <span>Home</span>
-            </a>
-        </li>
-        
-        
-        <li >
-            <a href='/post/' >
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <rect x="3" y="4" width="18" height="4" rx="2" />
-  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
-  <line x1="10" y1="12" x2="14" y2="12" />
-</svg>
-
-
-
-                
-                <span>Posts</span>
-            </a>
-        </li>
-        
-        
-        <li >
-            <a href='/books/' >
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-</svg>
-
-                
-                <span>Books</span>
-            </a>
-        </li>
-        
-        
-        <li >
-            <a href='/speaking/' >
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-microphone" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M9 5a3 3 0 0 1 6 0v7a3 3 0 0 1 -6 0z"/>
-  <path d="M5 10a7 7 0 0 0 14 0"/>
-  <path d="M8 21l8 0"/>
-  <path d="M12 17l0 4"/>
-</svg>
-
-                
-                <span>Speaking</span>
-            </a>
-        </li>
-        
-        
-        <li >
-            <a href='/about/' >
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-</svg>
-
-
-
-                
-                <span>About Me</span>
-            </a>
-        </li>
-        
-        <li class="menu-bottom-section">
-            <ol class="menu">
-
-                
-                    <li id="dark-mode-toggle">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="8" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="16" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                        <span>Dark Mode</span>
-                    </li>
-                
-            </ol>
-        </li>
-    </ol>
-</aside>
-
-    
-
-            <main class="main full-width">
-    <article class="main-article">
-    <header class="article-header">
-
-    <div class="article-details">
-    
-
-    <div class="article-title-wrapper">
-        <h2 class="article-title">
-            <a href="/post/sending-emails-from-ado-pipelines-using-powershell/">Sending Emails from Azure DevOps using PowerShell and Azure LogicApps</a>
-        </h2>
-    
-        
-    </div>
-
-    
-    
-    
-    
-    <footer class="article-time">
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-  <circle cx="18" cy="18" r="4" />
-  <path d="M15 3v4" />
-  <path d="M7 3v4" />
-  <path d="M3 11h16" />
-  <path d="M18 16.496v1.504l1 1" />
-</svg>
-                <time class="article-time--published" datetime='2024-03-03T00:00:00Z'>Mar 03, 2024</time>
-            </div>
-        
-
-        
-    </footer>
-    
-
-    
-
-    
-</div>
-
-</header>
-
-    
-
-    <section class="article-content">
-    
-    
-    <p>Hi Readers,</p>
-<p>This post is merely for myself, documenting all the steps I needed to go through to be able to send emails from a PowerShell script, as part of an Azure DevOps YAML pipeline flow. And since I was documenting it for our internal application, I thought it would hopefully help someone out there looking for a similar solution.</p>
-<h2 id="why-not-using-the-built-in-email-notification-system">Why not using the built-in Email Notification system
-</h2><p>Azure DevOps provides <a class="link" href="https://learn.microsoft.com/en-us/azure/devops/organizations/notifications/about-notifications?view=azure-devops"  target="_blank" rel="noopener"
-    >email notification features</a>, but this comes with a few assumptions. The biggest one being the receiver(s) should be Project Members. Which was not the case in my scenario, since I want to send out deployment status emails, at the start of a pipeline and when completed successfully, to external recipients.</p>
-<h2 id="whats-wrong-with-marketplace-extensions">What&rsquo;s wrong with Marketplace Extensions?
-</h2><p>In my Classic Release Pipelines, I relied on <strong><a class="link" href="https://marketplace.visualstudio.com/items?itemName=kasunkodagoda.sendgrid-email"  target="_blank" rel="noopener"
-    >Sendgrid</a></strong>, and it actually worked OK, and with the limited amount of emails (up to 100/daily), it was a free service on top.</p>
-<p><img src="../images/2024-03-03_11-24-15.png"
-    
-    
-    loading="lazy"
-    
-      alt="SendGrid Classic Settings"
-    
-    
-    
-  ></p>
-<p>Since I was migrating the full project away from Classic Release Pipelines to YAML, and wanted to customize the email flow a bit more, I started looking into other options. Keeping all functionality within my Azure subscription, was also a benefit.</p>
-<h2 id="the-new-setup-architecture">The new setup architecture
-</h2><p>In short, the new setup architecture is based on the following:</p>
-<ol>
-<li>
-<p>Azure LogicApp with HTTP Trigger, sending an Outlook 365 email based on parameters to an external recipient</p>
-</li>
-<li>
-<p>ADO Release Pipeline using YAML tasks</p>
-</li>
-<li>
-<p>One of the tasks is using Azure Powershell, to compose and send the email</p>
-</li>
-</ol>
-<p>Let&rsquo;s detail each step a bit more.</p>
-<h3 id="deploying-and-composing-the-azure-logic-app">Deploying and composing the Azure Logic App
-</h3><p>The starting point is deploying the Azure Logic App, and composing the workflow steps.</p>
-<ol>
-<li>
-<p>Deploy an Azure Logic App resource using the Consumption plan (pay per trigger)</p>
-</li>
-<li>
-<p>Once deployed, open the <strong>Logic App Designer</strong>, and choose **When an HTTP request is received&quot; as trigger.</p>
-</li>
-<li>
-<p>When it asks for a JSON Schema in the Request Body, you can use the &lsquo;use sample payload to generate schema&rsquo;, by entering the different parameters you need for the email details itself, in the JSON format. In my setup, I have the following fields:</p>
-</li>
-</ol>
-<ul>
-<li>Message, which is the actual body of the email, and gets send along as a PowerShell script object;</li>
-<li>Subject, which contains the actual subject of the email, and also coming from the PowerShell script object;</li>
-<li>To, which contains the recipient&rsquo;s email address, and passed on from the PowerShell script object;</li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{
-</span></span><span class="line"><span class="cl">    &#34;properties&#34;: {
-</span></span><span class="line"><span class="cl">        &#34;Message&#34;: {
-</span></span><span class="line"><span class="cl">            &#34;type&#34;: &#34;string&#34;
-</span></span><span class="line"><span class="cl">        },
-</span></span><span class="line"><span class="cl">        &#34;Subject&#34;: {
-</span></span><span class="line"><span class="cl">            &#34;type&#34;: &#34;string&#34;
-</span></span><span class="line"><span class="cl">        },
-</span></span><span class="line"><span class="cl">        &#34;To&#34;: {
-</span></span><span class="line"><span class="cl">            &#34;type&#34;: &#34;string&#34;
-</span></span><span class="line"><span class="cl">        }
-</span></span><span class="line"><span class="cl">    },
-</span></span><span class="line"><span class="cl">    &#34;type&#34;: &#34;object&#34;
-</span></span><span class="line"><span class="cl">}
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><img src="../images/2024-03-03_11-42-02.png"
-    
-    
-    loading="lazy"
-    
-      alt="HTTP Trigger JSON Schema"
-    
-    
-    
-  ></p>
-<ol start="4">
-<li>
-<p>When you save the Logic App with this step, it will provide you with the unique LogicApp HTTP Trigger URL to connect to. Save this URL on the side, since you need it later in the PowerShell script.</p>
-</li>
-<li>
-<p>Add a new step to the workflow, choosing <strong>Send an Email</strong>. Authenticate with your Office 365 credentials (although other security options such as Service Principal might be required in your production setup).</p>
-</li>
-<li>
-<p>The required fields for this step are Body, Subject and To. Mapping with the 3 property fields from the HTTP Trigger. Note, I created the property &ldquo;Message&rdquo;, instead of calling it &ldquo;Body&rdquo;, since the full HTTP Trigger JSON response we get in through the PowerShell script, is known as &ldquo;Body&rdquo;. So I made some mistakes there initially in not getting the correct information mapped as expected.</p>
-</li>
-<li>
-<p>The nice thing with Logic Apps, is that any next step in the workflow, can reuse input values from any previous step.</p>
-</li>
-<li>
-<p>For the Body-parameter of the Send an email step, we want to use the &ldquo;Message&rdquo; content from the HTTP Trigger response. Therefore, click in the <strong>Body-field</strong>, which will open the <strong>Dynamic content</strong> window. From here, it will show all known properties from the &ldquo;When an HTTP request is received&rdquo; step in the workflow.</p>
-</li>
-</ol>
-<p><img src="../images/2024-03-03_11-47-25.png"
-    
-    
-    loading="lazy"
-    
-      alt="Dynamic COntent"
-    
-    
-    
-  ></p>
-<ol start="9">
-<li><strong>Select</strong> the necessary fields from the Dynamic content, and map them with the required fields of the Send an Email task:</li>
-</ol>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Body -&gt; Message
-</span></span><span class="line"><span class="cl">Subject -&gt; Subject
-</span></span><span class="line"><span class="cl">To -&gt; To
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>This is all for now to get the Logic App configured.</p>
-<h3 id="the-powershell-script-for-sending-emails">The PowerShell script for sending emails
-</h3><p>The idea is that the PowerShell script gets triggered from the YAML pipeline task. I initially tried using the Inline option, but that didn&rsquo;t recognize the here-strings (gets explained later if you don&rsquo;t know what this means&hellip;) as well as some other limitations. I also didn&rsquo;t like having the actual Message/Body details - for which I&rsquo;m using HTML and tables - in my YAML pipeline. So using the ScriptPath option was much cleaner. And also allowing a more flexible scenario, where I could call different &lsquo;sendemail&rsquo;.ps1 scripts, depending on the specifics of the pipeline tasks.</p>
-<p>Let me first explain the high-level setup of the script:</p>
-<ol>
-<li>define param settings, capturing/transferring the parameters from the YAML task ScriptArguments</li>
-<li>create a variable for the LogicApp HTTP Trigger Url</li>
-<li>create a variable for the LogicApp HTTP Trigger Body data, holding the &ldquo;To&rdquo;, &ldquo;Subject&rdquo; and &ldquo;Message&rdquo; content</li>
-<li>create a variable for the LogicApp HTTP Trigger Headers information</li>
-<li>create a variable for the actual Invoke-RestMethod, sending all previous info along</li>
-</ol>
-<p>Here are some of the snippets for each component of the script:</p>
-<p><strong>1. define param settings, capturing/transferring the parameters from the YAML task ScriptArguments</strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">param (
-</span></span><span class="line"><span class="cl">    [string]$BuildDefinitionName,
-</span></span><span class="line"><span class="cl">    [string]$To
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    )
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><strong>2. create a variable for the LogicApp HTTP Trigger Url</strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$logicappUrl = &#34;https://yourlogicappurl .centralus.logic.azure.com:443/workflows/1676b43cc2904b/triggers/manual/paths/invoke?api-version=2016-10-01&amp;sp=%2Ftriggers%2Fmanual%2Frun&amp;sv=1.0&amp;sig=OK-Z_dgspUufMWMlBL531&#34;
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><strong>3. create a variable for the LogicApp HTTP Trigger Body data, holding the &ldquo;To&rdquo;, &ldquo;Subject&rdquo; and &ldquo;Message&rdquo; content</strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$body = @{
-</span></span><span class="line"><span class="cl">         To = $To
-</span></span><span class="line"><span class="cl">         Subject = @&#34;
-</span></span><span class="line"><span class="cl">MTTDemoDeploy - $BuildDefinitionName - Deployment Kicked Off Successfully
-</span></span><span class="line"><span class="cl">&#34;@
-</span></span><span class="line"><span class="cl">        Message = @&#34;
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        &lt;actual email body content here - where I used a combination of text, HTML and CSS for the email layout&gt;
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">&#34;@                
-</span></span><span class="line"><span class="cl">}
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>Note the usage of the @&quot; &ldquo;@, which is known as <strong>here-strings</strong>. Here-strings allow you to define multiline strings without needing to escape special characters or use concatenation.</p>
-<p>In this code snippet, I&rsquo;m using a here-string to define the value of the Subject property in the $body hash table. The @&rdquo; at the beginning indicates the start of the here-string. The text within the here-string (between the @&quot; and the closing &ldquo;@) is preserved exactly as written, including line breaks and any special characters.
-The variable $BuildDefinitionName is interpolated within the here-string, and corresponds to a param object as defined at the start of the script. This will hold the actual ScriptArguments object from the YAML pipeline steps later.</p>
-<p>Also note the positioning of the &ldquo;@ all the way at the start of the line, as the here-strings cannot recognize and spaces or tabs before it - this will throw an error when running the script. (Told you I really wanted to document all by observations and issues before I got this working smoothly&hellip;)</p>
-<p><strong>4. create a variable for the LogicApp HTTP Trigger Headers information</strong>
-When you configured the HTTP Trigger step in the LogicApp, it shows a little popup message, saying the trigger expect the Header to have the content type of application/json. this is how you specify this.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$headers = @{
-</span></span><span class="line"><span class="cl">    &#39;Content-Type&#39; = &#39;application/json&#39;
-</span></span><span class="line"><span class="cl">}
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><strong>5. create a variable for the actual Invoke-RestMethod, sending all previous info along</strong></p>
-<p>$sendemail = @{
+<!doctype html><html lang=en-us dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content="Hi Readers,\nThis post is merely for myself, documenting all the steps I needed to go through to be able to send emails from a PowerShell script, as part of an Azure DevOps YAML pipeline flow. And since I was documenting it for our internal application, I thought it would hopefully help someone out there looking for a similar solution.\nWhy not using the built-in Email Notification system\rAzure DevOps provides email notification features, but this comes with a few assumptions. The biggest one being the receiver(s) should be Project Members. Which was not the case in my scenario, since I want to send out deployment status emails, at the start of a pipeline and when completed successfully, to external recipients.\n"><title>Sending Emails from Azure DevOps using PowerShell and Azure LogicApps</title><link rel=canonical href=https://www.007ffflearning.com/post/sending-emails-from-ado-pipelines-using-powershell/><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=preload as=style href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"><link rel=stylesheet href=/scss/style.min.828c1e2100fa0b70e66159bf0732b0b5c32df4c5672d945c5ca4d1014763878e.css><meta property='og:title' content="Sending Emails from Azure DevOps using PowerShell and Azure LogicApps"><meta property='og:description' content="Hi Readers,\nThis post is merely for myself, documenting all the steps I needed to go through to be able to send emails from a PowerShell script, as part of an Azure DevOps YAML pipeline flow. And since I was documenting it for our internal application, I thought it would hopefully help someone out there looking for a similar solution.\nWhy not using the built-in Email Notification system\rAzure DevOps provides email notification features, but this comes with a few assumptions. The biggest one being the receiver(s) should be Project Members. Which was not the case in my scenario, since I want to send out deployment status emails, at the start of a pipeline and when completed successfully, to external recipients.\n"><meta property='og:url' content='https://www.007ffflearning.com/post/sending-emails-from-ado-pipelines-using-powershell/'><meta property='og:site_name' content='Azure Readiness starts here...'><meta property='og:type' content='article'><meta property='article:section' content='Post'><meta property='article:tag' content='DevOps'><meta property='article:tag' content='Azure'><meta property='article:published_time' content='2024-03-03T00:00:00+00:00'><meta property='article:modified_time' content='2024-03-03T00:00:00+00:00'><meta name=twitter:title content="Sending Emails from Azure DevOps using PowerShell and Azure LogicApps"><meta name=twitter:description content="Hi Readers,\nThis post is merely for myself, documenting all the steps I needed to go through to be able to send emails from a PowerShell script, as part of an Azure DevOps YAML pipeline flow. And since I was documenting it for our internal application, I thought it would hopefully help someone out there looking for a similar solution.\nWhy not using the built-in Email Notification system\rAzure DevOps provides email notification features, but this comes with a few assumptions. The biggest one being the receiver(s) should be Project Members. Which was not the case in my scenario, since I want to send out deployment status emails, at the start of a pipeline and when completed successfully, to external recipients.\n"><link rel="shortcut icon" href=/images/007ffflearning-ape.png></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label="Toggle Menu">
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/><img src=/images/007ffflearning-ape.png width height class=site-logo loading=lazy alt=Avatar>
+</a><span class=emoji>🎓</span></figure><div class=site-meta><h1 class=site-name><a href=/>Azure Readiness starts here...</a></h1><h2 class=site-description>Bring me an audience, I'll give them Azure knowledge in return</h2></div></header><ol class=menu-social><li><a href=https://pdtit.bsky.social title=Bluesky rel=me><svg viewBox="0 0 600 530" fill="currentColor"><path d="m135.72 44.03C202.216 93.951 273.74 195.17 3e2 249.49c26.262-54.316 97.782-155.54 164.28-205.46C512.26 8.009 590-19.862 590 68.825c0 17.712-10.155 148.79-16.111 170.07-20.703 73.984-96.144 92.854-163.25 81.433 117.3 19.964 147.14 86.092 82.697 152.22-122.39 125.59-175.91-31.511-189.63-71.766-2.514-7.3797-3.6904-10.832-3.7077-7.8964-.0174-2.9357-1.1937.51669-3.7077 7.8964-13.714 40.255-67.233 197.36-189.63 71.766-64.444-66.128-34.605-132.26 82.697-152.22-67.108 11.421-142.55-7.4491-163.25-81.433-5.9562-21.282-16.111-152.36-16.111-170.07.0-88.687 77.742-60.816 125.72-24.795z"/></svg></a></li><li><a href=https://github.com/petender title=GitHub rel=me><svg class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li><li><a href=https://www.linkedin.com/in/pdtit/ title=LinkedIn rel=me><svg class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M10 14a3.5 3.5.0 005 0l4-4a3.5 3.5.0 00-5-5l-.5.5"/><path d="M14 10a3.5 3.5.0 00-5 0l-4 4a3.5 3.5.0 005 5l.5-.5"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
+<span>Home</span></a></li><li><a href=/post/><svg class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+<span>Posts</span></a></li><li><a href=/books/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+<span>Books</span></a></li><li><a href=/speaking/><svg class="icon icon-tabler icon-tabler-microphone" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 5a3 3 0 016 0v7a3 3 0 01-6 0z"/><path d="M5 10a7 7 0 0014 0"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+<span>Speaking</span></a></li><li><a href=/about/><svg class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
+<span>About Me</span></a></li><li class=menu-bottom-section><ol class=menu><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<span>Dark Mode</span></li></ol></li></ol></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><div class=article-title-wrapper><h2 class=article-title><a href=/post/sending-emails-from-ado-pipelines-using-powershell/>Sending Emails from Azure DevOps using PowerShell and Azure LogicApps</a></h2></div><footer class=article-time><div><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published datetime=2024-03-03T00:00:00Z>Mar 03, 2024</time></div></footer></div></header><section class=article-content><p>Hi Readers,</p><p>This post is merely for myself, documenting all the steps I needed to go through to be able to send emails from a PowerShell script, as part of an Azure DevOps YAML pipeline flow. And since I was documenting it for our internal application, I thought it would hopefully help someone out there looking for a similar solution.</p><h2 id=why-not-using-the-built-in-email-notification-system>Why not using the built-in Email Notification system</h2><p>Azure DevOps provides <a class=link href="https://learn.microsoft.com/en-us/azure/devops/organizations/notifications/about-notifications?view=azure-devops" target=_blank rel=noopener>email notification features</a>, but this comes with a few assumptions. The biggest one being the receiver(s) should be Project Members. Which was not the case in my scenario, since I want to send out deployment status emails, at the start of a pipeline and when completed successfully, to external recipients.</p><h2 id=whats-wrong-with-marketplace-extensions>What&rsquo;s wrong with Marketplace Extensions?</h2><p>In my Classic Release Pipelines, I relied on <strong><a class=link href="https://marketplace.visualstudio.com/items?itemName=kasunkodagoda.sendgrid-email" target=_blank rel=noopener>Sendgrid</a></strong>, and it actually worked OK, and with the limited amount of emails (up to 100/daily), it was a free service on top.</p><p><img src=../images/2024-03-03_11-24-15.png loading=lazy alt="SendGrid Classic Settings"></p><p>Since I was migrating the full project away from Classic Release Pipelines to YAML, and wanted to customize the email flow a bit more, I started looking into other options. Keeping all functionality within my Azure subscription, was also a benefit.</p><h2 id=the-new-setup-architecture>The new setup architecture</h2><p>In short, the new setup architecture is based on the following:</p><ol><li><p>Azure LogicApp with HTTP Trigger, sending an Outlook 365 email based on parameters to an external recipient</p></li><li><p>ADO Release Pipeline using YAML tasks</p></li><li><p>One of the tasks is using Azure Powershell, to compose and send the email</p></li></ol><p>Let&rsquo;s detail each step a bit more.</p><h3 id=deploying-and-composing-the-azure-logic-app>Deploying and composing the Azure Logic App</h3><p>The starting point is deploying the Azure Logic App, and composing the workflow steps.</p><ol><li><p>Deploy an Azure Logic App resource using the Consumption plan (pay per trigger)</p></li><li><p>Once deployed, open the <strong>Logic App Designer</strong>, and choose **When an HTTP request is received" as trigger.</p></li><li><p>When it asks for a JSON Schema in the Request Body, you can use the &lsquo;use sample payload to generate schema&rsquo;, by entering the different parameters you need for the email details itself, in the JSON format. In my setup, I have the following fields:</p></li></ol><ul><li>Message, which is the actual body of the email, and gets send along as a PowerShell script object;</li><li>Subject, which contains the actual subject of the email, and also coming from the PowerShell script object;</li><li>To, which contains the recipient&rsquo;s email address, and passed on from the PowerShell script object;</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>{
+</span></span><span class=line><span class=cl>    &#34;properties&#34;: {
+</span></span><span class=line><span class=cl>        &#34;Message&#34;: {
+</span></span><span class=line><span class=cl>            &#34;type&#34;: &#34;string&#34;
+</span></span><span class=line><span class=cl>        },
+</span></span><span class=line><span class=cl>        &#34;Subject&#34;: {
+</span></span><span class=line><span class=cl>            &#34;type&#34;: &#34;string&#34;
+</span></span><span class=line><span class=cl>        },
+</span></span><span class=line><span class=cl>        &#34;To&#34;: {
+</span></span><span class=line><span class=cl>            &#34;type&#34;: &#34;string&#34;
+</span></span><span class=line><span class=cl>        }
+</span></span><span class=line><span class=cl>    },
+</span></span><span class=line><span class=cl>    &#34;type&#34;: &#34;object&#34;
+</span></span><span class=line><span class=cl>}
+</span></span></code></pre></td></tr></table></div></div><p><img src=../images/2024-03-03_11-42-02.png loading=lazy alt="HTTP Trigger JSON Schema"></p><ol start=4><li><p>When you save the Logic App with this step, it will provide you with the unique LogicApp HTTP Trigger URL to connect to. Save this URL on the side, since you need it later in the PowerShell script.</p></li><li><p>Add a new step to the workflow, choosing <strong>Send an Email</strong>. Authenticate with your Office 365 credentials (although other security options such as Service Principal might be required in your production setup).</p></li><li><p>The required fields for this step are Body, Subject and To. Mapping with the 3 property fields from the HTTP Trigger. Note, I created the property &ldquo;Message&rdquo;, instead of calling it &ldquo;Body&rdquo;, since the full HTTP Trigger JSON response we get in through the PowerShell script, is known as &ldquo;Body&rdquo;. So I made some mistakes there initially in not getting the correct information mapped as expected.</p></li><li><p>The nice thing with Logic Apps, is that any next step in the workflow, can reuse input values from any previous step.</p></li><li><p>For the Body-parameter of the Send an email step, we want to use the &ldquo;Message&rdquo; content from the HTTP Trigger response. Therefore, click in the <strong>Body-field</strong>, which will open the <strong>Dynamic content</strong> window. From here, it will show all known properties from the &ldquo;When an HTTP request is received&rdquo; step in the workflow.</p></li></ol><p><img src=../images/2024-03-03_11-47-25.png loading=lazy alt="Dynamic COntent"></p><ol start=9><li><strong>Select</strong> the necessary fields from the Dynamic content, and map them with the required fields of the Send an Email task:</li></ol><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>Body -&gt; Message
+</span></span><span class=line><span class=cl>Subject -&gt; Subject
+</span></span><span class=line><span class=cl>To -&gt; To
+</span></span></code></pre></td></tr></table></div></div><p>This is all for now to get the Logic App configured.</p><h3 id=the-powershell-script-for-sending-emails>The PowerShell script for sending emails</h3><p>The idea is that the PowerShell script gets triggered from the YAML pipeline task. I initially tried using the Inline option, but that didn&rsquo;t recognize the here-strings (gets explained later if you don&rsquo;t know what this means&mldr;) as well as some other limitations. I also didn&rsquo;t like having the actual Message/Body details - for which I&rsquo;m using HTML and tables - in my YAML pipeline. So using the ScriptPath option was much cleaner. And also allowing a more flexible scenario, where I could call different &lsquo;sendemail&rsquo;.ps1 scripts, depending on the specifics of the pipeline tasks.</p><p>Let me first explain the high-level setup of the script:</p><ol><li>define param settings, capturing/transferring the parameters from the YAML task ScriptArguments</li><li>create a variable for the LogicApp HTTP Trigger Url</li><li>create a variable for the LogicApp HTTP Trigger Body data, holding the &ldquo;To&rdquo;, &ldquo;Subject&rdquo; and &ldquo;Message&rdquo; content</li><li>create a variable for the LogicApp HTTP Trigger Headers information</li><li>create a variable for the actual Invoke-RestMethod, sending all previous info along</li></ol><p>Here are some of the snippets for each component of the script:</p><p><strong>1. define param settings, capturing/transferring the parameters from the YAML task ScriptArguments</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>param (
+</span></span><span class=line><span class=cl>    [string]$BuildDefinitionName,
+</span></span><span class=line><span class=cl>    [string]$To
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    )
+</span></span></code></pre></td></tr></table></div></div><p><strong>2. create a variable for the LogicApp HTTP Trigger Url</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>$logicappUrl = &#34;https://yourlogicappurl .centralus.logic.azure.com:443/workflows/1676b43cc2904b/triggers/manual/paths/invoke?api-version=2016-10-01&amp;sp=%2Ftriggers%2Fmanual%2Frun&amp;sv=1.0&amp;sig=OK-Z_dgspUufMWMlBL531&#34;
+</span></span></code></pre></td></tr></table></div></div><p><strong>3. create a variable for the LogicApp HTTP Trigger Body data, holding the &ldquo;To&rdquo;, &ldquo;Subject&rdquo; and &ldquo;Message&rdquo; content</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>$body = @{
+</span></span><span class=line><span class=cl>         To = $To
+</span></span><span class=line><span class=cl>         Subject = @&#34;
+</span></span><span class=line><span class=cl>MTTDemoDeploy - $BuildDefinitionName - Deployment Kicked Off Successfully
+</span></span><span class=line><span class=cl>&#34;@
+</span></span><span class=line><span class=cl>        Message = @&#34;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        &lt;actual email body content here - where I used a combination of text, HTML and CSS for the email layout&gt;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>&#34;@                
+</span></span><span class=line><span class=cl>}
+</span></span></code></pre></td></tr></table></div></div><p>Note the usage of the @" &ldquo;@, which is known as <strong>here-strings</strong>. Here-strings allow you to define multiline strings without needing to escape special characters or use concatenation.</p><p>In this code snippet, I&rsquo;m using a here-string to define the value of the Subject property in the $body hash table. The @&rdquo; at the beginning indicates the start of the here-string. The text within the here-string (between the @" and the closing &ldquo;@) is preserved exactly as written, including line breaks and any special characters.
+The variable $BuildDefinitionName is interpolated within the here-string, and corresponds to a param object as defined at the start of the script. This will hold the actual ScriptArguments object from the YAML pipeline steps later.</p><p>Also note the positioning of the &ldquo;@ all the way at the start of the line, as the here-strings cannot recognize and spaces or tabs before it - this will throw an error when running the script. (Told you I really wanted to document all by observations and issues before I got this working smoothly&mldr;)</p><p><strong>4. create a variable for the LogicApp HTTP Trigger Headers information</strong>
+When you configured the HTTP Trigger step in the LogicApp, it shows a little popup message, saying the trigger expect the Header to have the content type of application/json. this is how you specify this.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>$headers = @{
+</span></span><span class=line><span class=cl>    &#39;Content-Type&#39; = &#39;application/json&#39;
+</span></span><span class=line><span class=cl>}
+</span></span></code></pre></td></tr></table></div></div><p><strong>5. create a variable for the actual Invoke-RestMethod, sending all previous info along</strong></p><p>$sendemail = @{
 Uri = $logicappUrl
 Method = &lsquo;POST&rsquo;
 Headers = $headers
 Body = $body | ConvertTo-Json
-}</p>
-<p>Invoke-RestMethod @sendemail</p>
-<p>Eventually, save this file as <strong>start_email.ps1</strong> or other filename that works for you, and make sure it is part of the ADO Repo where you have the YAML pipeline. To keep it a bit structured, I created a new subfolder <strong>Email</strong> with another subfolder <strong>.ado</strong> in which I stored the file.</p>
-<p>REPO-ROOT
+}</p><p>Invoke-RestMethod @sendemail</p><p>Eventually, save this file as <strong>start_email.ps1</strong> or other filename that works for you, and make sure it is part of the ADO Repo where you have the YAML pipeline. To keep it a bit structured, I created a new subfolder <strong>Email</strong> with another subfolder <strong>.ado</strong> in which I stored the file.</p><p>REPO-ROOT
 /Email
 /.ado
-/start_email.ps1</p>
-<p>I call this script at the start of the YAML pipeline, but also created a finish_email.ps1, which I&rsquo;m calling at the end of the YAML pipeline successful completion.</p>
-<h3 id="the-yaml-pipeline-task">The YAML pipeline task
-</h3><p>With both LogicApp and PowerShell script created, the last step in the process is defining the YAML PowerShell task which sends the trigger and necessary parameters to the PowerShell script.</p>
-<p>Like any YAML Pipeline, this is just another task, relying on some variables and task settings.</p>
-<p>I created 2 new variables, one for the EmailDomain and one for the full EmailAddress:</p>
-<p>variables:</p>
-<ul>
-<li>name: pipelineName
-value: $(Build.DefinitionName)</li>
-<li>name: EmailDomain
-value: &lsquo;@company.com&rsquo;</li>
-<li>name: recipientEmail
-value: &ldquo;${{parameters.User}}`$(EmailDomain)&rdquo;</li>
-</ul>
-<p><strong>Critical here</strong> is the usage of the <strong>`</strong> in the 2nd part of the value setting. Since the <strong>@</strong> in the emaildomain is breaking the string, known as &ldquo;splatting&rdquo;, I needed to add that character to avoid this issue.</p>
-<p>Next, within the stage / jobs / steps level of the YAML pipeline, I inserted the following task:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">steps:
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">- task: AzurePowerShell@5
-</span></span><span class="line"><span class="cl">        displayName: &#39;Email - Deployment Kicked Off&#39;
-</span></span><span class="line"><span class="cl">        inputs:
-</span></span><span class="line"><span class="cl">          azureSubscription:  &#39;&lt;yourADOServiceConnection&gt;&#39; 
-</span></span><span class="line"><span class="cl">          resourceGroupName: &#39;RG where you deployed the LogicApp&#39; 
-</span></span><span class="line"><span class="cl">          azurePowerShellVersion: &#39;LatestVersion&#39; #required to use the latest version of Azure PowerShell
-</span></span><span class="line"><span class="cl">          ScriptType: &#39;filePath&#39;
-</span></span><span class="line"><span class="cl">          ScriptPath: $(System.DefaultWorkingDirectory)/Email/.ado/start_email.ps1  
-</span></span><span class="line"><span class="cl">          ScriptArguments: &#39;-BuildDefinitionName:$(pipelineName) -To:$(recipientEmail)&#39;
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>The <strong>ScriptArguments</strong> is the crucial step if you ask me, as it contains the different parameters you want to pass on to the PowerShell script; also, the parameters needed to map with the JSON properties in the HTTP Trigger step of the Logic App. (again, I needed multiple attempts to get all this working, hence my documentation on how I got this all glued together&hellip;)</p>
-<p>It picks up a parameter called <strong>BuildDefinitionName</strong>, corresponding to the same param-name at the start of the PowerShell script, which contains the value of the variable pipelineName I defined earlier in the YAML pipeline.
-The 2nd parameter I&rsquo;m passing on is the <strong>To</strong>-field, which corresponds with the composed recipientEmail variable in the YAML pipeline.</p>
-<p>That&rsquo;s pretty much it!!</p>
-<p>FYI, it it also possible to send more YAML pipeline parameters or variables along with the ScriptArguments, such as deployment output or passwords or any other. For example, I have a pipeline where I&rsquo;m creating an Azure Container Registry with a random name, as well as a unique created password for the admin.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">echo</span> <span class="s2">&#34;##vso[task.setvariable variable=acrname]$acrname&#34;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>which I then send on to the PowerShell script from the ScriptArguments like this:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ScriptArguments: &#39;-BuildDefinitionName:$(pipelineName) -To:$(recipientEmail) -acrname:$(acrname) -location:${{ parameters.Location }} -adminPassword:&#34;$(genPassword)&#34;&#39;  #needs quotes because split characters
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h1 id="summary">Summary
-</h1><p>Apart from the built-in ADO notification emails for the most &lsquo;common&rsquo; scenarios when using pipelines, your DevOps project might need other emails to be sent, as part of your pipeline flow. Where you could use existing Marketplace tools such as SendGrid or other, I decided to come up with my own PowerShell-based script, interacting with Azure LogicApps.</p>
-<p>While the setup involves jumping to several hoops, it is not all that difficult (easy to say once it all works, after spending half a day of troubleshooting at different levels - of which the main one was my rusty PowerShell skills&hellip;) once all pieces fall in place.</p>
-<p>Let me know if you want to give this a try and share me your results!</p>
-<p><a class="link" href="https://www.buymeacoffee.com/pdtit"  target="_blank" rel="noopener"
-    ><img src="../images/buy_me_a_coffee.png"
-    
-    
-    loading="lazy"
-    
-      alt="BuyMeACoffee"
-    
-    
-    
-  ></a></p>
-<p>Cheers!!</p>
-<p>/Peter</p>
-
-</section>
-
-
-    <footer class="article-footer">
-    
-    <section class="article-tags">
-        
-            <a href="/tags/devops/">DevOps</a>
-        
-            <a href="/tags/azure/">Azure</a>
-        
-    </section>
-
-
-    </footer>
-
-
-    
-</article>
-
-    
-
-    
-
-<aside class="related-content--wrapper">
-    <h2 class="section-title">Related content</h2>
-    <div class="related-content">
-        <div class="flex article-list--tile">
-            
-                
-<article class="">
-    <a href="/post/trigger-yaml-pipeline-from-classic-release-in-ado/">
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Trigger a YAML Pipeline from a Classic Release Pipeline in Azure DevOps</h2>
-        </div>
-    </a>
-</article>
-            
-                
-<article class="">
-    <a href="/post/you-do-not-have-permissions-error-after-publishing-to-azure-app-services/">
-        
-
-        <div class="article-details">
-            <h2 class="article-title">You do not have permissions to view this directory or page after publishing to Azure App Service</h2>
-        </div>
-    </a>
-</article>
-            
-                
-<article class="">
-    <a href="/post/devops-workflow-generator/">
-        
-
-        <div class="article-details">
-            <h2 class="article-title">DevOps Workflow Generator</h2>
-        </div>
-    </a>
-</article>
-            
-                
-<article class="">
-    <a href="/post/azure-spring-clean---devsecops-and-shifting-left-to-publish-secure-software/">
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Azure Spring Clean - DevSecOps and Shifting Left</h2>
-        </div>
-    </a>
-</article>
-            
-                
-<article class="">
-    <a href="/post/azcopy-failing-in-azure-devops/">
-        
-
-        <div class="article-details">
-            <h2 class="article-title">AzCopy failing in Azure Devops with error ServiceCode=AuthorizationPermissionMismatch</h2>
-        </div>
-    </a>
-</article>
-            
-        </div>
-    </div>
-</aside>
-
-     
-    
-        
-    
-
-    <footer class="site-footer">
-    <section class="copyright">
-        &copy; 
-        
-            2021 - 
-        
-        2026 Azure Readiness starts here...
-    </section>
-    
-    <section class="powerby">
-        
-            The best way to know the future, is to learn it <br/>
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="4.0.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
-    </section>
-</footer>
-
-
-    
-
-
-
-<script type="module">
+/start_email.ps1</p><p>I call this script at the start of the YAML pipeline, but also created a finish_email.ps1, which I&rsquo;m calling at the end of the YAML pipeline successful completion.</p><h3 id=the-yaml-pipeline-task>The YAML pipeline task</h3><p>With both LogicApp and PowerShell script created, the last step in the process is defining the YAML PowerShell task which sends the trigger and necessary parameters to the PowerShell script.</p><p>Like any YAML Pipeline, this is just another task, relying on some variables and task settings.</p><p>I created 2 new variables, one for the EmailDomain and one for the full EmailAddress:</p><p>variables:</p><ul><li>name: pipelineName
+value: $(Build.DefinitionName)</li><li>name: EmailDomain
+value: &lsquo;@company.com&rsquo;</li><li>name: recipientEmail
+value: &ldquo;${{parameters.User}}`$(EmailDomain)&rdquo;</li></ul><p><strong>Critical here</strong> is the usage of the <strong>`</strong> in the 2nd part of the value setting. Since the <strong>@</strong> in the emaildomain is breaking the string, known as &ldquo;splatting&rdquo;, I needed to add that character to avoid this issue.</p><p>Next, within the stage / jobs / steps level of the YAML pipeline, I inserted the following task:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>steps:
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>- task: AzurePowerShell@5
+</span></span><span class=line><span class=cl>        displayName: &#39;Email - Deployment Kicked Off&#39;
+</span></span><span class=line><span class=cl>        inputs:
+</span></span><span class=line><span class=cl>          azureSubscription:  &#39;&lt;yourADOServiceConnection&gt;&#39; 
+</span></span><span class=line><span class=cl>          resourceGroupName: &#39;RG where you deployed the LogicApp&#39; 
+</span></span><span class=line><span class=cl>          azurePowerShellVersion: &#39;LatestVersion&#39; #required to use the latest version of Azure PowerShell
+</span></span><span class=line><span class=cl>          ScriptType: &#39;filePath&#39;
+</span></span><span class=line><span class=cl>          ScriptPath: $(System.DefaultWorkingDirectory)/Email/.ado/start_email.ps1  
+</span></span><span class=line><span class=cl>          ScriptArguments: &#39;-BuildDefinitionName:$(pipelineName) -To:$(recipientEmail)&#39;
+</span></span></code></pre></td></tr></table></div></div><p>The <strong>ScriptArguments</strong> is the crucial step if you ask me, as it contains the different parameters you want to pass on to the PowerShell script; also, the parameters needed to map with the JSON properties in the HTTP Trigger step of the Logic App. (again, I needed multiple attempts to get all this working, hence my documentation on how I got this all glued together&mldr;)</p><p>It picks up a parameter called <strong>BuildDefinitionName</strong>, corresponding to the same param-name at the start of the PowerShell script, which contains the value of the variable pipelineName I defined earlier in the YAML pipeline.
+The 2nd parameter I&rsquo;m passing on is the <strong>To</strong>-field, which corresponds with the composed recipientEmail variable in the YAML pipeline.</p><p>That&rsquo;s pretty much it!!</p><p>FYI, it it also possible to send more YAML pipeline parameters or variables along with the ScriptArguments, such as deployment output or passwords or any other. For example, I have a pipeline where I&rsquo;m creating an Azure Container Registry with a random name, as well as a unique created password for the admin.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-gdscript3 data-lang=gdscript3><span class=line><span class=cl><span class=n>echo</span> <span class=s2>&#34;##vso[task.setvariable variable=acrname]$acrname&#34;</span>
+</span></span></code></pre></td></tr></table></div></div><p>which I then send on to the PowerShell script from the ScriptArguments like this:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>ScriptArguments: &#39;-BuildDefinitionName:$(pipelineName) -To:$(recipientEmail) -acrname:$(acrname) -location:${{ parameters.Location }} -adminPassword:&#34;$(genPassword)&#34;&#39;  #needs quotes because split characters
+</span></span></code></pre></td></tr></table></div></div><h1 id=summary>Summary</h1><p>Apart from the built-in ADO notification emails for the most &lsquo;common&rsquo; scenarios when using pipelines, your DevOps project might need other emails to be sent, as part of your pipeline flow. Where you could use existing Marketplace tools such as SendGrid or other, I decided to come up with my own PowerShell-based script, interacting with Azure LogicApps.</p><p>While the setup involves jumping to several hoops, it is not all that difficult (easy to say once it all works, after spending half a day of troubleshooting at different levels - of which the main one was my rusty PowerShell skills&mldr;) once all pieces fall in place.</p><p>Let me know if you want to give this a try and share me your results!</p><p><a class=link href=https://www.buymeacoffee.com/pdtit target=_blank rel=noopener><img src=../images/buy_me_a_coffee.png loading=lazy alt=BuyMeACoffee></a></p><p>Cheers!!</p><p>/Peter</p></section><footer class=article-footer><section class=article-tags><a href=/tags/devops/>DevOps</a>
+<a href=/tags/azure/>Azure</a></section></footer></article><aside class=related-content--wrapper><h2 class=section-title>Related content</h2><div class=related-content><div class="flex article-list--tile"><article><a href=/post/trigger-yaml-pipeline-from-classic-release-in-ado/><div class=article-details><h2 class=article-title>Trigger a YAML Pipeline from a Classic Release Pipeline in Azure DevOps</h2></div></a></article><article><a href=/post/you-do-not-have-permissions-error-after-publishing-to-azure-app-services/><div class=article-details><h2 class=article-title>You do not have permissions to view this directory or page after publishing to Azure App Service</h2></div></a></article><article><a href=/post/devops-workflow-generator/><div class=article-details><h2 class=article-title>DevOps Workflow Generator</h2></div></a></article><article><a href=/post/azure-spring-clean---devsecops-and-shifting-left-to-publish-secure-software/><div class=article-details><h2 class=article-title>Azure Spring Clean - DevSecOps and Shifting Left</h2></div></a></article><article><a href=/post/azcopy-failing-in-azure-devops/><div class=article-details><h2 class=article-title>AzCopy failing in Azure Devops with error ServiceCode=AuthorizationPermissionMismatch</h2></div></a></article></div></div></aside><footer class=site-footer><section class=copyright>&copy;
+2021 -
+2026 Azure Readiness starts here...</section><section class=powerby>The best way to know the future, is to learn it<br>Built with <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a><br>Theme <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=4.0.0>Stack</a></b> designed by <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a></section></footer><script type=module>
     import gallery from '\/ts\/gallery.js';
 
     const articleContent = document.querySelector('.article-content');
@@ -761,70 +149,16 @@ The 2nd parameter I&rsquo;m passing on is the <strong>To</strong>-field, which c
         });
         lightbox.init();
     }
-</script>
-
-    
-
-            </main>
-        </div>
-        
-    <div id="cookie-consent-banner" class="cookie-banner" aria-hidden="true" role="dialog" aria-labelledby="cookie-banner-title">
-    <div class="cookie-banner__content">
-        <div class="cookie-banner__text">
-            <strong id="cookie-banner-title">Cookie Consent</strong>
-            <p>We use cookies to enhance your browsing experience and analyze site traffic.</p>
-        </div>
-
-        <div class="cookie-banner__actions">
-            <button class="cookie-btn cookie-btn--secondary" data-cookie-action="deny">
-                Deny
-            </button>
-            <button class="cookie-btn cookie-btn--primary" data-cookie-action="accept">
-                Accept All
-            </button>
-        </div>
-        <button class="cookie-banner__settings-link" data-cookie-action="settings">
-            Manage preferences
-        </button>
-
-        
-        <div id="cookie-settings-panel" class="cookie-settings" aria-hidden="true">
-            <h3>Cookie Preferences</h3>
-
-            <div class="cookie-category">
-                <label>
-                    <input type="checkbox" name="necessary" checked disabled />
-                    <strong>Necessary</strong>
-                </label>
-                <p>These cookies are required for the website to function and cannot be disabled.</p>
-            </div><div class="cookie-category">
-                <label>
-                    <input type="checkbox" name="analytics" data-cookie-category="analytics" />
-                    <strong>Analytics</strong>
-                </label>
-                <p>These cookies help us understand how visitors interact with our website.</p>
-            </div><div class="cookie-category">
-                <label>
-                    <input type="checkbox" name="functional" data-cookie-category="functional" />
-                    <strong>Functional</strong>
-                </label>
-                <p>These cookies enable features like comments and embedded content.</p>
-            </div><div class="cookie-settings__actions">
-                <button class="cookie-btn cookie-btn--secondary" data-cookie-action="cancel">
-                    Cancel
-                </button>
-                <button class="cookie-btn cookie-btn--primary" data-cookie-action="save">
-                    Save preferences
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-    <script type="text/javascript" src="/ts/cookies.fb6e3f54ec5cefc5dd04ebdb731fbb630fe36104d843ad1ef773c6462b788568.js" defer></script>
-<script type="text/javascript" src="/ts/main.7aaef5b0228fe199f3d764416965e34f5bf182cbe0650a0f3ea1a716021ba381.js" defer></script>
-
-
-    </body>
-</html>
+</script></main></div><div id=cookie-consent-banner class=cookie-banner aria-hidden=true role=dialog aria-labelledby=cookie-banner-title><div class=cookie-banner__content><div class=cookie-banner__text><strong id=cookie-banner-title>Cookie Consent</strong><p>We use cookies to enhance your browsing experience and analyze site traffic.</p></div><div class=cookie-banner__actions><button class="cookie-btn cookie-btn--secondary" data-cookie-action=deny>
+Deny
+</button>
+<button class="cookie-btn cookie-btn--primary" data-cookie-action=accept>
+Accept All</button></div><button class=cookie-banner__settings-link data-cookie-action=settings>
+Manage preferences</button><div id=cookie-settings-panel class=cookie-settings aria-hidden=true><h3>Cookie Preferences</h3><div class=cookie-category><label><input type=checkbox name=necessary checked disabled>
+<strong>Necessary</strong></label><p>These cookies are required for the website to function and cannot be disabled.</p></div><div class=cookie-category><label><input type=checkbox name=analytics data-cookie-category=analytics>
+<strong>Analytics</strong></label><p>These cookies help us understand how visitors interact with our website.</p></div><div class=cookie-category><label><input type=checkbox name=functional data-cookie-category=functional>
+<strong>Functional</strong></label><p>These cookies enable features like comments and embedded content.</p></div><div class=cookie-settings__actions><button class="cookie-btn cookie-btn--secondary" data-cookie-action=cancel>
+Cancel
+</button>
+<button class="cookie-btn cookie-btn--primary" data-cookie-action=save>
+Save preferences</button></div></div></div></div><script type=text/javascript src=/ts/cookies.6d3577f211db9f4f1997385d4b417cf90130b050bc9e787bb1bb5346d337e998.js defer></script><script type=text/javascript src=/ts/main.acaf849f2b273f6a8368a58b001f336738d0c948d92e79b116467d0c7515f932.js defer></script></body></html>
