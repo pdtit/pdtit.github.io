@@ -71,7 +71,7 @@ jobs:
       fi
     displayName: Build and validate Hugo search artifacts
     env:
-      HUGO_VERSION: '0.128.2'
+      HUGO_VERSION: '0.157.0'
   - task: AzureStaticWebApp@0
     inputs:
       azure_static_web_apps_api_token: $(AZURE_STATIC_WEB_APPS_API_TOKEN_PROUD_MUD_0B453FD0F)
@@ -82,6 +82,6 @@ jobs:
       skip_app_build: true
       output_location: "" # Built app content directory - optional
     env:
-      HUGO_VERSION: '0.128.2'  # Compatible with ubuntu-latest GLIBC; Stack theme modified for compatibility
+      HUGO_VERSION: '0.157.0'  # Compatible with current Stack theme (requires >= 0.154.0)
 ###### End of Repository/Build Configurations ######
 
