@@ -1,4 +1,4 @@
----
+﻿---
 title: "Dotnet tool install dotnet-ef failing with unauthorized" 
 date: 2020-12-27
 tags: [".NET Development"]
@@ -21,7 +21,7 @@ dotnet tool install --global dotnet-ef
 ```
 which was throwing an error
 
- ![Dotnet tool install error](../images/2020-12-27_1.jpg)
+ ![Dotnet tool install error](../images/screenshot-2020-12-27-ced2bb85.jpg)
 
 ## What to check?
 Based on the error message and description, there were a few things to validate:
@@ -35,11 +35,11 @@ I know I was using **DotNet 5.0.1** for my Blazor project, and I know I have the
 dotnet --version
 ```
 
- ![Dotnet version](../images/2020-12-27_2.jpg)
+ ![Dotnet version](../images/screenshot-2020-12-27-afa766ab.jpg)
 
  I also installed the different EntityFramework Packages I need (FrameworkCore, Design, SQLServer,...), and those are also version 5.0.1
 
-![Package version](../images/2020-12-27_3.jpg)
+![Package version](../images/screenshot-2020-12-27-01b8eca1.jpg)
 
 
 ## How to fix this error?
@@ -48,7 +48,7 @@ This explicit versioning led me to the solution; **what if I specify that versio
 ```
 dotnet tool install --global dotnet-ef --version 5.0.1
 ```
-![dotnet install version](../images/2020-12-27_4.jpg)
+![dotnet install version](../images/screenshot-2020-12-27-a3971983.jpg)
 
 following by running 
 
@@ -57,11 +57,12 @@ dotnet ef
 ```
 which loaded fine this time! Problem solved!
 
-![dotnet ef](../images/2020-12-27_5.jpg)
+![dotnet ef](../images/screenshot-2020-12-27-79b8338b.jpg)
 
 I guess the root cause of the issue is related to my "mixed" setup, where I still have the dotnetcore 3.1 on my machine as well, probably confusing the dotnet environment. By explicitly referring to the version you want to use, you can avoid seeing weird error messages.
 
 thanks, Peter
 
-[![BuyMeACoffee](../images/buy_me_a_coffee.png)](https://www.buymeacoffee.com/pdtit)
+[![BuyMeACoffee](../images/screenshot-2020-12-27-17f576e7.png)](https://www.buymeacoffee.com/pdtit)
+
 

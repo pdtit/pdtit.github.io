@@ -1,4 +1,4 @@
----
+﻿---
 title: "Deploying .NET6.0 Blazor App using dotnet commandline"
 date: 2021-11-08
 tags: [".NET Development"]
@@ -41,7 +41,7 @@ Assuming you have all the prereqs covered, you can create your first Blazor Web 
 dotnet --version
 ```
 
-![DotnetVersion](../images/2021-11-08_01.png)
+![DotnetVersion](../images/screenshot-2021-11-08-9d76190a.png)
 
 In my case, I'm running the .NET 6.0 RC2 Preview, which should shift to a Release version later today :)
 
@@ -57,7 +57,7 @@ followed by
 cd dotnetblazordemo
 ```
 
-![CreateSubfolder](../images/2021-11-08_02.png)
+![CreateSubfolder](../images/screenshot-2021-11-08-e6a9a4c6.png)
 
 3. Next, pull up the **Blazor templates** by initiating the following command:
 
@@ -65,7 +65,7 @@ cd dotnetblazordemo
 dotnet new --list Blazor
 ```
 
-![ListBlazor](../images/2021-11-08_03.png)
+![ListBlazor](../images/screenshot-2021-11-08-09be8b44.png)
 
 4. As you can see, there is **both a template for Blazor Server and Blazor Web Assembly**; As I showed you how to deploy a Blazor Server App in the Visual Studio GUI [post](https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer-part-2/), let's deploy a Blazor Web Assembly alternative this time. Remember, Web Assembly is a browser capability, allowing you to run full .NET code directly in the browser, without requiring a server-backend. For more details, check back on my [Blazor introductory]((https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer/)) article in which I positioned the different Blazor versions and their characteristics. 
 
@@ -77,7 +77,7 @@ dotnet new blazorwasm --hosted
 
 Which nicely creates all necessary components for our Blazor App, containing the Client (Front-End), Server (Back-End) and Shared components. 
 
-![NewBlazorWasm](../images/2021-11-08_04.png)
+![NewBlazorWasm](../images/screenshot-2021-11-08-2b4cc1de.png)
 
 5. To actually **run the Blazor Web Assembly app**, move into the "Server" folder (cd Server...) and kick off the "dotnet run" command:
 
@@ -87,11 +87,11 @@ dotnet run
 
 This starts with compiling (Building...) the app, and showing a successful run, exposing the different ports the app is listening on (https and http)
 
-![DotNetRun](../images/2021-11-08_05.png)
+![DotNetRun](../images/screenshot-2021-11-08-74fd1bd2.png)
 
 6. Open your favorite browser, and connect to the https://localhost:<port> address; easiest (on Windows) is Ctrl+click and selecting the URL. 
 
-![BrowserApp](../images/2021-11-08_06.png)
+![BrowserApp](../images/screenshot-2021-11-08-6c35035a.png)
 
 You now have a fully functional Blazor App running in the browser. Congratulations. (for details on what the app is about, feel free to check my notes in my [previous article](https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer-part-2/))
 
@@ -104,7 +104,7 @@ While I could have stopped the article here and thanking you for following along
 dotnet new blazorwasm --help
 ```
 
-![BlazorWasmHelp](../images/2021-11-08_07.png)
+![BlazorWasmHelp](../images/screenshot-2021-11-08-18957466.png)
 
 ## deploy a specific Framework version
 With different .NET Framework versions available on the same developer station, it might be necessary to specify a specific version of .NET to use; this is possible by adding the **-f or --framework** parameter to the dotnet new blazorwasm syntax, followed by the version identifier **net5.0**, **net6.0** or **netcoreapp3.1**
@@ -120,7 +120,7 @@ dotnet new blazorwasm
 
 Once created, check the file structure of this new application folder: 
 
-![BlazorWasmNoHosted](../images/2021-11-08_08.png)
+![BlazorWasmNoHosted](../images/screenshot-2021-11-08-8a65d9df.png)
 
 As you can see, there is no separation for the Client and Server code files, but we only have the Pages and Shared folder. 
 
@@ -131,17 +131,17 @@ It might be required to integrate authentication into your Blazor Web Assembly a
 dotnet new blazorwasm -au individual
 ```
 
-![BlazorWasmAuth](../images/2021-11-08_09.png)
+![BlazorWasmAuth](../images/screenshot-2021-11-08-d7e599bd.png)
 
 The creation process is about the same as before; so let's trigger another **dotnet run** action and connect to the app from the browser: 
 
-![BlazorWasmAuth](../images/2021-11-08_10.png)
+![BlazorWasmAuth](../images/screenshot-2021-11-08-3ea7cd83.png)
 
 Nice! There is a prompt here, informing us to customize the Program.cs file, and provide the necessary Azure AD Authentication for our application identity
 
 Let's have a look at the Program.cs file, which also contains a little snippet and pointer where to add the necessary Azure AD Authentication settings and where to find additional info in the docs. 
 
-![BlazorWasmAuth](../images/2021-11-08_11.png)
+![BlazorWasmAuth](../images/screenshot-2021-11-08-2fddaf09.png)
 
 ## Running Blazor App as Progressive Web App
 I won't drill down on all the details on what a Progressive Web App is about, but in short, it allows you to turn your Web Assembly browser-based app into a "desktop"-mode application, or even using it "offline" (depending on app specifics). This is done by defining the **-p or --pwa** parameter.
@@ -154,23 +154,23 @@ dotnet new blazorwasm -p
 dotnet run
 ```
 
-![BlazorWasmAuth](../images/2021-11-08_12.png)
+![BlazorWasmAuth](../images/screenshot-2021-11-08-a8632140.png)
 
 and testing it again from the browser by connecting to https://localhost:<port>
 
 From the browser properties, navigate to **Apps** and select **Install this app** 
 
-![BlazorWasmAuth](../images/2021-11-08_13.png)
+![BlazorWasmAuth](../images/screenshot-2021-11-08-84758af1.png)
 
 and confirming the popup prompt **Install** once more. 
 
-![BlazorWasmAuth](../images/2021-11-08_14.png)
+![BlazorWasmAuth](../images/screenshot-2021-11-08-42a6acfc.png)
 
 Once installed, you can set some additional settings by clicking the **Allow** button.
 
 From here, your app will run in a separate docked window, just like any other Windows Application. You could also add a shortcut to the desktop, taskbar or start Menu. 
 
-![BlazorWasmAuth](../images/2021-11-08_15.png)
+![BlazorWasmAuth](../images/screenshot-2021-11-08-b41f44bf.png)
 
 # Summary
 
@@ -180,7 +180,8 @@ In a next Blazor-related post, I'll walk you through some fundamental layout cus
 
 For now, take care of yourself and your family, see you again soon with more Blazor-news. 
 
-[![BuyMeACoffee](../images/buy_me_a_coffee.png)](https://www.buymeacoffee.com/pdtit)
+[![BuyMeACoffee](../images/screenshot-2021-11-08-17f576e7.png)](https://www.buymeacoffee.com/pdtit)
 
 Cheers, Peter
+
 

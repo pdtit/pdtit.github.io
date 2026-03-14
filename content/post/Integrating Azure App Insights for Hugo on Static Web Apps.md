@@ -1,4 +1,4 @@
----
+﻿---
 title: "Integrating Azure App Insights for Hugo on Static Web Apps"
 date: 2022-10-30
 publishdate: 2022-10-30
@@ -18,7 +18,7 @@ Let's get this going...
 
 1. The first step involves deploying an Azure Application Insights resource from the portal.
 
-![Create App Insights](../images/2022-10-29_17-25-17.png)
+![Create App Insights](../images/screenshot-2022-10-30-2c240e2f.png)
 
 2. Enter the necessary details to get your App Insights resource deployed:
 - Subscription
@@ -28,11 +28,11 @@ Let's get this going...
 - Resource-Mode **Workspace-based**
 - Log Analytics WorkSpace: **accept the suggested one** (or select an existing one if you already have one and want to consolidate the logging information)
 
-![Deploy App Insights](../images/2022-10-29_17-26-14.png)
+![Deploy App Insights](../images/screenshot-2022-10-30-e0e59931.png)
 
 3. After a few minutes, the resource got created successfully. Navigate to the blade
 
-![App Insights](../images/2022-10-29_17-28-31.png)
+![App Insights](../images/screenshot-2022-10-30-dcbc6eb7.png)
 
 4. From the blade, notice the Instrumentation Key in the top right corner. Copy this key aside, as you need to add it into the Hugo config file.
 
@@ -81,22 +81,22 @@ replacing the sample key with the Instrumentation Key of your Azure Application 
 
 9. After only a few minutes, your App Insights data will get loaded, which can be retrieved from App Insights / Usage / section, using different views:
 
-![App Insights Statistics](../images/2022-10-29_17-47-14.png)
+![App Insights Statistics](../images/screenshot-2022-10-30-30392e19.png)
 
 For example, select **Users**, which shows the number of unique visitors over the last 24 hours (note you can drill down to the last 30min, up to any custom period in time).
 
-![App Insights Statistics](../images/2022-10-29_17-48-13.png)
+![App Insights Statistics](../images/screenshot-2022-10-30-aed6dba4.png)
 
 Click on the **View More Insights** button below the chart, which will expose even more granular information regarding the visits. For example the location, time frame, client, browser version, etc... all the way to the full sequence of blog articles visited.
 
-![App Insights Detailed Statistics](../images/2022-10-29_17-51-05.png)
+![App Insights Detailed Statistics](../images/screenshot-2022-10-30-fbb53b1d.png)
 
 In this article, I explained how to integrate Azure App Insights into a Hugo-based Azure Static Web Apps, using some JavaScript and HTML code.
 
 If you are running Hugo on Azure SWA as well, let me know!
  
 
-[![BuyMeACoffee](../images/buy_me_a_coffee.png)](https://www.buymeacoffee.com/pdtit)
+[![BuyMeACoffee](../images/screenshot-2022-10-30-17f576e7.png)](https://www.buymeacoffee.com/pdtit)
 
 Cheers!!
 

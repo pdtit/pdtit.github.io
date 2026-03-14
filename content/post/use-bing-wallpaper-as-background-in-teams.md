@@ -1,4 +1,4 @@
----
+﻿---
 title: "Use Bing Desktop Wallpapers as background images in Teams calls"
 date: 2020-05-10
 tags: ["General"]
@@ -28,7 +28,7 @@ The script could look like this:
  
  You could try and run this script manually to try it out, and see how nicely the "today's" Bing Wallpaper gets copied to the Teams folder
  
- ![Bing Wallpaper image copied](../images/20200510B_01.jpg)
+ ![Bing Wallpaper image copied](../images/screenshot-2020-05-10-493337b9.jpg)
  
 So that works! 
 
@@ -36,33 +36,33 @@ Next, to make this an automated step every morning when logging on to our machin
 
 1. From the Start Menu, search for **Task Scheduler**
 
- ![Task Scheduler](../images/20200510B_02.jpg)
+ ![Task Scheduler](../images/screenshot-2020-05-10-8d7d47a0.jpg)
 
 2. Once the console is open, **Right click** *Task Scheduler Library*, and select **"Create Task"**
 
- ![Create Task](../images/20200510B_03.jpg)
+ ![Create Task](../images/screenshot-2020-05-10-d887e99c.jpg)
  
 3. From the **"General"** tab, provide a descriptive name for your task e.g. *"Copy Bing Wallpaper to Teams"*, and keep the default setting to only use this when user is logged on.
 
- ![General tab](../images/20200510B_04.jpg)
+ ![General tab](../images/screenshot-2020-05-10-64379910.jpg)
  
 4. From the **Triggers** tab, create a new trigger, and specify the time you want to launch this script (e.g. 7am in the morning), and specify to run this **every 1 day**
 
- ![Triggers](../images/20200510B_05.jpg)
+ ![Triggers](../images/screenshot-2020-05-10-df3e85a7.jpg)
  
 5. Under the **Actions** tab, is where we define the actual script to run.Set **"Run a Program"** as Action, and browse to the location where you saved the PS1-file.
 
- ![Actions](../images/20200510B_06.jpg)
+ ![Actions](../images/screenshot-2020-05-10-3238be72.jpg)
  
 6. Nothing special to configure in the **Conditions** tab settings, although I did turn off the dependency to start this task only when connected to AC Power.
 
- ![Conditions](../images/20200510B_07.jpg)
+ ![Conditions](../images/screenshot-2020-05-10-cfaa2184.jpg)
  
 7. I didn't make any changes to the **Settings** tab, so we are good to go to **Save** our settings. 
 
 If you want to validate the task is going to run fine, you can manually launch it from the Task Scheduler console. 
 
- ![Manual Run](../images/20200510B_08.jpg)
+ ![Manual Run](../images/screenshot-2020-05-10-fa61f68e.jpg)
  
 That's it. Enjoy your new daily Bing Wallpaper in your Teams video calls! 
 

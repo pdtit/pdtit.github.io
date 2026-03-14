@@ -1,39 +1,39 @@
----
+﻿---
 title: "Keeping MCP Server config in sync between VS Code and GitHub Copilot CLI"
 date: 2026-02-26
 tags: ["GitHub Copilot", ".NET Development"]
 draft: false
 ---
 
-![Keeping MCP config in sync between VS Code and Copilot CLI](../images/sync-mcp-vscode-copilot.png)
+![Keeping MCP config in sync between VS Code and Copilot CLI](../images/screenshot-2026-02-26-0bb14fbf.png)
 
 *Syncing MCP config from VS Code to Copilot CLI in a few simple steps.*
 
 Hey awesome people,
 
-Over the last weeks, I’ve been jumping between VS Code and Copilot CLI a lot more than usual. One thing kept annoying me: my MCP setup was perfect in VS Code, but I had to keep tweaking pieces again in CLI.
+Over the last weeks, Iâ€™ve been jumping between VS Code and Copilot CLI a lot more than usual. One thing kept annoying me: my MCP setup was perfect in VS Code, but I had to keep tweaking pieces again in CLI.
 
 If that sounds familiar, good news: if you already have MCP servers working in VS Code, you can reuse most of that setup in GitHub Copilot CLI.
 
-In this post, I’ll show you the fastest way to 'keep both in sync' from VS Code `mcp.json` to Copilot CLI `mcp-config.json`, with the necessary commands for both PowerShell and Bash.
+In this post, Iâ€™ll show you the fastest way to 'keep both in sync' from VS Code `mcp.json` to Copilot CLI `mcp-config.json`, with the necessary commands for both PowerShell and Bash.
 
 ## Why this matters
 
-When you move between VS Code and terminal workflows, you really don’t want to rebuild MCP config from scratch every time.
+When you move between VS Code and terminal workflows, you really donâ€™t want to rebuild MCP config from scratch every time.
 
-I made that mistake once (probably multiple times, but didn't want to exagerate too much...), and it was exactly as fun as it sounds: tiny syntax differences, one invalid server name, one missing env var, and suddenly you’re troubleshooting config instead of actually building. (Although I can tell you that this would be a perfect use case for GenAI GitHub Copilot, lol)
+I made that mistake once (probably multiple times, but didn't want to exagerate too much...), and it was exactly as fun as it sounds: tiny syntax differences, one invalid server name, one missing env var, and suddenly youâ€™re troubleshooting config instead of actually building. (Although I can tell you that this would be a perfect use case for GenAI GitHub Copilot, lol)
 
 This guide helps you:
 
 - keep one consistent MCP setup style (VSCode MCP Config as the 'main' source)
 - avoid common config parsing errors in Copilot CLI
-- 'keep-in-sync' in a few minutes, even if you’re new to MCP
+- 'keep-in-sync' in a few minutes, even if youâ€™re new to MCP
 
 ## MCP in plain English
 
 MCP (Model Context Protocol) lets AI tools connect to external capabilities.
 
-Think of MCP servers as “skill plugins” for your assistant, like:
+Think of MCP servers as â€œskill pluginsâ€ for your assistant, like:
 
 - documentation search
 - GitHub actions (issues, PRs, code search)
@@ -74,7 +74,7 @@ The two formats are very close, but not identical:
    - VS Code often uses `${env:VAR}` and `${input:name}`
    - Copilot CLI expects `$VAR` and supports explicit `env` mappings
 
-None of this is hard, but it’s just different enough to break things when done manually in a hurry.
+None of this is hard, but itâ€™s just different enough to break things when done manually in a hurry.
 
 ## Fast path (recommended): automate conversion
 
@@ -188,7 +188,7 @@ After conversion, open Copilot CLI and run:
 
 If your config is valid, your servers should load without parsing errors.
 
-If they don’t show up right away, don’t panic. In most cases it’s either naming rules or env vars (both covered below).
+If they donâ€™t show up right away, donâ€™t panic. In most cases itâ€™s either naming rules or env vars (both covered below).
 
 ## Required environment variables (for the sample config)
 
@@ -265,8 +265,9 @@ While one could assume that the MCP Configuration should be standardized across 
 
 If this helped you, feel free to share it with your team so everyone can standardize MCP config faster. And maybe give a little GitHub Star on the repo, so I know you like it ;).
 
-[![BuyMeACoffee](../images/buy_me_a_coffee.png)](https://www.buymeacoffee.com/pdtit)
+[![BuyMeACoffee](../images/screenshot-2026-02-26-17f576e7.png)](https://www.buymeacoffee.com/pdtit)
 
 Cheers!!
 
 /Peter
+

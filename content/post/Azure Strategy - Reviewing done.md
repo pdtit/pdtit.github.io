@@ -1,4 +1,4 @@
----
+﻿---
 title: "Another Tech Reviewing done: Azure Strategy and Implementation Guide - 4th edition"
 date: 2021-06-18
 tags: ["Azure", "Books"]
@@ -13,7 +13,7 @@ Instead, I referred the editor to a few other Azure experts and authors I knew, 
 
 So here it is, the **"Azure Strategy and Implementation Guide", 4th edition**
 
-![Azure_Strategy_Implementation_Guide](../images/ebook_Azure_Strategy_and_Implementation_Guide.png) 
+![Azure_Strategy_Implementation_Guide](../images/screenshot-2021-06-18-1c43e9c8.png) 
 
 Don't let the reference to "fourth edition" fool you, there has been a **massive rewrite** of several chapters, with fresh new content, more technical information and new chapters were added as well. 
 
@@ -75,6 +75,6 @@ Don't hesitate reaching out in case you should have any questions on this book o
 
 Stay safe and healthy you all! 
 
-If you enjoyed reading this article or any other post here, feel free to share your appreciation [![BuyMeACoffee](../images/buy_me_a_coffee.png)](https://www.buymeacoffee.com/pdtit)
+If you enjoyed reading this article or any other post here, feel free to share your appreciation [![BuyMeACoffee](../images/screenshot-2021-06-18-17f576e7.png)](https://www.buymeacoffee.com/pdtit)
 
 /Peter

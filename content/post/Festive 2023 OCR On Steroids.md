@@ -1,4 +1,4 @@
----
+﻿---
 title: "Festive Tech Calendar - Azure AI - OCR on Steroids"
 date: 2023-12-23
 publishdate: 2023-12-23
@@ -11,7 +11,7 @@ draft: false
  
   [Azure Static Storage Sites](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-static-website-how-to?tabs=azure-portal) 
 
-![Festive Tech Calendar 2023 - OCR on Steroids image](../images/festive_2023.jpg)
+![Festive Tech Calendar 2023 - OCR on Steroids image](../images/screenshot-2023-12-23-4f833e5c.jpg)
 
 # Welcome to this year's Festive Tech Calendar!! 
 
@@ -27,7 +27,7 @@ By **reading through this post**, and **following the demo-steps**, you can buil
 
 To embrace our Azure AI and Microsoft Copilot even more myself, I actually used it to create (parts) of this blog post. What a wonderful world we live in today! 
 
-![Office 365 Copilot](../images/ocr_on_steroids_copilot.png)
+![Office 365 Copilot](../images/screenshot-2023-12-23-2a410c72.png)
 
 About 2 weeks ago, I presented a session on the same topic for the **[GlobalAI Community Conference](https://globalai.community/conference)**, led by **[Sjoukje Zaal](https://twitter.com/SjoukjeZaal), [Amy Kate Boyd](https://twitter.com/AmyKateNicho) and [Henk Boelman](https://twitter.com/hboelman)**, for which the video is available [On Youtube](https://www.youtube.com/watch?v=G860AXhO9lg)
 
@@ -35,28 +35,28 @@ So instead of creating a similar video, I worked with Azure AI, Microsoft Copilo
 
 In this article, I will use the following flow:
 
-* I’ll start with setting the scene on Azure AI, using Computer Vision for OCR
+* Iâ€™ll start with setting the scene on Azure AI, using Computer Vision for OCR
 
 * Followed by the more advanced scenario, using Intelligent Document Processing or IDP
 
-* Last, I’ll show you how you can train the IDP using your own custom models
+* Last, Iâ€™ll show you how you can train the IDP using your own custom models
 
-* And I hope to do all this using several demos… which you can go through in your own Azure subscriptions
+* And I hope to do all this using several demosâ€¦ which you can go through in your own Azure subscriptions
 
 # setting the scene on Azure AI, using Computer Vision for OCR
 
 Computer Vision allows for different use cases, of which the most important ones are:
 
-- **Image Analysis** – typically used to detect objects or items
-- **Spatial Analysis** – is what you would use to detect people, like video cameras in a store
-- **OCR or Optical Character Recognition** – allows you to recognize text, both printed and handwritten
-- **Facial Recognition** – recognize human identity, without exposing privacy details
+- **Image Analysis** â€“ typically used to detect objects or items
+- **Spatial Analysis** â€“ is what you would use to detect people, like video cameras in a store
+- **OCR or Optical Character Recognition** â€“ allows you to recognize text, both printed and handwritten
+- **Facial Recognition** â€“ recognize human identity, without exposing privacy details
 
-![Computer Vision](../images/azureai_ocr_Slide6.PNG)
+![Computer Vision](../images/screenshot-2023-12-23-0d183516.png)
 
 ## Deploying Azure AI - Computer Vision
 
-If you don’t already have one in your subscription, you’ll need to provision an Azure AI Services resource. If you don't have an Azure subscription yet, you can sign up for a **[Free subscription]**(https://azure.microsoft.com/en-us/free).
+If you donâ€™t already have one in your subscription, youâ€™ll need to provision an Azure AI Services resource. If you don't have an Azure subscription yet, you can sign up for a **[Free subscription]**(https://azure.microsoft.com/en-us/free).
 
 1. Open the Azure portal at https://portal.azure.com, and sign in using the Microsoft account associated with your Azure subscription.
 2. In the top search bar, search for **Azure AI services**, select Azure AI Services, and create an Azure AI services **multi-service account resource** with the following settings:
@@ -72,30 +72,30 @@ If you don’t already have one in your subscription, you’ll need to provision
 6. From the **ComputerVision** tab within **Azure AI Services**, create a new Computer Vision Resource, keeping most default settings as-is. 
 7. Wait for deployment to complete. From the **Overview** section of Computer Vision, notice the **Vision Studio** button. 
 
-![Azure AI Computer Vision](../images/azureai_ocr_ComputerVision.png)
+![Azure AI Computer Vision](../images/screenshot-2023-12-23-cdcd7414.png)
 
 8. **Click** the **Open Vision Studio** button to navigate to Azure AI Compute Vision Studio. 
 9. From here, select **Optical Character Recognition** , and select **Extract text from images**
 10. Here, you can test the functionality of how text is getting recognized, using the sample images provided, or you can upload your own images as well. I would recommend you to try with handwritten notes as well, especially when your handwriting skills are as great as mine...
 
-![Azure AI Computer Vision Recognizing handwriting](../images/azureai_ocr_handwrittennotes.png)
+![Azure AI Computer Vision Recognizing handwriting](../images/screenshot-2023-12-23-9fa0ac56.png)
 
 ## How does OCR recognition actually work?
 
-When we talk about Azure AI, it means using APIs, which allow you to bring in a source into the AI engine, from there processes a given scenario – like read text in the case of OCR, and from there we call the result
+When we talk about Azure AI, it means using APIs, which allow you to bring in a source into the AI engine, from there processes a given scenario â€“ like read text in the case of OCR, and from there we call the result
 
-Looking at this example, and I’ll show you in a quick demo, each item of text gets moved into a box/a boundary, which gets translated into understandable characters -> forming words
+Looking at this example, and Iâ€™ll show you in a quick demo, each item of text gets moved into a box/a boundary, which gets translated into understandable characters -> forming words
 
 **Step 1** involves **creating a requestID**
 **Step 2** means **reading out the results, for the specific requestID**
 
 1. Going back to the **Vision Studio** in the Azure Portal, where you uploaded or selected an image, and saw the outcome of how text gets recognized, select **JSON**.
 
-![Azure AI Computer Vision Boundbox](../images/azureai_ocr_boundbox.png)
+![Azure AI Computer Vision Boundbox](../images/screenshot-2023-12-23-ff48c684.png)
 
 2. For each character or set of characters recognized as text, different JSON properties and values are getting created. These identify the boundaries of the text on the image. 
 
-![Azure AI Computer Vision Boundbox](../images/azureai_ocr_Slide8.PNG)
+![Azure AI Computer Vision Boundbox](../images/screenshot-2023-12-23-10521604.png)
 
 3. This is the core work of the **Read API**. So let's have a more detailed look into that one for a second. The easiest I found to show this, is spinning up a **Azure Cognitive Service Vision** Docker Container. 
 
@@ -109,11 +109,11 @@ Replacing the **Billing** and **ApiKey** with the correct values from the Comput
 
 5. With the Docker container running, open the browser to **http://localhost:5050/status**, which confirms the ReadAPI service is ready, and your API Key is valid
 
-![Azure AI Computer Vision Docker Ready](../images/azureai_ocr_docker_ready.png)
+![Azure AI Computer Vision Docker Ready](../images/screenshot-2023-12-23-b672b551.png)
 
 6. Next, connecto to **http://localhost:5050/swagger** to interact with the different API endpoints of the Language Service running within the container
 
-![Azure AI Computer Vision Read API Swagger](../images/azureai_ocr_swagger.png)
+![Azure AI Computer Vision Read API Swagger](../images/screenshot-2023-12-23-da29ca8d.png)
 
 7. From the swagger API interface, select **POST** in the **Analyze** section, and click **Try it out**.
 8. Scroll down a bit, and in the **Request body** section, provide a URL to an actual image. For example, you can use the sample image below, which is the same one available in the Vision Studio portal, showing the nutrition facts about some food item.
@@ -124,22 +124,22 @@ Replacing the **Billing** and **ApiKey** with the correct values from the Comput
 }
 ```
 
-![Azure AI Computer Vision Read API Request Body](../images/azureai_ocr_readapi_requestbody.png)
+![Azure AI Computer Vision Read API Request Body](../images/screenshot-2023-12-23-a92ee081.png)
 
 9. Click the **Execute** button. 
 10. This sends an API request and returns an analyze request ID from this URL: http://localhost:5000/vision/v3.2/read/analyze
 
-![Azure AI Computer Vision Read API Response](../images/azureai_ocr_readapi_response.png)
+![Azure AI Computer Vision Read API Response](../images/screenshot-2023-12-23-feee6d2d.png)
 
 11. Copy the request id, and open it in the browser, e.g. http://localhost:5050/vision/v3.2/read/analyzeResults/339da9a7-aa6b-4c81-a5d0-5840448fdfaf
 
-12. This brings up the full JSON structure of the analyzed text, including text snippets, bounding boxes,…
+12. This brings up the full JSON structure of the analyzed text, including text snippets, bounding boxes,â€¦
 
-![Azure AI Computer Vision Read API JSON Response](../images/azureai_ocr_jsonresponse.png)
+![Azure AI Computer Vision Read API JSON Response](../images/screenshot-2023-12-23-5d8280b5.png)
 
-While quite impressive if you ask me, we had OCR technology doing almost the same, for the last 50-60 years already. Anyone remembers copiers and scanners, saving to a PDF document? Basically based on the same… 
+While quite impressive if you ask me, we had OCR technology doing almost the same, for the last 50-60 years already. Anyone remembers copiers and scanners, saving to a PDF document? Basically based on the sameâ€¦ 
 
-So let’s focus a bit more on the next level of OCR, using Intelligent Document Processing
+So letâ€™s focus a bit more on the next level of OCR, using Intelligent Document Processing
 
 # Using Intelligent Document Processing or IDP
 
@@ -151,38 +151,38 @@ Optical Character Recognition (OCR) for documents is optimized for large text-he
 
 1. From the Azure AI Portal, navigate to **Document Intelligence**, and create a new resource within. Default settings should be ok as-is.
 
-![Azure AI Document Intelligence](../images/azureai_ocr_docintel.png)
+![Azure AI Document Intelligence](../images/screenshot-2023-12-23-c3396348.png)
 
 2. Once deployed, from the **Overview** section, notice the **Document Intelligence Studio** option, and open it.
 
-![Azure AI Document Intelligence Studio](../images/azureai_ocr_docintelstudio.png)
+![Azure AI Document Intelligence Studio](../images/screenshot-2023-12-23-6c02cf38.png)
 
-In the previous examples, the content was coming from an image-file type (jpeg,…). Where sometimes, we have more specific data types, such as forms, receipts, invoices, passport,…
+In the previous examples, the content was coming from an image-file type (jpeg,â€¦). Where sometimes, we have more specific data types, such as forms, receipts, invoices, passport,â€¦
 
-This is where the compute vision text analyzer is not finetuned enough. That’s where we will use the form recognizer service, now known as document intelligence service.
+This is where the compute vision text analyzer is not finetuned enough. Thatâ€™s where we will use the form recognizer service, now known as document intelligence service.
 
-Azure AI Document Intelligence is a cloud-based Azure AI service that enables you to build intelligent document processing solutions. Massive amounts of data, spanning a wide variety of data types, are stored in forms and documents. Document Intelligence enables you to effectively manage the velocity at which data is collected and processed and is key to improved operations, informed data-driven decisions, and enlightened innovation.
+Azure AI Document Intelligence is a cloud-basedÂ Azure AI serviceÂ that enables you to build intelligent document processing solutions. Massive amounts of data, spanning a wide variety of data types, are stored in forms and documents. Document Intelligence enables you to effectively manage the velocity at which data is collected and processed and is key to improved operations, informed data-driven decisions, and enlightened innovation.
 
 Document Intelligence recognizes 3 different models:
 - **Document Analysis** - enable text extraction from forms and documents and return structured business-ready content ready for your organization's action, use, or progress.
 
-![Azure AI Document Intelligence Studio](../images/azureai_ocr_Slide12.PNG)
+![Azure AI Document Intelligence Studio](../images/screenshot-2023-12-23-ec0dc870.png)
 
 - **Prebuilt models** - Prebuilt models enable you to add intelligent document processing to your apps and flows without having to train and build your own models.
 
-![Azure AI Document Prebuilt Models](../images/azureai_ocr_prebuiltmodels.png)
+![Azure AI Document Prebuilt Models](../images/screenshot-2023-12-23-3a6aafe7.png)
 
 1. From the Document Intelligence Studio, select a prebuilt model type of choice. I'll use **Invoice** but the approach is the same for the other ones.
 
-![Azure AI Document Prebuilt Invoice Models](../images/azureai_ocr_invoice.png)
+![Azure AI Document Prebuilt Invoice Models](../images/screenshot-2023-12-23-4daf4b79.png)
 
 2. Click **Run Analysis**
 
-![Azure AI Document Prebuilt Invoice Analysis](../images/azureai_ocr_invoice_analysis.png)
+![Azure AI Document Prebuilt Invoice Analysis](../images/screenshot-2023-12-23-8b5e58e2.png)
 
 3. As you can see, the different text items from the document (Invoice) are **getting identified** and **tagged with a label**. Similar to before, the technical output is stored in a **JSON file**.
 
-![Azure AI Document Prebuilt Invoice Analysis JSON output](../images/azureai_ocr_invoice_analysis_json.png)
+![Azure AI Document Prebuilt Invoice Analysis JSON output](../images/screenshot-2023-12-23-f50cd78f.png)
 
 # How to train the IDP using your own custom models
 
@@ -190,7 +190,7 @@ Document Intelligence recognizes 3 different models:
 
 Document Intelligence uses advanced machine learning technology to identify documents, detect and extract information from forms and documents, and return the extracted data in a structured JSON output. With Document Intelligence, you can use document analysis models, pre-built/pre-trained, or your trained standalone custom models.
 
-![Azure AI Document Intelligence - Custom Model](../images/azureai_ocr_docintel_custom.png)
+![Azure AI Document Intelligence - Custom Model](../images/screenshot-2023-12-23-9adabb58.png)
 
 Custom models now include **custom classification models** for scenarios where you need to identify the document type prior to invoking the extraction model. Classifier models are available starting with the 2023-07-31 (GA) API. A classification model can be paired with a custom extraction model to analyze and extract fields from forms and documents specific to your business to create a document processing solution. Standalone custom extraction models can be combined to create composed models.
 
@@ -212,13 +212,13 @@ If the language of your documents and extraction scenarios supports custom neura
 
 2. From here, create **a new project**
 
-![Azure AI Document Custom Model](../images/azureai_ocr_custommodelproject.png)
+![Azure AI Document Custom Model](../images/screenshot-2023-12-23-a21a0a69.png)
 
 3. You need to specify where your document model sources (e.g. I am using my electricity bills, but could be receipts, delivery notes, business forms,...) can be found in Azure Blob Storage, but apart from that, all settings should be clear I hope. 
 
 4. Open the **project** you created, from where it allows you to **upload sample files**. **Upload 5-10 identical documents, as that is what is required to train the model**
 
-![Azure AI Document Custom Label Data](../images/azureai_ocr_custom_labeldata.png)
+![Azure AI Document Custom Label Data](../images/screenshot-2023-12-23-03c382bd.png)
 
 5. You can choose to use the **Auto Label** feature, or **Draw Region** to establish the different labels for the different text sections of your documents. 
 
@@ -232,11 +232,11 @@ In this article, I wanted to introduce you to the exciting world of Azure AI, an
 
 Thanks to the Azure Festive Tech Calendar team for having me! Take care and Happy Holidays!
 
-![Thank you ](../images/azureai_ocr_Slide20.PNG)
+![Thank you ](../images/screenshot-2023-12-23-591067f1.png)
 
 
 
-[![BuyMeACoffee](../images/buy_me_a_coffee.png)](https://www.buymeacoffee.com/pdtit)
+[![BuyMeACoffee](../images/screenshot-2023-12-23-17f576e7.png)](https://www.buymeacoffee.com/pdtit)
 
 Cheers!!
 

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Upgrading an AKS cluster in 20 min"
 date: 2021-06-18
 tags: ["Azure", "Containers"]
@@ -9,7 +9,7 @@ Ever since I joined Microsoft (Sept 2019) and started working in the Azure Techn
 
 Knowing this AKS cluster got deployed about 20 months back, it also meant my setup was getting *a little bit out-of-date*. Interesting enough, it ran for almost 500 days (I considered waiting to publish this article to celebrate its anniversary...)
 
-![AKS Running 500 days](../images/2021-06-17_01.png)
+![AKS Running 500 days](../images/screenshot-2021-06-18-c7047e4f.png)
 
 ## Version strategy
 
@@ -25,7 +25,7 @@ In short, the Kubernetes community released minor versions about every 3 months,
 
 What this means, is that you see a list of "versions" available in Azure, for both new and existing deployments of AKS environments. At the time of deploying my cluster, it seems the active version was 1.7.7 (I could pull this up from my AKS Resource Group / Deployment history)
 
-![AKS deployed version](../images/2021-06-17_03.png)
+![AKS deployed version](../images/screenshot-2021-06-18-880b8d37.png)
 
 I assume I picked the [default] version at the time of deploying, which would mean there were 3 minor versions before, and 3 minor versions ahead. 
 
@@ -45,17 +45,17 @@ I used the portal for these steps, as they are **really** easy to perform, but k
 
 2. Select the version number; this brings you to the upgrade blade
 
-![AKS deployed version](../images/2021-06-17_02.png)
+![AKS deployed version](../images/screenshot-2021-06-18-509dc046.png)
 
 3. Select the **Upgrade Version** and choose the version of choice. (In my case, the highest was 1.19.11). I also selected to upgrade **control plane + all node pools**
 
 4. **Confirm** and wait for the upgrade process to kick off and complete successfully. This took about **6 minutes** in my case.
 
-![AKS deployed version](../images/2021-06-17_04.png)
+![AKS deployed version](../images/screenshot-2021-06-18-48d4c2b6.png)
 
 5. Once this version 1.19.11 upgrade was done, I moved on with repeating the same steps, but this time selecting **version 1.20.7**
 
-![AKS deployed version](../images/2021-06-17_05.png)
+![AKS deployed version](../images/screenshot-2021-06-18-e6841f23.png)
 
 6. This process took another **7-8 minutes** on my end.
 
@@ -66,6 +66,6 @@ In this article, I wanted to share some insights on the Kubernetes, and more spe
 
 Got any questions, don't hesitate reaching out! peter@pdtit.be or @pdtit on Twitter :)
 
-[![BuyMeACoffee](../images/buy_me_a_coffee.png)](https://www.buymeacoffee.com/pdtit)
+[![BuyMeACoffee](../images/screenshot-2021-06-18-17f576e7.png)](https://www.buymeacoffee.com/pdtit)
 
 /Peter

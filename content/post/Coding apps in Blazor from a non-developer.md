@@ -1,4 +1,4 @@
----
+﻿---
 title: "Coding Apps in Blazor from a non-developer standpoint"
 date: 2021-09-06
 tags: [".NET Development"]
@@ -27,13 +27,13 @@ Within the DotNet (https://dotnet.microsoft.com/learn/dotnet/what-is-dotnet) fam
 - **DotNet Framework**, supporting full Windows applications, and websites
 - **Xamarin/Mono**, which is a DotNet implementation for mobile apps
 
-![DotNet](../images/2021-09-06_01.png)
+![DotNet](../images/screenshot-2021-09-06-3f9f9bce.png)
 
 # How I ended up with Blazor
 If I was going to develop "something", it would probably be a console app (easy to demo) or a web application (perfect for my Azure training deliveries and I can run it in Azure and Containers -> bonus)
 From there, my mind was set to start developing Web Applications, and more specifically by using **Blazor** (https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor). 
 
-![Blazor](../images/2021-09-06_02.png)
+![Blazor](../images/screenshot-2021-09-06-aa92775a.png)
 
 Over Christmas holidays, I started building my library of learning material, which consisted of Microsoft Docs, Youtube videos and other community sessions. (I'll cover some of these in another article later)
 
@@ -41,7 +41,7 @@ I also started working on building an app from scratch, which would make my life
 
 I managed to build a "useable" web application over the course of a few months, spending about 10 hours a week; As I approached 3000 followers on Twitter recently, I decided to come up with a series of posts on Blazor, explaining what I learned, where I struggled (and still am), to help others who are like myself, starting with no dev experience whatsoever. 
 
-![3000 Twitter Followers](../images/2021-09-06_03.png)
+![3000 Twitter Followers](../images/screenshot-2021-09-06-ac84ecbe.png)
 
 
 # What is Blazor
@@ -85,7 +85,7 @@ next, there is a bit of HTML code for the actual layout of the page, and last, i
 
 The way this page looks in the browser is like this:
 
-![Blazor sample](../images/2021-09-06_04.png)
+![Blazor sample](../images/screenshot-2021-09-06-9b0093b0.png)
 
 # What am I going to do from here?
 As promised, my idea is to share as much of what I learned from Blazor in the last few months, and taking you through a process to start learning to build your own Blazor applications. The following will be covered over a series of articles in the next coming weeks:
@@ -105,7 +105,8 @@ Btw, if you are interested in developing with Blazor, you can [hire a Blazor dev
 
 Talk to you soon,
 
-[![BuyMeACoffee](../images/buy_me_a_coffee.png)](https://www.buymeacoffee.com/pdtit)
+[![BuyMeACoffee](../images/screenshot-2021-09-06-17f576e7.png)](https://www.buymeacoffee.com/pdtit)
 
 Cheers, Peter
+
 

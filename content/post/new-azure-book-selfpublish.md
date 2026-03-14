@@ -25,7 +25,7 @@ The benefit for you as a reader is that you will get continuous updates. Whether
 
  
 
-![Cover_Efficiently_Migrating_to_Azure](../images/Efficiently_migrating_cover.png)
+![Cover_Efficiently_Migrating_to_Azure](../images/screenshot-2020-01-03-f51c8ea1.png)
 
 As always, I hope this book maps with your interests and helps in your journey to Azure. Do not hesitate reaching out or sharing your feedback,
 
@@ -95,3 +95,4 @@ Looking forward to your feedback,
 
 best regards, Peter
 /Peter
+

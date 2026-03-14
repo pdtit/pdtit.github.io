@@ -1,4 +1,4 @@
----
+﻿---
 title: "Build an Azure AI chatbot using your own data from blob storage "
 date: 2023-07-17
 publishdate: 2023-07-17
@@ -37,7 +37,7 @@ With the prerequisites validated, you are ready to move on with the base setup o
 
 1. Open [Azure AI Studio](https://oai.azure.com/) from your browser, using your Azure admin account credentials. 
 
-![Azure OpenAI Studio](../images/2023-08-14_20-07-57.png)
+![Azure OpenAI Studio](../images/screenshot-2023-07-17-ddfb8eee.png)
 
 2. Select your **Azure Subscription**, and click **Create Resource**
 
@@ -48,30 +48,30 @@ With the prerequisites validated, you are ready to move on with the base setup o
 - Unique Name for the Azure OpenAI Resource
 - Pricing Tier: **Select Standard S0** (The Free Basic won't allow us to use the necessary Cognitive Search later on)
 
-![Azure OpenAI Resource](../images/2023-08-14_20-09-06.png)
+![Azure OpenAI Resource](../images/screenshot-2023-07-17-9a216e8d.png)
 
 4. Wait for the Azure OpenAI Resource to get deployed, and navigate to the resource once its ready.
 
-![Azure OpenAI Resource](../images/2023-08-14_20-12-14.png)
+![Azure OpenAI Resource](../images/screenshot-2023-07-17-9435dc38.png)
 
 5. Navigate back to [Azure OpenAI Studio](https://oai.azure.com/), which will allow you to select your Azure AI Resource created earlier.
 
-![Azure OpenAI Studio](../images/2023-08-14_20-12-39.png)
+![Azure OpenAI Studio](../images/screenshot-2023-07-17-23c291bb.png)
 
 6. From Azure OpenAI Studio, select **Chat Playground** from the **Get Started** options.
 
-![Azure OpenAI Chat Playground](../images/2023-08-14_20-13-16.png)
+![Azure OpenAI Chat Playground](../images/screenshot-2023-07-17-6337eff8.png)
 
 7. Within the **Chat Playground**, click the **Create new deployment** button to set up a new Chat Plaground.
 
-![Azure OpenAI Chat Playground](../images/2023-08-14_20-13-36.png)
+![Azure OpenAI Chat Playground](../images/screenshot-2023-07-17-dca9553e.png)
 
 8. In the next step, you will create the AI model needed for the Cognitive Search later on. Complete the necessary settings:
 - Model: **gpt-35-turbo**
 - Model Version: **Auto-update-to-default**
 - Deployment Name: descriptive name of what the model is about
 
-![Deploy Model](../images/2023-08-14_20-14-47.png)
+![Deploy Model](../images/screenshot-2023-07-17-e194d150.png)
 
 This completes the first part of the steps, where you deployed Azure AI Chat Playground using Azure AI Studio. In the next step, you add the data source which will be used for the chat content.
 
@@ -79,14 +79,14 @@ This completes the first part of the steps, where you deployed Azure AI Chat Pla
 
 1. With the model created, we can move on to the next step, adding data. From the **Chat Playground**, select **Add your data (preview)**
 
-![Chat Playground add your data](../images/2023-08-14_20-15-06.png)
+![Chat Playground add your data](../images/screenshot-2023-07-17-7d1a86c6.png)
 
 2. From the **Add Data** blade, complete the necessary settings and parameters:
 - Azure Subscription
 - Azure Blob Storage Account
 - Azure Blob Storage Account container
 
-![Chat Playground add your data](../images/2023-08-14_20-22-04.png)
+![Chat Playground add your data](../images/screenshot-2023-07-17-01070d5a.png)
 
 3. Note how it asks for an Azure Cognitive Search resource as well; this is to be able to read the actual content of the blobs, such as Word documents, PDF files, etc... 
 
@@ -100,19 +100,19 @@ This completes the first part of the steps, where you deployed Azure AI Chat Pla
 - Pricing Tier: **Basic** (since the free service won't be recognized by Chat Playground)
 - Scale / Replica: 1/1
 
-![Create Cognitive search resource](../images/2023-08-14_20-28-37.png)
+![Create Cognitive search resource](../images/screenshot-2023-07-17-d179c90c.png)
 
 6. Once the Search Service got created, navigate back to the Chat Playground, and repeat the steps to **add your own data**. This time, the Cognitive Search will be recognized as service in the **Add Data Source** step.
 
-![Chat Playground add your own data](../images/2023-08-14_20-54-19.png)
+![Chat Playground add your own data](../images/screenshot-2023-07-17-6a33f151.png)
 
 7. Click **Next**, and upload a few sample files in the **Upload Files** step.
 
-![Chat Playground upload files data](../images/2023-08-14_20-55-34.png)
+![Chat Playground upload files data](../images/screenshot-2023-07-17-8b05f521.png)
 
 8. Continue the **add data source** wizard steps, and completing with clicking **Save and Close**.
 
-![Chat Playground upload files data](../images/2023-08-14_20-56-25.png)
+![Chat Playground upload files data](../images/screenshot-2023-07-17-d64210cb.png)
 
 9. From the Chat Playground window, notice how **your data is getting added**. This process should only take a few minutes.
 
@@ -126,13 +126,13 @@ Note: in my scenario, I was using demoguides, so wanted to check back if the cha
 
 Based on the question, the chat bot responded with an **accurate answer**, providing a brief description of the actual demo steps from the guide, as well as a link to the actual source markdown-file in Blob Storage.
 
-![Chat Playground chat session](../images/2023-08-14_21-30-22.png)
+![Chat Playground chat session](../images/screenshot-2023-07-17-37f398b9.png)
 
 2. As I only have 1 single guide with CosmosDB, let's test how it handles the question, if there are more results possible. I asked a somewhat broader question, using **retail application** as keyword (Note: our demo scenarios involve a retail application as example, which exists in a Virtual Machine architecture, a Platform as a Service, Container Instance, Kubernetes Service and Azure Container Apps architecture). So based on that, the expectation is to get **multiple results** back.
 
 Woohoo!! The Chat bot found the **different sources** and provided a **nice summary overview**.
 
-![Chat Playground chat session](../images/2023-08-14_21-30-22.png)
+![Chat Playground chat session](../images/screenshot-2023-07-17-37f398b9.png)
 
 This was more than convincing to me how powerful Azure AI is. While the answers might not have been 100% accurate - close to 95% I guess :), know we just deployed the model without any fine-tuning, nor wait a long time to actually build up an accurate index of the blob source content. 
 
@@ -140,7 +140,7 @@ This was more than convincing to me how powerful Azure AI is. While the answers 
 
 From the **Chat Playground** blade, navigate to **Deploy to** in the upper right corner. and select **Azure App Service**.
 
-![Deploy Chat Bot to Azure App Service](../images/2023-08-14_21-42-43.png)
+![Deploy Chat Bot to Azure App Service](../images/screenshot-2023-07-17-29de58ea.png)
 
 4. Complete the necessary parameters for the **Azure App Service** to be created:
 - App Service Name
@@ -149,17 +149,17 @@ From the **Chat Playground** blade, navigate to **Deploy to** in the upper right
 - Location
 - Pricing Plan (S0 or S1 would be OK)
 
-![Deploy Chat Bot to Azure App Service](../images/2023-08-14_21-43-28.png)
+![Deploy Chat Bot to Azure App Service](../images/screenshot-2023-07-17-afa0d73e.png)
 
 5. After waiting about 5 minutes (although the wizard set it could take up to 10min...), it asked me for my **Azure AD credentials** to authenticate. (**Note: out of the publishing wizard, a new App Registration and Service Principal gets created, granting only the admin user access. In a real-life scenario, you would need to update the Authentication settings on the App Registration to allow for a broader Identity scope)
 
 6. After successful authentication, the Chat Bot is ready to be used:
 
-![Deployed Chat Bot as Azure App Service](../images/2023-08-14_21-59-31.png)
+![Deployed Chat Bot as Azure App Service](../images/screenshot-2023-07-17-7219ed8d.png)
 
 7. As a final test, I wanted to see how the Chat Bot responded if it didn't find the correct answer. (This was partly to rule out the ChatGPT experience I had before, where the AI engine invents its own answers, but still explaining it in such a way it feels as the correct answer)
 
-![Deployed Chat Bot as Azure App Service](../images/2023-08-14_22-00-05.png)
+![Deployed Chat Bot as Azure App Service](../images/screenshot-2023-07-17-669866e4.png)
 
 As you can see, Azure AI handles it a bit more 'honest', and admitting it couldn't help providing an accurate answer.
 
@@ -169,7 +169,7 @@ Azure AI is an amazing cloud service, with unseen capabilities. With this articl
 
 I'm confident Azure AI will become a big part of our day-to-day skillset. So expect more similar blog posts in the near future how I'm continuing my journey of learning about AI and get ready for the future.
 
-[![BuyMeACoffee](../images/buy_me_a_coffee.png)](https://www.buymeacoffee.com/pdtit)
+[![BuyMeACoffee](../images/screenshot-2023-07-17-17f576e7.png)](https://www.buymeacoffee.com/pdtit)
 
 Cheers!!
 

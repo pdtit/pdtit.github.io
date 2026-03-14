@@ -1,4 +1,4 @@
----
+﻿---
 title: "Packt Book Review - Azure for Business Decision Makers"
 date: 2023-10-22
 publishdate: 2023-10-22
@@ -8,14 +8,14 @@ draft: false
 
 In this post, I want to share my review of another Azure book I read recently, **Azure for Decision Makers** this time from [Jack Lee](https://twitter.com/jleeconsulting), Jason Milgram and [David Rendon](https://twitter.com/daverndn) published by [Packt Publishing](https://www.packtpub.com/product/azure-for-decision-makers/9781837639915) and available on [Amazon](https://www.amazon.com/Azure-Decision-Makers-essential-business-ebook/dp/B0CGRMMJ6Y/) as well as other e-book subscription platforms.
 
-![Book Cover](../images/2023-10-22_10-40-06.png)
+![Book Cover](../images/screenshot-2023-10-22-10b044c9.png)
 
 ## About the book
 Azure for Decision Makers provides a comprehensive overview of the latest updates in cloud security, hybrid cloud and multi-cloud solutions, and cloud migration in Azure. This book is a must-have introduction to the Microsoft Azure cloud platform, demonstrating the substantial scope of digital transformation and innovation that can be achieved with Azure's capabilities. 
 
-The first set of chapters will get you up to speed with Microsoft Azure's evolution before showing you how to integrate it into your existing IT infrastructure. Next, you’ll gain practical insights into application migration and modernization, focusing mainly on migration planning, implementation, and best practices. Throughout the book, you’ll get the information you need to spearhead a smooth migration and modernization process, detailing Azure infrastructure as a service (IaaS) deployment, infrastructure management, and key application architectures. 
+The first set of chapters will get you up to speed with Microsoft Azure's evolution before showing you how to integrate it into your existing IT infrastructure. Next, youâ€™ll gain practical insights into application migration and modernization, focusing mainly on migration planning, implementation, and best practices. Throughout the book, youâ€™ll get the information you need to spearhead a smooth migration and modernization process, detailing Azure infrastructure as a service (IaaS) deployment, infrastructure management, and key application architectures. 
 
-The concluding chapters will help you to identify and incorporate best practices for cost optimization and management, Azure DevOps, and Azure automation. By the end of this book, you’ll have learned how to lead end-to-end Azure operations for your organization and effectively cost-optimize your processes ─ from the planning and cloud migration stage through to troubleshooting.
+The concluding chapters will help you to identify and incorporate best practices for cost optimization and management, Azure DevOps, and Azure automation. By the end of this book, youâ€™ll have learned how to lead end-to-end Azure operations for your organization and effectively cost-optimize your processes â”€ from the planning and cloud migration stage through to troubleshooting.
 
 ## Chapter Overview
 
@@ -37,7 +37,7 @@ governance, discussing the two native Microsoft Infrastructure as Code (IaC) fra
 # Summary
 Azure for Decision Makers covers why and how an organization can achieve a successful migration to the cloud. This book discusses different kinds of cloud solutions and describes how to make the best decisions when modernizing your organization by migrating to the cloud. Azure for Decision Makers ensures that you can make the most of the cost optimization, efficiency, automation, and security that a cloud solution with Microsoft Azure provides.
 
-[![BuyMeACoffee](../images/buy_me_a_coffee.png)](https://www.buymeacoffee.com/pdtit)
+[![BuyMeACoffee](../images/screenshot-2023-10-22-17f576e7.png)](https://www.buymeacoffee.com/pdtit)
 
 Cheers!!
 

@@ -1,4 +1,4 @@
----
+﻿---
 title: "New book published: Azure Strategy and Implementation Guide, 3rd edition"
 date: 2020-02-03
 tags: ["Azure", "Books"]
@@ -20,7 +20,7 @@ As the core question they started from is my core playground, it honestly didn't
 
 Jumping a few months further in 2019, and literally having lost tracks on the amount of updates I worked on, also based on the tremendous input from technical reviewer , MCT, MVP and overall cloud enthusiast and solution architect Steve Buchanan (@bucatech), I'm honored and proud to see this work published on the Microsoft website: 
 
-![Cover_Azure_Strategy_and_Implementation_Guide](../images/Cover_Azure_Strategy_and_Implementation_Guide_from_content-images.png)
+![Cover_Azure_Strategy_and_Implementation_Guide](../images/screenshot-2020-02-03-c43dbd97.png)
 
  https://azure.microsoft.com/en-us/resources/azure-strategy-and-implementation-guide-third-edition/ 
 
@@ -38,3 +38,4 @@ As always, I hope this book maps with your interests and helps in your journey t
 
 
 /Peter
+

@@ -1,11 +1,11 @@
----
+﻿---
 title: "The labyrinth of Azure Infrastructure as Code Tools - Azure Spring Clean"
 date: 2021-03-24
 tags: ["Azure", "Infrastructure as Code"]
 draft: false
 ---
 
-![Azure Spring Clean](../images/Azure_Spring_Clean_Logo.jpg)
+![Azure Spring Clean](../images/screenshot-2021-03-24-5a071c66.jpg)
 
 Hey everyone,
 
@@ -13,7 +13,7 @@ Thanks for joining the **Azure Spring Clean** online event again, in which the A
 
 You can check out all other blog posts or videos, which can guide you with best practices, lessons learned, or help you with some of the more difficult Azure Management topics at [Azure Spring Clean](https://www.azurespringclean.com).
 
-You can also keep an eye on [Twitter](https://twitter.com/AzureSpringClean) for the hashtag #AzureSpringClean so you won’t miss any of these Azure “spring” cleaning tips.
+You can also keep an eye on [Twitter](https://twitter.com/AzureSpringClean) for the hashtag #AzureSpringClean so you wonâ€™t miss any of these Azure â€œspringâ€ cleaning tips.
 
 I had the joy of participating again this year and decided to share a bit about **IAC - Infrastructure As Code**, sharing my view on some of the interesting tools and practices that could help you in automating your Azure deployments. 
 
@@ -22,13 +22,13 @@ By using Infrastructure as Code, you define the infrastructure that needs to be 
 
 Infrastructure as Code helps in avoiding or minimizing the problem of **environment drift** during a release deployment. Without IaC, a cloud team must maintain the settings of individual deployment environments (Dev/Test, Staging, Production). Over time, each environment tends to become a snowflake, that is, a unique configuration that cannot be reproduced automatically. This also leads to inconsistency among environments which again leads to issues during deployments. With snowflakes, most deployments and maintenance of the underlying cloud infrastructure is based on manual processes, maybe a combination of stand-alone scripts coming from all over the place, are hard to track and are the main source for errors.
 
-Another characteristic of IaC is **Idempotence**. Idempotence is the principal that a deployment command always sets the target environment into the same configuration, regardless of the environment’s starting state or regardless the environment itself. Idempotency is achieved by either automatically configuring an existing target or by discarding the existing target and redeploying it from scratch (Spring Clean anyone? :)).
+Another characteristic of IaC is **Idempotence**. Idempotence is the principal that a deployment command always sets the target environment into the same configuration, regardless of the environmentâ€™s starting state or regardless the environment itself. Idempotency is achieved by either automatically configuring an existing target or by discarding the existing target and redeploying it from scratch (Spring Clean anyone? :)).
 
 Accordingly, with IaC, cloud teams apply changes to the environment description and integrate versioning into the configuration model, which is typically in well-documented code formats such as JSON or YAML. If the environment should be reconfigured or changes should get applied, you edit the source (IaC-files), you are not directly touching on the target.
 
 Teams who implement IaC can deliver stable environments rapidly and at scale. Teams avoid manual configuration of environments and enforce consistency by representing the desired state of their environments via code. Infrastructure deployments with IaC are repeatable and prevent runtime issues caused by configuration drift or missing dependencies. DevOps teams can work together with a unified set of practices and tools to deliver applications and their supporting infrastructure rapidly, reliably, and at scale.
 
-![IaC](../images/iac_diagram.png)
+![IaC](../images/screenshot-2021-03-24-c4254bd9.png)
 
 ## Where to get started
 Now you know what Infrastructure as Code is, as well as recognize some of the main benefits, the typical next question is **where to get started**. The good news is, you can start right away, since Azure provides a few mechanisms out-of-the-box to create, update or import templates, known as ARM Templates (Azure Resource Manager). (Amazon AWS is offering something similar called CloudFormation btw...)
@@ -42,7 +42,7 @@ Probably the first scenario of using IaC in Azure is [Azure Resource Manager (AR
 
 ARM Templates can be authored in any editor (JSON is just text), but I can definitely recommend VS Code to do that. And make sure you install the ARM Template tools extension. Once you have your ARM template file(s), deploying them is possible from PowerShell, Azure CLI or directly from the Azure Portal.
 
-![ARM Template](../images/armoverview.png)
+![ARM Template](../images/screenshot-2021-03-24-502bc79c.png)
 
 A sample ARM Template (which you can use right away...) to deploy a Windows 2019 Virtual Machine with Visual Studio, looks like this:
 
@@ -281,7 +281,7 @@ I also rely on ARM Templates myself a lot. Feel free to grab a few of my sample 
 ## Terraform 
 Another really, really, really popular method of deploying your infrastructure to Azure is by using **Terraform** by [Hashicorp](https://www.hashicorp.com/products/terraform). Hashicorp Terraform is an open-source tool for provisioning and managing cloud infrastructure, not just Azure. Using their own Terraform providers, it is possible to target more than 35 cloud backends (Azure, AWS, GCP, Kubernetes,...) 
 
-![Terraform Logo](../images/terraform_logo.png)
+![Terraform Logo](../images/screenshot-2021-03-24-ec76d932.png)
 
 Following all concepts of IaC, with Terraform, you codify your infrastructure in configuration files in which you describe the topology of cloud resources. These resources include both Infrastructure as a Service (Virtual Machine, storage, network,...) as Platform as a Service (App Services, Kubernetes, Monitoring,...). 
 
@@ -470,20 +470,20 @@ You can find more details on Terraform for Azure [here](https://learn.hashicorp.
 ## Pulumi
 Infrastructure as Code as we already know it, typically uses language-independent data formats, such as JSON or YAML to define our infrastructure. Terraform is slightly different, and uses a Domain Specific Language (DSL), Hashicorp Configuration Language (HCL) to construct our templates.
 
-![Pulumi logo](../images/pulumi_logo.png)
+![Pulumi logo](../images/screenshot-2021-03-24-b4607536.png)
 
-This is where [Pulumi](https://www.pulumi.com) is slightly different. With Pulumi, we don’t need to learn a DSL or use JSON or YAML. If we’re already familiar with a programming language, think of DotNet, Java, Python,... Pulumi allows you to define your cloud infrastructure using that exact same development language. Which also means you can leverage the standard functions within those programming languages too, things like loops, variables, error handling etc.
+This is where [Pulumi](https://www.pulumi.com) is slightly different. With Pulumi, we donâ€™t need to learn a DSL or use JSON or YAML. If weâ€™re already familiar with a programming language, think of DotNet, Java, Python,... Pulumi allows you to define your cloud infrastructure using that exact same development language. Which also means you can leverage the standard functions within those programming languages too, things like loops, variables, error handling etc.
 
-These functions are available in the other tools we’ve mentioned too. For example, creating multiple resources could be achieved by using a for loop in Python if using Pulumi or by using the copy functionality if using Azure Resource Manager (ARM).
+These functions are available in the other tools weâ€™ve mentioned too. For example, creating multiple resources could be achieved by using a for loop in Python if using Pulumi or by using the copy functionality if using Azure Resource Manager (ARM).
 
 To get started with Pulumi, you don't need too much of tooling:
 - [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
 - [Pulumi CLI](https://www.pulumi.com/docs/get-started/install/)
 - Your development language Framework installed (Python, DotNet,...)
 
-Compared to TerraForm and ARM Templates, Pulumi looks at each IaC concept as a "Project"; where within a project, you define "Stacks". Projects are where we will store all of the code for a particular workload. You can think of a project like a source code repository, if something was going to have it’s own repo, then it should probably be it’s own project.
+Compared to TerraForm and ARM Templates, Pulumi looks at each IaC concept as a "Project"; where within a project, you define "Stacks". Projects are where we will store all of the code for a particular workload. You can think of a project like a source code repository, if something was going to have itâ€™s own repo, then it should probably be itâ€™s own project.
 
-You can think of stacks as different instances of the code within our project, normally with differing configuration. In its simplest form you’d have a single project and a stack per environment (dev, test, prod) for example. There are a number of different patterns that you can adopt.
+You can think of stacks as different instances of the code within our project, normally with differing configuration. In its simplest form youâ€™d have a single project and a stack per environment (dev, test, prod) for example. There are a number of different patterns that you can adopt.
 
 A sample Pulumi script could look like this:
 
@@ -565,6 +565,6 @@ I hope you got some more insights on Infrastructure as Code and how template-bas
 
 Have a great day, and enjoy the rest of [Azure Spring Clean 2021](https://www.azurespringclean.com/)
 
-[![BuyMeACoffee](../images/buy_me_a_coffee.png)](https://www.buymeacoffee.com/pdtit)
+[![BuyMeACoffee](../images/screenshot-2021-03-24-17f576e7.png)](https://www.buymeacoffee.com/pdtit)
 
 /Peter

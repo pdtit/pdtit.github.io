@@ -1,4 +1,4 @@
----
+﻿---
 title: "I found me another challenge: The Conqueror"
 date: 2020-08-16
 tags: ["General"]
@@ -15,11 +15,11 @@ I spent my days reading books (yes, tech related, more on that in future blog po
 
 Back to my London walking... the process actually started earlier, where I discovered ["The Conqueror"](https://theconqueror.events), out of a Facebook advertisement. 
 
-![Facebook Ad](../images/2020-08-16_1.jpg)
+![Facebook Ad](../images/screenshot-2020-08-16-31372a96.jpg)
 
 They offer a virtual journey, stimulating people to walk (or run, or bicycle,... doing distance activity basically), almost like hiking or taking a trail passage. Along the trip, you get virtual postcards by email, and when completing the journey, you receive a certificate to print and a metal medal with a cool design. 
 
-![TheConqueror](../images/2020-08-16_2.jpg)
+![TheConqueror](../images/screenshot-2020-08-16-27268ae6.jpg)
 
 ## My Virtual Mission
 
@@ -27,25 +27,25 @@ So a few weeks, I already tried to push myself into walking a bit more as part o
 
 However, for some reason, and without "pushing" myself, we did <quite a lot> of walking during the London stay; some days was only 2-3 miles, some other days were close to 8-9 miles. And again, this probably isn't that much in reality, but it actually gave a good feeling to know I (and at the same time my family with me) could do this. So I started entering my achievements in the [challenge tool](https://www.myvirtualmission.com).
 
-![MyVirtualMission](../images/2020-08-16_3.jpg)
+![MyVirtualMission](../images/screenshot-2020-08-16-7be1a606.jpg)
 
 In between each progress, they provide you some media gadgets to share on social media, showing how you are doing (I'm not that social media minded to share it though...or at least not yet, maybe in the future when I keep going...)
 
-![MyVirtualMission](../images/2020-08-16_4.jpg)
+![MyVirtualMission](../images/screenshot-2020-08-16-dc9fa563.jpg)
 
-![MyVirtualMission](../images/2020-08-16_5.jpg)
+![MyVirtualMission](../images/screenshot-2020-08-16-bf08a9f3.jpg)
 
 and eventually one that shows the completion certificate upon finishing
 
-![MyVirtualMission](../images/2020-08-16_6.jpg)
+![MyVirtualMission](../images/screenshot-2020-08-16-e70dbb3a.jpg)
 
 That's how I managed to complete 2 challenges, ["English Channel - 21 miles"](https://www.theconqueror.events/englishchannel/) 
 
-![MyVirtualMission](../images/2020-08-16_7.jpg)
+![MyVirtualMission](../images/screenshot-2020-08-16-72ce1159.jpg)
 
 and ["The Inca Trail - 26,2 miles"](https://www.theconqueror.events/incatrail/) 
 
-![MyVirtualMission](../images/2020-08-16_8.jpg)
+![MyVirtualMission](../images/screenshot-2020-08-16-53c69cc9.jpg)
 
 ## What's next
 
@@ -53,7 +53,8 @@ Personally, my biggest challenge now lies ahead of me, with the usual work strea
 
 If my story inspired you to join a similar challenge, let me know when you signed up and we can influence each other from a virtual team. For now, I'm going to enjoy my little victory, dreaming of longer walks in the near future. 
 
-![MyVirtualMission](../images/2020-08-16_9.jpg)
+![MyVirtualMission](../images/screenshot-2020-08-16-cfa1c6ab.jpg)
 
 Cheers, Peter
+
 

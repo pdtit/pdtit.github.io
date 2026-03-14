@@ -1,4 +1,4 @@
----
+﻿---
 title: "How to delete a POD from Azure Kubernetes Services (AKS)"
 date: 2020-06-06
 tags: ["Azure", "Containers"]
@@ -22,7 +22,7 @@ To safe myself some time in the future, and even more, helping readers from maki
 
 A sample such kubernetes.yml looks like this:
 
-![Sample Kubernetes.yml](../images/2020-06-06_1.jpg)
+![Sample Kubernetes.yml](../images/screenshot-2020-06-06-084e3b77.jpg)
 
 Some important settings in this file are:
 
@@ -49,7 +49,7 @@ kubectl get pods
 
 which looks similar to what I have in my environment:
 
-![kubectl get pods](../images/2020-06-06_2.jpg)
+![kubectl get pods](../images/screenshot-2020-06-06-5cf632e7.jpg)
 
 Easy enough, there is a **kubectl** command to delete PODS, go figure:
 
@@ -59,11 +59,11 @@ kubectl delete PODS <name of the POD>
 
 which nicely deletes the identified POD
 
-![kubectl delete pods](../images/2020-06-06_3.jpg)
+![kubectl delete pods](../images/screenshot-2020-06-06-acf5e570.jpg)
 
 or did it?
 
-![kubectl get pods again](../images/2020-06-06_4.jpg)
+![kubectl get pods again](../images/screenshot-2020-06-06-9be32917.jpg)
 
 Apparently the PODS were not really getting deleted in the way I wanted them to be completely removed from the cluster. My "active" PODS turned to a state "terminating", but at the same time, there were **2 new PODS** running the same application. What's going on?
 
@@ -71,7 +71,7 @@ After a few seconds, it struck me what AKS was doing here... The built-in high a
 
 Let's check that file again:
 
-![Sample Kubernetes.yml](../images/2020-06-06_1.jpg)
+![Sample Kubernetes.yml](../images/screenshot-2020-06-06-084e3b77.jpg)
 
 I had my **specs / replicas** set to "3", which means Kubernetes runs 3 identical container instances of my application (for high availability). So in reality, when you run the **delete** action against a replica, AKS just starts up new instances, to comply to the 3 running instances you ask for.
 
@@ -95,7 +95,7 @@ Or you could also use parameter "--all" as follows, to delete all previous deplo
 kubectl delete deployment --all
 ```
 
-![kubectl delete deployment](../images/2020-06-06_5.jpg)
+![kubectl delete deployment](../images/screenshot-2020-06-06-8dab53b2.jpg)
 
 If we know check what happens with the running PODS, they will all be nicely terminated, and eventually getting deleted from the AKS environment:
 
@@ -103,7 +103,7 @@ If we know check what happens with the running PODS, they will all be nicely ter
 kubectl get pods
 ```
 
-![kubectl delete deployment](../images/2020-06-06_6.jpg)
+![kubectl delete deployment](../images/screenshot-2020-06-06-5eb66e9a.jpg)
 
 ## Summary
 
@@ -111,7 +111,8 @@ This post described how you can successfully delete running PODS from an AKS env
 
 See you all soon, reach out when you have any questions on AKS or Azure in general,
 
-[![BuyMeACoffee](../images/buy_me_a_coffee.png)](https://www.buymeacoffee.com/pdtit)
+[![BuyMeACoffee](../images/screenshot-2020-06-06-17f576e7.png)](https://www.buymeacoffee.com/pdtit)
 
 Cheers, Peter
+
 

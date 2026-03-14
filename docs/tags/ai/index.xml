@@ -3,8 +3,8 @@
  &gt;Azure Chaos Studio&lt;/a&gt;&lt;/strong&gt;, a service that allows you to inject faults against your Azure workloads (preferably production!), to make them more stable, more reliable.&lt;/p&gt;
 &lt;p&gt;But then came Generative AI, and Agentic InfraOps/DevOps. Welcome &lt;strong&gt;Azure SRE Agent&lt;/strong&gt;, which was in public preview for a few months, but went GA earlier this week. I played with it since its early inception, and thought the GA - with a lot of cool new updates - was a good time to dedicate a blog article to it.&lt;/p&gt;
 &lt;h2 id="introduction-what-is-azure-sre-agent"&gt;Introduction: What Is Azure SRE Agent?
-&lt;/h2&gt;&lt;p&gt;Modern cloud systems are increasingly distributed, dynamic, and failure‑prone by design. While DevOps practices have optimized delivery velocity, operational reliability still demands significant human effort. Particularly during incident response, root cause analysis, and post‑incident follow‑up. (Having been on the consultant side in physical and cloud environments since 1996, especially the outages and trying to fix issues is what got me into training - is what my wife says when you ask her why I love training so much, lol. She might be right&amp;hellip;)&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Azure SRE Agent&lt;/strong&gt; is an &lt;strong&gt;AI‑powered reliability assistant&lt;/strong&gt; designed to automate and augment Site Reliability Engineering practices for Azure workloads. It continuously observes telemetry (metrics, logs, traces), understands Azure resource topology, correlates incidents with recent changes, and assists with, or ask human approval to execute, remediation steps.&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;Modern cloud systems are increasingly distributed, dynamic, and failureâ€‘prone by design. While DevOps practices have optimized delivery velocity, operational reliability still demands significant human effort. Particularly during incident response, root cause analysis, and postâ€‘incident followâ€‘up. (Having been on the consultant side in physical and cloud environments since 1996, especially the outages and trying to fix issues is what got me into training - is what my wife says when you ask her why I love training so much, lol. She might be right&amp;hellip;)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Azure SRE Agent&lt;/strong&gt; is an &lt;strong&gt;AIâ€‘powered reliability assistant&lt;/strong&gt; designed to automate and augment Site Reliability Engineering practices for Azure workloads. It continuously observes telemetry (metrics, logs, traces), understands Azure resource topology, correlates incidents with recent changes, and assists with, or ask human approval to execute, remediation steps.&lt;/p&gt;
 &lt;p&gt;Unlike traditional monitoring or AI-Ops tools, Azure SRE Agent operates as an &lt;strong&gt;agentic system&lt;/strong&gt;:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;It reasons over multiple data sources simultaneously.&lt;/li&gt;
@@ -31,7 +31,7 @@ This enables accelerated root cause analysis without manual log spelunking. (doe
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Automated and Approval‑Gated Remediation&lt;/strong&gt;&lt;br&gt;
+&lt;p&gt;&lt;strong&gt;Automated and Approvalâ€‘Gated Remediation&lt;/strong&gt;&lt;br&gt;
 Azure SRE Agent can execute operational actions. Think of scaling, restarting services, or reverting deployments. Or basically anything that relies on &lt;strong&gt;Azure CLI and REST APIs&lt;/strong&gt;. All write actions are gated by RBAC and explicit approval, ensuring governance and control. (If you don&amp;rsquo;t trust the commands it suggests, don&amp;rsquo;t approve the action&amp;hellip;)&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
@@ -63,14 +63,14 @@ The agent integrates with Azure Monitor alerts, GitHub, Azure DevOps, ServiceNow
 The agent automatically gains visibility into all resources within those groups.&lt;/li&gt;
 &lt;li&gt;Complete the deployment and wait for the agent to initialize.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;Once deployed, the agent exposes a &lt;strong&gt;chat‑based interface&lt;/strong&gt; in the Azure Portal, allowing engineers to interact using natural language to investigate and manage incidents.&lt;/p&gt;
+&lt;p&gt;Once deployed, the agent exposes a &lt;strong&gt;chatâ€‘based interface&lt;/strong&gt; in the Azure Portal, allowing engineers to interact using natural language to investigate and manage incidents.&lt;/p&gt;
 &lt;h2 id="using-azure-sre-agent"&gt;Using Azure SRE Agent
 &lt;/h2&gt;&lt;p&gt;After the baseline deployment of the agent, it&amp;rsquo;s nothing more than &lt;strong&gt;running prompts&lt;/strong&gt;. Using natural language, asking generic or more-specific questions, and off it goes :)&lt;/p&gt;
 &lt;p&gt;To test this out, I deployed an Azure App Service, connecting to CosmosDB using Managed Identity. After testing the app, I removed the App Service Managed Identity to simulate the issue.&lt;/p&gt;
 &lt;p&gt;I opened SRE Agent and asked:&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;can you investigate my app service outage&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;This is what it came back with:&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/Screenshot%202026-03-14%20090607.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2026-03-14-090607.png"
  
  
  loading="lazy"
@@ -81,7 +81,7 @@ The agent automatically gains visibility into all resources within those groups.
  
  &gt;&lt;/p&gt;
 &lt;p&gt;Followed by &lt;strong&gt;looking into the metrics&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/Screenshot%202026-03-14%20090726.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2026-03-14-090726.png"
  
  
  loading="lazy"
@@ -92,7 +92,7 @@ The agent automatically gains visibility into all resources within those groups.
  
  &gt;&lt;/p&gt;
 &lt;p&gt;To then provide &lt;strong&gt;a summary&lt;/strong&gt; of the findings and observations, &lt;strong&gt;INCLUDING CHART VIEWS&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/Screenshot%202026-03-14%20090957.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2026-03-14-090957.png"
  
  
  loading="lazy"
@@ -103,7 +103,7 @@ The agent automatically gains visibility into all resources within those groups.
  
  &gt;&lt;/p&gt;
 &lt;p&gt;Detailed Root Cause Analysis&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/Screenshot%202026-03-14%20091106.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2026-03-14-091106.png"
  
  
  loading="lazy"
@@ -114,7 +114,7 @@ The agent automatically gains visibility into all resources within those groups.
  
  &gt;&lt;/p&gt;
 &lt;p&gt;and detailed description of &lt;strong&gt;what happened&lt;/strong&gt; and &lt;strong&gt;Recommended actions&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/Screenshot%202026-03-14%20091159.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2026-03-14-091159.png"
  
  
  loading="lazy"
@@ -125,7 +125,7 @@ The agent automatically gains visibility into all resources within those groups.
  
  &gt;&lt;/p&gt;
 &lt;p&gt;It identified the root cause being an &lt;strong&gt;identity&lt;/strong&gt; problem, where the Web App could not connect to Cosmos DB.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/Screenshot%202026-03-14%20091431.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2026-03-14-091431.png"
  
  
  loading="lazy"
@@ -136,7 +136,7 @@ The agent automatically gains visibility into all resources within those groups.
  
  &gt;&lt;/p&gt;
 &lt;p&gt;To wrap it up with a &lt;strong&gt;Diagnosis Complete - Data Unreachable Root Cause&lt;/strong&gt; report (in table format), including &lt;strong&gt;potential fix steps&lt;/strong&gt; (Isn&amp;rsquo;t that amazing?? I think it&amp;rsquo;s just brilliant&amp;hellip;!!!)&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/Screenshot%202026-03-14%20091606.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2026-03-14-091606.png"
  
  
  loading="lazy"
@@ -149,7 +149,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;p&gt;From there, it asked me if it was OK to move on and assist with fixing the problem. Using the same response I would tell when talking to a colleague, I said&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;Yes, go ahead and assist me with fixing this problem using the described steps&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;(I&amp;rsquo;m pretty sure just saying &amp;ldquo;yes&amp;rdquo;, or &amp;ldquo;sure&amp;rdquo; or &amp;ldquo;OK&amp;rdquo; or &amp;ldquo;YOUCANDOIT&amp;rdquo; might have worked too&amp;hellip;)&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/Screenshot%202026-03-14%20091835.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2026-03-14-091835.png"
  
  
  loading="lazy"
@@ -161,7 +161,7 @@ The agent automatically gains visibility into all resources within those groups.
  &gt;&lt;/p&gt;
 &lt;p&gt;The above screenshot was taken after the process completed, but remember the SRE Agent can only perform actions when you as the &lt;strong&gt;human-in-the-loop&lt;/strong&gt; acknowledges the approval.&lt;/p&gt;
 &lt;p&gt;Smoothly, it came back with &lt;strong&gt;Issue resolved&lt;/strong&gt;. Including a summary of the steps taken&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/Screenshot%202026-03-14%20092204.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2026-03-14-092204.png"
  
  
  loading="lazy"
@@ -179,7 +179,7 @@ The agent automatically gains visibility into all resources within those groups.
  &gt;Microsoft Learn lab - Optimize Azure Reliability using SRE Agent&lt;/a&gt; I published recently.&lt;/p&gt;
 &lt;p&gt;If you deployed it and use it in your environment, please let me know. Happy to hear your stories!&lt;/p&gt;
 &lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
- &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ &gt;&lt;img src="../images/screenshot-2026-03-14-17f576e7.png"
  
  
  loading="lazy"
@@ -197,11 +197,11 @@ The agent automatically gains visibility into all resources within those groups.
  &gt;anyone remembers the Studio Gihbli hype from summer&lt;/a&gt; or any similar?)&lt;/p&gt;
 &lt;p&gt;With a few days off for Thanksgiving here in the USA, I wanted to spend a bit more time on updating my Spotify playlists. While not always perfect, at least a few of the &amp;lsquo;recommended artists&amp;rsquo; are closely in line with the artists and songs I like.&lt;/p&gt;
 &lt;h2 id="the-search-for-new-sounds"&gt;The search for new sounds
-&lt;/h2&gt;&lt;p&gt;I always enjoyed listening to music, and exploring new artists. I remember as a kid going to the music store, buying LPs, and later on CDs. And honestly, I discovered several new great artists thanks to Spotify. There’s a special thrill in discovering new music. For now, it started with a simple quest: I wanted to explore the &lt;strong&gt;country blues rock&lt;/strong&gt; corner. Think soul, whiskey bars, gritty guitar riffs, and that raw energy that bridges the rural blues tradition with rock’s rebellious spirit. It also brings back great memories to &lt;strong&gt;&lt;a class="link" href="https://www.houseofblues.com" target="_blank" rel="noopener"
+&lt;/h2&gt;&lt;p&gt;I always enjoyed listening to music, and exploring new artists. I remember as a kid going to the music store, buying LPs, and later on CDs. And honestly, I discovered several new great artists thanks to Spotify. Thereâ€™s a special thrill in discovering new music. For now, it started with a simple quest: I wanted to explore the &lt;strong&gt;country blues rock&lt;/strong&gt; corner. Think soul, whiskey bars, gritty guitar riffs, and that raw energy that bridges the rural blues tradition with rockâ€™s rebellious spirit. It also brings back great memories to &lt;strong&gt;&lt;a class="link" href="https://www.houseofblues.com" target="_blank" rel="noopener"
  &gt;House of Blues&lt;/a&gt;&lt;/strong&gt; during work travel trips.&lt;/p&gt;
 &lt;p&gt;I actually discovered &lt;strong&gt;&lt;a class="link" href="https://www.sonsoflegion.com" target="_blank" rel="noopener"
  &gt;Sons of Legion&lt;/a&gt;&lt;/strong&gt; recently, which &lt;em&gt;offers a unique mix of authentic soul, folk and rock music&lt;/em&gt;, as they describe it themselves.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/sonsoflegion.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-11-29-5d726e9a.png"
  
  
  loading="lazy"
@@ -211,11 +211,11 @@ The agent automatically gains visibility into all resources within those groups.
  
  
  &gt;&lt;/p&gt;
-&lt;p&gt;So I dove in. I let Spotify’s recommendation engine guide me, clicking “like” on songs that resonated, building a playlist over the course of a week. The algorithm seemed to understand me well. The tracks had the right vibe: swampy slide guitar, stomping rhythms, smoky vocals. I was hooked.&lt;/p&gt;
+&lt;p&gt;So I dove in. I let Spotifyâ€™s recommendation engine guide me, clicking â€œlikeâ€ on songs that resonated, building a playlist over the course of a week. The algorithm seemed to understand me well. The tracks had the right vibe: swampy slide guitar, stomping rhythms, smoky vocals. I was hooked.&lt;/p&gt;
 &lt;h2 id="the-nasty-suprise-of-discovery"&gt;The nasty suprise of discovery
 &lt;/h2&gt;&lt;p&gt;&lt;strong&gt;But then came the surprise&lt;/strong&gt;. As I looked closer at the artists behind these songs, something I usually do to learn more about what got them into the music scene, where they are from, what other albums do they have,&amp;hellip; I realized something interesting: One of the artists was an AI-generated artist: &lt;strong&gt;&lt;a class="link" href="https://en.wikipedia.org/wiki/Breaking_Rust" target="_blank" rel="noopener"
  &gt;Breaking Rust&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/breakingrust.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-11-29-21aafd83.png"
  
  
  loading="lazy"
@@ -226,9 +226,9 @@ The agent automatically gains visibility into all resources within those groups.
  
  &gt;&lt;/p&gt;
 &lt;p&gt;Yet, Spotify flagged them as &lt;strong&gt;verified artist&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;At first, I thought I had stumbled upon obscure musicians from small towns or indie labels. Their names sounded authentic (), their album covers, while only showing drawings, they looked convincing, and the songs fitting perfectly in the genre. But maybe a bit too perfect? After I couldn&amp;rsquo;t find much information on the artist or the band. These “artists” had no social media presence, no live performances, no interviews. Instead, they were products of AI music generation platforms, uploaded to Spotify (and basically any other music streaming platform&amp;hellip;) under artificial identities.&lt;/p&gt;
+&lt;p&gt;At first, I thought I had stumbled upon obscure musicians from small towns or indie labels. Their names sounded authentic (), their album covers, while only showing drawings, they looked convincing, and the songs fitting perfectly in the genre. But maybe a bit too perfect? After I couldn&amp;rsquo;t find much information on the artist or the band. These â€œartistsâ€ had no social media presence, no live performances, no interviews. Instead, they were products of AI music generation platforms, uploaded to Spotify (and basically any other music streaming platform&amp;hellip;) under artificial identities.&lt;/p&gt;
 &lt;h2 id="my-genai-dilemma"&gt;My GenAI dilemma
-&lt;/h2&gt;&lt;p&gt;Here’s the paradox: I genuinely enjoyed the songs. They had groove, soul, and typical blues/bluesrock themes. Yet knowing they were AI‑made changed my experience. I felt betrayed.&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;Hereâ€™s the paradox: I genuinely enjoyed the songs. They had groove, soul, and typical blues/bluesrock themes. Yet knowing they were AIâ€‘made changed my experience. I felt betrayed.&lt;/p&gt;
 &lt;p&gt;Questions coming to mind:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Was I connecting with art, or just with a clever simulation?&lt;/li&gt;
@@ -239,7 +239,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;p&gt;And the most important question: would I continue listening? And from there, would I need to do a thourough research on any new artist I get recommended or discover on my own, to check if they are real?&lt;/p&gt;
 &lt;h2 id="my-personal-reflection"&gt;My Personal Reflection
 &lt;/h2&gt;&lt;p&gt;After the initial shock, I couldn&amp;rsquo;t keep listening; I removed the full playlist - and &lt;strong&gt;flagged to no longer play the artist&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/dontplaytheartist.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-11-29-e0cd547f.png"
  
  
  loading="lazy"
@@ -249,12 +249,12 @@ The agent automatically gains visibility into all resources within those groups.
  
  
  &gt;&lt;/p&gt;
-&lt;p&gt;Some AI tracks still made it into my playlists. But I also made a conscious effort to seek out real musicians — artists with biographies, live shows (and buying tickets for some!!), and human voices.&lt;/p&gt;
+&lt;p&gt;Some AI tracks still made it into my playlists. But I also made a conscious effort to seek out real musicians â€” artists with biographies, live shows (and buying tickets for some!!), and human voices.&lt;/p&gt;
 &lt;p&gt;I realized that part of the joy of music discovery is not just the sound, but the story behind it. Which - for me - adds depth and meaning to the listening experience.&lt;/p&gt;
-&lt;p&gt;AI can mimic the sound, but it can’t replicate the story. And my interest for GenAI got a little punch today :/&lt;/p&gt;
+&lt;p&gt;AI can mimic the sound, but it canâ€™t replicate the story. And my interest for GenAI got a little punch today :/&lt;/p&gt;
 &lt;p&gt;Btw, if you know any &lt;strong&gt;real, raw, blues/bluesrock artists&lt;/strong&gt;, please let me know! I am still in search of some new groups to listen to&amp;hellip;&lt;/p&gt;
 &lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
- &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ &gt;&lt;img src="../images/screenshot-2025-11-29-17f576e7.png"
  
  
  loading="lazy"
@@ -300,7 +300,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s2"&gt;7. show a &amp;#34;&lt;/span&gt;YOU WIN&lt;span class="s2"&gt;&amp;#34; or &amp;#34;&lt;/span&gt;YOU ARE TOO SLOW&lt;span class="s2"&gt;&amp;#34; dpeending on the outcome&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src="../images/Screenshot2025-11-29-104211.png"
+&lt;/div&gt;&lt;p&gt;&lt;img src="../images/screenshot-2025-11-28-018f3ae5.png"
  
  
  loading="lazy"
@@ -324,7 +324,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;li&gt;Creating the Reflex Shooting Game&lt;/li&gt;
 &lt;li&gt;Testing the Game&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src="../images/Screenshot2025-11-29-104237.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-11-28-88f73764.png"
  
  
  loading="lazy"
@@ -337,7 +337,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;ol&gt;
 &lt;li&gt;This process took less than &lt;strong&gt;1 minute&lt;/strong&gt;, can you imagine? From there, it continued with providing detailed instructions on how to the game works.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/Screenshot2025-11-29-104336.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-11-28-f533f735.png"
  
  
  loading="lazy"
@@ -350,7 +350,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;ol&gt;
 &lt;li&gt;Next, it also had a list of features included:&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/Screenshot2025-11-29-104353.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-11-28-dc0b721b.png"
  
  
  loading="lazy"
@@ -363,7 +363,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;ol&gt;
 &lt;li&gt;Time to start the game!!&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/Screenshot2025-11-29-104413.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-11-28-c3d6fa9b.png"
  
  
  loading="lazy"
@@ -376,7 +376,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;ol&gt;
 &lt;li&gt;Which allowed me to play exactly as I asked for. When I was too slow, it would tell me&amp;hellip;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/Screenshot2025-11-29-104424.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-11-28-df129c5d.png"
  
  
  loading="lazy"
@@ -389,7 +389,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;ol&gt;
 &lt;li&gt;And several attempts later, I finally managed to win a game!!&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/Screenshot2025-11-29-104503.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-11-28-8d0ea57f.png"
  
  
  loading="lazy"
@@ -407,7 +407,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;p&gt;If you want to see some similar version of this templategame in action, head over to &lt;a class="link" href="https://github.com/petender/vibeshooter" target="_blank" rel="noopener"
  &gt;my github repo&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
- &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ &gt;&lt;img src="../images/screenshot-2025-11-28-17f576e7.png"
  
  
  loading="lazy"
@@ -426,9 +426,9 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;p&gt;As you probably know, any action against Azure requires authentication, whether an interactive admin user logon, or a Service Principal application logon. Which means that - before I can trigger any actions against Azure, I first need to get the Copilot Studio Agent authenticating to Azure, using a JWT Bearer token (Azure Entra ID OAuth 2.0 Token).&lt;/p&gt;
 &lt;p&gt;This article walks you through the different steps and setup of the Copilot Studio Agent, to allow it to authenticate to Azure, and from there taking a possible next step against the platform.&lt;/p&gt;
 &lt;h2 id="what-this-article-covers"&gt;What this article covers
-&lt;/h2&gt;&lt;p&gt;✅ How to create App Registration for Copilot Studio Agent in Entra ID
-✅ How to generate JWT Bearer token in Copilot Studio for API authentication
-✅ How to set up Microsoft Graph API authentication with Azure Entra ID OAuth 2.0 token&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;âœ… How to create App Registration for Copilot Studio Agent in Entra ID
+âœ… How to generate JWT Bearer token in Copilot Studio for API authentication
+âœ… How to set up Microsoft Graph API authentication with Azure Entra ID OAuth 2.0 token&lt;/p&gt;
 &lt;h2 id="create-entra-id-app-registration-for-copilot-studio-agent"&gt;Create Entra ID App Registration for Copilot Studio Agent
 &lt;/h2&gt;&lt;p&gt;Any Service / Application level interaction with Azure, starts from an App Registration. This generates a Service Principal, think of it as a Service Account, which then gets linked/reused by a 3rd party application, as like in our case, Copilot Studio.&lt;/p&gt;
 &lt;p&gt;Apart from creating the Service Principal entity object, it also needs corresponding API permissions to interact with Microsoft Graph.&lt;/p&gt;
@@ -436,7 +436,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;ol&gt;
 &lt;li&gt;From Entra ID, navigate to &lt;strong&gt;App Registration&lt;/strong&gt;, and select &lt;strong&gt;New Registration&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/08-10-2025-01.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-08-09-eea9c540.png"
  
  
  loading="lazy"
@@ -449,7 +449,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;ol start="2"&gt;
 &lt;li&gt;Provide a name for the App Registration &lt;strong&gt;e.g. Copilot Studio Agent Demo&lt;/strong&gt;, and leave all other default settings as-is. Click &lt;strong&gt;Register&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/08-10-2025-02.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-08-09-26cbbfbf.png"
  
  
  loading="lazy"
@@ -462,7 +462,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;ol start="3"&gt;
 &lt;li&gt;This generates the Service Principal, with some specific IDs you need to copy aside. The Client ID, reflecting the unique GUID of the Service Principal as well as the Tenant ID which corresponds to your Entra ID Tenant GUID.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/08-10-2025-03.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-08-09-3d5a737f.png"
  
  
  loading="lazy"
@@ -475,7 +475,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;ol start="4"&gt;
 &lt;li&gt;Next, the Service Principal also needs the necessary credential to authenticate, which can be set up from the &lt;strong&gt;Subscription or Resource Group Access Control IAM (RBAC)&lt;/strong&gt; permissions. For my example, I specify &amp;ldquo;Read&amp;rdquo; permissions on Subscription level, as I only want to run that as a validation of my workflow actually running successfully. You could alter to any permissions your scenario requires.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/08-10-2025-04.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-08-09-ed33ad68.png"
  
  
  loading="lazy"
@@ -488,7 +488,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;ol start="5"&gt;
 &lt;li&gt;And to request an authentication JWT Token, we also need to pass the Client ID password, which can be generated from the Entra ID App Registration page for the newly created App Registration. Copy this secret aside, as you will need it in a later step.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/08-10-2025-05.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-08-09-2563fe19.png"
  
  
  loading="lazy"
@@ -531,7 +531,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;p&gt;Navigate to &lt;strong&gt;Topics&lt;/strong&gt; and &lt;strong&gt;Add a new topic&lt;/strong&gt;. Select &amp;ldquo;From Blank&amp;rdquo;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/08-10-2025-06.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-08-09-e3c7cb65.png"
  
  
  loading="lazy"
@@ -544,7 +544,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;ol start="3"&gt;
 &lt;li&gt;Click the &lt;strong&gt;+ Sign&lt;/strong&gt; below the Trigger step, and select &lt;strong&gt;Advanced / HTTP Request&lt;/strong&gt; from the option menu.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/08-10-2025-07.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-08-09-66d30fbe.png"
  
  
  loading="lazy"
@@ -561,7 +561,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;li&gt;&lt;strong&gt;URL&lt;/strong&gt;: the login-URL specified earlier: &lt;a class="link" href="https://login.microsoftonline.com/" target="_blank" rel="noopener"
  &gt;https://login.microsoftonline.com/&lt;/a&gt;&lt;tenantID&gt;/oauth2/v.2.0/token, where the &lt;tenantid&gt; placeholder gets replaced with the actual GUID of your tenant, something like this (redacted)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src="../images/08-10-2025-08.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-08-09-919da3b8.png"
  
  
  loading="lazy"
@@ -611,7 +611,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;ol start="5"&gt;
 &lt;li&gt;&lt;strong&gt;Save&lt;/strong&gt; the changes.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/08-10-2025-09.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-08-09-0114f195.png"
  
  
  loading="lazy"
@@ -622,7 +622,7 @@ The agent automatically gains visibility into all resources within those groups.
  
  &gt;
 Request Header details&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/08-10-2025-10.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-08-09-255a4fbb.png"
  
  
  loading="lazy"
@@ -633,7 +633,7 @@ Request Header details&lt;/p&gt;
  
  &gt;
 Request Body details&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/08-10-2025-11.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-08-09-beda8599.png"
  
  
  loading="lazy"
@@ -644,7 +644,7 @@ Request Body details&lt;/p&gt;
  
  &gt;
 Global Variable details&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/08-10-2025-12.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-08-09-d9e11cea.png"
  
  
  loading="lazy"
@@ -663,7 +663,7 @@ Record Schema details&lt;/p&gt;
 &lt;p&gt;Enter an informative text, e.g. &amp;ldquo;Here is the Azure Token String&amp;rdquo;, and add the HTTPResponseVar variable into the text box, by selecting the &lt;em&gt;insert variable {X}&lt;/em&gt; option and selecting the variable from the list.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/08-10-2025-13.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-08-09-4bb46368.png"
  
  
  loading="lazy"
@@ -676,7 +676,7 @@ Record Schema details&lt;/p&gt;
 &lt;ol start="8"&gt;
 &lt;li&gt;&lt;strong&gt;Save&lt;/strong&gt; the changes. Next, from the &lt;strong&gt;Test your Agent&lt;/strong&gt; pane, trigger the Agent flow by sending a short chat message, like &amp;ldquo;get my token&amp;rdquo;. This should result in the chat response, showing your message &amp;ldquo;Here is the Azure Token String&amp;rdquo;, and the actual JWT token with all necessary information in it.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/08-10-2025-14.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-08-09-591adf22.png"
  
  
  loading="lazy"
@@ -699,7 +699,7 @@ Record Schema details&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/08-10-2025-15.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-08-09-7792f764.png"
  
  
  loading="lazy"
@@ -714,7 +714,7 @@ Record Schema details&lt;/p&gt;
 &lt;/ol&gt;
 &lt;h2 id="reuse-the-jwt-authenticator-topic-in-copilot-studio-agent"&gt;Reuse the JWT Authenticator Topic in Copilot Studio Agent
 &lt;/h2&gt;&lt;p&gt;While I want to keep this article on the actual JWT Token authentication process, I wanted to add a little teaser for a follow-up article, in which I create a Copilot Studio Agent to interact with Azure, relying on the Bearer Token from this Topic we just created. In any Copilot Studio flow you have, you can now refer to the Auth2Azure Authentication request Topic like this:&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/08-10-2025-16.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-08-09-624f9a1b.png"
  
  
  loading="lazy"
@@ -727,7 +727,7 @@ Record Schema details&lt;/p&gt;
 &lt;h2 id="summary"&gt;Summary
 &lt;/h2&gt;&lt;p&gt;In this article, I wanted to document the necessary steps on how to use the Copilot Studio Agent - HTTP Request task, to get a Bearer Token to authenticate to Azure (or any similar HTTP REST API for that matter).&lt;/p&gt;
 &lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
- &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ &gt;&lt;img src="../images/screenshot-2025-08-09-17f576e7.png"
  
  
  loading="lazy"
@@ -753,7 +753,7 @@ Record Schema details&lt;/p&gt;
 &lt;li&gt;My original setup was pretty straightforward, having a folder &amp;ldquo;templates&amp;rdquo;, in which I have modular templates for each part of my Azure Site Recovery Vault deployment.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Each templates hold a snippet of ARM / JSON structured code to deploy one or more Azure Resources.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-templates.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-677ae48c.png"
  
  
  loading="lazy"
@@ -769,7 +769,7 @@ Record Schema details&lt;/p&gt;
 &lt;h2 id="agent-mode-prompt"&gt;Agent Mode Prompt
 &lt;/h2&gt;&lt;p&gt;The prompt I used was this:
 &lt;em&gt;for each file in the templates folder, convert to azure bicep. create a new bicep file for each, keeping the same name as the original json file. the azuredeploy should be transformed to main.bicep. validate all pointers to all new bicep files to be correct&amp;quot;&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-prompt.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-0e6d3c1f.png"
  
  
  loading="lazy"
@@ -787,7 +787,7 @@ Record Schema details&lt;/p&gt;
 &lt;p&gt;Informing me about the different steps it would take to handle this task, starting with &lt;em&gt;exploring the templates folder to see all the files that need to be converted&lt;/em&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-start.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-9563c155.png"
  
  
  loading="lazy"
@@ -805,7 +805,7 @@ Record Schema details&lt;/p&gt;
 &lt;p&gt;Followed by &lt;em&gt;starting the conversion process to Bicep files&lt;/em&gt;. Before doing that, it also highlighted it would check the Azure deployment best practices (although I didn&amp;rsquo;t explicitly asked to do that, nice one! )&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-start-filecheck.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-23d6f25c.png"
  
  
  loading="lazy"
@@ -818,7 +818,7 @@ Record Schema details&lt;/p&gt;
 &lt;ol start="7"&gt;
 &lt;li&gt;It felt like it &lt;em&gt;learned&lt;/em&gt; from the best practices, by starting with the azuredeploy.json conversion to main.bicep first. It could also be that it started with this, because I mentioned this in the prompt itself.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-bicep.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-048d528f.png"
  
  
  loading="lazy"
@@ -831,7 +831,7 @@ Record Schema details&lt;/p&gt;
 &lt;ol start="8"&gt;
 &lt;li&gt;As the main.bicep conversion took a bit longer than normal - although it was only running over it for about a minute, it &lt;em&gt;prompted&lt;/em&gt;, asking if it was ok to continue. Obviously, I confirmed to &lt;strong&gt;continue&lt;/strong&gt;.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-continue.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-9f313718.png"
  
  
  loading="lazy"
@@ -844,7 +844,7 @@ Record Schema details&lt;/p&gt;
 &lt;ol start="9"&gt;
 &lt;li&gt;From here, it nicely continued looping through all smaller json-files, and transforming them into corresponding bicep-files. Since each file typically had only 1 or 2 resource references, the conversion went really smooth.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-templates-list.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-cc406a5d.png"
  
  
  loading="lazy"
@@ -857,7 +857,7 @@ Record Schema details&lt;/p&gt;
 &lt;ol start="10"&gt;
 &lt;li&gt;After a bit, it had finished the transformation of each ARM to Bicep, and &lt;em&gt;started on updating the template links&lt;/em&gt;, as I asked for in my prompt, to also validate the references to all the deployment files.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-bicep-templatelinks.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-3a52cde6.png"
  
  
  loading="lazy"
@@ -870,7 +870,7 @@ Record Schema details&lt;/p&gt;
 &lt;ol start="11"&gt;
 &lt;li&gt;With all references updated, it continued with its own &lt;em&gt;error checking&lt;/em&gt;, and validating the different templates for any possible errors. Even more interesting, &lt;strong&gt;without me specifying&lt;/strong&gt;, it detected an error in the &lt;strong&gt;azure.yaml&lt;/strong&gt;, which I had in my project folder, from a baseline started AZD-template we use to create all our Trainer-Demo-Deploy scenarios.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-bicep-azure-yaml.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-c58c585e.png"
  
  
  loading="lazy"
@@ -883,7 +883,7 @@ Record Schema details&lt;/p&gt;
 &lt;ol start="12"&gt;
 &lt;li&gt;Last, it also created a &lt;em&gt;main.parameters.json&lt;/em&gt;, to capture any specific Parameters for the deployment.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-bicep-main.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-52ae46b8.png"
  
  
  loading="lazy"
@@ -909,7 +909,7 @@ Record Schema details&lt;/p&gt;
 &lt;ol start="14"&gt;
 &lt;li&gt;&lt;em&gt;Chewing&lt;/em&gt; a bit on the myWorkspaceKey problem, it managed to find its own work-around to solve the problem. It even provided a clear explaining on why, identifying the dependency on the parent template.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-bicep-error.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-7c9e3eae.png"
  
  
  loading="lazy"
@@ -922,7 +922,7 @@ Record Schema details&lt;/p&gt;
 &lt;ol start="15"&gt;
 &lt;li&gt;Feeling we were close to the end of the process, it &lt;strong&gt;continued amazing&lt;/strong&gt; me, as it now also created its &lt;strong&gt;own documentation&lt;/strong&gt; in a BICEP_CONVERSION_SUMMARY.md Markdown file, in which it listed up what conversations it did.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-bicep-conversion.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-233210a1.png"
  
  
  loading="lazy"
@@ -935,7 +935,7 @@ Record Schema details&lt;/p&gt;
 &lt;ol start="16"&gt;
 &lt;li&gt;With all that out of the way, it ran another &lt;strong&gt;final validation&lt;/strong&gt; to conclude there were no more issues, closing the task with creating another README-BICEP.md file, describing how to run the actual deployment, using AZD.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-readme.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-ea367bd4.png"
  
  
  loading="lazy"
@@ -948,7 +948,7 @@ Record Schema details&lt;/p&gt;
 &lt;ol start="17"&gt;
 &lt;li&gt;Finally, the Agent &lt;strong&gt;provided a description within the Chat Agent window&lt;/strong&gt;, clearly describing all the tasks accomplished with the necessary file references included:&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-taskvalidation1.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-12b1b132.png"
  
  
  loading="lazy"
@@ -961,7 +961,7 @@ Record Schema details&lt;/p&gt;
 &lt;ol start="18"&gt;
 &lt;li&gt;As well as adding additional details on the &lt;strong&gt;task validation&lt;/strong&gt;.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-taskvalidation.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-8a5606f6.png"
  
  
  loading="lazy"
@@ -974,7 +974,7 @@ Record Schema details&lt;/p&gt;
 &lt;ol start="19"&gt;
 &lt;li&gt;Finishing with describing different ways on how to run the actual deployment, using &lt;strong&gt;azd&lt;/strong&gt;, &lt;strong&gt;Azure CLI&lt;/strong&gt; and &lt;strong&gt;Azure PowerShell&lt;/strong&gt;.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-ready.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-1a21a2ce.png"
  
  
  loading="lazy"
@@ -987,7 +987,7 @@ Record Schema details&lt;/p&gt;
 &lt;ol start="20"&gt;
 &lt;li&gt;Last step was running the deployment, and this worked without any hiccups!&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-works.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-b01b0623.png"
  
  
  loading="lazy"
@@ -1005,7 +1005,7 @@ Record Schema details&lt;/p&gt;
  &gt;my github repo&lt;/a&gt; and continue your Azure learning journey with more demo scenarios at &lt;a class="link" href="https://aka.ms/trainer-demo-deploy" target="_blank" rel="noopener"
  &gt;Trainer-Demo-Deploy&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
- &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ &gt;&lt;img src="../images/screenshot-2025-07-12-17f576e7.png"
  
  
  loading="lazy"
@@ -1155,7 +1155,7 @@ Record Schema details&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;I hope this article provides you with a comprehensive overview of Semantic Kernel and its applications. If you have any questions or need further details, feel free to ask! In a next blog post, we&amp;rsquo;ll go over several use cases with many more code snippets, to give you enough examples to start building/developing your own Copilots. Stay tuned!&lt;/p&gt;
 &lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
- &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ &gt;&lt;img src="../images/screenshot-2024-09-15-17f576e7.png"
  
  
  loading="lazy"
@@ -1170,7 +1170,7 @@ Record Schema details&lt;/p&gt;
  &gt;Hugo&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class="link" href="https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-static-website-how-to?tabs=azure-portal" target="_blank" rel="noopener"
  &gt;Azure Static Storage Sites&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/festive_2023.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-12-23-4f833e5c.jpg"
  
  
  loading="lazy"
@@ -1188,7 +1188,7 @@ Record Schema details&lt;/p&gt;
 &lt;p&gt;about 100 years after, OCR is transitioning into powerful document and text analysis capabilities, thanks to Azure AI Document Intelligence APIs.&lt;/p&gt;
 &lt;p&gt;By &lt;strong&gt;reading through this post&lt;/strong&gt;, and &lt;strong&gt;following the demo-steps&lt;/strong&gt;, you can build your own &amp;ldquo;Statistical Machine&amp;rdquo; in no-time. And from there, learn about Azure AI Document Intelligence APIs, to take it even further&amp;hellip; let&amp;rsquo;s go!&lt;/p&gt;
 &lt;p&gt;To embrace our Azure AI and Microsoft Copilot even more myself, I actually used it to create (parts) of this blog post. What a wonderful world we live in today!&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/ocr_on_steroids_copilot.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-12-23-2a410c72.png"
  
  
  loading="lazy"
@@ -1208,27 +1208,27 @@ Record Schema details&lt;/p&gt;
 &lt;p&gt;In this article, I will use the following flow:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;I’ll start with setting the scene on Azure AI, using Computer Vision for OCR&lt;/p&gt;
+&lt;p&gt;Iâ€™ll start with setting the scene on Azure AI, using Computer Vision for OCR&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Followed by the more advanced scenario, using Intelligent Document Processing or IDP&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Last, I’ll show you how you can train the IDP using your own custom models&lt;/p&gt;
+&lt;p&gt;Last, Iâ€™ll show you how you can train the IDP using your own custom models&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;And I hope to do all this using several demos… which you can go through in your own Azure subscriptions&lt;/p&gt;
+&lt;p&gt;And I hope to do all this using several demosâ€¦ which you can go through in your own Azure subscriptions&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1 id="setting-the-scene-on-azure-ai-using-computer-vision-for-ocr"&gt;setting the scene on Azure AI, using Computer Vision for OCR
 &lt;/h1&gt;&lt;p&gt;Computer Vision allows for different use cases, of which the most important ones are:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Image Analysis&lt;/strong&gt; – typically used to detect objects or items&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Spatial Analysis&lt;/strong&gt; – is what you would use to detect people, like video cameras in a store&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;OCR or Optical Character Recognition&lt;/strong&gt; – allows you to recognize text, both printed and handwritten&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Facial Recognition&lt;/strong&gt; – recognize human identity, without exposing privacy details&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Image Analysis&lt;/strong&gt; â€“ typically used to detect objects or items&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Spatial Analysis&lt;/strong&gt; â€“ is what you would use to detect people, like video cameras in a store&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;OCR or Optical Character Recognition&lt;/strong&gt; â€“ allows you to recognize text, both printed and handwritten&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Facial Recognition&lt;/strong&gt; â€“ recognize human identity, without exposing privacy details&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src="../images/azureai_ocr_Slide6.PNG"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-12-23-0d183516.png"
  
  
  loading="lazy"
@@ -1239,7 +1239,7 @@ Record Schema details&lt;/p&gt;
  
  &gt;&lt;/p&gt;
 &lt;h2 id="deploying-azure-ai---computer-vision"&gt;Deploying Azure AI - Computer Vision
-&lt;/h2&gt;&lt;p&gt;If you don’t already have one in your subscription, you’ll need to provision an Azure AI Services resource. If you don&amp;rsquo;t have an Azure subscription yet, you can sign up for a &lt;strong&gt;[Free subscription]&lt;/strong&gt;(&lt;a class="link" href="https://azure.microsoft.com/en-us/free%29" target="_blank" rel="noopener"
+&lt;/h2&gt;&lt;p&gt;If you donâ€™t already have one in your subscription, youâ€™ll need to provision an Azure AI Services resource. If you don&amp;rsquo;t have an Azure subscription yet, you can sign up for a &lt;strong&gt;[Free subscription]&lt;/strong&gt;(&lt;a class="link" href="https://azure.microsoft.com/en-us/free%29" target="_blank" rel="noopener"
  &gt;https://azure.microsoft.com/en-us/free)&lt;/a&gt;.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Open the Azure portal at &lt;a class="link" href="https://portal.azure.com" target="_blank" rel="noopener"
@@ -1261,7 +1261,7 @@ Record Schema details&lt;/p&gt;
 &lt;li&gt;From the &lt;strong&gt;ComputerVision&lt;/strong&gt; tab within &lt;strong&gt;Azure AI Services&lt;/strong&gt;, create a new Computer Vision Resource, keeping most default settings as-is.&lt;/li&gt;
 &lt;li&gt;Wait for deployment to complete. From the &lt;strong&gt;Overview&lt;/strong&gt; section of Computer Vision, notice the &lt;strong&gt;Vision Studio&lt;/strong&gt; button.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/azureai_ocr_ComputerVision.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-12-23-cdcd7414.png"
  
  
  loading="lazy"
@@ -1276,7 +1276,7 @@ Record Schema details&lt;/p&gt;
 &lt;li&gt;From here, select &lt;strong&gt;Optical Character Recognition&lt;/strong&gt; , and select &lt;strong&gt;Extract text from images&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;Here, you can test the functionality of how text is getting recognized, using the sample images provided, or you can upload your own images as well. I would recommend you to try with handwritten notes as well, especially when your handwriting skills are as great as mine&amp;hellip;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/azureai_ocr_handwrittennotes.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-12-23-9fa0ac56.png"
  
  
  loading="lazy"
@@ -1287,14 +1287,14 @@ Record Schema details&lt;/p&gt;
  
  &gt;&lt;/p&gt;
 &lt;h2 id="how-does-ocr-recognition-actually-work"&gt;How does OCR recognition actually work?
-&lt;/h2&gt;&lt;p&gt;When we talk about Azure AI, it means using APIs, which allow you to bring in a source into the AI engine, from there processes a given scenario – like read text in the case of OCR, and from there we call the result&lt;/p&gt;
-&lt;p&gt;Looking at this example, and I’ll show you in a quick demo, each item of text gets moved into a box/a boundary, which gets translated into understandable characters -&amp;gt; forming words&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;When we talk about Azure AI, it means using APIs, which allow you to bring in a source into the AI engine, from there processes a given scenario â€“ like read text in the case of OCR, and from there we call the result&lt;/p&gt;
+&lt;p&gt;Looking at this example, and Iâ€™ll show you in a quick demo, each item of text gets moved into a box/a boundary, which gets translated into understandable characters -&amp;gt; forming words&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Step 1&lt;/strong&gt; involves &lt;strong&gt;creating a requestID&lt;/strong&gt;
 &lt;strong&gt;Step 2&lt;/strong&gt; means &lt;strong&gt;reading out the results, for the specific requestID&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Going back to the &lt;strong&gt;Vision Studio&lt;/strong&gt; in the Azure Portal, where you uploaded or selected an image, and saw the outcome of how text gets recognized, select &lt;strong&gt;JSON&lt;/strong&gt;.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/azureai_ocr_boundbox.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-12-23-ff48c684.png"
  
  
  loading="lazy"
@@ -1307,7 +1307,7 @@ Record Schema details&lt;/p&gt;
 &lt;ol start="2"&gt;
 &lt;li&gt;For each character or set of characters recognized as text, different JSON properties and values are getting created. These identify the boundaries of the text on the image.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/azureai_ocr_Slide8.PNG"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-12-23-10521604.png"
  
  
  loading="lazy"
@@ -1337,7 +1337,7 @@ Record Schema details&lt;/p&gt;
 &lt;ol start="5"&gt;
 &lt;li&gt;With the Docker container running, open the browser to &lt;strong&gt;http://localhost:5050/status&lt;/strong&gt;, which confirms the ReadAPI service is ready, and your API Key is valid&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/azureai_ocr_docker_ready.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-12-23-b672b551.png"
  
  
  loading="lazy"
@@ -1350,7 +1350,7 @@ Record Schema details&lt;/p&gt;
 &lt;ol start="6"&gt;
 &lt;li&gt;Next, connecto to &lt;strong&gt;http://localhost:5050/swagger&lt;/strong&gt; to interact with the different API endpoints of the Language Service running within the container&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/azureai_ocr_swagger.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-12-23-da29ca8d.png"
  
  
  loading="lazy"
@@ -1376,7 +1376,7 @@ Record Schema details&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src="../images/azureai_ocr_readapi_requestbody.png"
+&lt;/div&gt;&lt;p&gt;&lt;img src="../images/screenshot-2023-12-23-a92ee081.png"
  
  
  loading="lazy"
@@ -1390,7 +1390,7 @@ Record Schema details&lt;/p&gt;
 &lt;li&gt;Click the &lt;strong&gt;Execute&lt;/strong&gt; button.&lt;/li&gt;
 &lt;li&gt;This sends an API request and returns an analyze request ID from this URL: http://localhost:5000/vision/v3.2/read/analyze&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/azureai_ocr_readapi_response.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-12-23-feee6d2d.png"
  
  
  loading="lazy"
@@ -1405,10 +1405,10 @@ Record Schema details&lt;/p&gt;
 &lt;p&gt;Copy the request id, and open it in the browser, e.g. http://localhost:5050/vision/v3.2/read/analyzeResults/339da9a7-aa6b-4c81-a5d0-5840448fdfaf&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;This brings up the full JSON structure of the analyzed text, including text snippets, bounding boxes,…&lt;/p&gt;
+&lt;p&gt;This brings up the full JSON structure of the analyzed text, including text snippets, bounding boxes,â€¦&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/azureai_ocr_jsonresponse.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-12-23-5d8280b5.png"
  
  
  loading="lazy"
@@ -1418,8 +1418,8 @@ Record Schema details&lt;/p&gt;
  
  
  &gt;&lt;/p&gt;
-&lt;p&gt;While quite impressive if you ask me, we had OCR technology doing almost the same, for the last 50-60 years already. Anyone remembers copiers and scanners, saving to a PDF document? Basically based on the same…&lt;/p&gt;
-&lt;p&gt;So let’s focus a bit more on the next level of OCR, using Intelligent Document Processing&lt;/p&gt;
+&lt;p&gt;While quite impressive if you ask me, we had OCR technology doing almost the same, for the last 50-60 years already. Anyone remembers copiers and scanners, saving to a PDF document? Basically based on the sameâ€¦&lt;/p&gt;
+&lt;p&gt;So letâ€™s focus a bit more on the next level of OCR, using Intelligent Document Processing&lt;/p&gt;
 &lt;h1 id="using-intelligent-document-processing-or-idp"&gt;Using Intelligent Document Processing or IDP
 &lt;/h1&gt;&lt;p&gt;Similar to the Computer Vision Read API and Vision Studio, Azure AI also provides the &lt;strong&gt;Form Recognizer Service&lt;/strong&gt; , which got recently renamed to &lt;strong&gt;Intelligent Document Processing&lt;/strong&gt; or IDP.&lt;/p&gt;
 &lt;p&gt;Document Intelligence Read Optical Character Recognition (OCR) model runs at a higher resolution than Azure AI Vision Read and extracts print and handwritten text from PDF documents and scanned images. It also includes support for extracting text from Microsoft Word, Excel, PowerPoint, and HTML documents. It detects paragraphs, text lines, words, locations, and languages. The Read model is the underlying OCR engine for other Document Intelligence prebuilt models like Layout, General Document, Invoice, Receipt, Identity (ID) document, Health insurance card, W2 in addition to custom models.&lt;/p&gt;
@@ -1427,7 +1427,7 @@ Record Schema details&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;From the Azure AI Portal, navigate to &lt;strong&gt;Document Intelligence&lt;/strong&gt;, and create a new resource within. Default settings should be ok as-is.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/azureai_ocr_docintel.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-12-23-c3396348.png"
  
  
  loading="lazy"
@@ -1440,7 +1440,7 @@ Record Schema details&lt;/p&gt;
 &lt;ol start="2"&gt;
 &lt;li&gt;Once deployed, from the &lt;strong&gt;Overview&lt;/strong&gt; section, notice the &lt;strong&gt;Document Intelligence Studio&lt;/strong&gt; option, and open it.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/azureai_ocr_docintelstudio.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-12-23-6c02cf38.png"
  
  
  loading="lazy"
@@ -1450,14 +1450,14 @@ Record Schema details&lt;/p&gt;
  
  
  &gt;&lt;/p&gt;
-&lt;p&gt;In the previous examples, the content was coming from an image-file type (jpeg,…). Where sometimes, we have more specific data types, such as forms, receipts, invoices, passport,…&lt;/p&gt;
-&lt;p&gt;This is where the compute vision text analyzer is not finetuned enough. That’s where we will use the form recognizer service, now known as document intelligence service.&lt;/p&gt;
-&lt;p&gt;Azure AI Document Intelligence is a cloud-based Azure AI service that enables you to build intelligent document processing solutions. Massive amounts of data, spanning a wide variety of data types, are stored in forms and documents. Document Intelligence enables you to effectively manage the velocity at which data is collected and processed and is key to improved operations, informed data-driven decisions, and enlightened innovation.&lt;/p&gt;
+&lt;p&gt;In the previous examples, the content was coming from an image-file type (jpeg,â€¦). Where sometimes, we have more specific data types, such as forms, receipts, invoices, passport,â€¦&lt;/p&gt;
+&lt;p&gt;This is where the compute vision text analyzer is not finetuned enough. Thatâ€™s where we will use the form recognizer service, now known as document intelligence service.&lt;/p&gt;
+&lt;p&gt;Azure AI Document Intelligence is a cloud-basedÂ Azure AI serviceÂ that enables you to build intelligent document processing solutions. Massive amounts of data, spanning a wide variety of data types, are stored in forms and documents. Document Intelligence enables you to effectively manage the velocity at which data is collected and processed and is key to improved operations, informed data-driven decisions, and enlightened innovation.&lt;/p&gt;
 &lt;p&gt;Document Intelligence recognizes 3 different models:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Document Analysis&lt;/strong&gt; - enable text extraction from forms and documents and return structured business-ready content ready for your organization&amp;rsquo;s action, use, or progress.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src="../images/azureai_ocr_Slide12.PNG"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-12-23-ec0dc870.png"
  
  
  loading="lazy"
@@ -1470,7 +1470,7 @@ Record Schema details&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Prebuilt models&lt;/strong&gt; - Prebuilt models enable you to add intelligent document processing to your apps and flows without having to train and build your own models.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src="../images/azureai_ocr_prebuiltmodels.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-12-23-3a6aafe7.png"
  
  
  loading="lazy"
@@ -1483,7 +1483,7 @@ Record Schema details&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;From the Document Intelligence Studio, select a prebuilt model type of choice. I&amp;rsquo;ll use &lt;strong&gt;Invoice&lt;/strong&gt; but the approach is the same for the other ones.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/azureai_ocr_invoice.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-12-23-4daf4b79.png"
  
  
  loading="lazy"
@@ -1496,7 +1496,7 @@ Record Schema details&lt;/p&gt;
 &lt;ol start="2"&gt;
 &lt;li&gt;Click &lt;strong&gt;Run Analysis&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/azureai_ocr_invoice_analysis.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-12-23-8b5e58e2.png"
  
  
  loading="lazy"
@@ -1509,7 +1509,7 @@ Record Schema details&lt;/p&gt;
 &lt;ol start="3"&gt;
 &lt;li&gt;As you can see, the different text items from the document (Invoice) are &lt;strong&gt;getting identified&lt;/strong&gt; and &lt;strong&gt;tagged with a label&lt;/strong&gt;. Similar to before, the technical output is stored in a &lt;strong&gt;JSON file&lt;/strong&gt;.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/azureai_ocr_invoice_analysis_json.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-12-23-f50cd78f.png"
  
  
  loading="lazy"
@@ -1524,7 +1524,7 @@ Record Schema details&lt;/p&gt;
 &lt;li&gt;&lt;strong&gt;Custom models&lt;/strong&gt; - Custom models are trained using your labeled datasets to extract distinct data from forms and documents, specific to your use cases. Standalone custom models can be combined to create composed models.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Document Intelligence uses advanced machine learning technology to identify documents, detect and extract information from forms and documents, and return the extracted data in a structured JSON output. With Document Intelligence, you can use document analysis models, pre-built/pre-trained, or your trained standalone custom models.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/azureai_ocr_docintel_custom.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-12-23-9adabb58.png"
  
  
  loading="lazy"
@@ -1551,7 +1551,7 @@ The custom neural (custom document) model uses deep learning models and base mod
 &lt;p&gt;From here, create &lt;strong&gt;a new project&lt;/strong&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/azureai_ocr_custommodelproject.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-12-23-a21a0a69.png"
  
  
  loading="lazy"
@@ -1569,7 +1569,7 @@ The custom neural (custom document) model uses deep learning models and base mod
 &lt;p&gt;Open the &lt;strong&gt;project&lt;/strong&gt; you created, from where it allows you to &lt;strong&gt;upload sample files&lt;/strong&gt;. &lt;strong&gt;Upload 5-10 identical documents, as that is what is required to train the model&lt;/strong&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/azureai_ocr_custom_labeldata.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-12-23-03c382bd.png"
  
  
  loading="lazy"
@@ -1593,7 +1593,7 @@ The custom neural (custom document) model uses deep learning models and base mod
 &lt;h1 id="summary"&gt;Summary
 &lt;/h1&gt;&lt;p&gt;In this article, I wanted to introduce you to the exciting world of Azure AI, and more specifically how &lt;strong&gt;Computer Vision&lt;/strong&gt; can be used to recognize text in images, known as &lt;strong&gt;OCR&lt;/strong&gt;, but even more so, how Azure AI &lt;strong&gt;Document Intelligence API&lt;/strong&gt; allows to bring in more advanced document template recognition into your applications.&lt;/p&gt;
 &lt;p&gt;Thanks to the Azure Festive Tech Calendar team for having me! Take care and Happy Holidays!&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/azureai_ocr_Slide20.PNG"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-12-23-591067f1.png"
  
  
  loading="lazy"
@@ -1604,7 +1604,7 @@ The custom neural (custom document) model uses deep learning models and base mod
  
  &gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
- &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ &gt;&lt;img src="../images/screenshot-2023-12-23-17f576e7.png"
  
  
  loading="lazy"
@@ -1647,7 +1647,7 @@ The custom neural (custom document) model uses deep learning models and base mod
 &lt;li&gt;Open &lt;a class="link" href="https://oai.azure.com/" target="_blank" rel="noopener"
  &gt;Azure AI Studio&lt;/a&gt; from your browser, using your Azure admin account credentials.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2023-08-14_20-07-57.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-07-17-ddfb8eee.png"
  
  
  loading="lazy"
@@ -1672,7 +1672,7 @@ The custom neural (custom document) model uses deep learning models and base mod
 &lt;li&gt;Unique Name for the Azure OpenAI Resource&lt;/li&gt;
 &lt;li&gt;Pricing Tier: &lt;strong&gt;Select Standard S0&lt;/strong&gt; (The Free Basic won&amp;rsquo;t allow us to use the necessary Cognitive Search later on)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src="../images/2023-08-14_20-09-06.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-07-17-9a216e8d.png"
  
  
  loading="lazy"
@@ -1685,7 +1685,7 @@ The custom neural (custom document) model uses deep learning models and base mod
 &lt;ol start="4"&gt;
 &lt;li&gt;Wait for the Azure OpenAI Resource to get deployed, and navigate to the resource once its ready.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2023-08-14_20-12-14.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-07-17-9435dc38.png"
  
  
  loading="lazy"
@@ -1699,7 +1699,7 @@ The custom neural (custom document) model uses deep learning models and base mod
 &lt;li&gt;Navigate back to &lt;a class="link" href="https://oai.azure.com/" target="_blank" rel="noopener"
  &gt;Azure OpenAI Studio&lt;/a&gt;, which will allow you to select your Azure AI Resource created earlier.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2023-08-14_20-12-39.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-07-17-23c291bb.png"
  
  
  loading="lazy"
@@ -1712,7 +1712,7 @@ The custom neural (custom document) model uses deep learning models and base mod
 &lt;ol start="6"&gt;
 &lt;li&gt;From Azure OpenAI Studio, select &lt;strong&gt;Chat Playground&lt;/strong&gt; from the &lt;strong&gt;Get Started&lt;/strong&gt; options.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2023-08-14_20-13-16.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-07-17-6337eff8.png"
  
  
  loading="lazy"
@@ -1725,7 +1725,7 @@ The custom neural (custom document) model uses deep learning models and base mod
 &lt;ol start="7"&gt;
 &lt;li&gt;Within the &lt;strong&gt;Chat Playground&lt;/strong&gt;, click the &lt;strong&gt;Create new deployment&lt;/strong&gt; button to set up a new Chat Plaground.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2023-08-14_20-13-36.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-07-17-dca9553e.png"
  
  
  loading="lazy"
@@ -1743,7 +1743,7 @@ The custom neural (custom document) model uses deep learning models and base mod
 &lt;li&gt;Model Version: &lt;strong&gt;Auto-update-to-default&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;Deployment Name: descriptive name of what the model is about&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src="../images/2023-08-14_20-14-47.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-07-17-e194d150.png"
  
  
  loading="lazy"
@@ -1758,7 +1758,7 @@ The custom neural (custom document) model uses deep learning models and base mod
 &lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;With the model created, we can move on to the next step, adding data. From the &lt;strong&gt;Chat Playground&lt;/strong&gt;, select &lt;strong&gt;Add your data (preview)&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2023-08-14_20-15-06.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-07-17-7d1a86c6.png"
  
  
  loading="lazy"
@@ -1776,7 +1776,7 @@ The custom neural (custom document) model uses deep learning models and base mod
 &lt;li&gt;Azure Blob Storage Account&lt;/li&gt;
 &lt;li&gt;Azure Blob Storage Account container&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src="../images/2023-08-14_20-22-04.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-07-17-01070d5a.png"
  
  
  loading="lazy"
@@ -1805,7 +1805,7 @@ The custom neural (custom document) model uses deep learning models and base mod
 &lt;li&gt;Pricing Tier: &lt;strong&gt;Basic&lt;/strong&gt; (since the free service won&amp;rsquo;t be recognized by Chat Playground)&lt;/li&gt;
 &lt;li&gt;Scale / Replica: 1/1&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src="../images/2023-08-14_20-28-37.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-07-17-d179c90c.png"
  
  
  loading="lazy"
@@ -1818,7 +1818,7 @@ The custom neural (custom document) model uses deep learning models and base mod
 &lt;ol start="6"&gt;
 &lt;li&gt;Once the Search Service got created, navigate back to the Chat Playground, and repeat the steps to &lt;strong&gt;add your own data&lt;/strong&gt;. This time, the Cognitive Search will be recognized as service in the &lt;strong&gt;Add Data Source&lt;/strong&gt; step.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2023-08-14_20-54-19.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-07-17-6a33f151.png"
  
  
  loading="lazy"
@@ -1831,7 +1831,7 @@ The custom neural (custom document) model uses deep learning models and base mod
 &lt;ol start="7"&gt;
 &lt;li&gt;Click &lt;strong&gt;Next&lt;/strong&gt;, and upload a few sample files in the &lt;strong&gt;Upload Files&lt;/strong&gt; step.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2023-08-14_20-55-34.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-07-17-8b05f521.png"
  
  
  loading="lazy"
@@ -1844,7 +1844,7 @@ The custom neural (custom document) model uses deep learning models and base mod
 &lt;ol start="8"&gt;
 &lt;li&gt;Continue the &lt;strong&gt;add data source&lt;/strong&gt; wizard steps, and completing with clicking &lt;strong&gt;Save and Close&lt;/strong&gt;.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2023-08-14_20-56-25.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-07-17-d64210cb.png"
  
  
  loading="lazy"
@@ -1864,7 +1864,7 @@ The custom neural (custom document) model uses deep learning models and base mod
 &lt;/ol&gt;
 &lt;p&gt;Note: in my scenario, I was using demoguides, so wanted to check back if the chat bot could find a demo scenario containing Cosmos DB as resource.&lt;/p&gt;
 &lt;p&gt;Based on the question, the chat bot responded with an &lt;strong&gt;accurate answer&lt;/strong&gt;, providing a brief description of the actual demo steps from the guide, as well as a link to the actual source markdown-file in Blob Storage.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2023-08-14_21-30-22.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-07-17-37f398b9.png"
  
  
  loading="lazy"
@@ -1878,7 +1878,7 @@ The custom neural (custom document) model uses deep learning models and base mod
 &lt;li&gt;As I only have 1 single guide with CosmosDB, let&amp;rsquo;s test how it handles the question, if there are more results possible. I asked a somewhat broader question, using &lt;strong&gt;retail application&lt;/strong&gt; as keyword (Note: our demo scenarios involve a retail application as example, which exists in a Virtual Machine architecture, a Platform as a Service, Container Instance, Kubernetes Service and Azure Container Apps architecture). So based on that, the expectation is to get &lt;strong&gt;multiple results&lt;/strong&gt; back.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Woohoo!! The Chat bot found the &lt;strong&gt;different sources&lt;/strong&gt; and provided a &lt;strong&gt;nice summary overview&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2023-08-14_21-30-22.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-07-17-37f398b9.png"
  
  
  loading="lazy"
@@ -1893,7 +1893,7 @@ The custom neural (custom document) model uses deep learning models and base mod
 &lt;li&gt;Next, &lt;strong&gt;optional though&lt;/strong&gt;, you can publish the Chat Bot to an Azure App Service. This would allow a developer to integrate the bot in a broader web app scenario using iframe or similar HTML/CSS code.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;From the &lt;strong&gt;Chat Playground&lt;/strong&gt; blade, navigate to &lt;strong&gt;Deploy to&lt;/strong&gt; in the upper right corner. and select &lt;strong&gt;Azure App Service&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2023-08-14_21-42-43.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-07-17-29de58ea.png"
  
  
  loading="lazy"
@@ -1913,7 +1913,7 @@ The custom neural (custom document) model uses deep learning models and base mod
 &lt;li&gt;Location&lt;/li&gt;
 &lt;li&gt;Pricing Plan (S0 or S1 would be OK)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src="../images/2023-08-14_21-43-28.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-07-17-afa0d73e.png"
  
  
  loading="lazy"
@@ -1931,7 +1931,7 @@ The custom neural (custom document) model uses deep learning models and base mod
 &lt;p&gt;After successful authentication, the Chat Bot is ready to be used:&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2023-08-14_21-59-31.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-07-17-7219ed8d.png"
  
  
  loading="lazy"
@@ -1944,7 +1944,7 @@ The custom neural (custom document) model uses deep learning models and base mod
 &lt;ol start="7"&gt;
 &lt;li&gt;As a final test, I wanted to see how the Chat Bot responded if it didn&amp;rsquo;t find the correct answer. (This was partly to rule out the ChatGPT experience I had before, where the AI engine invents its own answers, but still explaining it in such a way it feels as the correct answer)&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2023-08-14_22-00-05.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-07-17-669866e4.png"
  
  
  loading="lazy"
@@ -1959,7 +1959,7 @@ The custom neural (custom document) model uses deep learning models and base mod
 &lt;/h1&gt;&lt;p&gt;Azure AI is an amazing cloud service, with unseen capabilities. With this article, I wanted to inform you as a reader on how easy it can be to set up Azure AI Cognitive Search, and using it with a Chat Bot functionality, based on your own data from Azure Blob Storage.&lt;/p&gt;
 &lt;p&gt;I&amp;rsquo;m confident Azure AI will become a big part of our day-to-day skillset. So expect more similar blog posts in the near future how I&amp;rsquo;m continuing my journey of learning about AI and get ready for the future.&lt;/p&gt;
 &lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
- &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ &gt;&lt;img src="../images/screenshot-2023-07-17-17f576e7.png"
  
  
  loading="lazy"

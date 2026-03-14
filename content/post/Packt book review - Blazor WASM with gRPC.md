@@ -1,4 +1,4 @@
----
+﻿---
 title: "Book review - Building Blazor WebAssembly Applications with gRPC"
 date: 2022-12-17
 publishdate: 2022-12-17
@@ -8,7 +8,7 @@ draft: false
 
 In this post, I want to share my review of another Blazor book I read recently, **Building Blazor WebAssembly Applications with gRPC** this time from [Vaclav Perakek](https://twitter.com/vaclavperakek), published by [Packt Publishing](https://www.packtpub.com/product/building-blazor-webassembly-applications-with-grpc/9781804610558?_ga=2.130113295.1693879135.1671300604-32592472.1664947786) and available on [Amazon](https://www.amazon.com/Building-Blazor-WebAssembly-Applications-gRPC/dp/1804610550) as well as other e-book subscription platforms.
 
-![Book Cover](../images/2022-12-17_10-12-08.png)
+![Book Cover](../images/screenshot-2022-12-17-53607649.png)
 
 If you have been following me for a while, you know I'm gradually learning more about coding and developing applications, especially using the [Blazor .NET framework](https://dotnet.microsoft.com/en-us/apps/aspnet/web-apps/blazor).
 
@@ -63,7 +63,7 @@ I'm off now, providing my **5-star review on Amazon** for this book.
 
 See you later folks!!
 
-[![BuyMeACoffee](../images/buy_me_a_coffee.png)](https://www.buymeacoffee.com/pdtit)
+[![BuyMeACoffee](../images/screenshot-2022-12-17-17f576e7.png)](https://www.buymeacoffee.com/pdtit)
 
 Cheers!!
 

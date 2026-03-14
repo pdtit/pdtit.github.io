@@ -1,4 +1,4 @@
----
+﻿---
 title: "Collecting Hugo static site statistics using Azure Application Insights"
 date: 2020-04-26
 tags: ["Azure", "Hugo"]
@@ -19,7 +19,7 @@ Having a platform for blog posts is one thing, getting your hands on statistics 
 
 - The first step is straight forward if you already have Azure experience. From the [Azure Portal](http://portal.azure.com), **create** a new resource, and search for **"Application Insights"**.
 
-![Create Application Insights](../images/AppInsights_new.jpg)
+![Create Application Insights](../images/screenshot-2020-04-26-bdfb5aa6.jpg)
 
 - Complete the necessary parameters to get this resource created:
     -  Subscription
@@ -27,11 +27,11 @@ Having a platform for blog posts is one thing, getting your hands on statistics 
     - Name
     - Azure Region
     
-    ![Create Application Insights](../images/AppInsights_create.jpg)
+    ![Create Application Insights](../images/screenshot-2020-04-26-b38f5936.jpg)
 
 - Wait for the resource to get created. Once created, open the Application Insight blade:
 
-![Create Application Insights](../images/AppInsights_initial.jpg)
+![Create Application Insights](../images/screenshot-2020-04-26-cd72528e.jpg)
 
 ## 2. Integrating Instrumentation Key script into the Hugo website
 
@@ -41,7 +41,7 @@ While this sounds like a tremendous job, Hugo actually makes this **rather easy*
 
 In my Hugo theme, I found out that using the **"head.html"** file in the **root of my layout folder** "(<Hugo_source_folder\themes\<themename>\layouts\partials\)" would to the trick.
 
-![Create Application Insights](../images/AppInsights_head.jpg)
+![Create Application Insights](../images/screenshot-2020-04-26-64a347c5.jpg)
 
 - Open this file in a text editor like VS Code, and browse all the way to the end of the <head> section. Paste in the following lines (as shown on the Azure Docs page), **replacing the INSTRUMENTATION_KEY** with the one you find in the Application Insights Overview section:
 
@@ -57,7 +57,7 @@ In my Hugo theme, I found out that using the **"head.html"** file in the **root 
 
 - The code within the head.html file should look similar to this now: 
 
-![Create Application Insights](../images/AppInsights_head_code.jpg)
+![Create Application Insights](../images/screenshot-2020-04-26-260c292a.jpg)
 
 ## 3. Render/Compile your Hugo Website
 
@@ -71,47 +71,47 @@ In my Hugo theme, I found out that using the **"head.html"** file in the **root 
 
 - Back in **Application Insights** in the Azure Portal, browse to **Usage**
 
-![Application Insights Usage](../images/AppInsights_usagemenu.jpg)
+![Application Insights Usage](../images/screenshot-2020-04-26-12ca0bfd.jpg)
 
 - and select **Users**; this will show you a diagram of the user visits for the last 24 hours. You can change the time window if needed by selecting other filters. 
 
-![Application Insights Users](../images/AppInsights_userstatistics.jpg)
+![Application Insights Users](../images/screenshot-2020-04-26-aedfd23d.jpg)
 
 - For example, changing the time window to **7 days**, changes the view to this in my example: 
 
-![Application Insights Users_7days](../images/AppInsights_userstatistics_7days.jpg)
+![Application Insights Users_7days](../images/screenshot-2020-04-26-79643c4c.jpg)
 
 - If you **click** the **"View More Insights"** button, you can see additional statistical details about the site visitors, this time nicely structured **by country**:  
 
-![Application Insights Users by country](../images/AppInsights_userstatistics_7days_bycountry.jpg)
+![Application Insights Users by country](../images/screenshot-2020-04-26-31933530.jpg)
 
 - **Scrolling more down** shows yet another summary view, summarized **by (active) session**:
 
-![Application Insights Users by session](../images/AppInsights_userstatistics_7days_bysession.jpg)
+![Application Insights Users by session](../images/screenshot-2020-04-26-b41ff2f3.jpg)
 
 - **Click** on any of the active session details; this opens a sidebar view, exposing more granular information about that session: 
 
-![Application Insights session timeline](../images/AppInsights_session_timeline.jpg)
+![Application Insights session timeline](../images/screenshot-2020-04-26-7f2aeff7.jpg)
 
 - Back from the **Usage** menu of Application Insights, **select** **Events**
 
-![Application Insights Events](../images/AppInsights_events.jpg)
+![Application Insights Events](../images/screenshot-2020-04-26-119b51ae.jpg)
 
 - This will again show you detailed views on the actual past events for the last 24 hours, 7 days or any other time window you select. You can again **click** the **"View More Insights"** button, to find specific **event statistics**, which refer to page views of each and every blog post on our website. 
 
-![Application Insights Event Statistics](../images/AppInsights_eventstatistics.jpg)
+![Application Insights Event Statistics](../images/screenshot-2020-04-26-1fbb7c07.jpg)
 
 - **Click** on any of the **event statistics items**; this redirects you to another section in Application Insights, the **"End-to-end transaction details"** 
 
-![Application Insights End To End Transaction Details](../images/AppInsights_endtoend.jpg)
+![Application Insights End To End Transaction Details](../images/screenshot-2020-04-26-27c05771.jpg)
 
 - From this view, select **All available telemetry information for this session**, under the **Related items** section:
 
-![Application Insights Related Items](../images/AppInsights_relateditems.jpg)
+![Application Insights Related Items](../images/screenshot-2020-04-26-f1e34ff1.jpg)
 
 - Which in turn exposes additional details about each and every item viewed during that specific session 
 
-![Application Insights Telemetry Search](../images/AppInsights_telemetry_search.jpg)
+![Application Insights Telemetry Search](../images/screenshot-2020-04-26-fa71f594.jpg)
 
 ## 4. Summary
 
@@ -123,6 +123,6 @@ I'm learning more about Hugo in combination with Azure services, and love it mor
 
 For now, stay safe and healthy! as always, reach out to share your feedback or ask questions. 
 
-[![BuyMeACoffee](../images/buy_me_a_coffee.png)](https://www.buymeacoffee.com/pdtit)
+[![BuyMeACoffee](../images/screenshot-2020-04-26-17f576e7.png)](https://www.buymeacoffee.com/pdtit)
 
 /Peter

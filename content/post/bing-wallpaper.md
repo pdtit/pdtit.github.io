@@ -1,4 +1,4 @@
----
+﻿---
 title: "Bing Desktop Wallpapers take you on a trip around the world"
 date: 2020-04-19
 tags: ["General"]
@@ -24,7 +24,7 @@ So no doubt about it, I'm missing traveling. Missing the walks, the drive-by's, 
 
 And that's where I discovered an interesting but yet little gem to install on my laptop: **[Bing Desktop Wallpaper](https://www.microsoft.com/en-us/bing/bing-wallpaper)** "Exploring the world, one photo at the time". 
 
-![Bing Wallpaper 20200419](../images/20200419.jpg)
+![Bing Wallpaper 20200419](../images/screenshot-2020-04-19-44d7758a.jpg)
 
 If you have been using **[Bing](http://www.bing.com)** as your search engine, or you had the joys of owning a Windows Phone in the past, you pretty well know what I'm talking about: Beautiful, stunning pictures from anywhere in the world, changing every day. 
 

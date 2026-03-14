@@ -1,4 +1,4 @@
----
+﻿---
 title: "How I migrated my Hugo site from Azure Storage Site to Azure Static Web Apps"
 date: 2022-10-30
 tags: ["Azure", "Hugo"]
@@ -21,7 +21,7 @@ In short, the process involves the following:
 
 a) Create new Resource / Static Web Apps
 
-![Create Static Web Apps](../images/2022-10-29_16-00-12.png)
+![Create Static Web Apps](../images/screenshot-2022-10-30-077eb631.png)
 
 b) Complete the necessary project details:
 - Subscription
@@ -29,17 +29,17 @@ b) Complete the necessary project details:
 - Unique name for the Static Site App
 - Hosting Plan - **Free** which gives all you need for running Hugo with a public SSL/TLS certificate and hostname
 
-![Create Static Web Apps](../images/2022-10-29_16-00-52.png)
+![Create Static Web Apps](../images/screenshot-2022-10-30-c993a939.png)
 
 c) Next, provide the necessary deployment details. Notice SWA relies on a DevOps pipeline process, which can be GitHub or Azure DevOps. The pipeline basically gets triggered to compile the Hugo Markdown files (your blog article) into HTML-files, and gets triggered every time something is changed in the repository (like when you write a new blog post, delete a post or update a post...)
 
 In my setup, I chose Azure DevOps, but the flow is the same in GitHub.
 
-![Deploy Static Web Apps](../images/2022-10-29_16-01-35.png)
+![Deploy Static Web Apps](../images/screenshot-2022-10-30-06074c1a.png)
 
 d) Confirm the creation of the resource, and give it a few minutes. Once created, navigate to the new Static Web App resource blade:
 
-![Create SWA Resource](../images/2022-10-29_16-02-07.png)
+![Create SWA Resource](../images/screenshot-2022-10-30-88a365bf.png)
 
 e) From here, notice the **edit workflow** section, which points to a CI/CD Pipeline Yml file. This is the actual "engine" doing all the work. Open this link.
 
@@ -81,30 +81,30 @@ Normally, you shouldn't have to change anything on this Yml pipeline file, unles
 
 When it's the first time, it will most probably fail, since there is no data to compile yet. Let's fix this!!
 
-![Failed Pipeline](../images/2022-10-29_16-16-03.png)
+![Failed Pipeline](../images/screenshot-2022-10-30-b603ed96.png)
 
 5. From the DevOps environment, go to Repos (Github or Azure DevOps), and clone this repo to your local machine. I'm using Visual Studio Code, as it's a brilliant MarkDown editor with Git integration out-of-the-box.
 
-![Clone Repo](../images/2022-10-29_16-19-10.png)
+![Clone Repo](../images/screenshot-2022-10-30-fefc438b.png)
 
 6. Once the repo got cloned, copy all the folders and files from your backup, into this new repo folder. This will be recognized as a "folder change" by the Git source control process, and asking you to *commit* the changes and *synchronize* back to your repository. Perform both steps in sequence.
 
-![Commit and Sync](../images/2022-10-29_16-21-54.png)
+![Commit and Sync](../images/screenshot-2022-10-30-799e2a55.png)
 
 followed by the Sync Changes process - which uploads all changed files from your local machine to the DevOps repo.
-![Commit and Sync](../images/2022-10-29_16-23-49.png)
+![Commit and Sync](../images/screenshot-2022-10-30-a8733655.png)
 
 7. From the DevOps environment, validate the Hugo folders and files are present in the repository.
 
-![Synced Repo](../images/2022-10-29_16-25-07.png)
+![Synced Repo](../images/screenshot-2022-10-30-138bcec9.png)
 
 8. Given the automatic trigger, the Pipeline will be picking up the change and executing a new run. Wait for this to complete successfully.
 
-![New pipeline trigger](../images/2022-10-29_16-29-24.png)
+![New pipeline trigger](../images/screenshot-2022-10-30-34281372.png)
 
 9. Connect to the Azure Web App resource URL (something like https://gentle-desert-123456789.2.azurestaticapps.net/) as in my case, and behold your blog website is live!!
 
-![SWA is live](../images/2022-10-29_16-49-47.png)
+![SWA is live](../images/screenshot-2022-10-30-9bdafbb7.png)
 
 While this completes the successful migration of the Hugo blog site, we are not 100% done yet. As for now, it is only listening on the internal SWA web address, which we should update to a public domain name like www.007FFFLearning.com 
 
@@ -112,19 +112,19 @@ Luckily, this is a nifty feature from Static Web Apps, where it allows you to ad
 
 1. From the Static Web Apps blade, navigate to **custom domains**. 
 
-![SWA is live](../images/2022-10-29_16-52-54.png)
+![SWA is live](../images/screenshot-2022-10-30-0b379cd2.png)
 
 2. Click 'Add Domain', and select the options that's relevant to you. I have my public domain in [GoDaddy](https://www.godaddy.com), but other options, including Azure DNS itself, is also available.
 
-![Custom Domain DNS](../images/2022-10-29_16-53-41.png)
+![Custom Domain DNS](../images/screenshot-2022-10-30-7088564d.png)
 
 3. Add the custom domain name, and copy the CName record details over into your actual DNS hosting solution management portal. Once this is done, head back over to this Azure Custom Domain blade and confirm the domain validation. Note - depending on the DNS provider of use, this might take up to several hours. Mostly, this will only be a few minutes though.
 
-![Custom Domain Validation](../images/2022-10-29_16-56-32.png)
+![Custom Domain Validation](../images/screenshot-2022-10-30-41004792.png)
 
 4. That's it! from now on, your Static Web Site will listen to both the internal SWA domain, as well as the public domain you have configured here. 
 
-![Public URL is live](../images/2022-10-29_16-59-05.png)
+![Public URL is live](../images/screenshot-2022-10-30-e0e56f71.png)
 
 This is all it took to migrate my Hugo blog site from Azure Storage Account Static Site to the newer, Azure Static Web Apps. I'm now going to delete my old Resource Group, since I don't need that Azure Storage Account nor the Azure Front Door anymore. saving me about $45 /month. 
 
@@ -133,7 +133,7 @@ In the next post, I'll describe how to add [Azure Application Insights](https://
 Holler me on [Twitter](https://twitter.com/pdtit) if you should have any questions.
 
 
-[![BuyMeACoffee](../images/buy_me_a_coffee.png)](https://www.buymeacoffee.com/pdtit)
+[![BuyMeACoffee](../images/screenshot-2022-10-30-17f576e7.png)](https://www.buymeacoffee.com/pdtit)
 
 Cheers!!
 

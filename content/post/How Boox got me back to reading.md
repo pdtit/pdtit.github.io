@@ -1,4 +1,4 @@
----
+﻿---
 title: "How OnyxBoox - with some help from a friend - got me back to reading more... books"
 date: 2022-12-23
 publishdate: 2022-12-23
@@ -16,17 +16,17 @@ I honestly had my eyes on e-reader devices for a while, specifically [Remarkable
 
 Until I spotted a Twitter post from [Scott Hanselman](https://twitter.com/shanselman), offering an **[Onyxboox](https://onyxboox.com/) Note Air 2** for sale. This was another device I had my eyes on for a while.
 
-![Onyxboox for sale](../images/2022-12-23_14-02-58.png)
+![Onyxboox for sale](../images/screenshot-2022-12-23-72a8e060.png)
 
 So when I saw this post, I DM-ed Scott and the nice gentleman he is, we easily closed the deal, for a price I was willing to pay (and I still owe him a lunch/dinner too). 
 
 As soon as it arrived in the mail a few days later, I started using it. What pulled me in, was the **Onyx Boox Reader** feature, which allowed me to read my traditional PDF-documents, but - more important - allowing me to take handwritten notes on the side, circling words or parts of a paragraph, to emphasize text parts that are important to remember. 
 
-![Note taking](../images/2022-12-23_19-00-46.png)
+![Note taking](../images/screenshot-2022-12-23-32acb13e.png)
 
 Next to the Boox Reader app, one of the other convenient things about the device is **BooxDrop**, a built-in app which allows for copying files from your local machine onto the Boox device using just a wifi connection, which is super convenient. 
 
-![BooxDrop](../images/2022-12-23_19-05-34.png)
+![BooxDrop](../images/screenshot-2022-12-23-15423464.png)
 
 Since the device is running on Android, it also allows for installing about any regular Android App, including **Amazon Kindle Reader App**. This was a big plus for me, since I've been using that platform for buying most of my e-books over the years. The only downside though, is that note-taking is still using the Kindle-way as before, which annoyed me at first (as fluent note-taking on books was one of the things that got me interested in the device since the beginning...); The solution I have in mind for newer books, is switching from buying Kindle format back to PDF, and reading them from the great Boox Reader app.
 
@@ -38,11 +38,11 @@ I want to thank Scott for his kindness and convincing me about several features 
 
 I have to go now, as I am just starting my next book, [C#11 and .NET 7 development](https://www.packtpub.com/product/c-11-and-net-7-modern-cross-platform-development-fundamentals-seventh-edition/9781803237800).
 
-![C#11 and .NET7 Mark Price book cover](../images/2022-12-23_19-29-30.png)
+![C#11 and .NET7 Mark Price book cover](../images/screenshot-2022-12-23-fe385670.png)
 
 If you have been looking for a convenient E-reader with some additional note-taking features, I can definitely recommend the OnyxBoox Note Air 2 product. More info can be found on [The Onyx website](https://onyxboox.com/boox_noteair2). 
 
-[![BuyMeACoffee](../images/buy_me_a_coffee.png)](https://www.buymeacoffee.com/pdtit)
+[![BuyMeACoffee](../images/screenshot-2022-12-23-17f576e7.png)](https://www.buymeacoffee.com/pdtit)
 
 Cheers!!
 

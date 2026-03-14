@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>General on Azure Readiness starts here...</title><link>https://www.007ffflearning.com/tags/general/</link><description>Recent content in General on Azure Readiness starts here...</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 09 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/general/index.xml" rel="self" type="application/rss+xml"/><item><title>Innovation at Microsoft - Book Review</title><link>https://www.007ffflearning.com/post/innovation-at-microsoft---book-review/</link><pubDate>Sun, 09 Mar 2025 00:00:00 +0000</pubDate><guid>https://www.007ffflearning.com/post/innovation-at-microsoft---book-review/</guid><description>&lt;p&gt;The &lt;strong&gt;&lt;a class="link" href="https://posthillpress.com/book/the-insiders-guide-to-innovation-at-microsoft" target="_blank" rel="noopener"
- &gt;Insider’s Guide to Innovation at Microsoft&lt;/a&gt;&lt;/strong&gt;, written by Dean Carignan and JoAnn Garbin, and published by PostHillPress publishers, explores the innovation strategies and practices at Microsoft over the past 50 years.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/innovation_at_microsoft.jpg"
+ &gt;Insiderâ€™s Guide to Innovation at Microsoft&lt;/a&gt;&lt;/strong&gt;, written by Dean Carignan and JoAnn Garbin, and published by PostHillPress publishers, explores the innovation strategies and practices at Microsoft over the past 50 years.&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/screenshot-2025-03-09-44d5f0a9.jpg"
  
  
  loading="lazy"
@@ -32,15 +32,15 @@
 &lt;p&gt;&lt;strong&gt;Continuous Improvement&lt;/strong&gt;: This pattern emphasizes the importance of ongoing refinement and enhancement of products and services. Microsoft has consistently focused on iterating and improving its offerings based on user feedback and technological advancements. This approach ensures that their products remain relevant and competitive over time. For example, the evolution of Microsoft Office showcases how continuous updates and feature enhancements have kept it a staple in productivity software.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Collaboration&lt;/strong&gt;: Collaboration is highlighted as a critical factor in driving innovation at Microsoft. This involves teamwork within the company as well as partnerships with external organizations, developers, and the broader tech community. The development of Visual Studio Code is a prime example, where open-source collaboration and community feedback played a significant role in shaping the product to meet the needs of developers worldwide&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Adaptation&lt;/strong&gt;: The ability to pivot and adapt to changing market conditions and user needs is another key innovation pattern. Microsoft has demonstrated this through various initiatives, such as entering the gaming industry with the Xbox and adapting its strategies to compete with established players like Sony and Nintendo. This flexibility allows Microsoft to explore new opportunities and stay ahead in a rapidly evolving tech landscape&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Persistence&lt;/strong&gt;: Persistence is about the determination to overcome challenges and setbacks in the pursuit of innovation. Microsoft’s journey with Bing is a testament to this pattern. Despite initial setbacks and strong competition from other search engines, Microsoft persisted and eventually found success by leveraging AI and machine learning to enhance Bing’s capabilities.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Persistence&lt;/strong&gt;: Persistence is about the determination to overcome challenges and setbacks in the pursuit of innovation. Microsoftâ€™s journey with Bing is a testament to this pattern. Despite initial setbacks and strong competition from other search engines, Microsoft persisted and eventually found success by leveraging AI and machine learning to enhance Bingâ€™s capabilities.&lt;/p&gt;
 &lt;p&gt;This was one of the rare times where I took a lot of notes on the side, as I discovered several interesting ideas (which should not be the 1st phase of innovation - find more by reading the book yourself what I mean by this :-) ), how I could start incorporating some of these patterns in the work I do at Microsoft.&lt;/p&gt;
 &lt;h2 id="conclusion"&gt;Conclusion
-&lt;/h2&gt;&lt;p&gt;&amp;ldquo;The Insider’s Guide to Innovation at Microsoft&amp;rdquo; provides valuable insights into the company&amp;rsquo;s approach to innovation, offering lessons that can be applied across various industries. It emphasizes the importance of a structured yet flexible process of value creation through continuous improvement, collaboration, and adaptation.&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;&amp;ldquo;The Insiderâ€™s Guide to Innovation at Microsoft&amp;rdquo; provides valuable insights into the company&amp;rsquo;s approach to innovation, offering lessons that can be applied across various industries. It emphasizes the importance of a structured yet flexible process of value creation through continuous improvement, collaboration, and adaptation.&lt;/p&gt;
 &lt;p&gt;While I think the title had the goal to draw attention to the &lt;strong&gt;innovative&lt;/strong&gt; aspect of what Microsoft products are about, to me, it was also interesting to read about the history of how several of the key products I work with every day, got invented, developed, and are continuously being re-invented, using a customer-centric approach.&lt;/p&gt;
 &lt;p&gt;As mentioned at the start of the article, I truly enjoyed reading this book. It gave me insights into the history of Microsoft and several of its key products, as well as helped me understand how challenging it is to develop these products. And especially the 2nd part of the book, which detailed the innovation patterns, felt useful to me, as - apart from the Technical Trainer role - I am regularly brainstorming and thinking about other ways to keep the trainer role exciting. Not just for myself, but also for my &lt;em&gt;learners&lt;/em&gt;. And if there is one other thing I will remember from reading this book, is that your ideas and realizations of them always have to be customer-focused, no matter if they are external customers, partners, other teams within Microsoft or colleagues within your own team.&lt;/p&gt;
 &lt;p&gt;I hope you enjoy reading this book as much as I did!&lt;/p&gt;
 &lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
- &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ &gt;&lt;img src="../images/screenshot-2025-03-09-17f576e7.png"
  
  
  loading="lazy"
@@ -75,7 +75,7 @@
 I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s self-explanatory.&lt;/li&gt;
 &lt;li&gt;A sample form I&amp;rsquo;ll be using in this post looks like this:&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2023-03-26_18-51-25.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-03-26-2b1ef5a1.png"
  
  
  loading="lazy"
@@ -93,7 +93,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
 &lt;li&gt;Log on to Azure DevOps with an Organizational admin account&lt;/li&gt;
 &lt;li&gt;Select Azure DevOps (the logo in the upper left corner), and select &lt;strong&gt;Organization Settings&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;Within the Settings menu, select &lt;strong&gt;Process&lt;/strong&gt; under the Boards section
-&lt;img src="../images/2023-03-26_19-00-24.png"
+&lt;img src="../images/screenshot-2023-03-26-df0c5d80.png"
  
  
  loading="lazy"
@@ -104,7 +104,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  
  &gt;&lt;/li&gt;
 &lt;li&gt;This shows a list of default Azure Boards processes (Basic, Agile, Scrum, CMMI)
-&lt;img src="../images/2023-03-26_19-02-11.png"
+&lt;img src="../images/screenshot-2023-03-26-7cb68522.png"
  
  
  loading="lazy"
@@ -115,7 +115,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  
  &gt;&lt;/li&gt;
 &lt;li&gt;In this example, we will build a new &lt;em&gt;custom deviation&lt;/em&gt; from the &lt;strong&gt;Scrum&lt;/strong&gt; process, but you can choose any you want. Hover the mouse over the Scrum process, and select the ellipsis (the 3 dots). From the context menu, select &lt;strong&gt;Create inherited process&lt;/strong&gt;
-&lt;img src="../images/2023-03-26_19-04-30.png"
+&lt;img src="../images/screenshot-2023-03-26-df7aac9a.png"
  
  
  loading="lazy"
@@ -127,7 +127,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  &gt;&lt;/li&gt;
 &lt;li&gt;Provide a name and (optional) description for the process. I called mine &lt;strong&gt;Forms Test Process&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;Once created, select the new process. This opens a list of &lt;strong&gt;Work Item types&lt;/strong&gt; such as Bug, Epic, Task and other. As the new Work Item we create is so custom, it doesn&amp;rsquo;t really matter which one to choose. If you have about 50% or more that&amp;rsquo;s identical to an existing Work Item, you can use that as a baseline.
-&lt;img src="../images/2023-03-26_19-09-30.png"
+&lt;img src="../images/screenshot-2023-03-26-8b3dc29d.png"
  
  
  loading="lazy"
@@ -142,7 +142,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
 &lt;li&gt;Once created, select the new work item type. This opens the &lt;strong&gt;Layout&lt;/strong&gt; editor, where we will add custom fields, reflecting the different questions/items from the Office Form earlier.&lt;/li&gt;
 &lt;li&gt;A Work Item is based on Tabs. In my example, I only use a single tab, called &lt;strong&gt;Details&lt;/strong&gt;. Know you can as many Tabs as needed. Within each Tab, the Work Item layout is built-up of 3 panes, a left, holding a Description field, the middle pane, holding Custom fields, and the right pane, which has Deployment, Development and Related Work as default items - at least in my setup.&lt;/li&gt;
 &lt;li&gt;Add the custom fields you want to have on the Work Item, specifying the field type (e.g. I added an &lt;strong&gt;open question&lt;/strong&gt;, set as &lt;strong&gt;Text Multiple Lines&lt;/strong&gt;, as well as adding the &lt;strong&gt;Geography&lt;/strong&gt; and &lt;strong&gt;Category&lt;/strong&gt; as &lt;strong&gt;Text Single Line&lt;/strong&gt; items). These fields &lt;em&gt;somewhat&lt;/em&gt; correspond with the different items on the Office Form.
-&lt;img src="../images/2023-03-26_19-13-39.png"
+&lt;img src="../images/screenshot-2023-03-26-06976188.png"
  
  
  loading="lazy"
@@ -159,7 +159,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
 &lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;Click the &lt;strong&gt;Azure DevOps&lt;/strong&gt; logo (upper left corner), and press the &lt;strong&gt;+ New Project&lt;/strong&gt; button.&lt;/li&gt;
 &lt;li&gt;Provide a Project Name, (optional) Description, Visibility. Next, click &lt;strong&gt;Advanced&lt;/strong&gt; to specify the Work Item Process. Click the &lt;strong&gt;Work Item Process&lt;/strong&gt; field and select the &lt;strong&gt;custom process&lt;/strong&gt; created earlier.
-&lt;img src="../images/2023-03-26_19-22-57.png"
+&lt;img src="../images/screenshot-2023-03-26-3e366779.png"
  
  
  loading="lazy"
@@ -170,7 +170,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  
  &gt;&lt;/li&gt;
 &lt;li&gt;Once the project got created, navigate to &lt;strong&gt;Boards&lt;/strong&gt;. Here, click &lt;strong&gt;New Work Item&lt;/strong&gt;, notice the new Work Item type is available.
-&lt;img src="../images/2023-03-26_19-42-26.png"
+&lt;img src="../images/screenshot-2023-03-26-05c895c3.png"
  
  
  loading="lazy"
@@ -181,7 +181,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  
  &gt;&lt;/li&gt;
 &lt;li&gt;Select the new Work Item, which shows the detailed view. Notice the custom fields we added earlier are nicely showing up here.
-&lt;img src="../images/2023-03-26_19-43-34.png"
+&lt;img src="../images/screenshot-2023-03-26-1e6b2800.png"
  
  
  loading="lazy"
@@ -198,7 +198,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
 &lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;Log on to Azure with administrative permissions to create an Azure Logic App resource.&lt;/li&gt;
 &lt;li&gt;When creating the Logic App, specify a unique name, Resource Group, Location and Plan (consumption would be OK).
-&lt;img src="../images/2023-03-26_19-50-47.png"
+&lt;img src="../images/screenshot-2023-03-26-a89192c1.png"
  
  
  loading="lazy"
@@ -209,7 +209,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  
  &gt;&lt;/li&gt;
 &lt;li&gt;Once the resource got created, it automatically opens &lt;strong&gt;Logic App Designer&lt;/strong&gt;, which allows for the setup of the actual flow. From the list of sample scenarios, select &lt;strong&gt;Blank Logic App&lt;/strong&gt;.
-&lt;img src="../images/2023-03-26_20-28-02.png"
+&lt;img src="../images/screenshot-2023-03-26-df97dc64.png"
  
  
  loading="lazy"
@@ -222,7 +222,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
 &lt;li&gt;In the &lt;strong&gt;Search connectors and triggers&lt;/strong&gt; field, search for &lt;strong&gt;Microsoft Forms&lt;/strong&gt;.&lt;/li&gt;
 &lt;li&gt;Next, select &lt;strong&gt;When a new response is submitted&lt;/strong&gt; as trigger.&lt;/li&gt;
 &lt;li&gt;In the Form Id field, select the Office Form name you used earlier.
-&lt;img src="../images/2023-03-26_20-30-02.png"
+&lt;img src="../images/screenshot-2023-03-26-cecb3bde.png"
  
  
  loading="lazy"
@@ -235,7 +235,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
 &lt;li&gt;Click &lt;strong&gt;+ New Step&lt;/strong&gt; to add the next step in the Logic App flow.&lt;/li&gt;
 &lt;li&gt;In the &lt;strong&gt;Search connectors and triggers&lt;/strong&gt; field, search for &lt;strong&gt;Azure DevOps&lt;/strong&gt;.&lt;/li&gt;
 &lt;li&gt;From the list of &lt;strong&gt;Actions&lt;/strong&gt;, select &lt;strong&gt;Create a new work item&lt;/strong&gt;.
-&lt;img src="../images/2023-03-26_20-32-57.png"
+&lt;img src="../images/screenshot-2023-03-26-7aa8d892.png"
  
  
  loading="lazy"
@@ -246,7 +246,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  
  &gt;&lt;/li&gt;
 &lt;li&gt;Complete the fields, selecting your &lt;strong&gt;DevOps Organization&lt;/strong&gt;, the &lt;strong&gt;DevOps Project&lt;/strong&gt; and the &lt;strong&gt;Work Item Type&lt;/strong&gt; as created earlier.
-&lt;img src="../images/2023-03-26_20-34-42.png"
+&lt;img src="../images/screenshot-2023-03-26-c8b8390a.png"
  
  
  loading="lazy"
@@ -257,7 +257,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  
  &gt;&lt;/li&gt;
 &lt;li&gt;Now, we map the custom fields, by selecting &lt;strong&gt;Add new parameter&lt;/strong&gt;, and selecting &lt;strong&gt;Other Fields&lt;/strong&gt;.
-&lt;img src="../images/2023-03-26_20-41-17.png"
+&lt;img src="../images/screenshot-2023-03-26-16f51563.png"
  
  
  loading="lazy"
@@ -279,7 +279,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  
  &gt;&lt;/li&gt;
 &lt;li&gt;This is where Logic Apps is awesome. It allows you to select (all) previous fields from all previous steps in the flow process.
-&lt;img src="../images/2023-03-26_20-44-52.png"
+&lt;img src="../images/screenshot-2023-03-26-aae62c2e.png"
  
  
  loading="lazy"
@@ -291,7 +291,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  &gt;&lt;/li&gt;
 &lt;li&gt;Notice how the Forms information is returned as &lt;strong&gt;Body&lt;/strong&gt;, which is not what we need. We want to reach out each answer to each Form&amp;rsquo;s question, instead of the full body. To make this possible, we have to add another step in-between the Forms step and the Azure DevOps step.&lt;/li&gt;
 &lt;li&gt;Click on the &lt;strong&gt;+&lt;/strong&gt; sign in-between both steps, and select &lt;strong&gt;Add New Action&lt;/strong&gt;. Search for &lt;strong&gt;Microsoft Forms&lt;/strong&gt; again. This time, it will show an action called &lt;strong&gt;Get Response Details&lt;/strong&gt;.
-&lt;img src="../images/2023-03-26_20-49-10.png"
+&lt;img src="../images/screenshot-2023-03-26-0c079d55.png"
  
  
  loading="lazy"
@@ -302,7 +302,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  
  &gt;&lt;/li&gt;
 &lt;li&gt;In the &lt;strong&gt;Forms Id&lt;/strong&gt; field, select the &lt;strong&gt;name of the Office Forms&lt;/strong&gt;; In the &lt;strong&gt;Response Id&lt;/strong&gt; field, click &lt;strong&gt;See More&lt;/strong&gt; and select &lt;strong&gt;List of Response notifcations Response id&lt;/strong&gt; from the Dynamic Content list of options.
-&lt;img src="../images/2023-03-26_20-51-48.png"
+&lt;img src="../images/screenshot-2023-03-26-d570537a.png"
  
  
  loading="lazy"
@@ -313,7 +313,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  
  &gt;&lt;/li&gt;
 &lt;li&gt;With that step added, return to the &lt;strong&gt;Create a work item&lt;/strong&gt; step in the Logic App Flow, and navigate to the &lt;strong&gt;Other Fields&lt;/strong&gt; section in the parameters. Select the &lt;strong&gt;Enter Key&lt;/strong&gt; field, which opens the &lt;strong&gt;Dynamic Content&lt;/strong&gt; blade again. This time, notice how the different response details (the Form&amp;rsquo;s questions) are visible.
-&lt;img src="../images/2023-03-26_20-57-17.png"
+&lt;img src="../images/screenshot-2023-03-26-772841b5.png"
  
  
  loading="lazy"
@@ -324,7 +324,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  
  &gt;&lt;/li&gt;
 &lt;li&gt;From here, the idea is that you &amp;lsquo;map&amp;rsquo; each custom field object from the ADO Work Item, with a corresponding value from the Office Forms. For example, the &lt;strong&gt;work item &amp;ldquo;geography&amp;rdquo;&lt;/strong&gt; created earlier, maps with &lt;strong&gt;what is your geography&lt;/strong&gt; question I have on the form.
-&lt;img src="../images/2023-03-26_20-58-49.png"
+&lt;img src="../images/screenshot-2023-03-26-739aae45.png"
  
  
  loading="lazy"
@@ -341,7 +341,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
 &lt;h2 id="testing-the-azure-devops-work-item-creation"&gt;Testing the Azure DevOps Work Item creation
 &lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;Return to the Office Form, and click &lt;strong&gt;Collect Responses&lt;/strong&gt;.
-&lt;img src="../images/2023-03-26_21-03-52.png"
+&lt;img src="../images/screenshot-2023-03-26-e557cb7e.png"
  
  
  loading="lazy"
@@ -353,7 +353,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  &gt;&lt;/li&gt;
 &lt;li&gt;Complete the different questions and fields on the Form.&lt;/li&gt;
 &lt;li&gt;Wait for about a minute, and return to the Azure Logic Apps flow created earlier. From the &lt;strong&gt;Overview&lt;/strong&gt; blade, navigate to &lt;strong&gt;Runs History&lt;/strong&gt;.
-&lt;img src="../images/2023-03-26_21-06-40.png"
+&lt;img src="../images/screenshot-2023-03-26-1ee745e5.png"
  
  
  loading="lazy"
@@ -364,7 +364,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  
  &gt;&lt;/li&gt;
 &lt;li&gt;The Forms completion resulted in a &lt;strong&gt;successful workflow trigger&lt;/strong&gt;. Select the line, which opens a more detailed view.
-&lt;img src="../images/2023-03-26_21-08-20.png"
+&lt;img src="../images/screenshot-2023-03-26-2b672d60.png"
  
  
  loading="lazy"
@@ -375,7 +375,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  
  &gt;.&lt;/li&gt;
 &lt;li&gt;Last, return to the Azure DevOps Project, navigate to Boards and open Work Items. Notice the &lt;strong&gt;newly created Work Item&lt;/strong&gt;.
-&lt;img src="../images/2023-03-26_21-12-16.png"
+&lt;img src="../images/screenshot-2023-03-26-52dd6fba.png"
  
  
  loading="lazy"
@@ -386,7 +386,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  
  &gt;&lt;/li&gt;
 &lt;li&gt;Open the item, to see how the custom fields got completed.
-&lt;img src="../images/2023-03-26_21-13-52.png"
+&lt;img src="../images/screenshot-2023-03-26-bc418eb7.png"
  
  
  loading="lazy"
@@ -402,7 +402,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
 &lt;/h2&gt;&lt;p&gt;In this post, I wanted to share more details on how you can allow end-users (or customers) to create Azure DevOps Work Items (of pretty much any type with any custom fields), using an integration of Microsoft Forms and Azure Logic Apps.&lt;/p&gt;
 &lt;p&gt;Don&amp;rsquo;t hesitate reaching out if you have any additional questions on this, or if you want to share how you used this in your own scenarios.&lt;/p&gt;
 &lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
- &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ &gt;&lt;img src="../images/screenshot-2023-03-26-17f576e7.png"
  
  
  loading="lazy"
@@ -423,7 +423,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
 &lt;p&gt;Until I spotted a Twitter post from &lt;a class="link" href="https://twitter.com/shanselman" target="_blank" rel="noopener"
  &gt;Scott Hanselman&lt;/a&gt;, offering an &lt;strong&gt;&lt;a class="link" href="https://onyxboox.com/" target="_blank" rel="noopener"
  &gt;Onyxboox&lt;/a&gt; Note Air 2&lt;/strong&gt; for sale. This was another device I had my eyes on for a while.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2022-12-23_14-02-58.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-23-72a8e060.png"
  
  
  loading="lazy"
@@ -435,7 +435,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  &gt;&lt;/p&gt;
 &lt;p&gt;So when I saw this post, I DM-ed Scott and the nice gentleman he is, we easily closed the deal, for a price I was willing to pay (and I still owe him a lunch/dinner too).&lt;/p&gt;
 &lt;p&gt;As soon as it arrived in the mail a few days later, I started using it. What pulled me in, was the &lt;strong&gt;Onyx Boox Reader&lt;/strong&gt; feature, which allowed me to read my traditional PDF-documents, but - more important - allowing me to take handwritten notes on the side, circling words or parts of a paragraph, to emphasize text parts that are important to remember.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2022-12-23_19-00-46.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-23-32acb13e.png"
  
  
  loading="lazy"
@@ -446,7 +446,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  
  &gt;&lt;/p&gt;
 &lt;p&gt;Next to the Boox Reader app, one of the other convenient things about the device is &lt;strong&gt;BooxDrop&lt;/strong&gt;, a built-in app which allows for copying files from your local machine onto the Boox device using just a wifi connection, which is super convenient.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2022-12-23_19-05-34.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-23-15423464.png"
  
  
  loading="lazy"
@@ -462,7 +462,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
 &lt;p&gt;I want to thank Scott for his kindness and convincing me about several features of the device in DMs before I deciced to buy it. I can say that Scott made me read more books; heck that would have been a hell of a blog post title :)&lt;/p&gt;
 &lt;p&gt;I have to go now, as I am just starting my next book, &lt;a class="link" href="https://www.packtpub.com/product/c-11-and-net-7-modern-cross-platform-development-fundamentals-seventh-edition/9781803237800" target="_blank" rel="noopener"
  &gt;C#11 and .NET 7 development&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2022-12-23_19-29-30.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-23-fe385670.png"
  
  
  loading="lazy"
@@ -475,7 +475,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
 &lt;p&gt;If you have been looking for a convenient E-reader with some additional note-taking features, I can definitely recommend the OnyxBoox Note Air 2 product. More info can be found on &lt;a class="link" href="https://onyxboox.com/boox_noteair2" target="_blank" rel="noopener"
  &gt;The Onyx website&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
- &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ &gt;&lt;img src="../images/screenshot-2022-12-23-17f576e7.png"
  
  
  loading="lazy"
@@ -536,7 +536,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
 &lt;h2 id="the-conqueror"&gt;The Conqueror
 &lt;/h2&gt;&lt;p&gt;Back to my London walking&amp;hellip; the process actually started earlier, where I discovered &lt;a class="link" href="https://theconqueror.events" target="_blank" rel="noopener"
  &gt;&amp;ldquo;The Conqueror&amp;rdquo;&lt;/a&gt;, out of a Facebook advertisement.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2020-08-16_1.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-08-16-31372a96.jpg"
  
  
  loading="lazy"
@@ -547,7 +547,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  
  &gt;&lt;/p&gt;
 &lt;p&gt;They offer a virtual journey, stimulating people to walk (or run, or bicycle,&amp;hellip; doing distance activity basically), almost like hiking or taking a trail passage. Along the trip, you get virtual postcards by email, and when completing the journey, you receive a certificate to print and a metal medal with a cool design.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2020-08-16_2.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-08-16-27268ae6.jpg"
  
  
  loading="lazy"
@@ -561,7 +561,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
 &lt;/h2&gt;&lt;p&gt;So a few weeks, I already tried to push myself into walking a bit more as part of my Work from Home story, but I have to admit, although I activated my first &amp;ldquo;challenge&amp;rdquo;, I didn&amp;rsquo;t do much walking :(.&lt;/p&gt;
 &lt;p&gt;However, for some reason, and without &amp;ldquo;pushing&amp;rdquo; myself, we did &lt;quite a lot&gt; of walking during the London stay; some days was only 2-3 miles, some other days were close to 8-9 miles. And again, this probably isn&amp;rsquo;t that much in reality, but it actually gave a good feeling to know I (and at the same time my family with me) could do this. So I started entering my achievements in the &lt;a class="link" href="https://www.myvirtualmission.com" target="_blank" rel="noopener"
  &gt;challenge tool&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2020-08-16_3.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-08-16-7be1a606.jpg"
  
  
  loading="lazy"
@@ -572,7 +572,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  
  &gt;&lt;/p&gt;
 &lt;p&gt;In between each progress, they provide you some media gadgets to share on social media, showing how you are doing (I&amp;rsquo;m not that social media minded to share it though&amp;hellip;or at least not yet, maybe in the future when I keep going&amp;hellip;)&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2020-08-16_4.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-08-16-dc9fa563.jpg"
  
  
  loading="lazy"
@@ -582,7 +582,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  
  
  &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2020-08-16_5.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-08-16-bf08a9f3.jpg"
  
  
  loading="lazy"
@@ -593,7 +593,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  
  &gt;&lt;/p&gt;
 &lt;p&gt;and eventually one that shows the completion certificate upon finishing&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2020-08-16_6.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-08-16-e70dbb3a.jpg"
  
  
  loading="lazy"
@@ -605,7 +605,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  &gt;&lt;/p&gt;
 &lt;p&gt;That&amp;rsquo;s how I managed to complete 2 challenges, &lt;a class="link" href="https://www.theconqueror.events/englishchannel/" target="_blank" rel="noopener"
  &gt;&amp;ldquo;English Channel - 21 miles&amp;rdquo;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2020-08-16_7.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-08-16-72ce1159.jpg"
  
  
  loading="lazy"
@@ -617,7 +617,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  &gt;&lt;/p&gt;
 &lt;p&gt;and &lt;a class="link" href="https://www.theconqueror.events/incatrail/" target="_blank" rel="noopener"
  &gt;&amp;ldquo;The Inca Trail - 26,2 miles&amp;rdquo;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2020-08-16_8.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-08-16-53c69cc9.jpg"
  
  
  loading="lazy"
@@ -630,7 +630,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
 &lt;h2 id="whats-next"&gt;What&amp;rsquo;s next
 &lt;/h2&gt;&lt;p&gt;Personally, my biggest challenge now lies ahead of me, with the usual work stream starting again tomorrow for the next following weeks. I need to push myself and do a &amp;ldquo;daily walk&amp;rdquo;. Reaching my 1-3 miles as a start, maybe moving up to some longer walks before the training day starts, or when the training day is finished. Mixing this with enough family-time and other things to look after might be though in the beginning. Luckily I got my family to support me in this, as they know I want to succeed in this.&lt;/p&gt;
 &lt;p&gt;If my story inspired you to join a similar challenge, let me know when you signed up and we can influence each other from a virtual team. For now, I&amp;rsquo;m going to enjoy my little victory, dreaming of longer walks in the near future.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2020-08-16_9.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-08-16-cfa1c6ab.jpg"
  
  
  loading="lazy"
@@ -642,7 +642,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  &gt;&lt;/p&gt;
 &lt;p&gt;Cheers, Peter&lt;/p&gt;</description></item><item><title>is HTML parameter gone from Logic Apps Send Email Connector</title><link>https://www.007ffflearning.com/post/email-is-html-gone-logicapps/</link><pubDate>Sun, 10 May 2020 00:00:00 +0000</pubDate><guid>https://www.007ffflearning.com/post/email-is-html-gone-logicapps/</guid><description>&lt;p&gt;Hi,&lt;/p&gt;
 &lt;p&gt;For almost 2 years, I have been using the &amp;ldquo;Office 365 Outlook Connector&amp;rdquo; as part of my Logic Apps flows, to send emails internally and externally. Mainly for external receivers, I used the &amp;ldquo;is HTML&amp;rdquo; parameter for the body of the email.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/20200510_01.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-05-10-1f65825f.jpg"
  
  
  loading="lazy"
@@ -653,7 +653,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  
  &gt;&lt;/p&gt;
 &lt;p&gt;This weekend, I was building a new Logic Apps flow, and to my surprise, finding out that the &amp;ldquo;V2&amp;rdquo; of this same connector / action, doesn&amp;rsquo;t have that parameter anymore.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/20200510_04.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-05-10-d2f1b6e8.jpg"
  
  
  loading="lazy"
@@ -664,7 +664,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  
  &gt;&lt;/p&gt;
 &lt;p&gt;Even more surprisingly, the HTML code I was using before in the body of my email, doesn&amp;rsquo;t even get recognized as HTML (would have been nice if this was just magically built-in now&amp;hellip; no?), but just sending the raw HTML code as body content. Weird&amp;hellip;&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/20200510_05.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-05-10-574198de.jpg"
  
  
  loading="lazy"
@@ -678,7 +678,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;Add a step&lt;/strong&gt; before the &amp;ldquo;Send Email&amp;rdquo; step you already have in your workflow, and search for &lt;strong&gt;&amp;ldquo;Variables&amp;rdquo;&lt;/strong&gt; as connector type.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/20200510_06.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-05-10-0b64d3fd.jpg"
  
  
  loading="lazy"
@@ -691,7 +691,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
 &lt;ol start="2"&gt;
 &lt;li&gt;Select &lt;strong&gt;&amp;ldquo;Initialize Variable&amp;rdquo;&lt;/strong&gt; as action&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/20200510_07.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-05-10-46a2230e.jpg"
  
  
  loading="lazy"
@@ -710,7 +710,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
 &lt;ol start="3"&gt;
 &lt;li&gt;Next, &lt;strong&gt;add a new step&lt;/strong&gt;, again selecting the &lt;strong&gt;&amp;ldquo;Variables&amp;rdquo;&lt;/strong&gt; connector, but this time going for the &lt;strong&gt;&amp;ldquo;Set Variable&amp;rdquo;&lt;/strong&gt; action&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/20200510_08.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-05-10-09095cb9.jpg"
  
  
  loading="lazy"
@@ -728,7 +728,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
 &lt;ol start="4"&gt;
 &lt;li&gt;Next, &lt;strong&gt;select the Send Email V2&lt;/strong&gt; action from the &amp;ldquo;Office 365 Outlook Connector&amp;rdquo;, defining the &amp;ldquo;set variable&amp;rdquo; variable, as body of the email&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/20200510_09.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-05-10-252eda5b.jpg"
  
  
  loading="lazy"
@@ -739,7 +739,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  
  &gt;&lt;/p&gt;
 &lt;p&gt;resulting in the following configuration:&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/20200510_10.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-05-10-f456e0fc.jpg"
  
  
  loading="lazy"
@@ -750,7 +750,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  
  &gt;&lt;/p&gt;
 &lt;p&gt;When running your Logic App flow again, you will notice that the email you receive will again be in the expected nicely-looking HTML layout as we had before:&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/20200510_03.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-05-10-47675a7f.jpg"
  
  
  loading="lazy"
@@ -779,7 +779,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Save this file with a &lt;strong&gt;PS1&lt;/strong&gt; (PowerShell Script) extension, e.g. &lt;strong&gt;&amp;ldquo;copybingtoteams.ps1&amp;rdquo;&lt;/strong&gt;, and store it on your local machine (I used my &lt;strong&gt;Documents&lt;/strong&gt; folder for this).&lt;/p&gt;
 &lt;p&gt;You could try and run this script manually to try it out, and see how nicely the &amp;ldquo;today&amp;rsquo;s&amp;rdquo; Bing Wallpaper gets copied to the Teams folder&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/20200510B_01.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-05-10-493337b9.jpg"
  
  
  loading="lazy"
@@ -794,7 +794,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
 &lt;ol&gt;
 &lt;li&gt;From the Start Menu, search for &lt;strong&gt;Task Scheduler&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/20200510B_02.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-05-10-8d7d47a0.jpg"
  
  
  loading="lazy"
@@ -807,7 +807,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
 &lt;ol start="2"&gt;
 &lt;li&gt;Once the console is open, &lt;strong&gt;Right click&lt;/strong&gt; &lt;em&gt;Task Scheduler Library&lt;/em&gt;, and select &lt;strong&gt;&amp;ldquo;Create Task&amp;rdquo;&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/20200510B_03.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-05-10-d887e99c.jpg"
  
  
  loading="lazy"
@@ -820,7 +820,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
 &lt;ol start="3"&gt;
 &lt;li&gt;From the &lt;strong&gt;&amp;ldquo;General&amp;rdquo;&lt;/strong&gt; tab, provide a descriptive name for your task e.g. &lt;em&gt;&amp;ldquo;Copy Bing Wallpaper to Teams&amp;rdquo;&lt;/em&gt;, and keep the default setting to only use this when user is logged on.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/20200510B_04.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-05-10-64379910.jpg"
  
  
  loading="lazy"
@@ -833,7 +833,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
 &lt;ol start="4"&gt;
 &lt;li&gt;From the &lt;strong&gt;Triggers&lt;/strong&gt; tab, create a new trigger, and specify the time you want to launch this script (e.g. 7am in the morning), and specify to run this &lt;strong&gt;every 1 day&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/20200510B_05.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-05-10-df3e85a7.jpg"
  
  
  loading="lazy"
@@ -846,7 +846,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
 &lt;ol start="5"&gt;
 &lt;li&gt;Under the &lt;strong&gt;Actions&lt;/strong&gt; tab, is where we define the actual script to run.Set &lt;strong&gt;&amp;ldquo;Run a Program&amp;rdquo;&lt;/strong&gt; as Action, and browse to the location where you saved the PS1-file.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/20200510B_06.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-05-10-3238be72.jpg"
  
  
  loading="lazy"
@@ -859,7 +859,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
 &lt;ol start="6"&gt;
 &lt;li&gt;Nothing special to configure in the &lt;strong&gt;Conditions&lt;/strong&gt; tab settings, although I did turn off the dependency to start this task only when connected to AC Power.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/20200510B_07.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-05-10-cfaa2184.jpg"
  
  
  loading="lazy"
@@ -873,7 +873,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
 &lt;li&gt;I didn&amp;rsquo;t make any changes to the &lt;strong&gt;Settings&lt;/strong&gt; tab, so we are good to go to &lt;strong&gt;Save&lt;/strong&gt; our settings.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;If you want to validate the task is going to run fine, you can manually launch it from the Task Scheduler console.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/20200510B_08.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-05-10-fa61f68e.jpg"
  
  
  loading="lazy"
@@ -901,7 +901,7 @@ and probably another +100 locations at least.&lt;/li&gt;
 &lt;p&gt;So no doubt about it, I&amp;rsquo;m missing traveling. Missing the walks, the drive-by&amp;rsquo;s, the &amp;ldquo;enjoying my trip&amp;rdquo; feeling.&lt;/p&gt;
 &lt;p&gt;And that&amp;rsquo;s where I discovered an interesting but yet little gem to install on my laptop: &lt;strong&gt;&lt;a class="link" href="https://www.microsoft.com/en-us/bing/bing-wallpaper" target="_blank" rel="noopener"
  &gt;Bing Desktop Wallpaper&lt;/a&gt;&lt;/strong&gt; &amp;ldquo;Exploring the world, one photo at the time&amp;rdquo;.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/20200419.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-04-19-44d7758a.jpg"
  
  
  loading="lazy"
@@ -971,7 +971,7 @@ and probably another +100 locations at least.&lt;/li&gt;
  &gt;Microsoft Learn&lt;/a&gt; website is the best resource related to Microsoft exams, certification, Microsoft Official Courseware content and more. When all details are ready, they will be exposed on that learn portal immediately.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;a class="link" href="http://www.microsoft.com/learn" target="_blank" rel="noopener"
  &gt;http://www.microsoft.com/learn&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/learn-website.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-01-25-4e2d51b3.png"
  
  
  loading="lazy"
@@ -1015,7 +1015,7 @@ Download this e-book to:&lt;/p&gt;
 &lt;/h2&gt;&lt;p&gt;(&lt;a class="link" href="http://www.microsoft.com/learn" target="_blank" rel="noopener"
  &gt;http://www.microsoft.com/learn&lt;/a&gt;)&lt;/p&gt;
 &lt;p&gt;Microsoft Learn is &amp;ldquo;the&amp;rdquo; landing page for all learning resources Microsoft has to offer, not just Azure. Here, you find a listing of all current learning paths, pointers to hands-on lab exercises in a sand-boxed setup, an overview of Microsoft certifications and exams, and much more. It also points you to the official Microsoft Docs website (see below).&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/learn-website.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2019-12-22-4e2d51b3.png"
  
  
  loading="lazy"
@@ -1027,7 +1027,7 @@ Download this e-book to:&lt;/p&gt;
  &gt;&lt;/p&gt;
 &lt;p&gt;By selecting Browse all paths or Browse all learning options, you are redirected to the actual Learning Paths. A Learning Path is a collection of learning material, which can be documentation, a training video and/or an exercise. Most of the time, it is really a combination of all 3 flavors. This reflects to the different learning styles people have. Some learn better from reading (docs), some other like to hear and see (video), where other - including myself - mainly learn by doing (hands-on labs).&lt;/p&gt;
 &lt;p&gt;Using the filters on the side, you can find the specific Azure material, or even drill down on specific Azure services or features you want to focus on. (About 30% of all learning path material is related to Azure&amp;hellip;)&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/learn-learningpath.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2019-12-22-245c1035.png"
  
  
  loading="lazy"
@@ -1039,7 +1039,7 @@ Download this e-book to:&lt;/p&gt;
  &gt;&lt;/p&gt;
 &lt;p&gt;Next, you can choose from the full Learning Path, giving you several hours of content to go through, or pick stand-alone modules, typically shorter (30-90 mins) and more focused.&lt;/p&gt;
 &lt;p&gt;In this example, I filtered on Azure / Functions, which brings up a list of 2 Learning Paths and 15 Modules (at the time of writing, it might change over time :)). Let me select the Create Serverless Applications Learning Path; this opens a list of stand-alone content, again nicely structured per topic. Each topic is again a collection of shorter snippets.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/learn-serverless.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2019-12-22-a311929e.png"
  
  
  loading="lazy"
@@ -1056,7 +1056,7 @@ Download this e-book to:&lt;/p&gt;
 &lt;p&gt;Compared to the &amp;ldquo;watch or read&amp;rdquo; approach from the Microsoft Learn Learning Paths, the Microsoft Hands-on Labs offer you self-paced labs, focusing on a &amp;ldquo;learn by doing&amp;rdquo; concept.&lt;/p&gt;
 &lt;p&gt;Again, this source is not just offering Azure material, but covers most of the Microsoft product stack (Office 365, .NET development, Windows Server, Windows Client,&amp;hellip;).&lt;/p&gt;
 &lt;p&gt;If you filter again on Azure content, it currently shows 30 different labs, from beginners to advanced learner level.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/learn-hol.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2019-12-22-9f899c87.png"
  
  
  loading="lazy"
@@ -1068,7 +1068,7 @@ Download this e-book to:&lt;/p&gt;
  &gt;&lt;/p&gt;
 &lt;p&gt;The most interesting aspect - besides learning by doing of course - is you don&amp;rsquo;t need an Azure subscription to perform the lab steps. While there is still a separate URL to get here, it actually redirects you back to the overall Microsoft Learn website. However, there is no easy way to retrieve the hands-on labs only (Microsoft, make this available as a learning type option please). So it requires some wondering around the website, browsing Learning Paths and Modules, to find any resource having &amp;ldquo;exercise&amp;rdquo; in the title.&lt;/p&gt;
 &lt;p&gt;As an example, I selected the &amp;ldquo;Create a Windows Virtual Machine&amp;rdquo;; as you can see from below screenshot, it offers you to activate sandbox. This creates a temporary Azure subscription, dedicated to this specific lab scenario. One can activate 10 such sandbox environments per day, which should be more than enough for most learners.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/learn-windows-vm.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2019-12-22-0dda7fb0.png"
  
  
  loading="lazy"
@@ -1079,7 +1079,7 @@ Download this e-book to:&lt;/p&gt;
  
  &gt;&lt;/p&gt;
 &lt;p&gt;After giving consent using a Microsoft account (Outlook, Hotmail,&amp;hellip;) (Office 365 doesn&amp;rsquo;t seem to work here?), it will add a temporary subscription to your Microsoft account credentials, in a dedicated Microsoft Learn Sandbox Azure Tenant.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/learn-subscriptions.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2019-12-22-16f6b35d.png"
  
  
  loading="lazy"
@@ -1093,7 +1093,7 @@ Download this e-book to:&lt;/p&gt;
 &lt;h2 id="3-azure-docs"&gt;3. Azure Docs
 &lt;/h2&gt;&lt;p&gt;(&lt;a class="link" href="https://docs.microsoft.com/en-us/azure" target="_blank" rel="noopener"
  &gt;https://docs.microsoft.com/en-us/azure&lt;/a&gt;)&lt;/p&gt;
-&lt;p&gt;No better resource to learn about Azure than the official Azure Documentation! While it is obviously not built as a learning to per sé, it actually does the job really well! Starting from a high-level overview of Azure services, one can easily drill down to the specific topic you want to learn about. For most services, this will list up a &amp;ldquo;tutorial&amp;rdquo; section. That&amp;rsquo;s where you find most useful &amp;ldquo;how-to&amp;rdquo; documentation and guides. If that&amp;rsquo;s what you are looking for.&lt;/p&gt;
+&lt;p&gt;No better resource to learn about Azure than the official Azure Documentation! While it is obviously not built as a learning to per sÃ©, it actually does the job really well! Starting from a high-level overview of Azure services, one can easily drill down to the specific topic you want to learn about. For most services, this will list up a &amp;ldquo;tutorial&amp;rdquo; section. That&amp;rsquo;s where you find most useful &amp;ldquo;how-to&amp;rdquo; documentation and guides. If that&amp;rsquo;s what you are looking for.&lt;/p&gt;
 &lt;p&gt;Using a similar example as before, I made the following selections:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -1103,7 +1103,7 @@ Download this e-book to:&lt;/p&gt;
 &lt;p&gt;Windows Virtual Machines&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src="../images/learn-getstarted.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2019-12-22-c814c082.png"
  
  
  loading="lazy"
@@ -1115,7 +1115,7 @@ Download this e-book to:&lt;/p&gt;
  &gt;&lt;/p&gt;
 &lt;p&gt;(Notice the link to the previously discussed self-paced training also shows up here)&lt;/p&gt;
 &lt;p&gt;Which brings me to the actual Azure doc pages, describing how to create an Windows Virtual Machine in Azure. From here, I can scroll down to the specific deployment approach I want to learn, being PowerShell, Azure CLI or using the Portal.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/learn-tutorial.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2019-12-22-b1be970b.png"
  
  
  loading="lazy"

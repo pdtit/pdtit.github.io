@@ -1,4 +1,4 @@
----
+﻿---
 title: "Book Review - Azure Cookbook"
 date: 2024-12-26
 publishdate: 2024-12-26
@@ -8,13 +8,13 @@ draft: false
 
 In this post, I want to share my review of my next technical book I read recently, **Azure Cookbook** this time from [Massimo Bonammi](https://www.linkedin.com/in/massimobonanni/) and [Marco Obinu](https://www.linkedin.com/in/marco-obinu-omegamadlab/) published by [BPB Online](https://bpbonline.com/products/azure-cookbook-1?_pos=1&_sid=a03968c8e&_ss=r) and available on [Amazon](https://www.amazon.com/Azure-Cookbook-Essential-automation-solutions/dp/9365890195) as well as other e-book subscription platforms.
 
-![Book Cover](../images/2024-12-26-01.jpg)
+![Book Cover](../images/screenshot-2024-12-26-48a3fc02.jpg)
 
 I have the joy of calling both fine Italian gentlemen my friends and colleagues for a few years already. I bumped into Marco around 2017 when I was delivering an Azure Architect workshop for his employer. Massimo was one of my EMEA colleagues in the Microsoft Technical Trainer team and we had the pleasure of delivering a few in-person training days together before COVID. Marco joined the Technical Trainer team about 2 years later, when I was already relocated to the USA.
 
 When I got approached to do a technical book review of their work, I didn't hesitate for a second. Not that I was their target audience, but see it as the ultimate combination of fellow Azure experts, bringing in our mutual love for good food and Azure, and having fun while reading through a book :). 
 
-![Book Cover](../images/2024-12-26-02.jpg)
+![Book Cover](../images/screenshot-2024-12-26-92d8b852.jpg)
 
 ## Book Review
 
@@ -50,7 +50,7 @@ If you're still looking for a belated Christmas stocking stuffer, an overall lit
 
 If you got access to the book and reading it, or have read it already, don't hesitate reaching out and providing your feedback.
 
-[![BuyMeACoffee](../images/buy_me_a_coffee.png)](https://www.buymeacoffee.com/pdtit)
+[![BuyMeACoffee](../images/screenshot-2024-12-26-17f576e7.png)](https://www.buymeacoffee.com/pdtit)
 
 Cheers!!
 

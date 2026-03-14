@@ -1,4 +1,4 @@
----
+﻿---
 title: "Running your Hugo site on Azure Static WebApps (Preview)"
 date: 2020-05-21
 tags: ["Hugo", "Azure"]
@@ -24,7 +24,7 @@ The starting point is having a GitHub Repo available, which contains our content
 
 1. From the Azure Portal, select **New Resource** and search for **Static Web Site (Preview)**; Click **Create**
 
-![Static Web Site Creation](../images/20200521_1.jpg)
+![Static Web Site Creation](../images/screenshot-2020-05-21-2ba8a01a.jpg)
 
 2. **Complete** the different parameters, required for the resource deployment:
 
@@ -34,13 +34,13 @@ The starting point is having a GitHub Repo available, which contains our content
 - Region            = Close-by region where you want to host the site (note only a handful of Azure Regions are supported for now, but will probably grow) 
 - SKU               = Free is the only option for now
 
-![Static Web Site Parameters](../images/20200521_2.jpg)
+![Static Web Site Parameters](../images/screenshot-2020-05-21-25dc8cff.jpg)
 
 3. Next, you are asked for your **GitHub Credentials**
 
 Provide your GitHub credentials, and accept the application authorization; this will allow for the integration with GitHub Actions CI Pipeline later. 
 
-![Static Web Site GitHub Authorization](../images/20200521_3.jpg)
+![Static Web Site GitHub Authorization](../images/screenshot-2020-05-21-c0e72361.jpg)
 
 4. Once the GitHub authorization is confirmed, you can **complete the Source Control** parameters:
 
@@ -48,39 +48,39 @@ Provide your GitHub credentials, and accept the application authorization; this 
 - Repository        = select the GitHub Repo containing the sample Hugo website (in my example, this is github.com/pdtit/hugotest1 - feel free to [Fork](https://github.com/pdtit/hugotest1)) 
 - Branch            = the Repo branch (typically master, but could be different)
 
-![Static Web Site GitHub](../images/20200521_4.jpg)
+![Static Web Site GitHub](../images/screenshot-2020-05-21-eb225343.jpg)
 
 5. Click the "Next:Build" button, to move on to the next step in the resource creation process; here, you point to the actual site folder containing the site content. In case of Hugo, this is typically the **"/public"** folder from your local Hugo development location
 
 Note you only have to complete the **App Location** parameter, and leave the other 2 empty
 
-![Static Web Site Build](../images/20200521_5.jpg)
+![Static Web Site Build](../images/screenshot-2020-05-21-030ebd19.jpg)
 
 6. Complete the process by clicking the **"Review & Create"** button. When all looks OK, confirm by pressing the **"Create"** button. Wait for the Azure resource to get created; this shouldn't take that long.
 
-![Static Web Site Create](../images/20200521_6.jpg)
+![Static Web Site Create](../images/screenshot-2020-05-21-6a74c92a.jpg)
 
 7. Once the resource is created, select "Go to Resource" from the notification popup appearing; this will redirect you to the actual Static Site resource that just got created. Notice the **unique URL** that got created for this specific site. 
 
-![Static Web Site Created](../images/20200521_7.jpg)
+![Static Web Site Created](../images/screenshot-2020-05-21-69f07c4d.jpg)
 
 8. Notice the **blue ribbon** informing you about not having any content of the site yet, and pointing to GitHub Actions. **Click** on the blue ribbon to get redirected to the GitHub Actions. **Notice** an **"Azure Static Web Apps CI/CD"** Action is automatically created, and running (orange color); Give it a few minutes to complete (green color).
 
-![GitHub Action CICD](../images/20200521_8.jpg)
+![GitHub Action CICD](../images/screenshot-2020-05-21-9204912d.jpg)
 
 10. If you want to see more details about the CI/CD pipeline itself, select the pipeline; this will show the **Build and Deploy Job** status, exposing details for each and every step in the build process
 
-![GitHub Action Build Deploy Job](../images/20200521_9.jpg)
+![GitHub Action Build Deploy Job](../images/screenshot-2020-05-21-c6a519f9.jpg)
 
 ## Verify the Static Site is running
 
 Only thing left to do is validating if the website is actually running. TO do this, go back to the **Azure Portal**, and click on the **URL** of the Static Site
 
-![Static Web Site Running](../images/20200521_10.jpg)
+![Static Web Site Running](../images/screenshot-2020-05-21-b33fefde.jpg)
 
 This brings up your browser and nicely shows the Hugo website. Notice this is an Azure Namespace URL for now, but feel free to continue the configuration by checking on the **Custom Domains** option. 
 
-![Static Web Site Running](../images/20200521_11.jpg)
+![Static Web Site Running](../images/screenshot-2020-05-21-7919b232.jpg)
 
 While this is still in preview, I'm pretty convinced this will soon become a very popular service. I know I'll keep using it already! 
 
@@ -90,6 +90,6 @@ As always, reach out when having any questions, or feel free to share feedback u
 
 <a href="https://www.buymeacoffee.com/pdtit" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-yellow.png" alt="Buy Me A Coffee" height="41" width="174"></a>
 
-[![BuyMeACoffee](../images/buy_me_a_coffee.png)](https://www.buymeacoffee.com/pdtit)
+[![BuyMeACoffee](../images/screenshot-2020-05-21-17f576e7.png)](https://www.buymeacoffee.com/pdtit)
 
 /Peter

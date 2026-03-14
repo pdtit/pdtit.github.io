@@ -13,7 +13,7 @@
 &lt;li&gt;My original setup was pretty straightforward, having a folder &amp;ldquo;templates&amp;rdquo;, in which I have modular templates for each part of my Azure Site Recovery Vault deployment.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Each templates hold a snippet of ARM / JSON structured code to deploy one or more Azure Resources.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-templates.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-677ae48c.png"
  
  
  loading="lazy"
@@ -29,7 +29,7 @@
 &lt;h2 id="agent-mode-prompt"&gt;Agent Mode Prompt
 &lt;/h2&gt;&lt;p&gt;The prompt I used was this:
 &lt;em&gt;for each file in the templates folder, convert to azure bicep. create a new bicep file for each, keeping the same name as the original json file. the azuredeploy should be transformed to main.bicep. validate all pointers to all new bicep files to be correct&amp;quot;&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-prompt.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-0e6d3c1f.png"
  
  
  loading="lazy"
@@ -47,7 +47,7 @@
 &lt;p&gt;Informing me about the different steps it would take to handle this task, starting with &lt;em&gt;exploring the templates folder to see all the files that need to be converted&lt;/em&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-start.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-9563c155.png"
  
  
  loading="lazy"
@@ -65,7 +65,7 @@
 &lt;p&gt;Followed by &lt;em&gt;starting the conversion process to Bicep files&lt;/em&gt;. Before doing that, it also highlighted it would check the Azure deployment best practices (although I didn&amp;rsquo;t explicitly asked to do that, nice one! )&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-start-filecheck.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-23d6f25c.png"
  
  
  loading="lazy"
@@ -78,7 +78,7 @@
 &lt;ol start="7"&gt;
 &lt;li&gt;It felt like it &lt;em&gt;learned&lt;/em&gt; from the best practices, by starting with the azuredeploy.json conversion to main.bicep first. It could also be that it started with this, because I mentioned this in the prompt itself.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-bicep.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-048d528f.png"
  
  
  loading="lazy"
@@ -91,7 +91,7 @@
 &lt;ol start="8"&gt;
 &lt;li&gt;As the main.bicep conversion took a bit longer than normal - although it was only running over it for about a minute, it &lt;em&gt;prompted&lt;/em&gt;, asking if it was ok to continue. Obviously, I confirmed to &lt;strong&gt;continue&lt;/strong&gt;.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-continue.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-9f313718.png"
  
  
  loading="lazy"
@@ -104,7 +104,7 @@
 &lt;ol start="9"&gt;
 &lt;li&gt;From here, it nicely continued looping through all smaller json-files, and transforming them into corresponding bicep-files. Since each file typically had only 1 or 2 resource references, the conversion went really smooth.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-templates-list.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-cc406a5d.png"
  
  
  loading="lazy"
@@ -117,7 +117,7 @@
 &lt;ol start="10"&gt;
 &lt;li&gt;After a bit, it had finished the transformation of each ARM to Bicep, and &lt;em&gt;started on updating the template links&lt;/em&gt;, as I asked for in my prompt, to also validate the references to all the deployment files.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-bicep-templatelinks.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-3a52cde6.png"
  
  
  loading="lazy"
@@ -130,7 +130,7 @@
 &lt;ol start="11"&gt;
 &lt;li&gt;With all references updated, it continued with its own &lt;em&gt;error checking&lt;/em&gt;, and validating the different templates for any possible errors. Even more interesting, &lt;strong&gt;without me specifying&lt;/strong&gt;, it detected an error in the &lt;strong&gt;azure.yaml&lt;/strong&gt;, which I had in my project folder, from a baseline started AZD-template we use to create all our Trainer-Demo-Deploy scenarios.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-bicep-azure-yaml.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-c58c585e.png"
  
  
  loading="lazy"
@@ -143,7 +143,7 @@
 &lt;ol start="12"&gt;
 &lt;li&gt;Last, it also created a &lt;em&gt;main.parameters.json&lt;/em&gt;, to capture any specific Parameters for the deployment.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-bicep-main.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-52ae46b8.png"
  
  
  loading="lazy"
@@ -169,7 +169,7 @@
 &lt;ol start="14"&gt;
 &lt;li&gt;&lt;em&gt;Chewing&lt;/em&gt; a bit on the myWorkspaceKey problem, it managed to find its own work-around to solve the problem. It even provided a clear explaining on why, identifying the dependency on the parent template.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-bicep-error.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-7c9e3eae.png"
  
  
  loading="lazy"
@@ -182,7 +182,7 @@
 &lt;ol start="15"&gt;
 &lt;li&gt;Feeling we were close to the end of the process, it &lt;strong&gt;continued amazing&lt;/strong&gt; me, as it now also created its &lt;strong&gt;own documentation&lt;/strong&gt; in a BICEP_CONVERSION_SUMMARY.md Markdown file, in which it listed up what conversations it did.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-bicep-conversion.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-233210a1.png"
  
  
  loading="lazy"
@@ -195,7 +195,7 @@
 &lt;ol start="16"&gt;
 &lt;li&gt;With all that out of the way, it ran another &lt;strong&gt;final validation&lt;/strong&gt; to conclude there were no more issues, closing the task with creating another README-BICEP.md file, describing how to run the actual deployment, using AZD.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-readme.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-ea367bd4.png"
  
  
  loading="lazy"
@@ -208,7 +208,7 @@
 &lt;ol start="17"&gt;
 &lt;li&gt;Finally, the Agent &lt;strong&gt;provided a description within the Chat Agent window&lt;/strong&gt;, clearly describing all the tasks accomplished with the necessary file references included:&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-taskvalidation1.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-12b1b132.png"
  
  
  loading="lazy"
@@ -221,7 +221,7 @@
 &lt;ol start="18"&gt;
 &lt;li&gt;As well as adding additional details on the &lt;strong&gt;task validation&lt;/strong&gt;.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-taskvalidation.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-8a5606f6.png"
  
  
  loading="lazy"
@@ -234,7 +234,7 @@
 &lt;ol start="19"&gt;
 &lt;li&gt;Finishing with describing different ways on how to run the actual deployment, using &lt;strong&gt;azd&lt;/strong&gt;, &lt;strong&gt;Azure CLI&lt;/strong&gt; and &lt;strong&gt;Azure PowerShell&lt;/strong&gt;.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-ready.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-1a21a2ce.png"
  
  
  loading="lazy"
@@ -247,7 +247,7 @@
 &lt;ol start="20"&gt;
 &lt;li&gt;Last step was running the deployment, and this worked without any hiccups!&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-works.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-b01b0623.png"
  
  
  loading="lazy"
@@ -265,7 +265,7 @@
  &gt;my github repo&lt;/a&gt; and continue your Azure learning journey with more demo scenarios at &lt;a class="link" href="https://aka.ms/trainer-demo-deploy" target="_blank" rel="noopener"
  &gt;Trainer-Demo-Deploy&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
- &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ &gt;&lt;img src="../images/screenshot-2025-07-12-17f576e7.png"
  
  
  loading="lazy"
@@ -278,7 +278,7 @@
 &lt;p&gt;Cheers!!&lt;/p&gt;
 &lt;p&gt;/Peter&lt;/p&gt;</description></item><item><title>I'm recognized as a HashiCorp Ambassador</title><link>https://www.007ffflearning.com/post/hashicorp-ambassador/</link><pubDate>Sat, 17 Apr 2021 00:00:00 +0000</pubDate><guid>https://www.007ffflearning.com/post/hashicorp-ambassador/</guid><description>&lt;p&gt;Hey,&lt;/p&gt;
 &lt;p&gt;I got some &lt;strong&gt;GREAT NEWS&lt;/strong&gt; to share, based on an email I received earlier this week:&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2021-04-17_01.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2021-04-17-06232e34.png"
  
  
  loading="lazy"
@@ -289,7 +289,7 @@
  
  &gt;&lt;/p&gt;
 &lt;p&gt;which informed me &lt;strong&gt;I am recognized as a HashiCorp Ambassador&lt;/strong&gt;!!&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/HC_ambassador_badge_2021.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2021-04-17-c9a222d4.png"
  
  
  loading="lazy"
@@ -312,7 +312,7 @@
 &lt;p&gt;I always did - and will continue doing community activities - for the community, not for the title.&lt;/p&gt;
 &lt;p&gt;If you got any questions on HashiCorp, Terraform or the Ambassador program, feel free to reach out.&lt;/p&gt;
 &lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
- &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ &gt;&lt;img src="../images/screenshot-2021-04-17-17f576e7.png"
  
  
  loading="lazy"
@@ -322,7 +322,7 @@
  
  
  &gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;/Peter&lt;/p&gt;</description></item><item><title>The labyrinth of Azure Infrastructure as Code Tools - Azure Spring Clean</title><link>https://www.007ffflearning.com/post/the-labyrinth-of-azure-iac/</link><pubDate>Wed, 24 Mar 2021 00:00:00 +0000</pubDate><guid>https://www.007ffflearning.com/post/the-labyrinth-of-azure-iac/</guid><description>&lt;p&gt;&lt;img src="../images/Azure_Spring_Clean_Logo.jpg"
+&lt;p&gt;/Peter&lt;/p&gt;</description></item><item><title>The labyrinth of Azure Infrastructure as Code Tools - Azure Spring Clean</title><link>https://www.007ffflearning.com/post/the-labyrinth-of-azure-iac/</link><pubDate>Wed, 24 Mar 2021 00:00:00 +0000</pubDate><guid>https://www.007ffflearning.com/post/the-labyrinth-of-azure-iac/</guid><description>&lt;p&gt;&lt;img src="../images/screenshot-2021-03-24-5a071c66.jpg"
  
  
  loading="lazy"
@@ -337,15 +337,15 @@
 &lt;p&gt;You can check out all other blog posts or videos, which can guide you with best practices, lessons learned, or help you with some of the more difficult Azure Management topics at &lt;a class="link" href="https://www.azurespringclean.com" target="_blank" rel="noopener"
  &gt;Azure Spring Clean&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;You can also keep an eye on &lt;a class="link" href="https://twitter.com/AzureSpringClean" target="_blank" rel="noopener"
- &gt;Twitter&lt;/a&gt; for the hashtag #AzureSpringClean so you won’t miss any of these Azure “spring” cleaning tips.&lt;/p&gt;
+ &gt;Twitter&lt;/a&gt; for the hashtag #AzureSpringClean so you wonâ€™t miss any of these Azure â€œspringâ€ cleaning tips.&lt;/p&gt;
 &lt;p&gt;I had the joy of participating again this year and decided to share a bit about &lt;strong&gt;IAC - Infrastructure As Code&lt;/strong&gt;, sharing my view on some of the interesting tools and practices that could help you in automating your Azure deployments.&lt;/p&gt;
 &lt;h2 id="what-is-infrastructure-as-code"&gt;What is Infrastructure As Code
 &lt;/h2&gt;&lt;p&gt;By using Infrastructure as Code, you define the infrastructure that needs to be deployed. The infrastructure code becomes part of your project. Just like the application source code, you store the infrastructure code in a source repository (GitHub, Azure Repos,&amp;hellip;) and version it. Anyone on your team can run the code and deploy similar environments. Infrastructure as Code (IaC) is the management of infrastructure (networks, virtual machines, load balancers, and connection topology), but can also be used to deploy the baseline of your platform services (App Services, Functions, Database services,&amp;hellip;). It is using a &lt;strong&gt;descriptive&lt;/strong&gt; model, relying on the same versioning concept used by DevOps teams for their source code.&lt;/p&gt;
 &lt;p&gt;Infrastructure as Code helps in avoiding or minimizing the problem of &lt;strong&gt;environment drift&lt;/strong&gt; during a release deployment. Without IaC, a cloud team must maintain the settings of individual deployment environments (Dev/Test, Staging, Production). Over time, each environment tends to become a snowflake, that is, a unique configuration that cannot be reproduced automatically. This also leads to inconsistency among environments which again leads to issues during deployments. With snowflakes, most deployments and maintenance of the underlying cloud infrastructure is based on manual processes, maybe a combination of stand-alone scripts coming from all over the place, are hard to track and are the main source for errors.&lt;/p&gt;
-&lt;p&gt;Another characteristic of IaC is &lt;strong&gt;Idempotence&lt;/strong&gt;. Idempotence is the principal that a deployment command always sets the target environment into the same configuration, regardless of the environment’s starting state or regardless the environment itself. Idempotency is achieved by either automatically configuring an existing target or by discarding the existing target and redeploying it from scratch (Spring Clean anyone? :)).&lt;/p&gt;
+&lt;p&gt;Another characteristic of IaC is &lt;strong&gt;Idempotence&lt;/strong&gt;. Idempotence is the principal that a deployment command always sets the target environment into the same configuration, regardless of the environmentâ€™s starting state or regardless the environment itself. Idempotency is achieved by either automatically configuring an existing target or by discarding the existing target and redeploying it from scratch (Spring Clean anyone? :)).&lt;/p&gt;
 &lt;p&gt;Accordingly, with IaC, cloud teams apply changes to the environment description and integrate versioning into the configuration model, which is typically in well-documented code formats such as JSON or YAML. If the environment should be reconfigured or changes should get applied, you edit the source (IaC-files), you are not directly touching on the target.&lt;/p&gt;
 &lt;p&gt;Teams who implement IaC can deliver stable environments rapidly and at scale. Teams avoid manual configuration of environments and enforce consistency by representing the desired state of their environments via code. Infrastructure deployments with IaC are repeatable and prevent runtime issues caused by configuration drift or missing dependencies. DevOps teams can work together with a unified set of practices and tools to deliver applications and their supporting infrastructure rapidly, reliably, and at scale.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/iac_diagram.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2021-03-24-c4254bd9.png"
  
  
  loading="lazy"
@@ -363,7 +363,7 @@
 &lt;/h2&gt;&lt;p&gt;Probably the first scenario of using IaC in Azure is &lt;a class="link" href="https://docs.microsoft.com//azure/azure-resource-manager/templates/" target="_blank" rel="noopener"
  &gt;Azure Resource Manager (ARM) templates&lt;/a&gt;The template is a JavaScript Object Notation (JSON) file that defines the infrastructure and configuration for your project. The template uses declarative syntax, which lets you state what you intend to deploy without having to write the sequence of programming commands to create it. In the template, you specify the resources to deploy and the properties for those resources.&lt;/p&gt;
 &lt;p&gt;ARM Templates can be authored in any editor (JSON is just text), but I can definitely recommend VS Code to do that. And make sure you install the ARM Template tools extension. Once you have your ARM template file(s), deploying them is possible from PowerShell, Azure CLI or directly from the Azure Portal.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/armoverview.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2021-03-24-502bc79c.png"
  
  
  loading="lazy"
@@ -826,7 +826,7 @@
 &lt;h2 id="terraform"&gt;Terraform
 &lt;/h2&gt;&lt;p&gt;Another really, really, really popular method of deploying your infrastructure to Azure is by using &lt;strong&gt;Terraform&lt;/strong&gt; by &lt;a class="link" href="https://www.hashicorp.com/products/terraform" target="_blank" rel="noopener"
  &gt;Hashicorp&lt;/a&gt;. Hashicorp Terraform is an open-source tool for provisioning and managing cloud infrastructure, not just Azure. Using their own Terraform providers, it is possible to target more than 35 cloud backends (Azure, AWS, GCP, Kubernetes,&amp;hellip;)&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/terraform_logo.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2021-03-24-ec76d932.png"
  
  
  loading="lazy"
@@ -1188,7 +1188,7 @@
  &gt;my Github Repo&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id="pulumi"&gt;Pulumi
 &lt;/h2&gt;&lt;p&gt;Infrastructure as Code as we already know it, typically uses language-independent data formats, such as JSON or YAML to define our infrastructure. Terraform is slightly different, and uses a Domain Specific Language (DSL), Hashicorp Configuration Language (HCL) to construct our templates.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/pulumi_logo.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2021-03-24-b4607536.png"
  
  
  loading="lazy"
@@ -1199,8 +1199,8 @@
  
  &gt;&lt;/p&gt;
 &lt;p&gt;This is where &lt;a class="link" href="https://www.pulumi.com" target="_blank" rel="noopener"
- &gt;Pulumi&lt;/a&gt; is slightly different. With Pulumi, we don’t need to learn a DSL or use JSON or YAML. If we’re already familiar with a programming language, think of DotNet, Java, Python,&amp;hellip; Pulumi allows you to define your cloud infrastructure using that exact same development language. Which also means you can leverage the standard functions within those programming languages too, things like loops, variables, error handling etc.&lt;/p&gt;
-&lt;p&gt;These functions are available in the other tools we’ve mentioned too. For example, creating multiple resources could be achieved by using a for loop in Python if using Pulumi or by using the copy functionality if using Azure Resource Manager (ARM).&lt;/p&gt;
+ &gt;Pulumi&lt;/a&gt; is slightly different. With Pulumi, we donâ€™t need to learn a DSL or use JSON or YAML. If weâ€™re already familiar with a programming language, think of DotNet, Java, Python,&amp;hellip; Pulumi allows you to define your cloud infrastructure using that exact same development language. Which also means you can leverage the standard functions within those programming languages too, things like loops, variables, error handling etc.&lt;/p&gt;
+&lt;p&gt;These functions are available in the other tools weâ€™ve mentioned too. For example, creating multiple resources could be achieved by using a for loop in Python if using Pulumi or by using the copy functionality if using Azure Resource Manager (ARM).&lt;/p&gt;
 &lt;p&gt;To get started with Pulumi, you don&amp;rsquo;t need too much of tooling:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class="link" href="https://docs.microsoft.com/cli/azure/install-azure-cli" target="_blank" rel="noopener"
@@ -1209,8 +1209,8 @@
  &gt;Pulumi CLI&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Your development language Framework installed (Python, DotNet,&amp;hellip;)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Compared to TerraForm and ARM Templates, Pulumi looks at each IaC concept as a &amp;ldquo;Project&amp;rdquo;; where within a project, you define &amp;ldquo;Stacks&amp;rdquo;. Projects are where we will store all of the code for a particular workload. You can think of a project like a source code repository, if something was going to have it’s own repo, then it should probably be it’s own project.&lt;/p&gt;
-&lt;p&gt;You can think of stacks as different instances of the code within our project, normally with differing configuration. In its simplest form you’d have a single project and a stack per environment (dev, test, prod) for example. There are a number of different patterns that you can adopt.&lt;/p&gt;
+&lt;p&gt;Compared to TerraForm and ARM Templates, Pulumi looks at each IaC concept as a &amp;ldquo;Project&amp;rdquo;; where within a project, you define &amp;ldquo;Stacks&amp;rdquo;. Projects are where we will store all of the code for a particular workload. You can think of a project like a source code repository, if something was going to have itâ€™s own repo, then it should probably be itâ€™s own project.&lt;/p&gt;
+&lt;p&gt;You can think of stacks as different instances of the code within our project, normally with differing configuration. In its simplest form youâ€™d have a single project and a stack per environment (dev, test, prod) for example. There are a number of different patterns that you can adopt.&lt;/p&gt;
 &lt;p&gt;A sample Pulumi script could look like this:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
 &lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
@@ -1315,7 +1315,7 @@
 &lt;p&gt;Have a great day, and enjoy the rest of &lt;a class="link" href="https://www.azurespringclean.com/" target="_blank" rel="noopener"
  &gt;Azure Spring Clean 2021&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
- &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ &gt;&lt;img src="../images/screenshot-2021-03-24-17f576e7.png"
  
  
  loading="lazy"
@@ -1331,7 +1331,7 @@
 &lt;h2 id="the-problem"&gt;The Problem
 &lt;/h2&gt;&lt;p&gt;Running a deployment that ran fine for months. I initiated a new deployment using the usual &lt;strong&gt;&amp;ldquo;terraform init&amp;rdquo;&lt;/strong&gt; step, which ran fine. Followed by the usual &lt;strong&gt;&amp;ldquo;terraform plan&amp;rdquo;&lt;/strong&gt;, and &lt;strong&gt;BOOM&lt;/strong&gt;, the following message appeared:&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Panic: not a collection type&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2020-09-06_01.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-09-06-6b15c999.jpg"
  
  
  loading="lazy"
@@ -1353,7 +1353,7 @@
 &lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;terraform version
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src="../images/2020-09-06_02.jpg"
+&lt;/div&gt;&lt;p&gt;&lt;img src="../images/screenshot-2020-09-06-1ae7f7fa.jpg"
  
  
  loading="lazy"
@@ -1367,7 +1367,7 @@
 &lt;p&gt;AFAIK, I&amp;rsquo;ve been running my deployments fine over the last few weeks, even this Wednesday during an Azure training demo. So something else must be going on. Digging in some more, I found this issue in the Hashicorp GitHub repository, having a reference to the createEmtpyBlocks, last updated only 3 days ago&amp;hellip; hmmmm&amp;hellip; let&amp;rsquo;s have a look&amp;hellip;&lt;/p&gt;
 &lt;p&gt;&lt;a class="link" href="https://github.com/hashicorp/terraform/pull/26028" target="_blank" rel="noopener"
  &gt;https://github.com/hashicorp/terraform/pull/26028&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2020-09-06_03.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-09-06-a1a4fc28.jpg"
  
  
  loading="lazy"
@@ -1399,7 +1399,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; cd /TF0132
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src="../images/2020-09-06_04.jpg"
+&lt;/div&gt;&lt;p&gt;&lt;img src="../images/screenshot-2020-09-06-cc6748aa.jpg"
  
  
  loading="lazy"
@@ -1418,7 +1418,7 @@
 &lt;p&gt;./terraform plan &lt;path to templatefile&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src="../images/2020-09-06_05.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-09-06-c7d5637d.jpg"
  
  
  loading="lazy"
@@ -1432,7 +1432,7 @@
 &lt;p&gt;Hopefully this gets picked up by Azure Cloud Shell soon enough, so I can get rid of this &amp;ldquo;temporary&amp;rdquo; workaround. On the other side, actually quite cool to run these versions side by side. Who knows what other bugs I detect while running 0.13.1, although I&amp;rsquo;m rather sure I will default to the 0.13.2 from now on.&lt;/p&gt;
 &lt;p&gt;I hope this helps anyone having the same issue as I did,&lt;/p&gt;
 &lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
- &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ &gt;&lt;img src="../images/screenshot-2020-09-06-17f576e7.png"
  
  
  loading="lazy"

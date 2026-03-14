@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure SRE Agent: Bringing Agentic AI to Site Reliability Engineering on Azure"
 date: 2026-03-14T09:30:00-07:00
 publishDate: 2026-03-14T09:30:00-07:00
@@ -14,9 +14,9 @@ But then came Generative AI, and Agentic InfraOps/DevOps. Welcome **Azure SRE Ag
 
 ## Introduction: What Is Azure SRE Agent?
 
-Modern cloud systems are increasingly distributed, dynamic, and failure‑prone by design. While DevOps practices have optimized delivery velocity, operational reliability still demands significant human effort. Particularly during incident response, root cause analysis, and post‑incident follow‑up. (Having been on the consultant side in physical and cloud environments since 1996, especially the outages and trying to fix issues is what got me into training - is what my wife says when you ask her why I love training so much, lol. She might be right...)
+Modern cloud systems are increasingly distributed, dynamic, and failureâ€‘prone by design. While DevOps practices have optimized delivery velocity, operational reliability still demands significant human effort. Particularly during incident response, root cause analysis, and postâ€‘incident followâ€‘up. (Having been on the consultant side in physical and cloud environments since 1996, especially the outages and trying to fix issues is what got me into training - is what my wife says when you ask her why I love training so much, lol. She might be right...)
 
-**Azure SRE Agent** is an **AI‑powered reliability assistant** designed to automate and augment Site Reliability Engineering practices for Azure workloads. It continuously observes telemetry (metrics, logs, traces), understands Azure resource topology, correlates incidents with recent changes, and assists with, or ask human approval to execute, remediation steps. 
+**Azure SRE Agent** is an **AIâ€‘powered reliability assistant** designed to automate and augment Site Reliability Engineering practices for Azure workloads. It continuously observes telemetry (metrics, logs, traces), understands Azure resource topology, correlates incidents with recent changes, and assists with, or ask human approval to execute, remediation steps. 
 
 Unlike traditional monitoring or AI-Ops tools, Azure SRE Agent operates as an **agentic system**:
 
@@ -41,7 +41,7 @@ At a high level, Azure SRE Agent combines four capability pillars:
     *   Historical incident patterns  
         This enables accelerated root cause analysis without manual log spelunking. (does that exist as a word?)
 
-3.  **Automated and Approval‑Gated Remediation**  
+3.  **Automated and Approvalâ€‘Gated Remediation**  
     Azure SRE Agent can execute operational actions. Think of scaling, restarting services, or reverting deployments. Or basically anything that relies on **Azure CLI and REST APIs**. All write actions are gated by RBAC and explicit approval, ensuring governance and control. (If you don't trust the commands it suggests, don't approve the action...) 
 
 4.  **Workflow and Developer Tool Integration**  
@@ -70,7 +70,7 @@ To deploy Azure SRE Agent, the following prerequisites must be met:
     The agent automatically gains visibility into all resources within those groups.
 6.  Complete the deployment and wait for the agent to initialize.
 
-Once deployed, the agent exposes a **chat‑based interface** in the Azure Portal, allowing engineers to interact using natural language to investigate and manage incidents. 
+Once deployed, the agent exposes a **chatâ€‘based interface** in the Azure Portal, allowing engineers to interact using natural language to investigate and manage incidents. 
 
 ## Using Azure SRE Agent
 
@@ -84,31 +84,31 @@ I opened SRE Agent and asked:
 
 This is what it came back with:
 
-![Investigating_App_Service](../images/Screenshot%202026-03-14%20090607.png)
+![Investigating_App_Service](../images/screenshot-2026-03-14-090607.png)
 
 Followed by **looking into the metrics**
 
-![Investigating_Metrics](../images/Screenshot%202026-03-14%20090726.png)
+![Investigating_Metrics](../images/screenshot-2026-03-14-090726.png)
 
 To then provide **a summary** of the findings and observations, **INCLUDING CHART VIEWS**
 
-![Investigating_charts](../images/Screenshot%202026-03-14%20090957.png)
+![Investigating_charts](../images/screenshot-2026-03-14-090957.png)
 
 Detailed Root Cause Analysis
 
-![Investigating_summary](../images/Screenshot%202026-03-14%20091106.png)
+![Investigating_summary](../images/screenshot-2026-03-14-091106.png)
 
 and detailed description of **what happened** and **Recommended actions**
 
-![Investigating_summary](../images/Screenshot%202026-03-14%20091159.png)
+![Investigating_summary](../images/screenshot-2026-03-14-091159.png)
 
 It identified the root cause being an **identity** problem, where the Web App could not connect to Cosmos DB. 
 
-![Investigating_summary](../images/Screenshot%202026-03-14%20091431.png)
+![Investigating_summary](../images/screenshot-2026-03-14-091431.png)
 
 To wrap it up with a **Diagnosis Complete - Data Unreachable Root Cause** report (in table format), including **potential fix steps** (Isn't that amazing?? I think it's just brilliant...!!!)
 
-![Investigating_diagnose_complete](../images/Screenshot%202026-03-14%20091606.png)
+![Investigating_diagnose_complete](../images/screenshot-2026-03-14-091606.png)
 
 From there, it asked me if it was OK to move on and assist with fixing the problem. Using the same response I would tell when talking to a colleague, I said
 
@@ -116,13 +116,13 @@ From there, it asked me if it was OK to move on and assist with fixing the probl
 
 (I'm pretty sure just saying "yes", or "sure" or "OK" or "YOUCANDOIT" might have worked too...)
 
-![acknowledge_fix](../images/Screenshot%202026-03-14%20091835.png)
+![acknowledge_fix](../images/screenshot-2026-03-14-091835.png)
 
 The above screenshot was taken after the process completed, but remember the SRE Agent can only perform actions when you as the **human-in-the-loop** acknowledges the approval.
 
 Smoothly, it came back with **Issue resolved**. Including a summary of the steps taken
 
-![acknowledge_fix](../images/Screenshot%202026-03-14%20092204.png)
+![acknowledge_fix](../images/screenshot-2026-03-14-092204.png)
 
 Well done SRE Agent!!
 
@@ -136,7 +136,7 @@ Also, if you want some inspiration to play with this, have a look at the [Micros
 
 If you deployed it and use it in your environment, please let me know. Happy to hear your stories!
 
-[![BuyMeACoffee](../images/buy_me_a_coffee.png)](https://www.buymeacoffee.com/pdtit)
+[![BuyMeACoffee](../images/screenshot-2026-03-14-17f576e7.png)](https://www.buymeacoffee.com/pdtit)
 
 Cheers!!
 

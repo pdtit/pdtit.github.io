@@ -1,4 +1,4 @@
----
+﻿---
 title: "Use Docker Edge to Deploy Azure Container Instance - ACI"
 date: 2020-07-05
 tags: ["Azure", "Containers"]
@@ -21,7 +21,7 @@ I was already running Docker Desktop on my Windows 10 machine, using Windows Sub
 
 1. From the Docker icon in the taskbar, select "About Docker Desktop"; this will show you the current version
 
-![Current Docker Desktop](../images/2020-07-05-01.jpg)
+![Current Docker Desktop](../images/screenshot-2020-07-05-13bd02ab.jpg)
 
 As you can see, I'm using the **stable** version 2.3.0.3
 
@@ -31,31 +31,31 @@ As you can see, I'm using the **stable** version 2.3.0.3
 docker save -o <nameforbackup.tar> <docker_image_name>
 ```  
 
-![Save Docker Image](../images/2020-07-05-02.jpg)
+![Save Docker Image](../images/screenshot-2020-07-05-a4ae067e.jpg)
 
 3. Uninstall Docker Desktop, by searching for "Docker Desktop" in the Start Menu, right-click it and select "Uninstall"
 
-![Uninstall Docker](../images/2020-07-05-03.jpg)
+![Uninstall Docker](../images/screenshot-2020-07-05-dddbf586.jpg)
 
 Follow the instructions to have the software removed from your machine.
 
-![Docker Removed](../images/2020-07-05-04.jpg)
+![Docker Removed](../images/screenshot-2020-07-05-49b78163.jpg)
 
 4. From the [Docker](http://www.docker.com) website, download the **Docker Desktop Edge** edition
 
-![Select Docker Desktop Edge](../images/2020-07-05-05.jpg)
+![Select Docker Desktop Edge](../images/screenshot-2020-07-05-295efc5a.jpg)
 
 Accept the options to create a desktop shortcut and allow the integration with WSL (if that is what you were using before...)
 
-![Install Settings](../images/2020-07-05-06.jpg)
+![Install Settings](../images/screenshot-2020-07-05-132f83ae.jpg)
 
 Wait for the component install to complete 
 
-![Install Complete](../images/2020-07-05-07.jpg)
+![Install Complete](../images/screenshot-2020-07-05-a697c06d.jpg)
 
 After only a few minutes, Docker Desktop should run again fine. You can validate this from the Docker icon in the taskbar's notification area; if it shouldn't start automatically, you can start it from here as well, by right-clicking on it. (FYI, I actually had to restart my machine before it actually ran fine, but I am on Windows 10 Insider Preview 19640, if that should matter at all :))
 
-![Docker Desktop Running](../images/2020-07-05-08.jpg)
+![Docker Desktop Running](../images/screenshot-2020-07-05-0c18658c.jpg)
 
 
 5. Confirm Docker Desktop Edge is running fine from a *Docker Perspective* , by opening your Command Prompt, and running 
@@ -64,7 +64,7 @@ After only a few minutes, Docker Desktop should run again fine. You can validate
 Docker info
 ```
 
-![Docker Info](../images/2020-07-05-09.jpg)
+![Docker Info](../images/screenshot-2020-07-05-b13c03cc.jpg)
 
 Nice, that upgrade went smooth already! 
 
@@ -74,14 +74,14 @@ Before we move on to the next step, let's restore our previously used Docker Ima
 Docker load -i <name_of_the_backupimage>.tar
 
 ```
-![Restore Docker Image](../images/2020-07-05-10.jpg)
+![Restore Docker Image](../images/screenshot-2020-07-05-87a776f0.jpg)
 
 and validate by running
 
 ```
 docker images
 ```
-![Restore Docker Image](../images/2020-07-05-11.jpg)
+![Restore Docker Image](../images/screenshot-2020-07-05-aee2cfa1.jpg)
 
 
  On to the next step... Now we are running the latest Docker Desktop Edge, it is time to play around with the newest Azure Container Instance (ACI) integration - which is the whole point of this blog post. 
@@ -98,7 +98,7 @@ The first feature that is part of the Docker Desktop Edge, is allowing us to aut
 ```
 Docker Login Azure
 ```
-![Authenticate to Azure](../images/2020-07-05-11b.jpg)
+![Authenticate to Azure](../images/screenshot-2020-07-05-86961e5d.jpg)
 
 This will prompt you for your Azure subscription credentials in a browser, just like a regular Azure authentication prompt (this also recognizes MFA, to make this a rather secure option)
 
@@ -111,11 +111,11 @@ docker context create aci <name_for_the_context>
 
 Based on the authenticated logon from the previous step, it will list up the different Azure subscriptions linked to your account; using the "arrow" keys, you can select the subscription you want to use. Next, it will list up the different Resource Group within your subscription. 
 
-![Create ACI Context](../images/2020-07-05-12.jpg)
+![Create ACI Context](../images/screenshot-2020-07-05-fb1e808b.jpg)
 
 If you don't want to use an existing Resource Group, you can create a new one:
 
-![Create ACI Context new RG](../images/2020-07-05-13.jpg)
+![Create ACI Context new RG](../images/screenshot-2020-07-05-43872c02.jpg)
 
 While this works, the naming convention for the newly created Resource Group is probably not going to work in any organization (naming convention policies etc...); so let's run this command again, and create a new context, based on an already existing Resource Group we want to use, by running the following command:
 
@@ -123,7 +123,7 @@ While this works, the naming convention for the newly created Resource Group is 
 docker context create aci <name_for_the_context> --location <azure_region_name> --resource-group <name_of_the_Azure_RG> --subscription <name_of_the_Azure_subscription>
 ```
 
-![Create ACI Context existing RG](../images/2020-07-05-15.jpg)
+![Create ACI Context existing RG](../images/screenshot-2020-07-05-51aaf964.jpg)
 
 The Docker Context, pointing to Azure ACI is available now. Let's continue with running an actual container in the next step.
 
@@ -136,7 +136,7 @@ docker run -d -p <portmapping> <name_of_the_container_image>
 
 which looks like this for my example: 
 
-![Docker run container](../images/2020-07-05-18.jpg)
+![Docker run container](../images/screenshot-2020-07-05-9392b6d3.jpg)
 
 where 
 - **80:80** tells the container to run the workload on port 80, and expose it to the outside world on port 80 as well
@@ -150,15 +150,15 @@ In less than a minute, the job is completed successfully. Time to validate the r
 docker ps
 ```
 
-![ACI is running](../images/2020-07-05-19.jpg)
+![ACI is running](../images/screenshot-2020-07-05-841512b2.jpg)
 
 which shows you the running container instance, as well as the necessary details about the public-IP address of the instance. From your browser, connect to this public IP address, and see our sample workload in action:
 
-![ACI validate in browser](../images/2020-07-05-20.jpg)
+![ACI validate in browser](../images/screenshot-2020-07-05-7136e153.jpg)
 
 You can also validate this from the Azure Portal, by connecting to the Azure Container Instance (this could also be done from Azure CLI or Azure PowerShell to be complete...)
 
-![ACI validate in portal](../images/2020-07-05-21.jpg)
+![ACI validate in portal](../images/screenshot-2020-07-05-c95290a1.jpg)
 
 Wonderful! This new Docker Edge integration with ACI is a nice improvement, and saving several steps from the "old way".
 
@@ -171,19 +171,19 @@ The previous example was using a public Docker Hub container image. So I was won
 
 1) create a new Docker Context for ACI
 
-![ACI context creation](../images/2020-07-05-23.jpg)
+![ACI context creation](../images/screenshot-2020-07-05-4ae87fbd.jpg)
 
 2) Run the Docker Container, pointing to the Azure Container Registry image 
 
-![run ACR image](../images/2020-07-05-24.jpg)
+![run ACR image](../images/screenshot-2020-07-05-613755a4.jpg)
 
 Hmm, that's an interesting error message... something "gcloud" related (=Google Cloud Platform :)). After some searching on the interwebs, it seems like my Docker instance is having some default authentication providers in its config.json file... interesting
 
-![config.json](../images/2020-07-05-25.jpg)
+![config.json](../images/screenshot-2020-07-05-406a84ee.jpg)
 
 Apparently it is safe to remove the section "CredHelpers", saving the file and running the "Docker Run" again:
 
-![run ACR image](../images/2020-07-05-26.jpg)
+![run ACR image](../images/screenshot-2020-07-05-96004182.jpg)
 
 While that weird gcloud error is gone, we are not quite there yet. But this error makes more sense to me. What it says here, is that the Docker Context cannot connect to the Azure Container Registry. Of course not, I need to authenticate to ACR first (**az acr login**), just like when I am running this locally on my machine:
 
@@ -191,24 +191,25 @@ where -g refers to the name of the Resource Group having the Azure Container Reg
 
 which works much better now; similar to the first example, a new Azure Container Instance is getting deployed: 
 
-![az acr login](../images/2020-07-05-27.jpg)
+![az acr login](../images/screenshot-2020-07-05-b1bde042.jpg)
 
 Let's validate once more by initiating "docker ps", which shows the following:
 
-![docker ps](../images/2020-07-05-28.jpg)
+![docker ps](../images/screenshot-2020-07-05-2a31c07b.jpg)
 
 and checking from the browser, if the workload is actually showing what it needs to show (note it is the same workload, just a different product category):
 
-![workload runs](../images/2020-07-05-29.jpg)
+![workload runs](../images/screenshot-2020-07-05-8c54c033.jpg)
 
 and lastly, checking back on what it looks like from the Azure Portal
 
-![ACI running in portal](../images/2020-07-05-31.jpg)
+![ACI running in portal](../images/screenshot-2020-07-05-84f98824.jpg)
 
 I love this!!
 
 ## Summary
 In this post, I introduced you to a brand new capability from Docker Desktop Edge, providing a direct (native almost) integration with Azure Container Instance. This allows you to deploy and run a container instance on Azure, without much hassle. I showed you how this works with public Docker Hub images, as well as with more private images from an Azure Container Registry. 
 
-[![BuyMeACoffee](../images/buy_me_a_coffee.png)](https://www.buymeacoffee.com/pdtit)
+[![BuyMeACoffee](../images/screenshot-2020-07-05-17f576e7.png)](https://www.buymeacoffee.com/pdtit)
+
 

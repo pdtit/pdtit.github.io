@@ -1,4 +1,4 @@
----
+﻿---
 title: "The Art of Realizing SRE on Azure - Book Review"
 date: 2022-10-29
 tags: ["Azure", "Books"]
@@ -14,7 +14,7 @@ Knowing I was already halfway in the actual writing process, so spent about 6 mo
 He did an amazing job, actually revamping some of the chapters I already had, moving the outline (=chapter order) around a little bit, and added a huge amount of his own views and experiences into the material. Honestly, only about 20% of my original writing was left. So it really became HIS book, with just a little bit of me left in. Obviously, I still offered to do Technical Reviewing (which gets paid with a free printed copy of the book).
 
 
-![The_Art_of_Realizing_SRE_on_Azure](../images/Cover_Art_of_SRE.png)
+![The_Art_of_Realizing_SRE_on_Azure](../images/screenshot-2022-10-29-aba5fbce.png)
 
 Let's check out what the book is about...
 

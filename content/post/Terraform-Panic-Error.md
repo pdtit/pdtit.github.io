@@ -1,4 +1,4 @@
----
+﻿---
 title: "Terraform showing an error Panic not a collection type" 
 date: 2020-09-06
 tags: ["Azure", "Infrastructure as Code"]
@@ -15,7 +15,7 @@ Running a deployment that ran fine for months. I initiated a new deployment usin
 
 **Panic: not a collection type**
 
-![Panic error message](../images/2020-09-06_01.jpg)
+![Panic error message](../images/screenshot-2020-09-06-6b15c999.jpg)
 
 Since this was a new template I created, I assumed an issue with the syntax or anything similar. As I couldn't find anything, I tried running the same steps with a "valid" template. Only to find out it produced the same error message.
 
@@ -27,7 +27,7 @@ To get the version of Terraform, run the following:
 terraform version
 ```
 
-![Terraform version](../images/2020-09-06_02.jpg)
+![Terraform version](../images/screenshot-2020-09-06-1ae7f7fa.jpg)
 
 OK, cool, I was running version 0.13.1, which, based on what I know, was only published recently. Interesting though, there was also a note *about my version being outdated, and I needed to upgrade to 0.13.2*
 
@@ -35,7 +35,7 @@ AFAIK, I've been running my deployments fine over the last few weeks, even this 
 
 https://github.com/hashicorp/terraform/pull/26028
 
-![Terraform version](../images/2020-09-06_03.jpg)
+![Terraform version](../images/screenshot-2020-09-06-a1a4fc28.jpg)
 
 ## The Solution
 
@@ -55,7 +55,7 @@ curl -O https://releases.hashicorp.com/terraform/0.13.2/terraform_0.13.2_linux_3
 
 ```
 
-![Terraform Install](../images/2020-09-06_04.jpg)
+![Terraform Install](../images/screenshot-2020-09-06-cc6748aa.jpg)
 
 Since **the current Terraform 0.13.1** is part of the default Cloud Shell PATH, it will run from any location you are in; to "force" Cloud Shell to use the **"the newer Terraform 0.13.2"**, one could launch it directly from **"/TF132/.terraform"** , for example:
 
@@ -63,7 +63,7 @@ Since **the current Terraform 0.13.1** is part of the default Cloud Shell PATH, 
 
 - ./terraform plan <path to templatefile>
 
-![Terraform Install](../images/2020-09-06_05.jpg)
+![Terraform Install](../images/screenshot-2020-09-06-c7d5637d.jpg)
 
 Resulting in a successful Terraform deployment again :) 
 
@@ -71,6 +71,6 @@ Hopefully this gets picked up by Azure Cloud Shell soon enough, so I can get rid
 
 I hope this helps anyone having the same issue as I did,
 
-[![BuyMeACoffee](../images/buy_me_a_coffee.png)](https://www.buymeacoffee.com/pdtit)
+[![BuyMeACoffee](../images/screenshot-2020-09-06-17f576e7.png)](https://www.buymeacoffee.com/pdtit)
 
 thanks, Peter

@@ -1,11 +1,11 @@
----
+﻿---
 title: "Azure Spring Clean - DevSecOps and Shifting Left"
 date: 2022-03-17
 tags: ["Azure", "DevOps"]
 draft: false
 ---
 
-![Azure Spring Clean](../images/AzureSpringClean-logo.png)
+![Azure Spring Clean](../images/screenshot-2022-03-17-b8a92856.png)
 
 Hey folks,
 
@@ -17,9 +17,9 @@ I hope you learn from it, enjoy reading through and got inspired to check back t
 
 ## The Concepts of DevOps
 
-Microsoft’s Definition: The Union of People, Processes and Products, to enable continuous delivery of value to our end users
+Microsoftâ€™s Definition: The Union of People, Processes and Products, to enable continuous delivery of value to our end users
 
-![DevOps](../images/2022-03-17-01.png)
+![DevOps](../images/screenshot-2022-03-17-cbbea36d.png)
 
 What DevOps teams are doing is providing an automated deployment process, starting from: 
 
@@ -33,24 +33,24 @@ This (somewhat simplified) process gets repeated over and over (CI/CD pipeline a
 
 If we look at this process from a linear perspective, it would look like this:
 
-![Linear DevOps](../images/2022-03-17-02.png)
+![Linear DevOps](../images/screenshot-2022-03-17-41ef67b9.png)
 
-So now you know what DevOps stands for, let’s zoom in more on the DevSecOps extension
+So now you know what DevOps stands for, letâ€™s zoom in more on the DevSecOps extension
 
 ## Shifting Left 
 
-When you look at this application lifecycle overview, most of the security handling, but also vulnerabiltiies, are getting detected and handled **during the running phase**. That’s where we have DDOS attacks, identity or credential theft, networking attacks, crypto and similar malware etc…
+When you look at this application lifecycle overview, most of the security handling, but also vulnerabiltiies, are getting detected and handled **during the running phase**. Thatâ€™s where we have DDOS attacks, identity or credential theft, networking attacks, crypto and similar malware etcâ€¦
 
-While there’s nothing wrong in handling security all the way at the end, it should not be **ONLY** all the way at the end, but rather be moved **all the way to the beginning**; and becoming part of each and every stage in our DevOps process
+While thereâ€™s nothing wrong in handling security all the way at the end, it should not be **ONLY** all the way at the end, but rather be moved **all the way to the beginning**; and becoming part of each and every stage in our DevOps process
 
-That’s what the industry calls **“shifting left”**
+Thatâ€™s what the industry calls **â€œshifting leftâ€**
 
 So what are some of the security best practices DevOps teams can (easily) integrate into their DevSecOps process you ask? Actually there's a lot of different options and possibilities. Good news is, you can apply different security features in the different DevOps stages: 
 
-![Security](../images/2022-03-17-03.png)
+![Security](../images/screenshot-2022-03-17-d1134daf.png)
 
 
-I’ll drill down a bit more on these obviously, but let’s look at some examples:
+Iâ€™ll drill down a bit more on these obviously, but letâ€™s look at some examples:
 
 **DEV**
 - **Threat Modeling** - Microsoft provides a [free Threat Modeling Tool](https://docs.microsoft.com/en-us/azure/security/develop/threat-modeling-tool), which helps you outlining the potential threats and vulnerabilities for a generic application architecture; 
@@ -62,7 +62,7 @@ I’ll drill down a bit more on these obviously, but let’s look at some exampl
 - **Code Analysis** - this is where you integrate source control code scanning tools such as Snyk, Sonar, WhiteSource Bolt and many others. The easiest way is going through them in your own DevOps pipelines. If you are using Azure DevOps, have a look at the [Azure DevOps Marketplace](), and search for **security**
 At present, there are **91** different extensions available to integrate security into your DevOps Organization and Projects.
 
-![Security](../images/2022-03-17-04.png)
+![Security](../images/screenshot-2022-03-17-1e996724.png)
 
 
 **PACKAGE**
@@ -72,14 +72,14 @@ At present, there are **91** different extensions available to integrate securit
 - Cloud Configuration
 - Security & Pen-testing
 
-![Security](../images/2022-03-17-05.png)
+![Security](../images/screenshot-2022-03-17-75c34e21.png)
 
 **RUN**
 - **Cloud Platform Security** - Any cloud vendor provides robust security features as part of the platform. Azure comes with Azure Security Center for years, which recently got rebranded to **[Microsoft Defender for Cloud]**(https://docs.microsoft.com/en-us/azure/defender-for-cloud/defender-for-cloud-introduction). Core characteristics are detecting your Secure Score, a value for your security posture, together with an extensive list of recommendations, on how to optimize your security. 
 - **RBAC permissions** model - This corresponds to the concept of "least set of privileges", which means your DevOps teams should only get the administrative permissions they really need to do there job, but no more. Or even better, only give them administrative permissions when they need to perform admin tasks. Services such as [Azure Identity Protection](https://docs.microsoft.com/en-us/azure/active-directory/identity-protection/overview-identity-protection) and [Privileged Identity Management](https://docs.microsoft.com/en-us/azure/active-directory/privileged-identity-management/pim-configure) are no luxury in any organization. Keep in mind these require an Azure AD Premium P2 license. Which - if you ask me - is more than worth the extra cost! 
 - Credentials & Secret Management
 
-![Security](../images/2022-03-17-06.png)
+![Security](../images/screenshot-2022-03-17-7f9ecf3b.png)
 
 **OPERATE**
 - Security Monitoring
@@ -93,4 +93,5 @@ In this post, I gave you an overview of the typical DevOps process, and what cha
 Once more, I very appreciated thank you for reading, and for **[Joe Carlyle](https://twitter.com/wedoazure) and [Thomas Thornton](https://twitter.com/tamstar1234)** for having accepted my submission for this 2022 #AzureSpringClean edition. Enjoy your Spring Clean week, stay safe and healthy!
 
 Peter
+
 

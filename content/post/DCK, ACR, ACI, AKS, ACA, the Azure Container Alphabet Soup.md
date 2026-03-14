@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure Spring Clean - DCK, ACR, ACI, AKS, ACA, the Azure Container Alphabet Soup"
 date: 2023-03-15
 publishdate: 2023-03-15
@@ -6,7 +6,7 @@ tags: ["Azure", "Containers"]
 draft: false
 ---
 
-![Azure Spring Clean](../images/AzureSpringClean2023-logo.png)
+![Azure Spring Clean](../images/screenshot-2023-03-15-09aa3df6.png)
 
 Hey friends,
 
@@ -24,7 +24,7 @@ Docker is a popular platform for building, shipping, and running containerized a
 
 Docker containers are lightweight, standalone, and executable packages of software that include everything needed to run an application. They contain the application code, runtime, system tools, libraries, and settings, making them highly portable and efficient. Docker containers run in isolation from the host operating system, providing consistent behavior and preventing conflicts with other applications.
 
-![Containers vs Virtual Machines](../images/2023-03-15_20-27-44.png)
+![Containers vs Virtual Machines](../images/screenshot-2023-03-15-8e5673d1.png)
 
 Docker Desktop is a desktop application for Windows and macOS that provides a complete development environment for building and testing Docker applications. It includes the Docker Engine, Docker CLI, and a GUI-based interface for managing containers, images, and networks. With Docker Desktop, developers can easily build, test, and run Docker applications on their local machines, without having to set up a separate environment.
 
@@ -32,7 +32,7 @@ Docker Desktop provides a simple and intuitive user interface for managing Docke
 
 One of the major benefits of Docker Desktop is its ability to provide a consistent development environment across different platforms and operating systems. It eliminates the need for developers to set up and maintain complex development environments on their own machines, which can be time-consuming and error-prone. Docker Desktop also supports popular programming languages and frameworks, such as Java, Node.js, Python, and Ruby, making it a versatile tool for building modern applications.
 
-![Docker Desktop](../images/2023-03-15_20-29-53.png)
+![Docker Desktop](../images/screenshot-2023-03-15-8e7274ef.png)
 
 Overall, Docker and Docker Desktop provide a powerful platform for building, shipping, and running containerized applications. They simplify the development and deployment of applications, provide a consistent environment across different platforms, and offer a flexible and scalable way to build modern applications. With the continued growth of containerization, Docker and Docker Desktop are essential tools for any developer or operator looking to stay ahead in the rapidly evolving world of software development.
 
@@ -47,7 +47,7 @@ ACR is a managed private registry for storing and managing container images in t
 
 The purpose of ACR is to provide a secure and reliable way to store, manage, and deploy container images. By using ACR, you can ensure that your container images are stored securely in the cloud, and that only authorized users have access to them. ACR also provides built-in integration with all other Azure Container Services (see below), making it easy to deploy your container images across the different services.
 
-![Azure Container Registry](../images/2023-03-15_20-34-12.png)
+![Azure Container Registry](../images/screenshot-2023-03-15-3c7a6c82.png)
 
 ACR supports Docker Hub as well as DevOps environments as sources for container images, and it provides a seamless experience for pushing and pulling images from the registry. ACR also supports advanced features, such as geo-replication and image security vulnerability scanning, which allows you to replicate your images to multiple regions for high availability and scan your images for security vulnerabilities (Backed by Defender for Containers and Defender for Cloud).
 
@@ -97,7 +97,7 @@ with the EshopOnWeb Docker image uploaded to the Azure Container Registry, use t
 az container create --resource-group myResourceGroup --name aci-springclean-app --image myacr.azurecr.io/eshopwebmvc --cpu 1 --memory 1 --registry-login-server myacr.azurecr.io --ip-address Public --dns-name-label aci-springclean-app --ports 80
 ```
 
-![Azure Container Instance](../images/2023-03-15_20-45-44.png)
+![Azure Container Instance](../images/screenshot-2023-03-15-bced3608.png)
 
 ## Azure Kubernetes Services (AKS) (https://learn.microsoft.com/en-us/azure/aks/intro-kubernetes)
 
@@ -107,7 +107,7 @@ AKS is an excellent choice for running complex, production-grade applications th
 
 AKS is easy to use, as it abstracts away the complexity of Kubernetes and provides an easy-to-use management interface. With AKS, you can deploy your Kubernetes clusters in minutes, using the Azure portal, Azure CLI, or Azure PowerShell.
 
-![Azure Kubernetes Services - AKS](../images/2023-03-15_20-47-20.png)
+![Azure Kubernetes Services - AKS](../images/screenshot-2023-03-15-01712b28.png)
 
 One of the strengths of AKS is its scalability. With AKS, you can scale your clusters up or down based on demand, without worrying about the underlying infrastructure. AKS also provides advanced networking capabilities, such as virtual networks, load balancers, and custom IP addresses.
 
@@ -263,7 +263,7 @@ az webapp deployment container config --name myAppService --resource-group myRes
 
 ```
 
-![Azure App Service - Docker Settings](../images/2023-03-16_21-02-24.png)
+![Azure App Service - Docker Settings](../images/screenshot-2023-03-15-730170f4.png)
 
 ## Azure Container Apps (https://learn.microsoft.com/en-us/azure/container-apps/overview)
 
@@ -273,13 +273,13 @@ With Azure Container Apps, you can deploy and manage multiple containers as part
 
 One of the strengths of Azure Container Apps is its flexibility. With Azure Container Apps, you can use any container image from any registry, including Docker Hub, Azure Container Registry, or your own private registry. You can also define your application's infrastructure as code using YAML or JSON files, which allows you to version control and automate the deployment process.
 
-![Azure Container Apps - Docker Settings](../images/2023-03-16_21-06-01.png)
+![Azure Container Apps - Docker Settings](../images/screenshot-2023-03-15-cd50dd87.png)
 
 Azure Container Apps also provides advanced features, such as automatic scaling, self-healing, and application-level load balancing. With Azure Container Apps, you can scale your application automatically based on demand, and Azure will handle the underlying infrastructure for you.
 
 However, Azure Container Apps has some limitations. First, Azure Container Apps is still in preview, so it may not be suitable for production-grade applications. Second, Azure Container Apps has some limitations in terms of customization, as it abstracts away some of the lower-level details of container orchestration. Finally, Azure Container Apps has a pricing model that may be more expensive than other Azure container services, as it charges based on the number of requests processed by your application.
 
-![Azure Container Apps - Scale Settings](../images/2023-03-16_21-14-20.png)
+![Azure Container Apps - Scale Settings](../images/screenshot-2023-03-15-af35650d.png)
 
 Use the following code example to get started with deploying an Azure Container Apps scenario:
 
@@ -292,7 +292,7 @@ As you can see, Azure offers several services that allow running containerized w
 
 I hope you learned something from reading the article, enjoy the rest of the [Azure Spring Clean](https://www.azurespringclean.com) topics!! 
 
-[![BuyMeACoffee](../images/buy_me_a_coffee.png)](https://www.buymeacoffee.com/pdtit)
+[![BuyMeACoffee](../images/screenshot-2023-03-15-17f576e7.png)](https://www.buymeacoffee.com/pdtit)
 
 Cheers!!
 

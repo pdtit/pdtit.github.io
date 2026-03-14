@@ -1,4 +1,4 @@
----
+﻿---
 title: "The weird case of the Visual Studio 2019 Dockerfile"
 date: 2020-11-22
 tags: ["Azure", "Containers"]
@@ -22,13 +22,13 @@ When you run [Docker Desktop](https://www.docker.com/products/docker-desktop) on
 2. Select **Add...**
 3. Notice **Docker Support**  
 
-![Docker Support](../images/2020-11-22_01.jpg)
+![Docker Support](../images/screenshot-2020-11-22-1595e451.jpg)
 
 4. From here, it prompts for the Operating System for the container workload, being **Linux** or **Windows**; I guess this depends on the app language you are using though; since, in my case, my sample app is using **dotnetcore3.1**, which runs on both, I could choose.
 
 5. From here, it produces the necessary **Dockerfile**, looking like this:
 
-![Docker Support](../images/2020-11-22_02.jpg)
+![Docker Support](../images/screenshot-2020-11-22-1e284d16.jpg)
 
 6. At first glance, **all looks good**, right? This is what the Dockerfile is doing:
 
@@ -40,15 +40,15 @@ When you run [Docker Desktop](https://www.docker.com/products/docker-desktop) on
 
 7. At second glance, **all still looked good**, where I was starting my container (F5). The "Build" process kicks off, similar to running this for a traditional code-based application, and going through the **Docker compile** process as expected:
 
-![Docker Support](../images/2020-11-22_03.jpg)
+![Docker Support](../images/screenshot-2020-11-22-630320b9.jpg)
 
 8. Once the build process is done, it switches to the **Container Tools** view, exposing details about the actual running container (ports, logs,...)
 
-![Docker Support](../images/2020-11-22_04.jpg)
+![Docker Support](../images/screenshot-2020-11-22-93383e96.jpg)
 
 9. As well as showing a running application in the browser
 
-![Docker Support](../images/2020-11-22_05.jpg)
+![Docker Support](../images/screenshot-2020-11-22-005f6a04.jpg)
 
 ## Where it goes wrong
 
@@ -58,7 +58,7 @@ Since the intention is to run my application outside of Visual Studio debug mode
 
 **Docker run -p 2500:80 fastcarcase:dev** is the command to kick off my container instance, and all seemed fine when checking the running container state:
 
-![Docker Support](../images/2020-11-22_06.jpg)
+![Docker Support](../images/screenshot-2020-11-22-24598b39.jpg)
 
 However, when browsing to http://localhost:2500, nothing is showing up; also, the container is not providing any logs. Not even when running in interactive mode.
 
@@ -98,9 +98,10 @@ Surprisingly, **this seemed to work fine**! I could start my container on my loc
 ## Closing
 I guess I need to go through the concepts and details of a Dockerfile much more in detail to figure out where the differences were, but at least for now, I can move on with building my next demo scenario. Automating all this using **[Azure DevOps Pipelines](https://dev.azure.com)**. Which will be for a future blog post I promise...
 
-[![BuyMeACoffee](../images/buy_me_a_coffee.png)](https://www.buymeacoffee.com/pdtit)
+[![BuyMeACoffee](../images/screenshot-2020-11-22-17f576e7.png)](https://www.buymeacoffee.com/pdtit)
 
 See you all soon, reach out when you have any questions or comments on this post or on Azure in general,
 
 Cheers, Peter
+
 

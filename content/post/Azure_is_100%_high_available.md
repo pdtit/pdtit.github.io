@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure is 100% High Available!! or is it...?"
 date: 2020-06-14
 tags: ["Azure"]
@@ -7,7 +7,7 @@ draft: false
 
 Last Friday, I delivered an online session at the "[Azure Day Rome 2020](http://www.azureday.it)", titled "Azure is 100% high available, or is it?"
 
-![Azure Day Rome session](../images/2020-06-14-1.jpg)
+![Azure Day Rome session](../images/screenshot-2020-06-14-163810d4.jpg)
 
 Since the conference sessions were only 45min, I didn't have much time to drill down on all the details, but apparently I managed to provide a clear and easy  overview of several misconceptions around public cloud high-availability, and even more important, how Azure provides several services and architectures, to optimize the overall high availability of your workloads. Whether you deploy IAAS, PAAS or Serverless.  
 
@@ -26,7 +26,7 @@ but these are not the only ones.
 
 Here is a summarized view of the common ones there are across different Azure services:
 
-![Measuring SLA table](../images/2020-06-14-2.jpg)
+![Measuring SLA table](../images/screenshot-2020-06-14-b918a0fc.jpg)
 
 **Note: Azure Services SLA's are always referring to the monthly numbers** 
 
@@ -37,13 +37,13 @@ But this is not what the session was about obviously. What's more important, is 
 ## Azure Regions
 A first level of redundancy one can make use of, are the different Azure Regions, available across the globe. Technically, one can decide on any regions you want to use for your cloud-running workloads (exceptions are US Government, China and "local clouds"), and boosting the high availability from a regional perspective. Easy said, instead of deploying your workload (Azure Virtual Machine, Azure Web App, Azure Functions,...) in a single region, deploy it in at least 2 or more regions.
 
-![Measuring SLA table](../images/2020-06-14-3.jpg)
+![Measuring SLA table](../images/screenshot-2020-06-14-f5d1e290.jpg)
 
 Luckily not too frequent, but every now and then, an Azure region becomes totally unavailable. Historical situations were mostly related to weather conditions (heavy storms in San Antonio Tx, 2018) or human mistakes (releasing faulty patch to Azure storage fabric in multiple regions at once, 2019). 
 
 To get a clear view on what the status is of any given Azure region, as well as all services running within that region, have a look at **[Azure Status](http://status.azure.com)**
 
-![Azure Status Health](../images/2020-06-14-4.jpg)
+![Azure Status Health](../images/screenshot-2020-06-14-4ebb6c14.jpg)
 
 ## Azure Networking
 Azure Virtual Networking is the cornerstone of a lot of Azure services in IAAS, PAAS and Serverless. This means those services won't be able to run, if the underlying network stack is having issues. But outside of that, there are also a few services within the Azure Networking Provider, helping you to optimize the SLA of your non-networking related services. I'm talking about Load Balancers.
@@ -68,7 +68,7 @@ Azure Load Balancer guarantees a **99.95%** SLA
 
 Azure App Gateway guarantees a **99.99%** SLA
 
-![Azure Load Balancers](../images/2020-06-14-5.jpg)
+![Azure Load Balancers](../images/screenshot-2020-06-14-7ac67f29.jpg)
 
 **Note: both load balancing solutions are active in a single-region topology, which means it can only act as a load balancer for workloads running in the same region as the load balancers**
 
@@ -84,7 +84,7 @@ Azure Front Door is much similar to Azure App Gateway, as it comes with a lot of
 
 Azure Front Door guarantees a **99.99%** SLA
 
-![TM and Azure Front Door](../images/2020-06-14-6.jpg)
+![TM and Azure Front Door](../images/screenshot-2020-06-14-68ef9509.jpg)
 
 ## Azure Virtual Machines
 Probably one of the most looked for SLA's is running Virtual Machine-based workloads on Azure. Since these are closest to the traditional on-premises datacenter architecture, it is most familiar. Azure Virtual Machines can be deployed in 3 different architectures, each providing a different SLA:
@@ -103,7 +103,7 @@ That's where you can choose for another setup, using **Availability Zones**.
 Availability Zones are the ultimate architecture when you look for the best high-availability for your business-critical Virtual Machine workloads. Besides running high available across multiple physical racks (similar to AVSets before), the physical racks are also spread across multiple buildings. In case of a complete building outage, your instance(s) will still be available in any of the other buildings. But still within the same region.
 Look [here](https://docs.microsoft.com/en-us/azure/availability-zones/az-overview) for additional info on Availability Zones
 
-![Virtual Machine SLA](../images/2020-06-14-7.jpg)
+![Virtual Machine SLA](../images/screenshot-2020-06-14-9379d312.jpg)
 
 **Note: to reach a *"close to 100%"* Virtual Machine high availability, one should consider deploying your VM-workloads in Availability Zones across multiple Azure Regions; keep in mind though this might drive the cost up dramatically, as each VM instance incorporates full consumption)** 
 
@@ -113,7 +113,7 @@ Azure App Services is the "umbrella terminology" for different Platform as a Ser
 - Web Apps, API Apps and Mobile Apps are covering a **99.95%** SLA, as well as for Azure Functions
 - EventGrid guarantees a **99.99%** SLA, which is interesting, as it mainly relies on any of the other App Services for its functioning
 
-![App Services SLA](../images/2020-06-14-8.jpg)
+![App Services SLA](../images/screenshot-2020-06-14-7f52e37a.jpg)
 
 ## Azure Container Services
 Last, let me touch on the SLA for different Azure Container Services. 
@@ -126,7 +126,7 @@ The core services related to Azure Containers are:
 
 Given the popularity and business-criticality of containers these days, I am personally a bit surprised to see these rather low numbers. On the other hand, knowing containers are typically running for a short period of time, the impact could be quite low. Azure Container Registry is mainly following the SLA's from it's underlying Azure storage service, where Azure Kubernetes Service is relying on Azure Availability Sets. 
 
-![Containers SLA](../images/2020-06-14-9.jpg)
+![Containers SLA](../images/screenshot-2020-06-14-87d9d753.jpg)
 
 ## Summary
 This blog post only gives a short overview of different Azure services architectures, and what different SLA's they offer within each service. Ultimately, your high-availability architecture for any given workload should probably combine different of these services. For example, if you deploy multiple VM instances as part of Availability Zones, you would still need to add some load balancing solution next to it, to guarantee the high-availability of the workload itself. 
@@ -135,7 +135,7 @@ Given the complexity for specific scenarios, I guess I can come up with a few co
 
 However, keep the following in mind:
 
-![Architecting is an ART](../images/2020-06-14-10.jpg)
+![Architecting is an ART](../images/screenshot-2020-06-14-cc55fcac.jpg)
 
 Stay safe and healthy you all! 
 

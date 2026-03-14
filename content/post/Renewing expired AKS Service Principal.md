@@ -1,4 +1,4 @@
----
+﻿---
 title: "AKS ErrImagePull and ImagePullBackOff on AKS after a year" 
 date: 2021-03-23
 tags: ["Azure", "Containers"]
@@ -13,11 +13,11 @@ I've deployed me an [AKS - Azure Kubernetes Service](https://docs.microsoft.com/
 
 My AKS environment was running fine all this time (a bit over a year), allowing me to rely on existing deployed Kubernetes services, as well as building new services as a live demo. Until this morning, where all of a sudden, my own services didn't start at all, but the kube-system services did. The error message I noticed for this service was **ImagePullBackOff** and **ErrImagePull**.
 
-![ImagePullBackOff](../images/2021-03-23_01.png)
+![ImagePullBackOff](../images/screenshot-2021-03-23-0215f800.png)
 
 If you know a bit about Kubernetes and custom services (= the PODs that are running your containerized workloads), you know they are pulled from a Container Registry, in my case [ACR - Azure Container Registry](https://azure.microsoft.com/en-us/services/container-registry/). Which means that in this scenario, there was probably something wrong with the communication between AKS and ACR. And more specifically, the AKS resource (or the Service Principal representing my AKS cluster) not having (no more having...) the correct permissions to reach ACR. Interesting is that the Kubernetes system containers are still running fine. 
 
-    ![System_containers_up](../images/2021-03-23_03.png)
+    ![System_containers_up](../images/screenshot-2021-03-23-2744036e.png)
 
 ## The fix
 
@@ -27,7 +27,7 @@ The fix consisted of a few different steps, but all in all, the steps made sense
 
     - After facing the problem, it struck me... an AKS Service Principal is valid for 1 year. Yes, my AKS cluster had been deployed for a bit more than year (405 days). So yes, **my SP got expired**
 
-    ![NameSpace_Uptime](../images/2021-03-23_02.png)
+    ![NameSpace_Uptime](../images/screenshot-2021-03-23-ee2a2487.png)
 
 2. Although there is a way to **renew the lifetime** of a Service Principal, I couldn't rely on that mechanism, as it only works for a non-expired-yet SP. Sounds normal to me. (In real life scenarios, you could automate this renewal from Azure Functions or Azure Automation)
 
@@ -94,7 +94,7 @@ The AKS Cluster got  updated with the new Service Principal, but this resource c
 - Assign Access To = User, Group, Principal
 - Select = search for the name of your Service Principal (pdtakssp in my example)
 
-![AcrPush_Permissions](../images/2021-03-23_04.png)
+![AcrPush_Permissions](../images/screenshot-2021-03-23-3b2146dd.png)
 
 - Save the changes
 
@@ -106,7 +106,7 @@ AKS is pretty smart in retrying failed operations (it's an Orchestrator after al
 - Select Services and Ingress
 - All services, system and custom workloads, should be up and running again
 
-![AKS_Fixed](../images/2021-03-23_05.png)
+![AKS_Fixed](../images/screenshot-2021-03-23-5d9c0d99.png)
 
 
 Awesome, AKS did it! (With a little help from Azure Active Directory)

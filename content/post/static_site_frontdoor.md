@@ -1,4 +1,4 @@
----
+﻿---
 title: "Running an Azure Storage Static Site, protected by Azure Front Door"
 date: 2020-04-25
 tags: ["Azure", "Hugo"]
@@ -10,16 +10,16 @@ week with other Belgian community User Groups
 (https://www.mc2mc.be/events/be-community-week-mc2mc-evening).
 
 My session topic was based on a little real-life project I worked on myself only
-a few weeks ago, deploying a “Hugo” based static website on Azure Storage
+a few weeks ago, deploying a â€œHugoâ€ based static website on Azure Storage
 Account Static Site (Yes, this site you are reading right now...).
 
 As there were quite some steps to go through, I decided to write a full blog
-post about it. And that’s exactly what brings you here...
+post about it. And thatâ€™s exactly what brings you here...
 
 If you are new to Hugo, have a look at the official website for more
 information: http://gohugo.io
 
-![](../images/hugo-logo-wide.svg)
+![](../images/screenshot-2020-04-25-27791db2.svg)
 
 Although Hugo supports both HTML and MarkDown, I decided to go for MarkDown; if
 this is unknown to you, think of it is a web page markup language, with a
@@ -44,26 +44,26 @@ Code.
       
     
 
-    ![](../images/bcc174bb593b0f381d8151603b7aa80c.png)
+    ![](../images/screenshot-2020-04-25-ea3b81aa.png)
 
 ##  **2. Create new site**
 
 -   Run **"Hugo new site \<sitename\>"**
 
-    ![](../images/a54714b64e47fe120a93e7c9816820ef.png)
+    ![](../images/screenshot-2020-04-25-426759a9.png)
 
 -   Hugo default folder structure is created automatically  
       
     
 
-    ![](../images/af6560448b8aedfd88cc90a09c578e0b.png)
+    ![](../images/screenshot-2020-04-25-5e969304.png)
 
 -   **Download (or Clone GitHub)** a theme from http://themes.gohugo.io, and extract
     the folders in the \\themes folder + **copy the config.toml** from the
     \\themes folder into the root of the site directory that got created in the
     previous step.
 
--   **(Minimal is what I’m using for this blog site**  
+-   **(Minimal is what Iâ€™m using for this blog site**  
     
 
 -   **Open browser http://localhost:1313**  
@@ -73,16 +73,16 @@ Code.
       
     
 
-    ![](../images/d3aba47e0c41fc62ce610dcc1432c662.png)
+    ![](../images/screenshot-2020-04-25-f6a56a41.png)
 
 -   Base site is working fine;
 
--   **Stop** the running “Hugo Server” Process by pressing Ctrl-C in the terminal window.
+-   **Stop** the running â€œHugo Serverâ€ Process by pressing Ctrl-C in the terminal window.
 
 -   to update or add new content, open the **Content\\post** subfolder  
           
 
-    ![](../images/05bb2f48f1c1bee0ae764d49091af439.png)
+    ![](../images/screenshot-2020-04-25-9becf0aa.png)
 
 -   Create a new MarkDown document, or copy an existing one as a starting point;
     I personally use [MarkdownMonster](http://www.markdownmonster.west-wind.com) or [Visual Studio Code]([http://code.visualstudio.com) as my MarkDown Editor, but any advanced text editor should work out fine.
@@ -92,21 +92,21 @@ Code.
       
 - edit some content in the page
 
--   Once your new post has been created, open your terminal again, and run “Hugo Server”. This will start a new web session. Validate from the browser on http://localhost:1313 if the new page is visible  
+-   Once your new post has been created, open your terminal again, and run â€œHugo Serverâ€. This will start a new web session. Validate from the browser on http://localhost:1313 if the new page is visible  
       
     
 
-    ![](../images/cbdf079922dc9d6d3da53edf49fff4e6.png)
+    ![](../images/screenshot-2020-04-25-1ba6b578.png)
 
 -   **Works!!** 
 
-However, this is “only local” on our dev station; to prepare the site to get published to Azure, **compile** it by running “**hugo**” from the command prompt (instead of hugo server)  
+However, this is â€œonly localâ€ on our dev station; to prepare the site to get published to Azure, **compile** it by running â€œ**hugo**â€ from the command prompt (instead of hugo server)  
       
     
 
-    ![](../images/743118c78771c96ab4a3f4a789657b0a.png)
+    ![](../images/screenshot-2020-04-25-755a8a74.png)
 
--   This compile process creates the actual “web content” in a /public/
+-   This compile process creates the actual â€œweb contentâ€ in a /public/
     subfolder in the same directory as the hugo site itself.
 
 ##  **3. Publish to Azure Storage Account**
@@ -119,13 +119,13 @@ However, this is “only local” on our dev station; to prepare the site to get
       
     
 
-    ![](../images/71edd780841d608544d3b134324169f1.png)
+    ![](../images/screenshot-2020-04-25-938fa514.png)
 
 -   **Save** the settings; Your static website URL gets generated and presented  
       
     
 
-    ![](../images/15c5386d0f516f7d962190ab03ef0f33.png)
+    ![](../images/screenshot-2020-04-25-55ca0e2b.png)
 
 >   As we now have the storage account static site service up-and-running, we
 >   can deploy our content. I am using (and recommending!) Visual Studio Code to
@@ -136,11 +136,11 @@ However, this is “only local” on our dev station; to prepare the site to get
       
     
 
-    ![](../images/15348e19823d218073622c2ad1d33a85.png)
+    ![](../images/screenshot-2020-04-25-298ab46c.png)
 
 -   From Command Palette : **Azure Storage / Deploy to Static Website**
 
-    ![](../images/f01559119805d70472c83f81a614e686.png)
+    ![](../images/screenshot-2020-04-25-e2f816d2.png)
 
 -   Complete the prompts with answers from your Azure subscription and setup,
     and select your Hugo folder as a source. This will copy all files from the
@@ -148,7 +148,7 @@ However, this is “only local” on our dev station; to prepare the site to get
       
     
 
-    ![](../images/1d16b85ebc152aa6151b80d32f20f8fc.png)
+    ![](../images/screenshot-2020-04-25-71639353.png)
 
 -   **Wait** for the process to complete successfully
 
@@ -156,7 +156,7 @@ However, this is “only local” on our dev station; to prepare the site to get
       
     
 
-    ![](../images/d532da99e266f79d5ee2d9138b7a7a90.png)
+    ![](../images/screenshot-2020-04-25-244dd65f.png)
 
 -   **DONT PANIC!! THIS IS EXPECTED**  
     
@@ -170,13 +170,13 @@ However, this is “only local” on our dev station; to prepare the site to get
       
     
 
-    ![](../images/fc7a9f15ac268781c1506e8a597d201a.png)
+    ![](../images/screenshot-2020-04-25-02b3ae9a.png)
 
--   **The site page itself loads**, but it’s not 100% OK ; we need to find a
+-   **The site page itself loads**, but itâ€™s not 100% OK ; we need to find a
     solution for that /public/ URL update. Good news is, Azure has such a
-    solution built-in, which is called **Azure Content Delivery Network – CDN.**
+    solution built-in, which is called **Azure Content Delivery Network â€“ CDN.**
 
-**Let’s deploy one.**
+**Letâ€™s deploy one.**
 
 ## **4. Deploy & Publish with Azure CDN**
 
@@ -195,11 +195,11 @@ However, this is “only local” on our dev station; to prepare the site to get
         -   Origin hostname = paste in the URL address of the Static Website
             **without the https:// and without the trailing /**
 
-            ![](../images/1596f2f6245b11f77e1f015ccee25132.png)
+            ![](../images/screenshot-2020-04-25-dade05a7.png)
 
 -   Once created, open the CDN Profile resource
 
-![](../images/cab37ce38896f5a9b23e70937b3f22bb.png)
+![](../images/screenshot-2020-04-25-baa27c0f.png)
 
 -   Select the **Endpoint** you defined under the Endpoints section
 
@@ -207,13 +207,13 @@ However, this is “only local” on our dev station; to prepare the site to get
       
     
 
-    ![](../images/29b3bf76e5985c924a4d34b8bce99534.png)
+    ![](../images/screenshot-2020-04-25-24e18753.png)
 
 -   In the **Rules engine** / select **Add Action** / Choose **URL Rewrite**  
       
     
 
-    ![](../images/bbbe6b0b6c9b1705b42a8828fdd6c92a.png)
+    ![](../images/screenshot-2020-04-25-33a28524.png)
 
 -   Create the following rule settings:
 
@@ -233,12 +233,12 @@ However, this is “only local” on our dev station; to prepare the site to get
       
     
 
-    ![](../images/69dd6f63be627b49c4025e65391e576f.png)
+    ![](../images/screenshot-2020-04-25-27708f2d.png)
 
 -   **THIS WORKS!!**
 
 -   From here, you could add a custom domain option, together with integrating
-    HTTPS using CDN Profile settings itself. I’m sure you will find out now by
+    HTTPS using CDN Profile settings itself. Iâ€™m sure you will find out now by
     yourself how to do that.
 
 -   However, allow me to continue on the scenario, and extending our setup with
@@ -246,7 +246,7 @@ However, this is “only local” on our dev station; to prepare the site to get
     performs SSL offloading, Session Affinity, URL rewrite/redirection and
     probably the most important feature **Web Application Firewall**.
 
--   **NOTE: from here, we won’t be able to stay within the \<\$5 /month
+-   **NOTE: from here, we wonâ€™t be able to stay within the \<\$5 /month
     consumption fee, as the required Azure Front Door rules will add an
     additional cost of +/- \$20 /month, or +/-\$50 /month if you enable the WAF
     option.**
@@ -261,31 +261,31 @@ However, this is “only local” on our dev station; to prepare the site to get
       
     
 
-    ![](../images/0d0288e06468bf95eef55d84319b4779.png)
+    ![](../images/screenshot-2020-04-25-d87f6a46.png)
 
 -   Complete the basic settings around Subscription, Resource Group and location  
       
     
 
-    ![](../images/adba042bcb3a432b0565977892192ef0.png)
+    ![](../images/screenshot-2020-04-25-506f2ade.png)
 
 -   Move on to the Configuration step next  
       
     
 
-    ![](../images/9f5298aa673cca90e805a0d6f867bb04.png)
+    ![](../images/screenshot-2020-04-25-8ef9310b.png)
 
 -   **Click** the + sign to add the Front Door Frontends/domains settings, and
     provide a unique name for the Front Door URL you want to use  
       
     
 
-    ![](../images/a88a69c694df0070def2e01955798c82.png)
+    ![](../images/screenshot-2020-04-25-90e13085.png)
 
 -   **Continue** with Step 2 where you define the backend pool settings. This is
     basically pointing Front Door to the Static Site Storage Account URL
 
--   **Click** “**Add BackEnd Pool”, and complete the requested parameters:
+-   **Click** â€œ**Add BackEnd Poolâ€, and complete the requested parameters:
 
     -   BackEnd Host Type: **custom**
 
@@ -296,7 +296,7 @@ However, this is “only local” on our dev station; to prepare the site to get
       
     
 
-    ![](../images/d75ecb379ea92cafccb4c27849acd3c7.png)
+    ![](../images/screenshot-2020-04-25-2689c7c6.png)
 
 -   Confirm the **Backend Pool settings** ,which brings you back to the
     BackendPool settings tab. Here, **leave the default values** for Health
@@ -304,14 +304,14 @@ However, this is “only local” on our dev station; to prepare the site to get
       
     
 
-    ![](../images/565bab36676bd1051cbc8704739d411c.png)
+    ![](../images/screenshot-2020-04-25-9d92b387.png)
 
 -   **Confirm** the BackendPool settings, and move on with **Step 3**, where you
     will define the necessary **routing rule**.  
       
     
 
-    ![](../images/3adb6b6fe63c5d3b400002ec82fc57c0.png)
+    ![](../images/screenshot-2020-04-25-742c6d57.png)
 
 -   In the **Add Rule** parameter section, provide a name for the rule you are
     about to create. Accept the default values for **Accepted Protocol,
@@ -319,50 +319,50 @@ However, this is “only local” on our dev station; to prepare the site to get
       
     
 
-    ![](../images/27d6a761b4d8f4eac5c3354396a012d9.png)
+    ![](../images/screenshot-2020-04-25-fe204c95.png)
 
 -   In the **Route details** section, scroll down and **change the setting for
-    Custom forwarding path**, adding the **“/public/** path that is used by Hugo
+    Custom forwarding path**, adding the **â€œ/public/** path that is used by Hugo
     (**Note: this path could be different, depending on the Hugo Theme; this
     path technically refers to the directory that Hugo uses to store the
     compiled site pages**.  
       
     
 
-    ![](../images/42664ef200baaba643f1b2a2832f54d3.png)
+    ![](../images/screenshot-2020-04-25-8c174813.png)
 
 -   **Wait** for the Azure Front Door resource to get created; once this is
     complete, open your browser to the URL address of Front Door. This should
     open your web site in a nice looking way
 
-![](../images/b7ce47a54f1e3c7dece7af37254e2801.png)
+![](../images/screenshot-2020-04-25-364b79da.png)
 
 ##  **6. Configure Public Custom Domain Name to Azure Front Door**
 
     In this last section, we will update our Azure Front Door configuration for
-    a public custom domain name. This is built-in, and integrates a Let’s
+    a public custom domain name. This is built-in, and integrates a Letâ€™s
     Encrypt (FREE) SSL/TLS certificate to your web service. How cool is that!
 
     **Note: you need to have a public DNS domain name already available, in
     which you need to create a C-name alias record for the Azure Front Door
     frontend/domain name you configured. E.g. my 007FFFLearning domain has a
-    “www” C-Name alias pointing to “hugofd.azurefd.net”**
+    â€œwwwâ€ C-Name alias pointing to â€œhugofd.azurefd.netâ€**
 
 -   From the Azure Front Door blade, select **Front Door Designer**; next,
     select **Frontends/domains**, and add a new custom domain  
       
     
 
-    ![](../images/6aa9ef304612ae212993e78b6b13c3be.png)
+    ![](../images/screenshot-2020-04-25-e3e4ec9c.png)
 
 -   If you also want to add the **Domain HTTPS** option to the configuration,
-    select this setting a bit more down in the blade. If you don’t have a PFX
+    select this setting a bit more down in the blade. If you donâ€™t have a PFX
     certificate file already for the public domain name space, have one
     generated by Front Door, by choosing **Front Door managed**.  
       
     
 
-    ![](../images/c81aaa41313e8c591ea97ed212d9f84e.png)
+    ![](../images/screenshot-2020-04-25-8de78ead.png)
 
 -   Confirm the settings by clicking **Add**
 
@@ -371,7 +371,7 @@ However, this is “only local” on our dev station; to prepare the site to get
       
     
 
-    ![](../images/b974c9bcf68e1038dd47d28f18f7e3b3.png)
+    ![](../images/screenshot-2020-04-25-bd6b1cbc.png)
 
 -   **Once the custom domain is configured**, we need to make one last change in
     our **routing rules**, adding the custom domain to the configuration.
@@ -380,7 +380,7 @@ However, this is “only local” on our dev station; to prepare the site to get
       
     
 
-    ![](../images/83de2dac4629565e87046375967a4083.png)
+    ![](../images/screenshot-2020-04-25-32b11a9d.png)
 
 -   **Save the changes**, and wait for the update to get applied.
 
@@ -389,7 +389,7 @@ However, this is “only local” on our dev station; to prepare the site to get
       
     
 
-    ![](../images/14f88a3b7039829707d8554123c90446.png)
+    ![](../images/screenshot-2020-04-25-b4a014dc.png)
 
 -   Selecting any of the subsections from the header menu, e.g. **Posts** will
     be nicely redirected to all posts, and allowing your readers to easily go
@@ -397,7 +397,7 @@ However, this is “only local” on our dev station; to prepare the site to get
       
     
 
-    ![](../images/9caad132a444ecffe99993db19408b6f.png)
+    ![](../images/screenshot-2020-04-25-d3453916.png)
 
       
       
@@ -407,9 +407,10 @@ However, this is “only local” on our dev station; to prepare the site to get
    blog website now. Get back into your Visual Studio Code, and start hammering
    some MarkDown posts!
 
-   As always, I’m here for you if you are stuck somewhere, or want to let me
+   As always, Iâ€™m here for you if you are stuck somewhere, or want to let me
    know once your site is up-and-running.
 
    Happy Hugo-ing!
 
    Take care, Peter
+

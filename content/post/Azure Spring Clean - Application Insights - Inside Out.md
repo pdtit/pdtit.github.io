@@ -1,11 +1,11 @@
----
+﻿---
 title: "Azure Spring Clean - Application Insights - Inside Out"
 date: 2025-03-06
 tags: ["Azure", "DevOps"]
 draft: false
 ---
 
-![Azure Spring Clean](../images/AzureSpringClean2025-logo.png)
+![Azure Spring Clean](../images/screenshot-2025-03-06-e5d9d12e.png)
 
 Hey folks,
 
@@ -69,13 +69,13 @@ I am using a sample app which I have been using in all my Azure Architecture (AZ
 
 Head over to [Trainer-Demo-Deploy](https://aka.ms/trainer-demo-deploy) and search for **tollbooth**
 
-![Trainer Demo Deploy - Tollbooth](../images/Screenshot 2025-03-07 060247.png)
+![Trainer Demo Deploy - Tollbooth](../images/screenshot-2025-03-06-a1e49ebb.png)
 
 Select the Tollbooth Serverless Architecture with Azure Functions card, and follow the **Template Details** instructions to get it deployed. Most important is having the Scenario-specific prereqs running on your local machine, as well as having Azure Developer CLI as well. 
 
 from **azd up**, it will ask you for your Azure subscription and the region where you want to deploy the scenario. Give it about 12-15min, and the fun can start...
 
-![Tollbooth Architecture](../images/tollbooth.png)
+![Tollbooth Architecture](../images/screenshot-2025-03-06-5c6e14d1.png)
 
 As you can see from the architecture, it is using several different services in Azure, to replicate a Tollbooth / Automated Parking Lot management application. This will generate 'traffic' to be monitored through Application Insights.
 
@@ -215,7 +215,7 @@ Note: If you see the "Demo" page, it means you don't have live metrics (anymore)
 
 Application Insights, as part of Azure Monitor, is a powerful tool for monitoring and optimizing the performance of your applications. Its comprehensive features, seamless integration with other Azure services, and real-time insights make it an essential component of any modern monitoring strategy. By leveraging Application Insights, you can ensure that your applications run smoothly, deliver a great user experience, and achieve your business goals.
 
- [![BuyMeACoffee](../images/buy_me_a_coffee.png)](https://www.buymeacoffee.com/pdtit)
+ [![BuyMeACoffee](../images/screenshot-2025-03-06-17f576e7.png)](https://www.buymeacoffee.com/pdtit)
 
 Cheers!!
 

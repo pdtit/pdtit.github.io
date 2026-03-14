@@ -1,4 +1,4 @@
----
+﻿---
 title: "Packt Book Review - Azure for Developers"
 date: 2025-12-25
 publishdate: 2025-12-25
@@ -6,11 +6,11 @@ tags: ["Azure", "Books"]
 draft: false
 ---
 
-In this post, I want to share my review of **Azure for Developers** (Third Edition) by [Kamil Mrzygłód](https://www.linkedin.com/in/kamil-mrzyg%C5%82%C3%B3d-31470376/), published by [Packt Publishing](https://www.packtpub.com/en-us/product/azure-for-developers-9781836203506) and available on [Amazon](https://www.amazon.com/dp/1836203508) as well as other e-book subscription platforms.
+In this post, I want to share my review of **Azure for Developers** (Third Edition) by [Kamil MrzygÅ‚Ã³d](https://www.linkedin.com/in/kamil-mrzyg%C5%82%C3%B3d-31470376/), published by [Packt Publishing](https://www.packtpub.com/en-us/product/azure-for-developers-9781836203506) and available on [Amazon](https://www.amazon.com/dp/1836203508) as well as other e-book subscription platforms.
 
 This definitive guide focuses on creating secure, scalable Azure apps with GenAI, serverless, and DevOps pipelines, making it an essential resource for developers looking to build modern cloud-native applications on Azure with the latest technologies.
 
-![Book Cover](../images/azure_for_developers.png)
+![Book Cover](../images/screenshot-2025-12-25-f243171e.png)
 
 ## About the book (from the cover)
 
@@ -43,17 +43,17 @@ The game-changing final section covers the cutting-edge technologies. It begins 
 
 This book is exceptionally well-suited for its target audience: **developers** who want to build applications on Azure. Unlike most architecture-focused books, this one takes a very hands-on, **practical approach** with code samples, step-by-step instructions, and real-world scenarios.
 
-What impressed me most is the **developer-centric perspective**. Kamil doesn't just explain what services do – he shows you **how to implement them**, with practical code examples in the context of building actual applications. The book includes numerous **code samples** available on [GitHub](https://github.com/PacktPublishing/Azure-for-Developers-Third-Edition), making it easy to follow along and experiment.
+What impressed me most is the **developer-centric perspective**. Kamil doesn't just explain what services do â€“ he shows you **how to implement them**, with practical code examples in the context of building actual applications. The book includes numerous **code samples** available on [GitHub](https://github.com/PacktPublishing/Azure-for-Developers-Third-Edition), making it easy to follow along and experiment.
 
-The **third edition** aspect is crucial here – Azure evolves rapidly, and this latest edition reflects the most current best practices and cutting-edge service offerings. The addition of **GenAI integration with Azure OpenAI Service** is particularly timely, showing developers how to build intelligent applications with generative AI. The coverage of **serverless, container, and DevOps patterns** with GitHub Actions is particularly strong, which aligns perfectly with modern cloud-native development approaches.
+The **third edition** aspect is crucial here â€“ Azure evolves rapidly, and this latest edition reflects the most current best practices and cutting-edge service offerings. The addition of **GenAI integration with Azure OpenAI Service** is particularly timely, showing developers how to build intelligent applications with generative AI. The coverage of **serverless, container, and DevOps patterns** with GitHub Actions is particularly strong, which aligns perfectly with modern cloud-native development approaches.
 
-I appreciate that the book covers the **full development lifecycle** – from setting up your environment and local development tools, through building with Azure Functions and container services, to implementing CI/CD with GitHub Actions, monitoring with Application Insights, and integrating AI capabilities. This holistic view helps developers understand not just how to build features, but how to build **production-ready, intelligent applications**.
+I appreciate that the book covers the **full development lifecycle** â€“ from setting up your environment and local development tools, through building with Azure Functions and container services, to implementing CI/CD with GitHub Actions, monitoring with Application Insights, and integrating AI capabilities. This holistic view helps developers understand not just how to build features, but how to build **production-ready, intelligent applications**.
 
-The section on **Azure OpenAI Service and Machine Learning** deserves special mention – it's incredibly timely and practical, showing developers how to integrate generative AI and automated ML into their applications. The coverage of **container deployment options** (Container Apps, Container Instances, and App Service for containers) helps clarify which service to use for different scenarios – a common point of confusion. The **DevOps automation with GitHub Actions** chapter is also excellent, providing practical CI/CD patterns for Azure deployments.
+The section on **Azure OpenAI Service and Machine Learning** deserves special mention â€“ it's incredibly timely and practical, showing developers how to integrate generative AI and automated ML into their applications. The coverage of **container deployment options** (Container Apps, Container Instances, and App Service for containers) helps clarify which service to use for different scenarios â€“ a common point of confusion. The **DevOps automation with GitHub Actions** chapter is also excellent, providing practical CI/CD patterns for Azure deployments.
 
 If I were to identify the **target personas**, this book is perfect for:
 
-- **Developers preparing for the AZ-204 (Azure Developer Associate)** certification – though not explicitly an exam prep book, it covers most exam topics with practical depth
+- **Developers preparing for the AZ-204 (Azure Developer Associate)** certification â€“ though not explicitly an exam prep book, it covers most exam topics with practical depth
 - **Full-stack developers** moving to Azure who want to understand PaaS services
 - **DevOps engineers** who need to understand how applications use Azure services
 - Anyone building **cloud-native applications** on Azure
@@ -64,16 +64,17 @@ The **review questions** at the end of chapters and **further reading links** ad
 
 "Azure for Developers" (Third Edition) is an excellent **practical guide** for developers who want to leverage Azure's latest services effectively. With its focused coverage of **584 pages**, hands-on approach, and developer-focused perspective, it serves both as a learning resource and a desk reference.
 
-The book strikes a great balance between breadth and depth – covering essential Azure services while providing enough detail to actually implement them. The emphasis on **cutting-edge technologies** (GenAI, serverless, containers, DevOps automation) makes it particularly relevant for building contemporary cloud applications that leverage AI and modern deployment practices.
+The book strikes a great balance between breadth and depth â€“ covering essential Azure services while providing enough detail to actually implement them. The emphasis on **cutting-edge technologies** (GenAI, serverless, containers, DevOps automation) makes it particularly relevant for building contemporary cloud applications that leverage AI and modern deployment practices.
 
-Whether you're preparing for the **AZ-204 certification**, migrating applications to Azure, or starting a new cloud-native project, this book provides the practical knowledge you need. The code samples, step-by-step guides, and real-world scenarios make it much more than just a reference – it's a **hands-on learning experience**.
+Whether you're preparing for the **AZ-204 certification**, migrating applications to Azure, or starting a new cloud-native project, this book provides the practical knowledge you need. The code samples, step-by-step guides, and real-world scenarios make it much more than just a reference â€“ it's a **hands-on learning experience**.
 
 Highly recommended for developers at all levels who want to build robust, scalable applications on Azure!
 
 Ping me if you should have any additional questions.
 
-[![BuyMeACoffee](../images/buy_me_a_coffee.png)](https://www.buymeacoffee.com/pdtit)
+[![BuyMeACoffee](../images/screenshot-2025-12-25-17f576e7.png)](https://www.buymeacoffee.com/pdtit)
 
 Cheers!!
 
 /Peter
+

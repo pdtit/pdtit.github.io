@@ -1,4 +1,4 @@
----
+﻿---
 title: "How I used GitHub Copilot to modernize my 8 year old Hugo website"
 date: 2026-02-28
 publishdate: 2026-02-28
@@ -18,7 +18,7 @@ The first issue looked small, but it exposed deeper reliability problems:
 - The `/search/` page in production was effectively empty
 - The pipeline still reported success
 
-So this wasn’t a single typo. It was a classic “green pipeline, broken runtime behavior” scenario.
+So this wasnâ€™t a single typo. It was a classic â€œgreen pipeline, broken runtime behaviorâ€ scenario.
 
 With Copilot, I moved from guessing to structured troubleshooting:
 
@@ -38,7 +38,7 @@ I updated the Azure Static Web Apps pipeline to be more explicit and defensive:
 
 - Build validation checks for critical output files
 - Safer prebuilt artifact deployment behavior
-- Better guardrails so partial site generation doesn’t silently pass
+- Better guardrails so partial site generation doesnâ€™t silently pass
 
 Result: deployment confidence went up significantly.
 ### 1) Build and deployment reliability
@@ -60,7 +60,7 @@ steps:
     - script: hugo --minify
         displayName: 'Build Hugo site'
     
-    # 🛡️ GUARDRAIL: Validate critical output files exist
+    # ðŸ›¡ï¸ GUARDRAIL: Validate critical output files exist
     - script: |
             if [ ! -f "public/search/index.json" ]; then
                 echo "ERROR: Search JSON endpoint missing!"
@@ -72,7 +72,7 @@ steps:
             fi
         displayName: 'Validate critical pages exist'
     
-    # 🛡️ GUARDRAIL: Check for empty or malformed search index
+    # ðŸ›¡ï¸ GUARDRAIL: Check for empty or malformed search index
     - script: |
             SIZE=$(wc -c < public/search/index.json)
             if [ $SIZE -lt 100 ]; then
@@ -81,7 +81,7 @@ steps:
             fi
         displayName: 'Validate search index integrity'
     
-    # 🛡️ GUARDRAIL: Verify content pages were generated
+    # ðŸ›¡ï¸ GUARDRAIL: Verify content pages were generated
     - script: |
             COUNT=$(find public -name "index.html" -type f | wc -l)
             if [ $COUNT -lt 10 ]; then
@@ -106,10 +106,10 @@ steps:
 ```
 
 **Key safety improvements:**
-- ✅ Explicit validation that search index exists and has realistic content
-- ✅ Minimum page count check to catch silent generation failures
-- ✅ Pipeline fails fast instead of deploying broken output
-- ✅ Clear error messages for debugging
+- âœ… Explicit validation that search index exists and has realistic content
+- âœ… Minimum page count check to catch silent generation failures
+- âœ… Pipeline fails fast instead of deploying broken output
+- âœ… Clear error messages for debugging
 
 Result: deployment confidence went up significantly.
 
@@ -142,18 +142,18 @@ Result: cleaner repository, fewer dead assets, and lower risk of accidental cont
 
 ## What I liked most about using Copilot on an older codebase
 
-The biggest value wasn’t “AI wrote code for me.” It was this:
+The biggest value wasnâ€™t â€œAI wrote code for me.â€ It was this:
 
 - Faster root-cause analysis
 - Safer bulk refactoring with validation checkpoints
 - Less context switching for repetitive search/update tasks
 - Better confidence to remove legacy clutter without fear
 
-For old websites, this matters a lot. Most of the work is not feature development — it’s careful archaeology.
+For old websites, this matters a lot. Most of the work is not feature development â€” itâ€™s careful archaeology.
 
 ## Practical lessons if you want to modernize your own Hugo site
 
-If your site is aging and you don’t know where to start, this sequence worked very well for me:
+If your site is aging and you donâ€™t know where to start, this sequence worked very well for me:
 
 1. Fix one visible production issue first (high leverage)
 2. Add pipeline checks for critical pages/artifacts
@@ -167,14 +167,15 @@ Small, verified steps beat one giant risky migration every time.
 
 This modernization started as a broken search page after switching to a new Hugo theme and ended as a full site health upgrade and removal of technical debt.
 
-GitHub Copilot didn’t replace engineering judgment — it amplified it. For me, that was the real win: I could move faster **and** be more careful at the same time.
+GitHub Copilot didnâ€™t replace engineering judgment â€” it amplified it. For me, that was the real win: I could move faster **and** be more careful at the same time.
 
 If you have an older Hugo site (or any long-running static site), this is absolutely worth doing.
 
 By the way, this whole process took less than 2 hours, and about 20 prompts in a continuous conversational approach. Are you a fan of GitHub Copilot? Let me know what your coolest use case has been so far!
 
-[![BuyMeACoffee](../images/buy_me_a_coffee.png)](https://www.buymeacoffee.com/pdtit)
+[![BuyMeACoffee](../images/screenshot-2026-02-28-17f576e7.png)](https://www.buymeacoffee.com/pdtit)
 
 Cheers!!
 
 /Peter
+

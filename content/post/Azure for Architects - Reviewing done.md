@@ -1,4 +1,4 @@
----
+﻿---
 title: "Another Tech Reviewing done: Azure For Architects - 3rd edition"
 date: 2020-08-02
 tags: ["Azure", "Books"]
@@ -7,7 +7,7 @@ draft: false
 
 As most of you know, I enjoy writing technical (Azure related) **[books](https://www.007ffflearning.com/books)**, but every now and then I am not writing myself, but rather do technical reviewing. A few weeks ago, I was approached by **[Packt](http://www.packt.com)**, asking me to review their **[Azure for Architects - third edition](https://www.packtpub.com/cloud-networking/azure-for-architects-third-edition)**
 
-![Azure_for_Architects_cover](../images/azure_for_architects.jpeg)
+![Azure_for_Architects_cover](../images/screenshot-2020-08-02-fc721eb6.jpeg)
 
 Don't let the reference to "third edition" fool you, there has been a massive rewrite of several chapters, with fresh new content, more technical information and new chapters were added as well. 
 
@@ -23,14 +23,14 @@ By the end of this book, you'll have gained the confidence to design intelligent
 ## Table of Contents
 1. Getting started with Azure
 2. Azure solution availability, scalability, and monitoring
-3. Design pattern– Networks, storage, messaging, and events
+3. Design patternâ€“ Networks, storage, messaging, and events
 4. Automating architecture on Azure
 5. Designing policies, locks, and tags for Azure deployments
 6. Cost Management for Azure solutions
 7. Azure OLTP solutions
 8. Architecting secure applications on Azure
 9. Azure Big Data solutions
-10. Serverless in Azure – Working with Azure Functions
+10. Serverless in Azure â€“ Working with Azure Functions
 11. Azure solutions using Azure Logic Apps, Event Grid, and Functions
 12. Azure Big Data eventing solutions
 13. Integrating Azure DevOps

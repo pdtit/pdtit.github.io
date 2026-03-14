@@ -1,4 +1,4 @@
----
+﻿---
 title: "Updated Azure Exams Announced"
 date: 2020-01-25
 tags: ["Azure", "General"]
@@ -70,7 +70,7 @@ As always, the [Microsoft Learn](http://www.microsoft.com/learn) website is the 
 
 **http://www.microsoft.com/learn** 
 
-![Learn_Website](../images/learn-website.png)
+![Learn_Website](../images/screenshot-2020-01-25-4e2d51b3.png)
 
 
 These new announced exams will also require some updates to several of the trainings I am delivering out of my current role as **Azure Technical Trainer (ATT)** within Microsoft. Time to go check on some updates, work on my updated stories, and fine-tune some cool demos and lab guide steps for my attendees. The changes will arrive fast if you ask me! 
@@ -99,3 +99,4 @@ As always, I hope this book maps with your interests and helps in your journey t
 
 
 /Peter
+

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Coding Apps in Blazor from a non-developer standpoint - Part 2"
 date: 2021-11-07
 tags: [".NET Development"]
@@ -30,29 +30,29 @@ Assuming you have all the prereqs covered, you can create your first Blazor Serv
 
 1. Launch Visual Studio on your machine, and select **Create a new Project**
 
-![VisualStudioLaunch](../images/2021-11-07_01.png)
+![VisualStudioLaunch](../images/screenshot-2021-11-07-88fe0b3b.png)
 
 2. In the **search box**, type blazor
 
-![SearchBlazor](../images/2021-11-07_02.png)
+![SearchBlazor](../images/screenshot-2021-11-07-026fc3a1.png)
 
 3. Notice there is a different template for a Blazor Server app or a Blazor Web Assembly app; for now, **select Blazor Server App** + Next
 
 4. In the *Configure Your New Project* step, set a **name** for your new project, for example **MyFirstBlazorApp**, and update the location if needed (Notice how VStudio is by default pointing to your user's profile directory, creating a sources and repos subfolder structure)
 
-![ConfigureProject](../images/2021-11-07_03.png)
+![ConfigureProject](../images/screenshot-2021-11-07-e55c5190.png)
 
 5. This brings us to the *Additional Information* step, where you specify the **Framework**, which (preferably, but not required...) is the latest **.NET 6.0 (Long-Term Support)**
 
-![60Framework](../images/2021-11-07_04.png)
+![60Framework](../images/screenshot-2021-11-07-4beb48f1.png)
 
 6. Confirm by clicking the **Create** button. After only a few minutes, the new Project got created and is available for "customizing". 
 
-![60Framework](../images/2021-11-07_05.png)
+![60Framework](../images/screenshot-2021-11-07-9b2ef2f4.png)
 
 7. Before launching the app and see it in action, let's quickly describe the core application folder/file structure:
 
-![FolderFileStructure](../images/2021-11-07_06.png)
+![FolderFileStructure](../images/screenshot-2021-11-07-6d79e43a.png)
 
     (1). Solution - the way Visual Studio combines all code; a Solution can have a single project or multiple projects
     (2). Project - A project is a combination of dev source code, which gets compiled into a workable application (the runtime)
@@ -66,7 +66,7 @@ Assuming you have all the prereqs covered, you can create your first Blazor Serv
     - This starts running the application on a dynamic browser port in your default browser,
     - as well as automatically switching Visual Studio to the Diagnostics and Error blades
 
-![DebugView](../images/2021-11-07_07.png)
+![DebugView](../images/screenshot-2021-11-07-0f2b09a1.png)
 
 9. The application loads in the browser and shows the layout of the app; feel free to click around the different menu options in the left **Navigation Bar** and become familiar with the base app functionality
 
@@ -74,11 +74,11 @@ Assuming you have all the prereqs covered, you can create your first Blazor Serv
     - The middle section is loading a specific razor-page, displaying HTML layout and data (the WeatherForecast information)
     - Top Menu bar, currently only having an "About" hyperlink to the .NET website
 
-![RunningApp](../images/2021-11-07_08.png)
+![RunningApp](../images/screenshot-2021-11-07-6f5827b6.png)
 
 10. From the Navigation Bar, select **Counter**; this opens the "Counter" page, which has a button, responding to each Click, and changing the value of the Current count field. 
 
-![Counter](../images/2021-11-07_09.png)
+![Counter](../images/screenshot-2021-11-07-c5052820.png)
 
 11. Switch back to Visual Studio, and open the **Counter.razor** file, displaying the actual code content. Notice the first section (@page) has a pointer to **/counter**; this is called a route. (If you would switch back to the browser, you will see that once you select the *Counter* option in the Navigation Bar, the URL switches to <url>/counter; if you navigate to *Fetch Data*, the route will switch to <url>/fetchdata, which is loading the FetchData.Razor page file. If you navigate to Home, it's loading the index.html page from the Pages-directory).
 
@@ -101,13 +101,13 @@ The **@code** section of the counter.razor page,  is where the actual C#-code li
     Easy said, whenever you start the app, the counter value is 0, but gets increased with a value "1", every time you click the "Click Me" button. 
 
 # Debugging a Blazor App
-![Counter](../images/2021-11-07_10.png)
+![Counter](../images/screenshot-2021-11-07-985b8bea.png)
 
 1. Since we are in "Visual Studio Debug mode" (I'll write much more on that in a later article...), let me briefly show you what it allows you to do. In short, it allows you to set a breakpoint, which gets prompted for during the run time of the application. To **set a breakpoint**, move your mouse pointer to the front of a line of code (or a code section) (the grey bar), and click. This adds a red dot, which reflects the breakpoint. 
 
 From here, switch back to the application in the browser, and click the "Click Me" button again in the Counter page. Notice how you get brought back into Visual Studio, where the breakpoint got updated with a yellow arrow, identifying where you are in the debugging (we only have 1 breakpoint for now, but very convenient if you have several of those set...). It will also show the actual value of the CurrentCount in a little popup balloon message, as well as below in the Autos section
 
-![Counter](../images/2021-11-07_11.png)
+![Counter](../images/screenshot-2021-11-07-60322204.png)
 
 2. Quit Debugging-mode by pressing **Shift-F5**, or by clicking the **Stop button** (red square button in the top menu) in Visual Studio, or by **closing the browser** that's running the Blazor app. 
 
@@ -123,7 +123,8 @@ Btw, if you are interested in developing with Blazor, you can [hire a Blazor dev
 
 For now, take care of yourself and your family, see you again soon with more Blazor-news. 
 
-[![BuyMeACoffee](../images/buy_me_a_coffee.png)](https://www.buymeacoffee.com/pdtit)
+[![BuyMeACoffee](../images/screenshot-2021-11-07-17f576e7.png)](https://www.buymeacoffee.com/pdtit)
 
 Cheers, Peter
+
 

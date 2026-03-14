@@ -3,8 +3,8 @@
  &gt;Azure Chaos Studio&lt;/a&gt;&lt;/strong&gt;, a service that allows you to inject faults against your Azure workloads (preferably production!), to make them more stable, more reliable.&lt;/p&gt;
 &lt;p&gt;But then came Generative AI, and Agentic InfraOps/DevOps. Welcome &lt;strong&gt;Azure SRE Agent&lt;/strong&gt;, which was in public preview for a few months, but went GA earlier this week. I played with it since its early inception, and thought the GA - with a lot of cool new updates - was a good time to dedicate a blog article to it.&lt;/p&gt;
 &lt;h2 id="introduction-what-is-azure-sre-agent"&gt;Introduction: What Is Azure SRE Agent?
-&lt;/h2&gt;&lt;p&gt;Modern cloud systems are increasingly distributed, dynamic, and failure‑prone by design. While DevOps practices have optimized delivery velocity, operational reliability still demands significant human effort. Particularly during incident response, root cause analysis, and post‑incident follow‑up. (Having been on the consultant side in physical and cloud environments since 1996, especially the outages and trying to fix issues is what got me into training - is what my wife says when you ask her why I love training so much, lol. She might be right&amp;hellip;)&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Azure SRE Agent&lt;/strong&gt; is an &lt;strong&gt;AI‑powered reliability assistant&lt;/strong&gt; designed to automate and augment Site Reliability Engineering practices for Azure workloads. It continuously observes telemetry (metrics, logs, traces), understands Azure resource topology, correlates incidents with recent changes, and assists with, or ask human approval to execute, remediation steps.&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;Modern cloud systems are increasingly distributed, dynamic, and failureâ€‘prone by design. While DevOps practices have optimized delivery velocity, operational reliability still demands significant human effort. Particularly during incident response, root cause analysis, and postâ€‘incident followâ€‘up. (Having been on the consultant side in physical and cloud environments since 1996, especially the outages and trying to fix issues is what got me into training - is what my wife says when you ask her why I love training so much, lol. She might be right&amp;hellip;)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Azure SRE Agent&lt;/strong&gt; is an &lt;strong&gt;AIâ€‘powered reliability assistant&lt;/strong&gt; designed to automate and augment Site Reliability Engineering practices for Azure workloads. It continuously observes telemetry (metrics, logs, traces), understands Azure resource topology, correlates incidents with recent changes, and assists with, or ask human approval to execute, remediation steps.&lt;/p&gt;
 &lt;p&gt;Unlike traditional monitoring or AI-Ops tools, Azure SRE Agent operates as an &lt;strong&gt;agentic system&lt;/strong&gt;:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;It reasons over multiple data sources simultaneously.&lt;/li&gt;
@@ -31,7 +31,7 @@ This enables accelerated root cause analysis without manual log spelunking. (doe
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Automated and Approval‑Gated Remediation&lt;/strong&gt;&lt;br&gt;
+&lt;p&gt;&lt;strong&gt;Automated and Approvalâ€‘Gated Remediation&lt;/strong&gt;&lt;br&gt;
 Azure SRE Agent can execute operational actions. Think of scaling, restarting services, or reverting deployments. Or basically anything that relies on &lt;strong&gt;Azure CLI and REST APIs&lt;/strong&gt;. All write actions are gated by RBAC and explicit approval, ensuring governance and control. (If you don&amp;rsquo;t trust the commands it suggests, don&amp;rsquo;t approve the action&amp;hellip;)&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
@@ -63,14 +63,14 @@ The agent integrates with Azure Monitor alerts, GitHub, Azure DevOps, ServiceNow
 The agent automatically gains visibility into all resources within those groups.&lt;/li&gt;
 &lt;li&gt;Complete the deployment and wait for the agent to initialize.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;Once deployed, the agent exposes a &lt;strong&gt;chat‑based interface&lt;/strong&gt; in the Azure Portal, allowing engineers to interact using natural language to investigate and manage incidents.&lt;/p&gt;
+&lt;p&gt;Once deployed, the agent exposes a &lt;strong&gt;chatâ€‘based interface&lt;/strong&gt; in the Azure Portal, allowing engineers to interact using natural language to investigate and manage incidents.&lt;/p&gt;
 &lt;h2 id="using-azure-sre-agent"&gt;Using Azure SRE Agent
 &lt;/h2&gt;&lt;p&gt;After the baseline deployment of the agent, it&amp;rsquo;s nothing more than &lt;strong&gt;running prompts&lt;/strong&gt;. Using natural language, asking generic or more-specific questions, and off it goes :)&lt;/p&gt;
 &lt;p&gt;To test this out, I deployed an Azure App Service, connecting to CosmosDB using Managed Identity. After testing the app, I removed the App Service Managed Identity to simulate the issue.&lt;/p&gt;
 &lt;p&gt;I opened SRE Agent and asked:&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;can you investigate my app service outage&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;This is what it came back with:&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/Screenshot%202026-03-14%20090607.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2026-03-14-090607.png"
  
  
  loading="lazy"
@@ -81,7 +81,7 @@ The agent automatically gains visibility into all resources within those groups.
  
  &gt;&lt;/p&gt;
 &lt;p&gt;Followed by &lt;strong&gt;looking into the metrics&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/Screenshot%202026-03-14%20090726.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2026-03-14-090726.png"
  
  
  loading="lazy"
@@ -92,7 +92,7 @@ The agent automatically gains visibility into all resources within those groups.
  
  &gt;&lt;/p&gt;
 &lt;p&gt;To then provide &lt;strong&gt;a summary&lt;/strong&gt; of the findings and observations, &lt;strong&gt;INCLUDING CHART VIEWS&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/Screenshot%202026-03-14%20090957.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2026-03-14-090957.png"
  
  
  loading="lazy"
@@ -103,7 +103,7 @@ The agent automatically gains visibility into all resources within those groups.
  
  &gt;&lt;/p&gt;
 &lt;p&gt;Detailed Root Cause Analysis&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/Screenshot%202026-03-14%20091106.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2026-03-14-091106.png"
  
  
  loading="lazy"
@@ -114,7 +114,7 @@ The agent automatically gains visibility into all resources within those groups.
  
  &gt;&lt;/p&gt;
 &lt;p&gt;and detailed description of &lt;strong&gt;what happened&lt;/strong&gt; and &lt;strong&gt;Recommended actions&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/Screenshot%202026-03-14%20091159.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2026-03-14-091159.png"
  
  
  loading="lazy"
@@ -125,7 +125,7 @@ The agent automatically gains visibility into all resources within those groups.
  
  &gt;&lt;/p&gt;
 &lt;p&gt;It identified the root cause being an &lt;strong&gt;identity&lt;/strong&gt; problem, where the Web App could not connect to Cosmos DB.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/Screenshot%202026-03-14%20091431.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2026-03-14-091431.png"
  
  
  loading="lazy"
@@ -136,7 +136,7 @@ The agent automatically gains visibility into all resources within those groups.
  
  &gt;&lt;/p&gt;
 &lt;p&gt;To wrap it up with a &lt;strong&gt;Diagnosis Complete - Data Unreachable Root Cause&lt;/strong&gt; report (in table format), including &lt;strong&gt;potential fix steps&lt;/strong&gt; (Isn&amp;rsquo;t that amazing?? I think it&amp;rsquo;s just brilliant&amp;hellip;!!!)&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/Screenshot%202026-03-14%20091606.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2026-03-14-091606.png"
  
  
  loading="lazy"
@@ -149,7 +149,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;p&gt;From there, it asked me if it was OK to move on and assist with fixing the problem. Using the same response I would tell when talking to a colleague, I said&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;Yes, go ahead and assist me with fixing this problem using the described steps&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;(I&amp;rsquo;m pretty sure just saying &amp;ldquo;yes&amp;rdquo;, or &amp;ldquo;sure&amp;rdquo; or &amp;ldquo;OK&amp;rdquo; or &amp;ldquo;YOUCANDOIT&amp;rdquo; might have worked too&amp;hellip;)&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/Screenshot%202026-03-14%20091835.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2026-03-14-091835.png"
  
  
  loading="lazy"
@@ -161,7 +161,7 @@ The agent automatically gains visibility into all resources within those groups.
  &gt;&lt;/p&gt;
 &lt;p&gt;The above screenshot was taken after the process completed, but remember the SRE Agent can only perform actions when you as the &lt;strong&gt;human-in-the-loop&lt;/strong&gt; acknowledges the approval.&lt;/p&gt;
 &lt;p&gt;Smoothly, it came back with &lt;strong&gt;Issue resolved&lt;/strong&gt;. Including a summary of the steps taken&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/Screenshot%202026-03-14%20092204.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2026-03-14-092204.png"
  
  
  loading="lazy"
@@ -179,7 +179,7 @@ The agent automatically gains visibility into all resources within those groups.
  &gt;Microsoft Learn lab - Optimize Azure Reliability using SRE Agent&lt;/a&gt; I published recently.&lt;/p&gt;
 &lt;p&gt;If you deployed it and use it in your environment, please let me know. Happy to hear your stories!&lt;/p&gt;
 &lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
- &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ &gt;&lt;img src="../images/screenshot-2026-03-14-17f576e7.png"
  
  
  loading="lazy"
@@ -225,7 +225,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s2"&gt;7. show a &amp;#34;&lt;/span&gt;YOU WIN&lt;span class="s2"&gt;&amp;#34; or &amp;#34;&lt;/span&gt;YOU ARE TOO SLOW&lt;span class="s2"&gt;&amp;#34; dpeending on the outcome&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src="../images/Screenshot2025-11-29-104211.png"
+&lt;/div&gt;&lt;p&gt;&lt;img src="../images/screenshot-2025-11-28-018f3ae5.png"
  
  
  loading="lazy"
@@ -249,7 +249,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;li&gt;Creating the Reflex Shooting Game&lt;/li&gt;
 &lt;li&gt;Testing the Game&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src="../images/Screenshot2025-11-29-104237.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-11-28-88f73764.png"
  
  
  loading="lazy"
@@ -262,7 +262,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;ol&gt;
 &lt;li&gt;This process took less than &lt;strong&gt;1 minute&lt;/strong&gt;, can you imagine? From there, it continued with providing detailed instructions on how to the game works.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/Screenshot2025-11-29-104336.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-11-28-f533f735.png"
  
  
  loading="lazy"
@@ -275,7 +275,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;ol&gt;
 &lt;li&gt;Next, it also had a list of features included:&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/Screenshot2025-11-29-104353.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-11-28-dc0b721b.png"
  
  
  loading="lazy"
@@ -288,7 +288,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;ol&gt;
 &lt;li&gt;Time to start the game!!&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/Screenshot2025-11-29-104413.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-11-28-c3d6fa9b.png"
  
  
  loading="lazy"
@@ -301,7 +301,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;ol&gt;
 &lt;li&gt;Which allowed me to play exactly as I asked for. When I was too slow, it would tell me&amp;hellip;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/Screenshot2025-11-29-104424.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-11-28-df129c5d.png"
  
  
  loading="lazy"
@@ -314,7 +314,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;ol&gt;
 &lt;li&gt;And several attempts later, I finally managed to win a game!!&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/Screenshot2025-11-29-104503.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-11-28-8d0ea57f.png"
  
  
  loading="lazy"
@@ -332,7 +332,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;p&gt;If you want to see some similar version of this templategame in action, head over to &lt;a class="link" href="https://github.com/petender/vibeshooter" target="_blank" rel="noopener"
  &gt;my github repo&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
- &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ &gt;&lt;img src="../images/screenshot-2025-11-28-17f576e7.png"
  
  
  loading="lazy"
@@ -358,7 +358,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;li&gt;My original setup was pretty straightforward, having a folder &amp;ldquo;templates&amp;rdquo;, in which I have modular templates for each part of my Azure Site Recovery Vault deployment.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Each templates hold a snippet of ARM / JSON structured code to deploy one or more Azure Resources.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-templates.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-677ae48c.png"
  
  
  loading="lazy"
@@ -374,7 +374,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;h2 id="agent-mode-prompt"&gt;Agent Mode Prompt
 &lt;/h2&gt;&lt;p&gt;The prompt I used was this:
 &lt;em&gt;for each file in the templates folder, convert to azure bicep. create a new bicep file for each, keeping the same name as the original json file. the azuredeploy should be transformed to main.bicep. validate all pointers to all new bicep files to be correct&amp;quot;&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-prompt.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-0e6d3c1f.png"
  
  
  loading="lazy"
@@ -392,7 +392,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;p&gt;Informing me about the different steps it would take to handle this task, starting with &lt;em&gt;exploring the templates folder to see all the files that need to be converted&lt;/em&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-start.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-9563c155.png"
  
  
  loading="lazy"
@@ -410,7 +410,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;p&gt;Followed by &lt;em&gt;starting the conversion process to Bicep files&lt;/em&gt;. Before doing that, it also highlighted it would check the Azure deployment best practices (although I didn&amp;rsquo;t explicitly asked to do that, nice one! )&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-start-filecheck.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-23d6f25c.png"
  
  
  loading="lazy"
@@ -423,7 +423,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;ol start="7"&gt;
 &lt;li&gt;It felt like it &lt;em&gt;learned&lt;/em&gt; from the best practices, by starting with the azuredeploy.json conversion to main.bicep first. It could also be that it started with this, because I mentioned this in the prompt itself.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-bicep.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-048d528f.png"
  
  
  loading="lazy"
@@ -436,7 +436,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;ol start="8"&gt;
 &lt;li&gt;As the main.bicep conversion took a bit longer than normal - although it was only running over it for about a minute, it &lt;em&gt;prompted&lt;/em&gt;, asking if it was ok to continue. Obviously, I confirmed to &lt;strong&gt;continue&lt;/strong&gt;.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-continue.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-9f313718.png"
  
  
  loading="lazy"
@@ -449,7 +449,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;ol start="9"&gt;
 &lt;li&gt;From here, it nicely continued looping through all smaller json-files, and transforming them into corresponding bicep-files. Since each file typically had only 1 or 2 resource references, the conversion went really smooth.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-templates-list.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-cc406a5d.png"
  
  
  loading="lazy"
@@ -462,7 +462,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;ol start="10"&gt;
 &lt;li&gt;After a bit, it had finished the transformation of each ARM to Bicep, and &lt;em&gt;started on updating the template links&lt;/em&gt;, as I asked for in my prompt, to also validate the references to all the deployment files.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-bicep-templatelinks.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-3a52cde6.png"
  
  
  loading="lazy"
@@ -475,7 +475,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;ol start="11"&gt;
 &lt;li&gt;With all references updated, it continued with its own &lt;em&gt;error checking&lt;/em&gt;, and validating the different templates for any possible errors. Even more interesting, &lt;strong&gt;without me specifying&lt;/strong&gt;, it detected an error in the &lt;strong&gt;azure.yaml&lt;/strong&gt;, which I had in my project folder, from a baseline started AZD-template we use to create all our Trainer-Demo-Deploy scenarios.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-bicep-azure-yaml.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-c58c585e.png"
  
  
  loading="lazy"
@@ -488,7 +488,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;ol start="12"&gt;
 &lt;li&gt;Last, it also created a &lt;em&gt;main.parameters.json&lt;/em&gt;, to capture any specific Parameters for the deployment.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-bicep-main.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-52ae46b8.png"
  
  
  loading="lazy"
@@ -514,7 +514,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;ol start="14"&gt;
 &lt;li&gt;&lt;em&gt;Chewing&lt;/em&gt; a bit on the myWorkspaceKey problem, it managed to find its own work-around to solve the problem. It even provided a clear explaining on why, identifying the dependency on the parent template.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-bicep-error.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-7c9e3eae.png"
  
  
  loading="lazy"
@@ -527,7 +527,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;ol start="15"&gt;
 &lt;li&gt;Feeling we were close to the end of the process, it &lt;strong&gt;continued amazing&lt;/strong&gt; me, as it now also created its &lt;strong&gt;own documentation&lt;/strong&gt; in a BICEP_CONVERSION_SUMMARY.md Markdown file, in which it listed up what conversations it did.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-bicep-conversion.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-233210a1.png"
  
  
  loading="lazy"
@@ -540,7 +540,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;ol start="16"&gt;
 &lt;li&gt;With all that out of the way, it ran another &lt;strong&gt;final validation&lt;/strong&gt; to conclude there were no more issues, closing the task with creating another README-BICEP.md file, describing how to run the actual deployment, using AZD.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-readme.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-ea367bd4.png"
  
  
  loading="lazy"
@@ -553,7 +553,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;ol start="17"&gt;
 &lt;li&gt;Finally, the Agent &lt;strong&gt;provided a description within the Chat Agent window&lt;/strong&gt;, clearly describing all the tasks accomplished with the necessary file references included:&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-taskvalidation1.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-12b1b132.png"
  
  
  loading="lazy"
@@ -566,7 +566,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;ol start="18"&gt;
 &lt;li&gt;As well as adding additional details on the &lt;strong&gt;task validation&lt;/strong&gt;.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-taskvalidation.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-8a5606f6.png"
  
  
  loading="lazy"
@@ -579,7 +579,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;ol start="19"&gt;
 &lt;li&gt;Finishing with describing different ways on how to run the actual deployment, using &lt;strong&gt;azd&lt;/strong&gt;, &lt;strong&gt;Azure CLI&lt;/strong&gt; and &lt;strong&gt;Azure PowerShell&lt;/strong&gt;.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-ready.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-1a21a2ce.png"
  
  
  loading="lazy"
@@ -592,7 +592,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;ol start="20"&gt;
 &lt;li&gt;Last step was running the deployment, and this worked without any hiccups!&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2025-07-04-works.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-07-12-b01b0623.png"
  
  
  loading="lazy"
@@ -610,7 +610,7 @@ The agent automatically gains visibility into all resources within those groups.
  &gt;my github repo&lt;/a&gt; and continue your Azure learning journey with more demo scenarios at &lt;a class="link" href="https://aka.ms/trainer-demo-deploy" target="_blank" rel="noopener"
  &gt;Trainer-Demo-Deploy&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
- &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ &gt;&lt;img src="../images/screenshot-2025-07-12-17f576e7.png"
  
  
  loading="lazy"
@@ -621,7 +621,7 @@ The agent automatically gains visibility into all resources within those groups.
  
  &gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Cheers!!&lt;/p&gt;
-&lt;p&gt;/Peter&lt;/p&gt;</description></item><item><title>Azure Spring Clean - Application Insights - Inside Out</title><link>https://www.007ffflearning.com/post/azure-spring-clean---application-insights---inside-out/</link><pubDate>Thu, 06 Mar 2025 00:00:00 +0000</pubDate><guid>https://www.007ffflearning.com/post/azure-spring-clean---application-insights---inside-out/</guid><description>&lt;p&gt;&lt;img src="../images/AzureSpringClean2025-logo.png"
+&lt;p&gt;/Peter&lt;/p&gt;</description></item><item><title>Azure Spring Clean - Application Insights - Inside Out</title><link>https://www.007ffflearning.com/post/azure-spring-clean---application-insights---inside-out/</link><pubDate>Thu, 06 Mar 2025 00:00:00 +0000</pubDate><guid>https://www.007ffflearning.com/post/azure-spring-clean---application-insights---inside-out/</guid><description>&lt;p&gt;&lt;img src="../images/screenshot-2025-03-06-e5d9d12e.png"
  
  
  loading="lazy"
@@ -667,10 +667,19 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;p&gt;I am using a sample app which I have been using in all my Azure Architecture (AZ-305) and Developing Azure Solutions (AZ-204) classes over the years, when talking about Application Insights. It recently got moved to a new &amp;rsquo;trainer&amp;rsquo; platform out of a project I&amp;rsquo;m leading within Microsoft, based on Azure Developer CLI deployments for trainer demo scenarios. (If you&amp;rsquo;re new to AZD, you should definitely check it out!)&lt;/p&gt;
 &lt;p&gt;Head over to &lt;a class="link" href="https://aka.ms/trainer-demo-deploy" target="_blank" rel="noopener"
  &gt;Trainer-Demo-Deploy&lt;/a&gt; and search for &lt;strong&gt;tollbooth&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;![Trainer Demo Deploy - Tollbooth](../images/Screenshot 2025-03-07 060247.png)&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/screenshot-2025-03-06-a1e49ebb.png"
+ 
+ 
+ loading="lazy"
+ 
+ alt="Trainer Demo Deploy - Tollbooth"
+ 
+ 
+ 
+ &gt;&lt;/p&gt;
 &lt;p&gt;Select the Tollbooth Serverless Architecture with Azure Functions card, and follow the &lt;strong&gt;Template Details&lt;/strong&gt; instructions to get it deployed. Most important is having the Scenario-specific prereqs running on your local machine, as well as having Azure Developer CLI as well.&lt;/p&gt;
 &lt;p&gt;from &lt;strong&gt;azd up&lt;/strong&gt;, it will ask you for your Azure subscription and the region where you want to deploy the scenario. Give it about 12-15min, and the fun can start&amp;hellip;&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/tollbooth.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2025-03-06-5c6e14d1.png"
  
  
  loading="lazy"
@@ -823,7 +832,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;h2 id="conclusion"&gt;Conclusion
 &lt;/h2&gt;&lt;p&gt;Application Insights, as part of Azure Monitor, is a powerful tool for monitoring and optimizing the performance of your applications. Its comprehensive features, seamless integration with other Azure services, and real-time insights make it an essential component of any modern monitoring strategy. By leveraging Application Insights, you can ensure that your applications run smoothly, deliver a great user experience, and achieve your business goals.&lt;/p&gt;
 &lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
- &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ &gt;&lt;img src="../images/screenshot-2025-03-06-17f576e7.png"
  
  
  loading="lazy"
@@ -842,7 +851,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;h2 id="whats-wrong-with-marketplace-extensions"&gt;What&amp;rsquo;s wrong with Marketplace Extensions?
 &lt;/h2&gt;&lt;p&gt;In my Classic Release Pipelines, I relied on &lt;strong&gt;&lt;a class="link" href="https://marketplace.visualstudio.com/items?itemName=kasunkodagoda.sendgrid-email" target="_blank" rel="noopener"
  &gt;Sendgrid&lt;/a&gt;&lt;/strong&gt;, and it actually worked OK, and with the limited amount of emails (up to 100/daily), it was a free service on top.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2024-03-03_11-24-15.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-03-03-fc90cadd.png"
  
  
  loading="lazy"
@@ -919,7 +928,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src="../images/2024-03-03_11-42-02.png"
+&lt;/div&gt;&lt;p&gt;&lt;img src="../images/screenshot-2024-03-03-81f9ae42.png"
  
  
  loading="lazy"
@@ -946,7 +955,7 @@ The agent automatically gains visibility into all resources within those groups.
 &lt;p&gt;For the Body-parameter of the Send an email step, we want to use the &amp;ldquo;Message&amp;rdquo; content from the HTTP Trigger response. Therefore, click in the &lt;strong&gt;Body-field&lt;/strong&gt;, which will open the &lt;strong&gt;Dynamic content&lt;/strong&gt; window. From here, it will show all known properties from the &amp;ldquo;When an HTTP request is received&amp;rdquo; step in the workflow.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2024-03-03_11-47-25.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-03-03-980a1b42.png"
  
  
  loading="lazy"
@@ -1140,7 +1149,7 @@ The 2nd parameter I&amp;rsquo;m passing on is the &lt;strong&gt;To&lt;/strong&gt
 &lt;p&gt;While the setup involves jumping to several hoops, it is not all that difficult (easy to say once it all works, after spending half a day of troubleshooting at different levels - of which the main one was my rusty PowerShell skills&amp;hellip;) once all pieces fall in place.&lt;/p&gt;
 &lt;p&gt;Let me know if you want to give this a try and share me your results!&lt;/p&gt;
 &lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
- &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ &gt;&lt;img src="../images/screenshot-2024-03-03-17f576e7.png"
  
  
  loading="lazy"
@@ -1254,7 +1263,7 @@ The 2nd parameter I&amp;rsquo;m passing on is the &lt;strong&gt;To&lt;/strong&gt
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; 
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src="../images/2023-09-30_18-38-32.png"
+&lt;/div&gt;&lt;p&gt;&lt;img src="../images/screenshot-2023-09-30-74ac2dba.png"
  
  
  loading="lazy"
@@ -1268,7 +1277,7 @@ The 2nd parameter I&amp;rsquo;m passing on is the &lt;strong&gt;To&lt;/strong&gt
 &lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;Create a new Classic Release Pipeline, with a single Stage &amp;ldquo;Azure Infra&amp;rdquo;, and add the &lt;strong&gt;#Bash Script&lt;/strong&gt; as Task&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2023-09-30_18-43-12.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-09-30-8553a05b.png"
  
  
  loading="lazy"
@@ -1424,7 +1433,7 @@ The 2nd parameter I&amp;rsquo;m passing on is the &lt;strong&gt;To&lt;/strong&gt
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; $URL
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src="../images/2023-09-30_18-44-00.png"
+&lt;/div&gt;&lt;p&gt;&lt;img src="../images/screenshot-2023-09-30-c041184d.png"
  
  
  loading="lazy"
@@ -1440,7 +1449,7 @@ The 2nd parameter I&amp;rsquo;m passing on is the &lt;strong&gt;To&lt;/strong&gt
 &lt;li&gt;Navigate to the YAML Pipeline&lt;/li&gt;
 &lt;li&gt;Click the elipsis (the 3 dots) at the end of the Pipeline line, and from the context menu, select &lt;strong&gt;Manage Security&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2023-09-30_18-46-45.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-09-30-2725e518.png"
  
  
  loading="lazy"
@@ -1453,7 +1462,7 @@ The 2nd parameter I&amp;rsquo;m passing on is the &lt;strong&gt;To&lt;/strong&gt
 &lt;ol start="3"&gt;
 &lt;li&gt;Select the &lt;strong&gt;&lt;ADOProjectName&gt; Build Service&lt;/strong&gt; Group, and set &lt;strong&gt;Allow&lt;/strong&gt; for the &lt;strong&gt;Queue Builds&lt;/strong&gt; permission&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2023-09-30_18-48-09.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-09-30-d02f5758.png"
  
  
  loading="lazy"
@@ -1467,7 +1476,7 @@ The 2nd parameter I&amp;rsquo;m passing on is the &lt;strong&gt;To&lt;/strong&gt
 &lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;Trigger the Classic Release Pipeline, wait for it to complete&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2023-09-30_18-50-53.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-09-30-1c2d94e6.png"
  
  
  loading="lazy"
@@ -1480,7 +1489,7 @@ The 2nd parameter I&amp;rsquo;m passing on is the &lt;strong&gt;To&lt;/strong&gt
 &lt;ol start="2"&gt;
 &lt;li&gt;With the Classic Release completed, navigate to the YAML Pipeline, and see this one is getting triggered / already running&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2023-09-30_18-51-56.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-09-30-4d0138f5.png"
  
  
  loading="lazy"
@@ -1494,7 +1503,7 @@ The 2nd parameter I&amp;rsquo;m passing on is the &lt;strong&gt;To&lt;/strong&gt
 &lt;/h2&gt;&lt;p&gt;In this post, I walked you through a use case within Azure DevOps, where it might be useful to build an integration between both Pipeline worlds, Classic Releases and YAML Pipeline Releases. By using a #Bash script with Curl to call the YAML Pipeline REST API endpoint, as well as passing some parameters in a JSON structure, it is possible to trigger YAML Pipelines from a Classic Release Pipeline.&lt;/p&gt;
 &lt;p&gt;I am using this scenario to give myself some time to continue updating the development work on the Blazor Front-end, pointing to YAML Pipelines only at some point, but for now, it gives me the flexibility to keep the same Classic URL Endpoints for my REST APIs, why gradually setting up new YAML Pipelines, migrating Classic to YAML etc&amp;hellip;&lt;/p&gt;
 &lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
- &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ &gt;&lt;img src="../images/screenshot-2023-09-30-17f576e7.png"
  
  
  loading="lazy"
@@ -1508,7 +1517,7 @@ The 2nd parameter I&amp;rsquo;m passing on is the &lt;strong&gt;To&lt;/strong&gt
 &lt;p&gt;/Peter&lt;/p&gt;</description></item><item><title>You do not have permissions to view this directory or page after publishing to Azure App Service</title><link>https://www.007ffflearning.com/post/you-do-not-have-permissions-error-after-publishing-to-azure-app-services/</link><pubDate>Sun, 30 Apr 2023 00:00:00 +0000</pubDate><guid>https://www.007ffflearning.com/post/you-do-not-have-permissions-error-after-publishing-to-azure-app-services/</guid><description>&lt;p&gt;Earlier this week, I got an interesting phenomenon when publishing a code update to an existing Azure App Service. As this was a small project, I&amp;rsquo;ve always been deploying updates in a manual way from &lt;strong&gt;right-click / publish&lt;/strong&gt; in Visual Studio. But than I said to myself, Peter, as a passionate DevOps engineer and trainer, just go out and create a pipeline for this.&lt;/p&gt;
 &lt;p&gt;And that&amp;rsquo;s what happened.&lt;/p&gt;
 &lt;p&gt;Running the release pipeline came back successful, but the site threw an error:&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2023-04-30_11-25-45.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-04-30-7ee9ef2d.png"
  
  
  loading="lazy"
@@ -1519,7 +1528,7 @@ The 2nd parameter I&amp;rsquo;m passing on is the &lt;strong&gt;To&lt;/strong&gt
  
  &gt;&lt;/p&gt;
 &lt;p&gt;I was like well, OK, no worries, let&amp;rsquo;s go back to the &lt;strong&gt;manual deployment&lt;/strong&gt; from Visual Studio for now. Only to find out that one didn&amp;rsquo;t succeed either anymore, just giving me a &lt;strong&gt;spinning&lt;/strong&gt; publishing task.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2023-04-30_11-30-12.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-04-30-362a9b94.png"
  
  
  loading="lazy"
@@ -1530,7 +1539,7 @@ The 2nd parameter I&amp;rsquo;m passing on is the &lt;strong&gt;To&lt;/strong&gt
  
  &gt;&lt;/p&gt;
 &lt;p&gt;So this was not really helping me further. Time to open up the &lt;strong&gt;App Service Logs&lt;/strong&gt; settings on the App Service to dig in.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2023-04-30_11-32-06.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-04-30-fcd5cd96.png"
  
  
  loading="lazy"
@@ -1541,7 +1550,7 @@ The 2nd parameter I&amp;rsquo;m passing on is the &lt;strong&gt;To&lt;/strong&gt
  
  &gt;&lt;/p&gt;
 &lt;p&gt;After which I could check the live logs using &lt;strong&gt;App Service Log Stream&lt;/strong&gt; (notice the &lt;strong&gt;verbose&lt;/strong&gt; option to get immediate and full feedback&amp;hellip;)&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2023-04-30_11-33-49.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-04-30-c84b1a42.png"
  
  
  loading="lazy"
@@ -1557,7 +1566,7 @@ The 2nd parameter I&amp;rsquo;m passing on is the &lt;strong&gt;To&lt;/strong&gt
 &lt;li&gt;A default document is not configured for the requested URL&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;So it seems like the index.html I use in my app, couldn&amp;rsquo;t be found on the Web Server. Let&amp;rsquo;s validate with &lt;strong&gt;App Service Editor&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2023-04-30_11-37-59.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-04-30-6441cd5c.png"
  
  
  loading="lazy"
@@ -1568,7 +1577,7 @@ The 2nd parameter I&amp;rsquo;m passing on is the &lt;strong&gt;To&lt;/strong&gt
  
  &gt;&lt;/p&gt;
 &lt;p&gt;Interesting&amp;hellip; so I have my drop folder with the application zip package and some other deployment artifacts, but not the actual application files in an extracted format. The &lt;strong&gt;drop&lt;/strong&gt; folder was also something that made me curious&amp;hellip; As that is what Azure DevOps is using to publish the package&amp;hellip; Let&amp;rsquo;s go back to my Azure DevOps Release pipeline and check something&amp;hellip;&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2023-04-30_11-41-07.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-04-30-d5f9ccf8.png"
  
  
  loading="lazy"
@@ -1580,7 +1589,7 @@ The 2nd parameter I&amp;rsquo;m passing on is the &lt;strong&gt;To&lt;/strong&gt
  &gt;&lt;/p&gt;
 &lt;p&gt;EUREKA!!! Looks like Peter made a mistake here, by not setting the &lt;strong&gt;package file&lt;/strong&gt; to use. So what the ADO Pipeline does here, is just copying the /drop folder with the artifact into the Azure App Service, but not extracting it.&lt;/p&gt;
 &lt;p&gt;This is what this setting should look like:&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2023-04-30_11-43-46.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-04-30-d58a914e.png"
  
  
  loading="lazy"
@@ -1590,7 +1599,7 @@ The 2nd parameter I&amp;rsquo;m passing on is the &lt;strong&gt;To&lt;/strong&gt
  
  
  &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2023-04-30_11-44-43.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-04-30-76c00f92.png"
  
  
  loading="lazy"
@@ -1601,7 +1610,7 @@ The 2nd parameter I&amp;rsquo;m passing on is the &lt;strong&gt;To&lt;/strong&gt
  
  &gt;&lt;/p&gt;
 &lt;p&gt;With these new changes, let&amp;rsquo;s run the release deployment again and see what happens&amp;hellip;&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2023-04-30_12-21-49.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-04-30-7d693d7c.png"
  
  
  loading="lazy"
@@ -1616,7 +1625,7 @@ The 2nd parameter I&amp;rsquo;m passing on is the &lt;strong&gt;To&lt;/strong&gt
 &lt;h2 id="summary"&gt;Summary
 &lt;/h2&gt;&lt;p&gt;In this post, I wanted to help you sharing some troubleshooting steps for Azure App Services. And also admitting I made a minor mistake in my ADO pipeline setup. So additional lesson learned: always doublecheck your setting when something doesn&amp;rsquo;t work anymore as it should be :)&lt;/p&gt;
 &lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
- &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ &gt;&lt;img src="../images/screenshot-2023-04-30-17f576e7.png"
  
  
  loading="lazy"
@@ -1651,7 +1660,7 @@ The 2nd parameter I&amp;rsquo;m passing on is the &lt;strong&gt;To&lt;/strong&gt
 I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s self-explanatory.&lt;/li&gt;
 &lt;li&gt;A sample form I&amp;rsquo;ll be using in this post looks like this:&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2023-03-26_18-51-25.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2023-03-26-2b1ef5a1.png"
  
  
  loading="lazy"
@@ -1669,7 +1678,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
 &lt;li&gt;Log on to Azure DevOps with an Organizational admin account&lt;/li&gt;
 &lt;li&gt;Select Azure DevOps (the logo in the upper left corner), and select &lt;strong&gt;Organization Settings&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;Within the Settings menu, select &lt;strong&gt;Process&lt;/strong&gt; under the Boards section
-&lt;img src="../images/2023-03-26_19-00-24.png"
+&lt;img src="../images/screenshot-2023-03-26-df0c5d80.png"
  
  
  loading="lazy"
@@ -1680,7 +1689,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  
  &gt;&lt;/li&gt;
 &lt;li&gt;This shows a list of default Azure Boards processes (Basic, Agile, Scrum, CMMI)
-&lt;img src="../images/2023-03-26_19-02-11.png"
+&lt;img src="../images/screenshot-2023-03-26-7cb68522.png"
  
  
  loading="lazy"
@@ -1691,7 +1700,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  
  &gt;&lt;/li&gt;
 &lt;li&gt;In this example, we will build a new &lt;em&gt;custom deviation&lt;/em&gt; from the &lt;strong&gt;Scrum&lt;/strong&gt; process, but you can choose any you want. Hover the mouse over the Scrum process, and select the ellipsis (the 3 dots). From the context menu, select &lt;strong&gt;Create inherited process&lt;/strong&gt;
-&lt;img src="../images/2023-03-26_19-04-30.png"
+&lt;img src="../images/screenshot-2023-03-26-df7aac9a.png"
  
  
  loading="lazy"
@@ -1703,7 +1712,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  &gt;&lt;/li&gt;
 &lt;li&gt;Provide a name and (optional) description for the process. I called mine &lt;strong&gt;Forms Test Process&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;Once created, select the new process. This opens a list of &lt;strong&gt;Work Item types&lt;/strong&gt; such as Bug, Epic, Task and other. As the new Work Item we create is so custom, it doesn&amp;rsquo;t really matter which one to choose. If you have about 50% or more that&amp;rsquo;s identical to an existing Work Item, you can use that as a baseline.
-&lt;img src="../images/2023-03-26_19-09-30.png"
+&lt;img src="../images/screenshot-2023-03-26-8b3dc29d.png"
  
  
  loading="lazy"
@@ -1718,7 +1727,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
 &lt;li&gt;Once created, select the new work item type. This opens the &lt;strong&gt;Layout&lt;/strong&gt; editor, where we will add custom fields, reflecting the different questions/items from the Office Form earlier.&lt;/li&gt;
 &lt;li&gt;A Work Item is based on Tabs. In my example, I only use a single tab, called &lt;strong&gt;Details&lt;/strong&gt;. Know you can as many Tabs as needed. Within each Tab, the Work Item layout is built-up of 3 panes, a left, holding a Description field, the middle pane, holding Custom fields, and the right pane, which has Deployment, Development and Related Work as default items - at least in my setup.&lt;/li&gt;
 &lt;li&gt;Add the custom fields you want to have on the Work Item, specifying the field type (e.g. I added an &lt;strong&gt;open question&lt;/strong&gt;, set as &lt;strong&gt;Text Multiple Lines&lt;/strong&gt;, as well as adding the &lt;strong&gt;Geography&lt;/strong&gt; and &lt;strong&gt;Category&lt;/strong&gt; as &lt;strong&gt;Text Single Line&lt;/strong&gt; items). These fields &lt;em&gt;somewhat&lt;/em&gt; correspond with the different items on the Office Form.
-&lt;img src="../images/2023-03-26_19-13-39.png"
+&lt;img src="../images/screenshot-2023-03-26-06976188.png"
  
  
  loading="lazy"
@@ -1735,7 +1744,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
 &lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;Click the &lt;strong&gt;Azure DevOps&lt;/strong&gt; logo (upper left corner), and press the &lt;strong&gt;+ New Project&lt;/strong&gt; button.&lt;/li&gt;
 &lt;li&gt;Provide a Project Name, (optional) Description, Visibility. Next, click &lt;strong&gt;Advanced&lt;/strong&gt; to specify the Work Item Process. Click the &lt;strong&gt;Work Item Process&lt;/strong&gt; field and select the &lt;strong&gt;custom process&lt;/strong&gt; created earlier.
-&lt;img src="../images/2023-03-26_19-22-57.png"
+&lt;img src="../images/screenshot-2023-03-26-3e366779.png"
  
  
  loading="lazy"
@@ -1746,7 +1755,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  
  &gt;&lt;/li&gt;
 &lt;li&gt;Once the project got created, navigate to &lt;strong&gt;Boards&lt;/strong&gt;. Here, click &lt;strong&gt;New Work Item&lt;/strong&gt;, notice the new Work Item type is available.
-&lt;img src="../images/2023-03-26_19-42-26.png"
+&lt;img src="../images/screenshot-2023-03-26-05c895c3.png"
  
  
  loading="lazy"
@@ -1757,7 +1766,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  
  &gt;&lt;/li&gt;
 &lt;li&gt;Select the new Work Item, which shows the detailed view. Notice the custom fields we added earlier are nicely showing up here.
-&lt;img src="../images/2023-03-26_19-43-34.png"
+&lt;img src="../images/screenshot-2023-03-26-1e6b2800.png"
  
  
  loading="lazy"
@@ -1774,7 +1783,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
 &lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;Log on to Azure with administrative permissions to create an Azure Logic App resource.&lt;/li&gt;
 &lt;li&gt;When creating the Logic App, specify a unique name, Resource Group, Location and Plan (consumption would be OK).
-&lt;img src="../images/2023-03-26_19-50-47.png"
+&lt;img src="../images/screenshot-2023-03-26-a89192c1.png"
  
  
  loading="lazy"
@@ -1785,7 +1794,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  
  &gt;&lt;/li&gt;
 &lt;li&gt;Once the resource got created, it automatically opens &lt;strong&gt;Logic App Designer&lt;/strong&gt;, which allows for the setup of the actual flow. From the list of sample scenarios, select &lt;strong&gt;Blank Logic App&lt;/strong&gt;.
-&lt;img src="../images/2023-03-26_20-28-02.png"
+&lt;img src="../images/screenshot-2023-03-26-df97dc64.png"
  
  
  loading="lazy"
@@ -1798,7 +1807,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
 &lt;li&gt;In the &lt;strong&gt;Search connectors and triggers&lt;/strong&gt; field, search for &lt;strong&gt;Microsoft Forms&lt;/strong&gt;.&lt;/li&gt;
 &lt;li&gt;Next, select &lt;strong&gt;When a new response is submitted&lt;/strong&gt; as trigger.&lt;/li&gt;
 &lt;li&gt;In the Form Id field, select the Office Form name you used earlier.
-&lt;img src="../images/2023-03-26_20-30-02.png"
+&lt;img src="../images/screenshot-2023-03-26-cecb3bde.png"
  
  
  loading="lazy"
@@ -1811,7 +1820,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
 &lt;li&gt;Click &lt;strong&gt;+ New Step&lt;/strong&gt; to add the next step in the Logic App flow.&lt;/li&gt;
 &lt;li&gt;In the &lt;strong&gt;Search connectors and triggers&lt;/strong&gt; field, search for &lt;strong&gt;Azure DevOps&lt;/strong&gt;.&lt;/li&gt;
 &lt;li&gt;From the list of &lt;strong&gt;Actions&lt;/strong&gt;, select &lt;strong&gt;Create a new work item&lt;/strong&gt;.
-&lt;img src="../images/2023-03-26_20-32-57.png"
+&lt;img src="../images/screenshot-2023-03-26-7aa8d892.png"
  
  
  loading="lazy"
@@ -1822,7 +1831,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  
  &gt;&lt;/li&gt;
 &lt;li&gt;Complete the fields, selecting your &lt;strong&gt;DevOps Organization&lt;/strong&gt;, the &lt;strong&gt;DevOps Project&lt;/strong&gt; and the &lt;strong&gt;Work Item Type&lt;/strong&gt; as created earlier.
-&lt;img src="../images/2023-03-26_20-34-42.png"
+&lt;img src="../images/screenshot-2023-03-26-c8b8390a.png"
  
  
  loading="lazy"
@@ -1833,7 +1842,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  
  &gt;&lt;/li&gt;
 &lt;li&gt;Now, we map the custom fields, by selecting &lt;strong&gt;Add new parameter&lt;/strong&gt;, and selecting &lt;strong&gt;Other Fields&lt;/strong&gt;.
-&lt;img src="../images/2023-03-26_20-41-17.png"
+&lt;img src="../images/screenshot-2023-03-26-16f51563.png"
  
  
  loading="lazy"
@@ -1855,7 +1864,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  
  &gt;&lt;/li&gt;
 &lt;li&gt;This is where Logic Apps is awesome. It allows you to select (all) previous fields from all previous steps in the flow process.
-&lt;img src="../images/2023-03-26_20-44-52.png"
+&lt;img src="../images/screenshot-2023-03-26-aae62c2e.png"
  
  
  loading="lazy"
@@ -1867,7 +1876,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  &gt;&lt;/li&gt;
 &lt;li&gt;Notice how the Forms information is returned as &lt;strong&gt;Body&lt;/strong&gt;, which is not what we need. We want to reach out each answer to each Form&amp;rsquo;s question, instead of the full body. To make this possible, we have to add another step in-between the Forms step and the Azure DevOps step.&lt;/li&gt;
 &lt;li&gt;Click on the &lt;strong&gt;+&lt;/strong&gt; sign in-between both steps, and select &lt;strong&gt;Add New Action&lt;/strong&gt;. Search for &lt;strong&gt;Microsoft Forms&lt;/strong&gt; again. This time, it will show an action called &lt;strong&gt;Get Response Details&lt;/strong&gt;.
-&lt;img src="../images/2023-03-26_20-49-10.png"
+&lt;img src="../images/screenshot-2023-03-26-0c079d55.png"
  
  
  loading="lazy"
@@ -1878,7 +1887,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  
  &gt;&lt;/li&gt;
 &lt;li&gt;In the &lt;strong&gt;Forms Id&lt;/strong&gt; field, select the &lt;strong&gt;name of the Office Forms&lt;/strong&gt;; In the &lt;strong&gt;Response Id&lt;/strong&gt; field, click &lt;strong&gt;See More&lt;/strong&gt; and select &lt;strong&gt;List of Response notifcations Response id&lt;/strong&gt; from the Dynamic Content list of options.
-&lt;img src="../images/2023-03-26_20-51-48.png"
+&lt;img src="../images/screenshot-2023-03-26-d570537a.png"
  
  
  loading="lazy"
@@ -1889,7 +1898,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  
  &gt;&lt;/li&gt;
 &lt;li&gt;With that step added, return to the &lt;strong&gt;Create a work item&lt;/strong&gt; step in the Logic App Flow, and navigate to the &lt;strong&gt;Other Fields&lt;/strong&gt; section in the parameters. Select the &lt;strong&gt;Enter Key&lt;/strong&gt; field, which opens the &lt;strong&gt;Dynamic Content&lt;/strong&gt; blade again. This time, notice how the different response details (the Form&amp;rsquo;s questions) are visible.
-&lt;img src="../images/2023-03-26_20-57-17.png"
+&lt;img src="../images/screenshot-2023-03-26-772841b5.png"
  
  
  loading="lazy"
@@ -1900,7 +1909,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  
  &gt;&lt;/li&gt;
 &lt;li&gt;From here, the idea is that you &amp;lsquo;map&amp;rsquo; each custom field object from the ADO Work Item, with a corresponding value from the Office Forms. For example, the &lt;strong&gt;work item &amp;ldquo;geography&amp;rdquo;&lt;/strong&gt; created earlier, maps with &lt;strong&gt;what is your geography&lt;/strong&gt; question I have on the form.
-&lt;img src="../images/2023-03-26_20-58-49.png"
+&lt;img src="../images/screenshot-2023-03-26-739aae45.png"
  
  
  loading="lazy"
@@ -1917,7 +1926,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
 &lt;h2 id="testing-the-azure-devops-work-item-creation"&gt;Testing the Azure DevOps Work Item creation
 &lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;Return to the Office Form, and click &lt;strong&gt;Collect Responses&lt;/strong&gt;.
-&lt;img src="../images/2023-03-26_21-03-52.png"
+&lt;img src="../images/screenshot-2023-03-26-e557cb7e.png"
  
  
  loading="lazy"
@@ -1929,7 +1938,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  &gt;&lt;/li&gt;
 &lt;li&gt;Complete the different questions and fields on the Form.&lt;/li&gt;
 &lt;li&gt;Wait for about a minute, and return to the Azure Logic Apps flow created earlier. From the &lt;strong&gt;Overview&lt;/strong&gt; blade, navigate to &lt;strong&gt;Runs History&lt;/strong&gt;.
-&lt;img src="../images/2023-03-26_21-06-40.png"
+&lt;img src="../images/screenshot-2023-03-26-1ee745e5.png"
  
  
  loading="lazy"
@@ -1940,7 +1949,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  
  &gt;&lt;/li&gt;
 &lt;li&gt;The Forms completion resulted in a &lt;strong&gt;successful workflow trigger&lt;/strong&gt;. Select the line, which opens a more detailed view.
-&lt;img src="../images/2023-03-26_21-08-20.png"
+&lt;img src="../images/screenshot-2023-03-26-2b672d60.png"
  
  
  loading="lazy"
@@ -1951,7 +1960,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  
  &gt;.&lt;/li&gt;
 &lt;li&gt;Last, return to the Azure DevOps Project, navigate to Boards and open Work Items. Notice the &lt;strong&gt;newly created Work Item&lt;/strong&gt;.
-&lt;img src="../images/2023-03-26_21-12-16.png"
+&lt;img src="../images/screenshot-2023-03-26-52dd6fba.png"
  
  
  loading="lazy"
@@ -1962,7 +1971,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  
  &gt;&lt;/li&gt;
 &lt;li&gt;Open the item, to see how the custom fields got completed.
-&lt;img src="../images/2023-03-26_21-13-52.png"
+&lt;img src="../images/screenshot-2023-03-26-bc418eb7.png"
  
  
  loading="lazy"
@@ -1978,7 +1987,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
 &lt;/h2&gt;&lt;p&gt;In this post, I wanted to share more details on how you can allow end-users (or customers) to create Azure DevOps Work Items (of pretty much any type with any custom fields), using an integration of Microsoft Forms and Azure Logic Apps.&lt;/p&gt;
 &lt;p&gt;Don&amp;rsquo;t hesitate reaching out if you have any additional questions on this, or if you want to share how you used this in your own scenarios.&lt;/p&gt;
 &lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
- &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ &gt;&lt;img src="../images/screenshot-2023-03-26-17f576e7.png"
  
  
  loading="lazy"
@@ -1989,7 +1998,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  
  &gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Cheers!!&lt;/p&gt;
-&lt;p&gt;/Peter&lt;/p&gt;</description></item><item><title>DevOps Workflow Generator</title><link>https://www.007ffflearning.com/post/devops-workflow-generator/</link><pubDate>Sun, 03 Apr 2022 00:00:00 +0000</pubDate><guid>https://www.007ffflearning.com/post/devops-workflow-generator/</guid><description>&lt;p&gt;&lt;img src="../images/2022-03-26_16-07-28.png"
+&lt;p&gt;/Peter&lt;/p&gt;</description></item><item><title>DevOps Workflow Generator</title><link>https://www.007ffflearning.com/post/devops-workflow-generator/</link><pubDate>Sun, 03 Apr 2022 00:00:00 +0000</pubDate><guid>https://www.007ffflearning.com/post/devops-workflow-generator/</guid><description>&lt;p&gt;&lt;img src="../images/screenshot-2022-04-03-bb1de584.png"
  
  
  loading="lazy"
@@ -2002,8 +2011,8 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
 &lt;p&gt;Hey awesome people,&lt;/p&gt;
 &lt;p&gt;For the ones who know me, it shouldn&amp;rsquo;t be a surprise I&amp;rsquo;m interested in DevOps, mainly using Azure DevOps and GitHub as core technologies, as well as several side-solutions that integrate with them. So when I heard about the &lt;strong&gt;DevOps Workflow Generator&lt;/strong&gt;, a new free tool from the Microsoft Research Lab division, I wanted to give it a spin.&lt;/p&gt;
 &lt;h2 id="the-concepts-of-devops"&gt;The Concepts of DevOps
-&lt;/h2&gt;&lt;p&gt;DevOps according to Microsoft’s Definition: The Union of People, Processes and Products, to enable continuous delivery of value to the business&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2022-03-17-01.png"
+&lt;/h2&gt;&lt;p&gt;DevOps according to Microsoftâ€™s Definition: The Union of People, Processes and Products, to enable continuous delivery of value to the business&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/screenshot-2022-04-03-cbbea36d.png"
  
  
  loading="lazy"
@@ -2025,7 +2034,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
 &lt;li&gt;Browse to &lt;a class="link" href="https://devopsworkflowgenerator.research.microsoft.com/" target="_blank" rel="noopener"
  &gt;https://devopsworkflowgenerator.research.microsoft.com/&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2022-03-26_16-07-28.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-04-03-bb1de584.png"
  
  
  loading="lazy"
@@ -2039,7 +2048,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
 &lt;li&gt;From the top menu, select &lt;strong&gt;Map Workflow&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;This presents you with a rather generic/standard DevOps workflow process; which at first, was what I used. Until I discovered you can actually make customizations to it. Following my own best practices - Shifting Left - I added some of the process steps as outlined in the referred article earlier. The updated workflow looks like this now:&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2022-03-26_15-58-28.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-04-03-b4332c1f.png"
  
  
  loading="lazy"
@@ -2052,7 +2061,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
 &lt;ol start="3"&gt;
 &lt;li&gt;Next, move over the &lt;strong&gt;Select Tools&lt;/strong&gt; step in the top menu. This allows you to select DevOps solutions and tools (single or multiple) for each cycle in your DevOps Workflow. And the list is extensive&amp;hellip;!&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2022-03-26_15-58-55.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-04-03-29502b52.png"
  
  
  loading="lazy"
@@ -2066,7 +2075,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
 &lt;li&gt;Once all tools have been mapped with each phase, it&amp;rsquo;s time to compile a report, by navigating to the &lt;strong&gt;Download Report&lt;/strong&gt; menu option.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;The outcome presents a nice-looking PDF document, which looks like this:&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2022-03-26_15-59-53.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-04-03-403bd6b4.png"
  
  
  loading="lazy"
@@ -2076,7 +2085,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  
  
  &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2022-03-26_16-00-07.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-04-03-9480b8f2.png"
  
  
  loading="lazy"
@@ -2092,7 +2101,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
 &lt;p&gt;Have a look at it, and let me know your thoughts!&lt;/p&gt;
 &lt;p&gt;If you liked this article, consider giving back a small token of appreciation:
 &lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
- &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ &gt;&lt;img src="../images/screenshot-2022-04-03-17f576e7.png"
  
  
  loading="lazy"
@@ -2102,7 +2111,7 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
  
  
  &gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Peter&lt;/p&gt;</description></item><item><title>Azure Spring Clean - DevSecOps and Shifting Left</title><link>https://www.007ffflearning.com/post/azure-spring-clean---devsecops-and-shifting-left-to-publish-secure-software/</link><pubDate>Thu, 17 Mar 2022 00:00:00 +0000</pubDate><guid>https://www.007ffflearning.com/post/azure-spring-clean---devsecops-and-shifting-left-to-publish-secure-software/</guid><description>&lt;p&gt;&lt;img src="../images/AzureSpringClean-logo.png"
+&lt;p&gt;Peter&lt;/p&gt;</description></item><item><title>Azure Spring Clean - DevSecOps and Shifting Left</title><link>https://www.007ffflearning.com/post/azure-spring-clean---devsecops-and-shifting-left-to-publish-secure-software/</link><pubDate>Thu, 17 Mar 2022 00:00:00 +0000</pubDate><guid>https://www.007ffflearning.com/post/azure-spring-clean---devsecops-and-shifting-left-to-publish-secure-software/</guid><description>&lt;p&gt;&lt;img src="../images/screenshot-2022-03-17-b8a92856.png"
  
  
  loading="lazy"
@@ -2120,8 +2129,8 @@ I won&amp;rsquo;t cover the details on how to do this, as I think it&amp;rsquo;s
 &lt;p&gt;For this second article, I&amp;rsquo;m staying in the security focus, helping you &lt;strong&gt;understand DevSecOps, and how you can optimize security in your application deployment lifecycle, by &amp;ldquo;shifting left&amp;rdquo;&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;I hope you learn from it, enjoy reading through and got inspired to check back the whole week here at Azure Spring Clean, as there are A TON of great topics that will be covered.&lt;/p&gt;
 &lt;h2 id="the-concepts-of-devops"&gt;The Concepts of DevOps
-&lt;/h2&gt;&lt;p&gt;Microsoft’s Definition: The Union of People, Processes and Products, to enable continuous delivery of value to our end users&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2022-03-17-01.png"
+&lt;/h2&gt;&lt;p&gt;Microsoftâ€™s Definition: The Union of People, Processes and Products, to enable continuous delivery of value to our end users&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/screenshot-2022-03-17-cbbea36d.png"
  
  
  loading="lazy"
@@ -2141,7 +2150,7 @@ d) From here, the package typically gets deployed into a running state, known as
 e) Once the application workload is published, there&amp;rsquo;s a handover to the Operations team, who integrate monitoring, watch over incidents and fix the problem.&lt;/p&gt;
 &lt;p&gt;This (somewhat simplified) process gets repeated over and over (CI/CD pipeline automation), and should lead to faster deployments, less bug fixes needed and reliable workloads.&lt;/p&gt;
 &lt;p&gt;If we look at this process from a linear perspective, it would look like this:&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2022-03-17-02.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-03-17-41ef67b9.png"
  
  
  loading="lazy"
@@ -2151,13 +2160,13 @@ e) Once the application workload is published, there&amp;rsquo;s a handover to t
  
  
  &gt;&lt;/p&gt;
-&lt;p&gt;So now you know what DevOps stands for, let’s zoom in more on the DevSecOps extension&lt;/p&gt;
+&lt;p&gt;So now you know what DevOps stands for, letâ€™s zoom in more on the DevSecOps extension&lt;/p&gt;
 &lt;h2 id="shifting-left"&gt;Shifting Left
-&lt;/h2&gt;&lt;p&gt;When you look at this application lifecycle overview, most of the security handling, but also vulnerabiltiies, are getting detected and handled &lt;strong&gt;during the running phase&lt;/strong&gt;. That’s where we have DDOS attacks, identity or credential theft, networking attacks, crypto and similar malware etc…&lt;/p&gt;
-&lt;p&gt;While there’s nothing wrong in handling security all the way at the end, it should not be &lt;strong&gt;ONLY&lt;/strong&gt; all the way at the end, but rather be moved &lt;strong&gt;all the way to the beginning&lt;/strong&gt;; and becoming part of each and every stage in our DevOps process&lt;/p&gt;
-&lt;p&gt;That’s what the industry calls &lt;strong&gt;“shifting left”&lt;/strong&gt;&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;When you look at this application lifecycle overview, most of the security handling, but also vulnerabiltiies, are getting detected and handled &lt;strong&gt;during the running phase&lt;/strong&gt;. Thatâ€™s where we have DDOS attacks, identity or credential theft, networking attacks, crypto and similar malware etcâ€¦&lt;/p&gt;
+&lt;p&gt;While thereâ€™s nothing wrong in handling security all the way at the end, it should not be &lt;strong&gt;ONLY&lt;/strong&gt; all the way at the end, but rather be moved &lt;strong&gt;all the way to the beginning&lt;/strong&gt;; and becoming part of each and every stage in our DevOps process&lt;/p&gt;
+&lt;p&gt;Thatâ€™s what the industry calls &lt;strong&gt;â€œshifting leftâ€&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;So what are some of the security best practices DevOps teams can (easily) integrate into their DevSecOps process you ask? Actually there&amp;rsquo;s a lot of different options and possibilities. Good news is, you can apply different security features in the different DevOps stages:&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2022-03-17-03.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-03-17-d1134daf.png"
  
  
  loading="lazy"
@@ -2167,7 +2176,7 @@ e) Once the application workload is published, there&amp;rsquo;s a handover to t
  
  
  &gt;&lt;/p&gt;
-&lt;p&gt;I’ll drill down a bit more on these obviously, but let’s look at some examples:&lt;/p&gt;
+&lt;p&gt;Iâ€™ll drill down a bit more on these obviously, but letâ€™s look at some examples:&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;DEV&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -2190,7 +2199,7 @@ e) Once the application workload is published, there&amp;rsquo;s a handover to t
 &lt;li&gt;&lt;strong&gt;Code Analysis&lt;/strong&gt; - this is where you integrate source control code scanning tools such as Snyk, Sonar, WhiteSource Bolt and many others. The easiest way is going through them in your own DevOps pipelines. If you are using Azure DevOps, have a look at the &lt;a class="link" href="" &gt;Azure DevOps Marketplace&lt;/a&gt;, and search for &lt;strong&gt;security&lt;/strong&gt;
 At present, there are &lt;strong&gt;91&lt;/strong&gt; different extensions available to integrate security into your DevOps Organization and Projects.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src="../images/2022-03-17-04.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-03-17-1e996724.png"
  
  
  loading="lazy"
@@ -2216,7 +2225,7 @@ At present, there are &lt;strong&gt;91&lt;/strong&gt; different extensions avail
 &lt;p&gt;Security &amp;amp; Pen-testing&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src="../images/2022-03-17-05.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-03-17-75c34e21.png"
  
  
  loading="lazy"
@@ -2235,7 +2244,7 @@ At present, there are &lt;strong&gt;91&lt;/strong&gt; different extensions avail
  &gt;Privileged Identity Management&lt;/a&gt; are no luxury in any organization. Keep in mind these require an Azure AD Premium P2 license. Which - if you ask me - is more than worth the extra cost!&lt;/li&gt;
 &lt;li&gt;Credentials &amp;amp; Secret Management&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src="../images/2022-03-17-06.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-03-17-7f9ecf3b.png"
  
  
  loading="lazy"
@@ -2263,7 +2272,7 @@ At present, there are &lt;strong&gt;91&lt;/strong&gt; different extensions avail
 &lt;/h2&gt;&lt;p&gt;I was creating a pipeline in &lt;strong&gt;Azure DevOps&lt;/strong&gt; to deploy an ARM template for VM setups with VM Extensions. To prep this deployment, the artifacts (DSC scripts) should be copied to Azure Blob Storage, in order for the Azure DevOps build agent to &amp;ldquo;find&amp;rdquo; it. Easy-peasy, there is a predefined task for that, called &lt;strong&gt;&lt;a class="link" href="https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-file-copy" target="_blank" rel="noopener"
  &gt;Azure Blob File Copy&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;I defined source (my Azure Repos folder) and target (Blob Container in Azure Storage Account), but saw the copy failing with an interesting error message:&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2020-12-14_1.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-12-14-5be19b19.jpg"
  
  
  loading="lazy"
@@ -2309,7 +2318,7 @@ At present, there are &lt;strong&gt;91&lt;/strong&gt; different extensions avail
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;From your Azure DevOps Project, select &lt;strong&gt;Project Settings&lt;/strong&gt; / &lt;strong&gt;Service Connections&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2020-12-14_2.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-12-14-f83d6c4f.jpg"
  
  
  loading="lazy"
@@ -2322,7 +2331,7 @@ At present, there are &lt;strong&gt;91&lt;/strong&gt; different extensions avail
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Select the &lt;strong&gt;Service Connection&lt;/strong&gt; you use for the given Pipeline deployment and choose &lt;strong&gt;Manage Service Principal Roles&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2020-12-14_3.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-12-14-cc0a0014.jpg"
  
  
  loading="lazy"
@@ -2335,7 +2344,7 @@ At present, there are &lt;strong&gt;91&lt;/strong&gt; different extensions avail
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;This opens Azure Active Directory - Access Control from where you can add a role assignment by clicking &lt;strong&gt;Add Role Assignment&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2020-12-14_4.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-12-14-9ec69fee.jpg"
  
  
  loading="lazy"
@@ -2348,7 +2357,7 @@ At present, there are &lt;strong&gt;91&lt;/strong&gt; different extensions avail
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;From the list of roles, select &lt;strong&gt;Storage Blob Data Contributor&lt;/strong&gt;, and search for your Service Principal name in the &lt;strong&gt;Select&lt;/strong&gt; field (if you don&amp;rsquo;t know the exact name of your Service Principal anymore, from Azure DevOps / Service Connections, select &amp;ldquo;Manage Service Principal&amp;rdquo;, which will open your Service Principal blade in Azure Active Directory for this specific object - the name will be visible from there)&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2020-12-14_5.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-12-14-81dcbbbf.jpg"
  
  
  loading="lazy"
@@ -2364,12 +2373,12 @@ At present, there are &lt;strong&gt;91&lt;/strong&gt; different extensions avail
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;The result should look about similar to below screenshot:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;![Add Role Assignment](../images/2020-12-14_6.jpg)
+&lt;pre&gt;&lt;code&gt;![Add Role Assignment](../images/screenshot-2020-12-14-efdc1bd2.jpg)
 &lt;/code&gt;&lt;/pre&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;Run the Pipeline again from Azure DevOps, and behold&amp;hellip; a successful run this time :)!&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2020-12-14_6.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-12-14-efdc1bd2.jpg"
  
  
  loading="lazy"
@@ -2392,7 +2401,7 @@ At present, there are &lt;strong&gt;91&lt;/strong&gt; different extensions avail
 &lt;/h2&gt;&lt;p&gt;So to stay within the &amp;ldquo;spirit of continuous learning&amp;rdquo;, I was more than happy to contribute to &lt;a class="link" href="https://captainhyperscaler.com/" target="_blank" rel="noopener"
  &gt;Dwayne Natwick&amp;rsquo;s&lt;/a&gt; event &lt;a class="link" href="https://captainhyperscaler.com/2020/03/03/azure-back-to-school/" target="_blank" rel="noopener"
  &gt;&lt;strong&gt;Azure Back to School&lt;/strong&gt;&lt;/a&gt;,&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2020-09-13_01.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-09-13-86cbe27d.png"
  
  
  loading="lazy"
@@ -2419,9 +2428,9 @@ At present, there are &lt;strong&gt;91&lt;/strong&gt; different extensions avail
  &gt;Azure Back to School**&lt;/a&gt;&lt;/strong&gt; for the rest of the month, so grab that opportunity to keep your internal learning daemon happy ;).&lt;/p&gt;
 &lt;p&gt;See you around! Take care,&lt;/p&gt;
 &lt;p&gt;thanks, Peter&lt;/p&gt;</description></item><item><title>DevOps for Dummies - Emily Freeman - Review</title><link>https://www.007ffflearning.com/post/devops-for-dummies-review/</link><pubDate>Sat, 22 Aug 2020 00:00:00 +0000</pubDate><guid>https://www.007ffflearning.com/post/devops-for-dummies-review/</guid><description>&lt;p&gt;Hey,&lt;/p&gt;
-&lt;p&gt;As some of you know me for years already, you also know I’m rather bad in coding (although I&amp;rsquo;m learning &lt;a class="link" href="https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor" target="_blank" rel="noopener"
- &gt;Blazor&lt;/a&gt; since a few weeks, but more on that journey in future posts&amp;hellip;), and always “got scared” about DevOps. Especially the Dev part in the word 😊. I still remember being in Bangalore, India early 2016 to deliver an Azure workshop to Microsoft GSI Partners (Wipro, Tech Mahindra, Accenture,&amp;hellip;) as a freelance trainer together with Microsoft AzureCAT engineers. While my sessions were totally in my Azure comfort zone (Networking, Storage, Azure Active Directory), I also learned a lot from the Azure App sessions my colleagues delivered. But then all of a sudden, I had to jump in on Wednesday afternoon, taking over the “DevOps practices” session due to some urgent facts. Oh man, down went my comfort level. Me, the guy they saw earlier in the week, delivering Azure Infra sessions with ease, now needing to talk about DevOps, something I didn’t know at all? I hardly used Visual Studio at that time, let alone I could talk about this process.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2020-08-22_01.png"
+&lt;p&gt;As some of you know me for years already, you also know Iâ€™m rather bad in coding (although I&amp;rsquo;m learning &lt;a class="link" href="https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor" target="_blank" rel="noopener"
+ &gt;Blazor&lt;/a&gt; since a few weeks, but more on that journey in future posts&amp;hellip;), and always â€œgot scaredâ€ about DevOps. Especially the Dev part in the word ðŸ˜Š. I still remember being in Bangalore, India early 2016 to deliver an Azure workshop to Microsoft GSI Partners (Wipro, Tech Mahindra, Accenture,&amp;hellip;) as a freelance trainer together with Microsoft AzureCAT engineers. While my sessions were totally in my Azure comfort zone (Networking, Storage, Azure Active Directory), I also learned a lot from the Azure App sessions my colleagues delivered. But then all of a sudden, I had to jump in on Wednesday afternoon, taking over the â€œDevOps practicesâ€ session due to some urgent facts. Oh man, down went my comfort level. Me, the guy they saw earlier in the week, delivering Azure Infra sessions with ease, now needing to talk about DevOps, something I didnâ€™t know at all? I hardly used Visual Studio at that time, let alone I could talk about this process.&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/screenshot-2020-08-22-0ac36929.png"
  
  
  loading="lazy"
@@ -2431,13 +2440,13 @@ At present, there are &lt;strong&gt;91&lt;/strong&gt; different extensions avail
  
  
  &gt;&lt;/p&gt;
-&lt;p&gt;So instead of delivering the foreseen session (DevOps processes, Visual Studio integration with source control, CI/CD Pipelines,&amp;hellip;), I just talked about my personal perspective of DevOps, how ARM templates and Azure Automation was “the DEV part” in my world, helped me combining my +15 years background in building Microsoft datacenters at customers “the OPS guy”, and do amazing things with it. All in all, the talk got very much appreciated, as it was personal.&lt;/p&gt;
+&lt;p&gt;So instead of delivering the foreseen session (DevOps processes, Visual Studio integration with source control, CI/CD Pipelines,&amp;hellip;), I just talked about my personal perspective of DevOps, how ARM templates and Azure Automation was â€œthe DEV partâ€ in my world, helped me combining my +15 years background in building Microsoft datacenters at customers â€œthe OPS guyâ€, and do amazing things with it. All in all, the talk got very much appreciated, as it was personal.&lt;/p&gt;
 &lt;h2 id="i-already-know-azure-devops-so-why-bother"&gt;I already know Azure DevOps, so why bother?
 &lt;/h2&gt;&lt;p&gt;Jumping 5 years further in time, I have been using Azure DevOps as a tooling myself for about 2 years now, and also delivered several successful Azure AZ-400 (&lt;a class="link" href="https://docs.microsoft.com/en-us/learn/certifications/exams/az-400" target="_blank" rel="noopener"
- &gt;https://docs.microsoft.com/en-us/learn/certifications/exams/az-400&lt;/a&gt;) workshops out of my Microsoft role as Azure Technical Trainer. And then I stumbled into &lt;strong&gt;Emily Freeman’s (&lt;a class="link" href="https://twitter.com/editingemily" target="_blank" rel="noopener"
+ &gt;https://docs.microsoft.com/en-us/learn/certifications/exams/az-400&lt;/a&gt;) workshops out of my Microsoft role as Azure Technical Trainer. And then I stumbled into &lt;strong&gt;Emily Freemanâ€™s (&lt;a class="link" href="https://twitter.com/editingemily" target="_blank" rel="noopener"
  &gt;https://twitter.com/editingemily&lt;/a&gt;)&lt;/strong&gt; Devops for Dummies book (&lt;a class="link" href="https://www.amazon.com/DevOps-Dummies-Computer-Tech/dp/1119552222%29" target="_blank" rel="noopener"
  &gt;https://www.amazon.com/DevOps-Dummies-Computer-Tech/dp/1119552222)&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2020-08-22_02.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-08-22-2d950231.jpg"
  
  
  loading="lazy"
@@ -2447,25 +2456,25 @@ At present, there are &lt;strong&gt;91&lt;/strong&gt; different extensions avail
  
  
  &gt;&lt;/p&gt;
-&lt;p&gt;At first, I wasn’t really interested in getting me a copy, given it was &lt;strong&gt;“for Dummies”&lt;/strong&gt;. And remembering what other “for Dummies” I read in the past, it was always on something I didn’t know at all, yet learned a lot from it. So I gave it a chance – also because the Kindle edition is only $15,99 USD – that’s like 3 Starbucks coffees 😊. &lt;strong&gt;And wow, I was hooked to it from the first chapter&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;At first, I wasnâ€™t really interested in getting me a copy, given it was &lt;strong&gt;â€œfor Dummiesâ€&lt;/strong&gt;. And remembering what other â€œfor Dummiesâ€ I read in the past, it was always on something I didnâ€™t know at all, yet learned a lot from it. So I gave it a chance â€“ also because the Kindle edition is only $15,99 USD â€“ thatâ€™s like 3 Starbucks coffees ðŸ˜Š. &lt;strong&gt;And wow, I was hooked to it from the first chapter&lt;/strong&gt;.&lt;/p&gt;
 &lt;h2 id="what-got-me-hooked"&gt;What got me hooked?
-&lt;/h2&gt;&lt;p&gt;First of all, Emily is a subject matter expert, period. I’ve seen her presenting both in-person and at virtual conferences, and I enjoy learning from her stories. She manages to combine technical expertise with understandable explanations, calm presentation style, funny twists,&amp;hellip; everything you look for in a presenter. And next to that, passion for the topic. It is clear Emily can look back to a huge amount of in-the-field experience on helping customers implementing (or transforming for that matter) DevOps best practices into their IT lifecycle management.&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;First of all, Emily is a subject matter expert, period. Iâ€™ve seen her presenting both in-person and at virtual conferences, and I enjoy learning from her stories. She manages to combine technical expertise with understandable explanations, calm presentation style, funny twists,&amp;hellip; everything you look for in a presenter. And next to that, passion for the topic. It is clear Emily can look back to a huge amount of in-the-field experience on helping customers implementing (or transforming for that matter) DevOps best practices into their IT lifecycle management.&lt;/p&gt;
 &lt;p&gt;It was this natural flow of words, the logic of chapters, how the whole book is getting build up from basics to more complex scenarios and everything in between, that makes it worthwhile for anyone in IT to read it. This book is not about Azure DevOps just to be clear. It focuses on the processes, the challenges, how to get from where you are today to where you can be in the (near) future as an organization, and also nicely describes the real-life challenges that comes with it.&lt;/p&gt;
-&lt;p&gt;Next, every couple of pages, she makes a nice annotation to an interesting quote, additional side-reference material, a funny story around DevOps,&amp;hellip; that makes it still “light to digest”, yet still hugely informational.&lt;/p&gt;
+&lt;p&gt;Next, every couple of pages, she makes a nice annotation to an interesting quote, additional side-reference material, a funny story around DevOps,&amp;hellip; that makes it still â€œlight to digestâ€, yet still hugely informational.&lt;/p&gt;
 &lt;h2 id="about-the-book-structure"&gt;About the book structure
 &lt;/h2&gt;&lt;p&gt;The book is about 300 pages long, split up in 6 chapters:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Demystifying Devops&lt;/strong&gt; – this is one of the best 50 pages I know describing what DevOps REALLY is. What’s good about, where are the challenges, why/how around colleagues not liking it and how to convince them,&amp;hellip;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Establishing a Pipeline&lt;/strong&gt; – From planning to software lifecycle management, and how to get there, also explaining how your development code itself should take DevOps into account&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Connecting the circuit&lt;/strong&gt; – this section covers how to handle and get feedback, manage iterations, success and failure of the process&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Kaizen&lt;/strong&gt; – Not about a Japanese Hero, but how to continuously improve your processes, learn from mistakes and optimize the business overall&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;DevOps Tools&lt;/strong&gt; – A nice overview of different devops tools, useful for private and public cloud platforms&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Top 20&lt;/strong&gt; – 10 reasons where DevOps is crucial, and another 10 reasons where it can fail&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Demystifying Devops&lt;/strong&gt; â€“ this is one of the best 50 pages I know describing what DevOps REALLY is. Whatâ€™s good about, where are the challenges, why/how around colleagues not liking it and how to convince them,&amp;hellip;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Establishing a Pipeline&lt;/strong&gt; â€“ From planning to software lifecycle management, and how to get there, also explaining how your development code itself should take DevOps into account&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Connecting the circuit&lt;/strong&gt; â€“ this section covers how to handle and get feedback, manage iterations, success and failure of the process&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Kaizen&lt;/strong&gt; â€“ Not about a Japanese Hero, but how to continuously improve your processes, learn from mistakes and optimize the business overall&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;DevOps Tools&lt;/strong&gt; â€“ A nice overview of different devops tools, useful for private and public cloud platforms&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Top 20&lt;/strong&gt; â€“ 10 reasons where DevOps is crucial, and another 10 reasons where it can fail&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="what-i-remember-from-it"&gt;What I remember from it
-&lt;/h2&gt;&lt;h3 id="devops-is-approachable-and-real-is-one-of-the-best-quotes"&gt;“DevOps is approachable and real”, is one of the best quotes
+&lt;/h2&gt;&lt;h3 id="âœdevops-is-approachable-and-realâ-is-one-of-the-best-quotes"&gt;â€œDevOps is approachable and realâ€, is one of the best quotes
 &lt;/h3&gt;&lt;p&gt;Aside from that, I took a lot of notes around processes, how to inspire people to start embracing DevOps practices, the challenges that comes with it, but mainly how it can help any organization to transform their current mode of operations and software lifecycle into an optimized, well-oiled flow, where IT is becoming a business driver, no longer a cost center or cost generator.&lt;/p&gt;
-&lt;p&gt;I honestly wish I had this book 5 years ago, showing me there is nothing scary or anything to be afraid of when considering DevOps. &lt;strong&gt;It’s about people, processes and products&lt;/strong&gt;. It’s not about being a full-stack developer or being the expert datacenter specialist. It’s how both worlds can nicely work together. (Which in these difficult times of COVID-19 and racial disturbance could actually be baby-steps in the positive direction)&lt;/p&gt;
+&lt;p&gt;I honestly wish I had this book 5 years ago, showing me there is nothing scary or anything to be afraid of when considering DevOps. &lt;strong&gt;Itâ€™s about people, processes and products&lt;/strong&gt;. Itâ€™s not about being a full-stack developer or being the expert datacenter specialist. Itâ€™s how both worlds can nicely work together. (Which in these difficult times of COVID-19 and racial disturbance could actually be baby-steps in the positive direction)&lt;/p&gt;
 &lt;p&gt;Ping me if you got any questions on the book, DevOps or Azure DevOps in general.&lt;/p&gt;
 &lt;p&gt;Cheers, Peter&lt;/p&gt;</description></item><item><title>Azure DevOps Pipelines - YAML or Classic Designer</title><link>https://www.007ffflearning.com/post/azure_devops-pipelines-yaml_or_classic_designer/</link><pubDate>Sun, 21 Jun 2020 00:00:00 +0000</pubDate><guid>https://www.007ffflearning.com/post/azure_devops-pipelines-yaml_or_classic_designer/</guid><description>&lt;p&gt;During several of my &lt;a class="link" href="https://docs.microsoft.com/en-us/learn/certifications/exams/az-400" target="_blank" rel="noopener"
  &gt;AZ-400 Designing and Implementing Microsoft DevOps Solutions&lt;/a&gt; training deliveries, one recurring point of conversation is &lt;strong&gt;Should we use YAML or the Classic Designer&lt;/strong&gt; for our Release pipelines?&lt;/p&gt;
@@ -2474,7 +2483,7 @@ At present, there are &lt;strong&gt;91&lt;/strong&gt; different extensions avail
 &lt;h1 id="classic-designer"&gt;Classic Designer
 &lt;/h1&gt;&lt;p&gt;Classic Designer has been the long-standing approach on how Azure DevOps Pipelines have been created. Using a user-friendly graphical User Interface, one can add tasks to create a pipeline just by searching for them from a list of tasks, and complete necessary parameters.&lt;/p&gt;
 &lt;p&gt;Below example is what I use for building Docker Containers:&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2020-06-21_1.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-06-21-0d0d352e.jpg"
  
  
  loading="lazy"
@@ -2486,7 +2495,7 @@ At present, there are &lt;strong&gt;91&lt;/strong&gt; different extensions avail
  &gt;&lt;/p&gt;
 &lt;p&gt;As you can see, this looks quite straight forward to anyone, even if you are totally new to Azure DevOps.&lt;/p&gt;
 &lt;p&gt;If I want to update my pipeline with another task, for example &lt;strong&gt;Docker CLI Installer&lt;/strong&gt;, I just click on &lt;strong&gt;add task&lt;/strong&gt; and search for all &lt;strong&gt;&amp;ldquo;Docker&amp;rdquo;&lt;/strong&gt; related tasks from the list,&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2020-06-21_2.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-06-21-63c17bf5.jpg"
  
  
  loading="lazy"
@@ -2497,7 +2506,7 @@ At present, there are &lt;strong&gt;91&lt;/strong&gt; different extensions avail
  
  &gt;&lt;/p&gt;
 &lt;p&gt;and select the related task I want:&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2020-06-21_3.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-06-21-03526d35.jpg"
  
  
  loading="lazy"

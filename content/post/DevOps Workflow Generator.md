@@ -1,11 +1,11 @@
----
+﻿---
 title: "DevOps Workflow Generator"
 date: 2022-04-03
 tags: ["Azure", "DevOps"]
 draft: false
 ---
 
-![DevOps Workflow Generator](../images/2022-03-26_16-07-28.png)
+![DevOps Workflow Generator](../images/screenshot-2022-04-03-bb1de584.png)
 
 Hey awesome people,
 
@@ -13,9 +13,9 @@ For the ones who know me, it shouldn't be a surprise I'm interested in DevOps, m
 
 ## The Concepts of DevOps
 
-DevOps according to Microsoft’s Definition: The Union of People, Processes and Products, to enable continuous delivery of value to the business
+DevOps according to Microsoftâ€™s Definition: The Union of People, Processes and Products, to enable continuous delivery of value to the business
 
-![DevOps](../images/2022-03-17-01.png)
+![DevOps](../images/screenshot-2022-04-03-cbbea36d.png)
 
 The tricky part with DevOps is that it's not just about 1 team using a single tool, but potentially a complex group of people (the DevOps engineering team), using a multitude of tools and solutions to perform their role. Obviously the main DevOps pipeline engine (Azure Pipelines, GitHub Actions, Octopus Deploy, Jenkins, GitLab, etc...), but most probably, it also involves Infrastructure as Code tools such as Terraform, Azure Bicep or ARM Templates, Configuration as Code tools like PowerShell DSC, Ansible, Chef or Puppet, as well as DevSecOps tools where Snyk, Aqua, SonarQube, WhiteSource bolt and Veracode are just some of the popular ones. (Btw, if you missed my recent post on integrating DevSecOps by Shifting Left, which I wrote for Azure Spring Clean, you can find it [here](https://www.007ffflearning.com/post/azure-spring-clean-devsecops-and-shifting-left-to-publish-secure-software/))  
 
@@ -33,25 +33,25 @@ You most probably don't need my help from this blog post to find out how the Wor
 
 1. Browse to https://devopsworkflowgenerator.research.microsoft.com/
 
-![DevOps Workflow Generator](../images/2022-03-26_16-07-28.png)
+![DevOps Workflow Generator](../images/screenshot-2022-04-03-bb1de584.png)
 
 2. From the top menu, select **Map Workflow**
 
 This presents you with a rather generic/standard DevOps workflow process; which at first, was what I used. Until I discovered you can actually make customizations to it. Following my own best practices - Shifting Left - I added some of the process steps as outlined in the referred article earlier. The updated workflow looks like this now:
 
-![DevOps Workflow Generator](../images/2022-03-26_15-58-28.png)
+![DevOps Workflow Generator](../images/screenshot-2022-04-03-b4332c1f.png)
 
 3. Next, move over the **Select Tools** step in the top menu. This allows you to select DevOps solutions and tools (single or multiple) for each cycle in your DevOps Workflow. And the list is extensive...! 
 
-![DevOps Workflow Generator Tools](../images/2022-03-26_15-58-55.png)
+![DevOps Workflow Generator Tools](../images/screenshot-2022-04-03-29502b52.png)
 
 4. Once all tools have been mapped with each phase, it's time to compile a report, by navigating to the **Download Report** menu option.
 
 The outcome presents a nice-looking PDF document, which looks like this:
 
-![DevOps Workflow Generator Report](../images/2022-03-26_15-59-53.png)
+![DevOps Workflow Generator Report](../images/screenshot-2022-04-03-403bd6b4.png)
 
-![DevOps Workflow Generator Report Detailed Step](../images/2022-03-26_16-00-07.png)
+![DevOps Workflow Generator Report Detailed Step](../images/screenshot-2022-04-03-9480b8f2.png)
 
 Pretty cool, right?
 
@@ -61,7 +61,8 @@ In this article, I wanted to introduce you to **DevOps Workflow Generator** , a 
 Have a look at it, and let me know your thoughts! 
 
 If you liked this article, consider giving back a small token of appreciation:
- [![BuyMeACoffee](../images/buy_me_a_coffee.png)](https://www.buymeacoffee.com/pdtit)
+ [![BuyMeACoffee](../images/screenshot-2022-04-03-17f576e7.png)](https://www.buymeacoffee.com/pdtit)
 
 Peter
+
 

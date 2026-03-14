@@ -1,4 +1,4 @@
----
+﻿---
 title: "Trigger a YAML Pipeline from a Classic Release Pipeline in Azure DevOps"
 date: 2023-09-30
 publishdate: 2023-09-30
@@ -70,12 +70,12 @@ stages :
            
 ```
 
-![YAML Pipeline Example](../images/2023-09-30_18-38-32.png)
+![YAML Pipeline Example](../images/screenshot-2023-09-30-74ac2dba.png)
 
 ## Composing The Classic Release Pipeline
 1. Create a new Classic Release Pipeline, with a single Stage "Azure Infra", and add the **#Bash Script** as Task
 
-![Classic Release Pipeline Example](../images/2023-09-30_18-43-12.png)
+![Classic Release Pipeline Example](../images/screenshot-2023-09-30-8553a05b.png)
 
 2. Select **Inline** as Type, and in the Script box, copy the following script, which does the following:
 - PIPELINE_ID = the number of the YAML PipelineId
@@ -153,7 +153,7 @@ curl -s --request POST \
  $URL
 
 ```
-![Classic Release Pipeline Bash Task](../images/2023-09-30_18-44-00.png)
+![Classic Release Pipeline Bash Task](../images/screenshot-2023-09-30-c041184d.png)
 
 ## Specify the Correct Permissions on the YAML Pipeline
 Remember we used the System.AccessToken variable, which refers to the Build-In DevOps System Process. In order to make this Classic Release Pipeline trigger work, the Build-In account must have **Queue Build** permissions on the YAML Pipeline.
@@ -161,20 +161,20 @@ Remember we used the System.AccessToken variable, which refers to the Build-In D
 1. Navigate to the YAML Pipeline
 2. Click the elipsis (the 3 dots) at the end of the Pipeline line, and from the context menu, select **Manage Security**
 
-![Manage Security](../images/2023-09-30_18-46-45.png)
+![Manage Security](../images/screenshot-2023-09-30-2725e518.png)
 
 3. Select the **<ADOProjectName> Build Service** Group, and set **Allow** for the **Queue Builds** permission
 
-![Allow Queue Build](../images/2023-09-30_18-48-09.png)
+![Allow Queue Build](../images/screenshot-2023-09-30-d02f5758.png)
 
 ## Running the Pipeline
 1. Trigger the Classic Release Pipeline, wait for it to complete
 
-![Trigger Classic Release](../images/2023-09-30_18-50-53.png)
+![Trigger Classic Release](../images/screenshot-2023-09-30-1c2d94e6.png)
 
 2. With the Classic Release completed, navigate to the YAML Pipeline, and see this one is getting triggered / already running
 
-![Trigger YAML Pipeline](../images/2023-09-30_18-51-56.png)
+![Trigger YAML Pipeline](../images/screenshot-2023-09-30-4d0138f5.png)
 
 ## Summary
 In this post, I walked you through a use case within Azure DevOps, where it might be useful to build an integration between both Pipeline worlds, Classic Releases and YAML Pipeline Releases. By using a #Bash script with Curl to call the YAML Pipeline REST API endpoint, as well as passing some parameters in a JSON structure, it is possible to trigger YAML Pipelines from a Classic Release Pipeline.
@@ -182,7 +182,7 @@ In this post, I walked you through a use case within Azure DevOps, where it migh
 I am using this scenario to give myself some time to continue updating the development work on the Blazor Front-end, pointing to YAML Pipelines only at some point, but for now, it gives me the flexibility to keep the same Classic URL Endpoints for my REST APIs, why gradually setting up new YAML Pipelines, migrating Classic to YAML etc...
 
 
-[![BuyMeACoffee](../images/buy_me_a_coffee.png)](https://www.buymeacoffee.com/pdtit)
+[![BuyMeACoffee](../images/screenshot-2023-09-30-17f576e7.png)](https://www.buymeacoffee.com/pdtit)
 
 Cheers!!
 

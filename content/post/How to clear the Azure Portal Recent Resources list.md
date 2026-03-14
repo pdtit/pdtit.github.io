@@ -1,4 +1,4 @@
----
+﻿---
 title: "How to clear the Azure Portal Recent Resources list"
 date: 2022-12-23
 publishdate: 2022-12-23
@@ -12,7 +12,7 @@ As I am deploying a lot of different Azure Resources every week while delivering
 
 One of the issues I was facing, although not a big big deal, is the "Recent Resources" list on the Azure Portal Homepage. 
 
-![Recent Resources List](../images/2022-12-23_12-09-35.png)
+![Recent Resources List](../images/screenshot-2022-12-23-7eaddce1.png)
 
 While I'm sure it is a very useful feature for more traditional Azure admins, it's less interesting when the resources in there are not available anymore, because of the cleanup tasks I'm running.
 
@@ -20,21 +20,21 @@ So I was happily amazed when I talked about this with someone from the Azure tea
 
 1. From the Azure Portal - **Search bar**, search for **"Recent"**
 
-![Recent Search](../images/2022-12-23_12-12-38.png)
+![Recent Search](../images/screenshot-2022-12-23-6770eda5.png)
 
 This shows a list of all recent Azure Resources you connected to from the Azure Portal.
 
 1. Notice the **Clear** menu option, and click on it. 
 
-![Clear Recent](../images/2022-12-23_12-14-12.png)
+![Clear Recent](../images/screenshot-2022-12-23-73857cd4.png)
 
 1. Close this section, and return to the Azure Portal Homepage. Notice how the Recent Resources list is now nicely cleaned up :)
 
-![Nicely clean Recent list](../images/2022-12-23_12-15-15.png)
+![Nicely clean Recent list](../images/screenshot-2022-12-23-15d95bea.png)
 
 A little gem if you ask me, saving me a little frustration in my next delivery...
 
-[![BuyMeACoffee](../images/buy_me_a_coffee.png)](https://www.buymeacoffee.com/pdtit)
+[![BuyMeACoffee](../images/screenshot-2022-12-23-17f576e7.png)](https://www.buymeacoffee.com/pdtit)
 
 That's it for now folks!!
 

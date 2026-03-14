@@ -1,4 +1,4 @@
----
+﻿---
 title: "I'm recognized as a HashiCorp Ambassador"
 date: 2021-04-17
 tags: ["Infrastructure as Code"]
@@ -9,11 +9,11 @@ Hey,
 
 I got some **GREAT NEWS** to share, based on an email I received earlier this week:
 
-![Nice_Email](../images/2021-04-17_01.png)
+![Nice_Email](../images/screenshot-2021-04-17-06232e34.png)
 
 which informed me **I am recognized as a HashiCorp Ambassador**!!
 
-![HashiCorp_Ambassador_2021](../images/HC_ambassador_badge_2021.png)
+![HashiCorp_Ambassador_2021](../images/screenshot-2021-04-17-c9a222d4.png)
 
 I can imagine that some of you might not be familiar with this recognition. Easy said, it is much like the **Microsoft MVP** title, rewarding individuals for their outstanding contributions in the technical communities. 
 
@@ -35,6 +35,6 @@ I always did - and will continue doing community activities - for the community,
 
 If you got any questions on HashiCorp, Terraform or the Ambassador program, feel free to reach out.
 
-[![BuyMeACoffee](../images/buy_me_a_coffee.png)](https://www.buymeacoffee.com/pdtit)
+[![BuyMeACoffee](../images/screenshot-2021-04-17-17f576e7.png)](https://www.buymeacoffee.com/pdtit)
 
 /Peter

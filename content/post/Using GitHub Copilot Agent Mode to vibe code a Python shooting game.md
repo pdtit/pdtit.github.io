@@ -1,4 +1,4 @@
----
+﻿---
 title: "Using GitHub Copilot Agent Mode to vibe code a Python shooting game"
 date: 2025-11-29
 publishdate: 2025-11-28
@@ -32,7 +32,7 @@ The prompt I used was this:
 7. show a "YOU WIN" or "YOU ARE TOO SLOW" dpeending on the outcome"
 ```
 
-![Agent Mode Prompt Used](../images/Screenshot2025-11-29-104211.png)
+![Agent Mode Prompt Used](../images/screenshot-2025-11-28-018f3ae5.png)
 
 ## Agent Mode Processing
 
@@ -44,27 +44,27 @@ The prompt I used was this:
 - Creating the Reflex Shooting Game
 - Testing the Game
 
-![Agent Mode Starting](../images/Screenshot2025-11-29-104237.png)
+![Agent Mode Starting](../images/screenshot-2025-11-28-88f73764.png)
 
 1. This process took less than **1 minute**, can you imagine? From there, it continued with providing detailed instructions on how to the game works.
 
-![Game Playing Instructions](../images/Screenshot2025-11-29-104336.png)
+![Game Playing Instructions](../images/screenshot-2025-11-28-f533f735.png)
 
 1. Next, it also had a list of features included: 
 
-![Game Features Included](../images/Screenshot2025-11-29-104353.png)
+![Game Features Included](../images/screenshot-2025-11-28-dc0b721b.png)
 
 1. Time to start the game!!
 
-![Start Game](../images/Screenshot2025-11-29-104413.png)
+![Start Game](../images/screenshot-2025-11-28-c3d6fa9b.png)
 
 1. Which allowed me to play exactly as I asked for. When I was too slow, it would tell me... 
 
-![Too Slow](../images/Screenshot2025-11-29-104424.png)
+![Too Slow](../images/screenshot-2025-11-28-df129c5d.png)
 
 1. And several attempts later, I finally managed to win a game!! 
 
-![You Win](../images/Screenshot2025-11-29-104503.png)
+![You Win](../images/screenshot-2025-11-28-8d0ea57f.png)
 
 ## Summary
 
@@ -76,7 +76,7 @@ If I had access to this technology in the mid 80's, I guess I would have spent m
 
 If you want to see some similar version of this templategame in action, head over to [my github repo](https://github.com/petender/vibeshooter). 
 
-[![BuyMeACoffee](../images/buy_me_a_coffee.png)](https://www.buymeacoffee.com/pdtit)
+[![BuyMeACoffee](../images/screenshot-2025-11-28-17f576e7.png)](https://www.buymeacoffee.com/pdtit)
 
 Cheers!!
 

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Packt Book Review - Azure Architecture Explained"
 date: 2023-12-10
 publishdate: 2023-12-10
@@ -10,20 +10,20 @@ In this post, I want to share my review of another Azure book I read recently, *
 
 Apart from the great content, it was nice to see one of my own Microsoft Technical Trainer Team colleagues, [Sarah Kong](https://www.linkedin.com/in/konger/), providing the foreword.
 
-![Book Cover](../images/2023-12-10_10-54-01.png)
+![Book Cover](../images/screenshot-2023-12-10-fa900436.png)
 
 ## About the book (from the cover)
 This book provides you with a clear path to designing optimal cloud-based solutions in Azure, by delving into the platform's intricacies.
 
-You’ll begin by understanding the effective and efficient security management and operation techniques in Azure to implement the appropriate configurations in Microsoft Entra ID. Next, you’ll explore how to modernize your applications for the cloud, examining the different computation and storage options, as well as using Azure data solutions to help migrate and monitor workloads. You’ll also find out how to build your solutions, including containers, networking components, security principles, governance, and advanced observability. With practical examples and step-by-step instructions, you’ll be empowered to work on infrastructure-as-code to effectively deploy and manage resources in your environment.
+Youâ€™ll begin by understanding the effective and efficient security management and operation techniques in Azure to implement the appropriate configurations in Microsoft Entra ID. Next, youâ€™ll explore how to modernize your applications for the cloud, examining the different computation and storage options, as well as using Azure data solutions to help migrate and monitor workloads. Youâ€™ll also find out how to build your solutions, including containers, networking components, security principles, governance, and advanced observability. With practical examples and step-by-step instructions, youâ€™ll be empowered to work on infrastructure-as-code to effectively deploy and manage resources in your environment.
 
-By the end of this book, you’ll be well-equipped to navigate the world of cloud computing confidently.
+By the end of this book, youâ€™ll be well-equipped to navigate the world of cloud computing confidently.
 
 ## What this book covers
 
 The book has **14 chapters**, about 400 pages in total (!!!), organized in 3 different 'Parts":
 
-**Part I - – Effective and Efficient Security Management and Operations in Azure**
+**Part I - â€“ Effective and Efficient Security Management and Operations in Azure**
 This first section lays out the Identity Foundation for hybrid cloud, touching on Azure **Active Directory and Microsoft Entra**. I guess Dave and Brett were in the middle of the writing process, when Microsoft decided on the name-change of the Azure Identity platform from AAD to Entra ID, which is totally acceptable and not bothering me while reading through the content. It got emphasized several times *(now Entra ID)*, and after page 3, you're used to the new name. 
 The mixed use of Azure Active Directory and Entra ID remains in chapter 2, which provides a more deep-dive on the typical administrative and architectural side of what it takes to **get started with Entra ID from scratch**, as well as how to deal with **hybrid Identity** when running an on-premises Active Directory scenario.  
 After going through Chapters 1 and 2, this first part is closing with the positioning of **Microsoft Sentinel**, with a focus on mitigating lateral movement, which also looks at a possible security breach scenario with suscpicious Office 365 user sign-ins. Which I think is a great scenario, since most Azure customers are probably Office 365 customers as well - or the other way around.
@@ -52,7 +52,7 @@ I don't see myself as the target audience for this book, since I *live in Azure*
 
 Ping me if you should have any additional questions.
 
-[![BuyMeACoffee](../images/buy_me_a_coffee.png)](https://www.buymeacoffee.com/pdtit)
+[![BuyMeACoffee](../images/screenshot-2023-12-10-17f576e7.png)](https://www.buymeacoffee.com/pdtit)
 
 Cheers!!
 

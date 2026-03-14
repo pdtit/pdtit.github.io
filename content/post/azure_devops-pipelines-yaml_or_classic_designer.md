@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure DevOps Pipelines - YAML or Classic Designer"
 date: 2020-06-21
 tags: ["Azure", "DevOps"]
@@ -16,17 +16,17 @@ Classic Designer has been the long-standing approach on how Azure DevOps Pipelin
 
 Below example is what I use for building Docker Containers:
 
-![Build Pipeline Classic Designer](../images/2020-06-21_1.jpg)
+![Build Pipeline Classic Designer](../images/screenshot-2020-06-21-0d0d352e.jpg)
 
 As you can see, this looks quite straight forward to anyone, even if you are totally new to Azure DevOps.
 
 If I want to update my pipeline with another task, for example **Docker CLI Installer**, I just click on **add task** and search for all **"Docker"** related tasks from the list, 
 
-![Docker Task Classic Designer](../images/2020-06-21_2.jpg)
+![Docker Task Classic Designer](../images/screenshot-2020-06-21-63c17bf5.jpg)
 
 and select the related task I want:
 
-![Docker Install Task Classic Designer](../images/2020-06-21_3.jpg)
+![Docker Install Task Classic Designer](../images/screenshot-2020-06-21-03526d35.jpg)
 
 Once you are familiar with the **actual steps** on how to build and compile containers from a command line, moving the manual steps to an Azure Pipeline are **almost 100% the same**. In the end, you are literally automating your manual approach. 
 

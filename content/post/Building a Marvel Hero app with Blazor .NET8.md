@@ -1,4 +1,4 @@
----
+﻿---
 title: "ScifiDevCon 2024 : Building a Marvel Hero App using Blazor and .NET8 "
 date: 2024-05-18
 publishdate: 2024-05-18
@@ -25,7 +25,7 @@ While I've been using Blazor .NET for about 3 years now as a hobby project, I fe
 If you want to follow along and building this sample app from scratch, you need a few tools to get started:
 
 -   Visual Studio 2022 version 17.9.7 or newer, to develop the application (VSCode or other dev tools will work as well, but I'm not that familiar with those...)
-    -   Community Edition can be downloaded for free here ([Visual Studio 2022 Community Edition – Download Latest Free Version (microsoft.com)](https://visualstudio.microsoft.com/vs/community/))
+    -   Community Edition can be downloaded for free here ([Visual Studio 2022 Community Edition â€“ Download Latest Free Version (microsoft.com)](https://visualstudio.microsoft.com/vs/community/))
 -   GitHub Account to store the application code in source control
     -   Sign Up for free here (<https://github.com/join>)
 -   Azure Subscription to run Azure App Service web application
@@ -35,14 +35,14 @@ If you want to follow along and building this sample app from scratch, you need 
 
 # Deploying your first Blazor Web Assembly app from a template
 
-Visual Studio (and .NET) provide different Blazor templates, both as an “empty template”, as well as one with a functional “sample weather app”, and both options are available for Server and Web Assembly. 
+Visual Studio (and .NET) provide different Blazor templates, both as an â€œempty templateâ€, as well as one with a functional â€œsample weather appâ€, and both options are available for Server and Web Assembly. 
 
 With the release of .NET8 last November, the Product Group decided to simplify getting started with Blazor, using the **Blazor Web App** template. Actually allowing you to decide wether to use WebAssembly, Server or both, in the same project. 
 
 1.  Launch **Visual Studio 2022**, and select **Create New Project**
 2.  From the list of templates, select **Blazor Web App**
 
-![Graphical user interface, text, application Description automatically generated](../images/2024-05-17-215846.png)
+![Graphical user interface, text, application Description automatically generated](../images/screenshot-2024-05-18-31fb6b2a.png)
 
 3. Provide a name for the project, e.g. **BlazorMarvel8**, and store it to your local machine's folder of choice
 4. Click **Next** to continue the project creation wizard
@@ -53,11 +53,11 @@ With the release of .NET8 last November, the Product Group decided to simplify g
 
 9.  Click **Create** to complete the project creation wizard and wait for the template to get deployed in the Visual Studio development environment. The Solution Explorer looks like below:
 
-![Graphical user interface, Create Project](../images/2024-05-17-220528.png)
+![Graphical user interface, Create Project](../images/screenshot-2024-05-18-c0fdabfe.png)
 
 10.  Run the app by pressing **Ctrl-F5** or select **Run** from the upper menu (the green arrow) and wait for the compile and build phase to complete. The web app should load successfully in a new browser window.
 
-![Blazor WebAssembly default app in browser](../images/2024-05-17-220807.png)
+![Blazor WebAssembly default app in browser](../images/screenshot-2024-05-18-6376c36b.png)
 
 11.  Wander around the different parts of the web app to get a bit familiar with the features. In the context of .NET 8, Blazor WebAssembly projects typically consist of two separate projects: an app and an app.client. The app project is the server-side part of the Blazor application, which can serve pages or views as a Razor Pages or MVC app. The app.client project contains the client-side Blazor application that runs in the browser on a WebAssembly-based .NET runtime.
 
@@ -75,9 +75,9 @@ In the next section, you learn how to update the Home.razor page and add your ow
 
 # Updating the template with your custom code
 
-Blazor allows you to combine web page layout code (Razor pages), basically HTML and CSS, together with actual application source code (C# DotNet), in the same razor files. I can’t compare it with previous development environments, but it seems to be one of the great things about Blazor – and I really like it, since it’s somewhat simplifying the structure of your application source code itself.
+Blazor allows you to combine web page layout code (Razor pages), basically HTML and CSS, together with actual application source code (C# DotNet), in the same razor files. I canâ€™t compare it with previous development environments, but it seems to be one of the great things about Blazor â€“ and I really like it, since itâ€™s somewhat simplifying the structure of your application source code itself.
 
-Another take is creating the web page layout first, and only adding logic later on. So let’s start with creating a basic web page, adding a search field and a button. All Razor Pages the app uses, are typically stored in the \Components subfolder.
+Another take is creating the web page layout first, and only adding logic later on. So letâ€™s start with creating a basic web page, adding a search field and a button. All Razor Pages the app uses, are typically stored in the \Components subfolder.
 
 1.  You can chose to reuse the Home.razor sample page and continue from there, or create a new Razor Page and update the route path. To show you how Blazor Components are working, let's define our SearchMarvel page, as a **new page** under the **\Pages** section in the **Client** project. Save it as **SearchMarvel.razor**
 
@@ -106,11 +106,11 @@ Another take is creating the web page layout first, and only adding logic later 
 
 ```
 3.  This adds the necessary objects on the web page.
-4.  And let’s run this update to see what we have for now.
+4.  And letâ€™s run this update to see what we have for now.
 
-![Web page layout is visible in the browser](../images/2024-05-17-221303.png)
+![Web page layout is visible in the browser](../images/screenshot-2024-05-18-eace8fac.png)
 
-5.  So the layout for the search part of the app is done. Let’s move on with the design of the actual response / result items. The return from the Marvel API can be presented in a table gridview, but that’s not that nice-looking; I remembered having physical cards as collector items as a kid, so I did some searching for a similar digital experience. Interesting enough, there is a CSS-class object “card”, which nicely reflects this experience. So let’s add the next snippet of code for this response layout.
+5.  So the layout for the search part of the app is done. Letâ€™s move on with the design of the actual response / result items. The return from the Marvel API can be presented in a table gridview, but thatâ€™s not that nice-looking; I remembered having physical cards as collector items as a kid, so I did some searching for a similar digital experience. Interesting enough, there is a CSS-class object â€œcardâ€, which nicely reflects this experience. So letâ€™s add the next snippet of code for this response layout.
 
 6.  Add the following code, below the snippet you copied earlier:
 
@@ -150,23 +150,23 @@ Another take is creating the web page layout first, and only adding logic later 
 
 ```
 
-What this snippet does, is adding a “container” object, in which we create a small table view having 3 rows and 1 column. The card composition shows the Hero title on top, the Marvel Hero character details in the middle and an image of the character as well.
+What this snippet does, is adding a â€œcontainerâ€ object, in which we create a small table view having 3 rows and 1 column. The card composition shows the Hero title on top, the Marvel Hero character details in the middle and an image of the character as well.
 
-7.  Let’s run the code again to test if everything works as expected.
+7.  Letâ€™s run the code again to test if everything works as expected.
 
-![Graphical user interface, text, application, chat or text message Description automatically generated](../images/2024-05-17-221457.png)
+![Graphical user interface, text, application, chat or text message Description automatically generated](../images/screenshot-2024-05-18-7c897836.png)
 
-8.  Now wait, we lose quite some time on stopping the app, updating code, starting it again – so what we can do is use the **new VS2022 feature called Hot Reload** / if I set this to “Hot Reload on Save”, it will dynamically update the runtime state of the app based on my edits. Let’s check it out.
-9.  While in debugging mode, check the “flame” icon in the menu:
+8.  Now wait, we lose quite some time on stopping the app, updating code, starting it again â€“ so what we can do is use the **new VS2022 feature called Hot Reload** / if I set this to â€œHot Reload on Saveâ€, it will dynamically update the runtime state of the app based on my edits. Letâ€™s check it out.
+9.  While in debugging mode, check the â€œflameâ€ icon in the menu:
 
-![Hot Reload](../images/2024-05-17-221614.png)
+![Hot Reload](../images/screenshot-2024-05-18-af598345.png)
 
-10.  Enable the setting “Hot Reload on File Save”.
-11.  Edit the card-title “Marvel Hero Name” to “Marvel Character Name” and check how the app refreshes itself without needing to stop/start.
+10.  Enable the setting â€œHot Reload on File Saveâ€.
+11.  Edit the card-title â€œMarvel Hero Nameâ€ to â€œMarvel Character Nameâ€ and check how the app refreshes itself without needing to stop/start.
 
-![Update after Hot Reload](../images/2024-05-17-221738.png)
+![Update after Hot Reload](../images/screenshot-2024-05-18-8b9a3021.png)
 
-The search field is not doing anything yet, so we need to make sure – that whenever we type something in that field - it kicks of an API call to the Marvel API back-end.
+The search field is not doing anything yet, so we need to make sure â€“ that whenever we type something in that field - it kicks of an API call to the Marvel API back-end.
 
 12.  First, we need to use the bind-value parameter for this field, linking it to a search task; Update the line with the field box as follows:  
 
@@ -176,17 +176,17 @@ The search field is not doing anything yet, so we need to make sure – that whe
 
 ```
 
-add **@bind-value=”whotofind”** at the end of the line.
+add **@bind-value=â€whotofindâ€** at the end of the line.
 
-![Add bind-value parameter to text field](../images/2024-05-18-090106.png)
+![Add bind-value parameter to text field](../images/screenshot-2024-05-18-d9480a36.png)
 
-Ignore the errors regarding the “whotofind” for now. We'll fix that in a minute.
+Ignore the errors regarding the â€œwhotofindâ€ for now. We'll fix that in a minute.
 
 13.  Next, we need to update the button code to actually pick up an action when clicking on it; this is done using the @onclick event
 
     Add **@onclick=FindMarvel**
 
-![AAdd onclick event for button](../images/2024-05-18-090244.png)
+![AAdd onclick event for button](../images/screenshot-2024-05-18-5feb7c8f.png)
 
 14.  The code snippet complains about unknown attributes, which is what we need to add in the actual code section of the app page:
 
@@ -205,21 +205,21 @@ Ignore the errors regarding the “whotofind” for now. We'll fix that in a min
 ```
 
 16.  Within the curly brackets, we can use regular C# code
-17.  Start with defining a string for the “whotofind”
-18.  Followed by defining a method (task) for the FindMarvel onclick action – for now, let’s write something to the console to validate our search field is working as expected
+17.  Start with defining a string for the â€œwhotofindâ€
+18.  Followed by defining a method (task) for the FindMarvel onclick action â€“ for now, letâ€™s write something to the console to validate our search field is working as expected
 
-The string “whotofind” refers to the search field object, where the Task “FindMarvel” refers to the button click action. So easy said, whenever we click the button, it will pick up the string content from the search field, and send it to the Marvel API back-end. As we don’t have that yet, I’m just writing the data to the console, which is always a great test to validate the code is working as expected.
+The string â€œwhotofindâ€ refers to the search field object, where the Task â€œFindMarvelâ€ refers to the button click action. So easy said, whenever we click the button, it will pick up the string content from the search field, and send it to the Marvel API back-end. As we donâ€™t have that yet, Iâ€™m just writing the data to the console, which is always a great test to validate the code is working as expected.
 
-![Code snippet for button action](../images/2024-05-18-090439.png)
+![Code snippet for button action](../images/screenshot-2024-05-18-5fc9e8a8.png)
 
 
-19.  Save the file, which will throw a warning regarding the hot reload. Since we added new actual code snippets, hot reload can’t just go and recognize it. So a reload is needed…
+19.  Save the file, which will throw a warning regarding the hot reload. Since we added new actual code snippets, hot reload canâ€™t just go and recognize it. So a reload is neededâ€¦
 
-![Hot Reload can't handle code changes](../images/d0be33cb6858972b3c00724c40f485e3.png)
+![Hot Reload can't handle code changes](../images/screenshot-2024-05-18-5f1e4b86.png)
 
-20.  Select “Rebuild and Apply Changes”
+20.  Select â€œRebuild and Apply Changesâ€
 
-21.  Enter the name of a Marvel character, for example “thor”, and notice **nothing happens on the console/terminal**. Why not?? Is it an error in our code, did we miss anything,...?
+21.  Enter the name of a Marvel character, for example â€œthorâ€, and notice **nothing happens on the console/terminal**. Why not?? Is it an error in our code, did we miss anything,...?
 
 **NO and YES :)**... our code is fine, but we are missing a new .NET8 feature for Blazor apps... we need to specify the **Render Mode** 
 
@@ -244,16 +244,16 @@ which tells the page/component should use the Interactive Render Mode, which "en
 
 24. Save the changes, and run the app; enter a Marvel character name in the search field, click the Find Button and notice the search field string is shown in the console now. This is what InteractiveWebAssembly Render Mode is doing...
 
-![Console.WriteLine is working as expected](../images/2024-05-18-091910.png)
+![Console.WriteLine is working as expected](../images/screenshot-2024-05-18-da22b543.png)
 
 
-25.  I think the bare minimum app layout development is ready, so it’s time to set up the Marvel API-part of the solution in the next section.
+25.  I think the bare minimum app layout development is ready, so itâ€™s time to set up the Marvel API-part of the solution in the next section.
 
 # Configuring the Marvel Developer API Backend Code interaction
 
 1.  Head over to the Marvel Developer website <https://developer.marvel.com> and grab the necessary API information.
 
-![Marvel Developer Site Home Page](../images//fc2a542cfdbca3fb86519841f3f53999.png)
+![Marvel Developer Site Home Page](../images/screenshot-2024-05-18-4f9a2349.png)
 
 2.  Select Create Account + Accept Terms & Conditions
 3.  Grab the API keys (public & private)
@@ -262,36 +262,36 @@ which tells the page/component should use the Interactive Render Mode, which "en
 
     **Private:** 6362bd53a4c307c96fb27xxxxxxxxxx
 
-4.  To allow requests to come into the Marvel API back-end, you need to specify the source URL domains where the requests are coming from. Add **localhost** here, which is the URL you use for all testing on your development workstation. Later on, once the app runs in Azure, you need to add the Azure Service URL here as well…
+4.  To allow requests to come into the Marvel API back-end, you need to specify the source URL domains where the requests are coming from. Add **localhost** here, which is the URL you use for all testing on your development workstation. Later on, once the app runs in Azure, you need to add the Azure Service URL here as wellâ€¦
 
-![API rate limits and domains](../images//a7dd9d49c1402deb787b6ab792a0fb38.png)
+![API rate limits and domains](../images/screenshot-2024-05-18-47c6d979.png)
 
-5.  Once set up, head over to “interactive documentation”, and walk through the different API placeholders and keywords one can use, to show the capabilities. For the app later on, we will use the “namestartswith”, as it is the most easy to use – names could work, but it requires knowing the explicit name of the character, and having it correctly spelled.
+5.  Once set up, head over to â€œinteractive documentationâ€, and walk through the different API placeholders and keywords one can use, to show the capabilities. For the app later on, we will use the â€œnamestartswithâ€, as it is the most easy to use â€“ names could work, but it requires knowing the explicit name of the character, and having it correctly spelled.
 
-![Marvel API documentation site](../images//d9552cc8c4ec1ff4e0f2e32a767a4f42.png)
+![Marvel API documentation site](../images/screenshot-2024-05-18-50eb88c8.png)
 
-![nameStartsWith API Example](../images//57bc3634f004877c8cff9942d9e6e8d3.png)
+![nameStartsWith API Example](../images/screenshot-2024-05-18-2265117a.png)
 
-![Limit the result set parameter to 50](../images//4f749b51a5d1bdf6d51e81f614c8d72a.png)
+![Limit the result set parameter to 50](../images/screenshot-2024-05-18-427ba28a.png)
 
-![API response codes and try-out button](../images//9883c08decac6bffde5cb763539b953f.png)
+![API response codes and try-out button](../images/screenshot-2024-05-18-360bd5d8.png)
 
-6.  Click the “Try it out” button. The result shows the outcome + the exact URL that was used:
+6.  Click the â€œTry it outâ€ button. The result shows the outcome + the exact URL that was used:
 
-![API Response Body in JSON](../images//b3aab53a282e9d00b58ba5c91e81afa0.png)
+![API Response Body in JSON](../images/screenshot-2024-05-18-4d64c949.png)
 
 7.  Blazor WebAssembly doesn't come with the HTTPClient package installed by default, which means we need to add the Nuget package for this. (Although if you want, you could also find Nuget packages that provide similar functionality), as well as specifying the necessary Service, in both the server-side and client-side project.
 
 8. From the app.client project, select **Manage Nuget Packages**, and search for **Microsoft.Extension.Http** as package name. 
 
-![Http Nuget Package](../images/2024-05-18-124041.png).
+![Http Nuget Package](../images/screenshot-2024-05-18-3462a674.png).
 
 9. Once the package got installed, update the **Program.cs** file in the client project, by adding the following line below the "var builder = WebAssemblyHostBuilder... line:
 
 ```
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://gateway.marvel.com:443/v1/public") });
 ```
-![Add Scoped Service for HTTPClient](../images/2024-05-18-093043.png)
+![Add Scoped Service for HTTPClient](../images/screenshot-2024-05-18-96b9a1b4.png)
 
 10. Next, open the **Program.cs** on the server-side project, and add the following line to the //Add Services to the container section:
 
@@ -299,7 +299,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https:/
 builder.Services.AddHttpClient();
 ```
 
-![Add Service for HTTPClient](../images/2024-05-18-124637.png)
+![Add Service for HTTPClient](../images/screenshot-2024-05-18-5d648ed1.png)
 
 9. Next, using .NET dependency injection, create a reference to the HTTPCLient in your Blazor SearchMarvel.razor page
 
@@ -315,23 +315,23 @@ builder.Services.AddHttpClient();
 
 ```
 
-![HttpClient Dependency Injection](../images/2024-05-18-093311.png)
+![HttpClient Dependency Injection](../images/screenshot-2024-05-18-f4b5871e.png)
 
 10.  As you could see from the Marvel output, they are using JSON; this means, when calling the HttpClient, we also receive a JSON object back. 
 
-![Marvel Characters JSON Response](../images//6ace0a137db04fd541e730b90bf18a42.png)
+![Marvel Characters JSON Response](../images/screenshot-2024-05-18-31bb1d9b.png)
 
 11. To 'recognize' the data from the JSON response into our Web App, we need to link it to a data model, using a Csharp class. There's a few different ways to do this, either creating it manual, using the Visual Studio 'Edit - Paste Special - as JSON", which will create the necessary Class setup for you. However, in this specific scenario, I don't need all the details from the JSON Response (although you could definitely update the app yourself to display all the information you want, related to a Marvel Character...)
 
 12. To help transforming a JSON Response into an actual C-Sharp Class, I often rely on a free website,  **https://www.jSON2CSharp.com**, which allows for pasting in a JSON payload, which then gets converted to c# class structure
 
-![Text Description automatically generated](../images//7840c5de3eda79f2d196079bc0081756.png)
+![Text Description automatically generated](../images/screenshot-2024-05-18-2e723304.png)
 
-13.  In the VStudio app.client project, create a new subfolder “Models”, and add a new Item in there, called MarvelResult.cs
+13.  In the VStudio app.client project, create a new subfolder â€œModelsâ€, and add a new Item in there, called MarvelResult.cs
 
-![Graphical user interface, application Description automatically generated](../images//3bb34b057bc24ab07c3280a90a41e829.png)
+![Graphical user interface, application Description automatically generated](../images/screenshot-2024-05-18-23f4f21c.png)
 
-14.  We could copy the content from the JSON deserialize output into this class object, but for this sample, we don’t need all the provided data by Marvel – so I made some changes and ended up with the core pieces of data I want, like image, name, description
+14.  We could copy the content from the JSON deserialize output into this class object, but for this sample, we donâ€™t need all the provided data by Marvel â€“ so I made some changes and ended up with the core pieces of data I want, like image, name, description
 
 The code snippet I'm using for this example, looks like follows:
 
@@ -373,17 +373,17 @@ namespace BlazorMarvel8.Models
 
 ```
 
-![MarvelResult Class](../images/2024-05-18-094323.png)
+![MarvelResult Class](../images/screenshot-2024-05-18-c1624f39.png)
 
-15.  With the class in place, let’s update the SearchMarvel.razor, to make sure it recognizes the model class MarvelResult. To do this, we need to add a private MarvelResult, reflecting the data class we just created;
+15.  With the class in place, letâ€™s update the SearchMarvel.razor, to make sure it recognizes the model class MarvelResult. To do this, we need to add a private MarvelResult, reflecting the data class we just created;
 
 ```csharp
 private MarvelResult _marvelResult;
 
 ```
-![Add Model data to Razor Page](../images/2024-05-18-094655.png)
+![Add Model data to Razor Page](../images/screenshot-2024-05-18-10d6034c.png)
 
-16. As we stored the MarvelResult.cs class model in a different folder within the application source code, we also need to update our Page details, telling it to “use” the Models subfolder to find it. This is done using the @using statement on top of the Home.razor page:
+16. As we stored the MarvelResult.cs class model in a different folder within the application source code, we also need to update our Page details, telling it to â€œuseâ€ the Models subfolder to find it. This is done using the @using statement on top of the Home.razor page:
 
 ```
 @using BlazorMarvel8.Models
@@ -393,13 +393,13 @@ private MarvelResult _marvelResult;
 @inject HttpClient HttpClient
 ```
 
-![Adding using statement to point to Models subfolder](../images/2024-05-18-094850.png)
+![Adding using statement to point to Models subfolder](../images/screenshot-2024-05-18-f7c29b82.png)
 
 Where now the Class gets nicely recognized
 
-![MarvelResults recognized](../images/2024-05-18-095009.png)
+![MarvelResults recognized](../images/screenshot-2024-05-18-1597bf39.png)
 
-17.  Let’s update the Task FindMarvel, with the required code snippet to recognize the dynamic URL to connect to, as well as calling the HttpClient function. As per the Marvel API docs, we also need to integrate the api Public key into our URL search string, so we have to define the string for this first. 
+17.  Letâ€™s update the Task FindMarvel, with the required code snippet to recognize the dynamic URL to connect to, as well as calling the HttpClient function. As per the Marvel API docs, we also need to integrate the api Public key into our URL search string, so we have to define the string for this first. 
 
 Btw, the full Request URL to use is visible from the Interactive Documentation page where we ran the 'try it now' search task (https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=spider&apikey=579a41c9eccaf70a3a09c1722ef6c2fc)
 
@@ -441,19 +441,19 @@ PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase
 
 ```
 
-![API Call snippet to Marvel back-end](../images/88a6f657a0adfca57021b3606066f8db.png)
+![API Call snippet to Marvel back-end](../images/screenshot-2024-05-18-1edaf9ad.png)
 
 19. While all the code pieces are done, note that as of .NET6, it started checking for Nullable values. This is what the green squickly lines are identifying. What this means is that the value could be equal to null, which could potentially break your application, since it expects to have a real value in there.
-20.  I wouldn’t recommend it to change, but for this little sample app, it would be totally OK to disable the nullable check. This can be done from the Properties of the Project
+20.  I wouldnâ€™t recommend it to change, but for this little sample app, it would be totally OK to disable the nullable check. This can be done from the Properties of the Project
 
-![Disable Nullable Check for Project](../images/2024-05-18-095912.png)
+![Disable Nullable Check for Project](../images/screenshot-2024-05-18-0b49c1da.png)
 
 # Render JSON Response data into HTML Layout
 
-1.  That’s all from a code snippet perspective, where now the last piece of updates is back into the HTML Layout of the web page itself, updating the content of the card object:
-1.  Since we most probably get an array of results back, meaning more than one, we need to go through a “for each” loop; also, there might be scenarios where we are not getting back any results (like the character doesn’t exist, a typo in the character’s name,…), so we will add a little validation check on that too, using an if = !null
+1.  Thatâ€™s all from a code snippet perspective, where now the last piece of updates is back into the HTML Layout of the web page itself, updating the content of the card object:
+1.  Since we most probably get an array of results back, meaning more than one, we need to go through a â€œfor eachâ€ loop; also, there might be scenarios where we are not getting back any results (like the character doesnâ€™t exist, a typo in the characterâ€™s name,â€¦), so we will add a little validation check on that too, using an if = !null
 
-Let’s go ahead!
+Letâ€™s go ahead!
 
 1.  At the top of the card object (class=container), or right below the <div> section where we defined the search button, insert the @if statement, and move the whole div section between the curly brackets, updating the fixed fields we defined earlier, with the MarvelResult class objects:
 
@@ -487,22 +487,22 @@ Let’s go ahead!
 
 1.  Run the app and see the result in action
 
-![Graphical user interface, website Description automatically generated](../images//44856923dff937c6cad7d953b046c1bd.png)
+![Graphical user interface, website Description automatically generated](../images/screenshot-2024-05-18-88de5977.png)
 
-1.  That’s it for now. Great job!
+1.  Thatâ€™s it for now. Great job!
 
-# Making the cards ‘flip’
+# Making the cards â€˜flipâ€™
 
-**Note: this part is left out of the ScifiDevCon presentation to keep the video within the expected time – what we’re doing here is integrating more CSS layout components on to a new Page in the web app, which provides a more dynamic look-and-feel to the Marvel cards we have.**
+**Note: this part is left out of the ScifiDevCon presentation to keep the video within the expected time â€“ what weâ€™re doing here is integrating more CSS layout components on to a new Page in the web app, which provides a more dynamic look-and-feel to the Marvel cards we have.**
 
-While CSS can be difficult – and trust me it is – I literally googled for “flipping cards CSS” and found a snippet of code on <https://w3schools.com>, and it worked almost straight away…
+While CSS can be difficult â€“ and trust me it is â€“ I literally googled for â€œflipping cards CSSâ€ and found a snippet of code on <https://w3schools.com>, and it worked almost straight awayâ€¦
 
 Here we go:
 
-1.  Let’s copy the current state of the page we have, and store it in a different page; so we grab **SearchMarvel.razor** and copy/paste it to **FlipMarvel.razor** this will allow me to also demonstrate some other Blazor features around Menu Navigation and how to use object-specific css; meaning, CSS that will only be picked up by the specific page, and not interfere with the rest of the application CSS we already have.
-1.  Open FlipMarvel.razor page; First thing we need to change, is the Page Routing, pointing to the “/flip” routing directory instead of the “/”, as that one is linked to the index.razor page.  
+1.  Letâ€™s copy the current state of the page we have, and store it in a different page; so we grab **SearchMarvel.razor** and copy/paste it to **FlipMarvel.razor** this will allow me to also demonstrate some other Blazor features around Menu Navigation and how to use object-specific css; meaning, CSS that will only be picked up by the specific page, and not interfere with the rest of the application CSS we already have.
+1.  Open FlipMarvel.razor page; First thing we need to change, is the Page Routing, pointing to the â€œ/flipâ€ routing directory instead of the â€œ/â€, as that one is linked to the index.razor page.  
       
-    ![Graphical user interface, text, application Description automatically generated](../images//46aac649d4ecfb4be03d1ce021141274.png)
+    ![Graphical user interface, text, application Description automatically generated](../images/screenshot-2024-05-18-9b7d28f8.png)
 2.  Go to this link: <https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_flip_card>
 3.  Select the code between the <style> objects, including the <style>/</style> tags  
 
@@ -587,11 +587,11 @@ transform: rotateY(180deg);
 
 ```
 
-1.  and paste this under the @using section and the <PageTitle> section of the code you already have (Note: ignore the @using marveltake2.models in the screenshot, it’s the name of my test project)
+1.  and paste this under the @using section and the <PageTitle> section of the code you already have (Note: ignore the @using marveltake2.models in the screenshot, itâ€™s the name of my test project)
 
-![Graphical user interface, application Description automatically generated](../images//e28cd81c4d68ae3560000e3a047e15f9.png)
+![Graphical user interface, application Description automatically generated](../images/screenshot-2024-05-18-5ee912eb.png)
 
-1.  Next, we need to update the layout of the card item itself, in the section within the “foreach” loop, as that’s where the data is coming in, and getting displayed
+1.  Next, we need to update the layout of the card item itself, in the section within the â€œforeachâ€ loop, as thatâ€™s where the data is coming in, and getting displayed
 
 @foreach(var result in _marvelResult.Data.Results)
 
@@ -636,32 +636,32 @@ What we do here is basically pointing to the different CSS-snippets for each sty
 
 1.  Next, we add a class for the flip-card-back, where we will show the Marvel character name and description.   
       
-    ![Graphical user interface, text, application, email Description automatically generated](../images//4082873f68fc45f018526dcce23ec2b7.png)
+    ![Graphical user interface, text, application, email Description automatically generated](../images/screenshot-2024-05-18-1ecbeef2.png)
 
-That’s all we need to have for now; so let’s have a look, by launching the app
+Thatâ€™s all we need to have for now; so letâ€™s have a look, by launching the app
 
-1.  Since the previous page was index.razor, it’s getting loaded by design (from the index.html). so we need to update the URL to pick up the /flip page, by adding it to the end of the URL, such as <https://localhost:7110?flip> (note, the port number will be different on your end)
+1.  Since the previous page was index.razor, itâ€™s getting loaded by design (from the index.html). so we need to update the URL to pick up the /flip page, by adding it to the end of the URL, such as <https://localhost:7110?flip> (note, the port number will be different on your end)
 
-![Graphical user interface, application Description automatically generated](../images//7ce7af6f54af8a7aee9535ff23b92e47.png)
+![Graphical user interface, application Description automatically generated](../images/screenshot-2024-05-18-e436e152.png)
 
 1.  Search for a character, and see the outcome cards:
 
-![Graphical user interface Description automatically generated](../images//b2a599d62eb62f38570ce2865d97a8a0.png)
+![Graphical user interface Description automatically generated](../images/screenshot-2024-05-18-efb1bdd8.png)
 
-1.  About the same as before, but let’s hoover over a card:
+1.  About the same as before, but letâ€™s hoover over a card:
 2.  It flips and shows the character name and description (if provided by Marvel) to the back of the card
 
-![Text Description automatically generated](../images//445529556f9af96a20cecb08dee76707.png)
+![Text Description automatically generated](../images/screenshot-2024-05-18-12f7b192.png)
 
 Cool!!
 
-1.  Let’s switch back to the code and add a menu item for the “flip” page to our left-side navigation menu.
+1.  Letâ€™s switch back to the code and add a menu item for the â€œflipâ€ page to our left-side navigation menu.
 2.  Open the file NavMenu.razor within the **Server-Side Layout** folder.
 3.  Add a new <div> section for this menu item, by copying one from above + make minor changes to the href reference (flip) and change the Menu item word to Flip
 1.  The icons are coming from the open iconic library, which is also referenced as part of Blazor bootstrap. Know you can change to MudBlazor, Telerik Progress or several other bootstrap frameworks to have layout-rich styles.
 2.  Open https:://useiconic.com and find a suitable icon, for example loop-circular
 
-![Chart Description automatically generated with medium confidence](../images//934083c32d1deed78048f9f953f85869.png)
+![Chart Description automatically generated with medium confidence](../images/screenshot-2024-05-18-e8c45d2f.png)
 
 ```csharp
 
@@ -677,9 +677,9 @@ Cool!!
 
 ```
 
-1.  When you run the app again, the new Menu item will appear. Given the href=”flip”, it will redirect to the base URL (<https://localhost:7110>) /flip route
+1.  When you run the app again, the new Menu item will appear. Given the href=â€flipâ€, it will redirect to the base URL (<https://localhost:7110>) /flip route
 
-![Graphical user interface, application Description automatically generated](../images//d9276771ac7e7f6fb7800724605797cc.png)
+![Graphical user interface, application Description automatically generated](../images/screenshot-2024-05-18-2ce3432b.png)
 
 Since we are changing the layout a bit here, why not modify the default purple color from the Blazor template, to the well-known Marvel dark-red?
 
@@ -694,24 +694,24 @@ Since we are changing the layout a bit here, why not modify the default purple c
 
 1.  This changes the default purple color to darkred.
 
-![Graphical user interface, application Description automatically generated](../images//33d3c7a7c6df44851c787ad147d4904e.png)
+![Graphical user interface, application Description automatically generated](../images/screenshot-2024-05-18-65ecbfd6.png)
 
-1.  This completes our development part. Let’s move on to the next step, and integrate our app code with GitHub Source Control (which actually should have happened at the start, before writing a single line of code – but hey, it’s a sample scenario right)
+1.  This completes our development part. Letâ€™s move on to the next step, and integrate our app code with GitHub Source Control (which actually should have happened at the start, before writing a single line of code â€“ but hey, itâ€™s a sample scenario right)
 
 # Integrating Visual Studio with GitHub Source Control
 
-1.  With that, let’s close this project and save it to GitHub; so you can grab it as a reference. From the explorer, click “Git changes” tab and select Create GitHub Repository
+1.  With that, letâ€™s close this project and save it to GitHub; so you can grab it as a reference. From the explorer, click â€œGit changesâ€ tab and select Create GitHub Repository
 
-![Graphical user interface, application Description automatically generated](../images//51bf9482699dc85b868b603bab0406d8.png)
+![Graphical user interface, application Description automatically generated](../images/screenshot-2024-05-18-72687fbb.png)
 
-1.  Click Create and Push, and provide a description as commit message (I typically call this first action the “init”).
+1.  Click Create and Push, and provide a description as commit message (I typically call this first action the â€œinitâ€).
 2.  Wait for the git clone action to complete successfully. Connect to the GitHub repository and confirm all source code is there.   
       
     **Note: the actual source code I used for the Festive Tech Calendar presentation can be found here:** [petender/FestiveBlazor2022live (github.com)](https://github.com/petender/FestiveBlazor2022live)
 
-![A screenshot of a computer Description automatically generated with medium confidence](../images//4d09932a92c0b020a566940e79741aeb.png)
+![A screenshot of a computer Description automatically generated with medium confidence](../images/screenshot-2024-05-18-36962b2d.png)
 
-1.  Whenever you would make changes in the source code in Visual Studio and save the changes, Git Source Control will keep track of these and allowing you to commit the changes into the GitHub repository. I would recommend you to commit changes frequently, basically after each “important” update to the code.
+1.  Whenever you would make changes in the source code in Visual Studio and save the changes, Git Source Control will keep track of these and allowing you to commit the changes into the GitHub repository. I would recommend you to commit changes frequently, basically after each â€œimportantâ€ update to the code.
 
 # Publish Blazor Web Assembly app to Azure Static Web Apps
 
@@ -719,72 +719,73 @@ In this last section, I will show you how to publish this webapp to Azure Static
 
 1.  From the Azure Portal, create new resource / static web app  
       
-    ![Graphical user interface, text, application Description automatically generated](../images//756a5b2424f865b6cf86eefab8492d2e.png)
+    ![Graphical user interface, text, application Description automatically generated](../images/screenshot-2024-05-18-4aae45d5.png)
 2.  Provide base information for this deployment:
--   Resource group – any name of choice
--   Name of the app – any unique name for the app
+-   Resource group â€“ any name of choice
+-   Name of the app â€“ any unique name for the app
 -   Source = GitHub
 -   Plan = Free
 -   Region = any region of your choice
 
-    ![Graphical user interface, text, application Description automatically generated](../images//3910c87d613034cbd0c9ed1392dfda7b.png)
+    ![Graphical user interface, text, application Description automatically generated](../images/screenshot-2024-05-18-62941ae1.png)
 
 1.  Scroll down and authenticate to GitHub; Next, select your source repo in Github where the code is stored (the one we just created)
 
-    ![Graphical user interface, text, application Description automatically generated](../images//1bd1ddddd3602c3ba2d84b540da393aa.png)
+    ![Graphical user interface, text, application Description automatically generated](../images/screenshot-2024-05-18-dbd525c0.png)
 
 2.  Click Build Details to provide more parameters regarding the Blazor app itself. Note you need to change the default App location from /Client to /, since our source code is in the root of the Blazor Web Assembly, without using ASP.Net hosted back-end.
 
-    ![Graphical user interface, application, email Description automatically generated](../images//420cbce0770a41dc39ddf2184948363e.png)
+    ![Graphical user interface, application, email Description automatically generated](../images/screenshot-2024-05-18-a5c753e9.png)
 
 3.  Once published, it will trigger a GitHub Actions pipeline to publish the actual content
 
-    ![](../images//ba208857aa01b6d744c79606a7a76b53.png)
+    ![](../images/screenshot-2024-05-18-d30b17e9.png)
 
-4.  The YAML pipeline code is stored in the .github/workflows/ subfolder within the GitHub repository. You shouldn’t need to update this file though. It just works out-of-the-box.
+4.  The YAML pipeline code is stored in the .github/workflows/ subfolder within the GitHub repository. You shouldnâ€™t need to update this file though. It just works out-of-the-box.
 
-    ![Graphical user interface, text, application, email Description automatically generated](../images//7d89901490cd8ae277355c130085551f.png)
+    ![Graphical user interface, text, application, email Description automatically generated](../images/screenshot-2024-05-18-65639483.png)
 
-5.  Check in Actions what’s happening:
+5.  Check in Actions whatâ€™s happening:
 
-    ![Graphical user interface, text, application, email Description automatically generated](../images//97f08b3e40277869ee85a42fa0d2a343.png)
+    ![Graphical user interface, text, application, email Description automatically generated](../images/screenshot-2024-05-18-f50eb218.png)
 
 6.  Open the details for the Build & Deploy workflow
 
-    ![Text Description automatically generated](../images//da5cda0e73ed46fcc4274becc2f4a30e.png)
+    ![Text Description automatically generated](../images/screenshot-2024-05-18-8f5e83c2.png)
 
 7.  Selecting any step in the Action workflow will show more details:
 
-    ![Graphical user interface, text Description automatically generated](../images//765fda402ec958a1267c45c8d15592df.png)
+    ![Graphical user interface, text Description automatically generated](../images/screenshot-2024-05-18-338d5027.png)
 
 8.  Wait for the workflow to complete successfully.
 
-    ![Text Description automatically generated](../images//291538dda0fbb66c1ccc93f67b3ed263.png)
+    ![Text Description automatically generated](../images/screenshot-2024-05-18-ffd5fa67.png)
 
-9.  Navigate back to the Azure Static Web app, click it’s URL and see the Blazor Web App is running as expected.
+9.  Navigate back to the Azure Static Web app, click itâ€™s URL and see the Blazor Web App is running as expected.
 
-    ![Graphical user interface, text, application Description automatically generated](../images//71e0fdcd38b8f4e3df22af93a6c04215.png)
+    ![Graphical user interface, text, application Description automatically generated](../images/screenshot-2024-05-18-4fa1cda8.png)
 
 10. When searching for a Marvel Character, this throws an error though, which can be validated from the Inspect option of the browser:
 
-    ![A screenshot of a computer Description automatically generated](../images//aebf1488e59ba401c5c69708ed8b2958.png)
+    ![A screenshot of a computer Description automatically generated](../images/screenshot-2024-05-18-b0b0a6e2.png)
 
-11. Remember at the start, where we configured the API calls at the Marvel Developer site, we needed to specify the source URLs from where the calls are allowed. This Azure Static Web App URL is not configured. (Hence why I didn’t worry too much about including my APIKey as hard-coded string in the source code).
+11. Remember at the start, where we configured the API calls at the Marvel Developer site, we needed to specify the source URLs from where the calls are allowed. This Azure Static Web App URL is not configured. (Hence why I didnâ€™t worry too much about including my APIKey as hard-coded string in the source code).
 
-    ![Graphical user interface, text, application, email Description automatically generated](../images//07a00ae95a0f1548ac84f149b11ccd34.png)
+    ![Graphical user interface, text, application, email Description automatically generated](../images/screenshot-2024-05-18-16ff7f1a.png)
 
 12. Click Update to save those changes. Trigger a new search, which should reveal the actual Marvel character details. Remember you can use both the default (index) page, as well as the flip page.
 
 # Summary
 
-In this article, I provided all the necessary steps to build a Blazor .NET 8 Web Assembly application. Started from the default template, you updated snippets of code to create a search field and corresponding action button to trigger the search. You learned about using HTTPClient to interact with an external API Back-End. Once this was all working, you looked into using some additional “flip card” CSS layout features, and how to update the Blazor Navigation Menu.
+In this article, I provided all the necessary steps to build a Blazor .NET 8 Web Assembly application. Started from the default template, you updated snippets of code to create a search field and corresponding action button to trigger the search. You learned about using HTTPClient to interact with an external API Back-End. Once this was all working, you looked into using some additional â€œflip cardâ€ CSS layout features, and how to update the Blazor Navigation Menu.
 
 Once the development work was done, we saved the code in a GitHub repository.
 
 Last, you deployed an Azure Static Web App, interacting with the GitHub repository to pick up the source code and publish it using GitHub Actions workflow.
 
-I would like to thank the organizing team of ScifiDevCon 2024 for having accepted my session submission for the 3rd year in a row. Especially since this was my first attempt to do some (semi)live coding, to share my excitement of how I learned to write and build code at age 48. I’m already brainstorming on what Blazor app I can share in next year’s edition...
+I would like to thank the organizing team of ScifiDevCon 2024 for having accepted my session submission for the 3rd year in a row. Especially since this was my first attempt to do some (semi)live coding, to share my excitement of how I learned to write and build code at age 48. Iâ€™m already brainstorming on what Blazor app I can share in next yearâ€™s edition...
 
 /Peter
 
-[![BuyMeACoffee](../images/buy_me_a_coffee.png)](https://www.buymeacoffee.com/pdtit)
+[![BuyMeACoffee](../images/screenshot-2024-05-18-17f576e7.png)](https://www.buymeacoffee.com/pdtit)
+

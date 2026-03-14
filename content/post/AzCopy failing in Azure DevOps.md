@@ -1,4 +1,4 @@
----
+﻿---
 title: "AzCopy failing in Azure Devops with error ServiceCode=AuthorizationPermissionMismatch" 
 date: 2020-12-14
 tags: ["Azure", "DevOps"]
@@ -15,7 +15,7 @@ I was creating a pipeline in **Azure DevOps** to deploy an ARM template for VM s
 
 I defined source (my Azure Repos folder) and target (Blob Container in Azure Storage Account), but saw the copy failing with an interesting error message:
 
-![AzCopy Error](../images/2020-12-14_1.jpg)
+![AzCopy Error](../images/screenshot-2020-12-14-5be19b19.jpg)
 
 - INFO: Authentication failed, it is either not correct, or expired, or does not have the correct permission
 - RESPONSE Status: 403 This request is not authorized to perform this operation using this permission.
@@ -50,29 +50,29 @@ Let's give this a try:
 
 1. From your Azure DevOps Project, select **Project Settings** / **Service Connections**
 
-    ![Service Connections](../images/2020-12-14_2.jpg)
+    ![Service Connections](../images/screenshot-2020-12-14-f83d6c4f.jpg)
 
 1. Select the **Service Connection** you use for the given Pipeline deployment and choose **Manage Service Principal Roles**
 
-     ![Service Connection Roles](../images/2020-12-14_3.jpg)
+     ![Service Connection Roles](../images/screenshot-2020-12-14-cc0a0014.jpg)
 
 1. This opens Azure Active Directory - Access Control from where you can add a role assignment by clicking **Add Role Assignment**
 
-    ![Add Role Assignment](../images/2020-12-14_4.jpg)
+    ![Add Role Assignment](../images/screenshot-2020-12-14-9ec69fee.jpg)
 
 1. From the list of roles, select **Storage Blob Data Contributor**, and search for your Service Principal name in the **Select** field (if you don't know the exact name of your Service Principal anymore, from Azure DevOps / Service Connections, select "Manage Service Principal", which will open your Service Principal blade in Azure Active Directory for this specific object - the name will be visible from there)
 
-    ![Add Role Assignment](../images/2020-12-14_5.jpg)
+    ![Add Role Assignment](../images/screenshot-2020-12-14-81dcbbbf.jpg)
 
 1. **Save** your changes. (Note - I'm allowing this permission for this Service Principal across the full subscription; in a real-life scenario, it would be enough to allocate this Azure Role scoped to the specific storage account)
 
 The result should look about similar to below screenshot:
 
-    ![Add Role Assignment](../images/2020-12-14_6.jpg)
+    ![Add Role Assignment](../images/screenshot-2020-12-14-efdc1bd2.jpg)
 
 1. Run the Pipeline again from Azure DevOps, and behold... a successful run this time :)! 
 
-    ![AzCopy Successful](../images/2020-12-14_6.jpg)
+    ![AzCopy Successful](../images/screenshot-2020-12-14-efdc1bd2.jpg)
 
 I hope this helps anyone bumping into the same issue as I did. For me lesson learned is reading the [Azure Docs](https://docs.microsoft.com/en-us/azure/?product=featured) a bit more every now and then, especially when something isn't working right away...
 

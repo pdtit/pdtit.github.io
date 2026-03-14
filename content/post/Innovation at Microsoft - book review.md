@@ -1,4 +1,4 @@
----
+﻿---
 title: "Innovation at Microsoft - Book Review"
 date: 2025-03-09
 publishdate: 2025-03-09
@@ -6,9 +6,9 @@ tags: ["General", "Books"]
 draft: false
 ---
 
-The **[Insider’s Guide to Innovation at Microsoft](https://posthillpress.com/book/the-insiders-guide-to-innovation-at-microsoft)**, written by Dean Carignan and JoAnn Garbin, and published by PostHillPress publishers, explores the innovation strategies and practices at Microsoft over the past 50 years.
+The **[Insiderâ€™s Guide to Innovation at Microsoft](https://posthillpress.com/book/the-insiders-guide-to-innovation-at-microsoft)**, written by Dean Carignan and JoAnn Garbin, and published by PostHillPress publishers, explores the innovation strategies and practices at Microsoft over the past 50 years.
 
-![Book Cover](../images/innovation_at_microsoft.jpg)
+![Book Cover](../images/screenshot-2025-03-09-44d5f0a9.jpg)
 
 When I heard about this book, I ordered myself a copy during pre-order, and got excited from the day I got it in the mail. This was honestly one of the few books I read cover to finish in just a weekend. 
 
@@ -50,13 +50,13 @@ The book identifies four key innovation patterns that have been crucial to Micro
 
 **Adaptation**:  The ability to pivot and adapt to changing market conditions and user needs is another key innovation pattern. Microsoft has demonstrated this through various initiatives, such as entering the gaming industry with the Xbox and adapting its strategies to compete with established players like Sony and Nintendo. This flexibility allows Microsoft to explore new opportunities and stay ahead in a rapidly evolving tech landscape
 
-**Persistence**: Persistence is about the determination to overcome challenges and setbacks in the pursuit of innovation. Microsoft’s journey with Bing is a testament to this pattern. Despite initial setbacks and strong competition from other search engines, Microsoft persisted and eventually found success by leveraging AI and machine learning to enhance Bing’s capabilities.
+**Persistence**: Persistence is about the determination to overcome challenges and setbacks in the pursuit of innovation. Microsoftâ€™s journey with Bing is a testament to this pattern. Despite initial setbacks and strong competition from other search engines, Microsoft persisted and eventually found success by leveraging AI and machine learning to enhance Bingâ€™s capabilities.
 
 This was one of the rare times where I took a lot of notes on the side, as I discovered several interesting ideas (which should not be the 1st phase of innovation - find more by reading the book yourself what I mean by this :-) ), how I could start incorporating some of these patterns in the work I do at Microsoft. 
 
 ## Conclusion
 
-"The Insider’s Guide to Innovation at Microsoft" provides valuable insights into the company's approach to innovation, offering lessons that can be applied across various industries. It emphasizes the importance of a structured yet flexible process of value creation through continuous improvement, collaboration, and adaptation. 
+"The Insiderâ€™s Guide to Innovation at Microsoft" provides valuable insights into the company's approach to innovation, offering lessons that can be applied across various industries. It emphasizes the importance of a structured yet flexible process of value creation through continuous improvement, collaboration, and adaptation. 
 
 While I think the title had the goal to draw attention to the **innovative** aspect of what Microsoft products are about, to me, it was also interesting to read about the history of how several of the key products I work with every day, got invented, developed, and are continuously being re-invented, using a customer-centric approach.
 
@@ -64,7 +64,7 @@ As mentioned at the start of the article, I truly enjoyed reading this book. It 
 
 I hope you enjoy reading this book as much as I did!
 
-[![BuyMeACoffee](../images/buy_me_a_coffee.png)](https://www.buymeacoffee.com/pdtit)
+[![BuyMeACoffee](../images/screenshot-2025-03-09-17f576e7.png)](https://www.buymeacoffee.com/pdtit)
 
 Cheers!!
 

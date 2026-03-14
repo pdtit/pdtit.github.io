@@ -1,4 +1,4 @@
----
+﻿---
 title: "Sending Emails from Azure DevOps using PowerShell and Azure LogicApps"
 date: 2024-03-03
 publishdate: 2024-03-03
@@ -18,7 +18,7 @@ Azure DevOps provides [email notification features](https://learn.microsoft.com/
 
 In my Classic Release Pipelines, I relied on **[Sendgrid](https://marketplace.visualstudio.com/items?itemName=kasunkodagoda.sendgrid-email)**, and it actually worked OK, and with the limited amount of emails (up to 100/daily), it was a free service on top. 
 
-![SendGrid Classic Settings](../images/2024-03-03_11-24-15.png)
+![SendGrid Classic Settings](../images/screenshot-2024-03-03-fc90cadd.png)
 
 Since I was migrating the full project away from Classic Release Pipelines to YAML, and wanted to customize the email flow a bit more, I started looking into other options. Keeping all functionality within my Azure subscription, was also a benefit. 
 
@@ -64,7 +64,7 @@ The starting point is deploying the Azure Logic App, and composing the workflow 
 }
 ```
 
-![HTTP Trigger JSON Schema](../images/2024-03-03_11-42-02.png)
+![HTTP Trigger JSON Schema](../images/screenshot-2024-03-03-81f9ae42.png)
 
 4. When you save the Logic App with this step, it will provide you with the unique LogicApp HTTP Trigger URL to connect to. Save this URL on the side, since you need it later in the PowerShell script.
 
@@ -76,7 +76,7 @@ The starting point is deploying the Azure Logic App, and composing the workflow 
 
 8. For the Body-parameter of the Send an email step, we want to use the "Message" content from the HTTP Trigger response. Therefore, click in the **Body-field**, which will open the **Dynamic content** window. From here, it will show all known properties from the "When an HTTP request is received" step in the workflow. 
 
-![Dynamic COntent](../images/2024-03-03_11-47-25.png)
+![Dynamic COntent](../images/screenshot-2024-03-03-980a1b42.png)
 
 9. **Select** the necessary fields from the Dynamic content, and map them with the required fields of the Send an Email task:
 
@@ -226,7 +226,7 @@ While the setup involves jumping to several hoops, it is not all that difficult 
 
 Let me know if you want to give this a try and share me your results!
 
-[![BuyMeACoffee](../images/buy_me_a_coffee.png)](https://www.buymeacoffee.com/pdtit)
+[![BuyMeACoffee](../images/screenshot-2024-03-03-17f576e7.png)](https://www.buymeacoffee.com/pdtit)
 
 Cheers!!
 

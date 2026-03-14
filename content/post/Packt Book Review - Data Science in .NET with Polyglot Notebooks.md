@@ -1,4 +1,4 @@
----
+﻿---
 title: "Packt Book Review - Data Science in .NET with Polyglot Notebooks"
 date: 2024-12-07
 publishdate: 2024-12-07
@@ -8,7 +8,7 @@ draft: false
 
 In this post, I want to share my review of my next technical book I read recently, **Data Science in .NET with Polyglot Notebooks** this time from [Matt Eland](https://twitter.com/integerman), (https://bsky.app/profile/matteland.dev) published by [Packt Publishing](https://www.packtpub.com/en-us/product/data-science-with-net-and-polyglot-notebooks-9781835882962?type=subscription) and available on [Amazon](https://www.amazon.com/Data-Science-NET-Polyglot-Notebooks-ebook/dp/B0D4L1HNMK) as well as other e-book subscription platforms.
 
-![Book Cover](../images/2024-12-07-01.jpg)
+![Book Cover](../images/screenshot-2024-12-07-3551fc29.jpg)
 
 If you have been following me for a while, you know I'm gradually learning more about coding and developing applications, especially using the [.NET framework](https://dotnet.microsoft.com/). More recently, I also started using **Jupyter Notebooks** to animate my Azure AI workshops - specifically Semantic Kernel demos - a bit more, by running **.NET Interactive mode**, which allows me to show snippets of .NET code running from the Notebook, instead of the (boring) Terminal window.
 
@@ -58,7 +58,7 @@ If you got access to the book and reading it, or have read it already, don't hes
 To Matt... thanks man, this is a great work of art! Thanks for inspiring me to continue expanding my skillset on .NET, AI, Semantic Kernel, by throwing Notebooks at me, and teasing my brain with Data Science...
 
 
-[![BuyMeACoffee](../images/buy_me_a_coffee.png)](https://www.buymeacoffee.com/pdtit)
+[![BuyMeACoffee](../images/screenshot-2024-12-07-17f576e7.png)](https://www.buymeacoffee.com/pdtit)
 
 Cheers!!
 

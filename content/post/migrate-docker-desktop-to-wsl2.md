@@ -1,4 +1,4 @@
----
+﻿---
 title: "Migrating Docker Desktop to WSL2"
 date: 2020-05-30
 tags: ["Azure", "Containers"]
@@ -37,7 +37,7 @@ I wasn't running WSL yet, so went through the following steps, per the Microsoft
 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
 ```
 
-![Install WSL Feature](../images/2020-05-30_1.jpg)
+![Install WSL Feature](../images/screenshot-2020-05-30-9c0a56b4.jpg)
 
 2. Next, **install the Virtual Machine (Hypervisor) feature**, by running the following cmdlet: 
 
@@ -45,7 +45,7 @@ dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux 
 dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
 ```
 
-![Install VMPLatform Feature](../images/2020-05-30_2.jpg)
+![Install VMPLatform Feature](../images/screenshot-2020-05-30-b40c9c87.jpg)
 
 3. **Enable WSL 2** as default by running the following cmdlet:
 
@@ -53,27 +53,27 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 wsl --set-default-version 2
 ```
 
-![Set WSL2 as default](../images/2020-05-30_3.jpg)
+![Set WSL2 as default](../images/screenshot-2020-05-30-f72dff38.jpg)
 
 4. You can now **install your Linux distri of choice**, by **launching the Microsoft Store App** on your Windows 10 machine. I selected **Ubuntu**, but know you have a few other ones available as well
 
-![MS Store Ubuntu](../images/2020-05-30_4.jpg)
+![MS Store Ubuntu](../images/screenshot-2020-05-30-2005e924.jpg)
 
 5. **Click Install**
 
-![MS Store Ubuntu install](../images/2020-05-30_5.jpg)
+![MS Store Ubuntu install](../images/screenshot-2020-05-30-69b82c78.jpg)
 
 6. **Wait** for the install to complete, and **press launch** to start the Ubuntu environment
 
-![Launch Ubuntu](../images/2020-05-30_6.jpg)
+![Launch Ubuntu](../images/screenshot-2020-05-30-b1dc0fdf.jpg)
 
 7. Give it a few minutes to finalize the Ubuntu installation within the WSL environment. You are also prompted for a Linux local administrative username and password (this can - and SHOULD - be different from your Windows local admin account credentials for security reasons...!)
 
-![Configure Ubuntu](../images/2020-05-30_7.jpg)
+![Configure Ubuntu](../images/screenshot-2020-05-30-deb4e528.jpg)
 
 8. After a few moments, your Ubuntu environment is up-and-running. Again, this replaces any former Ubuntu virtual machine you had running on Hyper-V, Virtualbox, VMware Player,... on the same Windows 10 machine of yours.
 
-![Ubuntu ready](../images/2020-05-30_8.jpg)
+![Ubuntu ready](../images/screenshot-2020-05-30-ef8500a0.jpg)
 
 Keep in mind you cannot install any "GUI" applications inside the WSL environment, but can use any commandline-based application. It's a full Linux distri remember!!
 
@@ -87,25 +87,25 @@ docker images
 
 which provides you an overview of the (Linux) Docker images you currently have on your machine
 
-![Docker images](../images/2020-05-30_9.jpg)
+![Docker images](../images/screenshot-2020-05-30-fe0576d7.jpg)
 
 I only have a few left, since I did a nice cleanup before (docker rmi <image name>)
 
 1. From the **Docker Desktop** context menu / Settings / enable the **"Use the WSL 2 based engine"** 
 
-![Switch Docker to WSL2](../images/2020-05-30_10.jpg)
+![Switch Docker to WSL2](../images/screenshot-2020-05-30-e260fbee.jpg)
 
 2. While not really needed, it's always nice to **validate** this is actually working fine; the first check I did is executing a **"Docker info"** command, which shows the running state of the Docker engine, while at the same time validating the former Docker Moby VM is down - obviousy this was the case:
 
-![Docker info](../images/2020-05-30_11.jpg)
+![Docker info](../images/screenshot-2020-05-30-74d15289.jpg)
 
 3. We can now download and run our former Docker images again, to have the same setup as before; on my machine, I had a few images available, like "Ubuntu", "SimplCommerce" (an e-commerce app I use in workload demos,...); let's grab these by executing a **"Docker run <container image>"** command:
 
-for my pdetender/simplcommerce (on Docker Hub) ![Docker run container](../images/2020-05-30_11.jpg)
+for my pdetender/simplcommerce (on Docker Hub) ![Docker run container](../images/screenshot-2020-05-30-74d15289.jpg)
 
 and 
 
-![Docker run container](../images/2020-05-30_13.jpg)
+![Docker run container](../images/screenshot-2020-05-30-5711f6c3.jpg)
 
 for a sample Ubuntu container; awesome! it works!
 
@@ -115,19 +115,19 @@ Managing Docker is all commandline based, and it's not always that convenient to
 
 1. Right after my upgrade to WSL 2 above, it got picked up by VSCode immediately, showing me the following notification:
 
-![VSCode WSL notification](../images/2020-05-30_14.jpg)
+![VSCode WSL notification](../images/screenshot-2020-05-30-27124db9.jpg)
 
 which I obviously installed, ending up in (yet another) extension:
 
-![VSCode extension](../images/2020-05-30_15.jpg)
+![VSCode extension](../images/screenshot-2020-05-30-f9c3a0ee.jpg)
 
 2. Next, I validated my version of the Docker extension, if it was updated to the latest one (if you installed this extension already, it typically runs a silent update by itself...)
 
-![VSCode Docker extension](../images/2020-05-30_16.jpg)
+![VSCode Docker extension](../images/screenshot-2020-05-30-819a2a60.jpg)
 
 3. Which allows us to manage our Docker environment from the VSCode GUI now:
 
-![VSCode Docker GUI](../images/2020-05-30_17.jpg)
+![VSCode Docker GUI](../images/screenshot-2020-05-30-40795e92.jpg)
 
 and guaranteeing again for some nice upcoming demos during my Azure workshops!
 
@@ -136,6 +136,6 @@ In today's post, I walked you through an upgrade (or installation...) of a Docke
 
 Ping me if you got any questions! 
 
-[![BuyMeACoffee](../images/buy_me_a_coffee.png)](https://www.buymeacoffee.com/pdtit)
+[![BuyMeACoffee](../images/screenshot-2020-05-30-17f576e7.png)](https://www.buymeacoffee.com/pdtit)
 
 /Peter

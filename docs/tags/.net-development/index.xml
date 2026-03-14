@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>.NET Development on Azure Readiness starts here...</title><link>https://www.007ffflearning.com/tags/.net-development/</link><description>Recent content in .NET Development on Azure Readiness starts here...</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 26 Feb 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/.net-development/index.xml" rel="self" type="application/rss+xml"/><item><title>Keeping MCP Server config in sync between VS Code and GitHub Copilot CLI</title><link>https://www.007ffflearning.com/post/keeping-mcp-config-in-sync-between-vscode-and-cli/</link><pubDate>Thu, 26 Feb 2026 00:00:00 +0000</pubDate><guid>https://www.007ffflearning.com/post/keeping-mcp-config-in-sync-between-vscode-and-cli/</guid><description>&lt;p&gt;&lt;img src="../images/sync-mcp-vscode-copilot.png"
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>.NET Development on Azure Readiness starts here...</title><link>https://www.007ffflearning.com/tags/.net-development/</link><description>Recent content in .NET Development on Azure Readiness starts here...</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 26 Feb 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://www.007ffflearning.com/tags/.net-development/index.xml" rel="self" type="application/rss+xml"/><item><title>Keeping MCP Server config in sync between VS Code and GitHub Copilot CLI</title><link>https://www.007ffflearning.com/post/keeping-mcp-config-in-sync-between-vscode-and-cli/</link><pubDate>Thu, 26 Feb 2026 00:00:00 +0000</pubDate><guid>https://www.007ffflearning.com/post/keeping-mcp-config-in-sync-between-vscode-and-cli/</guid><description>&lt;p&gt;&lt;img src="../images/screenshot-2026-02-26-0bb14fbf.png"
  
  
  loading="lazy"
@@ -10,21 +10,21 @@
  &gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Syncing MCP config from VS Code to Copilot CLI in a few simple steps.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Hey awesome people,&lt;/p&gt;
-&lt;p&gt;Over the last weeks, I’ve been jumping between VS Code and Copilot CLI a lot more than usual. One thing kept annoying me: my MCP setup was perfect in VS Code, but I had to keep tweaking pieces again in CLI.&lt;/p&gt;
+&lt;p&gt;Over the last weeks, Iâ€™ve been jumping between VS Code and Copilot CLI a lot more than usual. One thing kept annoying me: my MCP setup was perfect in VS Code, but I had to keep tweaking pieces again in CLI.&lt;/p&gt;
 &lt;p&gt;If that sounds familiar, good news: if you already have MCP servers working in VS Code, you can reuse most of that setup in GitHub Copilot CLI.&lt;/p&gt;
-&lt;p&gt;In this post, I’ll show you the fastest way to &amp;lsquo;keep both in sync&amp;rsquo; from VS Code &lt;code&gt;mcp.json&lt;/code&gt; to Copilot CLI &lt;code&gt;mcp-config.json&lt;/code&gt;, with the necessary commands for both PowerShell and Bash.&lt;/p&gt;
+&lt;p&gt;In this post, Iâ€™ll show you the fastest way to &amp;lsquo;keep both in sync&amp;rsquo; from VS Code &lt;code&gt;mcp.json&lt;/code&gt; to Copilot CLI &lt;code&gt;mcp-config.json&lt;/code&gt;, with the necessary commands for both PowerShell and Bash.&lt;/p&gt;
 &lt;h2 id="why-this-matters"&gt;Why this matters
-&lt;/h2&gt;&lt;p&gt;When you move between VS Code and terminal workflows, you really don’t want to rebuild MCP config from scratch every time.&lt;/p&gt;
-&lt;p&gt;I made that mistake once (probably multiple times, but didn&amp;rsquo;t want to exagerate too much&amp;hellip;), and it was exactly as fun as it sounds: tiny syntax differences, one invalid server name, one missing env var, and suddenly you’re troubleshooting config instead of actually building. (Although I can tell you that this would be a perfect use case for GenAI GitHub Copilot, lol)&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;When you move between VS Code and terminal workflows, you really donâ€™t want to rebuild MCP config from scratch every time.&lt;/p&gt;
+&lt;p&gt;I made that mistake once (probably multiple times, but didn&amp;rsquo;t want to exagerate too much&amp;hellip;), and it was exactly as fun as it sounds: tiny syntax differences, one invalid server name, one missing env var, and suddenly youâ€™re troubleshooting config instead of actually building. (Although I can tell you that this would be a perfect use case for GenAI GitHub Copilot, lol)&lt;/p&gt;
 &lt;p&gt;This guide helps you:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;keep one consistent MCP setup style (VSCode MCP Config as the &amp;lsquo;main&amp;rsquo; source)&lt;/li&gt;
 &lt;li&gt;avoid common config parsing errors in Copilot CLI&lt;/li&gt;
-&lt;li&gt;&amp;lsquo;keep-in-sync&amp;rsquo; in a few minutes, even if you’re new to MCP&lt;/li&gt;
+&lt;li&gt;&amp;lsquo;keep-in-sync&amp;rsquo; in a few minutes, even if youâ€™re new to MCP&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="mcp-in-plain-english"&gt;MCP in plain English
 &lt;/h2&gt;&lt;p&gt;MCP (Model Context Protocol) lets AI tools connect to external capabilities.&lt;/p&gt;
-&lt;p&gt;Think of MCP servers as “skill plugins” for your assistant, like:&lt;/p&gt;
+&lt;p&gt;Think of MCP servers as â€œskill pluginsâ€ for your assistant, like:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;documentation search&lt;/li&gt;
 &lt;li&gt;GitHub actions (issues, PRs, code search)&lt;/li&gt;
@@ -79,7 +79,7 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;None of this is hard, but it’s just different enough to break things when done manually in a hurry.&lt;/p&gt;
+&lt;p&gt;None of this is hard, but itâ€™s just different enough to break things when done manually in a hurry.&lt;/p&gt;
 &lt;h2 id="fast-path-recommended-automate-conversion"&gt;Fast path (recommended): automate conversion
 &lt;/h2&gt;&lt;p&gt;You can grab both scripts directly from my GitHub repo:&lt;/p&gt;
 &lt;ul&gt;
@@ -220,7 +220,7 @@
 &lt;li&gt;&lt;code&gt;/mcp show&lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;If your config is valid, your servers should load without parsing errors.&lt;/p&gt;
-&lt;p&gt;If they don’t show up right away, don’t panic. In most cases it’s either naming rules or env vars (both covered below).&lt;/p&gt;
+&lt;p&gt;If they donâ€™t show up right away, donâ€™t panic. In most cases itâ€™s either naming rules or env vars (both covered below).&lt;/p&gt;
 &lt;h2 id="required-environment-variables-for-the-sample-config"&gt;Required environment variables (for the sample config)
 &lt;/h2&gt;&lt;p&gt;Set these before launching Copilot CLI:&lt;/p&gt;
 &lt;ul&gt;
@@ -292,7 +292,7 @@
 &lt;p&gt;While one could assume that the MCP Configuration should be standardized across platforms, once I figured out the key syntax differences (GitHub Copilot for the win!), it ended up being much easier than I expected once I stopped doing it manually and automated the boring parts (GitHub Copilot for the win x2!).&lt;/p&gt;
 &lt;p&gt;If this helped you, feel free to share it with your team so everyone can standardize MCP config faster. And maybe give a little GitHub Star on the repo, so I know you like it ;).&lt;/p&gt;
 &lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
- &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ &gt;&lt;img src="../images/screenshot-2026-02-26-17f576e7.png"
  
  
  loading="lazy"
@@ -308,7 +308,7 @@
  &gt;https://bsky.app/profile/matteland.dev&lt;/a&gt;) published by &lt;a class="link" href="https://www.packtpub.com/en-us/product/data-science-with-net-and-polyglot-notebooks-9781835882962?type=subscription" target="_blank" rel="noopener"
  &gt;Packt Publishing&lt;/a&gt; and available on &lt;a class="link" href="https://www.amazon.com/Data-Science-NET-Polyglot-Notebooks-ebook/dp/B0D4L1HNMK" target="_blank" rel="noopener"
  &gt;Amazon&lt;/a&gt; as well as other e-book subscription platforms.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2024-12-07-01.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-12-07-3551fc29.jpg"
  
  
  loading="lazy"
@@ -353,7 +353,7 @@ This method not only reinforces learning but also helps developers (even juniors
 &lt;p&gt;If you got access to the book and reading it, or have read it already, don&amp;rsquo;t hesitate reaching out and providing your feedback.&lt;/p&gt;
 &lt;p&gt;To Matt&amp;hellip; thanks man, this is a great work of art! Thanks for inspiring me to continue expanding my skillset on .NET, AI, Semantic Kernel, by throwing Notebooks at me, and teasing my brain with Data Science&amp;hellip;&lt;/p&gt;
 &lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
- &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ &gt;&lt;img src="../images/screenshot-2024-12-07-17f576e7.png"
  
  
  loading="lazy"
@@ -503,7 +503,7 @@ This method not only reinforces learning but also helps developers (even juniors
 &lt;hr&gt;
 &lt;p&gt;I hope this article provides you with a comprehensive overview of Semantic Kernel and its applications. If you have any questions or need further details, feel free to ask! In a next blog post, we&amp;rsquo;ll go over several use cases with many more code snippets, to give you enough examples to start building/developing your own Copilots. Stay tuned!&lt;/p&gt;
 &lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
- &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ &gt;&lt;img src="../images/screenshot-2024-09-15-17f576e7.png"
  
  
  loading="lazy"
@@ -525,7 +525,7 @@ This method not only reinforces learning but also helps developers (even juniors
 &lt;li&gt;Visual Studio 2022 version 17.9.7 or newer, to develop the application (VSCode or other dev tools will work as well, but I&amp;rsquo;m not that familiar with those&amp;hellip;)
 &lt;ul&gt;
 &lt;li&gt;Community Edition can be downloaded for free here (&lt;a class="link" href="https://visualstudio.microsoft.com/vs/community/" target="_blank" rel="noopener"
- &gt;Visual Studio 2022 Community Edition – Download Latest Free Version (microsoft.com)&lt;/a&gt;)&lt;/li&gt;
+ &gt;Visual Studio 2022 Community Edition â€“ Download Latest Free Version (microsoft.com)&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;GitHub Account to store the application code in source control
@@ -542,13 +542,13 @@ This method not only reinforces learning but also helps developers (even juniors
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="deploying-your-first-blazor-web-assembly-app-from-a-template"&gt;Deploying your first Blazor Web Assembly app from a template
-&lt;/h2&gt;&lt;p&gt;Visual Studio (and .NET) provide different Blazor templates, both as an “empty template”, as well as one with a functional “sample weather app”, and both options are available for Server and Web Assembly.&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;Visual Studio (and .NET) provide different Blazor templates, both as an â€œempty templateâ€, as well as one with a functional â€œsample weather appâ€, and both options are available for Server and Web Assembly.&lt;/p&gt;
 &lt;p&gt;With the release of .NET8 last November, the Product Group decided to simplify getting started with Blazor, using the &lt;strong&gt;Blazor Web App&lt;/strong&gt; template. Actually allowing you to decide wether to use WebAssembly, Server or both, in the same project.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Launch &lt;strong&gt;Visual Studio 2022&lt;/strong&gt;, and select &lt;strong&gt;Create New Project&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;From the list of templates, select &lt;strong&gt;Blazor Web App&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2024-05-17-215846.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-30-31fb6b2a.png"
  
  
  loading="lazy"
@@ -581,7 +581,7 @@ This method not only reinforces learning but also helps developers (even juniors
 &lt;p&gt;Click &lt;strong&gt;Create&lt;/strong&gt; to complete the project creation wizard and wait for the template to get deployed in the Visual Studio development environment. The Solution Explorer looks like below:&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2024-05-17-220528.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-30-c0fdabfe.png"
  
  
  loading="lazy"
@@ -594,7 +594,7 @@ This method not only reinforces learning but also helps developers (even juniors
 &lt;ol start="10"&gt;
 &lt;li&gt;Run the app by pressing &lt;strong&gt;Ctrl-F5&lt;/strong&gt; or select &lt;strong&gt;Run&lt;/strong&gt; from the upper menu (the green arrow) and wait for the compile and build phase to complete. The web app should load successfully in a new browser window.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2024-05-17-220807.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-30-6376c36b.png"
  
  
  loading="lazy"
@@ -618,7 +618,7 @@ This method not only reinforces learning but also helps developers (even juniors
 &lt;p&gt;In the next section, you learn how to update the Home.razor page and add your own custom HTML-layout, CSS structure and actual runtime code.&lt;/p&gt;
 &lt;h2 id="using-the-sample-app-to-understand-the-core-of-blazor"&gt;Using the sample app to understand the core of Blazor
 &lt;/h2&gt;&lt;p&gt;In the Blazor running app, navigate to the &lt;strong&gt;Counter&lt;/strong&gt; page by clicking the Counter option in the navigation sidebar to your left. Selecting the &lt;strong&gt;Click me&lt;/strong&gt; button will perform an increment of the current count without a page refresh. Having this kind of interactivity, used to require JavaScript, but with Blazor you can use C# now.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2024-05-30-144007.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-30-b86eb30f.png"
  
  
  loading="lazy"
@@ -657,7 +657,7 @@ You can find the implementation of the Counter component at &lt;strong&gt;Counte
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Running the app again, will now show the &lt;strong&gt;Counter&lt;/strong&gt; component, nicely on the Home Page. How easy, yet cool is that? DevOps engineers would call this &lt;em&gt;minimizing technical debt&lt;/em&gt;, as instead of reusing and duplicating code, you can now just reuse full components.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2024-05-30-144054.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-30-8ca81ccf.png"
  
  
  loading="lazy"
@@ -668,7 +668,7 @@ You can find the implementation of the Counter component at &lt;strong&gt;Counte
  
  &gt;&lt;/p&gt;
 &lt;h2 id="updating-the-template-with-your-custom-code"&gt;Updating the template with your custom code
-&lt;/h2&gt;&lt;p&gt;Blazor allows you to combine web page layout code (Razor pages), basically HTML and CSS, together with actual application source code (C# DotNet), in the same razor files. I can’t compare it with previous development environments, but it seems to be one of the great things about Blazor – and I really like it, since it’s somewhat simplifying the structure of your application source code itself.&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;Blazor allows you to combine web page layout code (Razor pages), basically HTML and CSS, together with actual application source code (C# DotNet), in the same razor files. I canâ€™t compare it with previous development environments, but it seems to be one of the great things about Blazor â€“ and I really like it, since itâ€™s somewhat simplifying the structure of your application source code itself.&lt;/p&gt;
 &lt;p&gt;Traditionally, this means creating the necessary HTML and CSS layout, followed by writing the Code-piece. Little bit what we talked about with the Counter.Razor page.&lt;/p&gt;
 &lt;p&gt;Most Web Apps rely or provide some sort of Data back-end, to allow users to pull up information, or maybe creating and editing new information into a database. in .NET, this usually gets done by Entity Framework, allowing interaction with different kinds of databases, such as SQL Server, but also Azure SQL, Azure Cosmos DB as well as non-Microsoft scenarios such as Oracle or Postgresql and others.&lt;/p&gt;
 &lt;p&gt;The cool thing is, Visual Studio provides a &lt;strong&gt;Scaffolding Wizard&lt;/strong&gt; for Entity Framework, which automates a big part of the process of creating web page entry form, as well as the different CRUD (Create, Read, Update, Delete) operations - both the layout, as well as the logical coding piece behind the different action buttons, is getting created.&lt;/p&gt;
@@ -707,7 +707,7 @@ You can find the implementation of the Counter component at &lt;strong&gt;Counte
 &lt;/div&gt;&lt;ol start="2"&gt;
 &lt;li&gt;In the Blazor Project folder Components, create a new subfolder &amp;ldquo;Data&amp;rdquo;, and create a file ConferenceSession.cs, in which you copy the above sample content.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2024-05-31-104800.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-30-b1097be6.png"
  
  
  loading="lazy"
@@ -720,7 +720,7 @@ You can find the implementation of the Counter component at &lt;strong&gt;Counte
 &lt;ol start="3"&gt;
 &lt;li&gt;With the Class Model in place, you can now make use of the Scaffolding wizard. From the &lt;strong&gt;Project&lt;/strong&gt;, right-click, and select &lt;strong&gt;Add New Scaffolded Item&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2024-05-31-134607.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-30-1ea8bf44.png"
  
  
  loading="lazy"
@@ -733,7 +733,7 @@ You can find the implementation of the Counter component at &lt;strong&gt;Counte
 &lt;ol start="4"&gt;
 &lt;li&gt;From the list of options, select &lt;strong&gt;Razor Component&lt;/strong&gt; and &lt;strong&gt;Razor Components Using Entity Framework (CRUD)&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2024-05-31-134900.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-30-fc5bd115.png"
  
  
  loading="lazy"
@@ -753,7 +753,7 @@ You can find the implementation of the Counter component at &lt;strong&gt;Counte
 &lt;li&gt;Database Provider: &lt;strong&gt;SQL Server&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;This will install the necessary Microsoft.EntityFrameworkCore Nuget Packages, creates the DBContext to interact with SQL Server, but - and this is rather cool - it will also create the necessary Razor Pages for the data model, including the CRUD action links.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2024-05-31-140107.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-30-89b9a0e9.png"
  
  
  loading="lazy"
@@ -766,7 +766,7 @@ You can find the implementation of the Counter component at &lt;strong&gt;Counte
 &lt;ol start="6"&gt;
 &lt;li&gt;Below the /ConferenceSessionPages subfolder, notice the different &lt;strong&gt;Create, Delete, Edit, Details and Index&lt;/strong&gt; pages. Open the &lt;strong&gt;Create.razor&lt;/strong&gt; page in the Visual Studio editor:&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2024-05-31-140601.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-30-da1eb843.png"
  
  
  loading="lazy"
@@ -812,7 +812,7 @@ the @using directive tells this page, to recognize the content of the Data folde
 &lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;Add-Migration ConferenceSessions
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src="../images/2024-05-31-142001.png"
+&lt;/div&gt;&lt;p&gt;&lt;img src="../images/screenshot-2024-05-30-94e56821.png"
  
  
  loading="lazy"
@@ -831,7 +831,7 @@ the @using directive tells this page, to recognize the content of the Data folde
 &lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;Update-Database
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src="../images/2024-05-31-142205.png"
+&lt;/div&gt;&lt;p&gt;&lt;img src="../images/screenshot-2024-05-30-fc8d8118.png"
  
  
  loading="lazy"
@@ -845,7 +845,7 @@ the @using directive tells this page, to recognize the content of the Data folde
 &lt;ol start="9"&gt;
 &lt;li&gt;Let&amp;rsquo;s run the app again, and validate our ConferenceSession CRUD Pages. If you remember from the set of Pages created for us, one of them is the &lt;strong&gt;Index.razor&lt;/strong&gt;, which has a @page directive of /conferencesessions. This means, if we browse to our app default URL, and add /conferencesessions, it will provide us with the &amp;lsquo;home page&amp;rsquo; of the Conference Sessions. Let&amp;rsquo;s try that.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2024-05-31-142604.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-30-fc7590a8.png"
  
  
  loading="lazy"
@@ -858,7 +858,7 @@ the @using directive tells this page, to recognize the content of the Data folde
 &lt;ol start="10"&gt;
 &lt;li&gt;Click the &lt;strong&gt;Create New&lt;/strong&gt; link, which redirects you to the /conferencesessions/&lt;strong&gt;create&lt;/strong&gt; page. Complete the fields and click &amp;lsquo;Create&amp;rsquo; to save the record&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2024-05-31-144809.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-30-7db1d29d.png"
  
  
  loading="lazy"
@@ -871,7 +871,7 @@ the @using directive tells this page, to recognize the content of the Data folde
 &lt;ol start="11"&gt;
 &lt;li&gt;With the new record saved, you get redirected back to the &lt;strong&gt;Index&lt;/strong&gt; page; notice the line item is there, together with a few additional CRUD links to the side for Editing, Deleting and opening the Details of the item.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2024-05-31-143104.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-30-347abe08.png"
  
  
  loading="lazy"
@@ -888,7 +888,7 @@ the @using directive tells this page, to recognize the content of the Data folde
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;From the Azure Portal, create new resource / static web app&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//756a5b2424f865b6cf86eefab8492d2e.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-30-4aae45d5.png"
  
  
  loading="lazy"
@@ -905,10 +905,10 @@ the @using directive tells this page, to recognize the content of the Data folde
 &lt;/ol&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;Resource group – any name of choice&lt;/p&gt;
+&lt;p&gt;Resource group â€“ any name of choice&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Name of the app – any unique name for the app&lt;/p&gt;
+&lt;p&gt;Name of the app â€“ any unique name for the app&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Source = GitHub&lt;/p&gt;
@@ -918,7 +918,7 @@ the @using directive tells this page, to recognize the content of the Data folde
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Region = any region of your choice&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//3910c87d613034cbd0c9ed1392dfda7b.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-30-62941ae1.png"
  
  
  loading="lazy"
@@ -933,7 +933,7 @@ the @using directive tells this page, to recognize the content of the Data folde
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;Scroll down and authenticate to GitHub; Next, select your source repo in Github where the code is stored (the one we just created)&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//1bd1ddddd3602c3ba2d84b540da393aa.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-30-dbd525c0.png"
  
  
  loading="lazy"
@@ -946,7 +946,7 @@ the @using directive tells this page, to recognize the content of the Data folde
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Click Build Details to provide more parameters regarding the Blazor app itself. Note you need to change the default App location from /Client to /, since our source code is in the root of the Blazor Web Assembly, without using ASP.Net hosted back-end.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//420cbce0770a41dc39ddf2184948363e.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-30-a5c753e9.png"
  
  
  loading="lazy"
@@ -959,7 +959,7 @@ the @using directive tells this page, to recognize the content of the Data folde
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Once published, it will trigger a GitHub Actions pipeline to publish the actual content&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//ba208857aa01b6d744c79606a7a76b53.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-30-d30b17e9.png"
  
  
  loading="lazy"
@@ -969,8 +969,8 @@ the @using directive tells this page, to recognize the content of the Data folde
  &gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;The YAML pipeline code is stored in the .github/workflows/ subfolder within the GitHub repository. You shouldn’t need to update this file though. It just works out-of-the-box.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//7d89901490cd8ae277355c130085551f.png"
+&lt;p&gt;The YAML pipeline code is stored in the .github/workflows/ subfolder within the GitHub repository. You shouldnâ€™t need to update this file though. It just works out-of-the-box.&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-30-65639483.png"
  
  
  loading="lazy"
@@ -982,8 +982,8 @@ the @using directive tells this page, to recognize the content of the Data folde
  &gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Check in Actions what’s happening:&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//97f08b3e40277869ee85a42fa0d2a343.png"
+&lt;p&gt;Check in Actions whatâ€™s happening:&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-30-f50eb218.png"
  
  
  loading="lazy"
@@ -996,7 +996,7 @@ the @using directive tells this page, to recognize the content of the Data folde
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Open the details for the Build &amp;amp; Deploy workflow&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//da5cda0e73ed46fcc4274becc2f4a30e.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-30-8f5e83c2.png"
  
  
  loading="lazy"
@@ -1009,7 +1009,7 @@ the @using directive tells this page, to recognize the content of the Data folde
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Selecting any step in the Action workflow will show more details:&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//765fda402ec958a1267c45c8d15592df.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-30-338d5027.png"
  
  
  loading="lazy"
@@ -1022,7 +1022,7 @@ the @using directive tells this page, to recognize the content of the Data folde
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Wait for the workflow to complete successfully.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//291538dda0fbb66c1ccc93f67b3ed263.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-30-ffd5fa67.png"
  
  
  loading="lazy"
@@ -1034,15 +1034,15 @@ the @using directive tells this page, to recognize the content of the Data folde
  &gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Navigate back to the Azure Static Web app, click it’s URL and see the Blazor Web App is running as expected.&lt;/p&gt;
+&lt;p&gt;Navigate back to the Azure Static Web app, click itâ€™s URL and see the Blazor Web App is running as expected.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;h1 id="summary"&gt;Summary
 &lt;/h1&gt;&lt;p&gt;In this article, I provided all the necessary steps to build a Blazor .NET 8 Web Server application. Started from the default template, you updated snippets of code to inject Components, and we also used the Scaffolded Item wizard to provide CRUD operations to a data model.&lt;/p&gt;
-&lt;p&gt;I would like to thank the organizing team of MS Tech Summit Poland 2024 for having accepted my session submission for the 3rd year in a row. Especially since this was my first attempt to do some (semi)live coding, to share my excitement of how I learned to write and build code at age 48. I’m already brainstorming on what Blazor app I can share in next year’s edition&amp;hellip;&lt;/p&gt;
+&lt;p&gt;I would like to thank the organizing team of MS Tech Summit Poland 2024 for having accepted my session submission for the 3rd year in a row. Especially since this was my first attempt to do some (semi)live coding, to share my excitement of how I learned to write and build code at age 48. Iâ€™m already brainstorming on what Blazor app I can share in next yearâ€™s edition&amp;hellip;&lt;/p&gt;
 &lt;p&gt;/Peter&lt;/p&gt;
 &lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
- &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ &gt;&lt;img src="../images/screenshot-2024-05-30-17f576e7.png"
  
  
  loading="lazy"
@@ -1066,7 +1066,7 @@ the @using directive tells this page, to recognize the content of the Data folde
 &lt;li&gt;Visual Studio 2022 version 17.9.7 or newer, to develop the application (VSCode or other dev tools will work as well, but I&amp;rsquo;m not that familiar with those&amp;hellip;)
 &lt;ul&gt;
 &lt;li&gt;Community Edition can be downloaded for free here (&lt;a class="link" href="https://visualstudio.microsoft.com/vs/community/" target="_blank" rel="noopener"
- &gt;Visual Studio 2022 Community Edition – Download Latest Free Version (microsoft.com)&lt;/a&gt;)&lt;/li&gt;
+ &gt;Visual Studio 2022 Community Edition â€“ Download Latest Free Version (microsoft.com)&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;GitHub Account to store the application code in source control
@@ -1089,13 +1089,13 @@ the @using directive tells this page, to recognize the content of the Data folde
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1 id="deploying-your-first-blazor-web-assembly-app-from-a-template"&gt;Deploying your first Blazor Web Assembly app from a template
-&lt;/h1&gt;&lt;p&gt;Visual Studio (and .NET) provide different Blazor templates, both as an “empty template”, as well as one with a functional “sample weather app”, and both options are available for Server and Web Assembly.&lt;/p&gt;
+&lt;/h1&gt;&lt;p&gt;Visual Studio (and .NET) provide different Blazor templates, both as an â€œempty templateâ€, as well as one with a functional â€œsample weather appâ€, and both options are available for Server and Web Assembly.&lt;/p&gt;
 &lt;p&gt;With the release of .NET8 last November, the Product Group decided to simplify getting started with Blazor, using the &lt;strong&gt;Blazor Web App&lt;/strong&gt; template. Actually allowing you to decide wether to use WebAssembly, Server or both, in the same project.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Launch &lt;strong&gt;Visual Studio 2022&lt;/strong&gt;, and select &lt;strong&gt;Create New Project&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;From the list of templates, select &lt;strong&gt;Blazor Web App&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2024-05-17-215846.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-31fb6b2a.png"
  
  
  loading="lazy"
@@ -1128,7 +1128,7 @@ the @using directive tells this page, to recognize the content of the Data folde
 &lt;p&gt;Click &lt;strong&gt;Create&lt;/strong&gt; to complete the project creation wizard and wait for the template to get deployed in the Visual Studio development environment. The Solution Explorer looks like below:&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2024-05-17-220528.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-c0fdabfe.png"
  
  
  loading="lazy"
@@ -1141,7 +1141,7 @@ the @using directive tells this page, to recognize the content of the Data folde
 &lt;ol start="10"&gt;
 &lt;li&gt;Run the app by pressing &lt;strong&gt;Ctrl-F5&lt;/strong&gt; or select &lt;strong&gt;Run&lt;/strong&gt; from the upper menu (the green arrow) and wait for the compile and build phase to complete. The web app should load successfully in a new browser window.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2024-05-17-220807.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-6376c36b.png"
  
  
  loading="lazy"
@@ -1167,8 +1167,8 @@ the @using directive tells this page, to recognize the content of the Data folde
 &lt;/ol&gt;
 &lt;p&gt;In the next section, you learn how to update the Home.razor page and add your own custom HTML-layout, CSS structure and actual runtime code.&lt;/p&gt;
 &lt;h1 id="updating-the-template-with-your-custom-code"&gt;Updating the template with your custom code
-&lt;/h1&gt;&lt;p&gt;Blazor allows you to combine web page layout code (Razor pages), basically HTML and CSS, together with actual application source code (C# DotNet), in the same razor files. I can’t compare it with previous development environments, but it seems to be one of the great things about Blazor – and I really like it, since it’s somewhat simplifying the structure of your application source code itself.&lt;/p&gt;
-&lt;p&gt;Another take is creating the web page layout first, and only adding logic later on. So let’s start with creating a basic web page, adding a search field and a button. All Razor Pages the app uses, are typically stored in the \Components subfolder.&lt;/p&gt;
+&lt;/h1&gt;&lt;p&gt;Blazor allows you to combine web page layout code (Razor pages), basically HTML and CSS, together with actual application source code (C# DotNet), in the same razor files. I canâ€™t compare it with previous development environments, but it seems to be one of the great things about Blazor â€“ and I really like it, since itâ€™s somewhat simplifying the structure of your application source code itself.&lt;/p&gt;
+&lt;p&gt;Another take is creating the web page layout first, and only adding logic later on. So letâ€™s start with creating a basic web page, adding a search field and a button. All Razor Pages the app uses, are typically stored in the \Components subfolder.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;You can chose to reuse the Home.razor sample page and continue from there, or create a new Razor Page and update the route path. To show you how Blazor Components are working, let&amp;rsquo;s define our SearchMarvel page, as a &lt;strong&gt;new page&lt;/strong&gt; under the &lt;strong&gt;\Pages&lt;/strong&gt; section in the &lt;strong&gt;Client&lt;/strong&gt; project. Save it as &lt;strong&gt;SearchMarvel.razor&lt;/strong&gt;&lt;/p&gt;
@@ -1223,9 +1223,9 @@ the @using directive tells this page, to recognize the content of the Data folde
 &lt;/div&gt;
 &lt;/div&gt;&lt;ol start="3"&gt;
 &lt;li&gt;This adds the necessary objects on the web page.&lt;/li&gt;
-&lt;li&gt;And let’s run this update to see what we have for now.&lt;/li&gt;
+&lt;li&gt;And letâ€™s run this update to see what we have for now.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2024-05-17-221303.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-eace8fac.png"
  
  
  loading="lazy"
@@ -1237,7 +1237,7 @@ the @using directive tells this page, to recognize the content of the Data folde
  &gt;&lt;/p&gt;
 &lt;ol start="5"&gt;
 &lt;li&gt;
-&lt;p&gt;So the layout for the search part of the app is done. Let’s move on with the design of the actual response / result items. The return from the Marvel API can be presented in a table gridview, but that’s not that nice-looking; I remembered having physical cards as collector items as a kid, so I did some searching for a similar digital experience. Interesting enough, there is a CSS-class object “card”, which nicely reflects this experience. So let’s add the next snippet of code for this response layout.&lt;/p&gt;
+&lt;p&gt;So the layout for the search part of the app is done. Letâ€™s move on with the design of the actual response / result items. The return from the Marvel API can be presented in a table gridview, but thatâ€™s not that nice-looking; I remembered having physical cards as collector items as a kid, so I did some searching for a similar digital experience. Interesting enough, there is a CSS-class object â€œcardâ€, which nicely reflects this experience. So letâ€™s add the next snippet of code for this response layout.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Add the following code, below the snippet you copied earlier:&lt;/p&gt;
@@ -1313,11 +1313,11 @@ the @using directive tells this page, to recognize the content of the Data folde
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;div&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;What this snippet does, is adding a “container” object, in which we create a small table view having 3 rows and 1 column. The card composition shows the Hero title on top, the Marvel Hero character details in the middle and an image of the character as well.&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;What this snippet does, is adding a â€œcontainerâ€ object, in which we create a small table view having 3 rows and 1 column. The card composition shows the Hero title on top, the Marvel Hero character details in the middle and an image of the character as well.&lt;/p&gt;
 &lt;ol start="7"&gt;
-&lt;li&gt;Let’s run the code again to test if everything works as expected.&lt;/li&gt;
+&lt;li&gt;Letâ€™s run the code again to test if everything works as expected.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2024-05-17-221457.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-7c897836.png"
  
  
  loading="lazy"
@@ -1328,10 +1328,10 @@ the @using directive tells this page, to recognize the content of the Data folde
  
  &gt;&lt;/p&gt;
 &lt;ol start="8"&gt;
-&lt;li&gt;Now wait, we lose quite some time on stopping the app, updating code, starting it again – so what we can do is use the &lt;strong&gt;new VS2022 feature called Hot Reload&lt;/strong&gt; / if I set this to “Hot Reload on Save”, it will dynamically update the runtime state of the app based on my edits. Let’s check it out.&lt;/li&gt;
-&lt;li&gt;While in debugging mode, check the “flame” icon in the menu:&lt;/li&gt;
+&lt;li&gt;Now wait, we lose quite some time on stopping the app, updating code, starting it again â€“ so what we can do is use the &lt;strong&gt;new VS2022 feature called Hot Reload&lt;/strong&gt; / if I set this to â€œHot Reload on Saveâ€, it will dynamically update the runtime state of the app based on my edits. Letâ€™s check it out.&lt;/li&gt;
+&lt;li&gt;While in debugging mode, check the â€œflameâ€ icon in the menu:&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2024-05-17-221614.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-af598345.png"
  
  
  loading="lazy"
@@ -1342,10 +1342,10 @@ the @using directive tells this page, to recognize the content of the Data folde
  
  &gt;&lt;/p&gt;
 &lt;ol start="10"&gt;
-&lt;li&gt;Enable the setting “Hot Reload on File Save”.&lt;/li&gt;
-&lt;li&gt;Edit the card-title “Marvel Hero Name” to “Marvel Character Name” and check how the app refreshes itself without needing to stop/start.&lt;/li&gt;
+&lt;li&gt;Enable the setting â€œHot Reload on File Saveâ€.&lt;/li&gt;
+&lt;li&gt;Edit the card-title â€œMarvel Hero Nameâ€ to â€œMarvel Character Nameâ€ and check how the app refreshes itself without needing to stop/start.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2024-05-17-221738.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-8b9a3021.png"
  
  
  loading="lazy"
@@ -1355,7 +1355,7 @@ the @using directive tells this page, to recognize the content of the Data folde
  
  
  &gt;&lt;/p&gt;
-&lt;p&gt;The search field is not doing anything yet, so we need to make sure – that whenever we type something in that field - it kicks of an API call to the Marvel API back-end.&lt;/p&gt;
+&lt;p&gt;The search field is not doing anything yet, so we need to make sure â€“ that whenever we type something in that field - it kicks of an API call to the Marvel API back-end.&lt;/p&gt;
 &lt;ol start="12"&gt;
 &lt;li&gt;First, we need to use the bind-value parameter for this field, linking it to a search task; Update the line with the field box as follows:&lt;/li&gt;
 &lt;/ol&gt;
@@ -1369,8 +1369,8 @@ the @using directive tells this page, to recognize the content of the Data folde
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;input&lt;/span&gt; &lt;span class="n"&gt;class&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;form-control form-control-lg w-50 mx-auto mt-4&amp;#34;&lt;/span&gt; &lt;span class="n"&gt;placeholder&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;Enter Marvel Character&amp;#34;&lt;/span&gt; &lt;span class="n"&gt;@bind&lt;/span&gt;&lt;span class="p"&gt;-&lt;/span&gt;&lt;span class="k"&gt;value&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;whotofind&amp;#34;&lt;/span&gt; &lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;add &lt;strong&gt;@bind-value=”whotofind”&lt;/strong&gt; at the end of the line.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2024-05-18-090106.png"
+&lt;/div&gt;&lt;p&gt;add &lt;strong&gt;@bind-value=â€whotofindâ€&lt;/strong&gt; at the end of the line.&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-d9480a36.png"
  
  
  loading="lazy"
@@ -1380,13 +1380,13 @@ the @using directive tells this page, to recognize the content of the Data folde
  
  
  &gt;&lt;/p&gt;
-&lt;p&gt;Ignore the errors regarding the “whotofind” for now. We&amp;rsquo;ll fix that in a minute.&lt;/p&gt;
+&lt;p&gt;Ignore the errors regarding the â€œwhotofindâ€ for now. We&amp;rsquo;ll fix that in a minute.&lt;/p&gt;
 &lt;ol start="13"&gt;
 &lt;li&gt;Next, we need to update the button code to actually pick up an action when clicking on it; this is done using the @onclick event&lt;/li&gt;
 &lt;/ol&gt;
 &lt;pre&gt;&lt;code&gt;Add **@onclick=FindMarvel**
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src="../images/2024-05-18-090244.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-5feb7c8f.png"
  
  
  loading="lazy"
@@ -1430,11 +1430,11 @@ the @using directive tells this page, to recognize the content of the Data folde
 &lt;/div&gt;
 &lt;/div&gt;&lt;ol start="16"&gt;
 &lt;li&gt;Within the curly brackets, we can use regular C# code&lt;/li&gt;
-&lt;li&gt;Start with defining a string for the “whotofind”&lt;/li&gt;
-&lt;li&gt;Followed by defining a method (task) for the FindMarvel onclick action – for now, let’s write something to the console to validate our search field is working as expected&lt;/li&gt;
+&lt;li&gt;Start with defining a string for the â€œwhotofindâ€&lt;/li&gt;
+&lt;li&gt;Followed by defining a method (task) for the FindMarvel onclick action â€“ for now, letâ€™s write something to the console to validate our search field is working as expected&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;The string “whotofind” refers to the search field object, where the Task “FindMarvel” refers to the button click action. So easy said, whenever we click the button, it will pick up the string content from the search field, and send it to the Marvel API back-end. As we don’t have that yet, I’m just writing the data to the console, which is always a great test to validate the code is working as expected.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2024-05-18-090439.png"
+&lt;p&gt;The string â€œwhotofindâ€ refers to the search field object, where the Task â€œFindMarvelâ€ refers to the button click action. So easy said, whenever we click the button, it will pick up the string content from the search field, and send it to the Marvel API back-end. As we donâ€™t have that yet, Iâ€™m just writing the data to the console, which is always a great test to validate the code is working as expected.&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-5fc9e8a8.png"
  
  
  loading="lazy"
@@ -1445,9 +1445,9 @@ the @using directive tells this page, to recognize the content of the Data folde
  
  &gt;&lt;/p&gt;
 &lt;ol start="19"&gt;
-&lt;li&gt;Save the file, which will throw a warning regarding the hot reload. Since we added new actual code snippets, hot reload can’t just go and recognize it. So a reload is needed…&lt;/li&gt;
+&lt;li&gt;Save the file, which will throw a warning regarding the hot reload. Since we added new actual code snippets, hot reload canâ€™t just go and recognize it. So a reload is neededâ€¦&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/d0be33cb6858972b3c00724c40f485e3.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-5f1e4b86.png"
  
  
  loading="lazy"
@@ -1459,10 +1459,10 @@ the @using directive tells this page, to recognize the content of the Data folde
  &gt;&lt;/p&gt;
 &lt;ol start="20"&gt;
 &lt;li&gt;
-&lt;p&gt;Select “Rebuild and Apply Changes”&lt;/p&gt;
+&lt;p&gt;Select â€œRebuild and Apply Changesâ€&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Enter the name of a Marvel character, for example “thor”, and notice &lt;strong&gt;nothing happens on the console/terminal&lt;/strong&gt;. Why not?? Is it an error in our code, did we miss anything,&amp;hellip;?&lt;/p&gt;
+&lt;p&gt;Enter the name of a Marvel character, for example â€œthorâ€, and notice &lt;strong&gt;nothing happens on the console/terminal&lt;/strong&gt;. Why not?? Is it an error in our code, did we miss anything,&amp;hellip;?&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;strong&gt;NO and YES :)&lt;/strong&gt;&amp;hellip; our code is fine, but we are missing a new .NET8 feature for Blazor apps&amp;hellip; we need to specify the &lt;strong&gt;Render Mode&lt;/strong&gt;&lt;/p&gt;
@@ -1490,7 +1490,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;ol start="24"&gt;
 &lt;li&gt;Save the changes, and run the app; enter a Marvel character name in the search field, click the Find Button and notice the search field string is shown in the console now. This is what InteractiveWebAssembly Render Mode is doing&amp;hellip;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2024-05-18-091910.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-da22b543.png"
  
  
  loading="lazy"
@@ -1501,14 +1501,14 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  
  &gt;&lt;/p&gt;
 &lt;ol start="25"&gt;
-&lt;li&gt;I think the bare minimum app layout development is ready, so it’s time to set up the Marvel API-part of the solution in the next section.&lt;/li&gt;
+&lt;li&gt;I think the bare minimum app layout development is ready, so itâ€™s time to set up the Marvel API-part of the solution in the next section.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h1 id="configuring-the-marvel-developer-api-backend-code-interaction"&gt;Configuring the Marvel Developer API Backend Code interaction
 &lt;/h1&gt;&lt;ol&gt;
 &lt;li&gt;Head over to the Marvel Developer website &lt;a class="link" href="https://developer.marvel.com" target="_blank" rel="noopener"
  &gt;https://developer.marvel.com&lt;/a&gt; and grab the necessary API information.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//fc2a542cfdbca3fb86519841f3f53999.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-4f9a2349.png"
  
  
  loading="lazy"
@@ -1528,10 +1528,10 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;p&gt;&lt;strong&gt;Private:&lt;/strong&gt; 6362bd53a4c307c96fb27xxxxxxxxxx&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;To allow requests to come into the Marvel API back-end, you need to specify the source URL domains where the requests are coming from. Add &lt;strong&gt;localhost&lt;/strong&gt; here, which is the URL you use for all testing on your development workstation. Later on, once the app runs in Azure, you need to add the Azure Service URL here as well…&lt;/p&gt;
+&lt;p&gt;To allow requests to come into the Marvel API back-end, you need to specify the source URL domains where the requests are coming from. Add &lt;strong&gt;localhost&lt;/strong&gt; here, which is the URL you use for all testing on your development workstation. Later on, once the app runs in Azure, you need to add the Azure Service URL here as wellâ€¦&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//a7dd9d49c1402deb787b6ab792a0fb38.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-47c6d979.png"
  
  
  loading="lazy"
@@ -1542,9 +1542,9 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  
  &gt;&lt;/p&gt;
 &lt;ol start="5"&gt;
-&lt;li&gt;Once set up, head over to “interactive documentation”, and walk through the different API placeholders and keywords one can use, to show the capabilities. For the app later on, we will use the “namestartswith”, as it is the most easy to use – names could work, but it requires knowing the explicit name of the character, and having it correctly spelled.&lt;/li&gt;
+&lt;li&gt;Once set up, head over to â€œinteractive documentationâ€, and walk through the different API placeholders and keywords one can use, to show the capabilities. For the app later on, we will use the â€œnamestartswithâ€, as it is the most easy to use â€“ names could work, but it requires knowing the explicit name of the character, and having it correctly spelled.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//d9552cc8c4ec1ff4e0f2e32a767a4f42.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-50eb88c8.png"
  
  
  loading="lazy"
@@ -1554,7 +1554,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  
  
  &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//57bc3634f004877c8cff9942d9e6e8d3.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-2265117a.png"
  
  
  loading="lazy"
@@ -1564,7 +1564,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  
  
  &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//4f749b51a5d1bdf6d51e81f614c8d72a.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-427ba28a.png"
  
  
  loading="lazy"
@@ -1574,7 +1574,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  
  
  &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//9883c08decac6bffde5cb763539b953f.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-360bd5d8.png"
  
  
  loading="lazy"
@@ -1585,9 +1585,9 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  
  &gt;&lt;/p&gt;
 &lt;ol start="6"&gt;
-&lt;li&gt;Click the “Try it out” button. The result shows the outcome + the exact URL that was used:&lt;/li&gt;
+&lt;li&gt;Click the â€œTry it outâ€ button. The result shows the outcome + the exact URL that was used:&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//b3aab53a282e9d00b58ba5c91e81afa0.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-4d64c949.png"
  
  
  loading="lazy"
@@ -1605,7 +1605,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;p&gt;From the app.client project, select &lt;strong&gt;Manage Nuget Packages&lt;/strong&gt;, and search for &lt;strong&gt;Microsoft.Extension.Http&lt;/strong&gt; as package name.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2024-05-18-124041.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-3462a674.png"
  
  
  loading="lazy"
@@ -1626,7 +1626,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;builder.Services.AddScoped(sp =&amp;gt; new HttpClient { BaseAddress = new Uri(&amp;#34;https://gateway.marvel.com:443/v1/public&amp;#34;) });
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src="../images/2024-05-18-093043.png"
+&lt;/div&gt;&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-96b9a1b4.png"
  
  
  loading="lazy"
@@ -1647,7 +1647,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;builder.Services.AddHttpClient();
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src="../images/2024-05-18-124637.png"
+&lt;/div&gt;&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-5d648ed1.png"
  
  
  loading="lazy"
@@ -1682,7 +1682,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;div&lt;/span&gt; &lt;span class="n"&gt;class&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;text-center&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src="../images/2024-05-18-093311.png"
+&lt;/div&gt;&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-f4b5871e.png"
  
  
  loading="lazy"
@@ -1695,7 +1695,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;ol start="10"&gt;
 &lt;li&gt;As you could see from the Marvel output, they are using JSON; this means, when calling the HttpClient, we also receive a JSON object back.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//6ace0a137db04fd541e730b90bf18a42.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-31bb1d9b.png"
  
  
  loading="lazy"
@@ -1714,7 +1714,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  &gt;https://www.jSON2CSharp.com&lt;/a&gt;&lt;/strong&gt;, which allows for pasting in a JSON payload, which then gets converted to c# class structure&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//7840c5de3eda79f2d196079bc0081756.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-2e723304.png"
  
  
  loading="lazy"
@@ -1725,9 +1725,9 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  
  &gt;&lt;/p&gt;
 &lt;ol start="13"&gt;
-&lt;li&gt;In the VStudio app.client project, create a new subfolder “Models”, and add a new Item in there, called MarvelResult.cs&lt;/li&gt;
+&lt;li&gt;In the VStudio app.client project, create a new subfolder â€œModelsâ€, and add a new Item in there, called MarvelResult.cs&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//3bb34b057bc24ab07c3280a90a41e829.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-23f4f21c.png"
  
  
  loading="lazy"
@@ -1738,7 +1738,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  
  &gt;&lt;/p&gt;
 &lt;ol start="14"&gt;
-&lt;li&gt;We could copy the content from the JSON deserialize output into this class object, but for this sample, we don’t need all the provided data by Marvel – so I made some changes and ended up with the core pieces of data I want, like image, name, description&lt;/li&gt;
+&lt;li&gt;We could copy the content from the JSON deserialize output into this class object, but for this sample, we donâ€™t need all the provided data by Marvel â€“ so I made some changes and ended up with the core pieces of data I want, like image, name, description&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;The code snippet I&amp;rsquo;m using for this example, looks like follows:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
@@ -1815,7 +1815,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src="../images/2024-05-18-094323.png"
+&lt;/div&gt;&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-c1624f39.png"
  
  
  loading="lazy"
@@ -1826,7 +1826,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  
  &gt;&lt;/p&gt;
 &lt;ol start="15"&gt;
-&lt;li&gt;With the class in place, let’s update the SearchMarvel.razor, to make sure it recognizes the model class MarvelResult. To do this, we need to add a private MarvelResult, reflecting the data class we just created;&lt;/li&gt;
+&lt;li&gt;With the class in place, letâ€™s update the SearchMarvel.razor, to make sure it recognizes the model class MarvelResult. To do this, we need to add a private MarvelResult, reflecting the data class we just created;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
 &lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
@@ -1836,7 +1836,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-csharp" data-lang="csharp"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kd"&gt;private&lt;/span&gt; &lt;span class="n"&gt;MarvelResult&lt;/span&gt; &lt;span class="n"&gt;_marvelResult&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src="../images/2024-05-18-094655.png"
+&lt;/div&gt;&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-10d6034c.png"
  
  
  loading="lazy"
@@ -1847,7 +1847,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  
  &gt;&lt;/p&gt;
 &lt;ol start="16"&gt;
-&lt;li&gt;As we stored the MarvelResult.cs class model in a different folder within the application source code, we also need to update our Page details, telling it to “use” the Models subfolder to find it. This is done using the @using statement on top of the Home.razor page:&lt;/li&gt;
+&lt;li&gt;As we stored the MarvelResult.cs class model in a different folder within the application source code, we also need to update our Page details, telling it to â€œuseâ€ the Models subfolder to find it. This is done using the @using statement on top of the Home.razor page:&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
 &lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
@@ -1865,7 +1865,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;@inject HttpClient HttpClient
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src="../images/2024-05-18-094850.png"
+&lt;/div&gt;&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-f7c29b82.png"
  
  
  loading="lazy"
@@ -1876,7 +1876,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  
  &gt;&lt;/p&gt;
 &lt;p&gt;Where now the Class gets nicely recognized&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2024-05-18-095009.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-1597bf39.png"
  
  
  loading="lazy"
@@ -1887,7 +1887,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  
  &gt;&lt;/p&gt;
 &lt;ol start="17"&gt;
-&lt;li&gt;Let’s update the Task FindMarvel, with the required code snippet to recognize the dynamic URL to connect to, as well as calling the HttpClient function. As per the Marvel API docs, we also need to integrate the api Public key into our URL search string, so we have to define the string for this first.&lt;/li&gt;
+&lt;li&gt;Letâ€™s update the Task FindMarvel, with the required code snippet to recognize the dynamic URL to connect to, as well as calling the HttpClient function. As per the Marvel API docs, we also need to integrate the api Public key into our URL search string, so we have to define the string for this first.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Btw, the full Request URL to use is visible from the Interactive Documentation page where we ran the &amp;rsquo;try it now&amp;rsquo; search task (&lt;a class="link" href="https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=spider&amp;amp;apikey=579a41c9eccaf70a3a09c1722ef6c2fc" target="_blank" rel="noopener"
  &gt;https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=spider&amp;apikey=579a41c9eccaf70a3a09c1722ef6c2fc&lt;/a&gt;)&lt;/p&gt;
@@ -1959,7 +1959,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src="../images/88a6f657a0adfca57021b3606066f8db.png"
+&lt;/div&gt;&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-1edaf9ad.png"
  
  
  loading="lazy"
@@ -1971,9 +1971,9 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  &gt;&lt;/p&gt;
 &lt;ol start="19"&gt;
 &lt;li&gt;While all the code pieces are done, note that as of .NET6, it started checking for Nullable values. This is what the green squickly lines are identifying. What this means is that the value could be equal to null, which could potentially break your application, since it expects to have a real value in there.&lt;/li&gt;
-&lt;li&gt;I wouldn’t recommend it to change, but for this little sample app, it would be totally OK to disable the nullable check. This can be done from the Properties of the Project&lt;/li&gt;
+&lt;li&gt;I wouldnâ€™t recommend it to change, but for this little sample app, it would be totally OK to disable the nullable check. This can be done from the Properties of the Project&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2024-05-18-095912.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-0b49c1da.png"
  
  
  loading="lazy"
@@ -1985,10 +1985,10 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  &gt;&lt;/p&gt;
 &lt;h1 id="render-json-response-data-into-html-layout"&gt;Render JSON Response data into HTML Layout
 &lt;/h1&gt;&lt;ol&gt;
-&lt;li&gt;That’s all from a code snippet perspective, where now the last piece of updates is back into the HTML Layout of the web page itself, updating the content of the card object:&lt;/li&gt;
-&lt;li&gt;Since we most probably get an array of results back, meaning more than one, we need to go through a “for each” loop; also, there might be scenarios where we are not getting back any results (like the character doesn’t exist, a typo in the character’s name,…), so we will add a little validation check on that too, using an if = !null&lt;/li&gt;
+&lt;li&gt;Thatâ€™s all from a code snippet perspective, where now the last piece of updates is back into the HTML Layout of the web page itself, updating the content of the card object:&lt;/li&gt;
+&lt;li&gt;Since we most probably get an array of results back, meaning more than one, we need to go through a â€œfor eachâ€ loop; also, there might be scenarios where we are not getting back any results (like the character doesnâ€™t exist, a typo in the characterâ€™s name,â€¦), so we will add a little validation check on that too, using an if = !null&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;Let’s go ahead!&lt;/p&gt;
+&lt;p&gt;Letâ€™s go ahead!&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;At the top of the card object (class=container), or right below the &lt;div&gt; section where we defined the search button, insert the @if statement, and move the whole div section between the curly brackets, updating the fixed fields we defined earlier, with the MarvelResult class objects:&lt;/li&gt;
 &lt;/ol&gt;
@@ -2051,7 +2051,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;/div&gt;&lt;ol&gt;
 &lt;li&gt;Run the app and see the result in action&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//44856923dff937c6cad7d953b046c1bd.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-88de5977.png"
  
  
  loading="lazy"
@@ -2062,20 +2062,20 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  
  &gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;That’s it for now. Great job!&lt;/li&gt;
+&lt;li&gt;Thatâ€™s it for now. Great job!&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h1 id="making-the-cards-flip"&gt;Making the cards ‘flip’
-&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;Note: this part is left out of the ScifiDevCon presentation to keep the video within the expected time – what we’re doing here is integrating more CSS layout components on to a new Page in the web app, which provides a more dynamic look-and-feel to the Marvel cards we have.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;While CSS can be difficult – and trust me it is – I literally googled for “flipping cards CSS” and found a snippet of code on &lt;a class="link" href="https://w3schools.com" target="_blank" rel="noopener"
- &gt;https://w3schools.com&lt;/a&gt;, and it worked almost straight away…&lt;/p&gt;
+&lt;h1 id="making-the-cards-âflipâ"&gt;Making the cards â€˜flipâ€™
+&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;Note: this part is left out of the ScifiDevCon presentation to keep the video within the expected time â€“ what weâ€™re doing here is integrating more CSS layout components on to a new Page in the web app, which provides a more dynamic look-and-feel to the Marvel cards we have.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;While CSS can be difficult â€“ and trust me it is â€“ I literally googled for â€œflipping cards CSSâ€ and found a snippet of code on &lt;a class="link" href="https://w3schools.com" target="_blank" rel="noopener"
+ &gt;https://w3schools.com&lt;/a&gt;, and it worked almost straight awayâ€¦&lt;/p&gt;
 &lt;p&gt;Here we go:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;Let’s copy the current state of the page we have, and store it in a different page; so we grab &lt;strong&gt;SearchMarvel.razor&lt;/strong&gt; and copy/paste it to &lt;strong&gt;FlipMarvel.razor&lt;/strong&gt; this will allow me to also demonstrate some other Blazor features around Menu Navigation and how to use object-specific css; meaning, CSS that will only be picked up by the specific page, and not interfere with the rest of the application CSS we already have.&lt;/p&gt;
+&lt;p&gt;Letâ€™s copy the current state of the page we have, and store it in a different page; so we grab &lt;strong&gt;SearchMarvel.razor&lt;/strong&gt; and copy/paste it to &lt;strong&gt;FlipMarvel.razor&lt;/strong&gt; this will allow me to also demonstrate some other Blazor features around Menu Navigation and how to use object-specific css; meaning, CSS that will only be picked up by the specific page, and not interfere with the rest of the application CSS we already have.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Open FlipMarvel.razor page; First thing we need to change, is the Page Routing, pointing to the “/flip” routing directory instead of the “/”, as that one is linked to the index.razor page.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//46aac649d4ecfb4be03d1ce021141274.png"
+&lt;p&gt;Open FlipMarvel.razor page; First thing we need to change, is the Page Routing, pointing to the â€œ/flipâ€ routing directory instead of the â€œ/â€, as that one is linked to the index.razor page.&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-9b7d28f8.png"
  
  
  loading="lazy"
@@ -2255,9 +2255,9 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;ol&gt;
-&lt;li&gt;and paste this under the @using section and the &lt;PageTitle&gt; section of the code you already have (Note: ignore the @using marveltake2.models in the screenshot, it’s the name of my test project)&lt;/li&gt;
+&lt;li&gt;and paste this under the @using section and the &lt;PageTitle&gt; section of the code you already have (Note: ignore the @using marveltake2.models in the screenshot, itâ€™s the name of my test project)&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//e28cd81c4d68ae3560000e3a047e15f9.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-5ee912eb.png"
  
  
  loading="lazy"
@@ -2268,7 +2268,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  
  &gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;Next, we need to update the layout of the card item itself, in the section within the “foreach” loop, as that’s where the data is coming in, and getting displayed&lt;/li&gt;
+&lt;li&gt;Next, we need to update the layout of the card item itself, in the section within the â€œforeachâ€ loop, as thatâ€™s where the data is coming in, and getting displayed&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;@foreach(var result in _marvelResult.Data.Results)&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
@@ -2347,7 +2347,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;Next, we add a class for the flip-card-back, where we will show the Marvel character name and description.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//4082873f68fc45f018526dcce23ec2b7.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-1ecbeef2.png"
  
  
  loading="lazy"
@@ -2359,12 +2359,12 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  &gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;That’s all we need to have for now; so let’s have a look, by launching the app&lt;/p&gt;
+&lt;p&gt;Thatâ€™s all we need to have for now; so letâ€™s have a look, by launching the app&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;Since the previous page was index.razor, it’s getting loaded by design (from the index.html). so we need to update the URL to pick up the /flip page, by adding it to the end of the URL, such as &lt;a class="link" href="https://localhost:7110?flip" target="_blank" rel="noopener"
+&lt;li&gt;Since the previous page was index.razor, itâ€™s getting loaded by design (from the index.html). so we need to update the URL to pick up the /flip page, by adding it to the end of the URL, such as &lt;a class="link" href="https://localhost:7110?flip" target="_blank" rel="noopener"
  &gt;https://localhost:7110?flip&lt;/a&gt; (note, the port number will be different on your end)&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//7ce7af6f54af8a7aee9535ff23b92e47.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-e436e152.png"
  
  
  loading="lazy"
@@ -2377,7 +2377,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;ol&gt;
 &lt;li&gt;Search for a character, and see the outcome cards:&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//b2a599d62eb62f38570ce2865d97a8a0.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-efb1bdd8.png"
  
  
  loading="lazy"
@@ -2388,10 +2388,10 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  
  &gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;About the same as before, but let’s hoover over a card:&lt;/li&gt;
+&lt;li&gt;About the same as before, but letâ€™s hoover over a card:&lt;/li&gt;
 &lt;li&gt;It flips and shows the character name and description (if provided by Marvel) to the back of the card&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//445529556f9af96a20cecb08dee76707.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-12f7b192.png"
  
  
  loading="lazy"
@@ -2403,13 +2403,13 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  &gt;&lt;/p&gt;
 &lt;p&gt;Cool!!&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;Let’s switch back to the code and add a menu item for the “flip” page to our left-side navigation menu.&lt;/li&gt;
+&lt;li&gt;Letâ€™s switch back to the code and add a menu item for the â€œflipâ€ page to our left-side navigation menu.&lt;/li&gt;
 &lt;li&gt;Open the file NavMenu.razor within the &lt;strong&gt;Server-Side Layout&lt;/strong&gt; folder.&lt;/li&gt;
 &lt;li&gt;Add a new &lt;div&gt; section for this menu item, by copying one from above + make minor changes to the href reference (flip) and change the Menu item word to Flip&lt;/li&gt;
 &lt;li&gt;The icons are coming from the open iconic library, which is also referenced as part of Blazor bootstrap. Know you can change to MudBlazor, Telerik Progress or several other bootstrap frameworks to have layout-rich styles.&lt;/li&gt;
 &lt;li&gt;Open https:://useiconic.com and find a suitable icon, for example loop-circular&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//934083c32d1deed78048f9f953f85869.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-e8c45d2f.png"
  
  
  loading="lazy"
@@ -2446,10 +2446,10 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;ol&gt;
-&lt;li&gt;When you run the app again, the new Menu item will appear. Given the href=”flip”, it will redirect to the base URL (&lt;a class="link" href="https://localhost:7110" target="_blank" rel="noopener"
+&lt;li&gt;When you run the app again, the new Menu item will appear. Given the href=â€flipâ€, it will redirect to the base URL (&lt;a class="link" href="https://localhost:7110" target="_blank" rel="noopener"
  &gt;https://localhost:7110&lt;/a&gt;) /flip route&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//d9276771ac7e7f6fb7800724605797cc.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-2ce3432b.png"
  
  
  loading="lazy"
@@ -2476,7 +2476,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;/div&gt;&lt;ol&gt;
 &lt;li&gt;This changes the default purple color to darkred.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//33d3c7a7c6df44851c787ad147d4904e.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-65ecbfd6.png"
  
  
  loading="lazy"
@@ -2487,13 +2487,13 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  
  &gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;This completes our development part. Let’s move on to the next step, and integrate our app code with GitHub Source Control (which actually should have happened at the start, before writing a single line of code – but hey, it’s a sample scenario right)&lt;/li&gt;
+&lt;li&gt;This completes our development part. Letâ€™s move on to the next step, and integrate our app code with GitHub Source Control (which actually should have happened at the start, before writing a single line of code â€“ but hey, itâ€™s a sample scenario right)&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h1 id="integrating-visual-studio-with-github-source-control"&gt;Integrating Visual Studio with GitHub Source Control
 &lt;/h1&gt;&lt;ol&gt;
-&lt;li&gt;With that, let’s close this project and save it to GitHub; so you can grab it as a reference. From the explorer, click “Git changes” tab and select Create GitHub Repository&lt;/li&gt;
+&lt;li&gt;With that, letâ€™s close this project and save it to GitHub; so you can grab it as a reference. From the explorer, click â€œGit changesâ€ tab and select Create GitHub Repository&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//51bf9482699dc85b868b603bab0406d8.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-72687fbb.png"
  
  
  loading="lazy"
@@ -2505,7 +2505,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  &gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;Click Create and Push, and provide a description as commit message (I typically call this first action the “init”).&lt;/p&gt;
+&lt;p&gt;Click Create and Push, and provide a description as commit message (I typically call this first action the â€œinitâ€).&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Wait for the git clone action to complete successfully. Connect to the GitHub repository and confirm all source code is there.&lt;/p&gt;
@@ -2513,7 +2513,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  &gt;petender/FestiveBlazor2022live (github.com)&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//4d09932a92c0b020a566940e79741aeb.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-36962b2d.png"
  
  
  loading="lazy"
@@ -2524,14 +2524,14 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  
  &gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;Whenever you would make changes in the source code in Visual Studio and save the changes, Git Source Control will keep track of these and allowing you to commit the changes into the GitHub repository. I would recommend you to commit changes frequently, basically after each “important” update to the code.&lt;/li&gt;
+&lt;li&gt;Whenever you would make changes in the source code in Visual Studio and save the changes, Git Source Control will keep track of these and allowing you to commit the changes into the GitHub repository. I would recommend you to commit changes frequently, basically after each â€œimportantâ€ update to the code.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h1 id="publish-blazor-web-assembly-app-to-azure-static-web-apps"&gt;Publish Blazor Web Assembly app to Azure Static Web Apps
 &lt;/h1&gt;&lt;p&gt;In this last section, I will show you how to publish this webapp to Azure Static Web Apps, a web hosting service in Azure for static web frameworks like Blazor, React, Vue and several other.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;From the Azure Portal, create new resource / static web app&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//756a5b2424f865b6cf86eefab8492d2e.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-4aae45d5.png"
  
  
  loading="lazy"
@@ -2548,10 +2548,10 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;/ol&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;Resource group – any name of choice&lt;/p&gt;
+&lt;p&gt;Resource group â€“ any name of choice&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Name of the app – any unique name for the app&lt;/p&gt;
+&lt;p&gt;Name of the app â€“ any unique name for the app&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Source = GitHub&lt;/p&gt;
@@ -2561,7 +2561,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Region = any region of your choice&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//3910c87d613034cbd0c9ed1392dfda7b.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-62941ae1.png"
  
  
  loading="lazy"
@@ -2576,7 +2576,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;Scroll down and authenticate to GitHub; Next, select your source repo in Github where the code is stored (the one we just created)&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//1bd1ddddd3602c3ba2d84b540da393aa.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-dbd525c0.png"
  
  
  loading="lazy"
@@ -2589,7 +2589,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Click Build Details to provide more parameters regarding the Blazor app itself. Note you need to change the default App location from /Client to /, since our source code is in the root of the Blazor Web Assembly, without using ASP.Net hosted back-end.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//420cbce0770a41dc39ddf2184948363e.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-a5c753e9.png"
  
  
  loading="lazy"
@@ -2602,7 +2602,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Once published, it will trigger a GitHub Actions pipeline to publish the actual content&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//ba208857aa01b6d744c79606a7a76b53.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-d30b17e9.png"
  
  
  loading="lazy"
@@ -2612,8 +2612,8 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  &gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;The YAML pipeline code is stored in the .github/workflows/ subfolder within the GitHub repository. You shouldn’t need to update this file though. It just works out-of-the-box.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//7d89901490cd8ae277355c130085551f.png"
+&lt;p&gt;The YAML pipeline code is stored in the .github/workflows/ subfolder within the GitHub repository. You shouldnâ€™t need to update this file though. It just works out-of-the-box.&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-65639483.png"
  
  
  loading="lazy"
@@ -2625,8 +2625,8 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  &gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Check in Actions what’s happening:&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//97f08b3e40277869ee85a42fa0d2a343.png"
+&lt;p&gt;Check in Actions whatâ€™s happening:&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-f50eb218.png"
  
  
  loading="lazy"
@@ -2639,7 +2639,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Open the details for the Build &amp;amp; Deploy workflow&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//da5cda0e73ed46fcc4274becc2f4a30e.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-8f5e83c2.png"
  
  
  loading="lazy"
@@ -2652,7 +2652,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Selecting any step in the Action workflow will show more details:&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//765fda402ec958a1267c45c8d15592df.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-338d5027.png"
  
  
  loading="lazy"
@@ -2665,7 +2665,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Wait for the workflow to complete successfully.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//291538dda0fbb66c1ccc93f67b3ed263.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-ffd5fa67.png"
  
  
  loading="lazy"
@@ -2677,8 +2677,8 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  &gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Navigate back to the Azure Static Web app, click it’s URL and see the Blazor Web App is running as expected.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//71e0fdcd38b8f4e3df22af93a6c04215.png"
+&lt;p&gt;Navigate back to the Azure Static Web app, click itâ€™s URL and see the Blazor Web App is running as expected.&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-4fa1cda8.png"
  
  
  loading="lazy"
@@ -2691,7 +2691,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;When searching for a Marvel Character, this throws an error though, which can be validated from the Inspect option of the browser:&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//aebf1488e59ba401c5c69708ed8b2958.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-b0b0a6e2.png"
  
  
  loading="lazy"
@@ -2703,8 +2703,8 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  &gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Remember at the start, where we configured the API calls at the Marvel Developer site, we needed to specify the source URLs from where the calls are allowed. This Azure Static Web App URL is not configured. (Hence why I didn’t worry too much about including my APIKey as hard-coded string in the source code).&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//07a00ae95a0f1548ac84f149b11ccd34.png"
+&lt;p&gt;Remember at the start, where we configured the API calls at the Marvel Developer site, we needed to specify the source URLs from where the calls are allowed. This Azure Static Web App URL is not configured. (Hence why I didnâ€™t worry too much about including my APIKey as hard-coded string in the source code).&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/screenshot-2024-05-18-16ff7f1a.png"
  
  
  loading="lazy"
@@ -2720,13 +2720,13 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;h1 id="summary"&gt;Summary
-&lt;/h1&gt;&lt;p&gt;In this article, I provided all the necessary steps to build a Blazor .NET 8 Web Assembly application. Started from the default template, you updated snippets of code to create a search field and corresponding action button to trigger the search. You learned about using HTTPClient to interact with an external API Back-End. Once this was all working, you looked into using some additional “flip card” CSS layout features, and how to update the Blazor Navigation Menu.&lt;/p&gt;
+&lt;/h1&gt;&lt;p&gt;In this article, I provided all the necessary steps to build a Blazor .NET 8 Web Assembly application. Started from the default template, you updated snippets of code to create a search field and corresponding action button to trigger the search. You learned about using HTTPClient to interact with an external API Back-End. Once this was all working, you looked into using some additional â€œflip cardâ€ CSS layout features, and how to update the Blazor Navigation Menu.&lt;/p&gt;
 &lt;p&gt;Once the development work was done, we saved the code in a GitHub repository.&lt;/p&gt;
 &lt;p&gt;Last, you deployed an Azure Static Web App, interacting with the GitHub repository to pick up the source code and publish it using GitHub Actions workflow.&lt;/p&gt;
-&lt;p&gt;I would like to thank the organizing team of ScifiDevCon 2024 for having accepted my session submission for the 3rd year in a row. Especially since this was my first attempt to do some (semi)live coding, to share my excitement of how I learned to write and build code at age 48. I’m already brainstorming on what Blazor app I can share in next year’s edition&amp;hellip;&lt;/p&gt;
+&lt;p&gt;I would like to thank the organizing team of ScifiDevCon 2024 for having accepted my session submission for the 3rd year in a row. Especially since this was my first attempt to do some (semi)live coding, to share my excitement of how I learned to write and build code at age 48. Iâ€™m already brainstorming on what Blazor app I can share in next yearâ€™s edition&amp;hellip;&lt;/p&gt;
 &lt;p&gt;/Peter&lt;/p&gt;
 &lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
- &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ &gt;&lt;img src="../images/screenshot-2024-05-18-17f576e7.png"
  
  
  loading="lazy"
@@ -2742,7 +2742,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;p&gt;As I am learning development with .NET for the first time in 47 years, and succeeding in having an actual app up-and-running, I wanted to share my experience, inspiring other readers (and viewers of the session) to learn coding as well. And maybe becoming a passionate Marvel Comics fan as myself.&lt;/p&gt;
 &lt;p&gt;I hope you enjoy the steps, feel free to contribute to this project at &lt;a class="link" href="https://github.com/petender/FestiveBlazor2022live" target="_blank" rel="noopener"
  &gt;petender/FestiveBlazor2022live (github.com)&lt;/a&gt; if you want to co-learn more Blazor stuff together with me.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//4877892754490f536f9fdb606c2973a0.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-17b867b3.png"
  
  
  loading="lazy"
@@ -2756,7 +2756,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;li&gt;Visual Studio 2022 to develop the application (VSCode or other dev tools will work as well)
 &lt;ul&gt;
 &lt;li&gt;Community Edition can be downloaded for free here (&lt;a class="link" href="https://visualstudio.microsoft.com/vs/community/" target="_blank" rel="noopener"
- &gt;Visual Studio 2022 Community Edition – Download Latest Free Version (microsoft.com)&lt;/a&gt;)&lt;/li&gt;
+ &gt;Visual Studio 2022 Community Edition â€“ Download Latest Free Version (microsoft.com)&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;GitHub Account to store the application code in source control
@@ -2779,12 +2779,12 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1 id="deploying-your-first-blazor-web-assembly-app-from-a-template"&gt;Deploying your first Blazor Web Assembly app from a template
-&lt;/h1&gt;&lt;p&gt;Visual Studio provides Blazor Web Assembly templates, both as an “empty template”, as well as one with a functional “sample weather app”. Although I won’t use a lot from the template, I like to start with the weather app sample application, as it comes with all necessary building blocks to get started.&lt;/p&gt;
+&lt;/h1&gt;&lt;p&gt;Visual Studio provides Blazor Web Assembly templates, both as an â€œempty templateâ€, as well as one with a functional â€œsample weather appâ€. Although I wonâ€™t use a lot from the template, I like to start with the weather app sample application, as it comes with all necessary building blocks to get started.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Launch &lt;strong&gt;Visual Studio 2022&lt;/strong&gt;, and select &lt;strong&gt;Create New Project&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;From the list of templates, select &lt;strong&gt;Blazor Web Assembly App&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//346d3ff20756116b64f5b9a3bb0b7a89.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-43adf04d.png"
  
  
  loading="lazy"
@@ -2799,7 +2799,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;li&gt;Select &lt;strong&gt;.NET 7&lt;/strong&gt; (Standard Term Support) as Framework version&lt;/li&gt;
 &lt;li&gt;Keep all other default settings as is&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//dc2d3620ce75ab09c4a69cca0d6abca5.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-b6b8b213.png"
  
  
  loading="lazy"
@@ -2812,7 +2812,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;ol&gt;
 &lt;li&gt;Click &lt;strong&gt;Create&lt;/strong&gt; to complete the project creation wizard and wait for the template to get deployed in the Visual Studio development environment. The Solution Explorer looks like below:&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//a0423ea6058f8059f67f3a6ffbe83568.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-e4316da5.png"
  
  
  loading="lazy"
@@ -2825,7 +2825,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;ol&gt;
 &lt;li&gt;Run the app by pressing &lt;strong&gt;Ctrl-F5&lt;/strong&gt; or select &lt;strong&gt;Run&lt;/strong&gt; from the upper menu (the green arrow) and wait for the compile and build phase to complete. The web app should load successfully in a new browser window.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//4e3fc2454745fe4f43d837e2d8b90d16.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-5bda58f3.png"
  
  
  loading="lazy"
@@ -2842,10 +2842,10 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;/ol&gt;
 &lt;p&gt;In the next section, you learn how to update the index.razor page and add your own custom HTML-layout, CSS structure and actual runtime code.&lt;/p&gt;
 &lt;h1 id="updating-the-template-with-your-custom-code"&gt;Updating the template with your custom code
-&lt;/h1&gt;&lt;p&gt;Blazor allows you to combine web page layout code, basically HTML and CSS, together with actual application source code, in the same razor files. I can’t compare it with previous development environments, but it seems to be one of the great things about Blazor – and I really like it, since it’s somewhat simplifying the structure of your application source code itself.&lt;/p&gt;
-&lt;p&gt;Another take is creating the web page layout first, and only adding logic later on. So let’s start with creating a basic web page, adding a search field and a button&lt;/p&gt;
+&lt;/h1&gt;&lt;p&gt;Blazor allows you to combine web page layout code, basically HTML and CSS, together with actual application source code, in the same razor files. I canâ€™t compare it with previous development environments, but it seems to be one of the great things about Blazor â€“ and I really like it, since itâ€™s somewhat simplifying the structure of your application source code itself.&lt;/p&gt;
+&lt;p&gt;Another take is creating the web page layout first, and only adding logic later on. So letâ€™s start with creating a basic web page, adding a search field and a button&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;You can chose to reuse the index.razor sample page and continue from there, or create a new Razor Page and update the route path. For simplicity and ease of this scenario, I’m reusing the existing index.razor page.&lt;/li&gt;
+&lt;li&gt;You can chose to reuse the index.razor sample page and continue from there, or create a new Razor Page and update the route path. For simplicity and ease of this scenario, Iâ€™m reusing the existing index.razor page.&lt;/li&gt;
 &lt;li&gt;In this part, we start with adding a search field and a search button to the web page layout. Insert the following snippet of code:&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
@@ -2894,9 +2894,9 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;/div&gt;
 &lt;/div&gt;&lt;ol&gt;
 &lt;li&gt;This adds the necessary objects on the web page.&lt;/li&gt;
-&lt;li&gt;And let’s run this update to see what we have for now.&lt;/li&gt;
+&lt;li&gt;And letâ€™s run this update to see what we have for now.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//2203f41bba0a5cd31dbcf283685239b5.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-b39e2d5f.png"
  
  
  loading="lazy"
@@ -2907,7 +2907,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  
  &gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;So the layout for the search part of the app is done. Let’s move on with the design of the actual response / result items. The return from the Marvel API can be presented in a table gridview, but that’s not that nice-looking; I remembered having physical cards as collector items as a kid, so I did some searching for a similar digital experience. Interesting enough, there is a CSS-class object “card”, which nicely reflects this experience. So let’s add the next snippet of code for this response layout.&lt;/li&gt;
+&lt;li&gt;So the layout for the search part of the app is done. Letâ€™s move on with the design of the actual response / result items. The return from the Marvel API can be presented in a table gridview, but thatâ€™s not that nice-looking; I remembered having physical cards as collector items as a kid, so I did some searching for a similar digital experience. Interesting enough, there is a CSS-class object â€œcardâ€, which nicely reflects this experience. So letâ€™s add the next snippet of code for this response layout.&lt;/li&gt;
 &lt;li&gt;Add the following code:&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
@@ -2980,11 +2980,11 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;div&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;What this snippet does, is adding a “container” object, in which we create a small table view having 3 rows and 1 column. The card composition shows the Hero title on top, the Marvel Hero character details in the middle and an image of the character as well.&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;What this snippet does, is adding a â€œcontainerâ€ object, in which we create a small table view having 3 rows and 1 column. The card composition shows the Hero title on top, the Marvel Hero character details in the middle and an image of the character as well.&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;Let’s run the code again to test if everything works as expected.&lt;/li&gt;
+&lt;li&gt;Letâ€™s run the code again to test if everything works as expected.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//206d69e62ef3c84e6ba58653a5dcc975.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-6fb7c0fd.png"
  
  
  loading="lazy"
@@ -2995,10 +2995,10 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  
  &gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;Now wait, we lose quite some time on stopping the app, updating code, starting it again – so what we can do is use the new VS2022 feature called Hot Reload / if I set this to “Hot Reload on Save”, it will dynamically update the runtime state of the app based on my edits. Let’s check it out.&lt;/li&gt;
-&lt;li&gt;While in debugging mode, check the “flame” icon in the menu:&lt;/li&gt;
+&lt;li&gt;Now wait, we lose quite some time on stopping the app, updating code, starting it again â€“ so what we can do is use the new VS2022 feature called Hot Reload / if I set this to â€œHot Reload on Saveâ€, it will dynamically update the runtime state of the app based on my edits. Letâ€™s check it out.&lt;/li&gt;
+&lt;li&gt;While in debugging mode, check the â€œflameâ€ icon in the menu:&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//aac3e147fb9372f56413cd14c4789d98.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-5597d98d.png"
  
  
  loading="lazy"
@@ -3009,10 +3009,10 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  
  &gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;Enable the setting “Hot Reload on File Save”.&lt;/li&gt;
-&lt;li&gt;Edit the card-title “Marvel Hero Name” to “Marvel Character Name” and check how the app refreshes itself without needing to stop/start.&lt;/li&gt;
+&lt;li&gt;Enable the setting â€œHot Reload on File Saveâ€.&lt;/li&gt;
+&lt;li&gt;Edit the card-title â€œMarvel Hero Nameâ€ to â€œMarvel Character Nameâ€ and check how the app refreshes itself without needing to stop/start.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//39ff9a003fca6aac2471b8027c6ed5b8.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-f5dada3f.png"
  
  
  loading="lazy"
@@ -3023,7 +3023,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  
  &gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;The search field is not doing anything yet, so we need to make sure – that whenever we type something in that field, it kicks of an API call to the Marvel API back-end.&lt;/li&gt;
+&lt;li&gt;The search field is not doing anything yet, so we need to make sure â€“ that whenever we type something in that field, it kicks of an API call to the Marvel API back-end.&lt;/li&gt;
 &lt;li&gt;First, we need to use the bind-value parameter for this field, linking it to a search task; Update the line with the field box as follows:&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
@@ -3036,7 +3036,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;input&lt;/span&gt; &lt;span class="n"&gt;class&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;form-control form-control-lg w-50 mx-auto mt-4&amp;#34;&lt;/span&gt; &lt;span class="n"&gt;placeholder&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;Enter Marvel Character&amp;#34;&lt;/span&gt; &lt;span class="n"&gt;@bind&lt;/span&gt;&lt;span class="p"&gt;-&lt;/span&gt;&lt;span class="k"&gt;value&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;whotofind&amp;#34;&lt;/span&gt; &lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src="../images//6a1218295f8c2dea8ab453ff28c81d62.png"
+&lt;/div&gt;&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-6788d303.png"
  
  
  loading="lazy"
@@ -3044,15 +3044,15 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  
  
  &gt;&lt;/p&gt;
-&lt;p&gt;add &lt;strong&gt;@bind-value=”whotofind”&lt;/strong&gt; at the end of the line&lt;/p&gt;
-&lt;p&gt;Ignore the errors regarding the “whotofind” for now.&lt;/p&gt;
+&lt;p&gt;add &lt;strong&gt;@bind-value=â€whotofindâ€&lt;/strong&gt; at the end of the line&lt;/p&gt;
+&lt;p&gt;Ignore the errors regarding the â€œwhotofindâ€ for now.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;Next, we need to update the button code to actually pick up an action when clicking on it; this is done using the @onclick event&lt;/p&gt;
 &lt;p&gt;Add &lt;strong&gt;@onclick=FindMarvel&lt;/strong&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//a224d0544320ffa737cfaf56b90d8fad.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-4a039c22.png"
  
  
  loading="lazy"
@@ -3063,7 +3063,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;ol&gt;
 &lt;li&gt;The code snippet complains about unknown attributes, which is what we need to add in the actual code section of the app page:&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//5c72b7d3cc9b8e66fc444fee5ba3f502.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-5e5050fc.png"
  
  
  loading="lazy"
@@ -3077,7 +3077,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;li&gt;Those were the 2 placeholders for the Blazor code section, which can be defined within the same Razor page, a rather unique approach to Blazor code.&lt;/li&gt;
 &lt;li&gt;Save the updates again; notice how Hot Reload is not able to refresh the changes just like that, since it is more than just a cosmetic change in HTML.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//6effed869888d90dae9a5854cc8fb133.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-adae2fdd.png"
  
  
  loading="lazy"
@@ -3091,7 +3091,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;li&gt;Click Edit for now, since we will add more code to the Page.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Add the following @code section below the HTML/CSS layout&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//635e278b2df728255f471d3f68c03c92.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-07a7400b.png"
  
  
  loading="lazy"
@@ -3103,8 +3103,8 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  &gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Within the curly brackets, we can use regular C# code&lt;/li&gt;
-&lt;li&gt;Start with defining a string for the “whotofind”&lt;/li&gt;
-&lt;li&gt;Followed by defining a method (task) for the FindMarvel onclick action – for now, let’s write something to the console to validate our search field is working as expected&lt;/li&gt;
+&lt;li&gt;Start with defining a string for the â€œwhotofindâ€&lt;/li&gt;
+&lt;li&gt;Followed by defining a method (task) for the FindMarvel onclick action â€“ for now, letâ€™s write something to the console to validate our search field is working as expected&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;The code syntax looks like this:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
@@ -3132,9 +3132,9 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;ol&gt;
-&lt;li&gt;The string “whotofind” refers to the search field object, where the Task “FindMarvel” refers to the button click action. So easy said, whenever we click the button, it will pick up the string content from the search field, and send it to the Marvel API back-end. As we don’t have that yet, I’m just writing the data to the console, which is always a great test to validate the code is working as expected.&lt;/li&gt;
+&lt;li&gt;The string â€œwhotofindâ€ refers to the search field object, where the Task â€œFindMarvelâ€ refers to the button click action. So easy said, whenever we click the button, it will pick up the string content from the search field, and send it to the Marvel API back-end. As we donâ€™t have that yet, Iâ€™m just writing the data to the console, which is always a great test to validate the code is working as expected.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//e5009d941ff5ecfac46d8dc3eb5005e5.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-86c4d3e3.png"
  
  
  loading="lazy"
@@ -3145,9 +3145,9 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  
  &gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;Save the file, which will throw a warning regarding the hot reload. Since we added new actual code snippets, hot reload can’t just go and recognize it. So a reload is needed…&lt;/li&gt;
+&lt;li&gt;Save the file, which will throw a warning regarding the hot reload. Since we added new actual code snippets, hot reload canâ€™t just go and recognize it. So a reload is neededâ€¦&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//d0be33cb6858972b3c00724c40f485e3.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-1733bb6a.png"
  
  
  loading="lazy"
@@ -3157,11 +3157,11 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  &gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;Select “Rebuild and Apply Changes”&lt;/p&gt;
+&lt;p&gt;Select â€œRebuild and Apply Changesâ€&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Enter the name of a Marvel character, for example “thor”, which will move that to the Output console. This confirms both the bind-value property as well as the search button and corresponding action behind it is working as it should be.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//04aa07efd434de84b30d012b6fb9ba8a.png"
+&lt;p&gt;Enter the name of a Marvel character, for example â€œthorâ€, which will move that to the Output console. This confirms both the bind-value property as well as the search button and corresponding action behind it is working as it should be.&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-034bab2a.png"
  
  
  loading="lazy"
@@ -3173,7 +3173,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  &gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;I think the app is ready from our perspective, so it’s time to set up the Marvel API-part of the solution in the next section.&lt;/p&gt;
+&lt;p&gt;I think the app is ready from our perspective, so itâ€™s time to set up the Marvel API-part of the solution in the next section.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;h1 id="configuring-the-marvel-developer-api-backend"&gt;Configuring the Marvel Developer API Backend
@@ -3181,7 +3181,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;li&gt;head over to the Marvel Developer website &lt;a class="link" href="https://developer.marvel.com" target="_blank" rel="noopener"
  &gt;https://developer.marvel.com&lt;/a&gt; and grab the necessary API information.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//fc2a542cfdbca3fb86519841f3f53999.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-4f9a2349.png"
  
  
  loading="lazy"
@@ -3201,10 +3201,10 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;p&gt;&lt;strong&gt;Private:&lt;/strong&gt; 6362bd53a4c307c96fb27xxxxxxxxxx&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;To allow requests to come into the Marvel API back-end, you need to specify the source URL domains where the requests are coming from. Add &lt;strong&gt;localhost&lt;/strong&gt; here, which is the URL you use for all testing on your development workstation. Later on, once the app runs in Azure, you need to add the Azure Service URL here as well…&lt;/p&gt;
+&lt;p&gt;To allow requests to come into the Marvel API back-end, you need to specify the source URL domains where the requests are coming from. Add &lt;strong&gt;localhost&lt;/strong&gt; here, which is the URL you use for all testing on your development workstation. Later on, once the app runs in Azure, you need to add the Azure Service URL here as wellâ€¦&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//a7dd9d49c1402deb787b6ab792a0fb38.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-47c6d979.png"
  
  
  loading="lazy"
@@ -3215,9 +3215,9 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  
  &gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;Once set up, head over to “interactive documentation”, and walk through the different API placeholders and keywords one can use, to show the capabilities. For the app later on, we will use the “namestartswith”, as it is the most easy to use – names could work, but it requires knowing the explicit name of the character, and having it correctly spelled.&lt;/li&gt;
+&lt;li&gt;Once set up, head over to â€œinteractive documentationâ€, and walk through the different API placeholders and keywords one can use, to show the capabilities. For the app later on, we will use the â€œnamestartswithâ€, as it is the most easy to use â€“ names could work, but it requires knowing the explicit name of the character, and having it correctly spelled.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//d9552cc8c4ec1ff4e0f2e32a767a4f42.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-50eb88c8.png"
  
  
  loading="lazy"
@@ -3227,7 +3227,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  
  
  &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//57bc3634f004877c8cff9942d9e6e8d3.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-2265117a.png"
  
  
  loading="lazy"
@@ -3237,7 +3237,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  
  
  &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//4f749b51a5d1bdf6d51e81f614c8d72a.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-427ba28a.png"
  
  
  loading="lazy"
@@ -3245,7 +3245,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  
  
  &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//9883c08decac6bffde5cb763539b953f.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-360bd5d8.png"
  
  
  loading="lazy"
@@ -3256,9 +3256,9 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  
  &gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;Click the “Try it out” button. The result shows the outcome + the exact URL that was used:&lt;/li&gt;
+&lt;li&gt;Click the â€œTry it outâ€ button. The result shows the outcome + the exact URL that was used:&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//b3aab53a282e9d00b58ba5c91e81afa0.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-4d64c949.png"
  
  
  loading="lazy"
@@ -3269,9 +3269,9 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  
  &gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;Blazor Web Assembly already has an HTTP Client built-in, although if you want, you could also find Nuget packages that provide similar functionality – but for now, let’s stick with the built-in one. The details of this service are part of the &lt;strong&gt;program.cs&lt;/strong&gt; file&lt;/li&gt;
+&lt;li&gt;Blazor Web Assembly already has an HTTP Client built-in, although if you want, you could also find Nuget packages that provide similar functionality â€“ but for now, letâ€™s stick with the built-in one. The details of this service are part of the &lt;strong&gt;program.cs&lt;/strong&gt; file&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//17346fd8ca00d8cb076bf965ffe1860f.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-08a184a6.png"
  
  
  loading="lazy"
@@ -3286,7 +3286,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  &gt;https://gateway.marvel.com:443/v1/public/"&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;builder.Services.AddScoped(sp =&amp;gt; new HttpClient { BaseAddress = new Uri(&amp;ldquo;&lt;a class="link" href="https://gateway.marvel.com:443/v1/public/%22" target="_blank" rel="noopener"
  &gt;https://gateway.marvel.com:443/v1/public/"&lt;/a&gt;) });&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//6a58c2be63ed4f27902531e43cb740c8.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-205804b2.png"
  
  
  loading="lazy"
@@ -3317,7 +3317,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;&amp;lt;**&lt;/span&gt;&lt;span class="n"&gt;PageTitle&lt;/span&gt;&lt;span class="p"&gt;**&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;Index&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;/**&lt;/span&gt;&lt;span class="n"&gt;PageTitle&lt;/span&gt;&lt;span class="p"&gt;**&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src="../images//77d4a8f23696d726c85a0a73bb377649.png"
+&lt;/div&gt;&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-b1527a23.png"
  
  
  loading="lazy"
@@ -3330,7 +3330,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;ol&gt;
 &lt;li&gt;As you could see from the Marvel output, they are using JSON; this means, when calling the HttpClient, we also receive a JSON object back, which is not useful for presenting the data as such. What we need to do is deserialize the result, for which we create a class&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//6ace0a137db04fd541e730b90bf18a42.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-31bb1d9b.png"
  
  
  loading="lazy"
@@ -3343,7 +3343,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;ol&gt;
 &lt;li&gt;A useful website for helping with this, is jSON2CSharp.com, allowing you to paste in a JSON payload, which gets converted to c# class structure&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//7840c5de3eda79f2d196079bc0081756.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-2e723304.png"
  
  
  loading="lazy"
@@ -3354,9 +3354,9 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  
  &gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;In the VStudio project, create a new folder “Models”, and add a new Item in there, called MarvelResult.cs&lt;/li&gt;
+&lt;li&gt;In the VStudio project, create a new folder â€œModelsâ€, and add a new Item in there, called MarvelResult.cs&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//3bb34b057bc24ab07c3280a90a41e829.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-23f4f21c.png"
  
  
  loading="lazy"
@@ -3367,7 +3367,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  
  &gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;We could copy the content from the JSON deserialize output into this class object, but for this sample, we don’t need all the provided data by Marvel – so I made some changes and ended up with the core pieces of data I want, like image, name, description&lt;/li&gt;
+&lt;li&gt;We could copy the content from the JSON deserialize output into this class object, but for this sample, we donâ€™t need all the provided data by Marvel â€“ so I made some changes and ended up with the core pieces of data I want, like image, name, description&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;The code snippet looks like follows:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
@@ -3466,7 +3466,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src="../images//be893ab65370d88766953389372a0361.png"
+&lt;/div&gt;&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-7c0fddc6.png"
  
  
  loading="lazy"
@@ -3476,7 +3476,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  
  
  &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//6113286c6b043494da253117ca059980.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-15e86484.png"
  
  
  loading="lazy"
@@ -3487,7 +3487,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  
  &gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;With the class in place, let’s update the code to compile the dynamic URL, instead of the fixed gateway.marvel.com one. First, we need to add a private MarvelResult, reflecting the data class we just created;&lt;/li&gt;
+&lt;li&gt;With the class in place, letâ€™s update the code to compile the dynamic URL, instead of the fixed gateway.marvel.com one. First, we need to add a private MarvelResult, reflecting the data class we just created;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
 &lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
@@ -3497,7 +3497,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-csharp" data-lang="csharp"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kd"&gt;private&lt;/span&gt; &lt;span class="n"&gt;MarvelResult&lt;/span&gt; &lt;span class="n"&gt;_marvelResult&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src="../images//a825fa81178e7264d2e102fc9fd6cc2b.png"
+&lt;/div&gt;&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-5db56d68.png"
  
  
  loading="lazy"
@@ -3507,7 +3507,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  
  
  &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//a27435fbce5013ef1f6b578f99e7178b.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-a5365d8d.png"
  
  
  loading="lazy"
@@ -3518,9 +3518,9 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  
  &gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;as we stored this in a different folder within the application source code, we also need to update our Page details, telling it to “use” the Models subfolder to find it. This is done using the @using statement on top of the index.razor&lt;/li&gt;
+&lt;li&gt;as we stored this in a different folder within the application source code, we also need to update our Page details, telling it to â€œuseâ€ the Models subfolder to find it. This is done using the @using statement on top of the index.razor&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//b69f2fa62103c959395f9f79d243cb08.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-05985c35.png"
  
  
  loading="lazy"
@@ -3531,7 +3531,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  
  &gt;&lt;/p&gt;
 &lt;p&gt;Where now the Class gets nicely recognized&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//3ab85373e56d2621ce4fa9bffb9e1323.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-bcd88ae6.png"
  
  
  loading="lazy"
@@ -3542,7 +3542,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  
  &gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;Let’s update the Task FIndMarvel, with the required code snippet to recognize the dynamic URL to connect to, as well as calling the HttpClient function&lt;/li&gt;
+&lt;li&gt;Letâ€™s update the Task FIndMarvel, with the required code snippet to recognize the dynamic URL to connect to, as well as calling the HttpClient function&lt;/li&gt;
 &lt;li&gt;As per the Marvel API docs, we need to integrate the api Private key into our URL search string, so we have to define the string for this&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
@@ -3612,7 +3612,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src="../images//88a6f657a0adfca57021b3606066f8db.png"
+&lt;/div&gt;&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-0cfdaa1e.png"
  
  
  loading="lazy"
@@ -3625,9 +3625,9 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;ol&gt;
 &lt;li&gt;Where the url is coming from the gateway.marvel.com part in the HttpClient service definition + the dynamic url part where we specify the characters search option, the nameStartsWith, pointing at the bind-value object whotofind, and adding the MarvelapiKey string.&lt;/li&gt;
 &lt;li&gt;While all the code pieces are done, note that .NET6 started checking for Nullable values. This is what the green squickly lines are identifying. What this means is that the value could be equal to null, which could potentially break your application, since it expects to have a real value in there.&lt;/li&gt;
-&lt;li&gt;I wouldn’t recommend it to change, but for this little sample app, it would be totally OK to disable the nullable check. This can be done from the Properties of the Project&lt;/li&gt;
+&lt;li&gt;I wouldnâ€™t recommend it to change, but for this little sample app, it would be totally OK to disable the nullable check. This can be done from the Properties of the Project&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//0170c39b8c1b92ea9ab0a98c9b5d9c6b.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-16a09be9.png"
  
  
  loading="lazy"
@@ -3638,10 +3638,10 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  
  &gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;That’s all from a code snippet perspective, where now the last piece of updates is back into the HTML Layout of the web page itself, updating the content of the card object:&lt;/li&gt;
-&lt;li&gt;Since we most probably get an array of results back, meaning more than one, we need to go through a “for each” loop; also, there might be scenarios where we are not getting back any results (like the character doesn’t exist, a typo in the character’s name,…), so we will add a little validation check on that too, using an if = !null&lt;/li&gt;
+&lt;li&gt;Thatâ€™s all from a code snippet perspective, where now the last piece of updates is back into the HTML Layout of the web page itself, updating the content of the card object:&lt;/li&gt;
+&lt;li&gt;Since we most probably get an array of results back, meaning more than one, we need to go through a â€œfor eachâ€ loop; also, there might be scenarios where we are not getting back any results (like the character doesnâ€™t exist, a typo in the characterâ€™s name,â€¦), so we will add a little validation check on that too, using an if = !null&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;Let’s go ahead!&lt;/p&gt;
+&lt;p&gt;Letâ€™s go ahead!&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;At the top of the card object (class=container), or right below the &lt;div&gt; section where we defined the search button, insert the @if statement, and move the whole div section between the curly brackets&lt;/li&gt;
 &lt;/ol&gt;
@@ -3661,7 +3661,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;div&lt;/span&gt; &lt;span class="n"&gt;class&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;container&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src="../images//ed9d515c32722c11a5710d74544947ff.png"
+&lt;/div&gt;&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-5b80a746.png"
  
  
  loading="lazy"
@@ -3743,7 +3743,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;/div&gt;&lt;ol&gt;
 &lt;li&gt;Run the app and see the result in action&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//44856923dff937c6cad7d953b046c1bd.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-88de5977.png"
  
  
  loading="lazy"
@@ -3754,20 +3754,20 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  
  &gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;That’s it for now. Great job!&lt;/li&gt;
+&lt;li&gt;Thatâ€™s it for now. Great job!&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h1 id="making-the-cards-flip"&gt;Making the cards ‘flip’
-&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;Note: this part is left out of the Festive Tech Calendar presentation to keep the video within the expected time – what we’re doing here is integrating more CSS layout components on to a new Page in the web app, which provides a more dynamic look-and-feel to the Marvel cards we have.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;While CSS can be difficult – and trust me it is – I literally googled for “flipping cards CSS” and found a snippet of code on &lt;a class="link" href="https://w3schools.com" target="_blank" rel="noopener"
- &gt;https://w3schools.com&lt;/a&gt;, and it worked almost straight away…&lt;/p&gt;
+&lt;h1 id="making-the-cards-âflipâ"&gt;Making the cards â€˜flipâ€™
+&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;Note: this part is left out of the Festive Tech Calendar presentation to keep the video within the expected time â€“ what weâ€™re doing here is integrating more CSS layout components on to a new Page in the web app, which provides a more dynamic look-and-feel to the Marvel cards we have.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;While CSS can be difficult â€“ and trust me it is â€“ I literally googled for â€œflipping cards CSSâ€ and found a snippet of code on &lt;a class="link" href="https://w3schools.com" target="_blank" rel="noopener"
+ &gt;https://w3schools.com&lt;/a&gt;, and it worked almost straight awayâ€¦&lt;/p&gt;
 &lt;p&gt;Here we go:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;Let’s copy the current state of the page we have, and store it in a different page; so we grab &lt;strong&gt;index.razor&lt;/strong&gt; and copy/paste it to &lt;strong&gt;flip.razor&lt;/strong&gt; this will allow me to also demonstrate some other Blazor features around Menu Navigation and how to use object-specific css; meaning, CSS that will only be picked up by the specific page, and not interfere with the rest of the application CSS we already have.&lt;/p&gt;
+&lt;p&gt;Letâ€™s copy the current state of the page we have, and store it in a different page; so we grab &lt;strong&gt;index.razor&lt;/strong&gt; and copy/paste it to &lt;strong&gt;flip.razor&lt;/strong&gt; this will allow me to also demonstrate some other Blazor features around Menu Navigation and how to use object-specific css; meaning, CSS that will only be picked up by the specific page, and not interfere with the rest of the application CSS we already have.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Open flip.razor page; First thing we need to change, is the Page Routing, pointing to the “/flip” routing directory instead of the “/”, as that one is linked to the index.razor page.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//46aac649d4ecfb4be03d1ce021141274.png"
+&lt;p&gt;Open flip.razor page; First thing we need to change, is the Page Routing, pointing to the â€œ/flipâ€ routing directory instead of the â€œ/â€, as that one is linked to the index.razor page.&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-9b7d28f8.png"
  
  
  loading="lazy"
@@ -3947,9 +3947,9 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;ol&gt;
-&lt;li&gt;and paste this under the @using section and the &lt;PageTitle&gt; section of the code you already have (Note: ignore the @using marveltake2.models in the screenshot, it’s the name of my test project)&lt;/li&gt;
+&lt;li&gt;and paste this under the @using section and the &lt;PageTitle&gt; section of the code you already have (Note: ignore the @using marveltake2.models in the screenshot, itâ€™s the name of my test project)&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//e28cd81c4d68ae3560000e3a047e15f9.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-5ee912eb.png"
  
  
  loading="lazy"
@@ -3960,7 +3960,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  
  &gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;Next, we need to update the layout of the card item itself, in the section within the “foreach” loop, as that’s where the data is coming in, and getting displayed&lt;/li&gt;
+&lt;li&gt;Next, we need to update the layout of the card item itself, in the section within the â€œforeachâ€ loop, as thatâ€™s where the data is coming in, and getting displayed&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;@foreach(var result in _marvelResult.Data.Results)&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
@@ -4039,7 +4039,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;Next, we add a class for the flip-card-back, where we will show the Marvel character name and description.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//4082873f68fc45f018526dcce23ec2b7.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-1ecbeef2.png"
  
  
  loading="lazy"
@@ -4051,12 +4051,12 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  &gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;That’s all we need to have for now; so let’s have a look, by launching the app&lt;/p&gt;
+&lt;p&gt;Thatâ€™s all we need to have for now; so letâ€™s have a look, by launching the app&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;Since the previous page was index.razor, it’s getting loaded by design (from the index.html). so we need to update the URL to pick up the /flip page, by adding it to the end of the URL, such as &lt;a class="link" href="https://localhost:7110?flip" target="_blank" rel="noopener"
+&lt;li&gt;Since the previous page was index.razor, itâ€™s getting loaded by design (from the index.html). so we need to update the URL to pick up the /flip page, by adding it to the end of the URL, such as &lt;a class="link" href="https://localhost:7110?flip" target="_blank" rel="noopener"
  &gt;https://localhost:7110?flip&lt;/a&gt; (note, the port number will be different on your end)&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//7ce7af6f54af8a7aee9535ff23b92e47.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-e436e152.png"
  
  
  loading="lazy"
@@ -4069,7 +4069,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;ol&gt;
 &lt;li&gt;Search for a character, and see the outcome cards:&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//b2a599d62eb62f38570ce2865d97a8a0.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-efb1bdd8.png"
  
  
  loading="lazy"
@@ -4080,10 +4080,10 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  
  &gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;About the same as before, but let’s hoover over a card:&lt;/li&gt;
+&lt;li&gt;About the same as before, but letâ€™s hoover over a card:&lt;/li&gt;
 &lt;li&gt;It flips and shows the character name and description (if provided by Marvel) to the back of the card&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//445529556f9af96a20cecb08dee76707.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-12f7b192.png"
  
  
  loading="lazy"
@@ -4095,13 +4095,13 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  &gt;&lt;/p&gt;
 &lt;p&gt;Cool!!&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;Let’s switch back to the code and add a menu item for the “flip” page to our left-side navigation menu.&lt;/li&gt;
+&lt;li&gt;Letâ€™s switch back to the code and add a menu item for the â€œflipâ€ page to our left-side navigation menu.&lt;/li&gt;
 &lt;li&gt;Open the file NavMenu.razor within the Shared folder.&lt;/li&gt;
 &lt;li&gt;Add a new &lt;div&gt; section for this menu item, by copying one from above + make minor changes to the href reference (flip) and change the Menu item word to Flip&lt;/li&gt;
 &lt;li&gt;The icons are coming from the open iconic library, which is also referenced as part of Blazor bootstrap. Know you can change to MudBlazor, Telerik Progress or several other bootstrap frameworks to have layout-rich styles.&lt;/li&gt;
 &lt;li&gt;Open https:://useiconic.com and find a suitable icon, for example loop-circular&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//934083c32d1deed78048f9f953f85869.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-e8c45d2f.png"
  
  
  loading="lazy"
@@ -4138,10 +4138,10 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;ol&gt;
-&lt;li&gt;When you run the app again, the new Menu item will appear. Given the href=”flip”, it will redirect to the base URL (&lt;a class="link" href="https://localhost:7110" target="_blank" rel="noopener"
+&lt;li&gt;When you run the app again, the new Menu item will appear. Given the href=â€flipâ€, it will redirect to the base URL (&lt;a class="link" href="https://localhost:7110" target="_blank" rel="noopener"
  &gt;https://localhost:7110&lt;/a&gt;) /flip route&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//d9276771ac7e7f6fb7800724605797cc.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-2ce3432b.png"
  
  
  loading="lazy"
@@ -4168,7 +4168,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;/div&gt;&lt;ol&gt;
 &lt;li&gt;This changes the default purple color to darkred.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//33d3c7a7c6df44851c787ad147d4904e.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-65ecbfd6.png"
  
  
  loading="lazy"
@@ -4179,13 +4179,13 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  
  &gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;This completes our development part. Let’s move on to the next step, and integrate our app code with GitHub Source Control (which actually should have happened at the start, before writing a single line of code – but hey, it’s a sample scenario right)&lt;/li&gt;
+&lt;li&gt;This completes our development part. Letâ€™s move on to the next step, and integrate our app code with GitHub Source Control (which actually should have happened at the start, before writing a single line of code â€“ but hey, itâ€™s a sample scenario right)&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h1 id="integrating-visual-studio-with-github-source-control"&gt;Integrating Visual Studio with GitHub Source Control
 &lt;/h1&gt;&lt;ol&gt;
-&lt;li&gt;With that, let’s close this project and save it to GitHub; so you can grab it as a reference. From the explorer, click “Git changes” tab and select Create GitHub Repository&lt;/li&gt;
+&lt;li&gt;With that, letâ€™s close this project and save it to GitHub; so you can grab it as a reference. From the explorer, click â€œGit changesâ€ tab and select Create GitHub Repository&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//51bf9482699dc85b868b603bab0406d8.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-72687fbb.png"
  
  
  loading="lazy"
@@ -4197,7 +4197,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  &gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;Click Create and Push, and provide a description as commit message (I typically call this first action the “init”).&lt;/p&gt;
+&lt;p&gt;Click Create and Push, and provide a description as commit message (I typically call this first action the â€œinitâ€).&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Wait for the git clone action to complete successfully. Connect to the GitHub repository and confirm all source code is there.&lt;/p&gt;
@@ -4205,7 +4205,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  &gt;petender/FestiveBlazor2022live (github.com)&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images//4d09932a92c0b020a566940e79741aeb.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-36962b2d.png"
  
  
  loading="lazy"
@@ -4216,14 +4216,14 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  
  &gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;Whenever you would make changes in the source code in Visual Studio and save the changes, Git Source Control will keep track of these and allowing you to commit the changes into the GitHub repository. I would recommend you to commit changes frequently, basically after each “important” update to the code.&lt;/li&gt;
+&lt;li&gt;Whenever you would make changes in the source code in Visual Studio and save the changes, Git Source Control will keep track of these and allowing you to commit the changes into the GitHub repository. I would recommend you to commit changes frequently, basically after each â€œimportantâ€ update to the code.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h1 id="publish-blazor-web-assembly-app-to-azure-static-web-apps"&gt;Publish Blazor Web Assembly app to Azure Static Web Apps
 &lt;/h1&gt;&lt;p&gt;In this last section, I will show you how to publish this webapp to Azure Static Web Apps, a web hosting service in Azure for static web frameworks like Blazor, React, Vue and several other.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;From the Azure Portal, create new resource / static web app&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//756a5b2424f865b6cf86eefab8492d2e.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-4aae45d5.png"
  
  
  loading="lazy"
@@ -4240,10 +4240,10 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;/ol&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;Resource group – any name of choice&lt;/p&gt;
+&lt;p&gt;Resource group â€“ any name of choice&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Name of the app – any unique name for the app&lt;/p&gt;
+&lt;p&gt;Name of the app â€“ any unique name for the app&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Source = GitHub&lt;/p&gt;
@@ -4253,7 +4253,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Region = any region of your choice&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//3910c87d613034cbd0c9ed1392dfda7b.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-62941ae1.png"
  
  
  loading="lazy"
@@ -4268,7 +4268,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;Scroll down and authenticate to GitHub; Next, select your source repo in Github where the code is stored (the one we just created)&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//1bd1ddddd3602c3ba2d84b540da393aa.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-dbd525c0.png"
  
  
  loading="lazy"
@@ -4281,7 +4281,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Click Build Details to provide more parameters regarding the Blazor app itself. Note you need to change the default App location from /Client to /, since our source code is in the root of the Blazor Web Assembly, without using ASP.Net hosted back-end.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//420cbce0770a41dc39ddf2184948363e.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-a5c753e9.png"
  
  
  loading="lazy"
@@ -4294,7 +4294,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Once published, it will trigger a GitHub Actions pipeline to publish the actual content&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//ba208857aa01b6d744c79606a7a76b53.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-d30b17e9.png"
  
  
  loading="lazy"
@@ -4304,8 +4304,8 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  &gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;The YAML pipeline code is stored in the .github/workflows/ subfolder within the GitHub repository. You shouldn’t need to update this file though. It just works out-of-the-box.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//7d89901490cd8ae277355c130085551f.png"
+&lt;p&gt;The YAML pipeline code is stored in the .github/workflows/ subfolder within the GitHub repository. You shouldnâ€™t need to update this file though. It just works out-of-the-box.&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-65639483.png"
  
  
  loading="lazy"
@@ -4317,8 +4317,8 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  &gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Check in Actions what’s happening:&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//97f08b3e40277869ee85a42fa0d2a343.png"
+&lt;p&gt;Check in Actions whatâ€™s happening:&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-f50eb218.png"
  
  
  loading="lazy"
@@ -4331,7 +4331,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Open the details for the Build &amp;amp; Deploy workflow&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//da5cda0e73ed46fcc4274becc2f4a30e.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-8f5e83c2.png"
  
  
  loading="lazy"
@@ -4344,7 +4344,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Selecting any step in the Action workflow will show more details:&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//765fda402ec958a1267c45c8d15592df.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-338d5027.png"
  
  
  loading="lazy"
@@ -4357,7 +4357,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Wait for the workflow to complete successfully.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//291538dda0fbb66c1ccc93f67b3ed263.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-ffd5fa67.png"
  
  
  loading="lazy"
@@ -4369,8 +4369,8 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  &gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Navigate back to the Azure Static Web app, click it’s URL and see the Blazor Web App is running as expected.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//71e0fdcd38b8f4e3df22af93a6c04215.png"
+&lt;p&gt;Navigate back to the Azure Static Web app, click itâ€™s URL and see the Blazor Web App is running as expected.&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-4fa1cda8.png"
  
  
  loading="lazy"
@@ -4383,7 +4383,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;When searching for a Marvel Character, this throws an error though, which can be validated from the Inspect option of the browser:&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//aebf1488e59ba401c5c69708ed8b2958.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-b0b0a6e2.png"
  
  
  loading="lazy"
@@ -4395,8 +4395,8 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  &gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Remember at the start, where we configured the API calls at the Marvel Developer site, we needed to specify the source URLs from where the calls are allowed. This Azure Static Web App URL is not configured. (Hence why I didn’t worry too much about including my APIKey as hard-coded string in the source code).&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images//07a00ae95a0f1548ac84f149b11ccd34.png"
+&lt;p&gt;Remember at the start, where we configured the API calls at the Marvel Developer site, we needed to specify the source URLs from where the calls are allowed. This Azure Static Web App URL is not configured. (Hence why I didnâ€™t worry too much about including my APIKey as hard-coded string in the source code).&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-28-16ff7f1a.png"
  
  
  loading="lazy"
@@ -4412,14 +4412,14 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;h1 id="summary"&gt;Summary
-&lt;/h1&gt;&lt;p&gt;In this article, I provided all the necessary steps to build a Blazor Web Assembly application. Started from the default template, you updated snippets of code to create a search field and corresponding action button to trigger the search. You learned about using HTTPClient to interact with an external API Back-End. Once this was all working, you looked into using some additional “flip card” CSS layout features, and how to update the Blazor Navigation Menu.&lt;/p&gt;
+&lt;/h1&gt;&lt;p&gt;In this article, I provided all the necessary steps to build a Blazor Web Assembly application. Started from the default template, you updated snippets of code to create a search field and corresponding action button to trigger the search. You learned about using HTTPClient to interact with an external API Back-End. Once this was all working, you looked into using some additional â€œflip cardâ€ CSS layout features, and how to update the Blazor Navigation Menu.&lt;/p&gt;
 &lt;p&gt;Once the development work was done, we saved the code in a GitHub repository.&lt;/p&gt;
 &lt;p&gt;Last, you deployed an Azure Static Web App, interacting with the GitHub repository to pick up the source code and publish it using GitHub Actions workflow.&lt;/p&gt;
-&lt;p&gt;I would like to thank the organizing team of Festive Tech Calendar 2022 for having accepted my session submission for the 3rd year in a row. Especially since this was my first attempt to do some (semi)live coding, to share my excitement of how I learned to write and build code at age 47. I’m already brainstorming on what Blazor app I can share in next year’s edition&lt;/p&gt;
+&lt;p&gt;I would like to thank the organizing team of Festive Tech Calendar 2022 for having accepted my session submission for the 3rd year in a row. Especially since this was my first attempt to do some (semi)live coding, to share my excitement of how I learned to write and build code at age 47. Iâ€™m already brainstorming on what Blazor app I can share in next yearâ€™s edition&lt;/p&gt;
 &lt;p&gt;Happy Holidays everyone!&lt;/p&gt;
 &lt;p&gt;/Peter&lt;/p&gt;
 &lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
- &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ &gt;&lt;img src="../images/screenshot-2022-12-28-17f576e7.png"
  
  
  loading="lazy"
@@ -4432,7 +4432,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
  &gt;Vaclav Perakek&lt;/a&gt;, published by &lt;a class="link" href="https://www.packtpub.com/product/building-blazor-webassembly-applications-with-grpc/9781804610558?_ga=2.130113295.1693879135.1671300604-32592472.1664947786" target="_blank" rel="noopener"
  &gt;Packt Publishing&lt;/a&gt; and available on &lt;a class="link" href="https://www.amazon.com/Building-Blazor-WebAssembly-Applications-gRPC/dp/1804610550" target="_blank" rel="noopener"
  &gt;Amazon&lt;/a&gt; as well as other e-book subscription platforms.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2022-12-17_10-12-08.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2022-12-17-53607649.png"
  
  
  loading="lazy"
@@ -4487,7 +4487,7 @@ b) (Optionally), specify the InteractiveWebAssembly Render Mode for Pages and/or
 &lt;p&gt;I&amp;rsquo;m off now, providing my &lt;strong&gt;5-star review on Amazon&lt;/strong&gt; for this book.&lt;/p&gt;
 &lt;p&gt;See you later folks!!&lt;/p&gt;
 &lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
- &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ &gt;&lt;img src="../images/screenshot-2022-12-17-17f576e7.png"
  
  
  loading="lazy"
@@ -4542,7 +4542,7 @@ VS Code is a &amp;ldquo;lightweight&amp;rdquo;, yet superpowerful source code ed
 &lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;dotnet --version
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src="../images/2021-11-08_01.png"
+&lt;/div&gt;&lt;p&gt;&lt;img src="../images/screenshot-2021-11-08-9d76190a.png"
  
  
  loading="lazy"
@@ -4573,7 +4573,7 @@ VS Code is a &amp;ldquo;lightweight&amp;rdquo;, yet superpowerful source code ed
 &lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;cd dotnetblazordemo
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src="../images/2021-11-08_02.png"
+&lt;/div&gt;&lt;p&gt;&lt;img src="../images/screenshot-2021-11-08-e6a9a4c6.png"
  
  
  loading="lazy"
@@ -4594,7 +4594,7 @@ VS Code is a &amp;ldquo;lightweight&amp;rdquo;, yet superpowerful source code ed
 &lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;dotnet new --list Blazor
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src="../images/2021-11-08_03.png"
+&lt;/div&gt;&lt;p&gt;&lt;img src="../images/screenshot-2021-11-08-09be8b44.png"
  
  
  loading="lazy"
@@ -4618,7 +4618,7 @@ VS Code is a &amp;ldquo;lightweight&amp;rdquo;, yet superpowerful source code ed
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Which nicely creates all necessary components for our Blazor App, containing the Client (Front-End), Server (Back-End) and Shared components.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2021-11-08_04.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2021-11-08-2b4cc1de.png"
  
  
  loading="lazy"
@@ -4640,7 +4640,7 @@ VS Code is a &amp;ldquo;lightweight&amp;rdquo;, yet superpowerful source code ed
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;This starts with compiling (Building&amp;hellip;) the app, and showing a successful run, exposing the different ports the app is listening on (https and http)&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2021-11-08_05.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2021-11-08-74fd1bd2.png"
  
  
  loading="lazy"
@@ -4653,7 +4653,7 @@ VS Code is a &amp;ldquo;lightweight&amp;rdquo;, yet superpowerful source code ed
 &lt;ol start="6"&gt;
 &lt;li&gt;Open your favorite browser, and connect to the https://localhost:&lt;port&gt; address; easiest (on Windows) is Ctrl+click and selecting the URL.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2021-11-08_06.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2021-11-08-6c35035a.png"
  
  
  loading="lazy"
@@ -4678,7 +4678,7 @@ VS Code is a &amp;ldquo;lightweight&amp;rdquo;, yet superpowerful source code ed
 &lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;dotnet new blazorwasm --help
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src="../images/2021-11-08_07.png"
+&lt;/div&gt;&lt;p&gt;&lt;img src="../images/screenshot-2021-11-08-18957466.png"
  
  
  loading="lazy"
@@ -4702,7 +4702,7 @@ VS Code is a &amp;ldquo;lightweight&amp;rdquo;, yet superpowerful source code ed
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Once created, check the file structure of this new application folder:&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2021-11-08_08.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2021-11-08-8a65d9df.png"
  
  
  loading="lazy"
@@ -4723,7 +4723,7 @@ VS Code is a &amp;ldquo;lightweight&amp;rdquo;, yet superpowerful source code ed
 &lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;dotnet new blazorwasm -au individual
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src="../images/2021-11-08_09.png"
+&lt;/div&gt;&lt;p&gt;&lt;img src="../images/screenshot-2021-11-08-d7e599bd.png"
  
  
  loading="lazy"
@@ -4734,7 +4734,7 @@ VS Code is a &amp;ldquo;lightweight&amp;rdquo;, yet superpowerful source code ed
  
  &gt;&lt;/p&gt;
 &lt;p&gt;The creation process is about the same as before; so let&amp;rsquo;s trigger another &lt;strong&gt;dotnet run&lt;/strong&gt; action and connect to the app from the browser:&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2021-11-08_10.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2021-11-08-3ea7cd83.png"
  
  
  loading="lazy"
@@ -4746,7 +4746,7 @@ VS Code is a &amp;ldquo;lightweight&amp;rdquo;, yet superpowerful source code ed
  &gt;&lt;/p&gt;
 &lt;p&gt;Nice! There is a prompt here, informing us to customize the Program.cs file, and provide the necessary Azure AD Authentication for our application identity&lt;/p&gt;
 &lt;p&gt;Let&amp;rsquo;s have a look at the Program.cs file, which also contains a little snippet and pointer where to add the necessary Azure AD Authentication settings and where to find additional info in the docs.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2021-11-08_11.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2021-11-08-2fddaf09.png"
  
  
  loading="lazy"
@@ -4771,7 +4771,7 @@ VS Code is a &amp;ldquo;lightweight&amp;rdquo;, yet superpowerful source code ed
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;dotnet run
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src="../images/2021-11-08_12.png"
+&lt;/div&gt;&lt;p&gt;&lt;img src="../images/screenshot-2021-11-08-a8632140.png"
  
  
  loading="lazy"
@@ -4783,7 +4783,7 @@ VS Code is a &amp;ldquo;lightweight&amp;rdquo;, yet superpowerful source code ed
  &gt;&lt;/p&gt;
 &lt;p&gt;and testing it again from the browser by connecting to https://localhost:&lt;port&gt;&lt;/p&gt;
 &lt;p&gt;From the browser properties, navigate to &lt;strong&gt;Apps&lt;/strong&gt; and select &lt;strong&gt;Install this app&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2021-11-08_13.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2021-11-08-84758af1.png"
  
  
  loading="lazy"
@@ -4794,7 +4794,7 @@ VS Code is a &amp;ldquo;lightweight&amp;rdquo;, yet superpowerful source code ed
  
  &gt;&lt;/p&gt;
 &lt;p&gt;and confirming the popup prompt &lt;strong&gt;Install&lt;/strong&gt; once more.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2021-11-08_14.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2021-11-08-42a6acfc.png"
  
  
  loading="lazy"
@@ -4806,7 +4806,7 @@ VS Code is a &amp;ldquo;lightweight&amp;rdquo;, yet superpowerful source code ed
  &gt;&lt;/p&gt;
 &lt;p&gt;Once installed, you can set some additional settings by clicking the &lt;strong&gt;Allow&lt;/strong&gt; button.&lt;/p&gt;
 &lt;p&gt;From here, your app will run in a separate docked window, just like any other Windows Application. You could also add a shortcut to the desktop, taskbar or start Menu.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2021-11-08_15.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2021-11-08-b41f44bf.png"
  
  
  loading="lazy"
@@ -4821,7 +4821,7 @@ VS Code is a &amp;ldquo;lightweight&amp;rdquo;, yet superpowerful source code ed
 &lt;p&gt;In a next Blazor-related post, I&amp;rsquo;ll walk you through some fundamental layout customization options, changing the look and feel of the navigation bar, the top bar and the actual web app pages themselves by introducing HTML and CSS primarily.&lt;/p&gt;
 &lt;p&gt;For now, take care of yourself and your family, see you again soon with more Blazor-news.&lt;/p&gt;
 &lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
- &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ &gt;&lt;img src="../images/screenshot-2021-11-08-17f576e7.png"
  
  
  loading="lazy"
@@ -4857,7 +4857,7 @@ In order to run C# and .NET applications, one needs to have the necessary .NET R
 &lt;ol&gt;
 &lt;li&gt;Launch Visual Studio on your machine, and select &lt;strong&gt;Create a new Project&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2021-11-07_01.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2021-11-07-88fe0b3b.png"
  
  
  loading="lazy"
@@ -4870,7 +4870,7 @@ In order to run C# and .NET applications, one needs to have the necessary .NET R
 &lt;ol start="2"&gt;
 &lt;li&gt;In the &lt;strong&gt;search box&lt;/strong&gt;, type blazor&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2021-11-07_02.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2021-11-07-026fc3a1.png"
  
  
  loading="lazy"
@@ -4888,7 +4888,7 @@ In order to run C# and .NET applications, one needs to have the necessary .NET R
 &lt;p&gt;In the &lt;em&gt;Configure Your New Project&lt;/em&gt; step, set a &lt;strong&gt;name&lt;/strong&gt; for your new project, for example &lt;strong&gt;MyFirstBlazorApp&lt;/strong&gt;, and update the location if needed (Notice how VStudio is by default pointing to your user&amp;rsquo;s profile directory, creating a sources and repos subfolder structure)&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2021-11-07_03.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2021-11-07-e55c5190.png"
  
  
  loading="lazy"
@@ -4901,7 +4901,7 @@ In order to run C# and .NET applications, one needs to have the necessary .NET R
 &lt;ol start="5"&gt;
 &lt;li&gt;This brings us to the &lt;em&gt;Additional Information&lt;/em&gt; step, where you specify the &lt;strong&gt;Framework&lt;/strong&gt;, which (preferably, but not required&amp;hellip;) is the latest &lt;strong&gt;.NET 6.0 (Long-Term Support)&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2021-11-07_04.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2021-11-07-4beb48f1.png"
  
  
  loading="lazy"
@@ -4914,7 +4914,7 @@ In order to run C# and .NET applications, one needs to have the necessary .NET R
 &lt;ol start="6"&gt;
 &lt;li&gt;Confirm by clicking the &lt;strong&gt;Create&lt;/strong&gt; button. After only a few minutes, the new Project got created and is available for &amp;ldquo;customizing&amp;rdquo;.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2021-11-07_05.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2021-11-07-9b2ef2f4.png"
  
  
  loading="lazy"
@@ -4927,7 +4927,7 @@ In order to run C# and .NET applications, one needs to have the necessary .NET R
 &lt;ol start="7"&gt;
 &lt;li&gt;Before launching the app and see it in action, let&amp;rsquo;s quickly describe the core application folder/file structure:&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2021-11-07_06.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2021-11-07-6d79e43a.png"
  
  
  loading="lazy"
@@ -4953,7 +4953,7 @@ In order to run C# and .NET applications, one needs to have the necessary .NET R
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2021-11-07_07.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2021-11-07-0f2b09a1.png"
  
  
  loading="lazy"
@@ -4973,7 +4973,7 @@ In order to run C# and .NET applications, one needs to have the necessary .NET R
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2021-11-07_08.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2021-11-07-6f5827b6.png"
  
  
  loading="lazy"
@@ -4986,7 +4986,7 @@ In order to run C# and .NET applications, one needs to have the necessary .NET R
 &lt;ol start="10"&gt;
 &lt;li&gt;From the Navigation Bar, select &lt;strong&gt;Counter&lt;/strong&gt;; this opens the &amp;ldquo;Counter&amp;rdquo; page, which has a button, responding to each Click, and changing the value of the Current count field.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2021-11-07_09.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2021-11-07-c5052820.png"
  
  
  loading="lazy"
@@ -5034,7 +5034,7 @@ In order to run C# and .NET applications, one needs to have the necessary .NET R
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1 id="debugging-a-blazor-app"&gt;Debugging a Blazor App
-&lt;/h1&gt;&lt;p&gt;&lt;img src="../images/2021-11-07_10.png"
+&lt;/h1&gt;&lt;p&gt;&lt;img src="../images/screenshot-2021-11-07-985b8bea.png"
  
  
  loading="lazy"
@@ -5048,7 +5048,7 @@ In order to run C# and .NET applications, one needs to have the necessary .NET R
 &lt;li&gt;Since we are in &amp;ldquo;Visual Studio Debug mode&amp;rdquo; (I&amp;rsquo;ll write much more on that in a later article&amp;hellip;), let me briefly show you what it allows you to do. In short, it allows you to set a breakpoint, which gets prompted for during the run time of the application. To &lt;strong&gt;set a breakpoint&lt;/strong&gt;, move your mouse pointer to the front of a line of code (or a code section) (the grey bar), and click. This adds a red dot, which reflects the breakpoint.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;From here, switch back to the application in the browser, and click the &amp;ldquo;Click Me&amp;rdquo; button again in the Counter page. Notice how you get brought back into Visual Studio, where the breakpoint got updated with a yellow arrow, identifying where you are in the debugging (we only have 1 breakpoint for now, but very convenient if you have several of those set&amp;hellip;). It will also show the actual value of the CurrentCount in a little popup balloon message, as well as below in the Autos section&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2021-11-07_11.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2021-11-07-60322204.png"
  
  
  loading="lazy"
@@ -5073,7 +5073,7 @@ In order to run C# and .NET applications, one needs to have the necessary .NET R
  &gt;hire a Blazor developer from Toptal&lt;/a&gt;, a leading platform for connecting top-tier developers with clients.&lt;/p&gt;
 &lt;p&gt;For now, take care of yourself and your family, see you again soon with more Blazor-news.&lt;/p&gt;
 &lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
- &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ &gt;&lt;img src="../images/screenshot-2021-11-07-17f576e7.png"
  
  
  loading="lazy"
@@ -5103,7 +5103,7 @@ In order to run C# and .NET applications, one needs to have the necessary .NET R
 &lt;li&gt;&lt;strong&gt;DotNet Framework&lt;/strong&gt;, supporting full Windows applications, and websites&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Xamarin/Mono&lt;/strong&gt;, which is a DotNet implementation for mobile apps&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src="../images/2021-09-06_01.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2021-09-06-3f9f9bce.png"
  
  
  loading="lazy"
@@ -5117,7 +5117,7 @@ In order to run C# and .NET applications, one needs to have the necessary .NET R
 &lt;/h1&gt;&lt;p&gt;If I was going to develop &amp;ldquo;something&amp;rdquo;, it would probably be a console app (easy to demo) or a web application (perfect for my Azure training deliveries and I can run it in Azure and Containers -&amp;gt; bonus)
 From there, my mind was set to start developing Web Applications, and more specifically by using &lt;strong&gt;Blazor&lt;/strong&gt; (&lt;a class="link" href="https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor%29" target="_blank" rel="noopener"
  &gt;https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor)&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2021-09-06_02.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2021-09-06-aa92775a.png"
  
  
  loading="lazy"
@@ -5130,7 +5130,7 @@ From there, my mind was set to start developing Web Applications, and more speci
 &lt;p&gt;Over Christmas holidays, I started building my library of learning material, which consisted of Microsoft Docs, Youtube videos and other community sessions. (I&amp;rsquo;ll cover some of these in another article later)&lt;/p&gt;
 &lt;p&gt;I also started working on building an app from scratch, which would make my life as an Azure trainer easier, as well as for my colleagues.&lt;/p&gt;
 &lt;p&gt;I managed to build a &amp;ldquo;useable&amp;rdquo; web application over the course of a few months, spending about 10 hours a week; As I approached 3000 followers on Twitter recently, I decided to come up with a series of posts on Blazor, explaining what I learned, where I struggled (and still am), to help others who are like myself, starting with no dev experience whatsoever.&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2021-09-06_03.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2021-09-06-ac84ecbe.png"
  
  
  loading="lazy"
@@ -5193,7 +5193,7 @@ From there, my mind was set to start developing Web Applications, and more speci
 &lt;/div&gt;&lt;p&gt;As you can see, the @page directive points to the &amp;ldquo;name&amp;rdquo; of this web page, being the &amp;ldquo;counter page&amp;rdquo;. Thinks of this as browsing to https://yourwebsiteURL/counter&lt;/p&gt;
 &lt;p&gt;next, there is a bit of HTML code for the actual layout of the page, and last, it contains some C# code with the actual intelligence of the counter button.&lt;/p&gt;
 &lt;p&gt;The way this page looks in the browser is like this:&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2021-09-06_04.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2021-09-06-9b0093b0.png"
  
  
  loading="lazy"
@@ -5220,7 +5220,7 @@ From there, my mind was set to start developing Web Applications, and more speci
  &gt;hire a Blazor developer from Toptal&lt;/a&gt;, a leading platform for connecting top-tier developers with clients.&lt;/p&gt;
 &lt;p&gt;Talk to you soon,&lt;/p&gt;
 &lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
- &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ &gt;&lt;img src="../images/screenshot-2021-09-06-17f576e7.png"
  
  
  loading="lazy"
@@ -5246,7 +5246,7 @@ From there, my mind was set to start developing Web Applications, and more speci
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;which was throwing an error&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2020-12-27_1.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-12-27-ced2bb85.jpg"
  
  
  loading="lazy"
@@ -5272,7 +5272,7 @@ From there, my mind was set to start developing Web Applications, and more speci
 &lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;dotnet --version
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src="../images/2020-12-27_2.jpg"
+&lt;/div&gt;&lt;p&gt;&lt;img src="../images/screenshot-2020-12-27-afa766ab.jpg"
  
  
  loading="lazy"
@@ -5283,7 +5283,7 @@ From there, my mind was set to start developing Web Applications, and more speci
  
  &gt;&lt;/p&gt;
 &lt;p&gt;I also installed the different EntityFramework Packages I need (FrameworkCore, Design, SQLServer,&amp;hellip;), and those are also version 5.0.1&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2020-12-27_3.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-12-27-01b8eca1.jpg"
  
  
  loading="lazy"
@@ -5303,7 +5303,7 @@ From there, my mind was set to start developing Web Applications, and more speci
 &lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-gdscript3" data-lang="gdscript3"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;dotnet&lt;/span&gt; &lt;span class="k"&gt;tool&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;global&lt;/span&gt; &lt;span class="n"&gt;dotnet&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ef&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;version&lt;/span&gt; &lt;span class="mf"&gt;5.0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src="../images/2020-12-27_4.jpg"
+&lt;/div&gt;&lt;p&gt;&lt;img src="../images/screenshot-2020-12-27-a3971983.jpg"
  
  
  loading="lazy"
@@ -5323,7 +5323,7 @@ From there, my mind was set to start developing Web Applications, and more speci
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;which loaded fine this time! Problem solved!&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2020-12-27_5.jpg"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-12-27-79b8338b.jpg"
  
  
  loading="lazy"
@@ -5336,7 +5336,7 @@ From there, my mind was set to start developing Web Applications, and more speci
 &lt;p&gt;I guess the root cause of the issue is related to my &amp;ldquo;mixed&amp;rdquo; setup, where I still have the dotnetcore 3.1 on my machine as well, probably confusing the dotnet environment. By explicitly referring to the version you want to use, you can avoid seeing weird error messages.&lt;/p&gt;
 &lt;p&gt;thanks, Peter&lt;/p&gt;
 &lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
- &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ &gt;&lt;img src="../images/screenshot-2020-12-27-17f576e7.png"
  
  
  loading="lazy"
@@ -5366,7 +5366,7 @@ From there, my mind was set to start developing Web Applications, and more speci
 &lt;h2 id="developer-environment-dependencies"&gt;Developer Environment dependencies
 &lt;/h2&gt;&lt;h3 id="visual-studio-2019"&gt;Visual Studio 2019
 &lt;/h3&gt;&lt;p&gt;In order to use the .NET 5.0 Framework, an update of &lt;strong&gt;Visual Studio 2019&lt;/strong&gt; is required. More specifically, it needs to be version &lt;strong&gt;16.8.0&lt;/strong&gt;; if all is set as default in your IDE, you should get this prompt to upgrade automatically; if this has been disabled, you could launch the upgrade yourself by starting the Visual Studio Installer from within the Visual Studio menu option &lt;strong&gt;Tools / Get Tools and Features&amp;hellip;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/2020-11-10_01.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-11-10-ff8a2109.png"
  
  
  loading="lazy"
@@ -5392,7 +5392,7 @@ From there, my mind was set to start developing Web Applications, and more speci
 &lt;p&gt;From the list of templates, select &lt;strong&gt;&amp;ldquo;ASP.NET Core Web Application&amp;rdquo;&lt;/strong&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2020-11-10_02.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-11-10-5abe34b0.png"
  
  
  loading="lazy"
@@ -5405,7 +5405,7 @@ From there, my mind was set to start developing Web Applications, and more speci
 &lt;ol start="3"&gt;
 &lt;li&gt;&lt;strong&gt;Press Create&lt;/strong&gt;; in the next step, from the top, select &lt;strong&gt;.NET Core&lt;/strong&gt; and &lt;strong&gt;ASP.NET Core 5.0&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2020-11-10_03.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-11-10-22188342.png"
  
  
  loading="lazy"
@@ -5423,7 +5423,7 @@ From there, my mind was set to start developing Web Applications, and more speci
 &lt;p&gt;From &lt;strong&gt;Solution Explorer&lt;/strong&gt;, select the Project you just created (the bold title), and open its &lt;strong&gt;Properties&lt;/strong&gt;; this will also confirm the &lt;strong&gt;.NET 5.0&lt;/strong&gt; Framework&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2020-11-10_04.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-11-10-c1ac954c.png"
  
  
  loading="lazy"
@@ -5439,7 +5439,7 @@ From there, my mind was set to start developing Web Applications, and more speci
 &lt;ol&gt;
 &lt;li&gt;From Solution Explorer / select your Project (the bold title), &lt;strong&gt;right click&lt;/strong&gt; to open the context menu, and select &lt;strong&gt;publish&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2020-11-10_05.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-11-10-6a91a2df.png"
  
  
  loading="lazy"
@@ -5452,7 +5452,7 @@ From there, my mind was set to start developing Web Applications, and more speci
 &lt;ol start="2"&gt;
 &lt;li&gt;From the &lt;strong&gt;Publish&lt;/strong&gt; wizard Target step, select &lt;strong&gt;Azure&lt;/strong&gt;; click Next&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2020-11-10_06.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-11-10-9a28ca8d.png"
  
  
  loading="lazy"
@@ -5465,7 +5465,7 @@ From there, my mind was set to start developing Web Applications, and more speci
 &lt;ol start="3"&gt;
 &lt;li&gt;From the wizard&amp;rsquo;s Specific Target step, select &lt;strong&gt;Azure App Service (Linux)&lt;/strong&gt;; click Next&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2020-11-10_07.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-11-10-4b2d020a.png"
  
  
  loading="lazy"
@@ -5478,7 +5478,7 @@ From there, my mind was set to start developing Web Applications, and more speci
 &lt;ol start="4"&gt;
 &lt;li&gt;From the wizard&amp;rsquo;s App Service step, Click the &lt;strong&gt;+&lt;/strong&gt; sign to **create a new &lt;strong&gt;Azure App Service&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2020-11-10_08.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-11-10-e2413475.png"
  
  
  loading="lazy"
@@ -5492,7 +5492,7 @@ From there, my mind was set to start developing Web Applications, and more speci
 - specify a new for a **new Resource Group**
 - specify a new **App Service Plan** for example S1 - 1.75Gb Memory
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src="../images/2020-11-10_09.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-11-10-efeddd6d.png"
  
  
  loading="lazy"
@@ -5505,7 +5505,7 @@ From there, my mind was set to start developing Web Applications, and more speci
 &lt;ol start="5"&gt;
 &lt;li&gt;Validate all the settings, and confirm by pressing &lt;strong&gt;Finish&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2020-11-10_10.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-11-10-4684ee27.png"
  
  
  loading="lazy"
@@ -5518,7 +5518,7 @@ From there, my mind was set to start developing Web Applications, and more speci
 &lt;ol start="6"&gt;
 &lt;li&gt;From the summary page, press &lt;strong&gt;Publish&lt;/strong&gt;; This starts the publishing process.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2020-11-10_11.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-11-10-9a353f9b.png"
  
  
  loading="lazy"
@@ -5531,7 +5531,7 @@ From there, my mind was set to start developing Web Applications, and more speci
 &lt;ol start="7"&gt;
 &lt;li&gt;Wait for it to complete successfully. The process can be viewed from the &lt;strong&gt;Output window&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="../images/2020-11-10_12.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-11-10-6effce7b.png"
  
  
  loading="lazy"
@@ -5556,7 +5556,7 @@ From there, my mind was set to start developing Web Applications, and more speci
 &lt;li&gt;Notice the App Service you just created&lt;/li&gt;
 &lt;li&gt;Browse to this App Service&amp;rsquo;s &lt;strong&gt;Configuration&lt;/strong&gt; (under Settings)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src="../images/2020-11-10_13.png"
+&lt;p&gt;&lt;img src="../images/screenshot-2020-11-10-0a207712.png"
  
  
  loading="lazy"
@@ -5573,7 +5573,7 @@ From there, my mind was set to start developing Web Applications, and more speci
 &lt;/h2&gt;&lt;p&gt;In this article, you got introduced to the new .NET 5.0 Framework. I walked you through the Project setup in VIsual Studio 2019 for an ASP.NET Core 5.0 based web application, followed by publishing this to a new Azure App Service resource.&lt;/p&gt;
 &lt;p&gt;As always, I hope you learned from this article; ping me whenever you got any (Azure) questions.&lt;/p&gt;
 &lt;p&gt;&lt;a class="link" href="https://www.buymeacoffee.com/pdtit" target="_blank" rel="noopener"
- &gt;&lt;img src="../images/buy_me_a_coffee.png"
+ &gt;&lt;img src="../images/screenshot-2020-11-10-17f576e7.png"
  
  
  loading="lazy"

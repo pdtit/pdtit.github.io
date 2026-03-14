@@ -1,4 +1,4 @@
----
+﻿---
 title: "publish your first dotnet5 app to Azure App Services"
 date: 2020-11-10
 tags: ["Azure", ".NET Development"]
@@ -30,7 +30,7 @@ More details about the dotnet 5.0 release can be read in the ["announcement blog
 
 In order to use the .NET 5.0 Framework, an update of **Visual Studio 2019** is required. More specifically, it needs to be version **16.8.0**; if all is set as default in your IDE, you should get this prompt to upgrade automatically; if this has been disabled, you could launch the upgrade yourself by starting the Visual Studio Installer from within the Visual Studio menu option **Tools / Get Tools and Features...** 
 
-![Visual Studio Installer](../images/2020-11-10_01.png)
+![Visual Studio Installer](../images/screenshot-2020-11-10-ff8a2109.png)
 
 ### Visual Studio for MAC
 
@@ -48,17 +48,17 @@ Now the prerequirements have been covered, let's give it a try and build a new A
 
 2. From the list of templates, select **"ASP.NET Core Web Application"**
 
-![ASP.NET Web App Template](../images/2020-11-10_02.png)
+![ASP.NET Web App Template](../images/screenshot-2020-11-10-5abe34b0.png)
 
 3. **Press Create**; in the next step, from the top, select **.NET Core** and **ASP.NET Core 5.0** 
 
-![ASP.NET Web App Template](../images/2020-11-10_03.png)
+![ASP.NET Web App Template](../images/screenshot-2020-11-10-22188342.png)
 
 4. Choose **ASP.NET Core Web App** as template + confirm by pressing the **Create** button. Wait for the project to load.
 
 5. From **Solution Explorer**, select the Project you just created (the bold title), and open its **Properties**; this will also confirm the **.NET 5.0** Framework
 
-![ASP.NET Web App Template](../images/2020-11-10_04.png)
+![ASP.NET Web App Template](../images/screenshot-2020-11-10-c1ac954c.png)
 
 ## Publishing your Web App to Azure App Services
 
@@ -68,37 +68,37 @@ Developing an app is one thing, but what's giving more joy than seeing it runnin
 
 1. From Solution Explorer / select your Project (the bold title), **right click** to open the context menu, and select **publish**
 
-![ASP.NET Web App Template](../images/2020-11-10_05.png)
+![ASP.NET Web App Template](../images/screenshot-2020-11-10-6a91a2df.png)
 
 2. From the **Publish** wizard Target step, select **Azure**; click Next 
 
-![ASP.NET Web App Template](../images/2020-11-10_06.png)
+![ASP.NET Web App Template](../images/screenshot-2020-11-10-9a28ca8d.png)
 
 3. From the wizard's Specific Target step, select **Azure App Service (Linux)**; click Next
 
-![ASP.NET Web App Template](../images/2020-11-10_07.png)
+![ASP.NET Web App Template](../images/screenshot-2020-11-10-4b2d020a.png)
 
 4. From the wizard's App Service step, Click the **+** sign to **create a new **Azure App Service** 
 
-![ASP.NET Web App Template](../images/2020-11-10_08.png)
+![ASP.NET Web App Template](../images/screenshot-2020-11-10-e2413475.png)
 
     - provide a **unique** name for the webapp, using lowercase characters
     - specify a new for a **new Resource Group**
     - specify a new **App Service Plan** for example S1 - 1.75Gb Memory
 
-![ASP.NET Web App Template](../images/2020-11-10_09.png)
+![ASP.NET Web App Template](../images/screenshot-2020-11-10-efeddd6d.png)
 
 5. Validate all the settings, and confirm by pressing **Finish**
 
-![ASP.NET Web App Template](../images/2020-11-10_10.png)
+![ASP.NET Web App Template](../images/screenshot-2020-11-10-4684ee27.png)
 
 6. From the summary page, press **Publish**; This starts the publishing process. 
 
-![ASP.NET Web App Template](../images/2020-11-10_11.png)
+![ASP.NET Web App Template](../images/screenshot-2020-11-10-9a353f9b.png)
 
 7. Wait for it to complete successfully. The process can be viewed from the **Output window**
 
-![ASP.NET Web App Template](../images/2020-11-10_12.png)
+![ASP.NET Web App Template](../images/screenshot-2020-11-10-6effce7b.png)
 
 8. After waiting another few seconds, your **default browser** opens the Web App URL, and shows the web app running
 
@@ -109,7 +109,7 @@ Developing an app is one thing, but what's giving more joy than seeing it runnin
 - Notice the App Service you just created
 - Browse to this App Service's **Configuration** (under Settings)
 
-![ASP.NET Web App Template](../images/2020-11-10_13.png)
+![ASP.NET Web App Template](../images/screenshot-2020-11-10-0a207712.png)
 
 10. Notice the correct **.NET 5.0** version
 
@@ -119,6 +119,6 @@ In this article, you got introduced to the new .NET 5.0 Framework. I walked you 
 
 As always, I hope you learned from this article; ping me whenever you got any (Azure) questions.
 
-[![BuyMeACoffee](../images/buy_me_a_coffee.png)](https://www.buymeacoffee.com/pdtit)
+[![BuyMeACoffee](../images/screenshot-2020-11-10-17f576e7.png)](https://www.buymeacoffee.com/pdtit)
 
 Take care, Peter

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Introduction to Semantic Kernel"
 date: 2024-09-15
 publishdate: 2024-09-15
@@ -100,7 +100,7 @@ Semantic Kernel is a powerful tool that enhances the capabilities of AI models b
 I hope this article provides you with a comprehensive overview of Semantic Kernel and its applications. If you have any questions or need further details, feel free to ask! In a next blog post, we'll go over several use cases with many more code snippets, to give you enough examples to start building/developing your own Copilots. Stay tuned!
 
 
-[![BuyMeACoffee](../images/buy_me_a_coffee.png)](https://www.buymeacoffee.com/pdtit)
+[![BuyMeACoffee](../images/screenshot-2024-09-15-17f576e7.png)](https://www.buymeacoffee.com/pdtit)
 
 Cheers!!
 

@@ -17,7 +17,7 @@ Trust me, I live this moment almost every single week as an Azure Technical Trai
 
 So to stay within the "spirit of continuous learning", I was more than happy to contribute to [Dwayne Natwick's](https://captainhyperscaler.com/) event [**Azure Back to School**](https://captainhyperscaler.com/2020/03/03/azure-back-to-school/),
 
-![Cover_Azure_Back_to_school](../images/2020-09-13_01.png)
+![Cover_Azure_Back_to_school](../images/screenshot-2020-09-13-86cbe27d.png)
 
 and present a session on **["Azure DevOps is not for IT Pro (says no one ever again)"](https://youtu.be/K4ClwqEKNys)**. Why was I so stupid enough to try and cram this amazing tool in a 30 minute session? I still don't know why :)
 
@@ -38,4 +38,5 @@ One last thing, there is a lot more cool and interesting [Azure](http://azure.mi
 See you around! Take care,
 
 thanks, Peter
+
 
