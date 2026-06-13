@@ -7,7 +7,7 @@ draft: false
 
 Hello readers,
 
-About 2 months ago, I promised I would start writing down my adventures in the DotNet Blazor development world, which you can read about in my [first](https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer/) and [second](https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer-part-2/) post.
+About 2 months ago, I promised I would start writing down my adventures in the DotNet Blazor development world, which you can read about in my [first](/post/coding-apps-in-blazor-from-a-non-developer/) and [second](/post/coding-apps-in-blazor-from-a-non-developer-part-2/) post.
 
 Welcome to "Coding Apps in Blazor from a non-developer standpoint - Part 3"
 
@@ -67,7 +67,7 @@ dotnet new --list Blazor
 
 ![ListBlazor](../images/screenshot-2021-11-08-09be8b44.png)
 
-4. As you can see, there is **both a template for Blazor Server and Blazor Web Assembly**; As I showed you how to deploy a Blazor Server App in the Visual Studio GUI [post](https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer-part-2/), let's deploy a Blazor Web Assembly alternative this time. Remember, Web Assembly is a browser capability, allowing you to run full .NET code directly in the browser, without requiring a server-backend. For more details, check back on my [Blazor introductory]((https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer/)) article in which I positioned the different Blazor versions and their characteristics. 
+4. As you can see, there is **both a template for Blazor Server and Blazor Web Assembly**; As I showed you how to deploy a Blazor Server App in the Visual Studio GUI [post](/post/coding-apps-in-blazor-from-a-non-developer-part-2/), let's deploy a Blazor Web Assembly alternative this time. Remember, Web Assembly is a browser capability, allowing you to run full .NET code directly in the browser, without requiring a server-backend. For more details, check back on my [Blazor introductory]((/post/coding-apps-in-blazor-from-a-non-developer/)) article in which I positioned the different Blazor versions and their characteristics. 
 
 Inititate the following command:
 
@@ -93,7 +93,7 @@ This starts with compiling (Building...) the app, and showing a successful run, 
 
 ![BrowserApp](../images/screenshot-2021-11-08-6c35035a.png)
 
-You now have a fully functional Blazor App running in the browser. Congratulations. (for details on what the app is about, feel free to check my notes in my [previous article](https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer-part-2/))
+You now have a fully functional Blazor App running in the browser. Congratulations. (for details on what the app is about, feel free to check my notes in my [previous article](/post/coding-apps-in-blazor-from-a-non-developer-part-2/))
 
 # More dotnet Blazor command line options
 While I could have stopped the article here and thanking you for following along, I wanted to emphasize some other capabilities from the dotnet commandline, and covering some of the additional parameters to choose from. Note: I will only touch on the Blazor-specific options, not all the overall dotnet commandline options available. 

@@ -5,7 +5,7 @@ tags: ["Azure", "Books"]
 draft: false
 ---
 
-As most of you know, I enjoy writing technical (Azure related) **[books](https://www.007ffflearning.com/books)**, but every now and then I am not writing myself, but rather do technical reviewing. A few weeks ago, I was approached by **[Packt](http://www.packt.com)**, asking me to review their **[Azure for Architects - third edition](https://www.packtpub.com/cloud-networking/azure-for-architects-third-edition)**
+As most of you know, I enjoy writing technical (Azure related) **[books](/books)**, but every now and then I am not writing myself, but rather do technical reviewing. A few weeks ago, I was approached by **[Packt](http://www.packt.com)**, asking me to review their **[Azure for Architects - third edition](https://www.packtpub.com/cloud-networking/azure-for-architects-third-edition)**
 
 ![Azure_for_Architects_cover](../images/screenshot-2020-08-02-fc721eb6.jpeg)
 

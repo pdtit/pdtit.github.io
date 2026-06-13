@@ -17,7 +17,7 @@ And that's exactly what I will guide you through in this post.
 - A sample Docker container (you can grab [my example](https://hub.docker.com/r/pdetender/simplcommerce/) if you want, or use any other you like)
 
 ## Upgrading to Edge Desktop
-I was already running Docker Desktop on my Windows 10 machine, using Windows Subsystem for Linux (WSL) integration; I actually wrote [another post](https://www.007ffflearning.com/post/migrate-docker-desktop-to-wsl2/) on this a few weeks ago, on how to get this up and running. 
+I was already running Docker Desktop on my Windows 10 machine, using Windows Subsystem for Linux (WSL) integration; I actually wrote [another post](/post/migrate-docker-desktop-to-wsl2/) on this a few weeks ago, on how to get this up and running. 
 
 1. From the Docker icon in the taskbar, select "About Docker Desktop"; this will show you the current version
 

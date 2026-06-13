@@ -5,7 +5,7 @@ tags: ["Azure", "Books"]
 draft: false
 ---
 
-As most of you know already, I enjoy writing technical (Azure related) **[books](https://www.007ffflearning.com/books)**. So if you are wondering why it's been quiet lately, there is a good reason for it. 
+As most of you know already, I enjoy writing technical (Azure related) **[books](/books)**. So if you are wondering why it's been quiet lately, there is a good reason for it. 
 
 Actually, I was writing on my 9th book, making it 9 books in 9 years straight, but something got in-between the writing process and publishing. It's called US Visa regulations :). Beginning this year, January 5th actually, I relocated from Belgium to Redmond, WA for Microsoft Corp. The work Visa I'm on allows me to only work for Microsoft, which obviously makes sense. But that meant I had to stop my side-activity as a book author with Apress.
 

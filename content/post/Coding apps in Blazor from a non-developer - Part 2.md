@@ -7,7 +7,7 @@ draft: false
 
 Hello readers,
 
-About 2 months ago, I promised I would start writing down my adventures in the DotNet Blazor development world, which you can read in my [first Blazor-related post here](https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer/).
+About 2 months ago, I promised I would start writing down my adventures in the DotNet Blazor development world, which you can read in my [first Blazor-related post here](/post/coding-apps-in-blazor-from-a-non-developer/).
 
 While that post was more of a "setting the scene" how I ended up in learning Blazor (and C# mainly) and what the differences are between Blazor Server and Blazor WebAssembly, it also listed up the TOP 8 objectives I want to get out of these articles. 
 

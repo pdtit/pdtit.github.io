@@ -26,13 +26,13 @@ Blazor is a high-performance web development framework, created by Microsoft, an
 
 If you want to learn more about Blazor, you might have a look at some of my former blog posts on how to get started:
 
-* https://www.007ffflearning.com/post/efficiently-handling-secrets-as-a-blazor-.net-developer/
+* /post/efficiently-handling-secrets-as-a-blazor-.net-developer/
 
-* https://www.007ffflearning.com/post/deploying-blazor-apps-using-dotnet-commandline/
+* /post/deploying-blazor-apps-using-dotnet-commandline/
 
-* https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer/
+* /post/coding-apps-in-blazor-from-a-non-developer/
 
-* https://www.007ffflearning.com/post/coding-apps-in-blazor-from-a-non-developer-part-2/
+* /post/coding-apps-in-blazor-from-a-non-developer-part-2/
 
 ## Book Review
 

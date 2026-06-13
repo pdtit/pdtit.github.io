@@ -1,0 +1,16 @@
+# Hugo build output (now produced by GitHub Actions, no longer committed)
+/docs/
+/public/
+
+# Hugo cache / lock
+/resources/_gen/
+.hugo_build.lock
+
+# Local Hugo binaries / tooling (installed in CI instead)
+hugo.exe
+/tools/hugo/
+/tools/hugo-*/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db

@@ -5,7 +5,7 @@ tags: ["Hugo", "Azure"]
 draft: false
 ---
 
-Only about a month ago, I decided to move my former website (running on Wix) to the Open Source **[Hugo](http://www.gohugo.io)** platform, running it as a static website with MarkDown, using **[Azure Storage Static Website](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-static-website)**. For more details on how to do this, have a look at my blog post **[here](https://www.007ffflearning.com/post/static_site_frontdoor/)**
+Only about a month ago, I decided to move my former website (running on Wix) to the Open Source **[Hugo](http://www.gohugo.io)** platform, running it as a static website with MarkDown, using **[Azure Storage Static Website](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-static-website)**. For more details on how to do this, have a look at my blog post **[here](/post/static_site_frontdoor/)**
 
 I have to say, it runs fine, is cheap, fast, reliable,... 
 

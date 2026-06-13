@@ -1,4 +1,4 @@
-baseURL = "https://www.007ffflearning.com"
+baseURL = "https://pdtit.github.io/"
 title = "Azure Readiness starts here..."
 theme = "stack"
 publishDir = "docs"
@@ -21,9 +21,6 @@ home = ["HTML", "RSS", "JSON"]
   featuredImageField = "image"
   rssFullContent = true
   favicon = "/images/007ffflearning-ape.png"
-
-  # App Insights
-  azureAppInsightsKey = "100a91c6-40e4-4e8e-a4ee-57873dc4eee3"
 
   [params.footer]
     since = 2021

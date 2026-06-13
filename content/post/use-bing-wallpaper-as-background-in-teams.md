@@ -5,7 +5,7 @@ tags: ["General"]
 draft: false
 ---
 
-A few days ago, I blogged about **[Bing Desktop Wallpapers](https://www.007ffflearning.com/post/bing-wallpaper/)**, a nice little tool you can install on your Windows Machine to enjoy some of the amazing views of the world. 
+A few days ago, I blogged about **[Bing Desktop Wallpapers](/post/bing-wallpaper/)**, a nice little tool you can install on your Windows Machine to enjoy some of the amazing views of the world. 
 
 Knowing these got stored on your local machine as JPEGs (C:\Users\<user>\AppData\Local\Microsoft\BingWallpaperApp\WPImages), got me the idea to reuse these as "Teams Backgrounds" during video calls.
 

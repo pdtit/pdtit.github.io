@@ -182,7 +182,7 @@ Key components of Azure Chaos Studio:
 
 4. **Integration with Azure Services**: Azure Chaos Studio integrates seamlessly with Azure services, making it easy to test the resilience of Azure-based applications and services.
 
-(For more details on Chaos Engineering and Azure Chaos Studio, read [my recent blog post on the subject](https://www.007ffflearning.com/post/intro-to-chaos-engineering-and-azure-chaos-studio-preview/))
+(For more details on Chaos Engineering and Azure Chaos Studio, read [my recent blog post on the subject](/post/intro-to-chaos-engineering-and-azure-chaos-studio-preview/))
 
 ## Conclusion
 

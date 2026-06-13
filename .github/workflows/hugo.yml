@@ -1,0 +1,126 @@
+# Build the Hugo site and deploy it to GitHub Pages.
+# Replaces the former Azure DevOps / Static Web Apps pipeline.
+name: Deploy Hugo site to Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+# Allow GITHUB_TOKEN to deploy to Pages and verify the deployment originates from an appropriate source.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment; do not cancel in-progress production deploys.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      # Keep in sync with the Stack theme requirement (>= 0.154.0).
+      HUGO_VERSION: 0.157.0
+    steps:
+      - name: Install Hugo extended
+        run: |
+          set -euo pipefail
+          HUGO_TGZ="hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
+          HUGO_URL="https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/${HUGO_TGZ}"
+          curl -fsSL "$HUGO_URL" -o /tmp/hugo.tgz
+          tar -xzf /tmp/hugo.tgz -C /tmp hugo
+          sudo install -m 0755 /tmp/hugo /usr/local/bin/hugo
+          hugo version
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: false
+          fetch-depth: 0
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+      - name: Build with Hugo
+        env:
+          HUGO_ENVIRONMENT: production
+          HUGO_ENV: production
+          TZ: Europe/Brussels
+        run: |
+          hugo \
+            --gc \
+            --minify \
+            --baseURL "${{ steps.pages.outputs.base_url }}/"
+      - name: Validate Hugo search artifacts and changed posts
+        run: |
+          set -euo pipefail
+
+          # Search index must exist and be valid.
+          test -s docs/search/index.html
+          grep -q "search-form" docs/search/index.html
+          test -s docs/search/index.json
+          python3 -c "import json; json.load(open('docs/search/index.json', encoding='utf-8'))"
+          test -s docs/index.json
+          python3 -c "import json; json.load(open('docs/index.json', encoding='utf-8'))"
+
+          # Validate that posts changed in the latest commit are present in the generated index.
+          if git rev-parse --verify HEAD~1 >/dev/null 2>&1; then
+            CHANGED_POSTS=$(git diff --name-only HEAD~1 HEAD | grep '^content/post/.*\.md$' || true)
+          else
+            CHANGED_POSTS=""
+          fi
+
+          if [ -n "$CHANGED_POSTS" ]; then
+            while IFS= read -r POST_FILE; do
+              [ -z "$POST_FILE" ] && continue
+              [ -f "$POST_FILE" ] || continue
+              TITLE=$(sed -nE 's/^title:[[:space:]]*"(.*)"[[:space:]]*$/\1/p; t; s/^title:[[:space:]]*(.*)$/\1/p' "$POST_FILE" | head -n 1)
+              if [ -z "$TITLE" ]; then
+                echo "Could not parse title from $POST_FILE"
+                exit 1
+              fi
+
+              python3 -c "import json,sys; title=sys.argv[1]; items=json.load(open('docs/index.json', encoding='utf-8')); found=any((i.get('title')==title) for i in items); print(f'Missing generated post in docs/index.json: {title}') if not found else None; sys.exit(0 if found else 1)" "$TITLE"
+
+              PERMALINK=$(python3 -c "import json,sys; title=sys.argv[1]; items=json.load(open('docs/index.json', encoding='utf-8')); m=next((i for i in items if i.get('title')==title), None); print((m.get('permalink') if m else '') or '')" "$TITLE")
+              if [ -z "$PERMALINK" ]; then
+                echo "Missing permalink for generated post: $TITLE"
+                exit 1
+              fi
+
+              POST_OUTPUT="docs/${PERMALINK#/}"
+              case "$POST_OUTPUT" in
+                */) POST_OUTPUT="${POST_OUTPUT}index.html" ;;
+                *) POST_OUTPUT="${POST_OUTPUT}/index.html" ;;
+              esac
+
+              if [ ! -f "$POST_OUTPUT" ]; then
+                echo "Missing generated page file: $POST_OUTPUT"
+                exit 1
+              fi
+              echo "Validated generated post: $TITLE"
+            done <<< "$CHANGED_POSTS"
+          else
+            echo "No changed posts in latest commit; skipping post inclusion validation."
+          fi
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./docs
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

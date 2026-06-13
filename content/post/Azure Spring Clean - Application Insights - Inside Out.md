@@ -9,10 +9,10 @@ draft: false
 
 Hey folks,
 
-Welcome to #AzureSpringClean, an initiative from **[Joe Carlyle](https://twitter.com/wedoazure) and [Thomas Thornton](https://twitter.com/tamstar1234)** which celebrates its 4th edition this year. I'm thrilled to be part of this again for the 3nd time this year. My [first article](https://www.007ffflearning.com/post/azure-spring-clean-demystifying-service-principal-and-managed-identities/) had **security in mind, explaining the difference between Azure Service Principals and Managed Identity**. 
+Welcome to #AzureSpringClean, an initiative from **[Joe Carlyle](https://twitter.com/wedoazure) and [Thomas Thornton](https://twitter.com/tamstar1234)** which celebrates its 4th edition this year. I'm thrilled to be part of this again for the 3nd time this year. My [first article](/post/azure-spring-clean-demystifying-service-principal-and-managed-identities/) had **security in mind, explaining the difference between Azure Service Principals and Managed Identity**. 
 
 My 2nd article focused on **understand DevSecOps, and how you can optimize security in your application deployment lifecycle, by "shifting left"**.
-(https://www.007ffflearning.com/post/azure-spring-clean---devsecops-and-shifting-left-to-publish-secure-software/)
+(/post/azure-spring-clean---devsecops-and-shifting-left-to-publish-secure-software/)
 
 Where now for this 3rd article, where moving more towards the 'end' of the traditional DevOps cycle, discussing **Operations and Monitoring, by using Azure Application Insights**.
 

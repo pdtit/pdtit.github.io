@@ -5,7 +5,7 @@ tags: ["Azure", "Books"]
 draft: false
 ---
 
-As most of you know, I enjoy writing technical (Azure related) **[books](https://www.007ffflearning.com/books)**, but over the last year, I didn't focus that much on writing myself, but supporting other authors in their writing-journey as well as performing technical reviewing of the book they are writing. 
+As most of you know, I enjoy writing technical (Azure related) **[books](/books)**, but over the last year, I didn't focus that much on writing myself, but supporting other authors in their writing-journey as well as performing technical reviewing of the book they are writing. 
 
 The one I want to highlight in this post, has an interesting back-story. Mid 2019, I got approached by **[Packt](http://www.packt.com)**, to write an update to their best-seller title **"Azure Strategy and Implementation Guide"**, in sponsorship with Microsoft. That was the third edition, which got released Oct 2019. About a year later, I got asked to write another update. As I was a Microsoft employee in meantime, and the book got sponsored by Microsoft, it could be a bit tricky :), so I decided to pull out of the writing process, avoiding conflicts of interest. 
 

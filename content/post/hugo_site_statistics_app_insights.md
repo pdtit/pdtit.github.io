@@ -11,7 +11,7 @@ About a month ago, I decided to move my former 007FFFLearning website from Wix.c
 
 That "something new" eventually was [Hugo](http://gohugo.io), an Open Source web platform, supporting HTML and MarkDown. After a quick test, I found it also worked fine on Azure Storage Static Site, which to me was the motivation to give it a try. 
 
-(FYI, have a look [here](https://www.007ffflearning.com/post/static_site_frontdoor/) about how to get your own Hugo website started, and hosting it on Azure including Azure CDN or Azure Front Door services...)
+(FYI, have a look [here](/post/static_site_frontdoor/) about how to get your own Hugo website started, and hosting it on Azure including Azure CDN or Azure Front Door services...)
 
 Having a platform for blog posts is one thing, getting your hands on statistics around popular posts and overall web site visits is maybe even more crucial if you want to take blogging serious. Since the core backend of my [Hugo](http://gohugo.io) site is running on Azure, I wanted to integrate [Azure Application Insights](https://docs.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview), since I knew how powerful it was for monitoring web application workloads, running in Azure or elsewhere.
 

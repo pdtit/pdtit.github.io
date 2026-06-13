@@ -8,7 +8,7 @@ draft: false
 
 Hey folks,
 
-Earlier this week, I [wrote](https://www.007ffflearning.com/post/deploying-or-migrating-a-hugo-blog-on-azure-static-web-apps/) about how I migrated my Hugo blog site from Azure Storage Account-based site to the newer Azure Static Web Apps with Hugo. 
+Earlier this week, I [wrote](/post/deploying-or-migrating-a-hugo-blog-on-azure-static-web-apps/) about how I migrated my Hugo blog site from Azure Storage Account-based site to the newer Azure Static Web Apps with Hugo. 
 
 While this was a smooth process, both migrating the actual site content, as well as transferring the public domain name, the piece missing was the statistics. I always used [Azure Application Insights](https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview?tabs=net) for this, but specifically for Azure Static Web Apps, App Insights is only supported when using Functions (as per [this article](https://learn.microsoft.com/en-us/azure/static-web-apps/monitor) on the Microsoft docs). Which I don't have with Hugo.
 

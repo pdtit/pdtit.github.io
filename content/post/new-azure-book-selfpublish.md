@@ -18,7 +18,7 @@ Flipping the presentations and lab guides into a book seemed like an interesting
 Talking to several people about this, it became clear that – given the focus on the technical side of the Azure platform, together with the focus on the hands-on aspect of the workshop, most vouched for a hands-on guide, and leaving the ‘speaker notes’ behind. Next, me moving to Microsoft as a full-time employee mid September 2019, was another good reason to shorten the format of this book. It would still take me another 3 months (Christmas Holidays aka slower pace...) to go through all labs again myself, guaranteeing the book was ready for usage, even without having a trainer available to ask questions. 
 
 
-This is the first book I’m doing in self-publishing, and my 6th book overall (see http://www.007ffflearning.com/publications) for more details on the other material I wrote along the years. 
+This is the first book I’m doing in self-publishing, and my 6th book overall (see /publications) for more details on the other material I wrote along the years. 
 
 
 The benefit for you as a reader is that you will get continuous updates. Whether these are bug-fixes, additional chapters/lab steps or major updates to existing labs, you will get notified about it. The advantage for me as the author, is that it is probably one of the best ways to publish content on a topic that is as fast moving as Azure. 
