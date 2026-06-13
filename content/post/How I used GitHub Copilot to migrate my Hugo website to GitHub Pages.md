@@ -2,7 +2,7 @@
 title: "How I used GitHub Copilot to migrate my Hugo website to GitHub Pages"
 date: 2026-06-13
 tags: ["Hugo", "GitHub", "GitHub Pages", "GitHub Copilot", "DevOps", "Azure"]
-draft: true
+draft: false
 ---
 
 If you've followed this blog for a while, you know it runs on **[Hugo](https://www.gohugo.io)**, a fantastic static site generator that turns a folder of Markdown files into a fast, fully static website. For the past couple of years that site has been hosted on **Azure Static Web Apps**, with an **Azure DevOps pipeline** doing the heavy lifting of compiling Hugo and publishing the output.
