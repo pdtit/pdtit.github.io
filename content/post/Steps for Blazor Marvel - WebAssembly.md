@@ -375,7 +375,7 @@ private MarvelResult _marvelResult;
 
 private string whotofind;
 
-private string MarvelapiKey = "579a41c9eccaf70a3a09c1722ef6c2fc";
+private string MarvelapiKey = "YOUR_MARVEL_API_KEY";
 
 ```
 1.  After which we can update the Task FindMarvel as follows:

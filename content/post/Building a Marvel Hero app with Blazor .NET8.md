@@ -401,7 +401,7 @@ Where now the Class gets nicely recognized
 
 17.  Letâ€™s update the Task FindMarvel, with the required code snippet to recognize the dynamic URL to connect to, as well as calling the HttpClient function. As per the Marvel API docs, we also need to integrate the api Public key into our URL search string, so we have to define the string for this first. 
 
-Btw, the full Request URL to use is visible from the Interactive Documentation page where we ran the 'try it now' search task (https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=spider&apikey=579a41c9eccaf70a3a09c1722ef6c2fc)
+Btw, the full Request URL to use is visible from the Interactive Documentation page where we ran the 'try it now' search task (https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=spider&apikey=YOUR_MARVEL_API_KEY)
 
 The updated code snippet looks like this now:
 
@@ -414,7 +414,7 @@ private MarvelResult _marvelResult;
 
 private string whotofind;
 
-private string MarvelapiKey = "579a41c9eccaf70a3a09c1722ef6c2fc";
+private string MarvelapiKey = "YOUR_MARVEL_API_KEY";
 
 
 ```
