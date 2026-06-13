@@ -1,4 +1,4 @@
-baseURL = "https://pdtit.github.io/"
+baseURL = "https://www.pdtit.be/"
 title = "Azure Readiness starts here..."
 theme = "stack"
 publishDir = "docs"
