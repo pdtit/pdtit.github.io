@@ -14,6 +14,10 @@ permissions:
   pages: write
   id-token: write
 
+# Run the bundled JavaScript actions on Node.js 24 (Node 20 is deprecated on GitHub-hosted runners).
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 # Allow one concurrent deployment; do not cancel in-progress production deploys.
 concurrency:
   group: pages
