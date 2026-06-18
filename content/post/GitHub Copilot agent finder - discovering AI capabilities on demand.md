@@ -1,5 +1,6 @@
 ---
 title: "GitHub Copilot agent finder: discovering AI capabilities on demand"
+slug: "github-copilot-agent-finder-discovering-ai-capabilities-on-demand"
 date: 2026-06-17
 publishdate: 2026-06-17
 tags: ["GitHub Copilot", "DevOps", "AI"]
