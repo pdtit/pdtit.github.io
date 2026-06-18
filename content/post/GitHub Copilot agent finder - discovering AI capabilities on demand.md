@@ -3,7 +3,7 @@ title: "GitHub Copilot agent finder: discovering AI capabilities on demand"
 date: 2026-06-17
 publishdate: 2026-06-17
 tags: ["GitHub Copilot", "DevOps", "AI"]
-draft: true
+draft: false
 ---
 
 Over the last few weeks, I've been deep into building (even more)custom agents for my day-to-day job and the broader content team I'm in. One thing that kept bugging me was the manual wiring, where you have to point each agent to the right MCP servers, skills, and tools. It's a lot of YAML editing and context window planning. Apart from the time, effort and testing that is still required when *authoring* your own custom VSCode Agents and skills.
