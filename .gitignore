@@ -12,7 +12,7 @@ hugo.exe
 /tools/hugo-*/
 
 # MCP servers with credentials (never commit!)
-.vscode/settings.json
+.vscode/settings.json*
 .vscode/mcp.json
 tools/mcp-servers/.linkedin-token.json
 tools/mcp-servers/node_modules/
