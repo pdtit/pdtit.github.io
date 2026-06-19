@@ -1,0 +1,23 @@
+{
+  "name": "blog-mcp-servers",
+  "version": "1.0.0",
+  "description": "MCP servers for blog automation (LinkedIn posting, image generation)",
+  "main": "microsoft-designer.js",
+  "scripts": {
+    "test": "node microsoft-designer.js"
+  },
+  "keywords": [
+    "mcp",
+    "linkedin",
+    "automation",
+    "dall-e",
+    "microsoft-designer"
+  ],
+  "author": "Peter De Tender",
+  "license": "MIT",
+  "dependencies": {
+    "@azure/identity": "^4.13.1",
+    "@modelcontextprotocol/sdk": "^0.5.0",
+    "axios": "^1.6.0"
+  }
+}

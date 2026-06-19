@@ -11,6 +11,12 @@ hugo.exe
 /tools/hugo/
 /tools/hugo-*/
 
+# MCP servers with credentials (never commit!)
+.vscode/settings.json
+.vscode/mcp.json
+tools/mcp-servers/.linkedin-token.json
+tools/mcp-servers/node_modules/
+
 # OS / editor cruft
 .DS_Store
 Thumbs.db
