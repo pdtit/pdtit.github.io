@@ -153,6 +153,17 @@ I found out that it actually checks the clean state of your repo (staged changes
 
 ![GH aw expect clean state](../images/2026-06-19_16-26-38.png)
 
+Once you get passed that, you are prompted with coding agent you want to use 
+
+![GH aw prompt for coding agent](../images/2026-06-19_16-50-58.png)
+
+and what kind of authentication:
+
+![GH aw prompt for authentication](../images/2026-06-19_16-52-52.png)
+
+Next, it will create the necessary workflow files in your current repo:
+
+![GH aw prompt for authentication](../images/2026-06-19_16-54-14.png)
 
 The `<owner>/<repo>/<workflow-name>` format tells `gh-aw` to pull `issue-triage` from the public [githubnext/agentics](https://github.com/githubnext/agentics) examples repo. The wizard then walks you through:
 
