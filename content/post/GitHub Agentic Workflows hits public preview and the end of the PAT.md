@@ -26,101 +26,79 @@ Because the output is still standard GitHub Actions YAML, everything runs on you
 
 ## What Does an Agentic Workflow File Actually Look Like?
 
-Let's look at a **real, working workflow** from the [githubnext/agentics](https://github.com/githubnext/agentics) sample family: the [Issue Triage workflow](https://github.com/githubnext/agentics/blob/main/workflows/issue-triage.md). It runs whenever an issue is opened or reopened, decides whether it's spam, picks the right labels, sets an issue type, looks for duplicates, and posts a structured triage comment for the maintainer.
+Most intros you'll find online start with "install this pre-baked workflow from the [agentics sample repo](https://github.com/githubnext/agentics) and watch it go." That's fine for a five-minute demo, but it doesn't really teach you anything — somebody else wrote the prompt and you just clicked install. The whole *point* of agentic workflows is that **you write the prompt yourself**, in plain Markdown.
 
-Here's the frontmatter, lifted straight from the sample (I trimmed the long description to keep it readable):
+So let's build one from scratch. A small one, with a job you can actually finish reading.
 
-```yaml
+**Scenario**: a teammate comments `/summarize` on a long, sprawling GitHub issue. The agent reads the issue and any comments, then posts a 3-bullet TL;DR back as a single comment. That's the whole workflow.
+
+Here's the entire file — one Markdown file, `summarize.md`, that I'll drop into `.github/workflows/`:
+
+````yaml
 ---
-description: |
-  Intelligent issue triage assistant that processes new and reopened issues.
-  Analyzes content, detects spam, selects labels, sets issue type,
-  detects duplicates, and posts a structured triage report.
+name: Summarize Issue
+description: Posts a 3-bullet TL;DR when someone comments /summarize on an issue.
 
 on:
-  issues:
-    types: [opened, reopened]
-    reaction: eyes
+  slash_command:
+    name: summarize
+    events: [issue_comment]
+  reaction: eyes
 
-permissions: read-all
-
-network: defaults
-
-safe-outputs:
-  add-labels:
-    max: 5
-  add-comment:
-  set-issue-type:
-    max: 1
-  close-issue:
-    target: "triggering"
-    state-reason: "not_planned"
-    max: 1
+permissions:
+  contents: read
+  issues: read
 
 tools:
-  web-fetch:
   github:
-    toolsets: [issues, labels]
-    min-integrity: none
+    toolsets: [default]
 
-timeout-minutes: 10
+safe-outputs:
+  add-comment:
+    max: 1
+
+timeout-minutes: 5
 ---
-```
 
-A few things worth pointing out, because this is where agentic workflows differ from the GitHub Actions you're used to:
+# Summarize Issue
 
-- **`permissions: read-all`** — the workflow itself only *reads*. Notice there's no `issues: write` anywhere. That's intentional.
-- **`safe-outputs:`** — this is how writes happen. Instead of letting the agent call the API directly, you declare which write operations are allowed (`add-labels`, `add-comment`, `set-issue-type`, `close-issue`) and the maximum count per run. Every proposed change is validated by the safe-outputs pipeline and the threat-detection job before it touches your repo. (This is the safety net that lets you actually trust the thing.)
-- **`tools:`** — explicitly allow-lists what the agent can call. Here: `web-fetch` for browsing docs, plus the GitHub `issues` and `labels` toolsets. Anything not listed isn't reachable.
-- **`reaction: eyes`** — small touch, but the workflow reacts to the triggering issue with 👀 so a human can see at a glance "the agent is on it."
+A user invoked `/summarize` on issue #${{ github.event.issue.number }}
+in repository ${{ github.repository }}.
 
-Then below the frontmatter comes the **body in natural language** — the actual instructions for the agent:
+## What to do
 
-```markdown
-You are a triage assistant for GitHub issues. Your task is to analyze
-issue #${{ github.event.issue.number }}, categorize it with the right
-metadata, and help maintainers act quickly.
+1. Read the issue using `get_issue`.
+2. Also read any comments using `get_issue_comments` (skip the `/summarize`
+   comment itself).
+3. Write a **3-bullet TL;DR** of the conversation. Cover:
+   - What the issue is about (one bullet)
+   - Where the discussion has landed so far (one bullet)
+   - What action, if any, seems to be expected next (one bullet)
+4. Keep each bullet under 25 words. No fluff, no preamble.
+5. Post the summary as a single comment using the `add-comment` safe output,
+   prefixed with `**TL;DR**` on its own line.
 
-Do not make assumptions beyond what the issue content supports.
-Do not invent missing context.
+## Rules
 
-## Step 1: Gather context
+- Do not summarize the `/summarize` comment itself.
+- If the issue has fewer than 3 comments and the body is short (<200 words),
+  reply with one comment saying "Nothing to summarize yet — the issue is
+  already short!" and stop.
+- Do not propose actions, fixes, or opinions. Just summarize.
+````
 
-1. Retrieve the issue content using the `get_issue` tool.
-2. Fetch any comments on the issue using `get_issue_comments`.
-3. Fetch the list of labels available in this repo using `list_label`.
-4. Search for similar issues using `search_issues`.
+Stop and look at that for a second, because it's doing a lot in very little space:
 
-## Step 2: Spam and quality check
+- **Frontmatter = the contract.** `permissions:` says the agent can only *read* issues and repo contents. `safe-outputs: add-comment: max: 1` declares the *one and only* write action it's allowed to take, capped at one comment per run. That's the entire write surface. The agent literally cannot do anything else even if it wanted to.
+- **`on.slash_command`** — the trigger is the user typing `/summarize` in a comment. That's the prompt input, and it's right there in the contract. (No webhooks to configure, no separate trigger script.)
+- **`reaction: eyes`** — when the workflow picks up the comment, GitHub adds a 👀 reaction so the user knows something's happening.
+- **The body in Markdown** — this *is* the prompt. Plain English instructions, numbered steps, rules at the bottom. No DSL, no `if:` conditionals scattered through YAML. You can hand this file to a teammate and they'll know exactly what the agent will do.
 
-If the issue is obviously spam, bot-generated, gibberish, or a test issue:
-- Apply the `invalid` or `spam` label if one exists.
-- Close the issue as "not planned" with a one-sentence reason.
-- Stop here.
+That separation is what I keep coming back to: **frontmatter is the security contract, body is the prompt.** Read either one in isolation and you still understand half the workflow. Read both and you've got the whole picture.
 
-If the issue lacks enough detail, ask the author for what's missing
-and apply a `needs-info` or `question` label if available.
+## Building Your Own — From Blank File to First Run
 
-## Step 3: Triage
-
-- Pick the single best issue type (Bug, Feature, Task) if not already set.
-- Choose labels that accurately reflect the issue, from the repo's existing labels only.
-- Detect duplicates and related issues (up to 3 each).
-- Assess whether the issue is suitable for a coding agent to pick up.
-
-## Step 4: Apply results
-
-Use the safe-outputs tools to apply labels, set type, optionally close,
-and post a triage comment using the format below.
-```
-
-(That last section, plus a defined comment template, is what produces the structured triage report that actually lands on the issue.)
-
-What I love about this is the **separation of concerns**: the frontmatter is the security/permissions contract, and the natural-language body is the prompt. You can read the body and immediately understand what the workflow does — no chasing through 200 lines of YAML to figure out which `if:` branch runs when.
-
-## From Zero to Running — The Actual Hands-On Steps
-
-Good news: you don't have to write this from scratch. Here's how I'd get the Issue Triage workflow running on one of your own repos.
+Let's actually wire this up. I'll do it on a throwaway sandbox repo (which you should also do — please don't experiment on a repo you care about until you've seen how the agent behaves in practice).
 
 **Prereqs** (5 min if you don't already have them):
 
@@ -135,94 +113,142 @@ Good news: you don't have to write this from scratch. Here's how I'd get the Iss
 gh extension install github/gh-aw
 ```
 
-![GH Auth and install extension](../images/2026-06-19_09-57-12.png)
-
 If you hit auth weirdness, the docs ship a fallback installer:
 
 ```bash
 curl -sL https://raw.githubusercontent.com/github/gh-aw/main/install-gh-aw.sh | bash
 ```
 
-**Step 2 — From the root of your target repo, add the workflow with the wizard:**
+**Step 2 — Create a sandbox repo and initialize it:**
 
 ```bash
-gh aw add-wizard githubnext/agentics/issue-triage
+gh repo create gh-aw-sandbox --private --clone --add-readme
+cd gh-aw-sandbox
+gh aw init
 ```
+//add screenshot placeholder here
 
-I found out that it actually checks the clean state of your repo (staged changes). And it won't do anything if your repo is not in a clean state. 
-
-![GH aw expect clean state](../images/2026-06-19_16-26-38.png)
-
-Once you get passed that, you are prompted with coding agent you want to use 
-
-![GH aw prompt for coding agent](../images/2026-06-19_16-50-58.png)
-
-and what kind of authentication:
-
-![GH aw prompt for authentication](../images/2026-06-19_16-52-52.png)
-
-Next, it will create the necessary workflow files in your current repo:
-
-![GH aw prompt for authentication](../images/2026-06-19_16-54-14.png)
-
-The `<owner>/<repo>/<workflow-name>` format tells `gh-aw` to pull `issue-triage` from the public [githubnext/agentics](https://github.com/githubnext/agentics) examples repo. The wizard then walks you through:
-
-1. Checking your repo permissions.
-2. Picking your AI engine — Copilot / Claude / Codex / Gemini.
-3. Setting up the secret the chosen engine needs (e.g. `COPILOT_GITHUB_TOKEN`, `ANTHROPIC_API_KEY`, etc.). It will offer to do this for you via `gh secret set`.
-4. Writing two files into `.github/workflows/` — `issue-triage.md` (the workflow you'll edit) and `issue-triage.lock.yml` (the compiled Actions YAML — don't touch this one by hand).
-5. Optionally kicking off an immediate run.
-
-(Yes, the wizard is interactive. It saves a lot of guess-and-check.)
-
-**Step 3 — Watch it run:**
+`gh aw init` scaffolds the bits the CLI needs: a `.gitattributes` entry, a `.github/skills/agentic-workflows/` skill folder (so coding agents understand the format), a `.github/agents/agentic-workflows.md` custom-agent file, and an MCP config. Commit it before going further, otherwise the next step will complain about a dirty tree:
 
 ```bash
-gh aw status        # list workflow state
-# or
-gh run watch        # stream the most recent run
+git add -A && git commit -m "chore: gh aw init scaffolding" && git push
 ```
 
-Or just open the Actions tab in the browser if you prefer screenshots over terminal output. A run typically takes 2–3 minutes. When it succeeds, open any newly created/reopened issue in the repo and you'll see the 👀 reaction and a fresh triage comment.
+//add screenshot placeholder here
 
-**Step 4 — Customize:**
-
-Open `.github/workflows/issue-triage.md` and edit the natural-language steps to match your team's reality — your label set, your duplicate-detection rules, your tone. If you change anything in the frontmatter (engine, permissions, safe-outputs caps), recompile:
+**Step 3 — Create a blank workflow:**
 
 ```bash
-gh aw compile
+gh aw new summarize
 ```
+// add screenshot placeholder here
 
-Then commit, push, and trigger a fresh run:
+This creates `.github/workflows/summarize.md` from a template and opens it for editing. (If your editor doesn't pop up, just open the file manually.)
+
+// add screenshot placeholder here
+
+**Step 4 — Replace the template with your own prompt.**
+
+Here's the catch that ate 20 minutes of my afternoon: the file `gh aw new` generates ships with `on: workflow_dispatch` as its trigger. That means it'll only run when you click "Run workflow" in the Actions tab — typing `/summarize` on an issue will do absolutely nothing.
+
+So **wipe the file completely** — the entire frontmatter block and the entire body — and paste in the `summarize.md` from the previous section. Especially make sure the `on:` block is now `on.slash_command:` and *not* `workflow_dispatch`. (Editing only the prompt body and leaving the original `workflow_dispatch` trigger in place is the single biggest "why isn't this working?" trap I hit. Don't be me.)
+
+**Step 5 — Compile it:**
 
 ```bash
-gh aw run issue-triage
+gh aw compile summarize
 ```
 
-**Keeping it up to date** (run these every once in a while):
+//add screenshot placeholder here
+
+The compiler reads your Markdown file and (re)generates `summarize.lock.yml` — a standard GitHub Actions workflow that does all the plumbing: sets up the agent runtime, wires the slash-command dispatcher, enforces the `safe-outputs` contract, runs the threat-detection job on any proposed comment, and posts it.
+
+Two things that confused me the first time and are worth knowing:
+
+1. **`summarize.md` is your only source of truth. Never edit `summarize.lock.yml` by hand.** Every time you change the `.md`, you must rerun `gh aw compile summarize` to regenerate the lockfile. If you skip the recompile and push, the agent runs whatever was in the last lockfile — not what you just wrote. (This is exactly how I ended up with a workflow that still had the old `workflow_dispatch` trigger even though my `.md` had been replaced.)
+2. **The generated `summarize.lock.yml` will still contain `workflow_dispatch` somewhere in it — that's normal.** Even when your source is `on.slash_command`, the compiler emits a `workflow_dispatch` dispatcher alongside the `issue_comment` trigger that actually listens for `/summarize`. Don't try to "fix" it by deleting the `workflow_dispatch` from the lockfile; that's part of the compiled wiring.
+
+What you can do to sanity-check that the compile picked up your change: open `summarize.lock.yml` and look for `issue_comment` in the `on:` block. If it's there, your slash command is wired up. If the only trigger you see is `workflow_dispatch`, your `.md` didn't get the new `on.slash_command:` block from Step 4 — go back and fix it, then recompile.
+
+**Step 6 — Give the workflow a token to talk to Copilot.**
+
+Quick note on credentials, because this trips up almost everyone on their first run: the `GITHUB_TOKEN` that Actions ships with handles the *repo-side* write operations declared in `safe-outputs:` — posting that one comment, in our case. What it doesn't handle is the agent calling **Copilot's API** to do the actual reasoning. For that, the Copilot engine needs a separate secret called `COPILOT_GITHUB_TOKEN`. If it's missing, your workflow will fail on the very first run with `missing secret COPILOT_GITHUB_TOKEN`.
+
+(Yes, I know — the next section of this post is literally called "No More PAT Required." That's still true, but it's about the *repo-side* write surface. Engine auth is its own separate thing on personal repos. I'll come back to this in a minute.)
+
+Three steps to set it up:
+
+1. Open [github.com/settings/personal-access-tokens/new](https://github.com/settings/personal-access-tokens/new) and create a **fine-grained personal access token** under your user account. Scope it to *only* this sandbox repo while you're learning — don't grant org-wide or all-repos access.
+2. Under **Permissions → Account permissions**, set **Copilot Requests** to **Read**. That's the only permission this token needs. (No repo permissions. No anything else. Keep its blast radius small.)
+3. Save the token value to a file (or just paste it inline), then push it into the repo as a secret:
+
+```bash
+gh secret set COPILOT_GITHUB_TOKEN < token.txt
+# or, GUI route: Repo → Settings → Secrets and variables → Actions → New repository secret
+```
+
+Verify it's set:
+
+```bash
+gh secret list
+```
+
+You should see `COPILOT_GITHUB_TOKEN` in the list. Now you're actually ready to run.
+
+**Step 7 — Commit, push, and test it:**
+
+```bash
+git add .github/workflows/summarize.md .github/workflows/summarize.lock.yml
+git commit -m "feat: add /summarize agent"
+git push
+
+# Create a test issue with enough content to be worth summarizing
+gh issue create --title "Should we move to Bicep?" --body "Long-form discussion about migrating our IaC from ARM to Bicep — team concerns about learning curve, our current ARM template count, timing relative to the Q3 release, plus a few links to prior discussions."
+
+//add image placeholder screenshot here
+
+
+# Comment /summarize on the resulting issue (replace <n> with the issue number)
+gh issue comment <n> --body "/summarize"
+```
+
+Within seconds you'll see the 👀 reaction land on your `/summarize` comment. About 2 minutes later, the TL;DR shows up as a new comment on the issue:
+
+![The /summarize agent posting a TL;DR comment](../images/TODO-summarize-result.png)
+<!-- TODO screenshot: the resulting **TL;DR** comment on the test issue with the 3 bullets -->
+
+That's the whole loop. **You wrote the prompt. The agent did the action. The contract between them is right there in the same file.**
+
+### A couple of gotchas I hit doing this for real
+
+Worth flagging because the docs don't always shout about them:
+
+- **Working tree must be clean.** Both `gh aw new`/`compile` flows and `gh aw add-wizard` refuse to run if you have uncommitted changes. Commit or stash first.
+- **The default remote needs to be called `origin`.** I first tried this against a repo where the remote was named `github` (my Hugo blog repo, in fact) and the wizard cheerfully created a local branch, committed, then died with `fatal: 'origin' does not appear to be a git repository`. Either rename your remote (`git remote rename github origin`) or just use a fresh repo that has the standard layout.
+- **Keep `gh aw` itself current.** Things move fast in preview:
 
 ```bash
 gh extension upgrade github/gh-aw   # extension itself
 gh aw upgrade                       # gh-aw engine
-gh aw update                        # update workflows you've added
+gh aw update                        # update any workflows you installed from a `source:` field
 ```
 
-That's the whole loop. (I'm planning to wire this onto a side repo first to see how it behaves on real traffic before turning it loose on anything I care about — that's just basic hygiene with any agent automation.)
+(I'm planning to leave this running on the sandbox repo for a week or two before pointing it at anything I actually care about — basic hygiene with any agent automation.)
 
-## The Big Security Win: No More PAT Required
+## The Big Security Win: No More PAT Required (for repo writes, at least)
 
 Now let's talk about the second changelog entry, because this is where things get genuinely better from a security standpoint.
 
-Previously, if you wanted an agentic workflow to interact with your repository — labeling issues, opening pull requests, updating documentation — you needed a **personal access token (PAT)**. That meant creating a long-lived token, storing it as a secret, worrying about rotation policies, and hoping it didn't leak. PATs are powerful, and they're a common target for attackers. (I've seen too many PAT leaks in my time as a consultant, and they're never fun to clean up...)
+Previously, if you wanted an agentic workflow to interact with your repository — labeling issues, opening pull requests, updating documentation — you needed a **personal access token (PAT)** *for those write operations*. That meant creating a long-lived token with `repo` scope, storing it as a secret, worrying about rotation policies, and hoping it didn't leak. PATs are powerful, and they're a common target for attackers. (I've seen too many PAT leaks in my time as a consultant, and they're never fun to clean up...)
 
-As of June 11th, **agentic workflows now work with GitHub Actions's built-in `GITHUB_TOKEN`**. No more PAT creation. No more secret rotation. No more long-lived credentials sitting in your repository settings.
+As of June 11th, **agentic workflows now do those repo-side writes via GitHub Actions's built-in `GITHUB_TOKEN`**, routed through the `safe-outputs:` pipeline. No more `repo`-scoped PAT. No more secret rotation for the write surface. No more long-lived credentials sitting in your repository settings just so the workflow can drop a comment.
 
-When you run an agentic workflow in an organization-owned repository using the Actions token, AI credits consumed by the workflow bill directly to the organization — not to an individual user's Copilot quota. This is a cleaner model, especially at scale.
+A quick honesty check, because we just hit this in Step 6: the `COPILOT_GITHUB_TOKEN` you set up earlier is *not* the PAT that just got retired. That one is a much smaller, fine-grained token — read-only, scoped to Copilot Requests on one repo — used purely so the engine can talk to Copilot's API. The old PAT was a sprawling thing with full repo write. Trading the sprawling one for `GITHUB_TOKEN` + a tiny scoped engine token is still a clear net win for blast radius, even though you didn't get to drop all secrets entirely.
 
-To enable org billing, you add `copilot-requests: write` to the `permissions` frontmatter in your workflow Markdown file, then recompile and push the updated lockfile. You'll need to upgrade to the latest version of the extension first:
+And if you're running in an **organization-owned repository**, you can actually skip the engine token too. Add `copilot-requests: write` to the `permissions` frontmatter, recompile, push — and now the workflow uses `GITHUB_TOKEN` for the engine call as well, with AI credits billed directly to the organization rather than an individual user's Copilot quota. Make sure your extension is current first:
 
 ```bash
-gh extension upgrade aw
+gh extension upgrade github/gh-aw
 ```
 
 ![Enabling org billing in an agentic workflow](../images/TODO-agentic-workflows-2.png)
@@ -269,7 +295,7 @@ GitHub Agentic Workflows is a smart way to automate reasoning-based tasks in you
 
 But the real win for me is the PAT removal. Using the built-in `GITHUB_TOKEN` means fewer secrets to manage, fewer rotation headaches, and a smaller attack surface. That alone is worth paying attention to.
 
-If you're already using GitHub Actions and you've been curious about agents, this is a low-friction way to experiment. Install the `gh-aw` extension, grab a prebuilt workflow from the [examples repo](https://github.com/githubnext/agentics), and see what happens.
+If you're already using GitHub Actions and you've been curious about agents, this is a low-friction way to experiment. Install the `gh-aw` extension, write a small Markdown file with a prompt of your own (start with `/summarize` if you want a template), and watch the agent take real actions in your repo. If you want to see what bigger prompts look like once you've got the basics down, there are dozens of more elaborate examples in the [agentics repo](https://github.com/githubnext/agentics).
 
 This is available for all Copilot plans — Free, Pro, Pro+, Business, and Enterprise. So there's no barrier to trying it out.
 
