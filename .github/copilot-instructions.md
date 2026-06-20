@@ -92,3 +92,19 @@ This repo has three custom agents under `.github/agents/`:
 3. **LinkedIn Poster** — only triggers on `draft: false`; writes a teaser to `social/linkedin/<slug>/post.md`
 
 The default agent (you) should respect the same voice rules above when making small in-place edits, and should **not** flip `draft: true` → `false` without an explicit instruction from Peter.
+
+## MCP server requirements
+
+The LinkedIn publishing workflow requires two MCP servers configured in `.vscode/mcp.json`:
+
+- **`linkedin`** — OAuth-based LinkedIn posting (personal profile via `w_member_social` scope)
+- **`microsoft-designer`** — Azure AI Foundry MAI-Image-2.5 for generating LinkedIn images
+
+**When LinkedIn posting is requested**, agents should:
+1. Check if these servers are running via VS Code's MCP panel (`Ctrl+Shift+P` → `MCP: List Servers`)
+2. If not running, prompt Peter to start them (they don't auto-start on window reload)
+3. For `linkedin`, verify token status via `linkedin_token_status` before attempting to post
+4. **Always show the generated image and post text for explicit approval before posting** — never auto-post without confirmation
+5. **After successful posting, delete the temporary files** (`image.png`, `post.md`, `image-prompt.md`) from `social/linkedin/<slug>/`
+
+**Manual start**: Open MCP panel and click the start icon next to each server, or run `Developer: Reload Window` after confirming they're configured.

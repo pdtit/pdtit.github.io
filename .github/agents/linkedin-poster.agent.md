@@ -33,8 +33,18 @@ If `linkedin_token_status` reports no valid token, stop and tell Peter to invoke
    - `post.md` — the LinkedIn post text
    - `image-prompt.md` — the image prompt
 6. **Generate the image** via the `microsoft-designer` MCP `generate_linkedin_image` tool. Save to `social/linkedin/<slug>/image.png`. Max dimensions 1024×1024 (total pixels ≤ 1,048,576).
-7. **Show Peter** the drafted text + the generated image. Wait for his go/no-go.
+7. **Present for validation**:
+   - Display the full post text from `post.md`
+   - Show the generated image path and confirm it's been saved
+   - **Explicitly ask Peter to review both** the image file (open it in VS Code or a viewer) and the post text
+   - Wait for explicit approval ("looks good", "post it", "go ahead", etc.) or edit requests
+   - Do NOT proceed to posting without clear confirmation
 8. **On approval**, call the `linkedin` MCP `post_to_linkedin` tool with `text` from `post.md` and `imagePath` pointing at the saved PNG. Report the returned post URL.
+9. **Clean up**: After successful posting, delete the temporary files:
+   - `social/linkedin/<slug>/image.png`
+   - `social/linkedin/<slug>/post.md`
+   - `social/linkedin/<slug>/image-prompt.md`
+   - The `social/linkedin/<slug>/` directory itself (if now empty)
 
 ## Hard rules
 
