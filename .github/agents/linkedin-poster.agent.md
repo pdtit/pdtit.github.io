@@ -11,7 +11,7 @@ Single-purpose agent: take a published blog post and publish a matching LinkedIn
 
 ## Preconditions
 
-- The blog post under `content/post/<Title>.md` has `draft: false`.
+- The blog post under `content/post/<Title>.md` has `draft: false` (posts in `/drafts/` are ignored).
 - The `linkedin` MCP server has a valid token (run `linkedin_token_status`; if missing, run `linkedin_authorize` once).
 - The `microsoft-designer` MCP server is configured against Azure AI Foundry (MAI-Image-2.5).
 

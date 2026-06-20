@@ -1,4 +1,5 @@
 {
+    "chat.mcp.autostart": "newAndOutdated",
     "chat.tools.terminal.autoApprove": {
         "hugo": true
     },

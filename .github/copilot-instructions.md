@@ -13,10 +13,17 @@ These conventions apply to all blog content under `content/post/`. Follow them w
 ## File layout
 
 - Blog posts: `content/post/<Title With Spaces>.md` — filenames use spaces and mixed case; match nearby posts rather than slugifying
+- **Drafts folder**: `drafts/` — work-in-progress posts that aren't ready to publish yet. Use this for exploratory posts, off-topic ideas, or anything you want to develop before committing to the blog timeline
 - Post template: `content/post/____Template___.md`
 - Images: `content/images/<filename>.png` — referenced from posts as `../images/<filename>.png`
 - Static assets: `static/`
 - Custom SCSS: `assets/scss/custom.scss`
+
+**Publishing workflow**:
+1. New drafts start in `drafts/<Title>.md` with `draft: true`
+2. When ready to publish, move the file to `content/post/<Title>.md`
+3. Flip `draft: true` → `draft: false` to trigger the LinkedIn Poster agent
+4. Hugo builds only publish `draft: false` files from `content/post/`
 
 ## Frontmatter (required on every post)
 
@@ -100,11 +107,11 @@ The LinkedIn publishing workflow requires two MCP servers configured in `.vscode
 - **`linkedin`** — OAuth-based LinkedIn posting (personal profile via `w_member_social` scope)
 - **`microsoft-designer`** — Azure AI Foundry MAI-Image-2.5 for generating LinkedIn images
 
-**When LinkedIn posting is requested**, agents should:
-1. Check if these servers are running via VS Code's MCP panel (`Ctrl+Shift+P` → `MCP: List Servers`)
-2. If not running, prompt Peter to start them (they don't auto-start on window reload)
-3. For `linkedin`, verify token status via `linkedin_token_status` before attempting to post
-4. **Always show the generated image and post text for explicit approval before posting** — never auto-post without confirmation
-5. **After successful posting, delete the temporary files** (`image.png`, `post.md`, `image-prompt.md`) from `social/linkedin/<slug>/`
+**Auto-start enabled**: MCP servers are configured to auto-start via `chat.mcp.autostart: "newAndOutdated"` in `.vscode/settings.json` (requires VS Code 1.103+).
 
-**Manual start**: Open MCP panel and click the start icon next to each server, or run `Developer: Reload Window` after confirming they're configured.
+**When LinkedIn posting is requested**, agents should:
+1. Verify `linkedin` token status via `linkedin_token_status` before attempting to post (if expired, prompt to run `linkedin_authorize`)
+2. **Always show the generated image and post text for explicit approval before posting** — never auto-post without confirmation
+3. **After successful posting, delete the temporary files** (`image.png`, `post.md`, `image-prompt.md`) from `social/linkedin/<slug>/`
+
+**If MCP servers fail to start automatically**: Open MCP panel (`Ctrl+Shift+P` → `MCP: List Servers`) and click the start icon, or run `Developer: Reload Window`.
