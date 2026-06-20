@@ -1,27 +1,27 @@
 ---
 title: About Me
-description: Microsoft Azure Readiness Starts Here
+description: Building better. Deploying faster. One DevOps pipeline at the time.
 ---
 
 
-# Hi, my name is Peter De Tender.
-### I am a **Microsoft Technical Trainer (MTT)** within the **Microsoft** World Wide Learning Organization. Out of this role, I provide Azure readiness workshops to larger Microsoft customers and partners across the globe, skilling up their Azure knowledge, and preparing them for Azure certification. Having lived in Belgium for 45 years, **I recently relocated to Redmond, WA, USA**, to continue my role as MTT out of the West US team. 
+# Hi, my name is Peter De Tender. Welcome to my personal blog space.
 
-![](../images/007FFFLearning_Background.jpg)
+You probably found me through one of my LinkedIn posts, conference sessions or online training videos, related to Microsoft DevOps solutions or broader Azure and Microsoft cloud technology topics.
 
-Before taking on this position, I was already an **Azure trainer and Azure Solution Architect** out of my own business, with a background in Microsoft datacenter consulting (Exchange, Forefront, System Center and Active Directory security as prime technologies, besides HP Servers and NetApp Storage :). Although I switched to the blue badge life, I continue providing Azure readiness content here, as well as continue participating in user group events and presenting at different global conferences, in person or virtual.
+## About Peter
+Peter is a **Senior Content Developer for AI/Dev/DevOps** at Microsoft Redmond, with - you could guess - a focus on everything DevOps. In my day-to-day role, I create content for [Microsoft Learn](https://aka.ms/learn) and [Microsoft AI Skills Navigator](https://aiskillsnavigator.microsoft.com)
 
+Peter has an extensive background in architecting, deploying, managing and training on Microsoft technologies, dating back to Windows NT4 Server in 1996, all the way to the latest and modern Azure and AI solutions available today. With a passion for Cloud Architecture and DevOps, Peter always has a story to share on how to optimize your Enterprise-ready cloud workloads, from skilling the world largest Microsoft customers through compelling workshops over the last 15 years. After 7 years at Microsoft as Microsoft Technical Trainer, he recently transitioned into the role of **Senior Content Developer** for *Dev/AI/DevOps*, focusing on **Microsoft DevOps solutions** content on [Microsoft Learn](https://aka.ms/Learn), [Microsoft AI Skills Navigator](https://aiskillsnavigator.microsoft.com) and Instructor Led Training (ILT) material, used by +20,000 global Microsoft Certified Trainers (MCTs) and Training Services Partners.
+
+You can follow peter on [LinkedIn](https://linkedin.com/in/pdtit) and read his (mostly) technical blog adventures at [https://www.pdtit.be](https://www.pdtit.be)
 
 I am a **[Microsoft Certified Trainer](https://www.microsoft.com/en-us/learning/mct-certification.aspx)** since 2010 (officially, but trained already before).
 
-
-I was recognized as a **[Microsoft MVP (Most Valuable Professional)](https://mvp.microsoft.com/)** since 2013, initially in Windows IT Pro, but switched to Azure from 2015-2019.
-
+I was recognized as a **[Microsoft MVP (Most Valuable Professional)](https://mvp.microsoft.com/)** since 2013, initially in Windows IT Pro, but switched to Azure from 2015-2019, until I joined Microsoft as a full-time employee.
 
 Since 2011, I am the chairman for EMEA of the **[IAMCT (International Association of Microsoft Certified Trainers)](http://www.iamct.org)**, a global community of MCT's, outside of Microsoft Learning.
 
 I'm married for almost 27 years with my loving wife Els, and am the proud father of 2 wonderful girls and a cat. 
 
-You can reach me by email peter at pdtit dot be or on [Twitter @pdtit](http://www.twitter.com/pdtit) or [@007FFFLearning](http://www.twitter.com/007ffflearning)
+You can reach me by email peter at pdtit dot be or on [BlueSky @pdtit](http://pdtit.bsky.social) or follow me on [LinkedIn](https://linkedin.com/in/pdtit)
 
-![](../images/007FFFLearning_Logo.jpg)
