@@ -92,11 +92,12 @@ Cheers!!
 
 ## Multi-agent workflow
 
-This repo has three custom agents under `.github/agents/`:
+This repo has four custom agents under `.github/agents/`:
 
 1. **DevOps Researcher** — scans for trending Microsoft DevOps topics, returns a ranked shortlist of 5
 2. **Blog Composer** — drafts the post in Peter's voice (always `draft: true`)
-3. **LinkedIn Poster** — only triggers on `draft: false`; writes a teaser to `social/linkedin/<slug>/post.md`
+3. **Blog Publisher** — validates and publishes posts from `drafts/` to `content/post/`, commits to git, and hands off to LinkedIn Poster
+4. **LinkedIn Poster** — generates image, drafts LinkedIn post text, posts to Peter's personal profile after approval
 
 The default agent (you) should respect the same voice rules above when making small in-place edits, and should **not** flip `draft: true` → `false` without an explicit instruction from Peter.
 
