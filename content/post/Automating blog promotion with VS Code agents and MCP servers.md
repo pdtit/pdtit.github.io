@@ -1,35 +1,35 @@
 ---
 title: "Automating blog promotion with VS Code agents and MCP servers"
 date: 2026-06-20
-publishdate: 2026-06-20
+publishdate: 2026-06-22
 tags: ["GitHub Copilot", "DevOps", "AI"]
-draft: true
+draft: false
 ---
 
-If you've been following me for a while, you know I write a fair bit about Microsoft DevOps, Azure, and lately GitHub Copilot. What you probably don't know is that I've been leaning on VS Code's agent mode to help me stay on top of what's trending. It scans GitHub changelog feeds, filters for the DevOps-relevant bits, and hands me a shortlist of topics worth exploring. That part's been working well for months. (And yes, I do miss the good old RSS-feeds, although I know some sites still have them...)
+If you've been following me for a while, you know I write a fair bit about Microsoft DevOps, Azure, and lately GitHub Copilot. What you probably don't know is that I've been leaning on VS Code's agent mode to help me stay on top of what's trending. It scans GitHub changelog feeds, filters for the DevOps-relevant bits, overall looks at top DevOps online resources - which now feels like a good topic for another blog post - and hands me a shortlist of topics worth exploring. That part's been working well for months. (And yes, I do miss the good old RSS-feeds, although I know some sites still have them...)
 
 But the part that was still manual (and honestly, a bit of a drag) was what happened *after* I hit publish on the blog (and my GitHub Actions workflow updates GitHub Pages...). Every single post meant:
 
 1. Open LinkedIn in a browser
 2. Write a 150–200 word teaser from scratch
-3. Hunt for a relevant image (or make one using a prompt in M365 Copilot, which... yeah)
+3. Hunt for a relevant image (or make one using a prompt in M365 Copilot more frequently)
 4. Copy-paste, format, add hashtags, post
 5. Hope I didn't typo the URL
 
 It wasn't *hard*, but it was friction. And friction means I'd sometimes skip it, which defeats the whole point of writing the post in the first place. And even more so, it goes against my believe of DevOps-ing everything.
 
-So over the last couple of weeks, I built a small automation workflow using **VS Code agents** and **MCP servers** that takes a "ready for publish"-ed blog post, generates a custom LinkedIn image via Microsoft Foundry (although OpenAI would work the same...), drafts the announcement text in my voice, shows me both for approval, and posts it with one confirmation. The whole thing takes about 30 seconds now instead of 10 minutes before.
+So over the last couple of weeks, I built a small automation workflow using **VS Code agents** and **local-running MCP servers** that takes a "ready for publish"-ed blog post, generates a custom LinkedIn image via Microsoft Foundry (although OpenAI would work the same...), drafts the announcement text in my Peter-voice, shows me both for approval, and posts it with one confirmation. The whole thing takes about 30 seconds now instead of 10 minutes before.
 
 Let me show you how it works, and how you can set up something similar if you're publishing content regularly.
 
 ## What Are MCP Servers?
 
-MCP stands for **Model Context Protocol** — it's a standard way for AI agents (like GitHub Copilot in VS Code) to call external tools and services. Think of it like a plugin system, but instead of installing a VS Code extension, you configure a small Node.js script that exposes a set of tools the agent can invoke.
+MCP stands for **Model Context Protocol** - it's a standard way for AI agents (like GitHub Copilot in VS Code) to call external tools and services. Think of it like a plugin system, but instead of installing a VS Code extension, you configure a small Node.js script that exposes a set of tools the agent can invoke.
 
 In my case, I needed two MCP servers:
 
-1. **`linkedin`** — handles OAuth authentication and posting to my LinkedIn personal feed
-2. **`microsoft-designer`** — calls Microsoft Foundry's MAI-Image API to generate custom images from text prompts
+1. **`linkedin`** - handles OAuth authentication and posting to my LinkedIn personal feed
+2. **`microsoft-designer`** - calls Microsoft Foundry's MAI-Image API to generate custom images from text prompts
 
 Both are just JavaScript files that implement the MCP protocol. VS Code detects them via a config file (`.vscode/mcp.json`) and makes their tools available to any agent running in that workspace.
 
@@ -39,13 +39,13 @@ The nice part? Once they're configured, I don't have to think about them. The ag
 
 First, you need the two MCP server scripts. I won't paste the full code here (it's ~150 lines each - but feel free to check [this blog repo](https://github.com/pdtit/pdtit.github.io/tree/main/tools)), but the structure is:
 
-**`tools/mcp-servers/linkedin-oauth.js`** — implements:
-- `linkedin_authorize` — one-time OAuth flow to get a token
-- `linkedin_token_status` — check if the token is still valid
-- `post_to_linkedin` — POST to the LinkedIn Share API with text + image
+**`tools/mcp-servers/linkedin-oauth.js`** - implements:
+- `linkedin_authorize` - one-time OAuth flow to get a token
+- `linkedin_token_status` - check if the token is still valid
+- `post_to_linkedin` - POST to the LinkedIn Share API with text + image
 
-**`tools/mcp-servers/microsoft-designer.js`** — implements:
-- `generate_linkedin_image` — calls Microsoft Foundry MAI-Image API with a text prompt, saves PNG to disk
+**`tools/mcp-servers/microsoft-designer.js`** - implements:
+- `generate_linkedin_image` - calls Microsoft Foundry MAI-Image API with a text prompt, saves PNG to disk
 
 Both scripts use the standard `@modelcontextprotocol/sdk` npm package. If you want to build your own, the [MCP specification](https://modelcontextprotocol.io) has good examples.
 
@@ -76,12 +76,9 @@ Once the scripts are in place, you configure VS Code to recognize them by creati
 }
 ```
 
-<!-- TODO screenshot: VS Code MCP panel showing both servers configured -->
-![MCP servers configured](../images/TODO-mcp-servers.png)
-
 A couple of notes here:
 
-- **For the LinkedIn server**: you need to create a LinkedIn app at [developers.linkedin.com](https://www.linkedin.com/developers/apps). Use the "Share on LinkedIn" product (it's auto-approved for personal profile posting). The OAuth redirect URI should be `http://localhost:3000/callback` — the MCP server spins up a temporary local web server to catch the callback.
+- **For the LinkedIn server**: you need to create a LinkedIn app at [developers.linkedin.com](https://www.linkedin.com/developers/apps). Use the "Share on LinkedIn" product (it's auto-approved for personal profile posting). The OAuth redirect URI should be `http://localhost:3000/callback` - the MCP server spins up a temporary local web server to catch the callback.
 
 (Honestly, this part confused me a lot, since I didn't want a company page, neither did I wanted to start posting on LinkedIn from a company page. But there is a solution for this... read on :))
 
@@ -99,9 +96,6 @@ But as of VS Code 1.103, there's a setting that makes them auto-start:
   "chat.mcp.autostart": "newAndOutdated"
 }
 ```
-
-<!-- TODO screenshot: VS Code settings.json with autostart enabled -->
-![MCP autostart setting](../images/TODO-mcp-autostart.png)
 
 This tells VS Code to automatically start any MCP servers that are newly configured or have been updated. No more manual start, no more "reload window" dance.
 
@@ -122,26 +116,22 @@ Single-purpose agent: take a published blog post and publish a matching LinkedIn
 
 ## Workflow
 
-1. **Locate the post** — read the blog post markdown
-2. **Derive the slug** — Hugo permalink is `https://www.pdtit.be/post/<slug>/`
+1. **Locate the post** - read the blog post markdown
+2. **Derive the slug** - Hugo permalink is `https://www.pdtit.be/post/<slug>/`
 3. **Draft the LinkedIn text** in Peter's voice (120–200 words, conversational, 1–2 parenthetical asides)
-4. **Draft the image prompt** — flat-design technical diagram, Azure blues + LinkedIn blue
+4. **Draft the image prompt** - flat-design technical diagram, Azure blues + LinkedIn blue
 5. **Save artifacts** to `social/linkedin/<slug>/` (post.md, image-prompt.md)
 6. **Generate the image** via `microsoft-designer` MCP → save as `image.png`
-7. **Present for validation** — show the text + image path, wait for approval
+7. **Present for validation** - show the text + image path, wait for approval
 8. **On approval** → call `linkedin` MCP to post
-9. **Clean up** — delete temp files (image.png, post.md, image-prompt.md)
+9. **Clean up** - delete temp files (image.png, post.md, image-prompt.md)
 
 ## Hard rules
 
 - Never publish without explicit "go" from Peter.
-- Never flip `draft: true` → `draft: false` — that's Peter's signal, not yours.
+- Never flip `draft: true` → `draft: false` - that's Peter's signal, not yours.
 ```
-
-<!-- TODO screenshot: VS Code agent mode selector showing LinkedIn Poster -->
-![LinkedIn Poster agent mode](../images/TODO-agent-mode.png)
-
-The full file is about 70 lines and includes detailed voice guidelines (match my blog style, avoid AI-tell phrases like "delve into" or "unlock the potential", etc.). You can see the pattern — it's essentially a prompt that tells the agent what tools to call and in what order.
+The full file is about 70 lines and includes detailed 'Peter-voice' guidelines (match my blog style, avoid AI-tell phrases like "delve into" or "unlock the potential", etc.). You can see the pattern - it's essentially a prompt that tells the agent what tools to call and in what order.
 
 ## Step 4: One-time LinkedIn OAuth
 
@@ -152,9 +142,6 @@ Before the agent can post, you need to authorize the LinkedIn MCP server once. T
 3. The MCP server opens a browser to LinkedIn's OAuth page
 4. Log in, approve the app
 5. The MCP server saves the token to `~/.linkedin-mcp/token.json`
-
-<!-- TODO screenshot: LinkedIn OAuth consent screen -->
-![LinkedIn OAuth approval](../images/TODO-linkedin-oauth.png)
 
 The token is good for 60 days. After that, you just run `linkedin_authorize` again (takes 10 seconds).
 
@@ -179,9 +166,6 @@ Now here's what it looks like in practice. I just finished writing [yesterday's 
 >  
 > Please review both the image (open it in VS Code or a viewer) and the post text. Reply "post it" when ready, or let me know if you'd like changes.
 
-<!-- TODO screenshot: VS Code chat showing the generated LinkedIn text -->
-![Agent drafts LinkedIn post](../images/TODO-linkedin-draft.png)
-
 I opened the image (it was a flat-design diagram showing the 6-stage agentic workflow pipeline, looked good), skimmed the text, and replied:
 
 **Me:**  
@@ -193,9 +177,6 @@ I opened the image (it was a flat-design diagram showing the 6-stage agentic wor
 > URL: https://www.linkedin.com/feed/update/urn:li:share:7474146818864513025/  
 >  
 > Temporary files deleted.
-
-<!-- TODO screenshot: LinkedIn post live on feed with custom image -->
-![LinkedIn post live](../images/TODO-linkedin-live.png)
 
 Total time: about 30 seconds. The image generation took ~8 seconds (Microsoft Foundry is fast), the LinkedIn API call was ~2 seconds, and the rest was me reading.
 
@@ -210,7 +191,7 @@ Let me break down the tool calls the agent makes, because this is where the MCP 
 5. **`mcp_linkedin_post_to_linkedin`** (MCP tool) → uploads the image via LinkedIn's asset registration API, then creates a share with the text + image URN
 6. **`run_in_terminal`** (built-in) → deletes the temp files via PowerShell `Remove-Item`
 
-The MCP servers abstract away all the OAuth token management, API request signing, error handling, and retry logic. The agent just says "generate this image" and gets back a file path. That's the beauty of the MCP pattern — clean separation between the agent's reasoning ("what to do") and the tool's execution ("how to do it").
+The MCP servers abstract away all the OAuth token management, API request signing, error handling, and retry logic. The agent just says "generate this image" and gets back a file path. That's the beauty of the MCP pattern - clean separation between the agent's reasoning ("what to do") and the tool's execution ("how to do it").
 
 ## Why This Works for Me
 
@@ -223,7 +204,7 @@ The MCP server config lives in `.vscode/mcp.json` in my blog repo. If I open a d
 The agent never posts without showing me the text and image first. I can edit the draft, regenerate the image, or bail entirely. The automation is in service of me, not replacing me.
 
 **3. The image prompts are tailored to the post.**  
-Because the agent reads the actual blog content, it can write a specific image prompt — not generic "AI and cloud" stock imagery, but something that ties to the topic. For the agentic workflows post, it generated a pipeline diagram showing the 6 stages (pre_activation → activation → agent → detection → safe_outputs → conclusion). That's way better than a random header image.
+Because the agent reads the actual blog content, it can write a specific image prompt - not generic "AI and cloud" stock imagery, but something that ties to the topic. For the agentic workflows post, it generated a pipeline diagram showing the 6 stages (pre_activation → activation → agent → detection → safe_outputs → conclusion). That's way better than a random header image.
 
 **4. It's fast enough that I actually use it.**  
 When something takes 10 minutes, I'll skip it half the time. When it takes 30 seconds, I do it every time. That's the threshold that matters.
@@ -262,14 +243,14 @@ Since I'm writing a post about automation, I figured I'd be transparent about wh
 **I don't use agents for:**
 - Writing the blog posts themselves (that's still me, coffee in hand, staring at the dark mode empty markdown on one monitor, technical stuff getting validated on the other monitor)
 - Making decisions about what to publish or when
-- Editing for voice — I review every word before it goes live
+- Editing for voice - I review every word before it goes live
 - Anything that posts publicly without my explicit approval
 
 The automation is there to remove friction, not to replace judgment. I still write, I still edit, I still decide what's worth publishing. The agent just handles the "copy this text to LinkedIn and format it nicely" part that I was doing manually anyway.
 
 ## Summary
 
-If you're publishing content regularly — blog posts, technical articles, release notes, whatever — and you're manually copy-pasting to LinkedIn or Twitter every time, you're burning time you don't need to burn. MCP servers make it surprisingly straightforward to wire up custom automation that stays under your control.
+If you're publishing content regularly - blog posts, technical articles, release notes, whatever - and you're manually copy-pasting to LinkedIn or Twitter every time, you're burning time you don't need to burn. MCP servers make it surprisingly straightforward to wire up custom automation that stays under your control.
 
 The setup I walked through here (LinkedIn + image generation via Azure AI) took about two hours to build, including the OAuth debugging (LinkedIn's error messages are... not great). Since then, I've posted half a dozen times and saved probably 90 minutes total. Not a huge ROI yet, but it's already paid for itself, and the friction savings are real.
 
@@ -281,7 +262,7 @@ If you want to build something similar, start small:
 4. Add an approval step so you stay in control
 5. Use it a few times and tweak the prompts until it feels natural
 
-And if you build something cool with MCP servers, let me know — I'm always interested to see what people automate when they have the right tools.
+And if you build something cool with MCP servers, let me know - I'm always interested to see what people automate when they have the right tools.
 
 Have you tried VS Code agent mode for your own workflows? What's the first thing you'd automate?
 
