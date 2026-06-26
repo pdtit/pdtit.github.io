@@ -18,7 +18,7 @@ But the part that was still manual (and honestly, a bit of a drag) was what happ
 
 It wasn't *hard*, but it was friction. And friction means I'd sometimes skip it, which defeats the whole point of writing the post in the first place. And even more so, it goes against my believe of DevOps-ing everything.
 
-So over the last couple of weeks, I built a small automation workflow using **VS Code agents** and **local-running MCP servers** that takes a "ready for publish"-ed blog post, generates a custom LinkedIn image via Microsoft Foundry (although OpenAI would work the same...), drafts the announcement text in my Peter-voice, shows me both for approval, and posts it with one confirmation. The whole thing takes about 30 seconds now instead of 10 minutes before.
+So over the last couple of weeks, I built a semi-automated workflow using **VS Code agents** and **local MCP servers** that handles the heavy lifting. An agent drafts the LinkedIn announcement text and image prompt based on my blog post, then I trigger two quick `@mention` commands in chat - one to generate the custom image via Microsoft Foundry, another to post it to LinkedIn. The whole thing takes about 30 seconds now instead of 10 minutes before.
 
 Let me show you how it works, and how you can set up something similar if you're publishing content regularly.
 
@@ -135,63 +135,76 @@ The full file is about 70 lines and includes detailed 'Peter-voice' guidelines (
 
 ## Step 4: One-time LinkedIn OAuth
 
-Before the agent can post, you need to authorize the LinkedIn MCP server once. This is a one-time setup:
+Before you can post to LinkedIn via the MCP server, you need to authorize it once. This is a one-time setup:
 
-1. Open the VS Code chat panel in agent mode
-2. Type: "run linkedin_authorize"
+1. Open the VS Code chat panel
+2. Type: `@linkedin authorize`
 3. The MCP server opens a browser to LinkedIn's OAuth page
 4. Log in, approve the app
 5. The MCP server saves the token to `~/.linkedin-mcp/token.json`
 
-The token is good for 60 days. After that, you just run `linkedin_authorize` again (takes 10 seconds).
+The token is good for 60 days. After that, you just run `@linkedin authorize` again (takes 10 seconds).
 
-## Step 5: Post to LinkedIn (the easy part)
+## Step 5: Using the workflow (the easy part)
 
-Now here's what it looks like in practice. I just finished writing [yesterday's post on GitHub Agentic Workflows](/post/github-agentic-workflows-hits-public-preview-and-the-end-of-the-pat/). I flipped `draft: true` to `draft: false`, saved the file, and then:
+Now here's what it looks like in practice. I just finished writing [yesterday's post on GitHub Agentic Workflows](/post/github-agentic-workflows-hits-public-preview-and-the-end-of-the-pat/). I flipped `draft: true` to `draft: false`, saved the file, and opened VS Code chat:
 
 **Me (in VS Code chat):**  
-> "Can you help with a LinkedIn post and image for the agentic workflows article?"
+> "Can you draft a LinkedIn post and image prompt for the agentic workflows article?"
 
 **Agent (LinkedIn Poster mode):**  
 > [reads the blog post]  
 > [drafts LinkedIn text in `social/linkedin/.../post.md`]  
 > [generates image prompt in `social/linkedin/.../image-prompt.md`]  
-> [calls `mcp_microsoft-des_generate_linkedin_image`]  
-> ✅ Image generated and saved to `social/linkedin/.../image.png`  
->  
-> Here's the LinkedIn post text:  
+> ✅ Draft saved. Here's the LinkedIn post text:  
 > *[shows the 196-word draft]*  
 >  
-> Image saved at: `social/linkedin/.../image.png`  
->  
-> Please review both the image (open it in VS Code or a viewer) and the post text. Reply "post it" when ready, or let me know if you'd like changes.
+> Image prompt saved at: `social/linkedin/.../image-prompt.md`
 
-I opened the image (it was a flat-design diagram showing the 6-stage agentic workflow pipeline, looked good), skimmed the text, and replied:
+I skim the text (looks good), then I trigger the two MCP servers using `@mentions` in chat:
 
 **Me:**  
-> "post it"
+> `@microsoft-designer generate an image from social/linkedin/github-agentic-workflows/image-prompt.md`
 
-**Agent:**  
+**MCP (microsoft-designer):**  
+> ✅ Image generated and saved to `social/linkedin/.../image.png`
+
+I open the image (flat-design diagram showing the 6-stage workflow pipeline - perfect), then:
+
+**Me:**  
+> `@linkedin post with text from social/linkedin/github-agentic-workflows/post.md and image from image.png`
+
+**MCP (linkedin):**  
 > ✅ Posted to your LinkedIn feed  
 > Post ID: urn:li:share:7474146818864513025  
-> URL: https://www.linkedin.com/feed/update/urn:li:share:7474146818864513025/  
->  
-> Temporary files deleted.
+> URL: https://www.linkedin.com/feed/update/urn:li:share:7474146818864513025/
 
-Total time: about 30 seconds. The image generation took ~8 seconds (Microsoft Foundry is fast), the LinkedIn API call was ~2 seconds, and the rest was me reading.
+Total time: about 30 seconds. The agent did the creative work (drafting text and image prompt in my voice), I triggered the two external services with simple `@mention` commands, and done.
 
-## What the agent actually does under the hood
+## How MCP servers work with VS Code chat
 
-Let me break down the tool calls the agent makes, because this is where the MCP servers earn their keep:
+The magic here is in how MCP (Model Context Protocol) servers integrate with VS Code. When you type `@server-name` in chat, VS Code routes your request to the corresponding MCP server - which is just a Node.js script running locally on your machine.
 
-1. **`read_file`** (built-in VS Code tool) → reads the blog post markdown
-2. **`create_file`** (built-in) → writes `post.md` and `image-prompt.md` to `social/linkedin/<slug>/`
-3. **`mcp_microsoft-des_generate_linkedin_image`** (MCP tool) → sends the image prompt to Microsoft Foundry MAI-Image API, receives base64-encoded PNG, decodes it, saves to disk
-4. **Waits for my approval** → this is the key part; the agent doesn't auto-post, it pauses and shows me the artifacts
-5. **`mcp_linkedin_post_to_linkedin`** (MCP tool) → uploads the image via LinkedIn's asset registration API, then creates a share with the text + image URN
-6. **`run_in_terminal`** (built-in) → deletes the temp files via PowerShell `Remove-Item`
+The MCP servers I built handle:
 
-The MCP servers abstract away all the OAuth token management, API request signing, error handling, and retry logic. The agent just says "generate this image" and gets back a file path. That's the beauty of the MCP pattern - clean separation between the agent's reasoning ("what to do") and the tool's execution ("how to do it").
+1. **`@microsoft-designer`** — calls Microsoft Foundry's MAI-Image-2.5 API to generate images from text prompts. Uses `DefaultAzureCredential` for auth (so `az login` works automatically), saves the PNG to disk.
+
+2. **`@linkedin`** — handles LinkedIn OAuth, stores tokens locally, and posts to your personal feed via LinkedIn's Share API. Supports text + image uploads.
+
+Both servers are defined in `.vscode/mcp.json` in my blog repo, so they only load when I'm working on blog content. That workspace-scoping is one of my favorite parts - no global config pollution, no accidentally posting from the wrong project.
+
+Here's what the agent does behind the scenes:
+
+1. **`read_file`** → reads the blog post markdown
+2. **`create_file`** → writes `post.md` and `image-prompt.md` to `social/linkedin/<slug>/`
+3. Shows me the draft for review
+
+Then I take over:
+
+4. **`@microsoft-designer`** (I type this) → generates the image, saves to disk (~8 seconds)
+5. **`@linkedin`** (I type this) → posts to LinkedIn (~2 seconds)
+
+The MCP servers abstract away all the OAuth token management, API request signing, error handling, and retry logic. I just say `@linkedin post this` and it handles the rest. That's the beauty of the MCP pattern - clean separation between the agent's reasoning ("what to write") and the tool's execution ("how to post it").
 
 ## Why This Works for Me
 
@@ -200,8 +213,8 @@ A few things I really like about this setup:
 **1. It's workspace-scoped.**  
 The MCP server config lives in `.vscode/mcp.json` in my blog repo. If I open a different workspace, those tools aren't available. No global pollution, no cross-project leakage.
 
-**2. I control the approval.**  
-The agent never posts without showing me the text and image first. I can edit the draft, regenerate the image, or bail entirely. The automation is in service of me, not replacing me.
+**2. I control the triggering.**  
+The agent drafts the content, but I decide when to generate the image and when to post. I can edit the draft, regenerate the image, or bail entirely. The automation is in service of me, not replacing me.
 
 **3. The image prompts are tailored to the post.**  
 Because the agent reads the actual blog content, it can write a specific image prompt - not generic "AI and cloud" stock imagery, but something that ties to the topic. For the agentic workflows post, it generated a pipeline diagram showing the 6 stages (pre_activation → activation → agent → detection → safe_outputs → conclusion). That's way better than a random header image.

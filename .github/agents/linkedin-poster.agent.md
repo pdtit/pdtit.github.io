@@ -1,7 +1,7 @@
 ---
 name: "LinkedIn Poster"
 description: "Use when a blog post has moved from draft to final (draft:false) and needs a LinkedIn announcement posted to Peter's personal feed. Triggers: post to LinkedIn, post the announcement, share on LinkedIn, publish LinkedIn version of <post>, promote the article."
-tools: [read, edit, search, web]
+tools: [read, edit, search, web, generate_linkedin_image, post_to_linkedin, linkedin_token_status, linkedin_authorize]
 model: ["Claude Sonnet 4.5 (copilot)", "GPT-5 (copilot)"]
 ---
 
