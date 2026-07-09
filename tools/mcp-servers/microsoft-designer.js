@@ -52,7 +52,9 @@ async function getAzureToken() {
  * Detect backend type from endpoint URL
  */
 function detectBackend(endpoint) {
-  if (endpoint.includes('.services.ai.azure.com')) {
+  if (endpoint.includes('.services.ai.azure.com/openai/v1')) {
+    return 'foundry-openai'; // Azure AI Foundry OpenAI-compatible endpoint with Azure AD
+  } else if (endpoint.includes('.services.ai.azure.com')) {
     return 'foundry-mai'; // Azure AI Foundry with MAI models
   } else if (endpoint.includes('.ai.azure.com/api/projects/')) {
     return 'foundry-mai-project'; // Azure AI Foundry project endpoint
@@ -121,6 +123,61 @@ async function generateWithFoundryDALLE(endpoint, apiKey, prompt) {
     imageUrl: response.data.data[0].url,
     revisedPrompt: response.data.data[0].revised_prompt || prompt,
   };
+}
+
+/**
+ * Generate image using Azure AI Foundry OpenAI endpoint (Azure AD auth)
+ */
+async function generateWithFoundryOpenAI(endpoint, deploymentName, prompt) {
+  // Get Azure AD token
+  const token = await getAzureToken();
+
+  // Construct URL with deployment name in path
+  // endpoint format: https://xxx.services.ai.azure.com/openai/v1
+  // API path: /openai/deployments/{deployment-name}/images/generations
+  const baseEndpoint = endpoint.replace('/openai/v1', '');
+  const url = `${baseEndpoint}/openai/deployments/${deploymentName}/images/generations?api-version=2024-02-01`;
+
+  const response = await axios.post(
+    url,
+    {
+      prompt: prompt.substring(0, 4000),
+      n: 1,
+      size: '1024x1024',
+    },
+    {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+      timeout: 90000,
+    }
+  );
+
+  console.error('Response data:', JSON.stringify(response.data, null, 2));
+
+  // Handle different response formats
+  if (response.data.data && response.data.data[0]) {
+    const imageData = response.data.data[0];
+    
+    // Check for URL (standard DALL-E response)
+    if (imageData.url) {
+      return {
+        imageUrl: imageData.url,
+        revisedPrompt: imageData.revised_prompt || prompt,
+      };
+    }
+    
+    // Check for base64 (some models return this)
+    if (imageData.b64_json) {
+      return {
+        imageBase64: imageData.b64_json,
+        revisedPrompt: imageData.revised_prompt || prompt,
+      };
+    }
+  }
+
+  throw new Error(`Unexpected response format: ${JSON.stringify(response.data)}`);
 }
 
 /**
@@ -228,6 +285,11 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       case 'foundry-dalle':
         if (!apiKey) throw new Error('AZURE_AI_API_KEY required for Foundry DALL-E');
         result = await generateWithFoundryDALLE(endpoint, apiKey, prompt);
+        break;
+
+      case 'foundry-openai':
+        // Azure AD auth (no API key needed) - OpenAI-compatible endpoint
+        result = await generateWithFoundryOpenAI(endpoint, modelName, prompt);
         break;
 
       case 'foundry-mai':
