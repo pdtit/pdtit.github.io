@@ -1,7 +1,7 @@
 ---
 title: "Agentic Pull Request Reviews: Building a Custom GitHub Copilot Agent for Infrastructure as Code"
-date: 2026-07-15
-publishdate: 2026-07-15
+date: 2026-07-11
+publishdate: 2026-07-11
 tags: ["Infrastructure as Code", "DevOps", "GitHub Copilot", "AI"]
 draft: false
 ---
