@@ -1,5 +1,5 @@
 ---
-title: "Agentic IAC Reviews: Building a Custom GitHub Copilot Agent for Infrastructure as Code"
+title: "Agentic Pull Request Reviews: Building a Custom GitHub Copilot Agent for Infrastructure as Code"
 date: 2026-07-15
 publishdate: 2026-07-15
 tags: ["Infrastructure as Code", "DevOps", "GitHub Copilot", "AI"]
