@@ -2,6 +2,9 @@
 /docs/
 /public/
 
+# Drafts (work-in-progress posts)
+/drafts/
+
 # Hugo cache / lock
 /resources/_gen/
 .hugo_build.lock
