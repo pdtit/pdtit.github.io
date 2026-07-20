@@ -331,7 +331,7 @@ When I run `@iac-reviewer review this file`, the agent outputs:
 ![IAC-reviewer agent Architecture diagram](../images/2026-07-11_09-23-21.png)
 
 
-The full review output (23 issues across multiple resources) is in the [examples folder](https://github.com/pdtit/iac-reviewer-agent/blob/main/examples/REVIEW-OUTPUT-EXAMPLE.md) of the repo.
+The full review output (23 issues across multiple resources) is in the [examples folder](https://github.com/petender/iac-reviewer-agent/blob/main/examples/REVIEW-OUTPUT-EXAMPLE.md) of the repo.
 
 ## Using the Agent
 
@@ -377,7 +377,7 @@ You can also review entire PRs:
 
 I've published the complete agent with all knowledge bases and examples to GitHub:
 
-**Repository:** [github.com/pdtit/iac-reviewer-agent](https://github.com/pdtit/iac-reviewer-agent) *(will publish after blog post goes live)*
+**Repository:** [github.com/petender/iac-reviewer-agent](https://github.com/petender/iac-reviewer-agent)
 
 **Quick start:**
 1. Clone or copy the `.github/agents/iac-reviewer/` folder to your repo
