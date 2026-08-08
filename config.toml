@@ -1,5 +1,5 @@
 baseURL = "https://www.pdtit.be/"
-title = "Azure Readiness starts here..."
+title = "Microsoft DevOps readiness starts here..."
 theme = "stack"
 publishDir = "docs"
 languageCode = "en-us"
@@ -32,7 +32,7 @@ home = ["HTML", "RSS", "JSON"]
 
   [params.sidebar]
     emoji = "🎓"
-    subtitle = "Bring me an audience, I'll give them Azure knowledge in return"
+    subtitle = "Building better. Deploying faster. One DevOps pipeline at the time"
     avatar = "/images/007ffflearning-ape.png"
 
   [params.article]

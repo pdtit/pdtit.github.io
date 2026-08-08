@@ -1,5 +1,6 @@
 {{ define "main" }}
     {{- $isPostList := eq .Type "post" -}}
+    {{- $isTagTerm := and (eq .Kind "term") (eq .Data.Plural "tags") -}}
 
     {{ if $isPostList }}
     <form action="{{ .RelPermalink }}" class="search-form"{{ with .Site.Home.OutputFormats.Get "json" -}} data-json="{{ .RelPermalink }}"{{- end }}>
@@ -78,9 +79,13 @@
     {{/* List only pages that are not a subsection */}}
     {{ $paginator := partial "helper/paginator.html" . }}
     {{ with $paginator }}
-        <section class="article-list--compact {{ if or (eq $.Type "post") (and (or (eq $.Kind "taxonomy") (eq $.Kind "term")) (eq $.Data.Plural "tags")) }}post-list-page{{ end }}">
+        <section class="{{ if $isTagTerm }}article-list{{ else }}article-list--compact{{ if or (eq $.Type "post") (and (eq $.Kind "taxonomy") (eq $.Data.Plural "tags")) }} post-list-page{{ end }}{{ end }}">
             {{ range .Pages }}
-                {{ partial "article-list/compact" . }}
+                {{ if $isTagTerm }}
+                    {{ partial "article-list/home-default" . }}
+                {{ else }}
+                    {{ partial "article-list/compact" . }}
+                {{ end }}
             {{ end }}
         </section>
     {{ end }}

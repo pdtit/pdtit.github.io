@@ -3,6 +3,7 @@ title: About Me
 description: Building better. Deploying faster. One DevOps pipeline at the time.
 ---
 
+<img class="about-header" src="../images/about-header.jpg" alt="Seattle skyline with the Space Needle, Mount Rainier, and Peter's Building better, Deploying faster profile banner" width="800" height="200" decoding="async" fetchpriority="high">
 
 # Hi, my name is Peter De Tender. Welcome to my personal blog space.
 

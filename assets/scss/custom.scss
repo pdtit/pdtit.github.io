@@ -2,6 +2,11 @@
 
 :root {
     /* Override Stack theme's default colors with Azure blue variants */
+
+    /* Match AstroPaper's typography */
+    --base-font-family: "Google Sans Code", var(--sys-font-family), monospace;
+    --article-font-family: var(--base-font-family);
+    --code-font-family: var(--base-font-family);
     
     /* Light mode background - change from grey (#f5f5fa) to light azure blue */
     --body-background: #E6F2FF;
@@ -356,5 +361,14 @@
         color: var(--accent-color-darker);
         text-decoration: underline;
     }
+}
+
+.article-content .about-header {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin: 0 0 2rem;
+    border-radius: 8px;
 }
 
