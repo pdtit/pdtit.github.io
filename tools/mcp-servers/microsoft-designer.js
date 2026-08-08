@@ -16,7 +16,7 @@ const {
   CallToolRequestSchema,
   ListToolsRequestSchema,
 } = require('@modelcontextprotocol/sdk/types.js');
-const { DefaultAzureCredential } = require('@azure/identity');
+const { AzureCliCredential } = require('@azure/identity');
 const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
@@ -41,7 +41,10 @@ let azureCredential = null;
  */
 async function getAzureToken() {
   if (!azureCredential) {
-    azureCredential = new DefaultAzureCredential();
+    const credentialOptions = process.env.AZURE_SUBSCRIPTION_ID
+      ? { subscription: process.env.AZURE_SUBSCRIPTION_ID }
+      : { tenantId: process.env.AZURE_TENANT_ID };
+    azureCredential = new AzureCliCredential(credentialOptions);
   }
   
   const tokenResponse = await azureCredential.getToken('https://ai.azure.com/.default');
