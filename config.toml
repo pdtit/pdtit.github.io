@@ -111,6 +111,13 @@ home = ["HTML", "RSS", "JSON"]
     icon = "bluesky"
 
 [[menu.social]]
+  identifier = "instagram"
+  name = "Instagram"
+  url = "https://www.instagram.com/pdtitbe/"
+  [menu.social.params]
+    icon = "brand-instagram"
+
+[[menu.social]]
   identifier = "linkedin"
   name = "LinkedIn"
   url = "https://www.linkedin.com/in/pdtit/"
