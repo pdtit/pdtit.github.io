@@ -113,6 +113,31 @@ jobs:
           else
             echo "No changed posts in latest commit; skipping post inclusion validation."
           fi
+
+          # Every teaser-enabled leaf bundle must render the player and publish
+          # its reader-facing MP4 and poster into the generated site.
+          while IFS= read -r POST_FILE; do
+            [ -z "$POST_FILE" ] && continue
+
+            SLUG=$(basename "$(dirname "$POST_FILE")")
+            POST_OUTPUT="docs/post/${SLUG}/index.html"
+            VIDEO_OUTPUT="docs/post/${SLUG}/video/teaser.mp4"
+            POSTER_OUTPUT="docs/post/${SLUG}/video/poster.jpg"
+
+            test -s "$POST_OUTPUT"
+            test -s "$VIDEO_OUTPUT"
+            test -s "$POSTER_OUTPUT"
+            grep -q '<video' "$POST_OUTPUT"
+            grep -qE 'preload=("none"|none)' "$POST_OUTPUT"
+            grep -q 'video/teaser.mp4' "$POST_OUTPUT"
+            grep -q 'video/poster.jpg' "$POST_OUTPUT"
+            if grep -qE '<video[^>]*(autoplay|preload=("?(auto|metadata)"?))' "$POST_OUTPUT"; then
+              echo "Teaser video must not autoplay or preload media: $POST_FILE"
+              exit 1
+            fi
+
+            echo "Validated teaser video bundle: $SLUG"
+          done < <(grep -rl '^teaser_video:' content/post --include='*.md' || true)
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

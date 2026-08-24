@@ -1,0 +1,35 @@
+<section class="article-content">
+    {{ $page := . }}
+    {{ with .Params.teaser_video }}
+        {{ $videoSource := .src | relURL }}
+        {{ with $page.Resources.GetMatch .src }}
+            {{ $videoSource = .RelPermalink }}
+        {{ end }}
+        {{ $posterSource := "" }}
+        {{ with .poster }}
+            {{ $posterSource = . | relURL }}
+            {{ with $page.Resources.GetMatch . }}
+                {{ $posterSource = .RelPermalink }}
+            {{ end }}
+        {{ end }}
+        <figure class="article-teaser-video">
+            <video
+                controls
+                playsinline
+                preload="none"
+                width="{{ .width | default 1080 }}"
+                height="{{ .height | default 1920 }}"
+                aria-label="{{ .title | default "Video overview of this article" }}"
+                {{ with $posterSource }}poster="{{ . }}"{{ end }}
+            >
+                <source src="{{ $videoSource }}" type="{{ .type | default "video/mp4" }}">
+                Your browser does not support embedded video.
+            </video>
+            {{ with .caption }}<figcaption>{{ . }}</figcaption>{{ end }}
+        </figure>
+    {{ end }}
+
+    <!-- Refer to https://discourse.gohugo.io/t/responsive-tables-in-markdown/10639/5 -->
+    {{ $wrappedTable := printf "<div class=\"table-wrapper\">${1}</div>" }}
+    {{ .Content | replaceRE "(<table>(?:.|\n)+?</table>)" $wrappedTable | safeHTML }}
+</section>

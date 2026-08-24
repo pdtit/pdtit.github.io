@@ -4,6 +4,12 @@ date: 2026-08-08
 publishdate: 2026-08-08
 tags: ["Azure DevOps", "GitHub Copilot", "AI"]
 draft: false
+teaser_video:
+  src: "video/teaser.mp4"
+  poster: "video/poster.jpg"
+  title: "30-second overview of GitHub Copilot CLI in Azure Pipelines"
+  width: 1080
+  height: 1920
 ---
 
 If you've been following me for a while, you may have seen my earlier post about [GitHub Agentic Workflows](/post/github-agentic-workflows-hits-public-preview-and-the-end-of-the-pat/). That got me wondering: can I do something similar from an Azure DevOps pipeline?
@@ -29,7 +35,7 @@ The first flow is straightforward:
 
 Microsoft-hosted agents are a good fit for a first test. Every job receives a fresh VM, and that VM is discarded after the job. If you use a self-hosted agent instead, the YAML is nearly identical, but you are responsible for cleaning its workspace, credentials, and Copilot state between runs.
 
-![Azure Pipeline job running the Copilot review](../images/2026-08-07_15-31-36.png)
+![Azure Pipeline job running the Copilot review](screenshots/2026-08-07_15-31-36.png)
 
 ## Prerequisites
 
@@ -71,7 +77,7 @@ Do not place the token in `azure-pipelines.yml`. Also do not pass it as a comman
 
 The YAML below maps the secret directly to `COPILOT_GITHUB_TOKEN` only for the task that needs it. Copilot CLI checks that variable before `GH_TOKEN` and `GITHUB_TOKEN`, which also avoids accidentally picking up another GitHub credential from the agent.
 
-![Secret variable configured in Azure DevOps](../images/2026-08-07_15-40-25.png)
+![Secret variable configured in Azure DevOps](screenshots/2026-08-07_15-40-25.png)
 
 **Note: For this quick scenario, you have to define this variable for each pipeline. A more production-ready option is using the variable library to make variables avaialble across multiple pipelines**
 
@@ -235,11 +241,11 @@ The expected outcome for this scenario is a **green pipeline**. That means Copil
 
 Open the completed run and look for the **copilot-review** artifact.
 
-![Published Copilot review artifact](../images/2026-08-08_08-36-07.png)
+![Published Copilot review artifact](screenshots/2026-08-08_08-36-07.png)
 
 Download or browse `review.md`, then check its three sections:
 
-![Published Copilot review content](../images/2026-08-08_08-38-51.png)
+![Published Copilot review content](screenshots/2026-08-08_08-38-51.png)
 
 1. **Findings** contains concrete issues ordered by severity, or an explicit statement that none were found.
 2. **Missing tests** calls out test coverage that should change with the implementation.
@@ -472,7 +478,7 @@ The final result is exactly what I want: a red pipeline, the normal Azure DevOps
 
 The GitHub Copilot CLI prompt-based analysis of the Unit tests, then is available as a markdown file inside the generated pipeline artifact:
 
-![Azure Pipeline markdown artifact](../images/2026-08-07_15-33-50.png)
+![Azure Pipeline markdown artifact](screenshots/2026-08-07_15-33-50.png)
 
 
 ## Summary

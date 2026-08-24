@@ -6,9 +6,12 @@ live in the sibling private `pdtit-blog-automation` repository.
 
 ## Site conventions
 
-- Published posts: `content/post/<Title With Spaces>.md`
+- Preferred published posts: `content/post/<slug>/index.md` Hugo leaf bundles
+- Legacy flat posts: `content/post/<Title With Spaces>.md`
 - Post template: `content/post/____Template___.md`
-- Images: `content/images/<filename>.png`, referenced as `../images/<filename>.png`
+- Bundle screenshots: `content/post/<slug>/screenshots/`, referenced as `screenshots/<filename>.png`
+- Bundle video: `content/post/<slug>/video/{teaser.mp4,poster.jpg}`
+- Shared images: `content/images/<filename>.png`, referenced as `../images/<filename>.png`
 - Theme: Stack
 - Live site: https://www.pdtit.be
 - GitHub Pages workflow: `.github/workflows/hugo.yml`
@@ -17,6 +20,10 @@ Every published post requires `title`, `date`, `publishdate`, `tags`, and
 `draft: false` frontmatter. Preserve filename casing and existing tag casing.
 Never change `draft: true` to `draft: false` unless Peter explicitly requests
 publication.
+
+Leaf bundles contain only reader-facing post content, screenshots, final teaser
+video, and poster. Private manifests, prompts, captions, source clips, LinkedIn
+assets, and receipts must never be copied into this repository.
 
 ## Voice and style
 
