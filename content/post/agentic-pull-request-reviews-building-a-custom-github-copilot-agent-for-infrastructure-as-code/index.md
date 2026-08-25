@@ -4,6 +4,12 @@ date: 2026-07-11
 publishdate: 2026-07-11
 tags: ["Infrastructure as Code", "DevOps", "GitHub Copilot", "AI"]
 draft: false
+teaser_video:
+  src: "video/teaser.mp4"
+  poster: "video/poster.jpg"
+  title: "30-second overview of agentic pull request reviews for Infrastructure as Code"
+  width: 1080
+  height: 1920
 ---
 
 If you've been following my recent posts on agentic DevOps, you know I'm a big believer in letting AI handle the repetitive parts of infrastructure reviews. But here's the thing - most teams are still doing manual PR reviews for Bicep (and Terraform) files, catching the same anti-patterns over and over: "Hey, you forgot to enable HTTPS-only on that storage account." "This VM SKU is way oversized for a dev environment." "Did you check if this violates our naming conventions?"
@@ -16,7 +22,7 @@ In full transparency, it's also to save me from trying to deploy something in ou
 
 Let me show you how it works, and how you can build your own (or grab mine and adapt it, and then contribute back to the repo).
 
-![Agent reviewing a Bicep and provide summary](../images/2026-07-11_09-11-47.png)
+![Agent reviewing a Bicep and provide summary](screenshots/2026-07-11_09-11-47.png)
 
 ## Why Build a Custom Agent for IaC Reviews?
 
@@ -41,7 +47,7 @@ The agent is implemented as a custom mode in my VS Code workspace (using the `.g
 
 The whole thing runs in about 5-10 seconds for a typical PR with 3-5 resources.
 
-![IAC-reviewer agent Architecture diagram](../images/2026-07-11_09-14-35.png)
+![IAC-reviewer agent Architecture diagram](screenshots/2026-07-11_09-14-35.png)
 
 ## Building the Agent: Step-by-Step
 
@@ -324,11 +330,11 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2019-06-01' = {
 
 When I run `@iac-reviewer review this file`, the agent outputs:
 
-![IAC-reviewer agent Architecture diagram](../images/2026-07-11_09-16-58.png)
+![IAC-reviewer agent Architecture diagram](screenshots/2026-07-11_09-16-58.png)
 
-![IAC-reviewer agent Architecture diagram](../images/2026-07-11_09-22-43.png)
+![IAC-reviewer agent Architecture diagram](screenshots/2026-07-11_09-22-43.png)
 
-![IAC-reviewer agent Architecture diagram](../images/2026-07-11_09-23-21.png)
+![IAC-reviewer agent Architecture diagram](screenshots/2026-07-11_09-23-21.png)
 
 
 The full review output (23 issues across multiple resources) is in the [examples folder](https://github.com/petender/iac-reviewer-agent/blob/main/examples/REVIEW-OUTPUT-EXAMPLE.md) of the repo.

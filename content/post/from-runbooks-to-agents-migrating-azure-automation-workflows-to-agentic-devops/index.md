@@ -4,6 +4,12 @@ date: 2026-07-18
 publishdate: 2026-07-18
 tags: ["Azure", "DevOps", "AI"]
 draft: false
+teaser_video:
+  src: "video/teaser.mp4"
+  poster: "video/poster.jpg"
+  title: "30-second overview of migrating Azure Automation runbooks to agentic workflows"
+  width: 1080
+  height: 1920
 ---
 
 Let's be honest - we all have a bunch of Azure Automation runbooks sitting in our subscriptions that we wrote back in 2018 and haven't touched since. They mostly work (until they don't), and nobody really remembers how they work (until something breaks at 2 AM).
@@ -14,7 +20,7 @@ Here's the thing though - the world has moved on. We now have agentic workflows 
 
 The difference is night and day. Let me show you what I learned.
 
-![Runbook vs Agent comparison](../images/runbook-vs-agent-comparison.png)
+![Runbook vs Agent comparison](screenshots/runbook-vs-agent-comparison.png)
 
 ## The Problem with Traditional Runbooks
 

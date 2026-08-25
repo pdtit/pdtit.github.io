@@ -4,6 +4,12 @@ date: 2026-07-08
 publishdate: 2026-07-08
 tags: ["GitHub Copilot", "DevOps", "AI"]
 draft: false
+teaser_video:
+  src: "video/teaser.mp4"
+  poster: "video/poster.jpg"
+  title: "30-second overview of tracking GitHub Copilot usage with self-hosted Grafana dashboards"
+  width: 1080
+  height: 1920
 ---
 
 When I was still on the Microsoft Technical Trainer, delivering classes or presenting to Executives or speaking at conferences on AI (M365 Copilot, Foundry and Github Copilot primarily), apart from the technical conversations, one other question that always popped up, was **"great scenario Peter, but what does this actually cost?"** And while GitHub Enterprise with GitHub Copilot provides great insights, not all developers use GitHub Copilot organization-wide. 
@@ -43,7 +49,7 @@ The dashboard answers all of these questions using data that Copilot already emi
 
 GitHub Copilot Chat in VS Code supports **OpenTelemetry export** as of a recent update (you need the setting `github.copilot.chat.otel.enabled` - if you don't see it, update Copilot Chat). 
 
-![Github Copilot Chat Otel settings enabled](../images/2026-07-08_15-52-51.png)
+![Github Copilot Chat Otel settings enabled](screenshots/2026-07-08_15-52-51.png)
 
 When enabled, it emits three signal types over OTLP:
 
@@ -81,7 +87,7 @@ cd GitHubCopilotDashboard
 docker compose up -d
 docker compose ps  # confirm all 5 containers are healthy
 ```
-![Docker Compose up view](../images/2026-07-08_15-58-12.png)
+![Docker Compose up view](screenshots/2026-07-08_15-58-12.png)
 
 Within 30 seconds you should have five running containers: `otel-collector`, `tempo`, `prometheus`, `loki`, and `grafana`.
 
@@ -98,7 +104,7 @@ Open your **User** `settings.json` (`Ctrl+Shift+P` → Preferences: Open User Se
 }
 ```
 
-![VS Code User Settings JSON](../images/2026-07-08_16-00-25.png)
+![VS Code User Settings JSON](screenshots/2026-07-08_16-00-25.png)
 
 **Important**: Use **User settings**, not workspace settings. The OTel SDK initializes early in VS Code startup, and workspace settings can load too late.
 
@@ -114,7 +120,7 @@ Use Copilot Chat or agent mode as you normally would. Then open [http://localhos
 
 Navigate to **Dashboards → GitHub Copilot** folder. You'll see three dashboards. Data appears within 30–60 seconds (Prometheus scrapes every 15 seconds, dashboards refresh every 10 seconds to 5 minutes depending on the panel).
 
-![Grafana dashboards folder](../images/2026-07-08_16-02-16.png)
+![Grafana dashboards folder](screenshots/2026-07-08_16-02-16.png)
 
 ## The three dashboards (what you actually get)
 
@@ -122,7 +128,7 @@ Navigate to **Dashboards → GitHub Copilot** folder. You'll see three dashboard
 
 This is the dashboard I check every week. It's **plan-aware**, meaning you pick your Copilot plan from a dropdown (Individual, Business, Enterprise), and it calculates what you're *actually paying GitHub* this month.
 
-![Actual Cost dashboard](../images/2026-07-08_16-04-48.png)
+![Actual Cost dashboard](screenshots/2026-07-08_16-04-48.png)
 
 Key metrics:
 
@@ -137,7 +143,7 @@ Key metrics:
 
 For me, this confirmed what I suspected: I'm on an Enterprise seat with unlimited usage, so my cost is flat at $39/month regardless of how much I use it. But if I were on Individual ($10/month with a limited allowance), I'd see exactly how close I am to hitting overage charges.
 
-![Actual Cost dashboard different plan](../images/2026-07-08_16-06-07.png)
+![Actual Cost dashboard different plan](screenshots/2026-07-08_16-06-07.png)
 
 The plan config lives in `config/prometheus-rules.yml` - you edit the seat price, included AI Units, and overage rate per plan. After editing, reload Prometheus with `docker compose kill -s SIGHUP prometheus`.
 
@@ -145,7 +151,7 @@ The plan config lives in `config/prometheus-rules.yml` - you edit the seat price
 
 This is the "what's happening right now" dashboard. It's **not** about cost - it's about understanding your usage patterns.
 
-![Usage Overview dashboard](../images/2026-07-08_16-07-16.png)
+![Usage Overview dashboard](screenshots/2026-07-08_16-07-16.png)
 
 Key sections:
 
@@ -162,13 +168,13 @@ Key sections:
 
 The session-name extraction is my favorite feature. The collector parses the first user prompt from `gen_ai.input.messages` and uses a short snippet as the `copilot_session_name` label. So instead of seeing `f47ac10b-58cc-4372-a567-0e02b2c3d479`, you see something like `"summarize the following content..."`. Makes it *way* easier to identify which session is which.
 
-![Usage Overview dashboard with session name](../images/2026-07-08_16-08-54.png)
+![Usage Overview dashboard with session name](screenshots/2026-07-08_16-08-54.png)
 
 ### 3. Value & Model Comparison - shadow pricing (not your bill)
 
 This dashboard answers the question: **What would these tokens cost at raw model API list prices?**
 
-![Value & Model Comparison dashboard](../images/2026-07-08_16-10-17.png)
+![Value & Model Comparison dashboard](screenshots/2026-07-08_16-10-17.png)
 
 Key metrics:
 

@@ -4,6 +4,12 @@ date: 2026-06-20
 publishdate: 2026-06-22
 tags: ["GitHub Copilot", "DevOps", "AI"]
 draft: false
+teaser_video:
+  src: "video/teaser.mp4"
+  poster: "video/poster.jpg"
+  title: "30-second overview of automating blog promotion with VS Code agents and MCP servers"
+  width: 1080
+  height: 1920
 ---
 
 If you've been following me for a while, you know I write a fair bit about Microsoft DevOps, Azure, and lately GitHub Copilot. What you probably don't know is that I've been leaning on VS Code's agent mode to help me stay on top of what's trending. It scans GitHub changelog feeds, filters for the DevOps-relevant bits, overall looks at top DevOps online resources - which now feels like a good topic for another blog post - and hands me a shortlist of topics worth exploring. That part's been working well for months. (And yes, I do miss the good old RSS-feeds, although I know some sites still have them...)
