@@ -84,6 +84,10 @@ jobs:
             while IFS= read -r POST_FILE; do
               [ -z "$POST_FILE" ] && continue
               [ -f "$POST_FILE" ] || continue
+              if grep -qE '^draft:[[:space:]]*true[[:space:]]*$' "$POST_FILE"; then
+                echo "Skipping draft post: $POST_FILE"
+                continue
+              fi
               TITLE=$(sed -nE 's/^title:[[:space:]]*"(.*)"[[:space:]]*$/\1/p; t; s/^title:[[:space:]]*(.*)$/\1/p' "$POST_FILE" | head -n 1)
               if [ -z "$TITLE" ]; then
                 echo "Could not parse title from $POST_FILE"
