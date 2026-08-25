@@ -6,6 +6,7 @@ draft: false
 
 | Conference / User Group Event | Date | Session Topic | URL |
 |---|---|---|---|
+| Azure Innovators Summer Jam 2026 | 2026-07 | Spec-driven development concepts for Azure Scenarios (GitHub Spec Kit) | https://www.youtube.com/live/6Ae7pc2HlCw |
 | MMS 2026 at MOA | 2026-05 | DevSecOps with GitHub Advanced Security (GHAS) | https://mmsmoa.com/mms2026moa |
 | SREday Seattle | 2026-04-21 | Agentic DevOps with GitHub Copilot | https://sreday.com/2026-seattle-q2/Peter_De_Tender_Microsoft_Agentic_DevOps_with_GitHub_Copilot |
 | PowerShell + DevOps Global Summit 2026 (Bellevue) | 2026-04 | Achieving SRE (Site Resiliency Engineering) with Azure | https://PowerShellSummit.org |
