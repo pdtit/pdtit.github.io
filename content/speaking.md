@@ -10,6 +10,9 @@ draft: false
 | MMS 2026 at MOA | 2026-05 | DevSecOps with GitHub Advanced Security (GHAS) | https://mmsmoa.com/mms2026moa |
 | SREday Seattle | 2026-04-21 | Agentic DevOps with GitHub Copilot | https://sreday.com/2026-seattle-q2/Peter_De_Tender_Microsoft_Agentic_DevOps_with_GitHub_Copilot |
 | PowerShell + DevOps Global Summit 2026 (Bellevue) | 2026-04 | Achieving SRE (Site Resiliency Engineering) with Azure | https://PowerShellSummit.org |
+| MCT Summit NA Redmond | 2026-03 | AMA with the DevOps/GitHub Content Developer | https://namctsummit.com |
+| MCT Summit NA Redmond | 2026-03 | **Keynote** Technical Trainers in a Frontier Firm world | https://namctsummit.com |
+| MCT Summit NA Redmond | 2026-03 | DevSecOps with GitHub Advanced Security (GHAS) | https://namctsummit.com |
 | Azure Spring Clean 2026 | 2026-03 | DevSecOps with GitHub Advanced Security (GHAS) | https://www.azurespringclean.com |
 | NDC London | 2026 | Speaker profile / Azure talks | https://ndclondon.com/speakers/peter-de-tender |
 | Festive Tech Calendar 2025 | 2025-12 | DevSecOps with GitHub Advanced Security (GHAS) | https://festivetechcalendar.com |
